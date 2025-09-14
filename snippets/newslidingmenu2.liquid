@@ -1,0 +1,452 @@
+<!-- snippets/newslidingmenu2.liquid -->
+<div class="outer-menu">
+   <button type="button" class="close-x">
+      <svg aria-hidden="true" focusable="false" role="presentation" class="icon icon-close" viewBox="0 0 64 64">
+         <path d="M19 17.61l27.12 27.13m0-27.12L19 44.74"></path>
+      </svg>
+      <span class="icon__fallback-text">Close (esc)</span>
+   </button>
+   <div class="newmenu">
+      <div class="top-navmenu">
+         <div class="women-menu gendermenu jactive">
+            Women
+         </div>
+         <div class="men-menu gendermenu">
+            Men
+         </div>
+      </div>
+      <div class="newmenu-inner">
+
+         <!-- 
+         <div class="top-mobile-images">
+            <div class="botborder">
+                <a href="{{ section.settings.right_link_1 }}">
+                    <img src="{{ section.settings.right_image_1 | img_url: 'large' }}">
+                </a>
+                <a href="{{ section.settings.right_link_2 }}">
+               <img src="{{ section.settings.right_image_2 | img_url: 'large' }}">
+               </a>
+            </div>
+         </div>
+         -->
+
+<div class="trending-menu">
+  {% if section.settings.trending_title != blank %}
+    <h3 class="trending-title">{{ section.settings.trending_title }}</h3>
+  {% endif %}
+  
+  <!-- Women's Trending Items -->
+  <ul class="trending-list women">
+    {% for block in section.blocks %}
+      {% if block.type == 'trending_item' and block.settings.gender == 'women' %}
+        <li>
+          <a href="{{ block.settings.link }}" 
+             {% if block.settings.is_clearance %}class="clearance"{% endif %}
+             {% if block.settings.badge_text != blank %}class="with-badge"{% endif %}>
+            {{ block.settings.text }}
+            {% if block.settings.badge_text != blank %}
+              <span class="badge" 
+                    {% if block.settings.badge_bg_color != blank %}
+                      style="background-color: {{ block.settings.badge_bg_color }}; color: {{ block.settings.badge_text_color | default: '#555' }};"
+                    {% endif %}>
+                {{ block.settings.badge_text }}
+              </span>
+            {% endif %}
+          </a>
+        </li>
+      {% endif %}
+    {% endfor %}
+  </ul>
+
+  <!-- Men's Trending Items -->
+  <ul class="trending-list men" style="display:none;">
+    {% for block in section.blocks %}
+      {% if block.type == 'trending_item' and block.settings.gender == 'men' %}
+        <li>
+          <a href="{{ block.settings.link }}" 
+             {% if block.settings.is_clearance %}class="clearance"{% endif %}
+             {% if block.settings.badge_text != blank %}class="with-badge"{% endif %}>
+            {{ block.settings.text }}
+            {% if block.settings.badge_text != blank %}
+              <span class="badge" 
+                    {% if block.settings.badge_bg_color != blank %}
+                      style="background-color: {{ block.settings.badge_bg_color }}; color: {{ block.settings.badge_text_color | default: '#555' }};"
+                    {% endif %}>
+                {{ block.settings.badge_text }}
+              </span>
+            {% endif %}
+          </a>
+        </li>
+      {% endif %}
+    {% endfor %}
+  </ul>
+</div>
+
+<style>
+.trending-menu {
+  margin: 0;
+  padding: 0;
+}
+
+.trending-title {
+   font-size:16px;
+  font-weight: bold;
+  margin-bottom: 8px;
+  font-family: Oxygen, sans-serif;    
+    font-weight: 800;
+    font-style: normal;
+    letter-spacing: 0.025em;
+    line-height: 1.3;
+}
+
+.trending-list {
+  list-style: none;
+  margin: 0;
+  padding: 0 0 0 16px;
+}
+
+.trending-list li {
+  margin: 6px 0;
+}
+
+.trending-list a {
+  text-decoration: none;
+  color: #333;
+  position: relative;
+}
+
+.trending-list a:hover {
+  text-decoration: underline;
+}
+
+.trending-list .badge {
+  background: #f1f1f1;
+  border-radius: 12px;
+  padding: 2px 8px;
+  font-size: 11px;
+  text-transform: uppercase;
+  margin-left: 6px;
+  font-weight: 600;
+  color: #555;
+}
+
+.trending-list .clearance {
+  color: {{ section.settings.clearance_text_color | default: '#e63946' }};
+}
+</style>
+
+         {% for block in section.blocks %}
+         {% if block.type == "text" %} 
+         {% if block.settings.col-title != blank %}
+         <a href="{{ block.settings.col-link }}">
+            <div class="collection-entry">
+               <img src="{{ block.settings.col-img | img_url: '100x' }}" alt="{{ block.settings.col-img.alt | escape }}">
+               <div class="col-info">
+                  <span>{{ block.settings.col-title }}</span>
+               </div>
+            </div>
+         </a>
+         {% endif %}
+         {% endif %}
+         {% endfor %}
+         {% for block in section.blocks %}
+         {% if block.type == "image" %} 
+         <div class="slink-entry dropdower {{ block.settings.gender }}">
+            <a href="{% if block.settings.menu-link %}{{block.settings.menu-link}}{% else %}#{% endif %}" class="link-entry">
+               {% if block.settings.menu-icon-image %}
+               <img src="{{ block.settings.menu-icon-image | img_url: '100x100' }}" alt="{{ block.settings.menu-icon-image.alt | escape }}" class="menu-icon-image">
+               {% else %}
+               <i class="fa {{ block.settings.menu-icon }} iconily" aria-hidden="true"></i>
+               {% endif %}
+               <div class="link-info">
+                  <span>{{ block.settings.menu-title }}</span>
+               </div>
+               {% if block.settings.dropdown-link.links.size > 0 %}
+               <i class="fa fa-angle-right righter" aria-hidden="true"></i>
+               <i class="fa fa-angle-down righter" aria-hidden="true"></i>
+               {% endif %}
+            </a>
+            {% if block.settings.dropdown-link.links.size > 0 %}
+            <ul class="linker dropdown-child  {{ block.settings.gender }}">
+               {% for link in linklists[block.settings.dropdown-link].links %}
+               <li class="menu-link ">
+                  <a href="{{ link.url }}">{{ link.title }}</a>
+                  {% comment %}
+                  {% if link.links.size > 0 %}
+                  <ul class="menu dropdown-grandchild">
+                     {% for grandlink in link.links %}
+                     <li class="menu-link">
+                        <a href="{{ grandlink.url }}">{{ grandlink.title }}</a>
+                     </li>
+                     {% endfor %}
+                  </ul>
+                  {% endif %}
+                  {% endcomment %}
+               </li>
+               {% endfor %}
+            </ul>
+            {% endif %}
+         </div>
+         {% endif %}
+         {% endfor %}
+         <hr>
+         {% for link in linklists.slider-simple-3.links %}
+         <a href="{{ link.url }}" class="newmenulink">{{ link.title }}</a>
+         {% endfor %}
+      </div>
+   </div>
+</div>
+<style>
+   .outer-menu{
+   display:none;
+   }
+   @media only screen and (max-width:480px){
+      .slink-entry.men{
+         display:none;
+      }
+      .gendermenu{font-weight:900;}
+   .newmenu{
+      font-size:14px;
+   }
+   .menu-link a{
+      font-size:14px;
+   }
+   .link-entry .link-info span{
+      font-size:16px;
+   }
+   .gendermenu{
+      text-align:center;
+      flex:0 0 50%;
+      padding:12px;
+   }
+   .gendermenu.jactive{
+      border-left:1px solid rgba(1, 1, 1, 0.08);
+      border-right:1px solid rgba(1, 1, 1, 0.08);
+      border-bottom:2px solid #000;
+   }
+   .top-mobile-images{
+      padding-left:0px;
+      padding-right:0px;
+   }
+   .top-mobile-images img{
+      margin-bottom:8px;
+      width:100%;
+   }
+   .botborder{
+      border-bottom:1px solid #000;
+      padding-top:20px;
+      padding-bottom:24px;
+   }
+   img.menu-icon-image{
+   width: 43px;
+   margin: 0 9px 0 8px;
+   padding-right: 0px !important;
+   }
+   .righter{
+   position: absolute;
+   right: 0px;
+   font-size: 28px;
+   top: 8px;
+   }
+   
+   .iconily{
+   display: inline-block;
+   display:none;
+   font-size: 34px;
+   width: 60px;
+   text-align: center;
+   display:none !important;
+   }
+   .slink-entry{
+   position:relative;
+   }
+   .slink-entry .fa-angle-right{
+   display:none;
+   }
+   .linker{
+   list-style-type: none;
+   }
+   .linker li{
+   margin-bottom:18px;
+   }
+   .outer-menu{
+   display: block;
+   }
+   .dropdown-child{
+   display:none;
+   padding-top:16px;
+   padding-left:0px;
+   margin-left:16px !important;
+   }
+   .newmenulink{
+   padding:12px 12px 1px;
+   width:100%;
+   display:inline-block;
+   }
+   .newmenu hr{
+   border-top: 1px solid #fff !important; 
+   }
+   .outer-menu{
+   width:100%;
+   background:rgba(0,0,0,0.4);
+   }
+   .top-navmenu{
+   width: 100%;
+   position: relative;
+   background: #fff;
+   height: 42px;
+   position: relative;
+   display: flex;
+   text-align: center;
+   align-items: center;
+   justify-content: flex-end;
+   }
+   .jactive{
+   // color:gold;
+   }
+   .close-x{
+   position:absolute;
+   right:5px;
+   top:6px;
+   color:#fff;
+
+   border-radius:50%;
+   height:60px;
+   width:60px;
+   // border:2px solid #0B0D32;
+   color:#0B0D32;
+   display:flex;
+   justify-content:center;
+   align-items:center;
+   flex-wrap:wrap;
+   font-weight:800;
+   background:transparent;     
+   }
+   .close-x .icon{
+      width:100% !important;
+      height:auto;
+   }
+   .newmenu{
+   width:83%;
+   position: relative;
+   top: 0;
+   background: #fff;
+   color:#000;
+   left: 0;
+   z-index:999999;
+   height:100vh;
+   overflow-y:scroll;
+   
+   }
+   .newmenu-inner{
+      padding:16px 16px 30px;
+   }
+   .collection-entry{
+   display:flex;
+   flex-wrap:wrap;
+   justify-content:space-between;
+   border-bottom:1px solid #fff;
+   }
+   .collection-entry img{
+   flex: 0 0 30%;
+   height:auto;
+   width:30%;
+   }
+   .collection-entry .col-info{
+   flex: 0 0 70%;
+   display:flex;
+   flex-wrap:wrap;
+   justify-content:space-between;
+   align-items:center;
+   padding-left:12px;
+   }
+   .link-entry{
+   padding: 12px 20px 12px 0;
+   width: 100%;
+   display: flex;
+   justify-content: flex-start;
+   align-items: center;
+   border-bottom:1px solid #000;
+   }
+   .link-entry img{
+   display:none !important;
+   }
+   .link-entry .link-info span{
+   font-weight:700;
+   }
+   .link-entry img{
+   padding-right:20px;
+   }
+   .outer-menu{
+   position: fixed;
+   z-index: 99999;
+   width: 100%;
+   /* position: relative; */
+   /* left: -100%; */
+   background: #e8e8e8;
+   width: 100%;
+   left: -100%;
+   display: block;
+   top: 0;
+   }
+   }
+
+</style>
+<script>
+   $(document).ready(function(){
+      
+      $(".women-menu").addClass("jactive")
+      $(".women-menu").trigger("click")
+      $(".men-menu").on("click",function(){
+         $(".women").hide()
+         $(".men").show()
+         $(".men-menu").addClass("jactive")
+         $(".women-menu").removeClass("jactive")
+      })
+      $(".women-menu").on("click",function(){
+         $(".women").show()
+         $(".men").hide()
+         $(".men-menu").removeClass("jactive")
+         $(".women-menu").addClass("jactive")
+      })
+     $('body').on("click",".dropdower",function(){
+       $(".dropdown-child").hide()
+         $(this).find(".dropdown-child").toggle()
+         $(".slink-entry").removeClass("jactive")
+         $(".slink-entry").addClass("dropdower")
+         $(this).addClass("jactive")
+          $(this).removeClass("dropdower")
+   
+          
+        
+         $(this).find(".righter").toggle()
+     })
+     $('body').on("click",".jactive",function(){
+          $(".dropdown-child").hide()
+   
+   
+         $(".slink-entry").removeClass("jactive")
+         $(".slink-entry").addClass("dropdower")
+   
+   
+   
+          $(this).find(".righter").toggle()
+          
+     })
+    $(".close-x").on("click",function(){
+       $(".outer-menu").animate({
+       "left": '-=100%'
+     }, 500);
+    })
+   
+    $(".site-nav__thumb-menu").on("click",function(){
+       $(".outer-menu").animate({
+       "left": '0'
+     }, 500);
+    
+   })
+   setTimeout(function () {
+      $(".slink-entry:first-of-type").trigger("click")
+}, 4000);
+    })
+</script>

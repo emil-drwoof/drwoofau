@@ -1,0 +1,49 @@
+{
+  "sections": {
+    "collection-header": {
+      "type": "dr-woof-hero-scrubs3",
+      "settings": {
+        "pad": "30px",
+        "enable_auto": true,
+        "desktop_positioning": 0,
+        "height": 90,
+        "mobile_height": 50,
+        "image_lib_pc": "shopify:\/\/shop_images\/GIF_PRINTED_TOPS_BANNER_DESKTOP_2.gif",
+        "image_webp_pc": "",
+        "image_lib_mobile": "shopify:\/\/shop_images\/GIF_PRINTED_TOPS_BANNER_1.gif",
+        "image_webp_mobile": ""
+      }
+    },
+    "collection-filter": {
+      "type": "collection-thumbnail-filter",
+      "settings": {
+        "title_enable": false
+      }
+    },
+    "collection-filters": {
+      "type": "collection-filters-def",
+      "settings": {
+        "filter_type": "groups",
+        "tags_combine": false,
+        "collection_title_enable": true,
+        "collection_filter_enable": false,
+        "collection_sort_enable": true
+      }
+    },
+    "main-collection": {
+      "type": "collection-template-scrubs",
+      "settings": {
+        "per_row_desktop": 3,
+        "per_row_mobile": "2",
+        "description_bottom": true,
+        "pre-navy": false
+      }
+    }
+  },
+  "order": [
+    "collection-header",
+    "collection-filter",
+    "collection-filters",
+    "main-collection"
+  ]
+}

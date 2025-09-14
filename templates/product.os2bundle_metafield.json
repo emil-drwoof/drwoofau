@@ -1,0 +1,26 @@
+{
+  "sections": {
+    "product-template": {
+      "type": "product-template",
+      "settings": {}
+    },
+    "stories": {
+      "type": "product-sections-bundle",
+      "settings": {}
+    },
+    "reviews": {
+      "type": "looxreviews",
+      "settings": {}
+    },
+    "recommendations": {
+      "type": "product-recommendations",
+      "settings": {}
+    }
+  },
+  "order": [
+    "product-template",
+    "stories",
+    "reviews",
+    "recommendations"
+  ]
+}

@@ -1,0 +1,453 @@
+<!-- snippets/bundle_button.liquid -->
+{%- assign swatch_file_extension = 'png' -%}
+{%- assign is_color = false -%}
+{%- assign color_swatch_drop = option_drop -%}
+{%- assign color_option_index = 0 -%}
+{% assign sf_product_combined = all_products[product.metafields.sf_product_combined.product_handle] %}
+{% assign sf_product_third = all_products[product.metafields.sf_product_combined.third_product] %}
+{% if settings.product_color_swatches %}
+  {%- assign swatch_trigger = 'products.general.color_swatch_trigger' | t | downcase -%}
+
+    {% for option in product.options_with_values %}
+    <!-- product.option_with_values -->
+    {% if option == color_swatch_drop %}
+      {%- assign color_option_index = forloop.index0 -%}
+      {%- assign downcased_option = color_swatch_drop.name | downcase -%}
+      {% if downcased_option contains swatch_trigger %}
+        {% assign is_color = true %}
+      {%- elsif swatch_trigger == 'color' and downcased_option contains 'colour' -%}
+        {% assign is_color = true %}
+      {% endif %}
+    {% endif %}
+  {% endfor %}
+  <!-- endfor product.option_with_values -->
+{% endif %}
+
+<div class="variant-wrapper variant-wrapper--{{ variant_type }} js total_div color-variant-swatches">
+  <label class="variant__label{% if option.name == 'Default' or option.name == 'Title' %} hidden-label{% endif %}{% unless variant_labels_enable %} hidden-label{% endunless %}" for="ProductSelect-{{ section_id }}-option-{{ forloop.index0 }}">
+    {{ option.name }}
+    {% if is_color %}
+      {% if template.suffix == "newlandingpage" %}
+        <span class="variant__label-info">
+          <span id="VariantColorLabel-{{ section_id }}-{{ forloop.index0 }}" data-option-index="{{ color_option_index }}">
+            {{ option.selected_value }}
+          </span>
+
+          <span class="dotspacer" style="color: rgb(122, 112, 184); font-style: normal !important;">•</span>
+          <span class="datahere"></span>
+
+
+        </span>
+      {% else %}
+        <span class="variant__label-info">
+          &mdash;
+          <span id="VariantColorLabel-{{ section_id }}-{{ forloop.index0 }}" data-option-index="{{ color_option_index }}">
+            {{ option.selected_value }}
+          </span>
+        </span>
+      {% endif %}
+    {% endif %}
+  </label>
+  {%- assign option_index = forloop.index -%}
+    <fieldset
+    class="variant-input-wrap"
+    name="{{ option.name }}"
+    data-index="option{{ option_index }}"
+    id="ProductSelect-{{ section_id }}-option-{{ forloop.index0 }}">
+
+    {% for value in option.values %}
+      <!-- option.values -->
+
+      {%- assign product_available = true -%}
+      {% if product.options.size == 1 %}
+        {%- assign product_available = product.variants[forloop.index0].available -%}
+      {% endif %}
+      <div
+        class="{% if forloop.index == 1 %}first_color_variants{% endif %} variant-input"
+        data-handle="{{product.handle}}"
+        data-index="option{{ option_index }}"
+        data-value="{{ value | escape }}">
+        <input
+          type="radio"
+          {% if option.selected_value == value and product.available %}
+          checked="checked"
+          {% endif %}
+          value="{{ value | escape }}"
+          data-index="option{{ option_index }}"
+          name="{{ option.name }}"
+          data-variant-input
+          {% if is_color %}data-color-swatch{% endif %}
+          class="variant__input-{{ section_id }}{% unless product_available %} disabled{% endunless %}"
+          {% if is_color %}
+          data-color-name="{{ value | escape }}"
+          {% endif %}
+          {% if is_color %}
+          op_val="{{ value | escape }}"
+          data-color-index="{{ color_option_index }}"
+          {% endif %}
+          id="ProductSelect-{{ section_id }}-option-{{ option.name | handleize }}-{{ value | url_encode }}">
+        {% if is_color %}
+          {%- assign color_image = value | handle | append: '.' | append: swatch_file_extension | asset_img_url: '50x' | prepend: 'https:' | split: '?' | first -%}
+          {%- assign color_swatch_fallback = value | split: ' ' | last | handle -%}
+          {% if template.suffix == "newlandingpage" %}
+            <div class="swatchwrapper">
+              <label
+                op_val="{{ value | escape }}"
+                for="ProductSelect-{{ section_id }}-option-{{ option.name | handleize }}-{{ value | url_encode }}"
+                class="color-swatch color-swatch--{{ value | handle }}{% unless product_available %} disabled{% endunless %}"
+                style="background-image: url({{ color_image }}); background-color: {{ color_swatch_fallback }};">
+                {{ value | escape }}
+              </label>
+              <img src="https://cdn.shopify.com/s/files/1/0573/7250/8344/files/mdi_tick_1.png?v=1682964378" class="swatchcheck" alt="mdi tick">
+            </div>
+          {% else %}
+            <label
+              for="ProductSelect-{{ section_id }}-option-{{ option.name | handleize }}-{{ value | url_encode }}"
+              class="color-swatch color-swatch--{{ value | handle }}{% unless product_available %} disabled{% endunless %}"
+              style="background-image: url({{ color_image }}); background-color: {{ color_swatch_fallback }};">
+              {{ value | escape }}
+            </label>
+          {% endif %}
+        {% else %}
+          <label for="ProductSelect-{{ section_id }}-option-{{ option.name | handleize }}-{{ value | url_encode }}"{% unless product_available %}class="disabled"{% endunless %}>{{ value | escape }}</label>
+        {% endif %}
+      </div>
+    {% endfor %}
+    <!-- endfor option.values -->
+
+    {% assign sf_product_combined = all_products[product.metafields.sf_product_combined.product_handle] %}
+    {% assign sf_product_third = all_products[product.metafields.sf_product_combined.third_product] %}
+    {% assign sf_product_fourth = all_products[product.metafields.sf_product_combined.fourth_product] %}
+    {% assign sf_product_fifth = all_products[product.metafields.sf_product_combined.fifth_product] %}
+
+    {% unless sf_product_combined.empty? %}
+      {%- assign product_combined_index = forloop.index -%}
+
+        {% for product_combined in sf_product_combined.options_with_values %}
+        <!-- sf_product_combined.options_with_values -->
+
+        {% if option.name == product_combined.name %}
+          {% if product_combined.name == 'size' or product_combined.name == 'Size' or product_combined.name == 'inseam' or product_combined.name == 'Inseam' %}
+            {% else %}
+
+              {% for combined_value in product_combined.values %}
+                <!-- sf_product_combined.options_with_values / product_combined.values -->
+
+                {%- assign combined_value_available = true -%}
+                {%- assign combined_value_available = product.variants[forloop.index0].available -%}
+
+                <div
+                  data-handle="{{sf_product_combined.handle}}"
+                  class="variant-input"
+                  data-index="option{{ product_combined_index }}"
+                  data-value="{{ combined_value | escape }}">
+                  <input
+                    op_val="{{ combined_value }}"
+                    option_index="{{product_combined_index}}"
+                    type="radio"
+                    {% if product_combined.selected_combined_value == combined_value and product.available %}
+                    checked="checked"
+                    {% endif %}
+                    value="{{ combined_value | escape }}"
+                    data-index="option{{ product_combined_index }}"
+                    name="{{ product_combined.name }}"
+                    data-variant-input
+                    {% if is_color %}data-color-swatch{% endif %}
+                    class="varin variant__input-{{ section_id }}{% unless combined_value_available %} disabled{% endunless %}"
+                    {% if is_color %}
+                    data-color-name="{{ combined_value | escape }}"
+                    {% endif %}
+                    {% if is_color %}
+                    data-color-index="1"
+                    {% endif %}
+                    id="ProductSelect-{{ section_id }}-option-{{ product_combined.name | handleize }}-{{ combined_value | url_encode }}">
+                  {% if is_color %}
+                    {%- assign color_image = combined_value | handle | append: '.' | append: swatch_file_extension | asset_img_url: '50x' | prepend: 'https:' | split: '?' | first -%}
+                    {%- assign color_swatch_fallback = combined_value | split: ' ' | last | handle -%}
+                    {% if template.suffix == "newlandingpage" %}
+                      <div class="swatchwrapper">
+                        <label
+                          op_val="{{ combined_value }}"
+                          option_index="{{product_combined_index}}"
+                          for="ProductSelect-{{ section_id }}-option-{{ product_combined.name | handleize }}-{{ combined_value | url_encode }}"
+                          class="label_options color-swatch color-swatch--{{ combined_value | handle }} {% unless combined_value_available %} disabled{% endunless %}"
+                          style="background-image: url({{ color_image }}); background-color: {{ color_swatch_fallback }};">
+                          {{ combined_value | escape }}
+                        </label>
+                        <img alt="mdi tick" src="https://cdn.shopify.com/s/files/1/0573/7250/8344/files/mdi_tick_1.png?v=1682964378" class="swatchcheck">
+                      </div>
+                    {% else %}
+                      <label
+                        op_val="{{ combined_value }}"
+                        option_index="{{product_combined_index}}"
+                        for="ProductSelect-{{ section_id }}-option-{{ product_combined.name | handleize }}-{{ combined_value | url_encode }}"
+                        class="label_options color-swatch color-swatch--{{ combined_value | handle }} {% unless combined_value_available %} disabled{% endunless %}"
+                        style="background-image: url({{ color_image }}); background-color: {{ color_swatch_fallback }};">
+                        {{ combined_value | escape }}
+                      </label>
+                    {% endif %}
+                  {% else %}
+                    <label
+                      op_val="{{ combined_value }}"
+                      product_combined_index="{{product_combined_index}}"
+                      for="ProductSelect-{{ section_id }}-option-{{ product_combined.name | handleize }}-{{ combined_value | url_encode }}"
+                      class="label_options {% unless combined_value_available %} disabled {% endunless %}">{{ combined_value | escape }}</label>
+                  {% endif %}
+                </div>
+
+              {% endfor %}
+            <!-- endfor sf_product_combined.options_with_values / product_combined.values -->
+          {% endif %}
+        {% endif %}
+
+      {% endfor %}
+      <!-- endfor sf_product_combined.options_with_values -->
+    {% endunless %}
+
+
+
+    {% unless sf_product_third.empty? %}
+      {%- assign product_combined_index = forloop.index -%}
+
+        {% for product_combined in sf_product_third.options_with_values %}
+        <!-- sf_product_third.options_with_values -->
+
+        {% if option.name == product_combined.name %}
+          {% if product_combined.name == 'size' or product_combined.name == 'Size' or product_combined.name == 'inseam' or product_combined.name == 'Inseam' %}
+            {% else %}
+
+              {% for combined_value in product_combined.values %}
+                <!-- sf_product_third.options_with_values / product_combined.values -->
+
+                {%- assign combined_value_available = true -%}
+                {%- assign combined_value_available = product.variants[forloop.index0].available -%}
+
+                <div
+                  data-handle="{{sf_product_third.handle}}"
+                  class="variant-input"
+                  data-index="option{{ product_combined_index }}"
+                  data-value="{{ combined_value | escape }}">
+                  <input
+                    op_val="{{ combined_value }}"
+                    option_index="{{product_combined_index}}"
+                    type="radio"
+                    {% if product_combined.selected_combined_value == combined_value and product.available %}
+                    checked="checked"
+                    {% endif %}
+                    value="{{ combined_value | escape }}"
+                    data-index="option{{ product_combined_index }}"
+                    name="{{ product_combined.name }}"
+                    data-variant-input
+                    {% if is_color %}data-color-swatch{% endif %}
+                    class="varin variant__input-{{ section_id }}{% unless combined_value_available %} disabled{% endunless %}"
+                    {% if is_color %}
+                    data-color-name="{{ combined_value | escape }}"
+                    {% endif %}
+                    {% if is_color %}
+                    data-color-index="1"
+                    {% endif %}
+                    id="ProductSelect-{{ section_id }}-option-{{ product_combined.name | handleize }}-{{ combined_value | url_encode }}">
+                  {% if is_color %}
+                    {%- assign color_image = combined_value | handle | append: '.' | append: swatch_file_extension | asset_img_url: '50x' | prepend: 'https:' | split: '?' | first -%}
+                    {%- assign color_swatch_fallback = combined_value | split: ' ' | last | handle -%}
+                    {% if template.suffix == "newlandingpage" %}
+                      <div class="swatchwrapper">
+                        <label
+                          op_val="{{ combined_value }}"
+                          option_index="{{product_combined_index}}"
+                          for="ProductSelect-{{ section_id }}-option-{{ product_combined.name | handleize }}-{{ combined_value | url_encode }}"
+                          class="label_options color-swatch color-swatch--{{ combined_value | handle }} {% unless combined_value_available %} disabled{% endunless %}"
+                          style="background-image: url({{ color_image }}); background-color: {{ color_swatch_fallback }};">
+                          {{ combined_value | escape }}
+                        </label>
+                        <img alt="mdi tick" src="https://cdn.shopify.com/s/files/1/0573/7250/8344/files/mdi_tick_1.png?v=1682964378" class="swatchcheck">
+                      </div>
+                    {% else %}
+                      <label
+                        op_val="{{ combined_value }}"
+                        option_index="{{product_combined_index}}"
+                        for="ProductSelect-{{ section_id }}-option-{{ product_combined.name | handleize }}-{{ combined_value | url_encode }}"
+                        class="label_options color-swatch color-swatch--{{ combined_value | handle }} {% unless combined_value_available %} disabled{% endunless %}"
+                        style="background-image: url({{ color_image }}); background-color: {{ color_swatch_fallback }};">
+                        {{ combined_value | escape }}
+                      </label>
+                    {% endif %}
+                  {% else %}
+                    <label
+                      op_val="{{ combined_value }}"
+                      product_combined_index="{{product_combined_index}}"
+                      for="ProductSelect-{{ section_id }}-option-{{ product_combined.name | handleize }}-{{ combined_value | url_encode }}"
+                      class="label_options {% unless combined_value_available %} disabled {% endunless %}">{{ combined_value | escape }}</label>
+                  {% endif %}
+                </div>
+
+              {% endfor %}
+            <!-- endfor sf_product_third.options_with_values / product_combined.values -->
+          {% endif %}
+        {% endif %}
+
+      {% endfor %}
+      <!-- endfor sf_product_third.options_with_values -->
+    {% endunless %}
+
+    {% unless sf_product_fourth.empty? %}
+      {%- assign product_combined_index = forloop.index -%}
+
+        {% for product_combined in sf_product_fourth.options_with_values %}
+        <!-- sf_product_fourth.options_with_values -->
+
+        {% if option.name == product_combined.name %}
+          {% if product_combined.name == 'size' or product_combined.name == 'Size' or product_combined.name == 'inseam' or product_combined.name == 'Inseam' %}
+            {% else %}
+
+              {% for combined_value in product_combined.values %}
+                <!-- sf_product_fourth.options_with_values / product_combined.values -->
+
+                {%- assign combined_value_available = true -%}
+                {%- assign combined_value_available = product.variants[forloop.index0].available -%}
+
+                <div
+                  data-handle="{{sf_product_fourth.handle}}"
+                  class="variant-input"
+                  data-index="option{{ product_combined_index }}"
+                  data-value="{{ combined_value | escape }}">
+                  <input
+                    op_val="{{ combined_value }}"
+                    option_index="{{product_combined_index}}"
+                    type="radio"
+                    {% if product_combined.selected_combined_value == combined_value and product.available %}
+                    checked="checked"
+                    {% endif %}
+                    value="{{ combined_value | escape }}"
+                    data-index="option{{ product_combined_index }}"
+                    name="{{ product_combined.name }}"
+                    data-variant-input
+                    {% if is_color %}data-color-swatch{% endif %}
+                    class="varin variant__input-{{ section_id }}{% unless combined_value_available %} disabled{% endunless %}"
+                    {% if is_color %}
+                    data-color-name="{{ combined_value | escape }}"
+                    {% endif %}
+                    {% if is_color %}
+                    data-color-index="1"
+                    {% endif %}
+                    id="ProductSelect-{{ section_id }}-option-{{ product_combined.name | handleize }}-{{ combined_value | url_encode }}">
+                  {% if is_color %}
+                    {%- assign color_image = combined_value | handle | append: '.' | append: swatch_file_extension | asset_img_url: '50x' | prepend: 'https:' | split: '?' | first -%}
+                    {%- assign color_swatch_fallback = combined_value | split: ' ' | last | handle -%}
+                    {% if template.suffix == "newlandingpage" %}
+                      <div class="swatchwrapper">
+                        <label
+                          op_val="{{ combined_value }}"
+                          option_index="{{product_combined_index}}"
+                          for="ProductSelect-{{ section_id }}-option-{{ product_combined.name | handleize }}-{{ combined_value | url_encode }}"
+                          class="label_options color-swatch color-swatch--{{ combined_value | handle }} {% unless combined_value_available %} disabled{% endunless %}"
+                          style="background-image: url({{ color_image }}); background-color: {{ color_swatch_fallback }};">
+                          {{ combined_value | escape }}
+                        </label>
+                        <img alt="mdi tick" src="https://cdn.shopify.com/s/files/1/0573/7250/8344/files/mdi_tick_1.png?v=1682964378" class="swatchcheck">
+                      </div>
+                    {% else %}
+                      <label
+                        op_val="{{ combined_value }}"
+                        option_index="{{product_combined_index}}"
+                        for="ProductSelect-{{ section_id }}-option-{{ product_combined.name | handleize }}-{{ combined_value | url_encode }}"
+                        class="label_options color-swatch color-swatch--{{ combined_value | handle }} {% unless combined_value_available %} disabled{% endunless %}"
+                        style="background-image: url({{ color_image }}); background-color: {{ color_swatch_fallback }};">
+                        {{ combined_value | escape }}
+                      </label>
+                    {% endif %}
+                  {% else %}
+                    <label
+                      op_val="{{ combined_value }}"
+                      product_combined_index="{{product_combined_index}}"
+                      for="ProductSelect-{{ section_id }}-option-{{ product_combined.name | handleize }}-{{ combined_value | url_encode }}"
+                      class="label_options {% unless combined_value_available %} disabled {% endunless %}">{{ combined_value | escape }}</label>
+                  {% endif %}
+                </div>
+
+              {% endfor %}
+            <!-- endfor sf_product_fourth.options_with_values / product_combined.values -->
+          {% endif %}
+        {% endif %}
+
+      {% endfor %}
+      <!-- endfor sf_product_fourth.options_with_values -->
+    {% endunless %}
+
+    {% unless sf_product_fifth.empty? %}
+      {%- assign product_combined_index = forloop.index -%}
+
+        {% for product_combined in sf_product_fifth.options_with_values %}
+        <!-- sf_product_fifth.options_with_values -->
+
+        {% if option.name == product_combined.name %}
+          {% if product_combined.name == 'size' or product_combined.name == 'Size' or product_combined.name == 'inseam' or product_combined.name == 'Inseam' %}
+            {% else %}
+
+              {% for combined_value in product_combined.values %}
+                <!-- sf_product_fifth.options_with_values / product_combined.values -->
+
+                {%- assign combined_value_available = true -%}
+                {%- assign combined_value_available = product.variants[forloop.index0].available -%}
+
+                <div
+                  data-handle="{{sf_product_fifth.handle}}"
+                  class="variant-input"
+                  data-index="option{{ product_combined_index }}"
+                  data-value="{{ combined_value | escape }}">
+                  <input
+                    op_val="{{ combined_value }}"
+                    option_index="{{product_combined_index}}"
+                    type="radio"
+                    {% if product_combined.selected_combined_value == combined_value and product.available %}
+                    checked="checked"
+                    {% endif %}
+                    value="{{ combined_value | escape }}"
+                    data-index="option{{ product_combined_index }}"
+                    name="{{ product_combined.name }}"
+                    data-variant-input
+                    {% if is_color %}data-color-swatch{% endif %}
+                    class="varin variant__input-{{ section_id }}{% unless combined_value_available %} {% endunless %}"
+                    {% if is_color %}
+                    data-color-name="{{ combined_value | escape }}"
+                    {% endif %}
+                    {% if is_color %}
+                    data-color-index="1"
+                    {% endif %}
+                    id="ProductSelect-{{ section_id }}-option-{{ product_combined.name | handleize }}-{{ combined_value | url_encode }}">
+                  {% if is_color %}
+                    {%- assign color_image = combined_value | handle | append: '.' | append: swatch_file_extension | asset_img_url: '50x' | prepend: 'https:' | split: '?' | first -%}
+                    {%- assign color_swatch_fallback = combined_value | split: ' ' | last | handle -%}
+                    
+                      <div class="swatchwrapper">
+                        <label
+                          op_val="{{ combined_value }}"
+                          option_index="{{product_combined_index}}"
+                          for="ProductSelect-{{ section_id }}-option-{{ product_combined.name | handleize }}-{{ combined_value | url_encode }}"
+                          class="label_options color-swatch color-swatch--{{ combined_value | handle }} {% unless combined_value_available %} {% endunless %}"
+                          style="background-image: url({{ color_image }}); background-color: {{ color_swatch_fallback }};">
+                          {{ combined_value | escape }}
+                        </label>
+                        <img alt="mdi tick" src="https://cdn.shopify.com/s/files/1/0573/7250/8344/files/mdi_tick_1.png?v=1682964378" class="swatchcheck">
+                      </div>
+
+                  {% else %}
+                    <label
+                      op_val="{{ combined_value }}"
+                      product_combined_index="{{product_combined_index}}"
+                      for="ProductSelect-{{ section_id }}-option-{{ product_combined.name | handleize }}-{{ combined_value | url_encode }}"
+                      class="label_options {% unless combined_value_available %} disabled {% endunless %}">{{ combined_value | escape }}</label>
+                  {% endif %}
+                </div>
+
+              {% endfor %}
+            <!-- endfor sf_product_fifth.options_with_values / product_combined.values -->
+          {% endif %}
+        {% endif %}
+
+      {% endfor %}
+      <!-- endfor sf_product_fifth.options_with_values -->
+    {% endunless %}
+
+  </fieldset>
+</div>

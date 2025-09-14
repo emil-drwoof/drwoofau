@@ -1,0 +1,122 @@
+{
+  "sections": {
+    "a155aa5c-40ac-40b5-8a70-5059e600e448": {
+      "type": "headerv2",
+      "blocks": {
+        "16c1b801-5445-4096-9718-10b5b06f0f49": {
+          "type": "list",
+          "settings": {
+            "text_list": "testing"
+          }
+        },
+        "57eaf7c2-b51a-429f-9c6b-d84222894a17": {
+          "type": "list",
+          "settings": {
+            "text_list": "testing2"
+          }
+        }
+      },
+      "block_order": [
+        "16c1b801-5445-4096-9718-10b5b06f0f49",
+        "57eaf7c2-b51a-429f-9c6b-d84222894a17"
+      ],
+      "settings": {
+        "colored_header": "TRUSTED BY 40,000+ HEALTH PROFESSIONALS",
+        "main_header": "Black Friday Mode is On!",
+        "content": "Comfortable designer scrubs and medical apparel that's 100% joypul. Dr. Woof Apparel | Premium Scrubs & Accessories",
+        "button_text_1": "Shop Women",
+        "button_1_url": "shopify:\/\/collections\/deals",
+        "button_text_2": "Shop Men",
+        "button_2_url": "shopify:\/\/pages\/contact",
+        "header_image": "shopify:\/\/shop_images\/Frame_1.png",
+        "bg_color": "#ffd7d2",
+        "margin-top": 0,
+        "margin-bottom": 20
+      }
+    },
+    "95875c25-a009-4f6e-98ba-84e356d73603": {
+      "type": "simple-collection",
+      "blocks": {
+        "9b56d564-44f2-42be-ab50-131ed87c51d6": {
+          "type": "list",
+          "settings": {
+            "col_image": "shopify:\/\/shop_images\/4_d096ee77-3d60-4088-b49f-d27ca000fab1.png",
+            "col_name": "test1",
+            "col_url": "shopify:\/\/pages\/about-us"
+          }
+        },
+        "30d1998f-47bc-4d3b-8fc0-a0cfc84a5641": {
+          "type": "list",
+          "settings": {
+            "col_image": "shopify:\/\/shop_images\/9_2b5e2e18-8e37-403d-af64-3f90eb48aa1d.png",
+            "col_name": "test2",
+            "col_url": ""
+          }
+        },
+        "e4ad0574-3491-470d-97d0-50a7e602265f": {
+          "type": "list",
+          "settings": {
+            "col_image": "shopify:\/\/shop_images\/1_ff941baf-4b9b-4a95-9617-a82d86b167ac.png",
+            "col_name": "test3",
+            "col_url": ""
+          }
+        },
+        "a5dd2c14-bfca-4257-aa8b-e4b48551870e": {
+          "type": "list",
+          "settings": {
+            "col_image": "shopify:\/\/shop_images\/7_416cfe99-14b5-402e-a102-a6c5a38eb463.png",
+            "col_name": "test3",
+            "col_url": ""
+          }
+        },
+        "9b56d564-44f2-42be-ab50-131ed87c5101": {
+          "type": "list",
+          "settings": {
+            "col_image": "shopify:\/\/shop_images\/4_d096ee77-3d60-4088-b49f-d27ca000fab1.png",
+            "col_name": "test1",
+            "col_url": "shopify:\/\/pages\/about-us"
+          }
+        },
+        "30d1998f-47bc-4d3b-8fc0-a0cfc84a5602": {
+          "type": "list",
+          "settings": {
+            "col_image": "shopify:\/\/shop_images\/9_2b5e2e18-8e37-403d-af64-3f90eb48aa1d.png",
+            "col_name": "test2",
+            "col_url": ""
+          }
+        },
+        "e4ad0574-3491-470d-97d0-50a7e6022603": {
+          "type": "list",
+          "settings": {
+            "col_image": "shopify:\/\/shop_images\/1_ff941baf-4b9b-4a95-9617-a82d86b167ac.png",
+            "col_name": "test3",
+            "col_url": ""
+          }
+        },
+        "a5dd2c14-bfca-4257-aa8b-e4b485518704": {
+          "type": "list",
+          "settings": {
+            "col_image": "shopify:\/\/shop_images\/7_416cfe99-14b5-402e-a102-a6c5a38eb463.png",
+            "col_name": "test3",
+            "col_url": ""
+          }
+        }
+      },
+      "block_order": [
+        "9b56d564-44f2-42be-ab50-131ed87c51d6",
+        "30d1998f-47bc-4d3b-8fc0-a0cfc84a5641",
+        "e4ad0574-3491-470d-97d0-50a7e602265f",
+        "a5dd2c14-bfca-4257-aa8b-e4b48551870e",
+        "9b56d564-44f2-42be-ab50-131ed87c5101",
+        "30d1998f-47bc-4d3b-8fc0-a0cfc84a5602",
+        "e4ad0574-3491-470d-97d0-50a7e6022603",
+        "a5dd2c14-bfca-4257-aa8b-e4b485518704"
+      ],
+      "settings": {}
+    }
+  },
+  "order": [
+    "a155aa5c-40ac-40b5-8a70-5059e600e448",
+    "95875c25-a009-4f6e-98ba-84e356d73603"
+  ]
+}

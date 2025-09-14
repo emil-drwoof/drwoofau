@@ -1,0 +1,121 @@
+<!-- snippets/product-text-with-images.liquid -->
+{% assign heading = product.metafields.sf_image_with_text.heading %}
+{% assign description = product.metafields.sf_image_with_text.description %}
+{% assign button_text = product.metafields.sf_image_with_text.button_text %}
+{% assign button_url = product.metafields.sf_image_with_text.button_url %}
+{% assign first_image = product.metafields.sf_image_with_text.image %}
+{% assign second_image = product.metafields.sf_image_with_text.image_2 %}
+{% assign third_image = product.metafields.sf_image_with_text.image_3 %}
+{% assign main_image = product.metafields.sf_image_with_text.main_image %}
+{% assign first_image_title = product.metafields.sf_image_with_text.first_image_title %}
+{% assign first_image_description = product.metafields.sf_image_with_text.image_image_description %}
+{% assign second_image_title = product.metafields.sf_image_with_text.second_image_title %}
+{% assign second_image_description = product.metafields.sf_image_with_text.second_image_description %}
+{% assign third_image_title = product.metafields.sf_image_with_text.third_image_title %}
+{% assign third_image_description = product.metafields.sf_image_with_text.third_image_description %}
+{% assign second_main_image = product.metafields.sf_image_with_text.second_main_image %}
+
+<div class="page-width feature-row-wrapper custom-image-with-richtext">
+  <div class="main_heading_subheading">
+    {% if heading != blank %}
+      <div class="h1 appear-delay{% cycle '','-1','-2','-3','-4' %}">{{ heading | escape }}</div>
+    {% endif %}
+    {% if description != blank %}
+      <div class="rte appear-delay{% cycle '','-1','-2','-3','-4' %}">{{ description }}</div>
+    {% endif %}
+  </div>
+  <div class="grid custom-grid grid--uniform">
+    {% if first_image != blank %}
+      <div class="grid__item grid-column one-third medium-up--one-third appear-delay-1">
+        <div class="image-wrap image-wrap--transparent text-spacing">
+          <img src="{{first_image }}" alt="{{ first_image.alt }}">
+        </div>
+        {% if first_image_title != blank %}
+          <div class="h2 image_title">{{ first_image_title | escape }}</div>
+        {% endif %}
+        {% if first_image_description != blank %}
+          <div class="rte-setting text-spacing image_description">{{ first_image_description }}</div>
+        {% endif %}
+      </div>
+    {% endif %}
+    {% if second_image != blank %}
+      <div class="grid__item grid-column one-third medium-up--one-third appear-delay-2">
+        <div class="image-wrap image-wrap--transparent text-spacing">
+          <img src="{{second_image }}" alt="{{ second_image.alt }}">
+        </div>
+        {% if second_image_title != blank %}
+          <div class="h2 image_title">{{ second_image_title | escape }}</div>
+        {% endif %}
+        {% if second_image_description != blank %}
+          <div class="rte-setting text-spacing image_description">{{ second_image_description }}</div>
+        {% endif %}
+      </div>
+    {% endif %}
+    {% if third_image != blank %}
+      <div class="grid__item grid-column one-third medium-up--one-third appear-delay-3">
+        <div class="image-wrap image-wrap--transparent text-spacing">
+          <img src="{{third_image }}" alt="{{ third_image.alt }}">
+        </div>
+        {% if third_image_title != blank %}
+          <div class="h2 image_title">{{ third_image_title | escape }}</div>
+        {% endif %}
+        {% if third_image_description != blank %}
+          <div class="rte-setting text-spacing image_description">{{ third_image_description }}</div>
+        {% endif %}
+      </div>
+    {% endif %}
+    {% if first_image == blank and second_image == blank and third_image != blank %}
+      <div class="dummy-images">
+        <div class="image-wrap">
+          {{ 'image' | placeholder_svg_tag: 'placeholder-svg' }}
+        </div>
+      </div>
+      <div>
+        <div class="dummy-images">
+          {{ 'image' | placeholder_svg_tag: 'placeholder-svg' }}
+        </div>
+      </div>
+    {% endif %}
+  </div>
+  {% if main_image != blank or second_main_image != blank %}
+    <div class="two-featured-image">
+      {% if main_image != blank %}
+        <div class="main_single-image">
+          {% if button_text != blank and button_url != blank %}
+            <a href="{{ button_url }}">
+            {% endif %}
+            <div class="image-wrap">
+              <img src="{{main_image }}" alt="{{ main_image | replace: 'https:', '' }}">
+            </div>
+            {% if button_text != blank and button_url != blank %}
+            </a>
+          {% endif %}
+        </div>
+      {% endif %}
+      {% if second_main_image != blank %}
+        <div class="main_single-image">
+          {% if button_text != blank and button_url != blank %}
+            <a href="{{ button_url }}">
+            {% endif %}
+            <div class="image-wrap">
+              <img src="{{second_main_image }}" alt="{{ second_main_image | replace: 'https:', '' }}">
+            </div>
+            {% if button_text != blank and button_url != blank %}
+            </a>
+          {% endif %}
+        </div>
+      {% endif %}
+    </div>
+  {% endif %}
+  <div class="feature-row button_main">
+    <div class="feature-row__item  feature-row__text feature-row__text--{{ layout }}" data-aos>
+      {% if button_text != blank %}
+        <div class="appear-delay{% cycle '','-1','-2','-3','-4' %}">
+          <a href="{{ button_url }}" class="btn{% if block.settings.button_style == 'secondary' %} btn--tertiary{% endif %}">
+            {{ button_text }}
+          </a>
+        </div>
+      {% endif %}
+    </div>
+  </div>
+</div>

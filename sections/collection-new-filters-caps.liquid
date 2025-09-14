@@ -1,0 +1,241 @@
+<div class="page-width">
+  <div class="collection-filters flexer">
+    <div class="collection-title">
+      <a href="{{ collection.url }}">
+        <h1 class="section-header__title appear-delay">
+          {{ collection.title }}
+        </h1>
+      </a>
+    </div>
+    {% assign current_tags = current_tags | downcase | handleize %}
+
+
+    <div class="collection-dropdowns">
+      <div class="collection-dropdowns__item">
+        <label for="SortTags" class="hidden-label">{{ 'collections.filters.title_tags' | t }}</label>
+        <select name="SortTags" id="SortTags">
+          <option value="{{ routes.collections_url }}/{% if collection.handle != blank %}{{ collection.handle }}{% else %}all{% endif %}"{% if current_tags == tag1 %}{% endif %} selected="selected">Filter & Sort</option>
+          {% assign tag1 = collection.metafields.sf_collection.tag_1 %}
+
+          {% if tag1 %}
+            {% assign tag = tag1 | downcase | handleize %}
+            <option value="{{ routes.collections_url }}/{% if collection.handle != blank %}{{ collection.handle }}{% else %}all{% endif %}/{{ tag1 | handleize }}"{% if current_tags == tag %}selected="selected"{% endif %}>
+              {% if collection.metafields.sf_collection.tag_1_name %}
+                {{ collection.metafields.sf_collection.tag_1_name }}
+              {% else %}
+                {{ tag1 }}{% endif %}
+            </option>
+          {% endif %}
+
+
+          {% assign tag2 = collection.metafields.sf_collection.tag_2 %}
+
+          {% if tag2 %}
+            {% assign tag = tag2 | downcase | handleize %}
+            <option value="{{ routes.collections_url }}/{% if collection.handle != blank %}{{ collection.handle }}{% else %}all{% endif %}/{{ tag2 | handleize }}"{% if current_tags == tag %}selected="selected"{% endif %}>
+              {% if collection.metafields.sf_collection.tag_2_name %}
+                {{ collection.metafields.sf_collection.tag_2_name }}
+              {% else %}
+                {{ tag2 }}{% endif %}
+            </option>
+          {% endif %}
+
+          {% assign tag3 = collection.metafields.sf_collection.tag_3 %}
+
+          {% if tag3 %}
+            {% assign tag = tag3 | downcase | handleize %}
+            <option value="{{ routes.collections_url }}/{% if collection.handle != blank %}{{ collection.handle }}{% else %}all{% endif %}/{{ tag3 | handleize }}"{% if current_tags == tag %}selected="selected"{% endif %}>
+              {% if collection.metafields.sf_collection.tag_3_name %}
+                {{ collection.metafields.sf_collection.tag_3_name }}
+              {% else %}
+                {{ tag3 }}{% endif %}
+            </option>
+          {% endif %}
+
+          {% assign tag4 = collection.metafields.sf_collection.tag_4 %}
+
+          {% if tag4 %}
+            {% assign tag = tag4 | downcase | handleize %}
+            <option value="{{ routes.collections_url }}/{% if collection.handle != blank %}{{ collection.handle }}{% else %}all{% endif %}/{{ tag4 | handleize }}"{% if current_tags == tag %}selected="selected"{% endif %}>
+              {% if collection.metafields.sf_collection.tag_4_name %}
+                {{ collection.metafields.sf_collection.tag_4_name }}
+              {% else %}
+                {{ tag4 }}{% endif %}
+            </option>
+          {% endif %}
+
+          {% assign tag5 = collection.metafields.sf_collection.tag_5 %}
+
+          {% if tag5 %}
+            {% assign tag = tag5 | downcase | handleize %}
+            <option value="{{ routes.collections_url }}/{% if collection.handle != blank %}{{ collection.handle }}{% else %}all{% endif %}/{{ tag5 | handleize }}"{% if current_tags == tag %}selected="selected"{% endif %}>
+              {% if collection.metafields.sf_collection.tag_5_name %}
+                {{ collection.metafields.sf_collection.tag_5_name }}
+              {% else %}
+                {{ tag5 }}{% endif %}
+            </option>
+          {% endif %}
+
+
+          {% assign tag6 = collection.metafields.sf_collection.tag_6 %}
+
+          {% if tag6 %}
+            {% assign tag = tag6 | downcase | handleize %}
+            <option value="{{ routes.collections_url }}/{% if collection.handle != blank %}{{ collection.handle }}{% else %}all{% endif %}/{{ tag6 | handleize }}"{% if current_tags == tag %}selected="selected"{% endif %}>
+              {% if collection.metafields.sf_collection.tag_6_name %}
+                {{ collection.metafields.sf_collection.tag_6_name }}
+              {% else %}
+                {{ tag6 }}{% endif %}
+            </option>
+          {% endif %}
+
+
+          {% assign tag7 = collection.metafields.sf_collection.tag_7 %}
+
+          {% if tag7 %}
+            {% assign tag = tag7 | downcase | handleize %}
+            <option value="{{ routes.collections_url }}/{% if collection.handle != blank %}{{ collection.handle }}{% else %}all{% endif %}/{{ tag7 | handleize }}"{% if current_tags == tag %}selected="selected"{% endif %}>
+              {% if collection.metafields.sf_collection.tag_7_name %}
+                {{ collection.metafields.sf_collection.tag_7_name }}
+              {% else %}
+                {{ tag7 }}{% endif %}
+            </option>
+          {% endif %}
+
+          {% assign tag8 = collection.metafields.sf_collection.tag_8 %}
+
+          {% if tag8 %}
+            {% assign tag = tag8 | downcase | handleize %}
+            <option value="{{ routes.collections_url }}/{% if collection.handle != blank %}{{ collection.handle }}{% else %}all{% endif %}/{{ tag8 | handleize }}"{% if current_tags == tag %}selected="selected"{% endif %}>
+              {% if collection.metafields.sf_collection.tag_8_name %}
+                {{ collection.metafields.sf_collection.tag_8_name }}
+              {% else %}
+                {{ tag8 }}{% endif %}
+            </option>
+          {% endif %}
+
+
+
+          {% assign my_page1 = collection.metafields.sf_collection.page_link_1 %}
+          {% if my_page1 %}
+            <option value="{{  my_page1 }}">{{ collection.metafields.sf_collection.page_link_1_name }}</option>
+          {% endif %}
+
+
+          {% assign my_page2 = collection.metafields.sf_collection.page_link_2 %}
+          {% if my_page2 %}
+            <option value="{{  my_page2 }}">{{ collection.metafields.sf_collection.page_link_2_name }}</option>
+          {% endif %}
+
+          {% assign my_page3 = collection.metafields.sf_collection.page_link_3 %}
+          {% if my_page3 %}
+            <option value="{{ my_page3 }}">{{ collection.metafields.sf_collection.page_link_3_name }}</option>
+          {% endif %}
+
+
+          {% assign my_page4 = collection.metafields.sf_collection.page_link_4 %}
+          {% if my_page4 %}
+            <option value="{{  my_page4 }}">{{ collection.metafields.sf_collection.page_link_4_name }}</option>
+          {% endif %}
+        </select>
+      </div>
+    </div>
+
+    {% comment %}
+    <div class="collection-dropdowns">
+    <div class="collection-dropdowns__item">
+    {%- assign sort_by = collection.sort_by | default: collection.default_sort_by -%}
+    <label for="SortBy" class="hidden-label">{{ 'collections.sorting.title' | t }}</label>
+    <select name="SortBy" id="SortBy" data-default-sortby="{{ collection.default_sort_by }}">
+
+    <option value="title-ascending"{% if sort_by == collection.default_sort_by %} {% endif %} selected="selected">Sort</option>
+    {% for option in collection.sort_options %}
+    <option value="{{ option.value }}" {% if option.value == sort_by %}{% endif %}>{{ option.name }}</option>
+    {% endfor %}
+    </select>
+    </div>
+    <!-- collection-dropdowns__item -->
+    </div>
+    {% endcomment %}</div>
+</div>
+<div class="page-width">
+  <div
+    class="collection-filter__wrapper"
+    data-section-id="{{ section.id }}"
+    data-section-type="collection-filter"
+    data-combine-tags="{{ section.settings.tags_combine }}">
+    {% include 'collection-filters', location: 'CollectionFilter' %}
+  </div>
+</div>
+{% schema %}
+  {
+    "name": "Collection filter",
+    "max_blocks": 15,
+    "settings": [
+      {
+        "type": "select",
+        "id": "filter_type",
+        "label": "Filter mode",
+        "default": "groups",
+        "options": [
+          {
+            "value": "none",
+            "label": "Off"
+          }, {
+            "value": "dropdown",
+            "label": "All tag dropdown"
+          }, {
+            "value": "groups",
+            "label": "Tag groups"
+          }
+        ],
+        "info": "Add tag groups with the content area below"
+      }, {
+        "type": "checkbox",
+        "id": "tags_combine",
+        "label": "Enable tag combinations"
+      }, {
+        "type": "checkbox",
+        "id": "collection_sort_enable",
+        "label": "Show sort options"
+      }
+    ],
+    "blocks": [
+      {
+        "type": "tags_group",
+        "name": "Tag group",
+        "settings": [
+          {
+            "type": "text",
+            "id": "title",
+            "label": "Heading",
+            "default": "Tag Group"
+          }, {
+            "type": "textarea",
+            "id": "tag_list",
+            "label": "Tag list (one per line)",
+            "default": "First tag \nSecond tag \nThird tag",
+            "info": "Tags are case sensitive and must match your product tag exactly"
+          }
+        ]
+      }, {
+        "type": "color_group",
+        "name": "Color swatches",
+        "settings": [
+          {
+            "type": "text",
+            "id": "title",
+            "label": "Heading",
+            "default": "Color"
+          }, {
+            "type": "textarea",
+            "id": "tag_list",
+            "label": "Swatch list (one per line)",
+            "default": "Burgundy \nHeather grey \nGreen",
+            "info": "Products must be tagged with their color in order to appear here. Tags are case sensitive and must match your product tag exactly. Ex: 'Heather grey'. [Learn how to set up swatches](https://archetypethemes.co/blogs/impulse/how-do-i-set-up-color-swatches)."
+          }
+        ]
+      }
+    ]
+  }
+{% endschema %}

@@ -1,0 +1,344 @@
+{
+  "sections": {
+    "annoucement_XK9mWg": {
+      "type": "annoucement",
+      "settings": {
+        "a_text1": "OVER 50, 000 COMFY DOCS AND NURSES",
+        "a_text2": ""
+      }
+    },
+    "custom_html_y8fDJx": {
+      "type": "custom-html",
+      "settings": {
+        "custom_html": "<img data-swift-lazy=\"1\" loading=\"lazy\" class=\"\" src=\"\/\/www.drwoofapparel.com.au\/cdn\/shop\/files\/Horizontal_logo_transparent_background_blue_2_7dc8a8de-20c6-4155-8747-0810a5b4b5e0_210x.png?v=1704080588\" srcset=\"\/\/www.drwoofapparel.com.au\/cdn\/shop\/files\/Horizontal_logo_transparent_background_blue_2_7dc8a8de-20c6-4155-8747-0810a5b4b5e0_210x.png?v=1704080588 1x, \/\/www.drwoofapparel.com.au\/cdn\/shop\/files\/Horizontal_logo_transparent_background_blue_2_7dc8a8de-20c6-4155-8747-0810a5b4b5e0_210x@2x.png?v=1704080588 2x\" alt=\"Dr. Woof Apparel AU\" style=\"display:block;margin:30px auto 0;\">"
+      }
+    },
+    "headerv4_Cx7ETV": {
+      "type": "headerv4",
+      "settings": {
+        "boxhero": "shopify:\/\/shop_images\/Untitled_design_df392fc8-ab8c-483b-ae9e-6700e2e9bdc5.png"
+      }
+    },
+    "a155aa5c-40ac-40b5-8a70-5059e600e448": {
+      "type": "headerv2",
+      "blocks": {
+        "16c1b801-5445-4096-9718-10b5b06f0f49": {
+          "type": "list",
+          "settings": {
+            "text_list": "Soft & Comfortable",
+            "icon_image": "shopify:\/\/shop_images\/badge1_c6034989-69e7-40b0-9b9c-20fc1d4303f4.png"
+          }
+        },
+        "57eaf7c2-b51a-429f-9c6b-d84222894a17": {
+          "type": "list",
+          "settings": {
+            "text_list": "Flattering Fit For All Body Types",
+            "icon_image": "shopify:\/\/shop_images\/badge1_c6034989-69e7-40b0-9b9c-20fc1d4303f4.png"
+          }
+        },
+        "list_nG8cQ9": {
+          "type": "list",
+          "settings": {
+            "text_list": "Made To Last",
+            "icon_image": "shopify:\/\/shop_images\/badge1_c6034989-69e7-40b0-9b9c-20fc1d4303f4.png"
+          }
+        },
+        "6046898d-b597-4393-b1e3-032f2c454626": {
+          "type": "list",
+          "settings": {
+            "text_list": "Wrinkle-Resistant and Quick Drying",
+            "icon_image": "shopify:\/\/shop_images\/badge1_c6034989-69e7-40b0-9b9c-20fc1d4303f4.png"
+          }
+        },
+        "list_BaVwdk": {
+          "type": "list",
+          "settings": {
+            "text_list": "Ecofriendly & Made With Recycled Material",
+            "icon_image": "shopify:\/\/shop_images\/badge1_c6034989-69e7-40b0-9b9c-20fc1d4303f4.png"
+          }
+        }
+      },
+      "block_order": [
+        "16c1b801-5445-4096-9718-10b5b06f0f49",
+        "57eaf7c2-b51a-429f-9c6b-d84222894a17",
+        "list_nG8cQ9",
+        "6046898d-b597-4393-b1e3-032f2c454626",
+        "list_BaVwdk"
+      ],
+      "disabled": true,
+      "settings": {
+        "colored_header": "",
+        "colored_header_size": 16,
+        "colored_header_size_mobile": 18,
+        "header_color": "#ffffff",
+        "added_bigger_button_hero": false,
+        "added_date": true,
+        "enable_men": true,
+        "hide_review_stars": true,
+        "top_mode": true,
+        "light_theme": false,
+        "main_header": "5 Reasons Our Scrubs Will Make You the Talk of the Hospital (In a Good Way!)",
+        "main_header_size": 40,
+        "main_header_size_mobile": 32,
+        "main_header_space": 40,
+        "content": "Because saving lives is serious business, but your scrubs don't have to be!",
+        "textaroundtop": "",
+        "textaroundbottom": "",
+        "button_text_1": "SHOP NOW",
+        "button_1_url": "shopify:\/\/collections\/printed-pattern-scrub-tops",
+        "button_text_2": "",
+        "button_2_url": "",
+        "header_image": "shopify:\/\/shop_images\/ATCVideo3-ezgif.com-optimize.gif",
+        "mobile_image": "shopify:\/\/shop_images\/ATCVideo3-ezgif.com-optimize.gif",
+        "bg_color": "#ffffff",
+        "margin-top": 0,
+        "margin-bottom": 20
+      }
+    },
+    "adneon_r7jnUk": {
+      "type": "adneon",
+      "settings": {
+        "adtitle": "5 Reasons Our Scrubs Will Make You the<br>Talk of the Hospital (In a Good Way!)",
+        "adbutton": "SHOP NOW",
+        "bollink": "shopify:\/\/collections\/printed-pattern-scrub-tops"
+      }
+    },
+    "duallayout_G69DYV": {
+      "type": "duallayout",
+      "settings": {
+        "image_left": false,
+        "background_color": "#ffffff",
+        "imagebig": "shopify:\/\/shop_images\/1_e8810ede-4c93-45c5-b71e-c73ff9b4d0f7.png",
+        "contenttitle": "1. Luxurious Comfort: Unbelievably Soft Fabric",
+        "contenttext1": "<p style=\"text-align:justify;\">Let's face it, 12-hour shifts are tough. But your scrubs? They should feel like a second skin. Our innovative fabric is so soft, you might forget you're not wearing your favorite t-shirt.<\/p>\n\n<ul>\n<li>Incredibly gentle on your skin, even during marathon shifts<\/li>\n\n<li>Breathable material that keeps you comfortable during high-stress situations<\/li>\n\n<li>Say goodbye to that \"can't wait to change\" feeling at the end of your shift<\/li>\n<\/ul>"
+      }
+    },
+    "duallayout_DXmGD6": {
+      "type": "duallayout",
+      "settings": {
+        "image_left": true,
+        "background_color": "#ffffff",
+        "imagebig": "shopify:\/\/shop_images\/2_d6b2d8fc-93f9-431d-833e-c830cf657c96.png",
+        "contenttitle": "2. Flattering Fit for Every Body: Subtle Tailoring Magic",
+        "contenttext1": "<p style=\"text-align:justify;\">Because looking good while saving lives shouldn't be mutually exclusive. Our scrub tops feature smart tailoring that creates a professional look without sacrificing an ounce of comfort.\n<\/p>\n\n<ul>\n<li>Thoughtfully designed cuts that complement various body types<\/li>\n\n<li>Move freely while maintaining a polished appearance<\/li>\n\n<li>Boost your confidence, whether you're charting or consulting with patients<\/li>\n<\/ul>"
+      }
+    },
+    "duallayout_KhUY9h": {
+      "type": "duallayout",
+      "settings": {
+        "image_left": false,
+        "background_color": "#ffffff",
+        "imagebig": "shopify:\/\/shop_images\/3_e112a319-90fc-4423-9b33-2670cba1de7a.png",
+        "contenttitle": "3. Built to Last: Durable Construction and Vibrant Colors",
+        "contenttext1": "<p style=\"text-align:justify;\">In healthcare, you need gear that can keep up with the pace. Our tops are built to withstand everything from accidental splashes to countless washes.\n<\/p>\n\n<ul>\n<li>Robust construction that holds up to the rigors of healthcare environments<\/li>\n\n<li>Colors that stay vibrant, ensuring you look fresh and professional shift after shift<\/li>\n\n<li>Quality you can count on, because the last thing you need is a wardrobe malfunction mid-procedure<\/li>\n<\/ul>"
+      }
+    },
+    "duallayout_rcq78R": {
+      "type": "duallayout",
+      "settings": {
+        "image_left": true,
+        "background_color": "#ffffff",
+        "imagebig": "shopify:\/\/shop_images\/download_2.gif",
+        "contenttitle": "4. Effortless Care: High-Performance Fabric Technology",
+        "contenttext1": "<p style=\"text-align:justify;\">After a long day of caring for others, the last thing you want is high-maintenance scrubs. Our cutting-edge fabric technology makes care a breeze.<\/p>\n\n<ul>\n<li>4-way stretch moves with you, whether you're reaching for supplies or rushing to a code<\/li>\n\n<li>Sweat-wicking and quick-dry properties keep you comfortable during intense moments<\/li>\n\n<li>Wrinkle-resistant fabric means you look put-together, even if you grabbed them from the clean laundry pile<\/li>\n<\/ul>"
+      }
+    },
+    "duallayout_TejHXQ": {
+      "type": "duallayout",
+      "settings": {
+        "image_left": false,
+        "background_color": "#ffffff",
+        "imagebig": "shopify:\/\/shop_images\/4_3639c247-01cf-4aa2-8ebd-e8c2ca56cf55.png",
+        "contenttitle": "5. Aussie-Designed Eco-Fashion: Local Innovation, Global Impact",
+        "contenttext1": "<p style=\"text-align:justify;\">Wear your values proudly. Our scrub tops are 100% designed in Australia, marrying local innovation with a commitment to global sustainability.<\/p>\n\n<ul>\n<li>Made with GRS-certified recycled polyester, ensuring the highest standards of social, environmental, and chemical practices in producing recycled content<\/li>\n\n<li>Support Australian design and innovation with every wear<\/li>\n\n<li>Join the movement towards more sustainable healthcare, because healing people and healing the planet go hand in hand<\/li>\n<\/ul>"
+      }
+    },
+    "68681b12-95a9-4f19-8144-7b29406c141b": {
+      "type": "twocollist",
+      "blocks": {
+        "9e75c267-5f40-4a7f-b782-ee506ff29a05": {
+          "type": "list",
+          "settings": {
+            "list_image": "shopify:\/\/shop_images\/Listicle_Printed_Tops_2.jpg",
+            "list_title": "1. So Comfy, You'll Want to Wear Them to Bed (But Don't, That's Weird)",
+            "list_text": "<p>Remember when you thought scrubs and comfort were mutually exclusive? Well, prepare to have your mind blown!<\/p>\n<ul>\n    <li>Softer than a patient's \"it only hurts when I do this\" complaint<\/li>\n    <li>Breathable fabric that won't make you sweat more than telling a patient \"This might pinch a little\"<\/li>\n    <li>So comfy, you'll <em>actually<\/em> be sad to change out of them (We know, we didn't believe it either!)<\/li>\n<\/ul>",
+            "button_text": "",
+            "button_url": ""
+          }
+        },
+        "38994c72-bee0-4291-9231-8d197500fad9": {
+          "type": "list",
+          "settings": {
+            "list_image": "shopify:\/\/shop_images\/mRIELv3AX_mid.jpg",
+            "list_title": "2. Flattering Fit That Says \"I'm a Professional, But I Also Do Squats\"",
+            "list_text": "<p>Who says you can't look good while wrestling with EMR systems and dodging bodily fluids?<\/p>\n<ul>\n    <li>Cuts that <b>flatter every body type<\/b>, from \"I survive on coffee\" to \"I <em>actually<\/em> have time to meal prep\"<\/li>\n    <li>Move freely without looking like you're wearing a potato sack<\/li>\n    <li>Finally, scrubs that don't make you look like you're wearing your older sibling's hand-me-downs<\/li>\n<\/ul>",
+            "button_text": "",
+            "button_url": ""
+          }
+        },
+        "list_6pBr9c": {
+          "type": "list",
+          "settings": {
+            "list_image": "shopify:\/\/shop_images\/PDP_-_Story_Section_Images_1082aa1e-38ec-45a4-bcda-d8b7fa10f301.jpg",
+            "list_title": "3. Tougher Than Your Attendings During Residency",
+            "list_text": "<p>These scrubs can handle anything you throw at them (or anything thrown at you, for that matter).<\/p>\n<ul>\n    <li>Survive countless washes without fading faster than your patience on a full moon night<\/li>\n    <li>Fabric <em>so<\/em> durable, it could probably stop a small meteor (but let's not test that theory)<\/li>\n    <li>\n<b>Quality that lasts<\/b> longer than your shift when the next nurse calls in sick<\/li>\n<\/ul>",
+            "button_text": "",
+            "button_url": ""
+          }
+        },
+        "list_T6RnyN": {
+          "type": "list",
+          "settings": {
+            "list_image": "shopify:\/\/shop_images\/lv_0_202407281203551-ezgif.com-optimize.gif",
+            "list_title": "4. Easier to Care for Than Your Easiest Patient",
+            "list_text": "<p>Because after a 12-hour shift, even deciding what to eat is too much work.<\/p>\n<ul>\n    <li>\n<b>4-way stretch<\/b> that moves with you, whether you're reaching for a scalpel or diving for dropped gauze<\/li>\n    <li>\n<b>Sweat-wicking<\/b> properties that keep you dry even during your fifth coffee run<\/li>\n    <li>So <b>wrinkle-resistant<\/b>, you could pull them out of your gym bag and still look presentable (Not that we're recommending that... or are we?)<\/li>\n<\/ul>",
+            "button_text": "",
+            "button_url": ""
+          }
+        },
+        "list_cEaRDN": {
+          "type": "list",
+          "settings": {
+            "list_image": "shopify:\/\/shop_images\/Listicle_Printed_Tops_4.jpg",
+            "list_title": "5. Eco-Friendly and Aussie-Made: Saving the Planet While You Save Lives",
+            "list_text": "<p>Wear your kangaroo-approved, eco-warrior scrubs with pride!<\/p>\n<ul>\n  <li>Made with <b>GRS-certified recycled polyester<\/b>, because even landfills deserve a break<\/li>\n  <li>100% designed Down Under, where everything's deadlier except our fashion sense<\/li>\n  <li>Join the sustainability movement: Be the hero the planet needs, not just the one your patients deserve<\/li>\n<\/ul>",
+            "button_text": "SHOP NOW",
+            "button_url": "shopify:\/\/collections\/printed-pattern-scrub-tops"
+          }
+        }
+      },
+      "block_order": [
+        "9e75c267-5f40-4a7f-b782-ee506ff29a05",
+        "38994c72-bee0-4291-9231-8d197500fad9",
+        "list_6pBr9c",
+        "list_T6RnyN",
+        "list_cEaRDN"
+      ],
+      "disabled": true,
+      "settings": {
+        "deskmartop": 40,
+        "deskmarbot": 40,
+        "mobmartop": 20,
+        "mobmarbot": 20
+      }
+    },
+    "text_and_image_6CTcBf": {
+      "type": "text-and-image",
+      "settings": {
+        "image": "shopify:\/\/shop_images\/copy_0E639DB4-131D-4BBE-ACDB-F6E9FF9766EA-ezgif.com-optimize.gif",
+        "image_width": 700,
+        "subtitle": "",
+        "title": "",
+        "text": "<h3>Be the Fun Scrubs Friday Champion!<\/h3><p>Step up your game and claim the title of Fun Scrubs Friday champion with our unique, vibrant scrubs. Our eye-catching designs will make you the envy of the entire hospital!<\/p><p><\/p><p><strong>BUNDLE DEAL: BUY 3 GET 1 FREE<\/strong><\/p>",
+        "button_label": "SHOP NOW",
+        "button_link": "shopify:\/\/collections\/printed-pattern-scrub-tops",
+        "button_style": "primary",
+        "layout": "left",
+        "alt": false
+      }
+    },
+    "featured_content_RWNHri": {
+      "type": "featured-content",
+      "settings": {
+        "title": "",
+        "text": "<p><strong>Look Who's Wearing Dr. Woof Printed Scrub Tops<\/strong><\/p>",
+        "align_text": "left",
+        "narrow_column": false,
+        "enlarge_text": true,
+        "alt": false
+      }
+    },
+    "loox_gallery_carousel_section_aBDQV8": {
+      "type": "loox-gallery-carousel-section",
+      "settings": {
+        "maxWidth": 1100,
+        "borderRadius": 60,
+        "itemsPerView": 5,
+        "imageRatio": "1.25",
+        "reviewerNameColor": "#ffffff",
+        "starsColor": "#ffffff",
+        "arrows_backgroundColor": "#ffffff",
+        "arrows_iconColor": "#9a9a9a",
+        "shadow": "none",
+        "border_active": true,
+        "border_width": 2,
+        "border_color": "#000000",
+        "productIds": "art-attack-womens-3-pocket-scrub-top"
+      }
+    },
+    "advanced_content_7w4nzG": {
+      "type": "advanced-content",
+      "blocks": {
+        "image_bxfKbz": {
+          "type": "image",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/Printed_Tops_Listicle.jpg",
+            "link": "",
+            "width": "50%",
+            "alignment": "top-middle"
+          }
+        },
+        "image_xVigmp": {
+          "type": "image",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/Printed_Tops_Listicle_1.jpg",
+            "link": "",
+            "width": "50%",
+            "alignment": "top-middle"
+          }
+        }
+      },
+      "block_order": [
+        "image_bxfKbz",
+        "image_xVigmp"
+      ],
+      "disabled": true,
+      "settings": {
+        "full_width": false,
+        "space_around": true,
+        "alt": false
+      }
+    },
+    "adsection_DFck6h": {
+      "type": "adsection",
+      "settings": {
+        "darktheme": true,
+        "deskmartop": 20,
+        "deskmarbot": 20,
+        "mobmartop": 0,
+        "mobmarbot": 30,
+        "bigtext": "Buy 3 Get 1 Free Bundle Deal",
+        "reviewstars_text": "",
+        "bigtextsize": 20,
+        "textbut": "SHOP NOW",
+        "buttonlink": "shopify:\/\/collections\/printed-pattern-scrub-tops",
+        "bgcolor": "#050507"
+      }
+    },
+    "custom_html_3Jq8JP": {
+      "type": "custom-html",
+      "settings": {
+        "custom_html": "<img data-swift-lazy=\"1\" loading=\"lazy\" class=\"\" src=\"\/\/www.drwoofapparel.com.au\/cdn\/shop\/files\/Horizontal_logo_transparent_background_blue_2_7dc8a8de-20c6-4155-8747-0810a5b4b5e0_210x.png?v=1704080588\" srcset=\"\/\/www.drwoofapparel.com.au\/cdn\/shop\/files\/Horizontal_logo_transparent_background_blue_2_7dc8a8de-20c6-4155-8747-0810a5b4b5e0_210x.png?v=1704080588 1x, \/\/www.drwoofapparel.com.au\/cdn\/shop\/files\/Horizontal_logo_transparent_background_blue_2_7dc8a8de-20c6-4155-8747-0810a5b4b5e0_210x@2x.png?v=1704080588 2x\" alt=\"Dr. Woof Apparel AU\" style=\"display:block;margin:0 auto;\">"
+      }
+    }
+  },
+  "order": [
+    "annoucement_XK9mWg",
+    "custom_html_y8fDJx",
+    "headerv4_Cx7ETV",
+    "a155aa5c-40ac-40b5-8a70-5059e600e448",
+    "adneon_r7jnUk",
+    "duallayout_G69DYV",
+    "duallayout_DXmGD6",
+    "duallayout_KhUY9h",
+    "duallayout_rcq78R",
+    "duallayout_TejHXQ",
+    "68681b12-95a9-4f19-8144-7b29406c141b",
+    "text_and_image_6CTcBf",
+    "featured_content_RWNHri",
+    "loox_gallery_carousel_section_aBDQV8",
+    "advanced_content_7w4nzG",
+    "adsection_DFck6h",
+    "custom_html_3Jq8JP"
+  ]
+}

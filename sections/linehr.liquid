@@ -1,0 +1,113 @@
+{% schema %}
+  {
+    "name": "Line HR",
+    "settings": [
+      {
+        "type": "range",
+        "id": "padding_top_desktop",
+        "label": "Padding Top (Desktop)",
+        "default": 20,
+        "min": 0,
+        "max": 100,
+        "unit": "px"
+      },
+      {
+        "type": "range",
+        "id": "padding_bottom_desktop",
+        "label": "Padding Bottom (Desktop)",
+        "default": 20,
+        "min": 0,
+        "max": 100,
+        "unit": "px"
+      },
+      {
+        "type": "range",
+        "id": "padding_top_mobile",
+        "label": "Padding Top (Mobile)",
+        "default": 10,
+        "min": 0,
+        "max": 100,
+        "unit": "px"
+      },
+      {
+        "type": "range",
+        "id": "padding_bottom_mobile",
+        "label": "Padding Bottom (Mobile)",
+        "default": 10,
+        "min": 0,
+        "max": 100,
+        "unit": "px"
+      },
+      {
+        "type": "range",
+        "id": "margin_top_desktop",
+        "label": "Margin Top (Desktop)",
+        "default": 20,
+        "min": 0,
+        "max": 100,
+        "unit": "px"
+      },
+      {
+        "type": "range",
+        "id": "margin_bottom_desktop",
+        "label": "Margin Bottom (Desktop)",
+        "default": 20,
+        "min": 0,
+        "max": 100,
+        "unit": "px"
+      },
+      {
+        "type": "range",
+        "id": "margin_top_mobile",
+        "label": "Margin Top (Mobile)",
+        "default": 10,
+        "min": 0,
+        "max": 100,
+        "unit": "px"
+      },
+      {
+        "type": "range",
+        "id": "margin_bottom_mobile",
+        "label": "Margin Bottom (Mobile)",
+        "default": 10,
+        "min": 0,
+        "max": 100,
+        "unit": "px"
+      },
+      {
+        "type": "color",
+        "id": "border_top_color",
+        "label": "Border Top Color",
+        "default": "#ebebeb"
+      }
+    ],
+    "presets": [
+      {
+        "name": "Default Line HR",
+        "category": "Custom Sections"
+      }
+    ]
+  }
+  {% endschema %}
+  
+  <hr class="hr-{{ section.id }}">
+  
+  <style>
+    .hr-{{ section.id }} {
+      padding-top: {{ section.settings.padding_top_desktop }}px;
+      padding-bottom: {{ section.settings.padding_bottom_desktop }}px;
+      margin-top: {{ section.settings.margin_top_desktop }}px;
+      margin-bottom: {{ section.settings.margin_bottom_desktop }}px;
+      border-top: 1px solid {{ section.settings.border_top_color }} !important;
+    }
+  
+    @media (max-width: 480px) {
+      .hr-{{ section.id }} {
+        padding-top: {{ section.settings.padding_top_mobile }}px;
+        padding-bottom: {{ section.settings.padding_bottom_mobile }}px;
+        margin-top: {{ section.settings.margin_top_mobile }}px;
+        margin-bottom: {{ section.settings.margin_bottom_mobile }}px;
+      }
+    }
+  </style>
+  

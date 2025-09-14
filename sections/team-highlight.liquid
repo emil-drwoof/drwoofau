@@ -1,0 +1,88 @@
+{% schema %}
+{
+  "name": "Team Highlight",
+  "tag": "section",
+  "class": "team-highlight-section",
+  "settings": [],
+  "presets": [
+    {
+      "name": "Team Highlight",
+      "category": "Custom"
+    }
+  ]
+}
+{% endschema %}
+
+<style>
+.team-highlight{
+    width:100%;
+      background:#FDF5EF;      
+      background-image: url('https://cdn.shopify.com/s/files/1/0573/7250/8344/files/16ad526232642e1bee8214159f3fbf7b57433e8d_b05f3ccc-1301-41dc-abbe-e5d9c7b5b9db.png?v=1753117716'); /* Path to your PNG */
+      background-repeat: no-repeat;
+      background-position: center bottom;
+      background-size: 100% auto; /* Full width, auto height */
+ }
+  .team-highlight-wrapper {
+    width: 1040px;
+    margin: 0 auto;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 58px;
+    align-items: center;    
+    padding-top:17px;
+    padding-bottom:17px;
+
+  }
+
+  .team-highlight-image-col {
+    flex: 0 0 372px;
+  }
+
+  .team-highlight-image {
+    width: 100%;
+    height: auto;
+    display: block;
+  }
+
+  .team-highlight-text-col {
+    flex: 1;
+  }
+
+  .team-highlight-title {
+    font-family: 'Outfit', sans-serif;
+    font-size: 32px;    
+    margin-bottom: 8px;
+    font-weight: semi-bold;
+    color: #000;
+  }
+
+  .team-highlight-description {
+    font-family: 'Outfit', sans-serif;
+    font-size: 14px;    
+    color: #000;
+        letter-spacing: -0.05px;
+  }
+  @media only screen and (max-width:480px){
+    .team-highlight{
+        display:none !important;
+    }
+}
+</style>
+<div class="team-highlight">
+    <div class="team-highlight-wrapper">
+    <div class="team-highlight-image-col">
+        <img 
+        src="https://cdn.shopify.com/s/files/1/0573/7250/8344/files/dr_team_transparent.png?v=1753116639" 
+        alt="Dr. Team" 
+        class="team-highlight-image"
+        >
+    </div>
+    <div class="team-highlight-text-col">
+        <h2 class="team-highlight-title">Designed by clinicians, for clinicians.</h2>
+        <p class="team-highlight-description">
+        At Dr. Woof, we’re not just another uniform brand, we’re vets who still work full-time. That means we know exactly what you face on the floor. Every detail in our medical apparel is tested, refined, and built to handle your longest shifts, because we wear them too.
+        </p>
+    </div>
+    </div>
+</div>
+

@@ -1,0 +1,11 @@
+{
+  "sections": {
+    "main-content": {
+      "type": "newlisticle",
+      "settings": {}
+    }
+  },
+  "order": [
+    "main-content"
+  ]
+}

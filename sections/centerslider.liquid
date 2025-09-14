@@ -1,0 +1,81 @@
+<!-- section/centerslider.liquid -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+<section>
+    <div class="centerslider">
+        {% for block in section.blocks %}
+            {% if block.type == 'slide' %}
+                <div class="centerslide">
+                    <img src="{{ block.settings.icon_image | img_url: 'medium' }}" alt="Icon Image">
+                    <h3>{{ block.settings.text_list }}</h3>
+                </div>
+            {% elsif block.type == 'video' %}
+                <div class="centervideo">
+                    <iframe src="{{ block.settings.video_url }}" frameborder="0" allowfullscreen></iframe>
+                    <h3>{{ block.settings.text_list }}</h3>
+                </div>
+            {% endif %}
+        {% endfor %}
+    </div>
+</section>
+    
+<style>
+
+</style>
+
+
+{% schema %}
+    {
+      "name": "Header V2",
+      "settings": [
+        {
+          "type": "text",
+          "label": "Colored Header",
+          "id": "colored_header"
+        }
+      ],
+      "blocks": [
+        {
+            "name": "Slide",
+            "type": "slide",
+            "settings": [
+                {
+                    "type": "text",
+                    "label": "List",
+                    "id": "text_list"
+                },
+                {
+                    "type": "image_picker",
+                    "id": "icon_image",
+                    "label": "Icon Image"
+                }
+            ]
+        },
+        {
+            "name": "Video",
+            "type": "video",
+            "settings": [
+                {
+                    "type": "text",
+                    "label": "List",
+                    "id": "text_list"
+                },
+                {
+                    "type": "video_url",
+                    "id": "video_url",
+                    "label": "Video link",
+                    "accept": ["youtube", "vimeo"]
+                }
+            ]
+        }
+        
+      ],
+      "presets": [
+        {
+          "category": "V2",
+          "name": "Header V2"
+        }
+      ]
+    }
+    {% endschema %}
+    

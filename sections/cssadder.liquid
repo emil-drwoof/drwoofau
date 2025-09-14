@@ -1,0 +1,18 @@
+<style>{{ section.settings.custom_css }}</style>  
+{% schema %}
+    {
+      "name": "Custom CSS Section",
+      "settings": [
+        {
+          "type": "textarea",
+          "id": "custom_css",
+          "label": "Custom CSS",
+          "info": "Enter your custom CSS here."
+        }
+      ],
+    "presets": [{
+      "name": "Custom CSS Section",
+      "category": "Text"
+    }]
+    }
+{% endschema %}

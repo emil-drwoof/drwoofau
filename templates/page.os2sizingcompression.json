@@ -1,0 +1,12 @@
+{
+  "wrapper": "div#div_id.div_class[attribute-one=value]",
+  "sections": {
+    "main": {
+      "type": "os2sizingcompression",
+      "settings": {}
+    }
+  },
+  "order": [
+    "main"
+  ]
+}

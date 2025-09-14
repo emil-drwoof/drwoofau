@@ -1,0 +1,185 @@
+<section class="dualanimated">
+    {% if section.settings.image_left %}
+    <div class="page-width">
+        <div class="flexer">
+
+            <div class="fullduo imageduo">
+                <img src="{{ section.settings.imagebig  | img_url: 'master' }}" class="fullwidth-img" data-aos="fade-right">
+            </div>
+            <div class="fullduo contentduo">
+                <div class="dualcontent">
+                    <p class="dualtime"><span class="underliner">{{ section.settings.contenttime }}</span></p>
+                    <h4 class="dualtitle">{{ section.settings.contenttitle }}</h4>
+                    <ul class="duallist">
+                        {% if section.settings.contenttext1 != blank %}
+                            <li>{{ section.settings.contenttext1 }}</li>
+                        {% endif %}
+                        {% if section.settings.contenttext2 != blank %}
+                            <li>{{ section.settings.contenttext2 }}</li>
+                        {% endif %}
+                        {% if section.settings.contenttext3 != blank %}
+                            <li>{{ section.settings.contenttext3 }}</li>
+                        {% endif %}
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    {% else %}
+    <div class="page-width">
+        <div class="flexer">
+            <div class="fullduo contentduo">
+                <div class="dualcontent">
+                    <p class="dualtime"><span class="underliner">{{ section.settings.contenttime }}</span></p>
+                    <h4 class="dualtitle">{{ section.settings.contenttitle }}</h4>
+                    <ul class="duallist">
+                        {% if section.settings.contenttext1 != blank %}
+                            <li>{{ section.settings.contenttext1 }}</li>
+                        {% endif %}
+                        {% if section.settings.contenttext2 != blank %}
+                            <li>{{ section.settings.contenttext2 }}</li>
+                        {% endif %}
+                        {% if section.settings.contenttext3 != blank %}
+                            <li>{{ section.settings.contenttext3 }}</li>
+                        {% endif %}
+                    </ul>
+                </div>
+            </div>
+            <div class="fullduo imageduo">
+                <img src="{{ section.settings.imagebig | img_url: 'master' }}" class="fullwidth-img"  data-aos="fade-left">
+            </div>
+
+        </div>
+    </div>
+    {% endif %}
+</section>
+<style>
+    .main-content img{
+        border-radius:0;
+    }
+    #shopify-section-footer,
+    #shopify-section-header{
+        display:none;
+    }
+.dualtime{
+    font-size: 25px;
+    line-height: 41px;
+    font-weight: 700;
+    position: relative;
+    display: inline-block;
+    margin-bottom: 18px;
+    padding-bottom: 6px;
+}
+.dualtime:after{
+    content: "";
+    position: absolute;
+    width: 110%;
+    border-bottom: 2px solid black;
+    bottom: 0;
+    left: 0;
+
+}
+.dualtitle{
+    font-size:35px;
+    line-height:42px;
+}
+.duallist li{
+    font-size:25px;
+    line-height:42px;
+    word-wrap: break-word;
+}
+.fullduo{
+    width:50%;
+    flex:0 0 50%;
+}
+.dualcontent{
+    padding:20px 50px;
+}
+.flexer{
+    display:flex;
+    flex-wrap:wrap;
+    justify-content: space-between;
+    align-content:center;
+}
+html{
+    width:100%;
+    overflow-x:hidden;
+}
+.main-content img,
+.imageduo img{border-radius:0 !important;}
+
+@media only screen and (max-width:480px){
+    .duallist li,
+    .dualtime{font-size:20px;line-height:1.2em;}
+    .dualtitle{
+        font-size:28px;
+        line-height:1.2em;
+        margin-bottom:20px;
+    } 
+
+    .fullduo{
+        width:100%;
+        flex:0 0 100%;
+    }
+    .dualcontent{
+        padding:20px;
+    }
+    .imageduo img{
+        
+        width:100%;
+    }
+    .imageduo{
+        order:1;
+    }
+    .contentduo{
+        order:2;
+    }
+}
+</style>
+{% schema %}
+    {
+      "name": "Animated Section",
+      "tag": "section",
+      "class": "slideshow",
+      "settings": [        {
+            "type": "checkbox",
+            "id": "image_left",
+            "label": "Show image to the left"
+        },
+        {
+               "type": "image_picker",
+               "id": "imagebig",
+               "label": "Featured image"
+        },       
+        {
+            "type": "text",
+            "id": "contenttime",
+            "label": "Time"
+        },
+        {
+            "type": "text",
+            "id": "contenttitle",
+            "label": "Content Title"
+        },
+        {
+            "type": "text",
+            "id": "contenttext1",
+            "label": "Text 1"
+        },
+        {
+            "type": "text",
+            "id": "contenttext2",
+            "label": "Text 2"
+        },
+        {
+            "type": "text",
+            "id": "contenttext3",
+            "label": "Text 3"
+        }
+      ],
+      "presets": [{
+      "name": "Animated Section",
+      "category": "Collection"
+    }]
+    }
+{% endschema %}

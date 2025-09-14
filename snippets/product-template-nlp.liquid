@@ -1,0 +1,1085 @@
+{% comment %} Time now {% endcomment %}
+{%- assign month = "now" | date: "%m" -%}
+{%- assign year = "now" | date: "%Y" -%}
+
+<!-- snippets/product-template-nlp.liquid -->
+<script
+  src="https://code.jquery.com/jquery-3.6.0.min.js"
+  integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
+  crossorigin="anonymous"></script>
+<div
+  id="ProductSection-{{ section_id }}"
+  class="product-section gohere"
+  data-section-id="{{ section_id }}"
+  data-section-type="product-template"
+  {% if isModal %}
+  data-subsection
+  {% endif %}
+  data-variant-type="{{ variant_type }}"
+  {% if inventory_enable %}
+  data-inventory="true" 
+  data-inventory-threshold="{{ inventory_threshold }}"
+  {% endif %}
+  {% if inventory_transfers_enable %}
+  data-incoming-inventory="true"
+  {% endif %}
+  {% if product_image_type == 'stacked' %}
+  data-images-stacked="true"
+  {% endif %}
+  data-video-style="{{ video_style }}"
+  {% unless isModal %}
+  data-enable-history-state="true"
+  {% endunless %}>
+
+  {% include 'product-template-variables' %}
+
+  
+  <div class="page-content">
+    <div class="page-width">
+
+
+
+    {% if template contains "newlandingpage" %}
+        <style>
+          .desktop-view {
+            display: block;
+          }
+          .mobile-view {
+            display: none;
+          }
+
+          .loox-rating .loox-icon{
+            color:#f5be15 !important;
+          }
+          @media only screen and (max-width:768px) {
+            .desktop-view {
+              display: none !important;
+            }
+            .mobile-view {
+              display: block !important;
+            }
+          }
+        </style>
+        <div class="product-single__header mobile-view" style="margin-bottom:35px;display:block;">
+          {% if settings.vendor_enable %}
+            <div class="product-single__vendor">
+              {{ product.vendor }}
+            </div>
+          {% endif %}
+          {% if sku_enable %}
+            <p class="product-single__sku" data-sku>
+              {% if current_variant.sku %}
+                {{ current_variant.sku }}
+              {% endif %}
+            </p>
+          {% endif %}
+          {% if isModal %}
+            <p class="h1 product-single__title">
+              {{ product.title | replace: "$month$", month | replace: "$year$", year }}
+            </p>
+          {% else %}
+            <h1 class="h1 product-single__title">
+              {{ product.title | replace: "$month$", month | replace: "$year$", year }}
+            </h1>
+          {% endif %}
+          {% if settings.enable_product_reviews %}
+            {% if isModal %}
+              {%- assign review_link = product.url | within: collection | append: '#Reviews-' | append: product.id -%}
+            {% else %}
+              {%- assign review_link = '#Reviews-' | append: product.id -%}
+            {% endif %}
+            <a href="{{ review_link }}" class="product-single__review-link">
+              <span class="shopify-product-reviews-badge" data-id="{{ product.id }}"></span>
+            </a>
+          {% endif %}
+          {% if settings.enable_product_loox_reviews %}
+            {% comment %} this block was created by belowyellow.com {% endcomment %}
+            <a href="#looxReviews" class="product-single__review-link">{% render 'loox_reviews' %}</a>
+          {% endif %}
+
+                      <!-- Start of Judge.me code --> 
+                        <div class='jdgm-widget jdgm-preview-badge' data-id='{{ product.id }}'> 
+                          {{ product.metafields.judgeme.badge }} 
+                        </div> 
+                      <!-- End of Judge.me code -->
+          <div class="product-single__prices{% unless template contains 'Bundle_Metafield' or template contains 'compression_sock'  or template contains 'LTV-Bulk-scrubs-offer'  or template contains 'newlandingpage' %} not_bundle{% endunless %}{% if template contains 'Bundle_Metafield' or template contains 'newlandingpage' or template contains 'compression_sock' or template contains 'LTV-Bulk-scrubs-offer' %} bundle_template grid-product__price{% endif %}">
+            {% if product.compare_at_price_max > product.price %}
+              {%- assign hide_sale_price = true -%}
+              {% if current_variant.compare_at_price %}
+                {%- assign hide_sale_price = false -%}
+              {% endif %}
+            {% endif %}
+            {% if template contains 'Bundle_Metafield' or template contains 'newlandingpage' or template contains 'compression_sock' or template contains 'LTV-Bulk-scrubs-offer' %}
+              <style>
+                p.afterpay-paragraph {
+                  display: block !important;
+                }
+                p.afterpay-paragraph .afterpay-text2 {
+                  display: none;
+                }
+              </style>
+              {% assign normal_price = product.metafields.sf_product_bundle.normal_price %}
+              {% assign sf_product_bundlecompare_price = product.metafields.sf_product_bundle.compare_price %}
+              {% assign disc = product.metafields.sf_product_bundle.discount_code %}
+              {% assign intro = product.metafields.sf_product_bundle.intro_text %}
+              {% assign intro2 = product.metafields.sf_product_bundle.intro_text2 %}
+              {% assign intro3 = product.metafields.sf_product_bundle.intro_text_3 %}
+              {% assign disc_additional = product.metafields.sf_product_bundle.discount_code_additional_text %}
+              {% if sf_product_bundlecompare_price != blank or normal_price != blank %}
+                <span class="{% if hide_sale_price %} hide{% endif %}{% if normal_price != blank %} normal_price{% endif %}" data-price-wrapper>
+                  <span
+                    class="1 product__price product__price--compare"
+                    data-product-price-compare
+                    data-price="${{ sf_product_bundlecompare_price }}">
+                    ${{ sf_product_bundlecompare_price }}
+                  </span>
+                </span>
+                {% if normal_price != blank %}
+                  <span
+                    data-price="${{ normal_price }}"
+                    class="2 normalPrice product__price{% if current_variant.compare_at_price > current_variant.price %} sale-price{% endif %}"
+                    data-product-price>
+                    <!-- 0 -->
+                    ${{ normal_price }}
+                    <span style="margin-bottom:12px;color:black; font-size: medium;display:inline-block"></span>
+                  </span>
+                  <p>
+                    <span>
+                  {% if disc or disc != blank %}<!-- 1 -->💥 Using code <b>{{ disc }}</b> at checkout (Max 3 per person){% endif %}
+
+                    </span>
+                  </p>
+                {% endif %}
+              {% else %}
+                <span
+                  data-price=" {{ current_variant.compare_at_price | money_with_currency }}"
+                  class="{% if hide_sale_price %} hide{% endif %}"
+                  data-price-wrapper>
+                  <span class="8 product__price product__price--compare" data-product-price-compare>
+                    {% if current_variant.compare_at_price > current_variant.price %}
+                      {{ current_variant.compare_at_price | money_with_currency }}
+                    {% endif %}
+                  </span>
+                </span>
+                <span class="3 visually-hidden" data-price-a11y>{{ 'products.general.regular_price' | t }}</span>
+                <span
+                  data-price=" {{ current_variant.price | money_with_currency }}"
+                  class="9 normalPrice product__price{% if current_variant.compare_at_price > current_variant.price %} sale-price{% endif %}"
+                  data-product-price>
+                  {{ current_variant.price | money_with_currency }}
+                </span>
+              {% endif %}
+            {% endif %}
+            {% unless template contains 'Bundle_Metafield' or template contains 'newlandingpage' or template contains 'compression_sock' or template contains 'LTV-Bulk-scrubs-offer' %}
+              <div class="grid-product__price">
+                {% if current_variant.compare_at_price > current_variant.price %}
+                  <del data-price=" {{ current_variant.price | money_with_currency }}" class="5 normalPrice product__price grid-product__price--original ">
+                    {{ current_variant.compare_at_price | money_with_currency }}
+                  </del>
+                  <div class="sale-price">
+                    {{ product.price | money_with_currency }}
+                  </div>
+                {% else %}
+                  <span
+                    data-price=" {{ current_variant.price | money_with_currency }}"
+                    class="5 normalPrice product__price grid-product__price--original"
+                    data-product-price>
+                    {{ current_variant.price | money_with_currency }}
+                  </span>
+                {% endif %}
+              </div>
+            {% endunless %}
+            {% comment %}
+            THIS SECTION WAS UPDATED BY CASEY - TO SHOW PRODUCT DESCRIPTION INSTEAD OF PRODUCT CALLOUT
+            {% endcomment %}
+
+            {% comment %} 
+            <span class="product__note">
+            <p>&nbsp;</p>
+            {{ product.description }} 
+            <p>&nbsp;</p>
+            </span>
+            {% endcomment %}
+          </div>
+        </div>
+    {% endif %}
+
+
+
+      <div class="grid">
+        <div class="product-image-left grid__item {{ product_image_width }}">
+          {% if template contains 'custom_builderaaaa' %}
+
+            {% include 'product-image-builder'
+             , section_id: section_id,
+             isModal: isModal,
+             video_looping: video_looping,
+             video_style: video_style %}
+
+          {% else %}
+          <div class="dv">
+            {% include 'product-images'
+             , section_id: section_id,
+             isModal: isModal,
+             video_looping: video_looping,
+             video_style: video_style %}
+          </div>
+
+      
+
+
+
+
+          <div class="mv">
+            {% include 'product-images'
+            , section_id: section_id,
+            isModal: isModal,
+            video_looping: video_looping,
+            video_style: video_style %}
+          </div>
+
+
+          {% endif %}
+          
+          <div class="fullimage ddoo" style="margin-top:0x; margin-bottom:0px">
+            {% if product.metafields.sf_product_bundle.cts_desktop_image_1 %}
+              <img src="{{ product.metafields.sf_product_bundle.cts_desktop_image_1 }}" class="desktopshow">
+            {% endif %}
+            {% if product.metafields.sf_product_bundle.cts_mobile_image_1 %}
+              <img src="{{ product.metafields.sf_product_bundle.cts_mobile_image_1 }}" class="mobileshow">
+            {% endif %}
+          </div>
+
+        </div>
+
+        <div class="product-content-right grid__item {{ product_description_width }}{% if product_image_type == 'stacked' %} product-single__sticky{% endif %} {{ product.title | replace: "$month$", month | replace: "$year$", year | truncate: 3, "" }}" data-title="">
+          <div class="product-single__meta">
+
+            {% if product.type == 'Surgical Scrub Cap' %}
+              <p class="main-textamonials">{{ section.settings.txt3 }}</p>
+            {% endif %}
+            {% if product.type == 'Women Performance Underscrubs' %}
+              <p class="main-textamonials">{{ section.settings.txt4 }}</p>
+            {% endif %}
+            {% if product.type == 'Men’s Underscrubs' %}
+              <p class="main-textamonials">{{ section.settings.txt5 }}</p>
+            {% endif %}
+            {% if product.type == 'Compression Socks' %}
+              <p class="main-textamonials">{{ section.settings.txt6 }}</p>
+            {% endif %}
+            {% if product.type == 'Stethoscope Charms' %}
+              <p class="main-textamonials">{{ section.settings.txt7 }}</p>
+            {% endif %} 
+            {% if product.type == 'Women Scrub Tops' %}
+              <p class="main-textamonials">{{ section.settings.txt8 }}</p>
+            {% endif %}
+            {% if product.type == 'Women Scrub Pants' %}
+              <p class="main-textamonials">{{ section.settings.txt9 }}</p>
+            {% endif %}
+            {% if product.type == 'Men Scrub Tops' %}
+              <p class="main-textamonials">{{ section.settings.txt10 }}</p>
+            {% endif %}
+            {% if product.type == 'Men Scrub Pants' %}
+              <p class="main-textamonials">{{ section.settings.txt11 }}</p>
+            {% endif %}
+            <div class="product-single__header desktop-view" style="display:block;">
+              {% if settings.vendor_enable %}
+                <div class="product-single__vendor">
+                  {{ product.vendor }}
+                </div>
+              {% endif %}
+
+              {% if sku_enable %}
+                <p class="product-single__sku" data-sku>
+                  {% if current_variant.sku %}
+                    {{ current_variant.sku }}
+                  {% endif %}
+                </p>
+              {% endif %}
+
+              {% if isModal %}
+                <p class="h1 product-single__title">
+                  {{ product.title | replace: "$month$", month | replace: "$year$", year }}
+                </p>
+              {% else %}
+                <h1 class="h1 product-single__title">
+                  {{ product.title | replace: "$month$", month | replace: "$year$", year }}
+                </h1>
+              {% endif %}
+
+              {% if settings.enable_product_reviews %}
+                {% if isModal %}
+                  {%- assign review_link = product.url | within: collection | append: '#Reviews-' | append: product.id -%}
+                {% else %}
+                  {%- assign review_link = '#Reviews-' | append: product.id -%}
+                {% endif %}
+                <a href="{{ review_link }}" class="product-single__review-link">
+                  <span class="shopify-product-reviews-badge" data-id="{{ product.id }}"></span>
+                </a>
+              {% endif %}
+
+              {% if settings.enable_product_loox_reviews %}
+                {% comment %} this block was created by belowyellow.com {% endcomment %}
+                <a href="#looxReviews" class="product-single__review-link">{% render 'loox_reviews' %}</a>
+              {% endif %}
+              <a name="top"></a>
+              {% comment %}
+              {% if product.id == 7815295336706 or product.id == 7815303627010 or product.id == 7815283802370 or product.id == 7815290028290 or product.id == 7815271776514 or product.id == 7815268663554 or product.id == 7815312441602 %}
+                <div class="warning-text">FINAL SALE</div>
+              {% endif %}
+            {% endcomment %}
+              <div class="product-single__prices{% unless template contains 'Bundle_Metafield' or template contains 'newlandingpage' or template contains 'compression_sock'   or template contains 'LTV-Bulk-scrubs-offer'  %} not_bundle{% endunless %}{% if template contains 'Bundle_Metafield' or template contains 'newlandingpage' or template contains 'compression_sock'  or template contains 'LTV-Bulk-scrubs-offer' %} bundle_template grid-product__price{% endif %}">
+
+                {% if product.compare_at_price_max > product.price %}
+                  {%- assign hide_sale_price = true -%}
+                  {% if current_variant.compare_at_price %}
+                    {%- assign hide_sale_price = false -%}
+                  {% endif %}
+                {% endif %}
+
+                {% if template contains 'Bundle_Metafield' or template contains 'newlandingpage' or template contains 'compression_sock' or template contains 'LTV-Bulk-scrubs-offer' %}
+                  <style>
+                    p.afterpay-paragraph {
+                      display: block !important;
+                    }
+                    p.afterpay-paragraph .afterpay-text2 {
+                      display: none;
+                    }
+                  </style>
+                  {% assign normal_price = product.metafields.sf_product_bundle.normal_price %}
+                  {% assign sf_product_bundlecompare_price = product.metafields.sf_product_bundle.compare_price %}
+                  {% assign disc = product.metafields.sf_product_bundle.discount_code %}
+                  {% assign intro = product.metafields.sf_product_bundle.intro_text %}
+                  {% assign intro2 = product.metafields.sf_product_bundle.intro_text2 %}
+                  {% assign intro3 = product.metafields.sf_product_bundle.intro_text_3 %}
+                  {% assign disc_additional = product.metafields.sf_product_bundle.discount_code_additional_text %}
+
+                  {% if sf_product_bundlecompare_price != blank or normal_price != blank %}
+                    <span class="{% if hide_sale_price %} hide{% endif %}{% if normal_price != blank %} normal_price{% endif %}" data-price-wrapper>
+                      <span
+                        class="1 product__price product__price--compare"
+                        data-product-price-compare
+                        data-price="${{ sf_product_bundlecompare_price }}">
+                        ${{ sf_product_bundlecompare_price }}
+                      </span>
+                    </span>
+                    {% if normal_price != blank %}
+                    {% assign discount = sf_product_bundlecompare_price | minus: normal_price  %}
+                    {% assign discountP = discount | divided_by: sf_product_bundlecompare_price | times: 100 %}
+                      <span
+                        data-price="${{ normal_price }}"
+                        class="2 normalPrice product__price{% if current_variant.compare_at_price > current_variant.price %} sale-price{% endif %}"
+                        data-product-price><!-- 0 -->${{ normal_price }}
+                        <span style="margin-bottom:12px;color:black; font-size: medium;display:inline-block"></span>
+                      </span> <span class="discountp">{{ discountP | round: 0 }}% OFF</span>
+                      <p>
+                        <span>
+                      {% if disc or disc != blank %}<!-- 1 -->💥 Using code <b>{{ disc }}</b> at checkout (Max 3 per person){% endif %}
+                           
+                        </span>
+                      </p>
+                    {% endif %}
+
+                  {% else %}
+
+                    <span
+                      data-price=" {{ current_variant.compare_at_price | money_with_currency }}"
+                      class="{% if hide_sale_price %} hide{% endif %}"
+                      data-price-wrapper>
+                      <span class="8 product__price product__price--compare" data-product-price-compare>
+                        {% if current_variant.compare_at_price > current_variant.price %}
+                          {{ current_variant.compare_at_price | money_with_currency }}
+                        {% endif %}
+                      </span>
+                    </span>
+                    <span class="3 visually-hidden" data-price-a11y>{{ 'products.general.regular_price' | t }}</span>
+                    <span
+                      data-price=" {{ current_variant.price | money_with_currency }}"
+                      class="9 normalPrice product__price{% if current_variant.compare_at_price > current_variant.price %} sale-price{% endif %}"
+                      data-product-price>
+                      {{ current_variant.price | money_with_currency }}
+                    </span>
+                  {% endif %}
+                {% endif %}
+
+
+                {% unless template contains 'Bundle_Metafield' or template contains 'newlandingpage' or template contains 'compression_sock' or template contains 'LTV-Bulk-scrubs-offer' %}
+
+                  <div class="grid-product__price">
+
+                    {% if current_variant.compare_at_price > current_variant.price %}
+                      <del data-price=" {{ current_variant.price | money_with_currency }}" class="5 normalPrice product__price grid-product__price--original ">
+                        {{ current_variant.compare_at_price | money_with_currency }}
+                      </del>
+                      <div class="sale-price">
+                        {{ product.price | money_with_currency }}
+                      </div>
+
+
+                    {% else %}
+                      <span
+                        data-price=" {{ current_variant.price | money_with_currency }}"
+                        class="5 normalPrice product__price grid-product__price--original"
+                        data-product-price>
+                        {{ current_variant.price | money_with_currency }}
+                      </span>
+                    {% endif %}
+                  </div>
+                {% endunless %}
+                {% comment %}
+                THIS SECTION WAS UPDATED BY CASEY - TO SHOW PRODUCT DESCRIPTION INSTEAD OF PRODUCT CALLOUT
+                {% endcomment %}
+
+                <a id="mytoper"></a>
+
+                {% comment %} <span class="product__note">
+                <p>&nbsp;</p>  {{ product.description }} <p>&nbsp;</p> 
+                </span>   {% endcomment %}
+
+              </div>
+              {% if product.id == 7815295336706 or product.id == 7815303627010 or product.id == 7815283802370 or product.id == 7815290028290 or product.id == 7815271776514 or product.id == 7815268663554 or product.id == 7815312441602 %}
+                <div class="warning-text">
+                  <p>This product cannot be returned or exchanged unless faulty.</p>
+                  <p>NOTE: The sizing is DIFFERENT to our normal range, we recommend going up a size up for a better fit. If you're unsure, feel free to speak with sizing expert at hello@drwoofapparel.com.au</p>
+                </div>
+              {% endif %}
+              <div data-product-unit-wrapper class="product__unit-price {% unless current_variant.unit_price_measurement %} hide{% endunless %}">
+                {%- capture unit_price_base_unit -%}
+                  {%- if current_variant.unit_price_measurement -%}
+                    {%- if current_variant.unit_price_measurement.reference_value != 1 -%}
+                      {{ current_variant.unit_price_measurement.reference_value }}
+                    {%- endif -%}
+                    {{ current_variant.unit_price_measurement.reference_unit }}
+                  {%- endif -%}
+                {%- endcapture -%}
+
+                {{ current_variant.unit_price | money_with_currency }}/{{ unit_price_base_unit }}
+              </div>
+
+              {% comment %} {%- if shop.taxes_included or shop.shipping_policy.body != blank -%}
+              <div class="product__policies rte">
+              <small>
+              {%- if shop.taxes_included -%}
+              {{ 'products.product.include_taxes' | t }}
+              {%- endif -%}
+              {%- if shop.shipping_policy.body != blank -%}
+              {{ 'products.product.shipping_policy_html' | t: link: shop.shipping_policy.url }}
+              {%- endif -%}
+              </small>
+              </div>
+              {%- endif -%}{% endcomment %}
+
+
+              {% for tag in product.tags %}
+                {% assign product_tag = tag | strip %}
+                <div class="pop-up-modal">
+                  <div class="pop-up-content">
+                                                                          <button type="button" class="btn btn--circle btn--large close-button">
+            <svg aria-hidden="true" focusable="false" role="presentation" class="icon icon-close" viewBox="0 0 64 64">
+               <path d="M19 17.61l27.12 27.13m0-27.12L19 44.74"></path>
+            </svg>
+            <span class="icon__fallback-text">Close (esc)</span>
+         </button>
+                    {% if product.tags contains 'men' or product.tags contains 'Men' or product.tags contains 'MEN' %}
+                      <span class="size-chart-content men-chart">
+                        {{ pages[settings.product_content].content }}
+                      </span>
+                    {% elsif product.tags contains 'women' or product.tags contains 'Women' or product.tags contains 'WOMEN' %}
+                      <span class="size-chart-content women-chart">
+                        {{ pages[settings.product_content_women].content }}
+                      </span>
+                    {% endif %}
+                  </div>
+                </div>
+              {% endfor %}
+
+
+              {%- if inventory_enable or inventory_transfers_enable -%}
+                {%- assign variants_with_inventory_tracking = product.variants | where: 'inventory_management', 'shopify' -%}
+
+                <script>
+                  // Store inventory quantities in JS because they're no longer
+// available directly in JS when a variant changes.
+// Have an object that holds all potential products so it works
+// with quick view or with multiple featured products.
+                  window.inventories = window.inventories || {};
+                  window.inventories['{{section_id}}'] = {};{% for variant in variants_with_inventory_tracking %}window.inventories['{{section_id}}'][{{variant.id}}] = {
+                      'quantity': {{ variant.inventory_quantity | default: 0 }},
+                      'incoming': {{ variant.incoming | default: false | json }},
+                      'next_incoming_date': {{ variant.next_incoming_date | date: format: 'date' | json }}
+                    };{% endfor %}
+                </script>
+
+                {%- assign inventory_visible = false -%}
+                {% if inventory_enable and current_variant.inventory_management == 'shopify' %}
+                  {%- if current_variant.inventory_quantity <= inventory_threshold and current_variant.inventory_quantity >= 0 -%}
+                    {%- assign inventory_visible = true -%}
+                  {%- endif -%}
+                {% endif %}
+                {% if current_variant.inventory_quantity == 0 %}
+                  {%- assign inventory_visible = false -%}
+                {% endif %}
+
+                {%- unless template.suffix == 'Bundle_Metafield' or template.suffix == 'newlandingpage' or template contains 'compression_sock' or template contains 'LTV-Bulk-scrubs-offer' %}
+
+
+
+                  {%- if inventory_enable -%}
+                    <p data-product-inventory class="product__inventory {% unless inventory_visible %}hide{% endunless %}">
+                      {% if current_variant.available %}
+                        {{ 'products.product.stock_label' | t: count: current_variant.inventory_quantity }}
+                      {% endif %}
+                    </p>
+                  {%- endif -%}
+
+                  {%- if inventory_transfers_enable -%}
+                    <div data-product-incoming-inventory class="product__inventory{% if inventory_visible %} hide{% endif %}">
+                      {%- if current_variant.incoming and inventory_visible == false -%}
+                        {%- if current_variant.next_incoming_date -%}
+                          {% assign date = current_variant.next_incoming_date | date: format: 'date' %}
+                          {%- if current_variant.available -%}
+                            {{ 'products.product.will_not_ship_until' | t: date: date }}
+                          {%- else -%}
+                            {{ 'products.product.will_be_in_stock_after' | t: date: date }}
+                          {%- endif -%}
+                        {%- else -%}
+                          {{ 'products.product.waiting_for_stock' | t }}
+                        {%- endif -%}
+                      {%- endif -%}
+                    </div>
+                  {%- endif -%}
+                {%- endunless -%}
+              {% endif %}
+            </div>
+
+
+            {% unless isModal %}
+              {% comment %}
+              Shopify's product form attaches a number of tracking
+              scripts that cause slower load times and false statistics.
+              Quick view modals request these on-demand.
+              {% endcomment %}
+              {% if template contains 'Bundle_Metafield' or template contains 'newlandingpage' or template contains 'LTV-Bulk-scrubs-offer' %}
+                {% if product.id == 6775596187832 %}
+                  {% include 'Bundle_product-form-mega'
+                   , section_id: section_id,
+                   variant_type: variant_type,
+                   variant_labels_enable: variant_labels_enable,
+                   quantity_enable: quantity_enable,
+                   enable_payment_button: enable_payment_button %}
+                {% else %}
+                  {% include 'Bundle_product-form-nlp'
+                   , section_id: section_id,
+                   variant_type: variant_type,
+                   variant_labels_enable: variant_labels_enable,
+                   quantity_enable: quantity_enable,
+                   enable_payment_button: enable_payment_button %}
+                {% endif %}
+              {% else %}
+
+                {% if template contains 'compression_sock' %}
+                  {% include 'Bundle_product-form-normal'
+                   , section_id: section_id,
+                   variant_type: variant_type,
+                   variant_labels_enable: variant_labels_enable,
+                   quantity_enable: quantity_enable,
+                   enable_payment_button: enable_payment_button %}
+                {% else %}
+                  {% include 'product-form'
+                   , section_id: section_id,
+                   variant_type: variant_type,
+                   variant_labels_enable: variant_labels_enable,
+                   quantity_enable: quantity_enable,
+                   enable_payment_button: enable_payment_button %}
+                {% endif %}
+              {% endif %}
+            {% else %}
+              <div
+                id="ProductFormPlaceholder-{{ section_id }}"
+                data-url="{{ product.url | within: collection }}"
+                data-template="{{ product.template_suffix }}"
+                class="product-form-holder">
+                {% if product.options.size > 0 %}
+                  {% for i in (1..product.options.size) %}
+                    <div class="placeholder-content" style="min-height: 86px; max-width: 66%;"></div>
+                  {% endfor %}
+                {% endif %}
+                <div class="placeholder-content" style="min-height: 86px;"></div>
+              </div>
+            {% endunless %}
+            {% comment %}
+            <p style="text-align:center;font-size:16px;font-family: 'futurapt';margin-top:12px;margin-bottom:20px;">Get your set for only $98 with code SCRUBUP<br/>(One time offer only. Max 3 sets per customer)</p>
+            <div class="left-flexer">
+              <div class="trio">
+                <img src="https://cdn.shopify.com/s/files/1/0573/7250/8344/files/box_2.svg" class="">
+                <p>Free AU Shipping<br/>
+                  & Dispatch in 24 Hours</p>
+              </div>
+              <div class="trio">
+                <img src="https://cdn.shopify.com/s/files/1/0573/7250/8344/files/mark_3-1.svg" class="">
+                <p>60-Day Money <br/>Back Guarantee*</p>
+              </div>
+              <div class="trio">
+                <img src="https://cdn.shopify.com/s/files/1/0573/7250/8344/files/home_1_2.svg" class="">
+                <p>Aussie family <br/>Business</p>
+              </div>
+            </div>
+            {% endcomment %}
+            <p style="text-align:center;font-size:16px;font-family: futurapt;margin-top:12px;margin-bottom:20px;">Get your set for only $98 with code SCRUBUP<br>(One time offer only. Max 3 sets per customer)</p>
+            
+            <span id="ShopifyKlarnaOnSiteMessagingAppElement"></span>
+            {%- if settings.trust_image != blank -%} 
+              <div class="aos-animate trust-image" style="max-width: {{ settings.trust_image.width }}px;">
+                <div class="image-wrap " style="height: 0; padding-bottom: {{ 100 | divided_by: settings.trust_image.aspect_ratio }}%;">
+                  {%- assign img_url = settings.trust_image | img_url: '1x1' | replace: '_1x1.', '_{width}x.' -%}
+                  <img
+                    data-swift-lazy="1"
+                    loading="lazy"
+                    class="lazyload"
+                    data-src="{{ img_url }}"
+                    data-widths="[360, 540]"
+                    data-aspectratio="{{ settings.trust_image.aspect_ratio }}"
+                    data-sizes="auto"
+                    alt="{{ settings.trust_image.alt }}">
+                  <noscript>
+                    <img
+                      data-swift-lazy="1"
+                      loading="lazy"
+                      class="lazyloaded"
+                      src="{{ settings.trust_image | img_url: '540x' }}"
+                      alt="{{ settings.trust_image.alt }}">
+                  </noscript>
+                </div>
+              </div>
+            {%- endif -%}
+
+            <div class="fullimage" style="margin-top:16px; margin-bottom:3px">
+              {% if product.metafields.sf_product_bundle.cts_desktop_image %}
+                <img src="{{ product.metafields.sf_product_bundle.cts_desktop_image }}" class="desktopshow">
+              {% endif %}
+              {% if product.metafields.sf_product_bundle.cts_mobile_image %}
+                <img src="{{ product.metafields.sf_product_bundle.cts_mobile_image }}" class="mobileshow">
+              {% endif %}
+            </div>
+            <style>
+              .fullimage img{
+                display:block;
+                width:100%;
+                height:auto;
+              }
+              .desktopshow{
+                display:block !important;
+              }
+              .mobileshow{
+                display:none !important;
+              }
+              @media only screen and (max-width:480px){
+                .fullimage img{
+                  display: block;
+                  width: 108%;
+                  max-width: 1000%;
+                  height: auto;
+                  margin-left: -15px;
+                  margin-right: -15px;
+                }
+                .desktopshow{
+                  display:none !important;
+                }
+                .mobileshow{
+                  display:block !important;
+                }             
+              }
+            </style>
+            {% assign cts_product_1_a = product.metafields.sf_product_bundle.cts_product_1_a %}
+            {% unless cts_product_1_a == blank %}
+              {% render 'completetheset' %}
+            {% endunless %}
+
+
+
+            {% comment %}
+            THIS SECTION WAS UPDATED BY CASEY - TO SHOW THE NESSECARY DISCOUNT CODE NEAR THE BUY NOW BUTTON
+            {% endcomment %}
+            {% if disc or disc != blank %}
+              <!-- <p><br/>💡 Get {{ product.title }} for only ${{ normal_price }} using code <strong>{{ disc }}</strong> at checkout</p><p>&nbsp;</p> -->
+            {% endif %}
+            {% if settings.additional_content_style == 'expandable' %}
+
+              {% include 'product-additional-content', section_id: section_id %}
+
+            {% else %}
+              {% include '', section_id: section_id %}
+            {% endif %}
+            <div
+              class="th_pb_section"
+              id="th_product_bundle"
+              data-id="{{ product.id }}"></div>
+            <div
+              id="th_pb_qty_bundle"
+              class="th_pb_qty_bundle_cls"
+              data-pid="{{ product.id }}"></div>
+
+            {% comment %}
+              {% if social_enable %}
+                {% include 'social-sharing', share_title: product.title, share_permalink: product.url, share_image: product %}
+              {% endif %}
+            {% endcomment %}
+
+
+
+
+
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+</div>
+
+<style>
+
+    @font-face {
+        font-family: futuraptbold;
+        font-weight: bold;
+        src: url("https://cdn.shopify.com/s/files/1/0573/7250/8344/files/FuturaPTBold.otf?v=1682068317") format("opentype");
+    }
+    @font-face {
+        font-family: futurapt;
+        font-weight: normal;
+        src: url("https://cdn.shopify.com/s/files/1/0573/7250/8344/files/FuturaPTMedium.otf?v=1682068317") format("opentype");
+    }
+    .preorder-text{
+      display:none;
+    }
+    .frow video{
+      width:100%;
+      height:100%;
+    }
+  .warning-text {
+    color: red;
+    font-size: 14px;
+    font-weight: bold;
+    position: relative;
+    top: -8px;
+  }
+  .pop-up-modal {
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    opacity: 0;
+    display: none;
+    transform: scale(1.1);
+    transition: visibility 0s linear 0.25s, opacity 0.25s 0s, transform 0.25s;
+  }
+
+  .pop-up-content {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: white;
+    padding: 1rem 1.5rem;
+    width: auto;
+    border-radius: 0.5rem;
+    height: 70vh;
+    overflow: auto;
+  }
+  .pop-up-content table {
+    table-layout: auto;
+  }
+  .close-button {
+    float: right;
+    width: 1.5rem;
+    line-height: 1.5rem;
+    text-align: center;
+    cursor: pointer;
+    border-radius: 0.25rem;
+    background-color: lightgray;
+  }
+  .close-button:hover {
+    background-color: darkgray;
+  }
+  .show-pop-up {
+    z-index: 12;
+    opacity: 1;
+    z-index:999;
+    display: block;
+    transform: scale(1.0);
+    transition: visibility 0s linear 0s, opacity 0.25s 0s, transform 0.25s;
+  }
+  .trigger-pop-up {
+    margin: 10px 0;
+    width: 100%;
+  }
+  @media only screen and (max-width: 749px) {
+    .threeway .product__main-photos--slider .product__slide {
+      margin-left: 0 !important;
+      margin-right: 12px;
+    }
+    .threeway .slick-slide {
+      height: 45vh !important;
+
+    }
+
+    .threeway .slick-slide img {
+      height: 45vh !important;
+    }
+    .product-single__prices > *,
+    .main-textamonials,
+    .afterpay-placement {
+      margin-bottom: 0 !important;
+
+    }
+    .product__main-photos {
+      padding-bottom: 0 !important;
+    }
+    .pop-up-content,
+    .size-chart-content table {
+      width: 100%;
+    }
+    .size-chart-content th,
+    .size-chart-content td {
+      padding: 10px;
+    }
+  }
+
+  @media only screen and (max-width:490px) {
+    h1,h2,h3,h4,h5,h6{
+      font-family: 'futuraptbold';
+    }
+    .product-single__title{
+      font-size: 22px;
+      line-height: 28px;
+      color: #050507;
+    }
+    .normal_price .product__price--compare{
+      font-weight: 450;
+      font-size: 18px;
+      line-height: 23px;
+      /* identical to box height */
+
+      text-decoration-line: line-through;
+
+      color: #050507 !important;
+      font-family: futurapt;
+    }
+    .grid-product__price{
+      margin-top:0;
+    }
+    .product__price{
+      font-size: 18px;
+      line-height: 23px;
+      /* identical to box height */
+      color: #EA3525;
+      font-family: futurapt;
+    }
+    .threeway .slick-slide {
+      width: 236px;
+    }
+    .threeway .product__photos img {
+      height: auto !important;
+    }
+
+    #placement-1682064531656{
+        display:none;
+    }
+    #add_to_cart_box{
+        width: 100%;
+        height: 62px;
+        display: block;
+        margin: 0 auto;
+        left: 10px;
+        top: 1699px;
+        background: #BDD1BE;
+        border:none !important;
+        border-radius: 51px !important;
+        }
+        
+        #add_to_cart_box .add_to_bundle,
+        #add_to_cart_box .bundle_preparing{
+        font-family: 'futuraptbold';
+        font-style: normal;
+        font-weight: 700;
+        font-size: 18px;
+        line-height: 23px;
+        /* identical to box height */
+        
+        text-align: center;
+        
+        color: #050507;
+        }
+
+  }
+</style>
+<script>
+  const modal = document.querySelector(".pop-up-modal");
+  const trigger = document.querySelector(".trigger-pop-up");
+  const closeButton = document.querySelector(".close-button");
+
+  function toggleModal() {
+    modal.classList.toggle("show-pop-up");
+  }
+
+  function windowOnClick(event) {
+    if (event.target === modal) {
+      toggleModal();
+    }
+  }
+  trigger.addEventListener("click", toggleModal);
+  closeButton.addEventListener("click", toggleModal);
+  window.addEventListener("click", windowOnClick);
+</script>
+
+<script>
+  const myInterval = setInterval(afterpay, 1000);
+
+  function afterpay() {
+    var data_price = $(".product-single__prices.bundle_template.grid-product__price span.normalPrice").attr("data-price");
+    var data_price_1 = data_price.replace("$", "")
+    var data_price_2 = parseFloat(data_price_1 / 4);
+    var data_price_3 = data_price_2.toFixed(2);
+    $("strong.afterpay-instalments").text("$" + data_price_3 + " AUD");
+  }
+
+  function myStopFunction() {
+    clearInterval(myInterval);
+  }
+
+
+  $(function() {
+    $("[data-attr='Women Scrub Tops'] .master_designs[data-name='Design']").hide()
+    $("[data-phandle='women-classic-6-pocket-joggers'] .master_designs[data-name='Design']").hide()
+    
+
+  var intervalId = window.setInterval(function(){
+    for (let i = 0; i < 10; i++) {
+      
+    $('.product_One_Shown .master_designs option[data-handle="women-3-pocket-scrub-top"]').prop('selected',true);
+    $('.product_One_Shown .master_designs option[data-handle="women-classic-6-pocket-joggers"]').prop('selected',true);
+      clearInterval(intervalId) 
+    }
+    
+}, 500);
+
+var intervalId2 = window.setInterval(function(){
+  for (let i = 0; i < 2; i++) {
+    $("html, body").animate({ scrollTop: 0 });
+    clearInterval(intervalId2) 
+  }
+}, 500);
+
+    $bgs = $(".quener").val()
+
+
+
+    $collectionname = $(".collection-title").val()
+    if ($collectionname == "Scrub Caps") {
+
+      $stickysize = $(".varin:checked").attr("op_val")
+      var stickycolor = $(".variant-change-color .variant__label-info  span").html()
+      $stickyprice = $(".normalPrice").html()
+      $(".sticky-size .sizer").html($stickysize)
+
+
+      $(".sticky-price .pricer").html($stickyprice)
+    } else {
+      $stickysize = $(".custom-option-value").attr("data-matched")
+      $stickytype = $(".varin[option_index='3']:checked").attr("op_val")
+      var stickycolor = $(".variant-change-color .variant__label-info  span").html()
+      $stickyprice = $(".normalPrice").html()
+      $(".sticky-size .sizer").html($stickysize)
+      $(".sticky-type").html($stickytype)
+      stickycolor = stickycolor.trim();
+      var stickycolor = stickycolor.replace('Baby ', '');
+      $(".swatch-circle").css({
+        "background-image": "url(" + $bgs + ")",
+        "background-color": stickycolor
+      });
+      $(".sticky-price .pricer").html($stickyprice)
+    }
+
+/*
+  $.fn.isInViewport = function() {
+    var elementTop = $(this).offset().top;
+    var elementBottom = elementTop + $(this).outerHeight();
+    var viewportTop = $(window).scrollTop();
+    var viewportBottom = viewportTop + $(window).height();
+    return elementBottom > viewportTop && elementTop < viewportBottom;
+  };
+  
+  $(window).bind("load", function() {
+  if ($('.main-cont2').isInViewport()) {
+         $('.mobile-atc').css({"bottom": "-100px"});
+    } else {
+         $('.mobile-atc').css({"bottom": "0"});
+    }
+  });
+  
+  $(window).on('resize scroll', function(e) {
+  if ($('.main-cont2').isInViewport()) {
+         $('.mobile-atc').css({"bottom": "-100px"});
+    } else {
+         $('.mobile-atc').css({"bottom": "0"});
+    }
+    e.preventDefault();
+  });
+*/
+
+    $(".mobile-atc").css({"bottom": "-100px"})
+    $(window).scroll(function() {
+      $(window).scrollTop() >= 800
+        ? $(".mobile-atc").css({"bottom": "0"})
+        : $(".mobile-atc").css({"bottom": "-100px"});
+    });
+
+  });
+
+
+
+/*
+  $('.center').slick({
+  centerMode: true,
+  centerPadding: '60px',
+  slidesToShow: 3,
+  responsive: [
+    {
+      breakpoint: 768,
+      settings: {
+        arrows: false,
+        centerMode: true,
+        centerPadding: '40px',
+        slidesToShow: 3
+      }
+    },
+    {
+      breakpoint: 480,
+      settings: {
+        arrows: false,
+        centerMode: true,
+        centerPadding: '40px',
+        slidesToShow: 1
+      }
+    }
+  ]
+});
+
+*/
+</script>
+
+<style>
+.lazyautosizes{
+  opacity: 1 !important;
+}
+.Design_Products{display:none;}
+.custom_builder_option .size-chart-with-labels{
+  top: -94px !important;
+}
+.variant-input-wrap[data-index="option2"]{
+  margin-bottom:0;
+}
+</style>

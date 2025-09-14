@@ -1,0 +1,217 @@
+<div class="thumbnail-filter page-width" style="padding-bottom:0 !important;">
+  <div class="flexer">
+    <div class="duo"> 
+      {% if section.settings.title_enable %}
+        <h1 class="collection-title">{{ collection.title }}</h1>
+      {% endif %}
+    </div>
+    <div class="duo">
+      <div class="collection-thumbnail">
+        {% for block in section.blocks %} 
+          {% assign popular_product = all_products[block.settings.product] %}
+          <div class="thumbnail-entry"><a href="{{ block.settings.linkurl }}"><div class="thumbnail-wrapper"><img alt="Dr.Woof" src="{{ block.settings.image_thumbnail | img_url: 'MASTER' }}" class="collection-entry"></div>
+          <p class="col-title"><b>{{ block.settings.collection_title }}</b></p></a>
+          </div>
+        {% endfor %}
+      </div>      
+    </div>
+  </div>
+
+  {% comment %}
+    <div class="collection-thumbnail">
+        <div class="thumbnail-entry"><div class="thumbnail-wrapper"><img src="https://cdn.shopify.com/s/files/1/0573/7250/8344/files/Frame_161sub-collection_200x2003_c0babdf9-70b3-4da9-b18b-0b5900cc093f.png?v=1692815151" class="collection-entry"></div>
+        <p class="col-title"><b>Jogger</b></p>
+        </div>
+        <div class="thumbnail-entry"><div class="thumbnail-wrapper"><img src="https://cdn.shopify.com/s/files/1/0573/7250/8344/files/Frame_156sub-collection_200x200_1ee69d81-4c84-4c2e-b9f2-1e378486b20d.png?v=1692815150" class="collection-entry"></div>
+        <p class="col-title"><b>Top</b></p>
+        </div>
+
+        <div class="thumbnail-entry"><div class="thumbnail-wrapper"><img src="https://cdn.shopify.com/s/files/1/0573/7250/8344/files/Frame_161sub-collection_200x2003_c0babdf9-70b3-4da9-b18b-0b5900cc093f.png?v=1692815151" class="collection-entry"></div>
+        <p class="col-title"><b>Jogger</b></p>
+        </div>
+        <div class="thumbnail-entry"><div class="thumbnail-wrapper"><img src="https://cdn.shopify.com/s/files/1/0573/7250/8344/files/Frame_156sub-collection_200x200_1ee69d81-4c84-4c2e-b9f2-1e378486b20d.png?v=1692815150" class="collection-entry"></div>
+        <p class="col-title"><b>Top</b></p>
+        </div>
+
+        <div class="thumbnail-entry"><div class="thumbnail-wrapper"><img src="https://cdn.shopify.com/s/files/1/0573/7250/8344/files/Frame_161sub-collection_200x2003_c0babdf9-70b3-4da9-b18b-0b5900cc093f.png?v=1692815151" class="collection-entry"></div>
+        <p class="col-title"><b>Jogger</b></p>
+        </div>
+        <div class="thumbnail-entry"><div class="thumbnail-wrapper"><img src="https://cdn.shopify.com/s/files/1/0573/7250/8344/files/Frame_156sub-collection_200x200_1ee69d81-4c84-4c2e-b9f2-1e378486b20d.png?v=1692815150" class="collection-entry"></div>
+        <p class="col-title"><b>Top</b></p>
+        </div>
+
+        <div class="thumbnail-entry"><div class="thumbnail-wrapper"><img src="https://cdn.shopify.com/s/files/1/0573/7250/8344/files/Frame_161sub-collection_200x2003_c0babdf9-70b3-4da9-b18b-0b5900cc093f.png?v=1692815151" class="collection-entry"></div>
+        <p class="col-title"><b>Jogger</b></p>
+        </div>
+        <div class="thumbnail-entry"><div class="thumbnail-wrapper"><img src="https://cdn.shopify.com/s/files/1/0573/7250/8344/files/Frame_156sub-collection_200x200_1ee69d81-4c84-4c2e-b9f2-1e378486b20d.png?v=1692815150" class="collection-entry"></div>
+        <p class="col-title"><b>Top</b></p>
+        </div>
+
+        <div class="thumbnail-entry"><div class="thumbnail-wrapper"><img src="https://cdn.shopify.com/s/files/1/0573/7250/8344/files/Frame_161sub-collection_200x2003_c0babdf9-70b3-4da9-b18b-0b5900cc093f.png?v=1692815151" class="collection-entry"></div>
+        <p class="col-title"><b>Jogger</b></p>
+        </div>
+        <div class="thumbnail-entry"><div class="thumbnail-wrapper"><img src="https://cdn.shopify.com/s/files/1/0573/7250/8344/files/Frame_156sub-collection_200x200_1ee69d81-4c84-4c2e-b9f2-1e378486b20d.png?v=1692815150" class="collection-entry"></div>
+        <p class="col-title"><b>Top</b></p>
+        </div>
+
+        <div class="thumbnail-entry"><div class="thumbnail-wrapper"><img src="https://cdn.shopify.com/s/files/1/0573/7250/8344/files/Frame_161sub-collection_200x2003_c0babdf9-70b3-4da9-b18b-0b5900cc093f.png?v=1692815151" class="collection-entry"></div>
+        <p class="col-title"><b>Jogger</b></p>
+        </div>
+        <div class="thumbnail-entry"><div class="thumbnail-wrapper"><img src="https://cdn.shopify.com/s/files/1/0573/7250/8344/files/Frame_156sub-collection_200x200_1ee69d81-4c84-4c2e-b9f2-1e378486b20d.png?v=1692815150" class="collection-entry"></div>
+        <p class="col-title"><b>Top</b></p>
+        </div>
+      </div>
+  {% endcomment %}
+</div>
+
+<style>
+@media only screen and (min-width:481px){
+  .slick-list{
+     overflow: hidden;
+    margin: 0;
+    
+    padding: 0;
+    justify-content: flex-end !important;
+  }
+}
+
+  .thumbnail-filter{
+    display:block;
+    padding-top:14px !important;
+    padding-bottom:20px !important;
+    margin-bottom:20px !important;
+    margin-bottom:0 !important;
+  }
+
+  .collection-filter__group{
+    margin-bottom:60px !important;
+  }
+  .collection-filters{
+    /* display:none !important; */
+  }
+  .section-header__title {
+    /* display:none; */
+  }
+  
+    .col-title{
+        text-align:center;
+        font-size:12px;
+        margin-top:10px;
+        margin-bottom:0;
+    }
+    .thumbnail-wrapper img{
+      width:100%;
+    }
+    .thumbnail-wrapper{
+        border-radius:50%;
+        background:#ecf0f1;
+        padding:4px;
+        margin-left:10px;
+        margin-right:10px;
+    }
+    .flexer{
+      display:flex;
+      flex-wrap:wrap;
+      justify-content:flex-start;
+    }
+    .flexer .duo{
+      width:48%;
+    }
+    .collection-title{
+      text-align:left !important;
+      
+    }
+
+    @media only screen and (min-width:481px){
+      .collection-title{ 
+        font-size:32px;
+      }
+    }
+    @media only screen and (max-width:480px){
+      .thumbnail-filter{
+
+      }
+      .collection-filter__inner{
+        padding-top:1px !important;
+        padding-bottom:1px !important;
+      }
+      .collection-filter__group{
+        margin-bottom:8px !important;
+      }
+      .collection-title{
+        margin-bottom:10px;
+        text-align:left !important;
+      }
+      .thumbnail-filter .flexer{
+        display:block;
+        width:100%;
+      }
+      .thumbnail-filter .duo{
+        width:100%;
+      }
+      .collection-filter__wrapper{
+        padding-bottom: 0;
+      }
+      .thumbnail-filter{
+        margin-bottom:0 !important;
+        padding-bottom:0 !important;
+      }
+    }
+    {% unless section.settings.title_enable %}
+      .flexer .duo{
+        width:100% !important;
+        flex: 0 0 100% !important;
+        display:flex;
+        flex-wrap:wrap;
+        justify-content: center;
+      }
+      .flexer .duo,
+      .slick-slider{
+        width:100%;
+        justify-content: center !important;
+      }  
+    {% endunless %}
+</style>
+{% schema %}
+  {
+    "name": "Thumbnail Slider",
+    "settings": [
+      {
+        "type": "checkbox",
+        "id": "title_enable",
+        "label": "Enable title combinations"
+      }
+    ],
+    "blocks": [
+      {
+        "type": "Image",
+        "name": "Thumbnail Collection",
+        "settings": [
+          {
+            "type": "image_picker",
+            "id": "image_thumbnail",
+            "label": "Image"
+          },
+          {
+            "type": "text",
+            "id": "collection_title",
+            "label": "Collection Title"
+          },
+          {
+          "id": "linkurl",
+          "type": "url",
+          "label": "URL link"
+           }
+        ]
+      }
+    ],
+    "presets": [{
+      "name": "Custom HTML",
+      "category": "Text"
+    }]
+  }
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+

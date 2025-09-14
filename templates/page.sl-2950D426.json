@@ -1,0 +1,323 @@
+{
+  "sections": {
+    "annoucement_K9h9wz": {
+      "type": "annoucement",
+      "settings": {
+        "a_text1": "OVER 50, 000 COMFY DOCS AND NURSES",
+        "a_text2": ""
+      }
+    },
+    "custom_html_y8fDJx": {
+      "type": "custom-html",
+      "settings": {
+        "custom_html": "<img data-swift-lazy=\"1\" loading=\"lazy\" class=\"\" src=\"\/\/www.drwoofapparel.com.au\/cdn\/shop\/files\/Horizontal_logo_transparent_background_blue_2_7dc8a8de-20c6-4155-8747-0810a5b4b5e0_210x.png?v=1704080588\" srcset=\"\/\/www.drwoofapparel.com.au\/cdn\/shop\/files\/Horizontal_logo_transparent_background_blue_2_7dc8a8de-20c6-4155-8747-0810a5b4b5e0_210x.png?v=1704080588 1x, \/\/www.drwoofapparel.com.au\/cdn\/shop\/files\/Horizontal_logo_transparent_background_blue_2_7dc8a8de-20c6-4155-8747-0810a5b4b5e0_210x@2x.png?v=1704080588 2x\" alt=\"Dr. Woof Apparel AU\" style=\"display:block;margin:30px auto 0;\">"
+      }
+    },
+    "a155aa5c-40ac-40b5-8a70-5059e600e448": {
+      "type": "headerv2",
+      "blocks": {
+        "16c1b801-5445-4096-9718-10b5b06f0f49": {
+          "type": "list",
+          "settings": {
+            "text_list": "Fatigue-busting graduated compression",
+            "icon_image": "shopify:\/\/shop_images\/badge1_c6034989-69e7-40b0-9b9c-20fc1d4303f4.png"
+          }
+        },
+        "57eaf7c2-b51a-429f-9c6b-d84222894a17": {
+          "type": "list",
+          "settings": {
+            "text_list": "Varicose veins prevention",
+            "icon_image": "shopify:\/\/shop_images\/badge1_c6034989-69e7-40b0-9b9c-20fc1d4303f4.png"
+          }
+        },
+        "list_nG8cQ9": {
+          "type": "list",
+          "settings": {
+            "text_list": "Proudly designed in Australia",
+            "icon_image": "shopify:\/\/shop_images\/badge1_c6034989-69e7-40b0-9b9c-20fc1d4303f4.png"
+          }
+        },
+        "6046898d-b597-4393-b1e3-032f2c454626": {
+          "type": "list",
+          "settings": {
+            "text_list": "Cushioned luxury for your feet",
+            "icon_image": "shopify:\/\/shop_images\/badge1_c6034989-69e7-40b0-9b9c-20fc1d4303f4.png"
+          }
+        },
+        "list_BaVwdk": {
+          "type": "list",
+          "settings": {
+            "text_list": "Cute & trendy designs",
+            "icon_image": "shopify:\/\/shop_images\/badge1_c6034989-69e7-40b0-9b9c-20fc1d4303f4.png"
+          }
+        },
+        "list_x97hrA": {
+          "type": "list",
+          "settings": {
+            "text_list": "60-Day money back guarantee",
+            "icon_image": "shopify:\/\/shop_images\/badge1_c6034989-69e7-40b0-9b9c-20fc1d4303f4.png"
+          }
+        }
+      },
+      "block_order": [
+        "16c1b801-5445-4096-9718-10b5b06f0f49",
+        "57eaf7c2-b51a-429f-9c6b-d84222894a17",
+        "list_nG8cQ9",
+        "6046898d-b597-4393-b1e3-032f2c454626",
+        "list_BaVwdk",
+        "list_x97hrA"
+      ],
+      "settings": {
+        "colored_header": "",
+        "colored_header_size": 16,
+        "colored_header_size_mobile": 18,
+        "header_color": "#ffffff",
+        "added_bigger_button_hero": false,
+        "added_date": true,
+        "enable_men": true,
+        "hide_review_stars": true,
+        "top_mode": true,
+        "light_theme": false,
+        "main_header": "6 Hilarious Reasons Why Aussie Nurses are Ditching Their Old Socks for Dr. Woof's Compression Marvels",
+        "main_header_size": 40,
+        "main_header_size_mobile": 32,
+        "main_header_space": 40,
+        "content": "Hey there, Florence Nightingale! Tired of your feet feeling like they've run a marathon after every shift? Well, slip into something more comfortable (and slightly less delusional than those post-night shift thoughts). Here's why your fellow nurses are kicking off their old socks and embracing the Dr. Woof life:",
+        "textaroundtop": "",
+        "textaroundbottom": "",
+        "button_text_1": "Order Now & Save Up To 35%",
+        "button_1_url": "shopify:\/\/collections\/compression-socks",
+        "button_text_2": "",
+        "button_2_url": "",
+        "header_image": "shopify:\/\/shop_images\/Copy_of_Compression_Socks_Listicle_-_6_Reasons_Why.jpg",
+        "mobile_image": "shopify:\/\/shop_images\/Copy_of_Compression_Socks_Listicle_-_6_Reasons_Why.jpg",
+        "bg_color": "#ffffff",
+        "margin-top": 0,
+        "margin-bottom": 20
+      }
+    },
+    "68681b12-95a9-4f19-8144-7b29406c141b": {
+      "type": "twocollist",
+      "blocks": {
+        "9e75c267-5f40-4a7f-b782-ee506ff29a05": {
+          "type": "list",
+          "settings": {
+            "list_image": "shopify:\/\/shop_images\/Compression_Socks_Listicle_-_6_Reasons_Why_4.jpg",
+            "list_title": "1. Graduated Compression: Because Your Legs Deserve a Promotion Too",
+            "list_text": "Let's face it, you've been waiting for that Nurse Unit Manager position forever. While we can't fast-track your career, we can give your legs the upgrade they deserve. Our 15-20mmHg compression is like a gentle hug for your calves – minus the awkward \"how long do we keep hugging?\" moment.",
+            "button_text": "",
+            "button_url": ""
+          }
+        },
+        "38994c72-bee0-4291-9231-8d197500fad9": {
+          "type": "list",
+          "settings": {
+            "list_image": "shopify:\/\/shop_images\/Compression_Socks_Listicle_-_6_Reasons_Why_1.jpg",
+            "list_title": "2. Varicose Vein Prevention: Spider-Man's Got Nothing on These Threads",
+            "list_text": "Forget radioactive spiders. The real superpower is preventing those pesky varicose veins that come with the job. Our socks are like kryptonite to venous insufficiency – because the only blue lines you should be dealing with are the ones on your patients' charts.",
+            "button_text": "",
+            "button_url": ""
+          }
+        },
+        "list_6pBr9c": {
+          "type": "list",
+          "settings": {
+            "list_image": "shopify:\/\/shop_images\/RonSOCKs_-_Made_with_Clipchamp.gif",
+            "list_title": "3. Proudly Aussie: No Dropbear Sightings Guaranteed",
+            "list_text": "Designed Down Under by a family of Aussie docs who probably surf to work. These socks are as Aussie as a kangaroo eating Vegemite (but significantly more comfortable). Plus, they're dropbear-resistant – a critical feature for those night shifts when anything seems possible.",
+            "button_text": "",
+            "button_url": ""
+          }
+        },
+        "list_T6RnyN": {
+          "type": "list",
+          "settings": {
+            "list_image": "shopify:\/\/shop_images\/Compression_Socks_Listicle_-_6_Reasons_Why_7.jpg",
+            "list_title": "4. Cushioned Luxury: Like Walking on Patient's Jell-O (But Way Less Gross)",
+            "list_text": "Remember that time you had to empty all the Jell-O cups because of a unit-wide clear liquid diet? Imagine that squishiness, but for your feet, and without the sticky mess. Our extra padding is so comfy, you might forget you're not actually walking on clouds (or perfectly set Jell-O).",
+            "button_text": "",
+            "button_url": ""
+          }
+        },
+        "list_kFJEBz": {
+          "type": "list",
+          "settings": {
+            "list_image": "shopify:\/\/shop_images\/Compression_Socks_Listicle_-_6_Reasons_Why_5.jpg",
+            "list_title": "5. Cute & Trendy: Fashionable Enough to Make Even Those Paper Gowns Jealous",
+            "list_text": "Why should your scrubs have all the fun? Our designs are so cute, they might just distract patients from asking \"Is it time for my pain meds?\" for the 47th time this hour. Warning: May cause extreme sock envy among colleagues.",
+            "button_text": "",
+            "button_url": ""
+          }
+        },
+        "list_nDFFEC": {
+          "type": "list",
+          "settings": {
+            "list_image": "shopify:\/\/shop_images\/Compression_Socks_Listicle_-_6_Reasons_Why_6.jpg",
+            "list_title": "6. 60-Day Guarantee: Longer Than Your Longest Shift (We Hope)",
+            "list_text": "Not convinced? Try them for 60 days. That's longer than your worst stretch of night shifts, longer than the time it takes to get an ortho consult, and definitely longer than your patience when someone says, \"You're just a nurse.\" If you don't love them, we'll take them back – no questions asked (except maybe \"Are you feeling okay? Should we check your temperature?\").",
+            "button_text": "",
+            "button_url": ""
+          }
+        }
+      },
+      "block_order": [
+        "9e75c267-5f40-4a7f-b782-ee506ff29a05",
+        "38994c72-bee0-4291-9231-8d197500fad9",
+        "list_6pBr9c",
+        "list_T6RnyN",
+        "list_kFJEBz",
+        "list_nDFFEC"
+      ],
+      "settings": {
+        "deskmartop": 40,
+        "deskmarbot": 40,
+        "mobmartop": 20,
+        "mobmarbot": 20
+      }
+    },
+    "featured_content_taXBFd": {
+      "type": "featured-content",
+      "settings": {
+        "title": "",
+        "text": "<p>Don't let another shift pass with sad, unsupported feet. Join the ranks of happy nurses who've discovered the joy of Dr. Woof's Compression Socks. Your feet will thank you, your legs will thank you, and who knows? Maybe that one doctor will finally learn your name.<\/p><p><strong>Order now, before the night shift delirium kicks in and you convince yourself you don't need them!<\/strong><\/p><p>P.S. Studies show that 9 out of 10 nurses prefer Dr. Woof's socks over traditional compression stockings. The 10th nurse was too busy looking for the patient's missing TV remote to participate in the survey.<\/p>",
+        "align_text": "center",
+        "narrow_column": false,
+        "enlarge_text": true,
+        "alt": true
+      }
+    },
+    "advanced_content_3944XJ": {
+      "type": "advanced-content",
+      "blocks": {
+        "image_gebiBr": {
+          "type": "image",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/1_c8801da3-8a8a-4735-ac42-1c99acb6920a.png",
+            "link": "",
+            "width": "33%",
+            "alignment": "top-middle"
+          }
+        },
+        "image_HdwKaU": {
+          "type": "image",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/2_7304abf1-2053-4102-a59d-7f87a51bd467.png",
+            "link": "",
+            "width": "33%",
+            "alignment": "top-middle"
+          }
+        },
+        "image_rmU6dd": {
+          "type": "image",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/4_df93db99-6634-47a7-a901-ac870b57d2fa.png",
+            "link": "",
+            "width": "33%",
+            "alignment": "top-middle"
+          }
+        }
+      },
+      "block_order": [
+        "image_gebiBr",
+        "image_HdwKaU",
+        "image_rmU6dd"
+      ],
+      "settings": {
+        "full_width": false,
+        "space_around": true,
+        "alt": false
+      }
+    },
+    "advanced_content_7w4nzG": {
+      "type": "advanced-content",
+      "blocks": {
+        "image_xVigmp": {
+          "type": "image",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/3_6260f536-f165-487e-8455-96e776ceb057.png",
+            "link": "",
+            "width": "33%",
+            "alignment": "top-middle"
+          }
+        },
+        "image_bxfKbz": {
+          "type": "image",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/5_594e861b-d3f7-4bc7-b845-fcae65857b37.png",
+            "link": "",
+            "width": "33%",
+            "alignment": "top-middle"
+          }
+        },
+        "image_cpHEyi": {
+          "type": "image",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/6_701377d4-4bef-4cc7-a4b8-c80bd3dbdeaf.png",
+            "link": "",
+            "width": "33%",
+            "alignment": "top-middle"
+          }
+        }
+      },
+      "block_order": [
+        "image_xVigmp",
+        "image_bxfKbz",
+        "image_cpHEyi"
+      ],
+      "settings": {
+        "full_width": false,
+        "space_around": true,
+        "alt": false
+      }
+    },
+    "text_and_image_6CTcBf": {
+      "type": "text-and-image",
+      "settings": {
+        "image": "shopify:\/\/shop_images\/RonSOCKs_-_Made_with_Clipchamp_1.gif",
+        "image_width": 700,
+        "subtitle": "",
+        "title": "How To Use Compression Socks",
+        "text": "<p>Pop your hand in, flip 'em inside out, slide your foot in, ease over your heel, roll 'em up, smooth any bumps, and adjust to your vibe.<\/p>",
+        "button_label": "",
+        "button_link": "",
+        "button_style": "primary",
+        "layout": "right",
+        "alt": false
+      }
+    },
+    "adsection_DFck6h": {
+      "type": "adsection",
+      "settings": {
+        "darktheme": true,
+        "deskmartop": 20,
+        "deskmarbot": 20,
+        "mobmartop": 0,
+        "mobmarbot": 30,
+        "bigtext": "BUNDLE DEALS UP TO 35% OFF",
+        "reviewstars_text": "",
+        "bigtextsize": 36,
+        "textbut": "Shop",
+        "buttonlink": "shopify:\/\/collections\/compression-socks",
+        "bgcolor": "#050507"
+      }
+    },
+    "custom_html_3Jq8JP": {
+      "type": "custom-html",
+      "settings": {
+        "custom_html": "<img data-swift-lazy=\"1\" loading=\"lazy\" class=\"\" src=\"\/\/www.drwoofapparel.com.au\/cdn\/shop\/files\/Horizontal_logo_transparent_background_blue_2_7dc8a8de-20c6-4155-8747-0810a5b4b5e0_210x.png?v=1704080588\" srcset=\"\/\/www.drwoofapparel.com.au\/cdn\/shop\/files\/Horizontal_logo_transparent_background_blue_2_7dc8a8de-20c6-4155-8747-0810a5b4b5e0_210x.png?v=1704080588 1x, \/\/www.drwoofapparel.com.au\/cdn\/shop\/files\/Horizontal_logo_transparent_background_blue_2_7dc8a8de-20c6-4155-8747-0810a5b4b5e0_210x@2x.png?v=1704080588 2x\" alt=\"Dr. Woof Apparel AU\" style=\"display:block;margin:0 auto;\">"
+      }
+    }
+  },
+  "order": [
+    "annoucement_K9h9wz",
+    "custom_html_y8fDJx",
+    "a155aa5c-40ac-40b5-8a70-5059e600e448",
+    "68681b12-95a9-4f19-8144-7b29406c141b",
+    "featured_content_taXBFd",
+    "advanced_content_3944XJ",
+    "advanced_content_7w4nzG",
+    "text_and_image_6CTcBf",
+    "adsection_DFck6h",
+    "custom_html_3Jq8JP"
+  ]
+}

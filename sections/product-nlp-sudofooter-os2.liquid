@@ -1,0 +1,797 @@
+{% include "trio" %}
+  <style>
+.sectiongreen {
+  display: none;
+  padding: 0;
+  margin-bottom: 0;
+}
+.sectiongreen img {
+  width: 100%;
+  display: block;
+  height: auto;
+}
+.smalltitle {
+  font-family: 'futuraptbold';
+  font-size: 28px;
+  line-height: 142.7%;
+  text-align: center;
+  color: #050507;
+}
+.footer_text {
+  display: none;
+}
+.notifwarning {
+  background: rgba(237, 192, 69, 0.19);
+  padding: 20px;
+  border: 1px solid #EDC045;
+  border-radius: 8px;
+  margin-bottom: 18px;
+}
+@media only screen and (max-width:480px) {
+  .slick-prev,
+  .slick-next {
+    top: 49% !important;
+  }
+  .notifwarning {
+    display: none;
+  }
+  .dv {
+    display: none;
+  }
+}
+.notifwarning p {
+  color: #000;
+  font-family: 'futurapt';
+  text-align: center;
+  margin-bottom: 0;
+}
+.normal_price,
+.product__price,
+.product-single__prices span.normal_price {
+  
+}
+.green {
+  background: #BDD1BE;
+  padding: 80px 12px;
+}
+.green .fmid img {
+  position: relative;
+  top: -6px;
+}
+.green .flexer {
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+}
+.green .flexer .fmid {
+  flex: 0 0 50%;
+}
+.green .flexer .fleft,
+.green .flexer .fright {
+  flex: 0 0 22%;
+}
+.fright img,
+.fleft img{
+  border-radius:8px;
+  border:1px solid #black;
+}
+.green h2 {
+  color: #050507;
+  font-size: 40px;
+  text-align: center;
+  font-family: 'futuraptbold';
+}
+.mv {
+  display: none !important;
+}
+.dv {
+  display: block
+}
+.mobile-view {
+  display: none !important;
+}
+@media only screen and (max-width:768px) {
+  p.main-textamonials {
+    margin-top: 11px;
+  }
+  .product__main-photos.product__main-photos--slider {
+    padding-bottom: 7px !important;
+  }
+}
+@media only screen and (max-width:480px) {
+  .mobile-view {
+    display: block !important;
+  }
+  .mv {
+    display: block !important;
+  }
+  .dv {
+    display: none !important;
+  }
+}
+</style>
+
+{% comment %}
+THIS SECTION WAS UPDATED BY CASEY. IT USED TO SHOW THE LOOX REVIEW DIV. I'VE MOVED THAT TO- PRODUCT.SECTIONS         
+{% endcomment %}{% assign my_value = product.metafields.sf_product_redirecti.product_redirection_link %}
+  {% if my_value %}
+  <input
+    type="hidden"
+    value="{{ my_value }}"
+    id="metafield_url"> <script>
+    $(document).ready(function() {
+      var get_url_link = $("#metafield_url").val();
+      window.location.href = get_url_link;
+    });
+  </script>
+{% endif %}
+
+
+
+{%- if collection -%}
+  <div class="text-center">
+    <a href="{{ collection.url }}" class="btn btn--tertiary">
+      &xlarr; {{ 'products.general.collection_return' | t: collection: collection.title }}
+    </a>
+  </div>
+{%- endif -%}
+<style>
+  .product__price {
+    color: red !important;
+  }
+  .normal_price .product__price {
+    color: #525252 !important;
+  }
+</style>
+<script>
+
+  // Override default values of shop.strings for each template.
+// Alternate product templates can change values of
+// add to cart button, sold out, and unavailable states here.
+  theme.productStrings = {
+    addToCart: {{ 'products.product.add_to_cart' | t | json }},
+    soldOut: {{ 'products.product.sold_out' | t | json }},
+    unavailable: {{ 'products.product.unavailable' | t | json }}
+  };
+</script>
+<script type="text/javascript">
+  var _learnq = _learnq || [];
+  var item = {
+                                                                                    Name: {{ product.title | json }},
+  ProductID: {{ product.id | json }},
+  Categories: {{ product.collections | map: 'title' | json }},
+  ImageURL: "https:{{ product.featured_image.src | img_url: 'grande' }}",
+  URL: "{{ shop.secure_url }}{{ product.url }}",
+  Brand: {{ product.vendor | json }},
+  Price: {{ product.price | money | json }},
+  CompareAtPrice: {{ product.compare_at_price_max | money | json }}
+  };
+  _learnq.push(['track', 'Viewed Product', item]);
+                                                                                  _learnq.push(['trackViewedItem', {
+                                                                                    Title: item.Name,
+                                                                                    ItemId: item.ProductID,
+                                                                                    Categories: item.Categories,
+                                                                                    ImageUrl: item.ImageURL,
+                                                                                    Url: item.URL,
+                                                                                    Metadata: {
+                                                                                      Brand: item.Brand,
+                                                                                      Price: item.Price,
+                                                                                      CompareAtPrice: item.CompareAtPrice
+                                                                                    }
+                                                                                  }]);</script>
+{% include 'product-content.zipifypages', contentprt: 'footer' %}
+
+<script type="text/javascript">
+  var _learnq = _learnq || [];
+  var item = {
+                                                                                    Name: {{ product.title | json }},
+  ProductID: {{ product.id | json }},
+  Categories: {{ product.collections | map: 'title' | json }},
+  ImageURL: "https:{{ product.featured_image.src | img_url: 'grande' }}",
+  URL: "{{ shop.secure_url }}{{ product.url }}",
+  Brand: {{ product.vendor | json }},
+  Price: {{ product.price | money | json }},
+  CompareAtPrice: {{ product.compare_at_price_max | money | json }}
+  };
+  _learnq.push(['track', 'Viewed Product', item]);
+                                                                                  _learnq.push(['trackViewedItem', {
+                                                                                    Title: item.Name,
+                                                                                    ItemId: item.ProductID,
+                                                                                    Categories: item.Categories,
+                                                                                    ImageUrl: item.ImageURL,
+                                                                                    Url: item.URL,
+                                                                                    Metadata: {
+                                                                                      Brand: item.Brand,
+                                                                                      Price: item.Price,
+                                                                                      CompareAtPrice: item.CompareAtPrice
+                                                                                    }
+                                                                                  }]);</script>
+
+
+
+
+
+<script>
+
+  
+var colorarray = [];
+{% assign colorname = option.name | handleize %}
+{% for tag in all_products["women-classic-6-pocket-joggers"].tags %}
+  {% if tag contains "VariantType" %}
+    {% assign collectiontag = tag | split: " - " %}
+    {% assign colortag = collectiontag[1] %}
+    {% assign messagetag = collectiontag[2] %}colorarray.push('{{ tag }}');
+  {% endif %}
+{% endfor %}
+{% assign colortag = colortag | handleize %}
+{% assign accolor = option.name | handleize %}
+
+
+
+
+  $(document).ready(function(){
+    /*
+    $('.storyslider').slick({ 
+      infinite: true,
+      slidesToShow: 2,
+      arrows: false,
+      slidesToScroll: 1
+    });
+*/
+$('.mainpdpslider').slick({
+dots: true,
+infinite: true,
+arrows: true,
+speed: 300,
+slidesToShow: 1
+});
+    $('.storyslider').slick({
+      infinite: true,
+      slidesToShow: 4,
+      arrows: true,
+      slidesToScroll: 1,
+      responsive: [
+        {
+          breakpoint: 480,
+          settings: {
+            infinite: true,
+            slidesToShow: 2,
+            arrows: false,
+            slidesToScroll: 1
+          }
+        }
+      ]
+    });
+    
+    $(".product__thumbs-sticky").slick({ 
+      slidesToShow: 6, 
+      vertical: !0, 
+      arrows: false,
+      asNavFor: '.Main--ProductPhotos',
+      focusOnSelect: true
+     }),
+    $('.Main--ProductPhotos').slick({
+      centerMode: false,
+      slidesToShow: 1,
+      asNavFor: '.product__thumbs-sticky',  
+      focusOnSelect: true,
+      dots: true,
+      arrows: false,
+      responsive: [
+        {
+          breakpoint: 768,
+          settings: {
+            
+            arrows: false,
+            centerMode: false,
+            slidesToShow:1 
+          }
+        },
+        {
+          breakpoint: 480,
+          settings: {
+            
+            arrows: true,
+            dots: true,
+            initialSlide: 1,
+            centerMode: true,
+            centerPadding: '0',
+            slidesToShow: 1
+          }
+        }
+      ]
+    });
+
+  })
+  $(document).ready(function(){
+    
+    $(".variant-input").on("click",function(){
+      $(this).parents(".variant-wrapper").find(".swatchwrapper img").hide()
+        $(this).find(".swatchwrapper img").show()
+    })
+    /*
+    $('.popslider').slick({ 
+      infinite: true,
+      slidesToShow: 1,
+      slidesToScroll: 1,
+      dots: true,
+      arrows:false,
+      centerMode: true,
+      centerPadding: '40px'
+    });
+*/
+    
+    $('.popslider').slick({
+      infinite: true,
+      slidesToShow: 4,
+      arrows: false,
+      slidesToScroll: 1,
+      responsive: [
+        {
+          breakpoint: 480,
+          settings: {
+            infinite: true,
+            slidesToShow: 1,
+            slidesToScroll: 1,
+            dots: true,
+            arrows:false,
+            centerMode: true,
+            centerPadding: '40px'
+          }
+        }
+      ]
+    });
+
+
+  }) 
+  $(document).ready(function(){
+
+    /* $(".product__thumbs-sticky").slick({ slidesToShow: 6, slidesToScroll: 1, arrows: !1, fade: !1, vertical: !0 })
+    $(".Main--ProductPhotos").slick({ slidesToShow: 1, slidesToScroll: 1, infinite: true, variableWidth: true, arrows: !1, dots: !0, centerMode: true, initialSlide: 0, asNavFor: '.product__thumbs-sticky', focusOnSelect: true })
+    */
+
+    
+    $('.blockslider').slick({ 
+      infinite: true,
+      slidesToShow: 3,
+      arrows: false,
+      slidesToScroll: 1,
+      responsive: [
+        {
+          breakpoint: 480,
+          settings: {
+            infinite: true,
+            slidesToShow: 1,
+            dots:true,
+            arrows: false,
+            slidesToScroll: 1,
+          }
+        }
+      ]
+    });
+
+  
+  }) 
+
+
+</script>
+<style> 
+  #shopify-section-product-recommendations h2.section-header__title.appear-delay{
+    margin-bottom:40px !important
+  }
+  .dv{
+    display:block;
+  }
+  .mv{
+    display:none;
+  }
+  @media only screen and (max-width:480px){
+    .dv{
+      display:none;
+    }
+    .mv{
+      display:block;
+    }       
+  }
+  .mainpdpslider .slick-dots{
+    bottom: -9px;
+  }
+  .mainpdpslider .slick-dots .slick-active{ 
+    background:yellow;
+  }
+  .mainpdpslider .frow{
+    display:flex;
+    flex-wrap:wrap;
+    justify-content: space-between;
+    margin-bottom:2%;
+  }
+  .mainpdpslider .duo{
+    flex:0 0 49%;
+  }
+  .preorderdate{
+    font-weight:800;
+  }
+  #looxReviewsFrame .grid-item-wrap{
+    display:none !important;
+  }
+  .variant__label-info span{
+    font-family: 'futurapt';
+    text-transform: capitalize !important;
+    font-style: normal;
+    color: #C0C0C0;
+    font-weight: 100;
+    font-size: 18px;
+    position: relative;
+    top: -1px;
+    padding-left: 0;
+  }
+  .swatchcheck{
+    display: none;
+    position: absolute;
+    top: 5px;
+    width: 66%;
+    left: 5px;
+    text-align: center;
+  }
+  .swatchwrapper{
+    position:relative;
+  }
+  .product__main-photos .slick-dots li.slick-active button:before{
+    background:#EDC045;
+    position: absolute;
+    left: -1px;
+    top: -1px;
+
+  }
+  
+  afterpay-placement,
+  #placement-1682804059248{
+    display:none !important;
+  }
+  .boxer{
+    max-width:1300px;
+    margin-left:auto;
+    margin-right:auto;
+  }
+  .discountp{
+    background: #EDC045;
+    border-radius: 34px;
+    display: inline-block;
+    padding: 4px 8px !important;
+    text-align: center;
+    width: auto;
+    box-sizing: border-box;
+    color: #0B0D30;
+    font-size: 12px;
+    font-family: 'futurapt';
+    position: relative;
+    top: -3px;
+    display:none !important;
+  }
+  .product-single__prices>*{
+    padding-right:0;
+  }
+  .slick-dots{
+    left:-10px;
+  }
+
+  .site-footer__section.site-footer__section--newsletter.aos-init.aos-animate,
+  .iconcontainer{
+    display:none;
+  }
+  .blockslider{
+    max-width:1300px;
+    margin-left:auto;
+    margin-right:auto;
+    margin-bottom:40px !important;
+  }
+  .blockslider img{
+    width:auto;
+    height:64px;
+
+  }
+  .blockslider .slick-arrow{
+    display:none !important;
+  }
+  .blockslide{
+    display:flex;
+    align-items:center;
+    justify-content:center;
+  }
+  .blockslide img{
+    margin:0 auto;
+  }
+  .flexwrapper{
+    text-align:center;
+  }
+  .flexwrapper img{
+    margin-bottom:20px;
+  }
+  .flexwrapper p{
+    width:87%;
+    margin-left:auto;
+    margin-right:auto;
+  }
+  .blockslider{
+    background:#BDD1BE;
+    padding:80px 40px;
+    margin-bottom:40px;
+  }
+  
+  .Main_bundle_Here .builder_card{
+    border-radius:8px;
+  }
+  .popwrapper{
+    padding-left:10px;
+    padding-right:10px;
+    margin-top: 43px;
+  }
+  .popslider img{
+    border-radius:8px;
+  }
+  .fullwidth{
+    display:block;
+    width:100%;
+    height:auto;
+  }
+  .popslider img{
+    position:relative;
+    left:-40px;
+    margin-right:10px;
+  }
+  .popslider .slick-slide{
+    margin-right:10px;
+  }
+  .title-center{
+    font-family: 'futuraptbold';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 22px;
+    line-height: 29px;
+    text-align: center;
+    color: #050507;
+  }
+  .storyslider{
+    padding-left:10px;
+    margin-bottom:40px;
+  }
+  .storyslider .storyslide{
+    margin:0 10px 0 0;
+    
+    display:block;
+    overflow:hidden;
+  }
+  .storyslider .storyslide img{
+    border-radius:8px;
+  }
+  .storyslider .storyslide p{
+    font-family: 'futurapt';
+    font-style: italic;
+    font-weight: 500;
+    font-size: 15px;
+    line-height: 20px;
+    color: #050507;
+    margin-top:12px;
+  }
+  h1,h2,h3,h4,h5,h6{
+    font-family: 'futuraptbold';
+  }
+  .product-image-main .image-wrap img:not([role="presentation"]){
+    border-radius:8px;
+  }
+  .custtitle,
+  .section-header__title{
+    font-family: 'futurapt'; 
+    font-weight: 700;
+    font-size: 22px;
+    line-height: 29px;
+    text-align: center;
+  }
+  
+.grid__image-ratio {
+  border-radius: 8px;
+  overflow: hidden;
+  }
+  .index-section{
+    margin:0 !important;
+  }
+  .custtitle{
+    text-align:left;
+    padding-left:10px;
+  }
+  div#looxReviews{
+    margin-top:4px;
+  }
+  .trigger-pop-up-2,
+  .trigger-pop-up-1, 
+  .viewdetails
+  {
+    color:#050507; 
+    font-family: 'Oxygen', sans-serif;
+    font-size:14px !important;
+  }
+  .product-single__title{ 
+    font-size: 23px !important;
+    line-height: 28px;
+    color: #050507;
+  }
+  .label.collapsible-trigger,
+  .variant__label,
+  .Main_bundle_Here .builder_card .custom_builder_option label{
+    font-weight:800;
+    font-size:18px !important;
+  }
+  .product-single__prices p{
+    font-size: 13px;
+    line-height: 16px;
+    color: #050507;
+    margin-top:6px; 
+    margin-bottom: 9px !important;
+  }
+  .normal_price .product__price--compare{
+    font-weight: 450;
+    font-size: 18px;
+    line-height: 23px;
+    
+    /* identical to box height */
+
+    text-decoration-line: line-through;
+
+    color: #050507 !important;
+    font-family: futurapt;
+  }
+
+  .options-select{
+    border-color:#E2E2E2;
+    border-radius:8px;
+    color:#050507 !important; 
+    padding:10px 16px 10px 16px !important; 
+  }
+  .product__price{
+    font-size: 18px;
+    line-height: 23px;
+    /* identical to box height */
+    color: #EA3525;
+    font-family: futurapt;
+  }
+  #add_to_cart_box{
+    width: 100%;
+    height: 62px;
+    display: block;
+    margin: 0 auto;
+    left: 10px;
+    top: 1699px;
+    background: #BDD1BE;
+    border:none !important;
+    border-radius: 51px !important;
+    }
+    
+    #add_to_cart_box .add_to_bundle,
+    #add_to_cart_box .bundle_preparing{
+    font-family: 'futuraptbold';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 18px;
+    line-height: 23px;
+    /* identical to box height */
+    
+    text-align: center;
+    
+    color: #050507;
+    }
+    .mainpdpslider .slick-next:before, .mainpdpslider .slick-prev:before{
+      color: #fff;
+      font-size: 40px;
+      display: block;
+      background: #0B0D30;
+      border-radius: 50px;
+      width: 40px !important;
+      height: 40px;
+      text-shadow: none;
+      padding: 0;
+      padding-top: 14px;
+      line-height: 0 !important;
+    }
+  @media only screen and (max-width:490px) {
+    .Main--ProductPhotos .slick-dots{
+      padding: 0 20px;
+      position: relative !important;
+      top: 8px;
+    }
+    .Main--ProductPhotos .slick-next:before, .Main--ProductPhotos .slick-prev:before{
+      color: #fff;
+      font-size: 40px;
+      display: block;
+      background: #0B0D30;
+      border-radius: 50px;
+      width: 40px !important;
+      height: 40px;
+      text-shadow: none;
+      padding: 0;
+      padding-top: 14px;
+      line-height: 0 !important;
+    }
+      /* removed by milski due to weird spacing in LP */
+      /*
+      .product-image-main{
+        padding-right:10px;
+      }
+      */
+
+
+
+
+
+.product-content-right.grid__item.medium-up--two-fifths{
+  margin-top:9px;
+}
+
+.product-single__prices span.normal_price{
+  padding-right:5px;
+}
+.Main_bundle_Here .builder_card{
+  padding:9px;
+} 
+
+.Main_bundle_Here .builder_card .custom_builder_option{
+  margin-top:22px;
+}
+.variant-input{
+  margin-right:5px;
+}
+
+#placement-1682103963417{
+  display:none !important; 
+}
+
+
+
+.grid-product__price{
+  margin-top:0;
+}
+
+.threeway .slick-slide {
+  width: 236px;
+}
+.threeway .product__photos img {
+  height: auto !important;
+}
+.grid-product__price{
+margin-top:-10px;
+}
+#placement-1682064531656{
+    display:none;
+}
+
+
+}
+.left-flexer{
+display:flex;
+justify-content: flex-start;
+flex-wrap:wrap;
+align-items:flex-start;
+}
+.left-flexer .duo{
+flex:0 0 50%;
+}
+.left-flexer .trio{
+flex:0 0 33%;   
+}
+.left-flexer .trio p,
+.left-flexer .duo p{
+font-family: 'futurapt';
+color: #050507;
+text-align:center;
+}
+</style>
+
+
+
+
+
+{% schema %}
+    {
+      "name": "sudofooter",
+      "settings": []
+    }
+{% endschema %}

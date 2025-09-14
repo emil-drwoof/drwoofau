@@ -1,0 +1,117 @@
+{
+  "sections": {
+    "96f6e4f1-b0d8-41f6-a24a-01cebe280f18": {
+      "type": "headerv2",
+      "blocks": {
+        "1447f241-d6d6-4d8d-8766-3af674abea6a": {
+          "type": "list",
+          "settings": {
+            "text_list": "Softer than pyjamas",
+            "icon_image": "shopify:\/\/shop_images\/badge1_33f85e9a-0a63-410e-83fa-c660087a4cda.png"
+          }
+        },
+        "99ca54b1-89b3-4ff0-9e9c-753bb5da3087": {
+          "type": "list",
+          "settings": {
+            "text_list": "9-functional pockets designed for healthcare",
+            "icon_image": "shopify:\/\/shop_images\/badge1_33f85e9a-0a63-410e-83fa-c660087a4cda.png"
+          }
+        },
+        "c0c074c7-8802-44bc-9415-d9c21f1eb030": {
+          "type": "list",
+          "settings": {
+            "text_list": "Ultra-high quality with 60-day return guarantee",
+            "icon_image": "shopify:\/\/shop_images\/badge1_33f85e9a-0a63-410e-83fa-c660087a4cda.png"
+          }
+        }
+      },
+      "block_order": [
+        "1447f241-d6d6-4d8d-8766-3af674abea6a",
+        "99ca54b1-89b3-4ff0-9e9c-753bb5da3087",
+        "c0c074c7-8802-44bc-9415-d9c21f1eb030"
+      ],
+      "settings": {
+        "colored_header": "TRUSTED BY 40,000+ COMFY AUSSIE NURSES & DOCTORS",
+        "header_color": "#d0c4f1",
+        "light_theme": true,
+        "main_header": "Scrubs you can wear and wear",
+        "content": "",
+        "button_text_1": "SHOP YOUR SET",
+        "button_1_url": "",
+        "button_text_2": "",
+        "button_2_url": "",
+        "header_image": "shopify:\/\/shop_images\/DESKTOP_NEW_BANNER_THUMBNAIL_5.png",
+        "mobile_image": "shopify:\/\/shop_images\/MOBILE_NEW_BANNER_THUMBNAIL_3.png",
+        "bg_color": "#5d3f89",
+        "margin-top": 0,
+        "margin-bottom": 20
+      }
+    },
+    "product-template": {
+      "type": "product-template-nlp-os2",
+      "settings": {
+        "enable_abtesting": true,
+        "enable_abtesting2": true,
+        "enable_abtesting3": false,
+        "enable_abtesting5": true,
+        "product_image_size": "large",
+        "product_image_type": "slider",
+        "product_zoom_enable": false,
+        "enable_video_looping": false,
+        "product_video_style": "muted",
+        "enable_payment_button": false,
+        "product_shipping_callout": "",
+        "variant_type": "button",
+        "variant_labels_enable": true,
+        "sku_enable": false,
+        "inventory_enable": false,
+        "inventory_threshold": 10,
+        "inventory_transfers_enable": false,
+        "quantity_enable": false,
+        "social_enable": true,
+        "txt": "",
+        "txt_": "",
+        "color_link": "#2980b9",
+        "txt1": "",
+        "txt2": "",
+        "txt3": "",
+        "txt4": "",
+        "txt5": "",
+        "txt6": "",
+        "txt7": "",
+        "txt8": "",
+        "txt9": "",
+        "txt10": "",
+        "txt11": ""
+      }
+    },
+    "stories": {
+      "type": "product-sections-bundle-os2",
+      "settings": {}
+    },
+    "reviews": {
+      "type": "looxreviews",
+      "settings": {}
+    },
+    "recommendations": {
+      "type": "product-recommendations",
+      "settings": {
+        "show_product_recommendations": true,
+        "product_recommendations_heading": "You may also like",
+        "per_row": "small"
+      }
+    },
+    "sudofooter": {
+      "type": "product-nlp-sudofooter-os2",
+      "settings": {}
+    }
+  },
+  "order": [
+    "96f6e4f1-b0d8-41f6-a24a-01cebe280f18",
+    "product-template",
+    "stories",
+    "reviews",
+    "recommendations",
+    "sudofooter"
+  ]
+}

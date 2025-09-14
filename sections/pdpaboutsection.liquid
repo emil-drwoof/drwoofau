@@ -1,0 +1,125 @@
+{% comment %}
+  Full Width Responsive Image Section
+  Shows desktop image on larger screens, mobile image on 480px and below
+{% endcomment %}
+
+<div class="fullwidth-image-section">
+  {% if section.settings.desktop_image != blank or section.settings.mobile_image != blank %}
+    <div class="image-container">
+      {% if section.settings.desktop_image != blank %}
+        <img class="desktop-image" 
+             src="{{ section.settings.desktop_image | image_url: width: 1920 }}"
+             srcset="{{ section.settings.desktop_image | image_url: width: 768 }} 768w,
+                     {{ section.settings.desktop_image | image_url: width: 1024 }} 1024w,
+                     {{ section.settings.desktop_image | image_url: width: 1440 }} 1440w,
+                     {{ section.settings.desktop_image | image_url: width: 1920 }} 1920w"
+             sizes="100vw"
+             alt="{{ section.settings.alt_text | default: 'Full width image' }}"
+             loading="lazy">
+      {% endif %}
+      
+      {% if section.settings.mobile_image != blank %}
+        <img class="mobile-image" 
+             src="{{ section.settings.mobile_image | image_url: width: original }}"
+             alt="{{ section.settings.alt_text | default: 'Full width image' }}"
+             loading="lazy">
+      {% endif %}
+    </div>
+  {% else %}
+    <div class="placeholder">
+      <p>Add desktop and mobile images in the section settings</p>
+    </div>
+  {% endif %}
+</div>
+
+<style>
+  .fullwidth-image-section {
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    line-height: 0;
+  }
+
+  .image-container {
+    position: relative;
+    width: 100%;
+    display: block;
+  }
+
+  .desktop-image,
+  .mobile-image {
+    width: 100%;
+    height: auto;
+    display: block;
+    margin: 0;
+    padding: 0;
+  }
+
+  .desktop-image {
+    display: none;
+  }
+
+  .mobile-image {
+    display: none;
+  }
+
+  .placeholder {
+    background: #f5f5f5;
+    padding: 60px 20px;
+    text-align: center;
+    color: #666;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  }
+
+  .placeholder p {
+    margin: 0;
+    font-size: 16px;
+  }
+
+  /* Mobile breakpoint - 480px and below */
+  @media (max-width: 480px) {
+    .desktop-image {
+      display: none;
+    }
+    
+    .mobile-image {
+      display: block;
+    }
+  }
+
+  /* Ensure no gaps or spacing issues */
+  .fullwidth-image-section * {
+    box-sizing: border-box;
+  }
+</style>
+
+{% schema %}
+{
+  "name": "Full Width Image",
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "desktop_image",
+      "label": "Desktop image",
+      "info": "Recommended: 1920px wide or larger"
+    },
+    {
+      "type": "image_picker",
+      "id": "mobile_image",
+      "label": "Mobile image",
+      "info": "Recommended: 480px wide, shows on screens 480px and below"
+    },
+    {
+      "type": "text",
+      "id": "alt_text",
+      "label": "Alt text",
+      "info": "Describe the image for accessibility"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Full Width Image"
+    }
+  ]
+}
+{% endschema %}

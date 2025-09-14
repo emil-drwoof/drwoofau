@@ -1,0 +1,109 @@
+<div class="boxer">
+  <h2 class="title-center">20,000+ Happy Nurses</h2>
+  <div class="storyslider">
+  
+    <div class="storyslide">
+      {% assign video1 = product.metafields.sf_sliders.story_video_1 %}
+      {% assign pic1 = product.metafields.sf_sliders.story_pic_1 %}
+      
+      {% if video1 %}
+        <video controls style="width:100%;height:auto;">
+          <source src="{{ video1 }}" type="video/mp4">
+        Your browser does not support the video tag.
+        </video>
+
+        {% assign videotext1 = product.metafields.sf_sliders.story_text_1 %}
+        {% if videotext1 %}
+          <p><i>{{ videotext1 }}</i></p>  
+        {% else %}
+        <p><i>"The most comfortable scrubs EVER"</i></p>  
+        {% endif %}
+
+      {% else %}
+
+      {% if pic1 %}
+        <img alt="drwoofapparel" src="{{ pic1 }}">  
+        <p><i>{{ videotext1 }}</i></p>  
+      {% else %}  
+        <img alt="Marissa's set" src="https://cdn.shopify.com/s/files/1/0573/7250/8344/files/27_360x_4070e078-edae-4bbf-aaea-2bb72f5d9a72.jpg?v=1682207827">  
+        <p><i>"The most comfortable scrubs EVER"</i></p>  
+      {% endif %}
+      {% endif %}
+    </div>
+    <div class="storyslide">
+      {% assign video2 = product.metafields.sf_sliders.story_video_2 %}
+      {% assign pic2 = product.metafields.sf_sliders.story_pic_2 %}
+      {% if video2 %}
+        <video controls style="width:100%;height:auto;">
+          <source src="{{ video2 }}" type="video/mp4">
+        Your browser does not support the video tag.
+        </video>
+        {% assign videotext2 = product.metafields.sf_sliders.story_text_2 %}
+        {% if videotext2 %}
+          <p><i>{{ videotext2 }}</i></p>  
+        {% else %}
+          <p><i>"Their sets are soo flattering"</i></p>
+        {% endif %}
+      {% else %}
+        {% if pic2 %}
+          <img alt="drwoofapparel" src="{{ pic2 }}">  
+          <p><i>{{ videotext2 }}</i></p>  
+        {% else %} 
+          <img alt="AN'S Set" src="https://cdn.shopify.com/s/files/1/0573/7250/8344/files/28_360x_b58ee703-f345-4da9-9760-87e5f5939bef.jpg?v=1682207827">  
+          <p><i>"Their sets are soo flattering"</i></p>
+        {% endif %}
+      {% endif %}
+
+    </div>
+    <div class="storyslide">
+      {% assign video3 = product.metafields.sf_sliders.story_video_3 %}
+      {% assign pic3 = product.metafields.sf_sliders.story_pic_3 %}
+      {% if video3 %}
+        <video controls style="width:100%;height:auto;">
+          <source src="{{ video3 }}" type="video/mp4">
+        Your browser does not support the video tag.
+        </video>
+        {% assign videotext3 = product.metafields.sf_sliders.story_text_3 %}
+        {% if videotext3 %}
+          <p><i>{{ videotext3 }}</i></p>  
+        {% else %}
+          <p><i>"Their sets are soo flattering"</i></p>
+        {% endif %}
+      {% else %}
+        {% if pic3 %}
+          <img alt="drwoofapparel" src="{{ pic3 }}">  
+          <p><i>{{ videotext3 }}</i></p>  
+        {% else %} 
+          <img alt="BETH's Set" src="https://cdn.shopify.com/s/files/1/0573/7250/8344/files/25_360x_ba96f7bd-5ab1-488c-a519-36710b27cbac.jpg?v=1682207827">
+          <p><i>"The most comfortable scrubs EVER"</i></p>
+        {% endif %}
+      {% endif %}
+
+    </div>
+    <div class="storyslide">
+      {% assign video4 = product.metafields.sf_sliders.story_video_4 %}
+      {% assign pic4 = product.metafields.sf_sliders.story_pic_4 %}
+      {% if video4 %}
+        <video controls style="width:100%;height:auto;">
+          <source src="{{ video4 }}" type="video/mp4">
+        Your browser does not support the video tag.
+        </video>
+        {% assign videotext4 = product.metafields.sf_sliders.story_text_4 %}
+        {% if videotext4 %}
+          <p><i>{{ videotext4 }}</i></p>  
+        {% else %}
+          <p><i>"Their sets are soo flattering"</i></p>
+        {% endif %}
+      {% else %}
+        {% if pic4 %}
+          <img alt="drwoofapparel" src="{{ pic4 }}">  
+          <p><i>{{ videotext4 }}</i></p>  
+        {% else %}     
+          <img alt="GIGI'S Set" src="https://cdn.shopify.com/s/files/1/0573/7250/8344/files/26_360x_2e5fe417-c0c8-4973-b03f-e9043b06f2fa.jpg?v=1682207827">  
+          <p><i>"Their sets are soo flattering"</i></p>
+        {% endif %}
+      {% endif %}
+    </div>
+  </div>
+</div>
+

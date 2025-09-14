@@ -1,0 +1,3791 @@
+<!-- snippets/product-template-sock-wide.liquid -->
+<script>
+  if (typeof jQuery === 'undefined') {
+    var script = document.createElement('script');
+    script.src = "https://code.jquery.com/jquery-3.6.0.min.js";
+    script.integrity = "sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=";
+    script.crossOrigin = "anonymous";
+    document.head.appendChild(script);
+  }
+</script>
+<style>
+
+/* Import Outfit font */
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+
+@font-face {
+    font-family: futuraptbold;
+    font-weight: bold;
+    src: url("https://cdn.shopify.com/s/files/1/0573/7250/8344/files/FuturaPTBold.otf?v=1682068317") format("opentype");
+}
+@font-face {
+    font-family: futurapt;
+    font-weight: normal;
+    src: url("https://cdn.shopify.com/s/files/1/0573/7250/8344/files/FuturaPTMedium.otf?v=1682068317") format("opentype");
+}
+@media only screen and (max-width:480px){
+  .product-content-right{
+    position:relative;
+    top:-8px;
+    padding-left:35px !important;
+  }
+}
+.hide-preorder {
+  display: none !important;
+}
+
+#preorder-text{
+  display:none;
+}
+
+.photos-fixed {
+  position: fixed;
+}
+.photos-relative {
+  position: relative;
+}
+
+.loved-by-thousands {
+  font-family: 'Outfit', sans-serif;
+  padding-top:24px;  
+}
+#Reviews-8742084247810{
+  display:none !important;
+}
+.loved-by-thousands h2 {
+   font-family: 'Outfit', sans-serif !important;
+font-size: 18px;
+    margin-bottom: 16px;
+    font-weight: 500;
+}
+
+.video-scroller {
+  display: flex;
+  overflow-x: auto;
+  gap: 8px;
+  /* scrollbar-width: none;  */
+  /* Firefox */
+}
+
+.video-scroller::-webkit-scrollbar {
+ /* display: none; */
+ /* Chrome, Safari, Edge */
+}
+.video-wrapper {
+  position: relative;
+  border-radius: 12px;
+  overflow: hidden;
+  padding-bottom:0 !important;
+}
+
+.play-button {
+    position: absolute;
+    top: 90px;
+    left: 57px;
+    width: 50px;
+    height: 50px;
+    cursor: pointer;
+    transition: transform 0.2s;
+}
+.play-button:hover {
+  
+}
+
+.video-card {
+  flex:  0 0 140px;
+}
+
+.video-card video {
+  width: 100%;
+  border-radius: 12px;
+
+}
+
+.video-card p {
+  font-size: 14px;
+  margin-top: 8px;
+}
+
+.video-wrapper iframe, .video-wrapper video{
+  position:static !important;
+}
+
+
+.woof-faq {
+  font-family: 'Outfit', sans-serif;
+  font-size: 14px;
+  font-weight: 400;
+}
+
+.woof-accordion-header {
+  font-family: 'Outfit', sans-serif !important;
+  width: 100%;
+  padding: 16px 0;
+  background: none;
+  border: none;
+  outline: none;
+  text-align: left;
+  position: relative;
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 1px solid #e0e0e0;
+  font-weight:400 !important;
+  font-size:14px;
+  text-transform:capitalize;
+  border-radius:0 !important;
+}
+
+.woof-accordion-header .icon {
+  font-weight: 400;
+  font-size: 14px;
+  margin-left: 12px;
+  transition: transform 0.3s ease;
+}
+
+.woof-accordion-content {
+  font-family: 'Outfit', sans-serif !important;
+  display: none;
+  padding: 10px 0;
+  border-bottom: 1px solid #e0e0e0;
+}
+
+.woof-accordion-header.mactive .icon {
+  content: "-";  
+}
+
+
+    /* global */
+    .announcement__wrapper{
+      background-color:#000 !important;
+    }
+    .announcement .announcement__text{
+      font-size:12px;
+      font-weight:700;
+      color:#fff !important;
+      font-family: 'Outfit', sans-serif;
+      text-transform: uppercase;
+    }
+    .collapsible-trigger{
+      font-family: 'Outfit', sans-serif !important;
+    }
+    .collapsible-content__inner.rte{
+      font-family: 'Outfit', sans-serif !important;
+      font-weight:400 !important
+    }
+    .collapsible-content__inner.rte p,
+    .collapsible-content__inner.rte strong,
+    .collapsible-content__inner.rte b,
+    .collapsible-content__inner.rte *{
+      font-family: 'Outfit', sans-serif !important;
+      font-weight:400 !important;
+    }
+    .site-header__logo img{
+      width:116px;
+    }
+    .icon-search,
+    .js-modal-open-search-modal{
+      display:none !important;
+    }
+    ul.slick-dots li.slick-active{
+      background:#000 !important;
+    }
+    /* global */
+.wider{
+  DISPLAY: flex;
+  width: 100%;
+  justify-content: flex-end;
+  position: relative;
+}
+
+.trigger-pop-up.btn{
+  padding: 11px 15px !important;
+  background: #fff !important;
+  color: #050507 !important;
+  border: 1px solid #050507;
+  position: absolute !important;
+  font-size: 14px;
+  font-weight: 400;
+  text-decoration: none;
+  top: -38px !important;
+  line-height: 1em;
+  left: inherit;
+}
+
+.scrubcaps-wrapper{
+      width: 100%;
+      height: 460px;
+      overflow-x: scroll;
+      overflow-y: hidden;
+}
+
+.scrubs-products{
+    width: auto;
+    height: 322px;
+    flex-direction: column;
+    display: flex;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+    gap: 12px;
+}
+
+.scrubs-products::-webkit-scrollbar-track {
+  background: #000;
+  display:none;
+}
+
+.product-options-container {
+  padding: 0;
+  background: white;
+  border-radius: 8px;
+  font-family: 'Outfit', sans-serif;
+}
+
+.rating {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 16px;
+}
+
+.stars {
+  color: #000;
+  font-size: 14px;
+  font-weight: 500;
+  font-family: 'Outfit', sans-serif;
+}
+
+.rating-text {
+  font-size: 12px;
+  color: #000;
+  font-family: 'Outfit', sans-serif;
+}
+
+.trusted-badge {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 12px;
+  color: #000;
+  font-weight: 500;
+  font-family: 'Outfit', sans-serif;
+    background: #FDF5EF;
+    padding: 4px 8px;
+    border-radius: 50px;
+}
+
+.trusted-badge span:first-child {
+  width: 8px;
+  height: 8px;
+  background: #FFF;
+  border-radius: 50%;
+  display: inline-block;
+}
+
+.product-title {
+  font-size: 24px;
+  font-weight: 600;
+  font-family: 'Outfit', sans-serif;
+  margin-bottom: 12px;
+  color: #000;
+  line-height: 1.2;
+}
+
+.product-description {
+  font-size: 14px;
+  color: #000;
+  line-height: 1.5;
+  margin-bottom: 24px;
+  font-weight: 400;
+  font-family: 'Outfit', sans-serif;
+  letter-spacing:0.2px;
+}
+
+.curated-packs {
+  display: flex;
+  gap: 0;
+  justify-content: space-between;
+  margin-bottom: 32px;
+  background: #f8f9fa;
+  border-radius: 8px;
+  padding: 4px;
+  border: 1px solid #e9ecef;
+}
+
+.curated-packs a{
+  flex: 0 0 50%;
+}
+
+.pack-btn {
+  flex: 1;
+  width: 100%;
+  height: 32px !important;
+  background: transparent;
+  border: none;
+  padding: 4px 16px;
+  border-radius: 7px !important;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s;
+  text-transform: none;
+  font-family: 'Outfit', sans-serif;
+  color: #000;
+}
+
+.pack-btn.cactive {
+  background: #000;
+  color: white;
+}
+
+.option-section {
+  margin-bottom: 32px;
+  position: relative;
+}
+
+.option-label {
+  font-size: 16px;
+  font-weight: 600;
+  margin-bottom: 16px;
+  color: #000;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  font-family: 'Outfit', sans-serif;
+}
+
+.option-label .selected-size-text,
+.option-label .selected-type-text{
+  font-weight: 400;
+  color: #000;
+  padding-left: 8px;
+}
+
+.fit-guide {
+    font-size: 10px;
+    color: #000;
+    text-decoration: underline;
+    cursor: pointer;
+    position: absolute;
+    right: 0;
+    font-weight: 500;
+    top: 0;
+    display: block;
+    background: #FDF5EF;
+    padding: 4px 8px;
+    border-radius: 50px;
+}
+
+.fit-guide:hover{
+  text-decoration: underline;
+}
+
+.option-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.option-btn {
+  padding: 4px 20px;
+  border: 1px solid #e0e0e0;
+  background: white;
+  border-radius: 7px !important;
+  height:32px !important;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  color: #000;
+  flex: 1;
+  font-family: 'Outfit', sans-serif;
+  text-align: center;
+  text-transform: capitalize !important;
+}
+
+.option-btn:hover {
+  border-color: #000;
+}
+
+.option-btn.active {
+  border-color: #000;
+  border-width: 2px;
+  background-color: #fff;
+  color: #000;
+}
+
+.styles-section {
+  margin-bottom: 0px;
+}
+
+.styles-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 16px;
+}
+
+.styles-title {
+  font-size: 16px;
+  font-weight: 600;
+  color: #000;
+  margin-bottom: 0;
+  font-family: 'Outfit', sans-serif;
+}
+
+.add-points-text {
+  color: #000;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-family: 'Outfit', sans-serif;
+      font-size: 10px;
+    color: #000;
+    text-decoration: underline;
+    cursor: pointer;
+      display: block;
+    background: #FDF5EF;
+    padding: 4px 8px;
+    border-radius: 50px;
+    height:20px;
+}
+
+.add-points-text span:first-child {
+  width: 6px;
+  height: 6px;
+  background: #000;
+  border-radius: 50%;
+  display: inline-block;
+}
+
+.style-categories {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 20px;
+  width: 100%;
+  overflow-x: auto;
+  flex-wrap: nowrap;
+  padding-bottom: 4px;
+}
+.jactive .sudo-style-count{
+  color:#fff;
+  background:#333;
+  border-radius:50px;
+  padding:2px 4px;
+}
+.category-btn {
+  padding: 8px 16px;
+  border: 1px solid #e0e0e0;
+  background: white;
+  border-radius: 20px;
+  font-size: 12px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  color: #000;
+  white-space: nowrap;
+  font-family: 'Outfit', sans-serif;
+  font-weight: 500;
+  flex-shrink: 0;
+  text-transform: capitalize !important;
+}
+
+.category-btn.jactive {
+  background: #000;
+  color: white;
+  border-color: #000;
+}
+
+.styles-grid {
+  display: flex;
+  gap: 12px;
+  overflow-x: auto;
+  padding: 8px 0;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.styles-grid::-webkit-scrollbar {
+  display: none;
+}
+.collapsible-trigger-btn--borders{
+  text-transform: capitalize !important;
+    font-weight: 400;
+    color: #000;
+    font-size: 14px !important;
+}
+.style-option {
+  min-width: 120px;
+  width: 120px;
+  height: 120px;
+  border: 2px solid #e0e0e0;
+  border-radius: 12px;
+  background-size: cover;
+  background-position: center top; 
+  cursor: pointer;
+  transition: all 0.2s ease;
+  position: relative;
+  overflow: visible;
+  flex-shrink: 0;
+  display: flex !important;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: flex-end;
+  padding: 12px;
+  margin-bottom:8px;
+}
+
+.style-option:hover {
+  border-color: #000;
+}
+
+.style-option.active {
+  border-color: #F5BE15;
+  border-width: 3px;
+}
+
+.style-option.active .viewing-badge {
+  display: flex;
+}
+
+.viewing-badge {
+  display: none;
+  align-items: center;
+  gap: 4px;
+  background: 
+  
+  ;
+  color: #fff;
+  padding: 4px 8px;
+  border-radius: 12px;
+  font-size: 10px;
+  font-weight: 500;
+  align-self: center;
+  font-family: 'Outfit', sans-serif;
+}
+
+.viewing-icon {
+  width: 8px;
+  height: 8px;
+  background: white;
+  border-radius: 50%;
+}
+
+.style-content {
+    display: flex;
+    align-items: flex-end !important;
+    gap: 4px;
+    margin-top: 12px;    
+    width: 100%;
+    z-index: 9999;
+}
+
+.add-btn {
+  background: white;
+  border: 1px solid #ddd;
+  border-radius: 20px !important;
+  padding: 6px 12px;
+  font-size: 11px;
+  font-weight: 600;
+  color: #000;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  width: 100%;
+  text-align: center;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+  font-family: 'Outfit', sans-serif;
+  display: none;
+}
+
+.add-btn:hover {
+  background: #f5f5f5;
+  border-color: #000;
+}
+
+.style-name {
+  color: white;
+  font-size: 10px;
+  text-align: center;
+  font-weight: 500;
+  text-shadow: 0 1px 2px rgba(0,0,0,0.7);
+  margin-bottom: 4px;
+  line-height: 1.2;
+  
+  font-family: 'Outfit', sans-serif;
+}
+
+.add-to-cart-section {
+  margin-top: 0;
+}
+
+.add-to-cart-btn {
+  width: 100%;
+  padding: 16px 20px;
+  background: #000;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 16px;
+  font-weight: 400;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  text-transform: none;
+  font-family: 'Outfit', sans-serif;
+}
+
+.add-to-cart-btn:hover {
+  background: #000;
+}
+
+.add-to-cart-btn.sold-out {
+  background: #999;
+  cursor: not-allowed;
+}
+
+.add-to-cart-btn.sold-out:hover {
+  background: #999;
+}
+
+  .price-info {
+    display: flex;
+    gap: 8px;
+    justify-content: center;
+    align-items: center;
+    margin-left:4px;
+    border-radius: 50px;
+    background:#333;
+    padding:0 12px;
+  }
+
+.original-price {
+  text-decoration: line-through;
+  color: #ccc;
+  font-size: 14px;
+  font-family: 'Outfit', sans-serif;
+}
+
+.sudo-sale-price {
+  font-size: 14px;
+  font-weight: 500;
+  color: white !important;
+  font-family: 'Outfit', sans-serif;
+}
+
+.shipping-info {
+  margin-top: 12px;
+  margin-bottom: 5px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 12px;
+  color: #000;
+  font-family: 'Outfit', sans-serif;
+}
+
+.shipping-badge {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-weight: 500;
+}
+
+.shipping-badge span:first-child {
+  font-size: 8px;
+}
+.shipping-badge svg{
+  display:flex;
+  width:17px;
+  height:32px;
+}
+.hidden {
+  display: none;
+}
+
+@media only screen and (max-width: 480px) {
+  .pack-btn {
+    font-size: 13px;
+    padding: 4px 12px;
+  }
+  
+  .product-title {
+    font-size: 22px;
+  }
+  
+  .option-buttons {
+    gap: 8px;
+  }
+  
+  .option-btn {
+    padding: 12px 16px;
+    font-size: 13px;
+  }
+  
+  .styles-grid {
+    gap: 8px;
+  }
+  
+  .style-option {
+    min-width: 100px;
+    width: 100px;
+    height: 100px;
+  }
+}
+</style>
+<div id="sliderchecker" class="{% if section.settings.threeway %}threeway{% endif %}"></div>
+
+<div  
+  id="ProductSection-{{ section_id }}"
+  class="product-section gohere"
+  data-section-id="{{ section_id }}"
+  data-section-type="product-template"
+  {% if isModal %}
+  data-subsection
+  {% endif %}
+  data-variant-type="{{ variant_type }}"
+  {% if inventory_enable %}
+  data-inventory="true"
+  data-inventory-threshold="{{ inventory_threshold }}"
+  {% endif %}
+  {% if inventory_transfers_enable %}
+  data-incoming-inventory="true"
+  {% endif %}
+  {% if product_image_type == 'stacked' %}
+  data-images-stacked="true"
+  {% endif %}
+  data-video-style="{{ video_style }}"
+  {% unless isModal %}
+  data-enable-history-state="true"
+  {% endunless %}>
+
+  {% include 'product-template-variables' %}
+
+  <div class="page-content">
+    <div class="page-width">
+
+      <div class="grid">
+        <div class="product-image-left grid__item medium-up--one-half">
+
+            {% include 'product-images'
+             , section_id: section_id,
+             isModal: isModal,
+             video_looping: video_looping,
+             video_style: video_style %}
+
+
+          
+          <div class="fullimage ddoo" style="margin-top:0x; margin-bottom:0px">
+            {% if product.metafields.sf_product_bundle.cts_desktop_image_1 %}
+              <img src="{{ product.metafields.sf_product_bundle.cts_desktop_image_1 }}" class="desktopshow" alt="use code scrup">
+            {% endif %}
+            {% if product.metafields.sf_product_bundle.cts_mobile_image_1 %}
+              <img src="{{ product.metafields.sf_product_bundle.cts_mobile_image_1 }}" class="mobileshow" alt="use code scrup">
+            {% endif %}
+          </div>
+
+        </div>
+
+        <div class="product-content-right grid__item medium-up--one-half {% if product_image_type == 'stacked' %} product-single__sticky{% endif %} {{ product.title | truncate: 3, "" }}" data-title="">
+          <div class="product-single__meta">
+
+  
+<style>
+  .product-single__meta{
+    font-family: 'Outfit', sans-serif;
+  }
+  .collapsibles-wrapper--border-bottom{
+    margin-top:30px;
+  }
+  .scrubcaps-wrapper{
+       width: 100%;
+        height: 325px;
+        overflow-x: scroll;
+        overflow-y: hidden;
+        margin-bottom:20px;        
+        padding-bottom:12px;
+  }
+
+.scrubcaps-wrapper {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.scrubcaps-wrapper::-webkit-scrollbar {
+  display: none;
+}
+
+.scroll-indicator {
+  width: 100%;
+  height: 6px;
+  background: #DBDBDB;
+  border-radius: 50px;
+  position: relative;
+  margin-top: -25px;
+  margin-bottom:40px;
+
+}
+@media only screen and (min-width:1201px){
+  .oneway.product__photos.product__photos--beside {
+    width: 600px;
+    position: fixed;
+  }
+}
+@media only screen and (min-width:481px){
+   .scrubcaps-wrapper{
+    height:460px !important;
+   }
+  .scroll-indicator {
+    margin-top: -28px;
+  }
+  .scrubs-products{
+    width:auto;
+    height:460px !important;
+    
+    flex-direction: column;
+  }
+}
+
+.scroll-thumb {
+  width: 60px;
+  height: 6px;
+  background: #000000;
+  border-radius: 50px;
+  position: absolute;
+  transition: left 0.1s ease;
+}
+.video-scroller::-webkit-scrollbar,
+.style-categories::-webkit-scrollbar,
+.product-single__meta::-webkit-scrollbar{
+  scrollbar-color: black !important;
+}
+/* For Firefox to get the rounded appearance */
+@supports (scrollbar-width: thin) {
+  .scrubcaps-wrapper {
+    scrollbar-width: 0;
+    scrollbar-color: #000000 #DBDBDB;
+  }
+}
+  .scrubs-products{
+        width: auto;
+        height: 325px;
+        display: flex;
+        justify-content: flex-start;
+        flex-wrap: wrap;
+        gap:12px;
+  }
+.scrubs-products::-webkit-scrollbar-track {
+  background: #000;
+}
+  .product-options-container {
+    padding: 0;
+    background: white;
+    border-radius: 8px;
+  }
+
+  .rating {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 12px;
+  }
+
+  .stars {
+    color: #000;
+    font-size: 18px;
+    letter-spacing: 0.1px;
+    background: #FDF5EF;
+    padding: 0 8px;
+    border-radius: 50px;
+    height:20px;
+    line-height:18px;
+  }
+  @media only screen and (max-width:393px){
+    .stars {
+      font-size:15px !important;
+    }
+  }
+  .sudoloox{
+    font-size: 10px;
+    font-weight: 400;
+    position: relative;
+    top: -2px;
+  }
+  .rating-text {
+    font-size: 12px;
+    color: #000;
+  }
+
+  .trusted-badge {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    position: relative;
+    font-size: 10px;
+    top: 0px;
+    color: #000;
+    font-weight: 400;
+    height:20px;
+    margin-left: 10px;
+  }
+
+  .product-title {
+    font-size: 24px;
+    
+    margin-bottom: 8px;
+    color: #000;
+  }
+
+  .product-description {
+    font-size: 14px;
+    color: #000;
+    line-height: 1.4;
+    margin-bottom: 44px;
+    font-weight:400;
+  }
+
+  .option-section {
+    margin-bottom: 44px;
+    position:relative;
+  }
+
+  .option-label {
+    font-size: 14px;
+    font-weight: 600;
+    margin-bottom: 12px;
+    color: #000;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+  }
+  .option-label .selected-size-text,
+ .option-label .selected-type-text{
+    font-weight: 400;
+    padding-left:8px;
+  }
+  .fit-guide {
+    font-size: 10px;
+    color: #000;
+    text-decoration: underline;
+    cursor: pointer;
+    position: absolute;
+    right: 0;
+    top: 0;
+  }
+  .fit-guide:hover{
+    text-decoration: underline;
+  }
+  .option-buttons {
+    display: flex;
+    flex-wrap:wrap;
+    justify-content: space-between;
+    gap: 8px;
+    flex-wrap: wrap;
+  }
+
+  .option-btn {
+    padding: 4px 20px;
+    border: 2px solid #e0e0e0;
+    background: white;
+    border-radius: 7px !important;
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    color: #000;
+    flex:1;
+    height:32px;
+  }
+
+  .option-btn:hover {
+    border-color: #000;
+  }
+
+  .option-btn.active {
+    border-color: #000;
+    border-width: 3px;
+    background-color: #f8f9fa;
+  }
+
+  .styles-section {
+    margin-bottom: 0px;
+  }
+
+  .styles-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 12px;
+  }
+
+  .styles-title {
+    font-size: 14px;
+    font-weight: 600;
+    color: #000;
+    margin-bottom:0;
+  }
+
+  .add-points-text {
+    font-size: 10px;
+    color: #000;
+    font-weight:800;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+  }
+
+  .style-categories {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 16px;
+    width: auto;
+    overflow-x: auto;
+    flex-wrap: nowrap;
+  }
+
+  .category-btn {
+    padding: 8px 16px;
+    border: 1px solid #ddd;
+    background: white;
+    border-radius: 20px;
+    font-size: 12px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    color: #000;
+  }
+
+  .category-btn.jactive {
+    background: #000;
+    color: white;
+    border-color: #000;
+  }
+
+  .styles-grid {
+    display: flex;
+    gap: 12px;
+    overflow-x: auto;
+    padding: 8px 0 0;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+  }
+
+  .styles-grid::-webkit-scrollbar {
+    display: none;
+  }
+
+  .style-option {
+    min-width: 100px;
+    width: 100px;
+    height: 100px;
+    border: 2px solid #e0e0e0;
+    border-radius: 12px;
+    background-size: cover;
+    background-position: center top;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    position: relative;
+    overflow: visible;
+    flex-shrink: 0;
+    display: flex !important;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: flex-end;
+    padding: 8px;
+  }
+
+  .style-option:hover {
+    border-color: #000;
+  }
+
+  .style-option.active {
+    border-color: #F5BE15;
+    border-width: 3px;
+  }
+
+  .style-option.active .viewing-badge {
+    display: flex;
+  }
+
+  .viewing-badge {
+    display: none;
+    align-items: center;
+    gap: 4px;
+    background:#795F10;
+    color: white;
+    padding: 4px 8px;
+    border-radius: 12px;
+    font-size: 10px;
+    font-weight: 500;
+    align-self: center;
+  }
+  .thumbnails-add-button{
+    position: absolute;
+    bottom: 6px;
+    left: 6px;
+    background: #fff;
+    color: #000;
+    display: flex;
+    flex-wrap: wrap;
+    border-radius: 50px;
+    width: 84px;
+    height: 28px;
+    font-size: 10px;
+    align-items: center;
+    font-weight: 800;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.2s ease;
+  }
+  
+  .thumbnails-add-button:hover {
+    background: #f0f0f0;
+  }
+  
+  .quantity-controls {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    width: 100%;
+    justify-content: space-between;
+    padding: 0;
+  }
+  
+  .quantity-btn {
+    
+    color: #fff;
+    border: none;
+    border-radius: 50%;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    font-size: 10px;
+    font-weight: bold;
+  }
+  
+  .quantity-btn:hover {
+    
+  }
+  
+  .quantity-btn.trash {
+    font-size: 8px;
+  }
+  
+  .quantity-display {
+    font-size: 12px;
+    font-weight: bold;
+    color: #000;
+  }
+  .viewing-icon {
+    width: 8px;
+    height: 8px;
+    background: white;
+    border-radius: 50%;
+  }
+
+  .style-content {
+    display: flex;
+    align-items:flex-end !important;
+    gap: 4px;
+    margin-top: auto;
+    width: 100%;
+  }
+
+  .add-btn {
+    background: white;
+    border: 1px solid #ddd;
+    border-radius: 50px !important;
+    padding: 8px 12px;
+    font-size: 12px;
+    font-weight: 600;
+    color: #000;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    width: 100%;
+    text-align: center;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+  }
+
+  .add-btn:hover {
+    background: #f5f5f5;
+    border-color: #000;
+  }
+
+  .style-name {
+    color: #000;
+    font-size: 12px;
+    text-align: center;
+    font-weight: 600;
+    text-shadow: none;
+    margin-bottom: 4px;
+    line-height: 1.2;
+  }
+
+  .add-to-cart-section {
+    margin-top: 0px;
+  }
+
+  .add-to-cart-btn {
+    width: 100%;
+    padding: 16px;
+    background: #000;
+    color: white;
+    border: none;
+    border-radius: 7px !important;
+    font-size: 16px;
+    font-weight: 400;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-transform: capitalize !important;
+    gap:12px;
+  }
+
+  .add-to-cart-btn:hover {
+    background: #000;
+  }
+
+  .add-to-cart-btn.sold-out {
+    background: #999;
+    cursor: not-allowed;
+  }
+
+  .add-to-cart-btn.sold-out:hover {
+    background: #999;
+  }
+
+  .price-info {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+    margin-left: 4px;
+    border-radius: 50px;
+    background: #333;
+    padding: 0 12px;
+    width: auto;
+    height: 20px;
+  }
+
+  .original-price {
+    text-decoration: line-through;
+    color: rgba(255, 255, 255, 0.6);
+    font-weight: 100;
+    font-size: 14px;
+  }
+
+  .sudo-sale-price {
+    font-size: 14px;
+    font-weight: 400;
+  }
+
+  .shipping-info {
+    margin-top: 12px;
+    margin-bottom:5px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 12px;
+    color: #000;
+    margin-bottom:20px;
+  }
+
+  .shipping-badge {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+  }
+
+  .hidden {
+    display: none;
+  }
+  @media only screen and (max-width:480px){
+    .page-content{
+      padding-bottom:10px !important;
+    }
+  }
+</style>
+
+<!-- Create variant lookup object -->
+<script>
+  window.productVariants = {
+    {% for variant in product.variants %}
+      "{{ product.id }}-{{ variant.option1 | downcase }}-{{ variant.option2 | downcase }}": {
+        id: {{ variant.id }},
+        inventory: {{ variant.inventory_quantity | default: 0 }},
+        available: {{ variant.available | json }}
+      }{% unless forloop.last %},{% endunless %}
+    {% endfor %}
+    {% paginate collections['new-wide-socks'].products by 200 %}
+      {% for productb in collections['new-wide-socks'].products limit:200 %}
+        {% if productb.available and productb.id != product.id %}
+          {% for variant in productb.variants %}
+            ,"{{ productb.id }}-{{ variant.option1 | downcase }}-{{ variant.option2 | downcase }}": {
+              id: {{ variant.id }},
+              inventory: {{ variant.inventory_quantity | default: 0 }},
+              available: {{ variant.available | json }}
+            }
+          {% endfor %}
+        {% endif %}
+      {% endfor %}
+    {% endpaginate %}
+  };
+
+  function updateThumbnailAddedState(productId) {
+  const styleOption = document.querySelector(`[data-id="${productId}"]`);
+  if (!styleOption) return;
+  
+  // Check if this product has been added to memory
+  let isAdded = false;
+  Object.keys(addedProducts).forEach(key => {
+    if (addedProducts[key].productId == productId) {
+      isAdded = true;
+    }
+  });
+  
+  // Update the visual state
+  if (isAdded) {
+    styleOption.classList.add('added');
+  } else {
+    styleOption.classList.remove('added');
+  }
+  
+  console.log('Updated thumbnail border for product:', productId, 'Added:', isAdded);
+}
+
+</script>
+
+<div class="product-options-container">
+  <!-- Rating and Trust Badge -->
+  <div class="rating">
+    <span class="stars">★★★★★ <span class="sudoloox">4.8/5(511)</span></span>
+    <div class="trusted-badge">
+      <span><svg width="10" height="10" viewBox="0 0 10 10" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M5 10C4.31046 10 3.6634 9.86928 3.05882 9.60784C2.45425 9.34967 1.9232 8.99183 1.46569 8.53431C1.00817 8.07353 0.648693 7.54248 0.387255 6.94118C0.129085 6.3366 0 5.68954 0 5C0 4.31046 0.129085 3.6634 0.387255 3.05882C0.648693 2.45425 1.00817 1.9232 1.46569 1.46569C1.9232 1.00817 2.45425 0.650327 3.05882 0.392157C3.6634 0.130719 4.31046 0 5 0C5.68954 0 6.3366 0.130719 6.94118 0.392157C7.54575 0.650327 8.0768 1.00817 8.53431 1.46569C8.99183 1.9232 9.34967 2.45425 9.60784 3.05882C9.86928 3.6634 10 4.31046 10 5C10 5.68954 9.86928 6.3366 9.60784 6.94118C9.34967 7.54248 8.99183 8.07353 8.53431 8.53431C8.0768 8.99183 7.54575 9.34967 6.94118 9.60784C6.3366 9.86928 5.68954 10 5 10ZM2.20588 5.52941C2.20588 5.68628 2.25327 5.81373 2.34804 5.91177C2.44608 6.00654 2.5719 6.05392 2.72549 6.05392H3.94118V7.2598C3.94118 7.41994 3.98856 7.54902 4.08333 7.64706C4.18137 7.74183 4.30719 7.78922 4.46078 7.78922H5.52941C5.68628 7.78922 5.81209 7.74183 5.90686 7.64706C6.00163 7.54902 6.04902 7.41994 6.04902 7.2598V6.05392H7.26471C7.42157 6.05392 7.54739 6.00654 7.64216 5.91177C7.7402 5.81373 7.78922 5.68628 7.78922 5.52941V4.46078C7.78922 4.30719 7.7402 4.18301 7.64216 4.08824C7.54739 3.9902 7.42157 3.94118 7.26471 3.94118H6.04902V2.73529C6.04902 2.57516 6.00163 2.44771 5.90686 2.35294C5.81209 2.25817 5.68628 2.21078 5.52941 2.21078H4.46078C4.30719 2.21078 4.18137 2.25817 4.08333 2.35294C3.98856 2.44771 3.94118 2.57516 3.94118 2.73529V3.94118H2.72549C2.56863 3.94118 2.44281 3.9902 2.34804 4.08824C2.25327 4.18301 2.20588 4.30719 2.20588 4.46078V5.52941Z" fill="black"/>
+</svg>
+</span>
+      <span>Trusted by Aussie Nurses & Doctors</span>
+    </div>
+  </div>
+
+  <!-- Product Title -->
+  <h1 class="product-title" id="productTitle">{{ product.title }}</h1>
+  
+  <!-- Product Description -->
+  <p class="product-description">
+    Compression socks originally designed by a family of doctors. Boost circulation, prevent swelling & DVT, and support all-day energy with fun designs.
+  </p>
+
+  <div class="curated-packs">
+    <button class="pack-btn cactive" data-pack="singles">Build a Pack</button>
+    <a href="https://www.drwoofapparel.com.au/products/compression-socks-6pack-black"><button class="pack-btn" data-pack="curated">Curated Packs</button></a>     
+  </div>
+
+  <!-- Hidden inputs for variant data -->
+  <input type="hidden" class="sockvarid" value=""/>
+  <input type="hidden" class="capstandardid" value=""/>
+  <input type="hidden" class="capxlid" value=""/>
+  <input type="hidden" class="selected-type" value=""/>
+  <input type="hidden" class="selected-size" value=""/>
+
+  <!-- Type Selection -->
+  <div class="option-section">
+    <div class="option-label">
+      Type: <span class="selected-type-text">Regular Calves</span>
+      <span class="fit-guide size-guide-pop">Fit Guide</span>
+    </div>
+    <div class="option-buttons">
+      <button class="option-btn active" data-type="Regular">Regular Calves</button>
+      <button class="option-btn" data-type="Wide">Wide Calves</button>
+    </div>
+  </div>
+
+  <!-- Size Selection -->
+  <div class="option-section">
+    <div class="option-label">
+      Size: <span class="selected-size-text">Small (Women 5.5-8 | Men 4.5-7)</span>
+      <span class="fit-guide size-guide-pop">Size Guide</span>
+    </div>
+    <div class="option-buttons">
+      <button class="option-btn active" data-size="S">Small</button>
+      <button class="option-btn" data-size="M">Medium</button>
+      <button class="option-btn" data-size="L">Large</button>
+    </div>
+  </div>
+
+  <!-- Choose Styles -->
+  <div class="styles-section">
+    <div class="styles-header">
+      <h3 class="styles-title">Choose styles</h3>
+      <div class="add-points-text">
+<svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M5.99694 12C5.17287 12 4.39776 11.8449 3.6716 11.5347C2.94952 11.2245 2.31311 10.7939 1.76237 10.2429C1.21163 9.69184 0.779194 9.05306 0.465069 8.32653C0.155023 7.6 0 6.82449 0 6C0 5.17551 0.155023 4.4 0.465069 3.67347C0.779194 2.94694 1.21163 2.30816 1.76237 1.75714C2.31311 1.20612 2.94952 0.77551 3.6716 0.465306C4.39776 0.155102 5.17287 0 5.99694 0C6.82101 0 7.59612 0.155102 8.32228 0.465306C9.04844 0.77551 9.68689 1.20612 10.2376 1.75714C10.7884 2.30816 11.2188 2.94694 11.5288 3.67347C11.8429 4.4 12 5.17551 12 6C12 6.82449 11.8429 7.6 11.5288 8.32653C11.2188 9.05306 10.7884 9.69184 10.2376 10.2429C9.68689 10.7939 9.04844 11.2245 8.32228 11.5347C7.59612 11.8449 6.82101 12 5.99694 12ZM4.86486 9.33673H7.39827C7.46762 9.33673 7.52269 9.31633 7.56349 9.27551C7.60428 9.23061 7.62468 9.17551 7.62468 9.1102C7.62468 9.05306 7.60428 9.00204 7.56349 8.95714C7.52269 8.91224 7.46762 8.8898 7.39827 8.8898H6.3641V5.02041C6.3641 4.94694 6.3437 4.88776 6.30291 4.84286C6.26211 4.79388 6.20296 4.76939 6.12545 4.76939H4.9077C4.84243 4.76939 4.78939 4.79184 4.7486 4.83673C4.7078 4.88163 4.6874 4.93469 4.6874 4.99592C4.6874 5.05306 4.7078 5.10408 4.7486 5.14898C4.78939 5.19388 4.84243 5.21633 4.9077 5.21633H5.90515V8.8898H4.86486C4.79959 8.8898 4.74452 8.91224 4.69964 8.95714C4.65885 9.00204 4.63845 9.05306 4.63845 9.1102C4.63845 9.17551 4.65885 9.23061 4.69964 9.27551C4.74452 9.31633 4.79959 9.33673 4.86486 9.33673ZM5.9847 3.50816C6.12749 3.50816 6.24783 3.46122 6.34574 3.36735C6.44365 3.26939 6.49261 3.15102 6.49261 3.01224C6.49261 2.86939 6.44365 2.74898 6.34574 2.65102C6.24783 2.54898 6.12749 2.49796 5.9847 2.49796C5.846 2.49796 5.72565 2.54898 5.62366 2.65102C5.52575 2.74898 5.4768 2.86939 5.4768 3.01224C5.4768 3.15102 5.52575 3.26939 5.62366 3.36735C5.72565 3.46122 5.846 3.50816 5.9847 3.50816Z" fill="black"/>
+</svg>
+
+        <span>Add 2 pairs to receive 10% off</span>
+      </div>
+    </div>
+
+    <!-- Style Categories -->
+    <div class="style-categories">
+      <button class="category-btn jactive" data-category="all">All <span class="sudo-style-count">61</span></button>
+      <button class="category-btn" data-category="animals"> Animals</button>
+      <button class="category-btn" data-category="nature"> Nature</button>   
+      <button class="category-btn" data-category="solids"> Solids</button>   
+      <button class="category-btn" data-category="bestseller"> Best Sellers</button>
+      <button class="category-btn" data-category="new"> New</button>    
+      
+    </div>
+
+    <!-- Styles Grid -->
+    <div class="styles-grid">
+      <!-- Your existing liquid code will go here, modified -->
+      <div class="scrubcaps-wrapper" id="scrollContainer">
+        <div class="scrubs-products">
+          <!-- Replace this section with your paginate loop -->
+          {% paginate collections['new-wide-socks'].products by 200 %}
+            {% for productb in collections['new-wide-socks'].products limit:100 %}
+              {% if productb.available %}
+
+                {% if productb.metafields.custom.design_details %}
+                    {% assign overlayimage = productb.metafields.custom.design_details %}
+                    {% assign overlayimagex = overlayimage | image_url: width: 500, height: 500 %}
+                {% else %}
+                    {% for media in productb.media %}
+                    {% if media.alt contains "Closeup" %}
+                    {% assign overlayimage = media %}
+                    {% assign overlayimagex = overlayimage | img_url: '500x500' %}
+                    {% endif %}
+                    {% endfor %}
+                {% endif %}
+                
+                {% assign style_category = '' %}
+                {% for tag in productb.tags %}
+                  {% if tag contains 'styles -' %}
+                    {% assign style_parts = tag | split: 'styles -' %}
+                    {% assign style_category = style_parts[1] | strip | downcase %}
+                  {% endif %}
+                {% endfor %}
+                <div class="flexerd" data-tag="{{ productb.tags }}" data-id="{{ productb.id }}">
+                <div class="style-option image-overlay" 
+                     data-id="{{ productb.id }}" 
+                     data-title="{{ productb.title }}" 
+                     data-image="{{ productb.images.first | product_img_url: 'medium' }}" 
+                     data-url="{{ productb.url }}" 
+                     data-type="wide" 
+                     data-handle="{{ productb.handle }}" 
+                     data-price="{{ productb.price | money }}" 
+                     data-compare="{{ productb.compare_at_price | money }}"
+                     data-category="{{ style_category }}"
+                     style="background-image: url({{ overlayimagex }});">
+                  
+                  <div class="viewing-badge">
+                    <div class="viewing-icon"></div>
+                    <span>Viewing</span>
+                  </div>
+                  {% comment %}
+                  <div class="thumbnails-add-button" data-product-id="{{ productb.id }}">
+                      <span class="add-text">ADD</span>
+                      <div class="quantity-controls" style="display: none;">
+                        <button class="quantity-btn trash"><svg width="9" height="10" viewBox="0 0 9 10" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path fill-rule="evenodd" clip-rule="evenodd" d="M2.45 1.72501V0.975004C2.45 0.436522 2.88652 0 3.42501 0H5.37501C5.91348 0 6.35001 0.436523 6.35001 0.975004V1.72501H8.42501C8.60451 1.72501 8.75001 1.87051 8.75001 2.05C8.75001 2.22949 8.60451 2.37501 8.42501 2.37501H7.83441L7.51414 9.04795C7.48855 9.58099 7.04893 10 6.51529 10H2.28273C1.75172 10 1.31332 9.585 1.28423 9.05478L0.917828 2.37501H0.325001C0.145508 2.37501 0 2.22949 0 2.05C0 1.87051 0.145508 1.72501 0.325001 1.72501H2.45ZM3.1 0.975004C3.1 0.795508 3.24552 0.650001 3.42501 0.650001H5.37501C5.5545 0.650001 5.70001 0.795508 5.70001 0.975004V1.72501H3.1V0.975004Z" fill="#242424"/>
+</svg>
+</button>
+                        <span class="quantity-display">1</span>
+                        <button class="quantity-btn plus"><svg width="10" height="10" viewBox="0 0 10 10" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M6.11149 3.90374H9.64592C9.9254 3.90374 9.9997 4.1078 9.9997 4.31186C10.003 4.74104 9.93981 5.1658 9.81338 5.57613C9.70248 5.91106 9.55277 6.02196 9.05038 6.02196H6.11149V9.47876C6.11149 9.77709 5.92517 10 5.12446 10C4.32597 10 3.97109 9.86914 3.97109 9.40446V6.02196H0.43887C0.158289 6.02196 0.0839844 5.8179 0.0839844 5.59499C0.0961836 5.17356 0.158288 4.75546 0.270299 4.34956C0.400054 4.01464 0.530918 3.90374 1.0333 3.90374H3.9722V0.521238C3.9722 0.222912 4.15851 0 4.95811 0C5.75771 0 6.11149 0.129755 6.11149 0.576688V3.90374Z" fill="#242424"/>
+</svg>
+</button>
+                      </div>
+                  </div>
+                  {% endcomment %}
+
+                </div>
+                  <div class="style-content">
+                    <div class="style-name">{{ productb.title | remove: "Compression Socks" | remove: "Compression socks" | remove: "compression socks" | remove: "COMPRESSION SOCKS" | remove: "Bamboo" | remove: "bamboo" }}</div>
+                  </div>
+                </div>
+
+              {% endif %}
+            {% endfor %}
+          {% endpaginate %}
+        </div>
+      </div>
+
+    </div>
+          <div class="scroll-indicator">
+        <div class="scroll-thumb" id="scrollThumb"></div>
+      </div>
+  </div>
+
+  <!-- Add to Cart -->
+  <div class="add-to-cart-section">
+    <button class="add-to-cart-btn" id="addToCartBtn">
+      <span id="addToCartText">Add to Cart</span>
+      <div class="price-info">
+        <span class="original-price">$39.00</span>
+        <span class="sudo-sale-price">$35.92</span>
+      </div>
+    </button>
+    <p id="preorder-text">Pre-order now to secure your preferred design. Your entire order will ship once this item becomes available. Thanks for your patience!</p>
+    <div class="shipping-info">
+   <div class="shipping-badge">
+        <span>
+            <svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <circle cx="6" cy="6" r="3" fill="#1E781C"></circle>
+                <circle cx="6" cy="6" r="4.5" stroke="#1E781C" stroke-opacity="0.2" stroke-width="3"></circle>
+            </svg>
+        </span>
+        <span id="arrival-date">Loading...</span>
+    </div>
+      <div class="shipping-badge">
+        <span><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" width="256" height="256" viewBox="0 0 256 256" xml:space="preserve">
+<g style="stroke: none; stroke-width: 0; stroke-dasharray: none; stroke-linecap: butt; stroke-linejoin: miter; stroke-miterlimit: 10; fill: none; fill-rule: nonzero; opacity: 1;" transform="translate(1.4065934065934016 1.4065934065934016) scale(2.81 2.81)">
+	<circle cx="45" cy="45" r="45" style="stroke: none; stroke-width: 1; stroke-dasharray: none; stroke-linecap: butt; stroke-linejoin: miter; stroke-miterlimit: 10; fill: rgb(0,0,102); fill-rule: nonzero; opacity: 1;" transform="  matrix(1 0 0 1 0 0) "/>
+	<path d="M 25.304 23.603 V 13.115 h -7.928 v 10.488 L 9.227 17.71 c -1.261 1.65 -2.407 3.391 -3.433 5.209 l 2.3 1.663 H 4.903 c -1.824 3.575 -3.193 7.42 -4.01 11.467 h 7.201 l -7.969 5.764 C 0.051 42.867 0 43.927 0 45 c 0 0.845 0.028 1.684 0.074 2.517 h 2.8 l 14.502 -10.488 v 10.488 h 7.928 V 37.029 l 14.502 10.488 h 5.318 v -3.846 L 34.586 36.05 h 10.538 V 24.583 H 34.587 l 10.538 -7.621 v -3.846 h -5.318 L 25.304 23.603 z" style="stroke: none; stroke-width: 1; stroke-dasharray: none; stroke-linecap: butt; stroke-linejoin: miter; stroke-miterlimit: 10; fill: rgb(243,244,245); fill-rule: nonzero; opacity: 1;" transform=" matrix(1 0 0 1 0 0) " stroke-linecap="round"/>
+	<path d="M 38.805 67.129 l -6.007 0.522 l 0.827 5.973 l -4.154 -4.371 l -4.154 4.371 l 0.828 -5.973 l -6.007 -0.522 l 5.185 -3.077 l -3.336 -5.022 l 5.638 2.135 l 1.847 -5.74 l 1.847 5.74 l 5.638 -2.135 l -3.336 5.022 M 64.506 72.634 l -1.45 -2.182 l 2.451 0.928 l 0.801 -2.494 l 0.802 2.494 l 2.45 -0.928 l -1.45 2.182 l 2.253 1.337 l -2.61 0.227 l 0.36 2.594 l -1.805 -1.898 l -1.805 1.898 l 0.36 -2.594 l -2.61 -0.227 M 64.506 33.816 l -1.45 -2.182 l 2.451 0.928 l 0.801 -2.494 l 0.802 2.493 l 2.45 -0.927 l -1.45 2.182 l 2.253 1.337 l -2.61 0.227 l 0.36 2.594 l -1.805 -1.898 l -1.805 1.898 l 0.36 -2.594 l -2.61 -0.227 M 49.949 49.586 l -1.45 -2.181 l 2.451 0.928 l 0.802 -2.494 l 0.802 2.494 l 2.451 -0.928 l -1.45 2.181 l 2.253 1.338 l -2.61 0.227 l 0.36 2.594 l -1.805 -1.898 l -1.805 1.898 l 0.36 -2.594 l -2.61 -0.227 M 77.449 45.704 l -1.453 -2.182 l 2.452 0.928 l 0.796 -2.494 l 0.806 2.494 l 2.446 -0.928 l -1.446 2.182 l 2.252 1.337 l -2.61 0.227 l 0.359 2.594 l -1.805 -1.898 l -1.805 1.898 l 0.359 -2.594 l -2.606 -0.227 M 72.131 57.141 l -1.427 0.884 l 0.401 -1.629 l -1.282 -1.082 l 1.674 -0.123 l 0.634 -1.554 l 0.634 1.554 l 1.674 0.123 l -1.282 1.082 l 0.401 1.629" style="stroke: none; stroke-width: 1; stroke-dasharray: none; stroke-linecap: butt; stroke-linejoin: miter; stroke-miterlimit: 10; fill: rgb(243,244,245); fill-rule: nonzero; opacity: 1;" transform=" matrix(1 0 0 1 0 0) " stroke-linecap="round"/>
+	<path d="M 23.719 13.115 h -4.757 v 13.761 H 3.811 c -0.973 2.208 -1.784 4.503 -2.395 6.88 h 17.546 v 13.761 h 4.757 V 33.756 h 21.406 v -6.88 H 23.719 V 13.115 z" style="stroke: none; stroke-width: 1; stroke-dasharray: none; stroke-linecap: butt; stroke-linejoin: miter; stroke-miterlimit: 10; fill: rgb(204,0,0); fill-rule: nonzero; opacity: 1;" transform=" matrix(1 0 0 1 0 0) " stroke-linecap="round"/>
+	<path d="M 13.412 36.05 L 0.019 45.736 c 0.01 0.596 0.023 1.191 0.055 1.781 h 1.028 L 16.958 36.05 H 13.412 z" style="stroke: none; stroke-width: 1; stroke-dasharray: none; stroke-linecap: butt; stroke-linejoin: miter; stroke-miterlimit: 10; fill: rgb(204,0,0); fill-rule: nonzero; opacity: 1;" transform=" matrix(1 0 0 1 0 0) " stroke-linecap="round"/>
+	<polygon points="29.27,36.05 45.13,47.52 45.13,47.52 45.13,44.95 32.81,36.05 " style="stroke: none; stroke-width: 1; stroke-dasharray: none; stroke-linecap: butt; stroke-linejoin: miter; stroke-miterlimit: 10; fill: rgb(204,0,0); fill-rule: nonzero; opacity: 1;" transform="  matrix(1 0 0 1 0 0) "/>
+	<polygon points="45.13,13.12 41.58,13.12 25.72,24.58 29.27,24.58 " style="stroke: none; stroke-width: 1; stroke-dasharray: none; stroke-linecap: butt; stroke-linejoin: miter; stroke-miterlimit: 10; fill: rgb(204,0,0); fill-rule: nonzero; opacity: 1;" transform="  matrix(1 0 0 1 0 0) "/>
+	<path d="M 7.422 20.25 c -0.382 0.579 -0.752 1.166 -1.107 1.763 l 3.552 2.569 h 3.545 L 7.422 20.25 z" style="stroke: none; stroke-width: 1; stroke-dasharray: none; stroke-linecap: butt; stroke-linejoin: miter; stroke-miterlimit: 10; fill: rgb(204,0,0); fill-rule: nonzero; opacity: 1;" transform=" matrix(1 0 0 1 0 0) " stroke-linecap="round"/>
+</g>
+</svg>
+</span>
+        <span>FREE Shipping over $145</span>
+      </div>
+    </div>
+  </div>
+</div>
+<style>
+    .uses {
+      font-family: 'Outfit', sans-serif;
+    }
+
+    .uses .label {
+      font-size: 18px;
+      font-weight: 500;
+      margin-bottom: 12px;
+    }
+
+    .uses .tag-container {
+      display: flex;
+      gap: 12px;
+      justify-content: flex-start;
+      flex-wrap: nowrap;
+      overflow-x: auto;
+      overflow-y: hidden;
+      width: auto;
+      height: 34px;
+      scrollbar-width: none;     /* Firefox */
+      -ms-overflow-style: none;  /* IE/Edge */
+      margin-bottom: 24px;
+    }
+    .uses .tag-container::-webkit-scrollbar {
+      display: none;             /* Chrome, Safari, Opera */
+    }
+    .collapsible-trigger-btn--borders:first-child{
+      border-top:none !imporant;
+    }
+    .uses .tag {
+      padding: 3px 16px;
+      font-size: 14px;
+      font-weight: 400;
+      border-radius: 999px;
+      border: 1px solid #d1d1d1;
+      background-color: #fff;
+      display: block;
+      color: #000;
+      cursor: pointer;
+      transition: all 0.2s ease-in-out;
+      height: 26px;
+      width: auto;
+      flex: 0 0 auto;
+      text-align: center;
+    }
+
+    .uses .tag.jactive {
+      background-color: #000;
+      color: #fff;
+      border-color: #000;
+    }
+
+    .uses .tag:hover {
+      opacity: 0.85;
+    }
+  </style>
+
+
+  <div class="uses">
+    <div class="label">What are you using this for?</div>
+    <div class="tag-container">
+      <div class="tag">Work</div>
+      <div class="tag">Travelling</div>
+      <div class="tag">Health</div>
+      <div class="tag">Varicose Veins</div>
+    </div>
+  </div>
+
+<script>
+
+function updatePreorderText() {
+  const preorderTextElement = document.getElementById('preorder-text');
+  if (!preorderTextElement) return;
+  
+  // Check if current product is sold out
+  const selectedType = document.querySelector('.selected-type')?.value || 'regular';
+  const selectedSize = document.querySelector('.selected-size')?.value || 's';
+  const selectedProductId = document.querySelector('.sockvarid').value || '{{ product.id }}';
+  const variantKey = `${selectedProductId}-${selectedType.toLowerCase()}-${selectedSize.toLowerCase()}`;
+  const currentVariant = window.productVariants[variantKey];
+  
+  // If current product is sold out (not available), hide preorder text
+  if (!currentVariant || !currentVariant.available) {
+    preorderTextElement.style.display = 'none';
+    return;
+  }
+  
+  // Otherwise, show/hide based on preorder status
+  if (hasPreorderItems()) {
+    preorderTextElement.style.display = 'block';
+  } else {
+    preorderTextElement.style.display = 'none';
+  }
+}
+
+
+// Memory storage for added products
+let addedProducts = {};
+
+document.addEventListener('DOMContentLoaded', function() {
+  // Function to update price information
+function updatePriceInfo(styleOption) {
+  const priceData = styleOption.dataset.price;
+  const compareData = styleOption.dataset.compare;
+  
+  // Update the price display elements
+  const originalPriceElement = document.querySelector('.original-price');
+  const sudoSalePriceElement = document.querySelector('.sudo-sale-price');
+  
+  if (sudoSalePriceElement && priceData) {
+    sudoSalePriceElement.textContent = priceData;
+  }
+  
+  if (originalPriceElement && compareData) {
+    originalPriceElement.textContent = compareData;
+  }
+}
+
+
+  // Update price on page load for active style option
+  const activeStyleOption = document.querySelector('.style-option.jactive');
+  if (activeStyleOption) {
+    updatePriceInfo(activeStyleOption);
+  }
+  const typeButtons = document.querySelectorAll('.option-btn[data-type]');
+  const sizeButtons = document.querySelectorAll('[data-size]');
+  const selectedTypeInput = document.querySelector('.selected-type');
+  const selectedSizeInput = document.querySelector('.selected-size');
+  const selectedTypeText = document.querySelector('.selected-type-text');
+  const selectedSizeText = document.querySelector('.selected-size-text');
+  
+  const addToCartBtn = document.getElementById('addToCartBtn');
+  const addToCartText = document.getElementById('addToCartText');
+  const productTitle = document.getElementById('productTitle');
+
+  // Function to get variant ID for a product with type and size
+  function getVariantId(productId, type, size) {
+    const variantKey = `${productId}-${type.toLowerCase()}-${size.toLowerCase()}`;
+    return window.productVariants[variantKey]?.id || null;
+  }
+
+  // Function to update add points text based on memory count
+function updateAddPointsText() {
+    const addPointsSpan = document.querySelector('.add-points-text span');
+    if (!addPointsSpan) return;
+    
+    // Count total quantity instead of number of products
+    let totalMemoryQuantity = 0;
+    Object.values(addedProducts).forEach(product => {
+        totalMemoryQuantity += product.quantity;
+    });
+    /*
+    if (totalMemoryQuantity === 0) {
+        addPointsSpan.textContent = 'Add 2 pairs to receive 10% off';
+    } else if (totalMemoryQuantity === 1) {
+        addPointsSpan.textContent = 'Add 1 more pair to receive 10% off';
+    } else if (totalMemoryQuantity === 2) {
+        addPointsSpan.textContent = 'Add 2 more pairs for 25% off + FREE Shipping';
+    } else if (totalMemoryQuantity === 3) {
+        addPointsSpan.textContent = 'Add 1 more pair to receive 25% off + FREE Shipping';
+    } else if (totalMemoryQuantity === 4) {
+        addPointsSpan.textContent = 'Add 2 more pairs for 30% off';
+    } else if (totalMemoryQuantity === 5) {
+        addPointsSpan.textContent = 'Add 1 more pair to receive 30% off';
+    } else if (totalMemoryQuantity >= 6) {
+        addPointsSpan.textContent = 'Congratulations! You got 30% off + FREE Shipping';
+    }
+  
+    console.log('=== ADD POINTS TEXT DEBUG ===');
+    console.log('Total memory quantity:', totalMemoryQuantity);
+    console.log('Text updated to:', addPointsSpan.textContent);
+    console.log('=== END DEBUG ===');
+      */
+}
+function clearAllThumbnailStates() {
+  document.querySelectorAll('.style-option').forEach(styleOption => {
+    styleOption.classList.remove('added');
+  });
+}
+
+function updateThumbnailButton(productId) {
+  const button = document.querySelector(`[data-product-id="${productId}"]`);
+  if (!button) return;
+  
+  const addText = button.querySelector('.add-text');
+  const quantityControls = button.querySelector('.quantity-controls');
+  const quantityDisplay = button.querySelector('.quantity-display');
+  
+  const selectedType = selectedTypeInput.value || 'regular';
+  const selectedSize = selectedSizeInput.value || 's';
+  const isAvailable = isProductVariantAvailable(productId, selectedType, selectedSize);
+  const preorderTextElement = document.getElementById('preorder-text');
+  
+  if (!isAvailable) {
+    button.style.pointerEvents = 'none';
+    button.style.opacity = '0.5';
+    addText.textContent = 'SOLD OUT';
+    addText.style.display = 'block';
+    quantityControls.style.display = 'none';
+    button.classList.add('sold-out');
+    preorderTextElement.style.display = 'none';
+    updateThumbnailAddedState(productId); // NEW LINE ADDED
+    return;
+  }
+  
+  button.style.pointerEvents = 'auto';
+  button.style.opacity = '1';
+  button.classList.remove('sold-out');
+  
+  let totalQuantity = 0;
+  Object.keys(addedProducts).forEach(key => {
+    if (addedProducts[key].productId == productId) {
+      totalQuantity += addedProducts[key].quantity;
+    }
+  });
+  
+  if (totalQuantity > 0) {
+    addText.style.display = 'none';
+    quantityControls.style.display = 'flex';
+    quantityDisplay.textContent = totalQuantity;
+  } else {
+    addText.textContent = 'ADD';
+    addText.style.display = 'block';
+    quantityControls.style.display = 'none';
+  }
+  
+  // NEW LINE ADDED
+  updateThumbnailAddedState(productId);
+  
+  updateAddPointsText();
+  updateATCPrices();
+  updateArrivalDate();
+  updateATCButtonText();
+  updatePreorderText();
+}
+
+  // Function to add product to memory
+  function addProductToMemory(productId) {
+    const selectedType = selectedTypeInput.value || 'Regular';
+    const selectedSize = selectedSizeInput.value || 'S';
+    const variantId = getVariantId(productId, selectedType, selectedSize);
+    
+    if (!variantId) {
+      alert('Variant not available for this combination');
+      return;
+    }
+    
+    const productKey = `${productId}-${selectedType}-${selectedSize}`;
+    
+    if (addedProducts[productKey]) {
+      addedProducts[productKey].quantity += 1;
+    } else {
+      addedProducts[productKey] = {
+        productId: productId,
+        variantId: variantId,
+        type: selectedType,
+        size: selectedSize,
+        quantity: 1
+      };
+    }
+    
+    updateThumbnailButton(productId);
+  }
+
+  // Function to remove product from memory
+  function removeProductFromMemory(productId) {
+    // Find and remove any variants of this product
+    Object.keys(addedProducts).forEach(key => {
+      if (addedProducts[key].productId == productId) {
+        delete addedProducts[key];
+      }
+    });
+    updateThumbnailButton(productId);
+  }
+
+  // Function to increase quantity
+  function increaseQuantity(productId) {
+    Object.keys(addedProducts).forEach(key => {
+      if (addedProducts[key].productId == productId) {
+        addedProducts[key].quantity += 1;
+      }
+    });
+    updateThumbnailButton(productId);
+  }
+
+  // Add event listeners to thumbnail add buttons - with maximum event isolation
+// Add event listeners to thumbnail add buttons - with maximum event isolation
+document.addEventListener('click', function(e) {
+  // Handle thumbnails-add-button clicks
+  if (e.target.closest('.thumbnails-add-button')) {
+    // Stop ALL event propagation immediately
+    e.stopPropagation();
+    e.stopImmediatePropagation();
+    e.preventDefault();
+    
+    const button = e.target.closest('.thumbnails-add-button');
+    const productId = button.dataset.productId;
+    const quantityControls = button.querySelector('.quantity-controls');
+    
+    // If quantity controls are visible, only respond to specific elements
+    if (quantityControls && quantityControls.style.display !== 'none') {
+      if (e.target.closest('.quantity-btn.plus')) {
+        console.log('PLUS clicked for product:', productId);
+        increaseQuantity(productId);
+      } else if (e.target.closest('.quantity-btn.trash')) {
+        console.log('TRASH clicked for product:', productId);
+        removeProductFromMemory(productId);
+      }
+      // Ignore clicks on empty space when quantity controls are visible
+    } else {
+      // Quantity controls hidden, so any click on button = ADD
+      console.log('ADD clicked for product:', productId);
+      addProductToMemory(productId);
+    }
+    
+    return false;
+  }
+}, true); // Use capture phase to catch events before other handlers
+
+  // Also add direct listeners with highest priority
+  {% comment %}
+  setTimeout(() => {
+    document.querySelectorAll('.thumbnails-add-button').forEach(button => {
+      ['click', 'mousedown', 'mouseup', 'touchstart', 'touchend'].forEach(eventType => {
+        button.addEventListener(eventType, function(e) {
+          e.stopPropagation();
+          e.stopImmediatePropagation();
+          e.preventDefault();
+          return false;
+        }, true); // Capture phase
+      });
+      
+      // Separate handler for the actual functionality
+      button.addEventListener('click', function(e) {
+        const productId = this.dataset.productId;
+        
+        if (e.target.closest('.add-text')) {
+          addProductToMemory(productId);
+        } else if (e.target.closest('.quantity-btn.plus')) {
+          increaseQuantity(productId);
+        } else if (e.target.closest('.quantity-btn.trash')) {
+          removeProductFromMemory(productId);
+        }
+      }, true);
+    });
+  }, 500);
+{% endcomment %}
+document.addEventListener('click', function(e) {
+  // Handle thumbnails-add-button clicks
+  if (e.target.closest('.thumbnails-add-button')) {
+    // Stop ALL event propagation immediately
+    e.stopPropagation();
+    e.stopImmediatePropagation();
+    e.preventDefault();
+    // ... rest of handler
+  }
+}, true);
+
+document.addEventListener('touchend', function(e) {
+  if (e.target.closest('.thumbnails-add-button')) {
+    const button = e.target.closest('.thumbnails-add-button');
+    const productId = button.dataset.productId;
+    const quantityControls = button.querySelector('.quantity-controls');
+    
+    e.preventDefault();
+    
+    // If quantity controls are visible, only respond to specific elements
+    if (quantityControls && quantityControls.style.display !== 'none') {
+      if (e.target.closest('.quantity-btn.plus')) {
+        console.log('PLUS touched for product:', productId);
+        increaseQuantity(productId);
+      } else if (e.target.closest('.quantity-btn.trash')) {
+        console.log('TRASH touched for product:', productId);
+        removeProductFromMemory(productId);
+      }
+      // Ignore touches on empty space when quantity controls are visible
+    } else {
+      // Quantity controls hidden, so any touch on button = ADD
+      console.log('ADD touched for product:', productId);
+      addProductToMemory(productId);
+    }
+  }
+});
+
+  // Function to check inventory and update button state
+function checkInventoryAndUpdateButton() {
+  const preorderTextElement = document.getElementById('preorder-text');
+  const selectedType = selectedTypeInput.value || 'Regular';
+  const selectedSize = selectedSizeInput.value || 'S';
+  const selectedProductId = document.querySelector('.sockvarid').value || '{{ product.id }}';
+  const variantKey = `${selectedProductId}-${selectedType.toLowerCase()}-${selectedSize.toLowerCase()}`;
+  
+  if (window.productVariants && window.productVariants[variantKey]) {
+    const variant = window.productVariants[variantKey];
+    
+    if (variant.available && variant.inventory > 0) {
+      // In stock
+      addToCartBtn.classList.remove('sold-out');
+      preorderTextElement.classList.remove('hide-preorder');
+      addToCartBtn.disabled = false;
+      // Don't set text here - let updateATCButtonText handle it
+    } else if (variant.available && variant.inventory <= 0) {
+      // Preorder (available but no inventory)
+      addToCartBtn.classList.remove('sold-out');
+      preorderTextElement.classList.remove('hide-preorder');
+      addToCartBtn.disabled = false;
+      // Don't set text here - let updateATCButtonText handle it
+    } else {
+      // Sold out (not available)
+      addToCartBtn.classList.add('sold-out');
+      addToCartBtn.disabled = true;
+      addToCartText.textContent = 'Sold Out';
+      preorderTextElement.classList.add('hide-preorder');
+      return; // Exit early for sold out items
+    }
+  } else {
+    // Variant not found, assume sold out
+    addToCartBtn.classList.add('sold-out');
+    addToCartBtn.disabled = true;
+    addToCartText.textContent = 'Sold Out';
+    preorderTextElement.classList.add('hide-preorder');
+    return; // Exit early for sold out items
+  }
+  
+  // Update ATC text and arrival date for available items
+  updateATCButtonText();
+  updateArrivalDate();
+  updatePreorderText();
+}
+
+  // Type selection
+typeButtons.forEach(button => {
+  button.addEventListener('click', function() {
+    typeButtons.forEach(btn => btn.classList.remove('active'));
+    this.classList.add('active');
+    selectedTypeInput.value = this.dataset.type;
+    selectedTypeText.textContent = this.textContent;
+    checkInventoryAndUpdateButton();
+    updateAllThumbnailAvailability(); // ADD THIS LINE
+  });
+});
+
+  // Size selection
+sizeButtons.forEach(button => {
+  button.addEventListener('click', function() {
+    sizeButtons.forEach(btn => btn.classList.remove('active'));
+    this.classList.add('active');
+    selectedSizeInput.value = this.dataset.size;
+    
+    // Update size text based on selection
+    let sizeText = this.textContent;
+    if (this.dataset.size === 'S') {
+      sizeText = 'Small (Women 5.5-8 | Men 4.5-7)';
+    } else if (this.dataset.size === 'M') {
+      sizeText = 'Medium (Women 9-11 | Men 7.5-9.5)';
+    } else if (this.dataset.size === 'L') {
+      sizeText = 'Large (Women 12-15 | Men 10-13)';
+    }
+    selectedSizeText.textContent = sizeText;
+    checkInventoryAndUpdateButton();
+    updateAllThumbnailAvailability(); // ADD THIS LINE
+  });
+});
+
+  // Style category filtering (but not used for inventory)
+  const categoryButtons = document.querySelectorAll('.category-btn');
+  const styleOptions = document.querySelectorAll('.style-option');
+  const tagger = document.querySelectorAll('.tag');
+
+  tagger.forEach(button => {
+    button.addEventListener('click', function() {
+      tagger.forEach(btn => btn.classList.remove('jactive'));
+      this.classList.add('jactive');
+  
+
+    });
+  });
+
+  if (tagger.length > 0) {
+    const firstStylex = tagger[0];
+    firstStylex.classList.add('jactive');
+  }
+
+    if (categoryButtons.length > 0) {
+    const firstStyley = categoryButtons[0];
+    firstStyley.classList.add('jactive');
+  }
+
+  categoryButtons.forEach(button => {
+    button.addEventListener('click', function() {
+      categoryButtons.forEach(btn => btn.classList.remove('jactive'));
+      this.classList.add('jactive');
+      
+      const category = this.dataset.category;
+    
+
+    });
+  });
+
+
+// REPLACE your existing category button filtering code with this:
+const categoryBtns = document.querySelectorAll('.category-btn');
+categoryBtns.forEach(btn => {
+  btn.addEventListener('click', function() {
+    // Update active state
+    categoryBtns.forEach(button => button.classList.remove('jactive'));
+    this.classList.add('jactive');
+    
+    const selectedCategory = this.dataset.category.toLowerCase(); // Convert to lowercase
+    
+    // Filter flexerd elements
+    document.querySelectorAll('.flexerd').forEach(flexerdElement => {
+      const flexerdTag = (flexerdElement.dataset.tag || '').toLowerCase(); // Convert to lowercase
+      
+      if (selectedCategory === 'all' || flexerdTag.includes(selectedCategory)) {
+        // Show the element
+        flexerdElement.style.display = 'block';
+      } else {
+        // Hide the element
+        flexerdElement.style.setProperty('display', 'none', 'important');
+      }
+    });
+    
+    // Debug logging
+    console.log('=== CATEGORY FILTER DEBUG ===');
+    console.log('Selected category:', selectedCategory);
+    console.log('Visible products:', document.querySelectorAll('.flexerd[style*="block"]').length);
+    console.log('Hidden products:', document.querySelectorAll('.flexerd[style*="none"]').length);
+    console.log('=== END FILTER DEBUG ===');
+  });
+});
+
+  // Style selection - changes main title instead of selected-type-text
+styleOptions.forEach(option => {
+  option.addEventListener('click', function(e) {
+    // Check if click originated from thumbnails-add-button
+    if (e.target.closest('.thumbnails-add-button')) {
+      return; // Don't execute style selection
+    }
+    
+    styleOptions.forEach(opt => opt.classList.remove('active'));
+    this.classList.add('active');
+    
+    // Update main product title with selected style name
+    productTitle.textContent = this.dataset.title;
+    
+    // Update hidden inputs with selected product data
+    document.querySelector('.sockvarid').value = this.dataset.id;
+    
+    // Update price information
+    const priceData = this.dataset.price;
+    const compareData = this.dataset.compare;
+
+    const originalPriceElement = document.querySelector('.original-price');
+    const sudoSalePriceElement = document.querySelector('.sudo-sale-price');
+    // Update the price display elements
+    if(priceData==""){
+      sudoSalePriceElement.textContent = "";
+    }else{
+      sudoSalePriceElement.textContent = priceData;
+    }
+    
+    // Show/hide the original price element
+    if (compareData === "") {
+      originalPriceElement.style.display = "none";
+    } else {
+      originalPriceElement.style.display = ""; // or "inline", "block" depending on your layout
+      originalPriceElement.textContent = compareData;
+    }
+
+    // Check inventory for new product
+    checkInventoryAndUpdateButton();
+    updateATCPrices(); 
+    updatePreorderText();
+  });
+});
+
+  // Set initial title from first style option on page load
+  /*
+  if (styleOptions.length > 0) {
+    const firstStyle = styleOptions[0];
+    firstStyle.classList.add('jactive');
+    productTitle.textContent = firstStyle.dataset.title;
+    document.querySelector('.sockvarid').value = firstStyle.dataset.id;
+  }
+*/
+  // Add to Cart functionality
+addToCartBtn.addEventListener('click', function() {
+  if (this.disabled) {
+    return; // Don't do anything if button is disabled
+  }
+
+  // Set loading state
+  const originalText = addToCartText.textContent;
+  addToCartText.innerHTML = 'Adding... <span class="spinner"></span>';
+  addToCartBtn.disabled = true;
+  addToCartBtn.style.opacity = '0.7';
+  addToCartBtn.style.cursor = 'not-allowed';
+
+  const cartItems = [];
+  
+  // Check if there are products in memory
+  const memoryProductCount = Object.keys(addedProducts).length;
+  
+  if (memoryProductCount === 0) {
+    // No memory products - add current product only
+    const selectedType = selectedTypeInput.value || 'regular';
+    const selectedSize = selectedSizeInput.value || 's';
+    const selectedProductId = document.querySelector('.sockvarid').value || '{{ product.id }}';
+    const variantKey = `${selectedProductId}-${selectedType.toLowerCase()}-${selectedSize.toLowerCase()}`;
+    const mainVariant = window.productVariants[variantKey];
+    
+    if (mainVariant && mainVariant.available) {
+      cartItems.push({
+        id: mainVariant.id,
+        quantity: 1,
+        properties: {
+          'Type': selectedType,
+          'Size': selectedSize
+        }
+      });
+    }
+  } else {
+    // 1+ memory products - add ONLY memory products (exclude current product)
+    Object.values(addedProducts).forEach(product => {
+      cartItems.push({
+        id: product.variantId,
+        quantity: product.quantity,
+        properties: {
+          'Type': product.type,
+          'Size': product.size
+        }
+      });
+    });
+  }
+  
+  if (cartItems.length === 0) {
+    // Reset button state on error
+    addToCartText.textContent = originalText;
+    addToCartBtn.disabled = false;
+    addToCartBtn.style.opacity = '1';
+    addToCartBtn.style.cursor = 'pointer';
+    
+    alert('No items available to add to cart.');
+    return;
+  }
+  
+  // Function to update cart count after items are added
+  const updateCartCount = async () => {
+    let totalCount = 0;
+  
+    try {
+      // Method 1: Try to get cart from Shopify's cart.js
+      const response = await fetch('/cart.js');
+      const cart = await response.json();
+      
+      cart.items.forEach(item => {
+        if (item.product_type === 'Compression Socks') {
+          totalCount += item.quantity;
+        }
+      });
+      
+      updateAddPointsText(totalCount);
+    } catch (error) {
+      // Method 2: Try to access global cart object as fallback
+      if (typeof window.cart !== 'undefined' && window.cart.items) {
+        window.cart.items.forEach(item => {
+          if (item.product_type === 'Compression Socks') {
+            totalCount += item.quantity;
+          }
+        });
+        updateAddPointsText(totalCount);
+      }
+    }
+  };
+  
+  // Helper function to update the add points text
+  const updateAddPointsText = (totalCount) => {
+    const addPointsSpan = document.querySelector('.add-points-text span');
+    if (!addPointsSpan) return;
+    
+    if (totalCount === 0) {
+      addPointsSpan.textContent = 'Add 2 pairs to receive 10% off';
+    } else if (totalCount === 1) {
+      addPointsSpan.textContent = 'Add 1 more pair to receive 10% off';
+    } else if (totalCount === 2) {
+      addPointsSpan.textContent = 'Add 2 more pairs for 25% off + FREE Shipping';
+    } else if (totalCount === 3) {
+      addPointsSpan.textContent = 'Add 1 more pair to receive 25% off + FREE Shipping';
+    } else if (totalCount === 4) {
+      addPointsSpan.textContent = 'Add 2 more pairs for 30% off';
+    } else if (totalCount === 5) {
+      addPointsSpan.textContent = 'Add 1 more pair to receive 30% off';
+    } else if (totalCount >= 6) {
+      addPointsSpan.textContent = 'Congratulations! You got 30% off + FREE Shipping';
+    }
+  };
+  
+  // Add items to cart one by one, then update count
+  const addItemsSequentially = async (items) => {
+    try {
+      // First: Add all items to cart
+      for (const item of items) {
+        const response = await fetch('/cart/add.js', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(item)
+        });
+        
+        if (!response.ok) {
+          throw new Error(`Failed to add item: ${response.statusText}`);
+        }
+        
+        await response.json();
+      }
+      
+      // Second: Update cart count AFTER all items are added
+      await updateCartCount();
+      
+      // Success - reset button state
+      addToCartText.textContent = originalText;
+      addToCartBtn.disabled = false;
+      addToCartBtn.style.opacity = '1';
+      addToCartBtn.style.cursor = 'pointer';
+      
+      // Clear memory and reset buttons after successful addition
+      addedProducts = {};
+      clearAllThumbnailStates();
+      document.querySelectorAll('.thumbnails-add-button').forEach(button => {
+        const productId = button.dataset.productId;
+        updateThumbnailButton(productId);
+      });
+      
+      console.log(`Successfully added ${cartItems.length} items to cart`);
+      
+      // Open cart drawer/modal
+      if (typeof cart_open === 'function') {
+        cart_open();
+      }
+      
+    } catch (error) {
+      console.error('Error adding item to cart:', error);
+      
+      // Reset button state on error
+      addToCartText.textContent = originalText;
+      addToCartBtn.disabled = false;
+      addToCartBtn.style.opacity = '1';
+      addToCartBtn.style.cursor = 'pointer';
+      
+      alert(`Error adding item to cart: ${error.message}`);
+    }
+  };
+  
+  addItemsSequentially(cartItems);
+});
+
+// Initialize default selections and check inventory
+selectedTypeInput.value = 'regular';
+selectedSizeInput.value = 's';
+checkInventoryAndUpdateButton();
+updatePreorderText();
+});</script>
+
+<div class="woof-faq">
+
+{% assign description_sections = product.description | split: '<h3>' %}
+<div class="woof-accordion">
+  {% for section in description_sections %}
+    {% unless section == blank %}
+      {% assign section_parts = section | split: '</h3>' %}
+      {% if section_parts.size > 1 %}
+        {% assign header = section_parts[0] | strip %}
+        {% assign content = section_parts[1] | strip %}
+        
+        <button class="woof-accordion-header">{{ header }}<span class="icon"><svg width="10" height="10" viewBox="0 0 10 10" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M10 4.24468V5.52128H5.74468V9.94681H4.25532V5.52128H0V4.24468H4.25532V0.0531921H5.74468V4.24468H10Z" fill="black"></path>
+        </svg></span></button>
+        <div class="woof-accordion-content">
+          {{ content }}
+        </div>
+      {% endif %}
+    {% endunless %}
+  {% endfor %}
+    <button class="woof-accordion-header wdyd-header">Do they work for long shifts?<span class="icon"><svg width="10" height="10" viewBox="0 0 10 10" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M10 4.24468V5.52128H5.74468V9.94681H4.25532V5.52128H0V4.24468H4.25532V0.0531921H5.74468V4.24468H10Z" fill="black"></path></svg></span></button>
+        <div class="woof-accordion-content wdyd-content" style="display: none;">
+          <p><span><strong>Yes! These are literally made by doctors who worked those brutal shifts.</strong> <br></span></p>
+<p><span>Not too tight to be uncomfortable during long shifts, but strong enough to prevent swelling and boost circulation. This is exactly what your legs need for 10+ hour days!</span></p>
+        </div>
+</div>
+</div>
+
+<div class="loved-by-thousands">
+  <h2>Loved by 90,000+ Aussie Nurses & Doctors</h2>
+  <div class="video-scroller">
+    <div class="video-card">
+      <div class="video-wrapper zero1">
+      <video  poster="https://cdn.shopify.com/s/files/1/0573/7250/8344/files/Screenshot_2025-07-11_184453.png?v=1752230829">
+        <source src="https://cdn.shopify.com/videos/c/o/v/24b7096fe22f4d86b3186d157cb7d8e9.mp4" type="video/mp4" />
+        Your browser does not support the video tag.
+      </video>
+      <div class="play-button"><svg width="30" height="30" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M14.9927 30C12.9221 30 10.9821 29.6079 9.17271 28.8238C7.36333 28.0494 5.77165 26.9748 4.39768 25.6002C3.02371 24.2256 1.94485 22.6331 1.1611 20.8228C0.387034 19.0126 0 17.0716 0 15C0 12.9284 0.387034 10.9874 1.1611 9.17715C1.94485 7.35721 3.02371 5.76476 4.39768 4.39981C5.77165 3.02517 7.36333 1.95063 9.17271 1.17619C10.9821 0.392062 12.9221 0 14.9927 0C17.0634 0 19.0034 0.392062 20.8128 1.17619C22.6318 1.95063 24.2284 3.02517 25.6023 4.39981C26.9763 5.76476 28.0503 7.35721 28.8244 9.17715C29.6081 10.9874 30 12.9284 30 15C30 17.0716 29.6081 19.0126 28.8244 20.8228C28.0503 22.6331 26.9763 24.2256 25.6023 25.6002C24.2284 26.9748 22.6318 28.0494 20.8128 28.8238C19.0034 29.6079 17.0634 30 14.9927 30ZM12.3803 20.9245L20.7547 15.9874C20.9966 15.8325 21.1563 15.6341 21.2337 15.3921C21.3208 15.1404 21.3208 14.8887 21.2337 14.637C21.1563 14.3853 20.9966 14.1917 20.7547 14.0561L12.3803 9.09003C12.119 8.93514 11.8481 8.87222 11.5675 8.90126C11.2966 8.9303 11.0692 9.03195 10.8853 9.2062C10.7015 9.37076 10.6096 9.6031 10.6096 9.90319V20.1113C10.6096 20.4114 10.7015 20.6534 10.8853 20.8374C11.0692 21.0116 11.2917 21.1133 11.553 21.1423C11.8239 21.1617 12.0997 21.0891 12.3803 20.9245Z" fill="white"/>
+</svg>
+</div>
+      </div>
+      <span class="ugstext">Why nurses should wear compression socks</span>
+      
+    </div>
+
+    <div class="video-card">
+            <div class="video-wrapper zero2">
+      <video poster="https://cdn.shopify.com/s/files/1/0573/7250/8344/files/Screenshot_2025-07-11_184520.png?v=1752230830">
+        <source src="https://cdn.shopify.com/videos/c/o/v/4026b154ec8c4b3d971a84e87d85fcbd.mp4" type="video/mp4" />
+        Your browser does not support the video tag.
+      </video>
+      <div class="play-button"><svg width="30" height="30" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M14.9927 30C12.9221 30 10.9821 29.6079 9.17271 28.8238C7.36333 28.0494 5.77165 26.9748 4.39768 25.6002C3.02371 24.2256 1.94485 22.6331 1.1611 20.8228C0.387034 19.0126 0 17.0716 0 15C0 12.9284 0.387034 10.9874 1.1611 9.17715C1.94485 7.35721 3.02371 5.76476 4.39768 4.39981C5.77165 3.02517 7.36333 1.95063 9.17271 1.17619C10.9821 0.392062 12.9221 0 14.9927 0C17.0634 0 19.0034 0.392062 20.8128 1.17619C22.6318 1.95063 24.2284 3.02517 25.6023 4.39981C26.9763 5.76476 28.0503 7.35721 28.8244 9.17715C29.6081 10.9874 30 12.9284 30 15C30 17.0716 29.6081 19.0126 28.8244 20.8228C28.0503 22.6331 26.9763 24.2256 25.6023 25.6002C24.2284 26.9748 22.6318 28.0494 20.8128 28.8238C19.0034 29.6079 17.0634 30 14.9927 30ZM12.3803 20.9245L20.7547 15.9874C20.9966 15.8325 21.1563 15.6341 21.2337 15.3921C21.3208 15.1404 21.3208 14.8887 21.2337 14.637C21.1563 14.3853 20.9966 14.1917 20.7547 14.0561L12.3803 9.09003C12.119 8.93514 11.8481 8.87222 11.5675 8.90126C11.2966 8.9303 11.0692 9.03195 10.8853 9.2062C10.7015 9.37076 10.6096 9.6031 10.6096 9.90319V20.1113C10.6096 20.4114 10.7015 20.6534 10.8853 20.8374C11.0692 21.0116 11.2917 21.1133 11.553 21.1423C11.8239 21.1617 12.0997 21.0891 12.3803 20.9245Z" fill="white"/>
+</svg>
+</div>
+      </div>
+      <span class="ugstext">How To Wear Compression Socks</span>
+    </div>
+
+    <div class="video-card">
+            <div class="video-wrapper zero3">
+      <video poster="https://cdn.shopify.com/s/files/1/0573/7250/8344/files/Screenshot_2025-07-11_184538.png?v=1752230829">
+        <source src="https://cdn.shopify.com/videos/c/o/v/a59b89352fe64ea0adf7f7487ce6c014.mp4" type="video/mp4" />
+        Your browser does not support the video tag.
+      </video>
+      <div class="play-button"><svg width="30" height="30" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M14.9927 30C12.9221 30 10.9821 29.6079 9.17271 28.8238C7.36333 28.0494 5.77165 26.9748 4.39768 25.6002C3.02371 24.2256 1.94485 22.6331 1.1611 20.8228C0.387034 19.0126 0 17.0716 0 15C0 12.9284 0.387034 10.9874 1.1611 9.17715C1.94485 7.35721 3.02371 5.76476 4.39768 4.39981C5.77165 3.02517 7.36333 1.95063 9.17271 1.17619C10.9821 0.392062 12.9221 0 14.9927 0C17.0634 0 19.0034 0.392062 20.8128 1.17619C22.6318 1.95063 24.2284 3.02517 25.6023 4.39981C26.9763 5.76476 28.0503 7.35721 28.8244 9.17715C29.6081 10.9874 30 12.9284 30 15C30 17.0716 29.6081 19.0126 28.8244 20.8228C28.0503 22.6331 26.9763 24.2256 25.6023 25.6002C24.2284 26.9748 22.6318 28.0494 20.8128 28.8238C19.0034 29.6079 17.0634 30 14.9927 30ZM12.3803 20.9245L20.7547 15.9874C20.9966 15.8325 21.1563 15.6341 21.2337 15.3921C21.3208 15.1404 21.3208 14.8887 21.2337 14.637C21.1563 14.3853 20.9966 14.1917 20.7547 14.0561L12.3803 9.09003C12.119 8.93514 11.8481 8.87222 11.5675 8.90126C11.2966 8.9303 11.0692 9.03195 10.8853 9.2062C10.7015 9.37076 10.6096 9.6031 10.6096 9.90319V20.1113C10.6096 20.4114 10.7015 20.6534 10.8853 20.8374C11.0692 21.0116 11.2917 21.1133 11.553 21.1423C11.8239 21.1617 12.0997 21.0891 12.3803 20.9245Z" fill="white"/>
+</svg>
+</div>
+      </div>
+      <span class="ugstext">Make sure your day off is actually a day off</span>
+    </div>
+
+    <div class="video-card">
+      <div class="video-wrapper zero4">
+      <video poster="https://cdn.shopify.com/s/files/1/0573/7250/8344/files/Screenshot_2025-07-11_184453.png?v=1752230829">
+        <source src="https://cdn.shopify.com/videos/c/o/v/24b7096fe22f4d86b3186d157cb7d8e9.mp4" type="video/mp4" />
+        Your browser does not support the video tag.
+      </video>
+      <div class="play-button"><svg width="30" height="30" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M14.9927 30C12.9221 30 10.9821 29.6079 9.17271 28.8238C7.36333 28.0494 5.77165 26.9748 4.39768 25.6002C3.02371 24.2256 1.94485 22.6331 1.1611 20.8228C0.387034 19.0126 0 17.0716 0 15C0 12.9284 0.387034 10.9874 1.1611 9.17715C1.94485 7.35721 3.02371 5.76476 4.39768 4.39981C5.77165 3.02517 7.36333 1.95063 9.17271 1.17619C10.9821 0.392062 12.9221 0 14.9927 0C17.0634 0 19.0034 0.392062 20.8128 1.17619C22.6318 1.95063 24.2284 3.02517 25.6023 4.39981C26.9763 5.76476 28.0503 7.35721 28.8244 9.17715C29.6081 10.9874 30 12.9284 30 15C30 17.0716 29.6081 19.0126 28.8244 20.8228C28.0503 22.6331 26.9763 24.2256 25.6023 25.6002C24.2284 26.9748 22.6318 28.0494 20.8128 28.8238C19.0034 29.6079 17.0634 30 14.9927 30ZM12.3803 20.9245L20.7547 15.9874C20.9966 15.8325 21.1563 15.6341 21.2337 15.3921C21.3208 15.1404 21.3208 14.8887 21.2337 14.637C21.1563 14.3853 20.9966 14.1917 20.7547 14.0561L12.3803 9.09003C12.119 8.93514 11.8481 8.87222 11.5675 8.90126C11.2966 8.9303 11.0692 9.03195 10.8853 9.2062C10.7015 9.37076 10.6096 9.6031 10.6096 9.90319V20.1113C10.6096 20.4114 10.7015 20.6534 10.8853 20.8374C11.0692 21.0116 11.2917 21.1133 11.553 21.1423C11.8239 21.1617 12.0997 21.0891 12.3803 20.9245Z" fill="white"/>
+</svg>
+</div>
+      </div>
+      <span class="ugstext">Why nurses should wear compression socks</span>
+    </div>
+  </div>
+</div>
+
+            <div
+              class="th_pb_section"
+              id="th_product_bundle"
+              data-id="{{ product.id }}"></div>
+            <div
+              id="th_pb_qty_bundle"
+              class="th_pb_qty_bundle_cls"
+              data-pid="{{ product.id }}"></div>
+
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<style>
+  
+  .flexerd{
+    display:block;   
+    width:100px;
+    height:145px;
+  }
+  .btn-sock,
+  .btn-primer{
+    position: relative;
+  }
+  .supdis:after{
+    position: absolute;
+    content: "";
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    background: #353535;
+    transform: rotate(45deg);
+    height: 100%;
+    width: 1px;
+    margin: auto;
+  }
+  .warning-text {
+    color: red;
+    font-size: 14px;
+    font-weight: bold;
+    position: relative;
+    top: -8px;
+  }
+  .pop-up-modal {
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    opacity: 0;
+    display: none;
+    transform: scale(1.1);
+    transition: visibility 0s linear 0.25s, opacity 0.25s 0s, transform 0.25s;
+  }
+
+  .pop-up-content {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: white;
+    padding: 1rem 1.5rem;
+    width: auto;
+    border-radius: 0.5rem;
+    height: 70vh;
+    overflow: auto;
+  }
+  .pop-up-content table {
+    table-layout: auto;
+  }
+  .close-button {
+    float: right;
+    width: 1.5rem;
+    line-height: 1.5rem;
+    text-align: center;
+    cursor: pointer;
+    border-radius: 0.25rem;
+    background-color: lightgray;
+  }
+  .close-button:hover {
+    background-color: darkgray;
+  }
+  .show-pop-up {
+    z-index: 12;
+    opacity: 1;
+    display: block;
+    transform: scale(1.0);
+    transition: visibility 0s linear 0s, opacity 0.25s 0s, transform 0.25s;
+  }
+  .trigger-pop-up {
+    margin: 10px 0;
+    width: 100%;
+  }
+  @media only screen and (max-width: 749px) {
+    .threeway .product__main-photos--slider .product__slide {
+      margin-left: 0 !important;
+      margin-right: 12px;
+    }
+    .threeway .slick-slide {
+      height: 45vh !important;
+
+    }
+
+    .threeway .slick-slide img {
+      height: 45vh !important;
+    }
+    .product-single__prices > *,
+    .main-textamonials,
+    .afterpay-placement {
+      margin-bottom: 0 !important;
+
+    }
+    .product__main-photos {
+      padding-bottom: 0 !important;
+    }
+    .pop-up-content,
+    .size-chart-content table {
+      width: 100%;
+    }
+    .size-chart-content th,
+    .size-chart-content td {
+      padding: 10px;
+    }
+  }
+
+  @media only screen and (max-width:490px) {
+    .threeway .slick-slide {
+      width: 236px;
+    }
+    .product__photos {
+      transition: all 0.4s ease-in-out;
+    }
+    .threeway .product__photos img {
+      height: auto !important;
+    }
+    .slick-dots {
+
+      bottom: 32px;
+      position: relative !important;
+    }
+
+
+    .product__main-photos .slick-dots {
+      z-index: 9 !important;
+      {% if template contains "template-scrub-caps" %}
+        bottom: 36px;
+      {% else %}
+        bottom: 56px;
+      {% endif %}
+    }
+
+    {% if section.settings.threeway %}
+      .product__thumbs--beside .product__thumb-item{
+      padding-left:8px;
+      padding-right:8px;
+    }
+    .product__thumbs--beside .product__thumb-item,
+    .image-wrap{
+      margin-bottom:0 !important;
+    }
+    .product__main-photos .slick-dots {
+      z-index: 9 !important;
+      {% if template contains "template-scrub-caps" %}
+        bottom: 36px;
+      {% else %}
+        bottom: 56px;
+      {% endif %}
+    }
+    .product__photos--beside{
+      display:block !important; 
+    }
+    .product__thumbs img{
+      overflow:hidden;
+      border-radius:8px !important;
+      border:1px solid #000;
+    }
+    .slick-slide,
+    .product__thumb-item{
+ 
+
+    }
+    .product__thumbs .product__thumb-item{
+      overflow:hidden;
+      border-radius:8px !important;
+    }
+    .Main--ProductPhotos .slick-slide{
+      padding-left:8px;
+      padding-right:8px;
+    }
+    .product__thumbs{
+      z-index: 99;
+      position: absolute;
+      display: flex;
+      bottom: 10px;
+      width: 100%;
+      margin-top:-15px;
+      justify-content: center;
+    }
+    {% endif %}
+  }
+</style>
+<script>
+  const modal = document.querySelector(".pop-up-modal");
+  const trigger = document.querySelector(".trigger-pop-up");
+  const closeButton = document.querySelector(".close-button");
+
+  function toggleModal() {
+    // modal.classList.toggle("show-pop-up");
+  }
+
+  function windowOnClick(event) {
+    if (event.target === modal) {
+      toggleModal();
+    }
+  }
+  trigger.addEventListener("click", toggleModal);
+  closeButton.addEventListener("click", toggleModal);
+  window.addEventListener("click", windowOnClick);
+</script>
+
+<script>
+// ADD THESE NEW FUNCTIONS
+
+function isCurrentProductPreorder() {
+  const selectedType = document.querySelector('.selected-type')?.value || 'regular';
+  const selectedSize = document.querySelector('.selected-size')?.value || 's';
+  const selectedProductId = document.querySelector('.sockvarid').value || '{{ product.id }}';
+  const variantKey = `${selectedProductId}-${selectedType.toLowerCase()}-${selectedSize.toLowerCase()}`;
+  
+  const variant = window.productVariants[variantKey];
+  if (!variant) return false;
+  
+  return variant.available && variant.inventory <= 0;
+}
+// REPLACE your existing isProductPreorder function with this debug version:
+function isProductPreorder(productId) {
+  const selectedTypeInput = document.querySelector('.selected-type');
+  const selectedSizeInput = document.querySelector('.selected-size');
+  const selectedType = (selectedTypeInput ? selectedTypeInput.value : '') || 'regular';
+  const selectedSize = (selectedSizeInput ? selectedSizeInput.value : '') || 's';
+  const variantKey = `${productId}-${selectedType.toLowerCase()}-${selectedSize.toLowerCase()}`;
+  
+  const variant = window.productVariants[variantKey];
+  
+  console.log('=== DEBUG isProductPreorder ===');
+  console.log('Product ID:', productId);
+  console.log('Selected Type:', selectedType);
+  console.log('Selected Size:', selectedSize);
+  console.log('Variant Key:', variantKey);
+  console.log('Variant found:', !!variant);
+  if (variant) {
+    console.log('Variant available:', variant.available);
+    console.log('Variant inventory:', variant.inventory);
+    console.log('Is preorder:', variant.available && variant.inventory <= 0);
+  }
+  console.log('=== END DEBUG ===');
+  
+  if (!variant) return false;
+  
+  // Preorder = available but inventory is 0 or less
+  return variant.available && variant.inventory <= 0;
+}
+
+// REPLACE your existing hasPreorderItems function with this debug version:
+function hasPreorderItems() {
+  console.log('=== DEBUG hasPreorderItems ===');
+  
+  // Check current product - only if it's available
+  const selectedType = document.querySelector('.selected-type')?.value || 'regular';
+  const selectedSize = document.querySelector('.selected-size')?.value || 's';
+  const selectedProductId = document.querySelector('.sockvarid').value || '{{ product.id }}';
+  const variantKey = `${selectedProductId}-${selectedType.toLowerCase()}-${selectedSize.toLowerCase()}`;
+  const currentVariant = window.productVariants[variantKey];
+  
+  const currentIsPreorder = currentVariant && currentVariant.available && currentVariant.inventory <= 0;
+  console.log('Current product is preorder (and available):', currentIsPreorder);
+  
+  // Check products in memory - only if they're available
+  let memoryHasPreorder = false;
+  for (const productKey in addedProducts) {
+    const product = addedProducts[productKey];
+    const productVariantKey = `${product.productId}-${product.type.toLowerCase()}-${product.size.toLowerCase()}`;
+    const variant = window.productVariants[productVariantKey];
+    
+    // Only consider it preorder if it's available AND has no inventory
+    const isPreorder = variant && variant.available && variant.inventory <= 0;
+    console.log(`Memory product ${product.productId} is preorder (and available):`, isPreorder);
+    if (isPreorder) {
+      memoryHasPreorder = true;
+    }
+  }
+  console.log('Memory has preorder:', memoryHasPreorder);
+  
+  const result = currentIsPreorder || memoryHasPreorder;
+  console.log('Final hasPreorderItems result:', result);
+  console.log('=== END DEBUG ===');
+  
+  return result;
+}
+
+
+
+
+function updateATCButtonText() {
+  const addToCartText = document.getElementById('addToCartText');
+  if (!addToCartText) return;
+  
+  if (hasPreorderItems()) {
+    addToCartText.textContent = 'Pre-Order';
+  } else {
+    addToCartText.textContent = 'Add to Cart';
+  }
+
+  updatePreorderText();
+
+  console.log('=== ATC TEXT DEBUG ===');
+  console.log('Has preorder items:', hasPreorderItems());
+  console.log('ATC text updated to:', addToCartText.textContent);
+  console.log('=== END ATC DEBUG ===');
+}
+
+function isProductVariantAvailable(productId, type, size) {
+  const variantKey = `${productId}-${type.toLowerCase()}-${size.toLowerCase()}`;
+  const variant = window.productVariants[variantKey];
+  
+  if (!variant) {
+    return false; // Variant doesn't exist = sold out
+  }
+  
+  // Available = true means it can be sold (either in stock OR preorder)
+  // Available = false means it's sold out completely
+  return variant.available; // Don't check inventory here
+} 
+
+function updateAllThumbnailAvailability() {
+  const selectedTypeInput = document.querySelector('.selected-type');
+  const selectedSizeInput = document.querySelector('.selected-size');
+  
+  const selectedType = (selectedTypeInput ? selectedTypeInput.value : '') || 'regular';
+  const selectedSize = (selectedSizeInput ? selectedSizeInput.value : '') || 's';
+  
+  console.log('=== DEBUGGING VARIANT CHECK ===');
+  console.log('selectedType:', selectedType);
+  console.log('selectedSize:', selectedSize);
+  
+  document.querySelectorAll('.style-option').forEach(styleOption => {
+    const productId = styleOption.dataset.id;
+    const thumbnailButton = styleOption.querySelector('.thumbnails-add-button');
+    const addText = thumbnailButton?.querySelector('.add-text');
+    const preorderTextElement = document.getElementById('preorder-text');
+    if (!thumbnailButton || !addText || !productId) {
+      return;
+    }
+    
+    // Check if this product variant is available (includes both in-stock and preorder)
+    const isAvailable = isProductVariantAvailable(productId, selectedType, selectedSize);
+    
+    if (isAvailable) {
+      // Enable the button - works for both in-stock and preorder items
+      thumbnailButton.style.pointerEvents = 'auto';
+      thumbnailButton.style.opacity = '1';
+      addText.textContent = 'ADD';
+      thumbnailButton.classList.remove('sold-out');
+      preorderTextElement.classList.add('hide-preorder');
+    } else {
+      // Disable the button - only for truly sold out items (available = false)
+      thumbnailButton.style.pointerEvents = 'none';
+      thumbnailButton.style.opacity = '0.5';
+      addText.textContent = 'SOLD OUT';
+      thumbnailButton.classList.add('sold-out');
+      preorderTextElement.classList.remove('hide-preorder');
+      const quantityControls = thumbnailButton.querySelector('.quantity-controls');
+      if (quantityControls && quantityControls.style.display !== 'none') {
+        addText.style.display = 'block';
+        quantityControls.style.display = 'none';
+      }
+    }
+  });
+  
+  console.log('=== END DEBUG ===');
+}
+
+
+
+// ADD THESE 6 NEW FUNCTIONS
+// REPLACE your existing extractPriceValue function with this fixed version:
+function extractPriceValue(priceString) {
+  if (!priceString) return 0;
+  
+  // Remove currency symbols and extra text, keep only numbers, commas, and dots
+  let cleanString = priceString.replace(/[^0-9.,]/g, '');
+  
+  // Handle different number formats
+  // Check if it's likely a thousands separator (comma) vs decimal separator
+  const lastCommaIndex = cleanString.lastIndexOf(',');
+  const lastDotIndex = cleanString.lastIndexOf('.');
+  
+  // If there's both comma and dot, determine which is decimal separator
+  if (lastCommaIndex !== -1 && lastDotIndex !== -1) {
+    if (lastDotIndex > lastCommaIndex) {
+      // Dot comes after comma, so comma is thousands separator: 1,400.00
+      cleanString = cleanString.replace(/,/g, '');
+    } else {
+      // Comma comes after dot, so comma is decimal separator: 1.400,00
+      cleanString = cleanString.replace(/\./g, '').replace(',', '.');
+    }
+  } else if (lastCommaIndex !== -1) {
+    // Only comma exists - check if it's likely a decimal separator
+    const parts = cleanString.split(',');
+    if (parts.length === 2 && parts[1].length <= 2) {
+      // Likely decimal separator: 1400,00
+      cleanString = cleanString.replace(',', '.');
+    } else {
+      // Likely thousands separator: 1,400
+      cleanString = cleanString.replace(/,/g, '');
+    }
+  }
+  
+  const numericValue = parseFloat(cleanString);
+  console.log('Price extraction debug:', priceString, '->', cleanString, '->', numericValue);
+  
+  return isNaN(numericValue) ? 0 : numericValue;
+}
+
+function formatPrice(value, originalPriceString) {
+  if (!originalPriceString) return value.toFixed(2);
+  
+  const currencyMatch = originalPriceString.match(/[^0-9.,]+/);
+  const currencySymbol = currencyMatch ? currencyMatch[0] : '$';
+  
+  const currencyAtStart = originalPriceString.indexOf(currencySymbol) < originalPriceString.search(/[0-9]/);
+  
+  if (currencyAtStart) {
+    return currencySymbol + value.toFixed(2);
+  } else {
+    return value.toFixed(2) + currencySymbol;
+  }
+}
+
+function getCurrentProductPrice() {
+  const activeStyleOption = document.querySelector('.style-option.active');
+  if (activeStyleOption && activeStyleOption.dataset.price) {
+    return extractPriceValue(activeStyleOption.dataset.price);
+  }
+  
+  const currentPriceElement = document.querySelector('.sudo-sale-price');
+  if (currentPriceElement && currentPriceElement.textContent) {
+    return extractPriceValue(currentPriceElement.textContent);
+  }
+  
+  const firstStyleOption = document.querySelector('.style-option');
+  if (firstStyleOption && firstStyleOption.dataset.price) {
+    return extractPriceValue(firstStyleOption.dataset.price);
+  }
+  
+  return 0;
+}
+
+function getProductPrice(productId) {
+  const styleOption = document.querySelector(`[data-id="${productId}"]`);
+  if (styleOption && styleOption.dataset.price) {
+    return extractPriceValue(styleOption.dataset.price);
+  }
+  return 0;
+}
+
+function getDiscountPercentage(memoryProductCount) {
+  if (memoryProductCount >= 6) return 30;
+  if (memoryProductCount >= 4) return 25;
+  if (memoryProductCount >= 2) return 10;
+  return 0;
+}
+
+function updateATCPrices() {
+  let totalMemoryQuantity = 0;
+  Object.values(addedProducts).forEach(product => {
+    totalMemoryQuantity += product.quantity;
+  });
+  
+  let totalOriginalPrice = 0;
+  
+  if (totalMemoryQuantity === 0) {
+    // No memory products - show current product price only
+    totalOriginalPrice = getCurrentProductPrice();
+  } else {
+    // 1+ memory products - show ONLY memory products total (exclude current product)
+    Object.values(addedProducts).forEach(product => {
+      const productPrice = getProductPrice(product.productId);
+      totalOriginalPrice += (productPrice * product.quantity);
+    });
+  }
+  
+  // Calculate discount based on memory products only
+  const discountPercentage = getDiscountPercentage(totalMemoryQuantity);
+  const discountAmount = (totalOriginalPrice * discountPercentage) / 100;
+  const finalPrice = totalOriginalPrice - discountAmount;
+  
+  // Get elements
+  const originalPriceElement = document.querySelector('.original-price');
+  const sudoSalePriceElement = document.querySelector('.sudo-sale-price');
+  
+  // Get current format reference
+  let formatReference = '$35.92'; // fallback
+  if (sudoSalePriceElement && sudoSalePriceElement.textContent) {
+    formatReference = sudoSalePriceElement.textContent;
+  }
+  
+  // Update the price displays
+  if (originalPriceElement) {
+    originalPriceElement.textContent = formatPrice(totalOriginalPrice, formatReference);
+    // Show original price ONLY if there's a discount
+    if (discountPercentage > 0) {
+      originalPriceElement.style.display = '';
+    } else {
+      originalPriceElement.style.display = 'none';
+    }
+  }
+  
+  if (sudoSalePriceElement) {
+    if (discountPercentage > 0) {
+      sudoSalePriceElement.textContent = formatPrice(finalPrice, formatReference);
+    } else {
+      sudoSalePriceElement.textContent = formatPrice(totalOriginalPrice, formatReference);
+    }
+  }
+  
+  console.log('=== PRICE UPDATE DEBUG ===');
+  console.log('Memory products quantity:', totalMemoryQuantity);
+  console.log('Including current product:', totalMemoryQuantity === 0);
+  console.log('Total original price:', totalOriginalPrice);
+  console.log('Discount percentage:', discountPercentage + '%');
+  console.log('Final price:', finalPrice);
+  console.log('=== END PRICE DEBUG ===');
+}
+
+
+
+
+const scrollContainer = document.getElementById('scrollContainer');
+const scrollThumb = document.getElementById('scrollThumb');
+const scrollIndicator = document.querySelector('.scroll-indicator');
+
+let isDragging = false;
+let startX;
+let startScrollLeft;
+let thumbStartLeft;
+
+function updateScrollIndicator() {
+  const scrollLeft = scrollContainer.scrollLeft;
+  const maxScroll = scrollContainer.scrollWidth - scrollContainer.clientWidth;
+  const maxThumbPosition = scrollIndicator.offsetWidth - 60; // 60px thumb width
+  const thumbPosition = maxScroll > 0 ? (scrollLeft / maxScroll) * maxThumbPosition : 0;
+  
+  scrollThumb.style.left = thumbPosition + 'px';
+}
+
+function startDrag(e) {
+  isDragging = true;
+  scrollThumb.style.cursor = 'grabbing';
+  
+  // Get starting positions
+  const rect = scrollIndicator.getBoundingClientRect();
+  startX = (e.type === 'mousedown' ? e.clientX : e.touches[0].clientX) - rect.left;
+  startScrollLeft = scrollContainer.scrollLeft;
+  thumbStartLeft = parseInt(scrollThumb.style.left) || 0;
+  
+  // Prevent text selection
+  e.preventDefault();
+  document.body.style.userSelect = 'none';
+  
+  // Add event listeners for drag
+  if (e.type === 'mousedown') {
+    document.addEventListener('mousemove', drag);
+    document.addEventListener('mouseup', stopDrag);
+  } else {
+    document.addEventListener('touchmove', drag, { passive: false });
+    document.addEventListener('touchend', stopDrag);
+  }
+}
+
+function drag(e) {
+  if (!isDragging) return;
+  
+  e.preventDefault();
+  
+  const rect = scrollIndicator.getBoundingClientRect();
+  const currentX = (e.type === 'mousemove' ? e.clientX : e.touches[0].clientX) - rect.left;
+  const deltaX = currentX - startX;
+  
+  // Calculate new thumb position
+  const maxThumbPosition = scrollIndicator.offsetWidth - 60; // 60px thumb width
+  let newThumbPosition = thumbStartLeft + deltaX;
+  
+  // Constrain thumb position
+  newThumbPosition = Math.max(0, Math.min(newThumbPosition, maxThumbPosition));
+  
+  // Calculate corresponding scroll position
+  const maxScroll = scrollContainer.scrollWidth - scrollContainer.clientWidth;
+  const scrollRatio = maxThumbPosition > 0 ? newThumbPosition / maxThumbPosition : 0;
+  const newScrollLeft = scrollRatio * maxScroll;
+  
+  // Update scroll position
+  scrollContainer.scrollLeft = newScrollLeft;
+}
+
+function stopDrag() {
+  isDragging = false;
+  scrollThumb.style.cursor = 'grab';
+  document.body.style.userSelect = '';
+  
+  // Remove event listeners
+  document.removeEventListener('mousemove', drag);
+  document.removeEventListener('mouseup', stopDrag);
+  document.removeEventListener('touchmove', drag);
+  document.removeEventListener('touchend', stopDrag);
+}
+
+function handleIndicatorClick(e) {
+  if (e.target === scrollThumb) return; // Don't handle clicks on the thumb itself
+  
+  const rect = scrollIndicator.getBoundingClientRect();
+  const clickX = e.clientX - rect.left;
+  const maxThumbPosition = scrollIndicator.offsetWidth - 60; // 60px thumb width
+  const maxScroll = scrollContainer.scrollWidth - scrollContainer.clientWidth;
+  
+  // Calculate target scroll position
+  const targetThumbPos = Math.max(0, Math.min(clickX - 30, maxThumbPosition)); // Center thumb on click
+  const scrollRatio = maxThumbPosition > 0 ? targetThumbPos / maxThumbPosition : 0;
+  const targetScrollLeft = scrollRatio * maxScroll;
+  
+  // Smooth scroll to target position
+  scrollContainer.scrollTo({
+    left: targetScrollLeft,
+    behavior: 'smooth'
+  });
+}
+
+// Event listeners
+scrollContainer.addEventListener('scroll', updateScrollIndicator);
+window.addEventListener('resize', updateScrollIndicator);
+
+// Mouse events for thumb
+scrollThumb.addEventListener('mousedown', startDrag);
+scrollThumb.addEventListener('touchstart', startDrag, { passive: false });
+
+// Click on indicator track
+scrollIndicator.addEventListener('click', handleIndicatorClick);
+
+// Initialize
+updateScrollIndicator();
+
+// Add basic cursor styles via JavaScript
+scrollThumb.style.cursor = 'grab';
+
+
+  const myInterval = setInterval(afterpay, 1000);
+
+  function afterpay() {
+    var data_price = $(".product-single__prices.bundle_template.grid-product__price span.normalPrice").attr("data-price");
+    var data_price_1 = data_price.replace("$", "")
+    var data_price_2 = parseFloat(data_price_1 / 4);
+    var data_price_3 = data_price_2.toFixed(2);
+    $("strong.afterpay-instalments").text("$" + data_price_3 + " AUD");
+  }
+
+  function myStopFunction() {
+    clearInterval(myInterval);
+  }
+
+
+  $(function() {
+    $bgs = $(".quener").val()
+
+
+
+    $collectionname = $(".collection-title").val()
+    if ($collectionname == "Scrub Caps") {
+
+      $stickysize = $(".varin:checked").attr("op_val")
+      var stickycolor = $(".variant-change-color .variant__label-info  span").html()
+      $stickyprice = $(".normalPrice").html()
+      $(".sticky-size .sizer").html($stickysize)
+
+
+      $(".sticky-price .pricer").html($stickyprice)
+    } else {
+      $stickysize = $(".custom-option-value").attr("data-matched")
+      $stickytype = $(".varin[option_index='3']:checked").attr("op_val")
+      var stickycolor = $(".variant-change-color .variant__label-info  span").html()
+      $stickyprice = $(".normalPrice").html()
+      $(".sticky-size .sizer").html($stickysize)
+      $(".sticky-type").html($stickytype)
+      stickycolor = stickycolor.trim();
+      var stickycolor = stickycolor.replace('Baby ', '');
+      $(".swatch-circle").css({
+        "background-image": "url(" + $bgs + ")",
+        "background-color": stickycolor
+      });
+      $(".sticky-price .pricer").html($stickyprice)
+    }
+
+/*
+  $.fn.isInViewport = function() {
+    var elementTop = $(this).offset().top;
+    var elementBottom = elementTop + $(this).outerHeight();
+    var viewportTop = $(window).scrollTop();
+    var viewportBottom = viewportTop + $(window).height();
+    return elementBottom > viewportTop && elementTop < viewportBottom;
+  };
+  
+  $(window).bind("load", function() {
+  if ($('.main-cont2').isInViewport()) {
+         $('.mobile-atc').css({"bottom": "-100px"});
+    } else {
+         $('.mobile-atc').css({"bottom": "0"});
+    }
+  });
+  
+  $(window).on('resize scroll', function(e) {
+  if ($('.main-cont2').isInViewport()) {
+         $('.mobile-atc').css({"bottom": "-100px"});
+    } else {
+         $('.mobile-atc').css({"bottom": "0"});
+    }
+    e.preventDefault();
+  });
+*/
+
+    $(".mobile-atc").css({"bottom": "-100px"})
+    $(window).scroll(function() {
+      $(window).scrollTop() >= 800
+        ? $(".mobile-atc").css({"bottom": "0"})
+        : $(".mobile-atc").css({"bottom": "-100px"});
+    });
+
+
+
+    var intervalId2 = window.setInterval(function(){
+      for (let i = 0; i < 3; i++) {
+        $("html, body").animate({ scrollTop: 0 });
+        clearInterval(intervalId2) 
+      }
+    }, 500);
+
+
+
+
+  });
+
+
+
+  </script>
+
+
+<style>
+  p#preorder-text {
+    margin-top: 12px;
+    font-size: 12px;
+    margin-bottom: 0;
+}
+.grid-product__price{
+  display:flex;
+}
+    .curated-packs {
+  display: flex;
+  gap: 0;
+  justify-content: space-between;
+  margin-top:10px;
+  margin-bottom: 44px;
+  background: #f8f9fa;
+  border-radius: 8px;
+  padding: 0px;
+}
+.curated-packs a{
+  flex: 0 0 50%;
+}
+.pack-btn {
+  flex: 1;
+  width:100%;
+  background: #FDF5EF;
+  padding: 4%px 16px;
+  border-radius: 7px !important;
+  font-size: 14px;
+  cursor: pointer;
+  transition: all 0.2s;
+  text-transform: capitalize !important;
+}
+
+.pack-btn.cactive {
+  background: #000;
+  color: white;
+}
+.thumbnails-add-button.sold-out {
+  pointer-events: none;
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.thumbnails-add-button.sold-out .add-text {
+  color: #999 !important;
+  font-weight: 600;
+}
+
+
+.style-option.added {
+  border-color: navy !important;
+  border-width: 3px !important;
+  box-shadow: 0 0 0 1px navy;
+}
+
+/* Make sure added state takes precedence over active state when both exist */
+.style-option.added.active {
+  border-color: navy !important;
+  box-shadow: 0 0 0 1px navy, 0 0 8px rgba(0, 0, 128, 0.3);
+}
+
+.spinner {
+  display: inline-block;
+  width: 16px;
+  height: 16px;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  border-radius: 50%;
+  border-top-color: #fff;
+  animation: spin 1s ease-in-out infinite;
+  margin-left: 8px;
+  vertical-align: middle;
+  position: relative;
+  top: -2px;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+
+@media only screen and (max-width:480px){
+  .pack-btn{
+    font-size:13px;
+  }
+  .ugstext{
+    font-size:11px;
+    line-height: 16px;
+    display: inline-block;
+  }
+}
+      @media only screen and (min-width:481px){
+        
+        .add-to-cart-btn{
+          font-weight:500;
+        }
+      .add-points-text,
+      .fit-guide,
+      .trusted-badge,
+      .sudoloox{
+        font-size:12px !important;
+        font-size:500 !important;
+      }
+      .trusted-badge svg{
+        position:relative;
+        top:-3px;
+      }
+      .product-title{
+        font-size:32px;
+      }
+      .product-description{
+        font-size:16px;
+        margin-bottom:20px;
+      }
+      .category-btn{
+        font-size:13px;
+      }
+      .option-btn,
+      .pack-btn{
+        font-size:15px;
+      }
+      .option-section,
+      .curated-packs{
+        margin-bottom:24px;
+      }
+      .scrubcaps-wrapper{
+        margin-bottom:0;
+      }
+      .scroll-indicator{
+        margin-bottom:20px;
+      }
+      .shipping-info{
+        margin-top:10px;
+      }
+      .uses .label{
+        font-size:20px;
+      }
+      .uses .tag{
+        font-size:16px;
+        height:31px;
+      }
+      .woof-accordion-header{
+        font-size:16px;
+      }
+      .loved-by-thousands h2{
+        font-size:20px;
+      }
+      .video-card{
+        flex: 0 0 235px;
+      }
+      .scroll-indicator {
+        margin-top: -8px;
+      }
+      .page-width{
+        max-width:1200px !important;
+        padding-left:0 !important;
+        padding-right:0 !important;
+      }
+      
+        .scrubs-products{
+          width: auto;
+          height: auto;
+          display: flex;
+          justify-content: flex-start;
+          align-content: flex-start;
+          flex-wrap: wrap;
+          gap:12px;
+        }
+        .play-button{
+          left:50%;
+          top:50%;
+        }
+        .grid{
+          margin:0 !important;
+        }
+        .grid__item{
+          padding-left:0 !important;
+        }
+        .product-single__meta{
+          padding-left:30px !important;
+          padding-right:30px;
+        }
+        .fit-guide {
+          font-weight: 500;
+        }
+        #addToCartText{
+          font-weight:500 !important;
+        }
+        .shipping-badge{
+          font-weight:400;
+        }
+        .shipping-badge:nth-child(2){
+          font-weight:500;
+        }
+        ..team-highlight-description{
+          font-weight:400;
+        }
+        .team-highlight-title{
+          font-weight:600;
+        }
+        .feature-description{
+          font-weight:400;
+        }
+  }
+</style>
+
+<script>
+function updateArrivalDate() {
+  const arrivalElement = document.getElementById('arrival-date');
+  const preorderText = document.getElementById('preorder-text');
+  if (!arrivalElement) return;
+  
+  if (hasPreorderItems()) {
+    arrivalElement.textContent = 'Expected dispatch by Sep 10';
+  } else {    
+    preorderText.style.display = 'none';
+    const today = new Date();
+    const arrivalDate = new Date(today);
+    arrivalDate.setDate(today.getDate() + 5);
+    
+    const options = { 
+      month: 'short', 
+      day: 'numeric' 
+    };
+    
+    const formattedDate = arrivalDate.toLocaleDateString('en-US', options);
+    arrivalElement.textContent = `Arrives by ${formattedDate}`;
+  }
+  
+  console.log('=== ARRIVAL DATE DEBUG ===');
+  console.log('Current product is preorder:', isCurrentProductPreorder());
+  console.log('Has preorder items:', hasPreorderItems());
+  console.log('Updated arrival date:', arrivalElement.textContent);
+  console.log('=== END ARRIVAL DEBUG ===');
+}
+        
+        // Update the date when the page loads
+        updateArrivalDate();
+
+
+    document.querySelectorAll('.video-wrapper').forEach(wrapper => {
+    const video = wrapper.querySelector('video');
+    const button = wrapper.querySelector('.play-button');
+
+    button.addEventListener('click', () => {      
+      
+    });
+  });
+  document.addEventListener("DOMContentLoaded", function () {
+    const headers = document.querySelectorAll(".woof-accordion-header");
+
+    headers.forEach(header => {
+      header.addEventListener("click", () => {
+        const isActive = header.classList.contains("mactive");
+        // Close all
+        headers.forEach(h => {
+          h.classList.remove("mactive");
+          h.querySelector(".icon").innerHTML = '<svg width="10" height="10" viewBox="0 0 10 10" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M10 4.24468V5.52128H5.74468V9.94681H4.25532V5.52128H0V4.24468H4.25532V0.0531921H5.74468V4.24468H10Z" fill="black"/></svg>';
+          h.nextElementSibling.style.display = "none";
+        });
+
+        // Toggle current
+        if (!isActive) {
+          header.classList.add("mactive");
+          header.querySelector(".icon").innerHTML = '<svg width="10" height="10" viewBox="0 0 10 10" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M0 4.24468H10V5.52128H0V4.24468Z" fill="black"/></svg>';
+          header.nextElementSibling.style.display = "block";
+        }
+      });
+    });
+  updateAllThumbnailAvailability()
+  });
+</script>
+<script>
+// Mobile sticky slider functionality
+function initMobileStickySlider() {
+  // Only run on mobile (480px and below)
+  if (window.innerWidth > 480) return;
+  
+  const productPhotos = document.querySelector('.product__photos');
+  const productContentRight = document.querySelector('.product-content-right');
+  const scrubsProducts = document.querySelector('.loved-by-thousands');
+  const tagContainer = document.querySelector('.loved-by-thousands');
+  
+  if (!productPhotos || !productContentRight || !scrubsProducts || !tagContainer) {
+    console.log('Required elements not found');
+    return;
+  }
+  
+  let isFixed = false;
+  
+  function checkScroll() {
+    const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+    const viewportHeight = window.innerHeight;
+    const viewportMiddle = viewportHeight / 2;
+    
+    // Get the position of scrubs-products relative to viewport
+    const scrubsRect = scrubsProducts.getBoundingClientRect();
+    const scrubsTop = scrubsRect.top;
+    const scrubsBottom = scrubsRect.bottom;
+    
+    // Get the position of tag-container relative to viewport
+    const tagRect = tagContainer.getBoundingClientRect();
+    const tagTop = tagRect.top;
+    
+    // Check if scrubs-products is in the middle of the screen
+    const isInMiddle = scrubsTop <= viewportMiddle && scrubsBottom >= viewportMiddle;
+    
+    // Check if tag-container has reached the viewport (or is about to)
+    const tagContainerReached = tagTop <= viewportHeight;
+    
+    if (scrollTop >= 100 && !isFixed && !isInMiddle && !tagContainerReached) {
+      // Apply fixed positioning to slider only
+      productPhotos.style.position = 'fixed';
+      productPhotos.style.top = '0';
+      productPhotos.style.left = '16px';
+      productPhotos.style.width = '100%';
+      productPhotos.style.zIndex = '999';
+      
+      // Add black border to slick-list
+      /*
+      const slickList = productPhotos.querySelector('.slick-list');
+      if (slickList) {
+        slickList.style.border = '2px solid #000';
+      }
+      */
+      // Add margin to prevent layout jump
+      productContentRight.style.marginTop = '419px';
+      
+      isFixed = true;
+      console.log('Fixed positioning applied to slider with black border');
+      
+    } else if (isFixed && (scrollTop < 100 || isInMiddle || tagContainerReached)) {
+      // Remove fixed positioning when:
+      // - scroll is less than 100px OR 
+      // - scrubs-products is in middle OR
+      // - tag-container has been reached
+      productPhotos.style.position = '';
+      productPhotos.style.top = '';
+      productPhotos.style.left = '';
+      productPhotos.style.width = '';
+      productPhotos.style.zIndex = '';
+      
+      // Remove border from slick-list
+      /*
+      const slickList = productPhotos.querySelector('.slick-list');
+      if (slickList) {
+        slickList.style.border = '';
+      }
+      */
+      // Remove margin
+      productContentRight.style.marginTop = '';
+      
+      isFixed = false;
+      
+      if (tagContainerReached) {
+        console.log('Fixed positioning removed from slider - tag-container reached');
+      } else if (isInMiddle) {
+        console.log('Fixed positioning removed from slider - scrubs-products in middle');
+      } else {
+        console.log('Fixed positioning removed from slider - scroll < 100px');
+      }
+    }
+  }
+  
+  // Throttle scroll events for better performance
+  let ticking = false;
+  function handleScroll() {
+    if (!ticking) {
+      requestAnimationFrame(() => {
+        checkScroll();
+        ticking = false;
+      });
+      ticking = true;
+    }
+  }
+  
+  // Add scroll listener
+  window.addEventListener('scroll', handleScroll);
+  
+  // Check on load
+  checkScroll();
+  
+  // Re-check on window resize (in case user rotates device)
+  window.addEventListener('resize', () => {
+    // Reset everything if no longer mobile
+    if (window.innerWidth > 480 && isFixed) {
+      productPhotos.style.position = '';
+      productPhotos.style.top = '';
+      productPhotos.style.left = '';
+      productPhotos.style.width = '';
+      productPhotos.style.zIndex = '';
+      
+      // Remove border from slick-list
+      /*
+      const slickList = productPhotos.querySelector('.slick-list');
+      if (slickList) {
+        slickList.style.border = '';
+      }
+      */
+      productContentRight.style.marginTop = '';
+      isFixed = false;
+    }
+    
+    // Reinitialize if mobile
+    setTimeout(checkScroll, 100);
+  });
+}
+{%  comment  %}
+document.addEventListener('DOMContentLoaded', initMobileStickySlider);
+window.addEventListener('load', initMobileStickySlider);
+ {% endcomment %}
+</script>
+
+
+<script>
+// Content data for each tag
+const tagContent = {
+  'Work': {
+    title: 'Do they work for long shifts?',
+    content: '<p><span><strong>Yes! These are literally made by doctors who worked those brutal shifts.</strong> <br></span></p> <p><span>Not too tight to be uncomfortable during long shifts, but strong enough to prevent swelling and boost circulation. This is exactly what your legs need for 10+ hour days!</span></p>'
+  },
+  'Travelling': {
+    title: 'Do they work for flying?',
+    content: '<p><span><strong>Perfect for flying! Nobody wants cankles at baggage claim.</strong> <br></span></p> <p><span>Prevent ankle swelling, reduce DVT risk, and keep blood flowing when you\'re stuck in that middle seat. This is your travel essential!</span></p>'
+  },
+  'Health': {
+    title: 'Do they improve circulation?',
+    content: '<p><span><strong>Absolutely! The compression works like a gentle pump, strong enough to improve circulation and reduce fatigue, gentle enough to wear all day comfortably.</strong> <br></span></p> <p><span>Ideal if you deal with circulation issues.</span></p>'
+  },
+  'Varicose Veins': {
+    title: 'Do they prevent varicose veins?',
+    content: '<p><span><strong>Yes! Perfect for retail workers, hairdressers, beauticians, and anyone who stands for their paycheck!</strong> <br></span></p> <p><span>Our compression level prevents the blood pooling that causes varicose veins without being too tight for active work. Your legs will thank you!</span></p>'
+  }
+};
+
+// Function to update the accordion content
+function updateAccordionContent(tagName) {
+  const headerElement = document.querySelector('.wdyd-header');
+  const contentElement = document.querySelector('.wdyd-content');
+  
+  if (headerElement && contentElement && tagContent[tagName]) {
+    // Update the header title (keep the icon)
+    const iconHTML = headerElement.querySelector('.icon').outerHTML;
+    headerElement.innerHTML = tagContent[tagName].title + iconHTML;
+    
+    // Update the content
+    contentElement.innerHTML = tagContent[tagName].content;
+  }
+}
+
+// Function to handle tag active state
+function setActiveTag(clickedTag) {
+  // Remove active class from all tags
+  const allTags = document.querySelectorAll('.tag');
+  allTags.forEach(tag => tag.classList.remove('jactive'));
+  
+  // Add active class to clicked tag
+  clickedTag.classList.add('jactive');
+}
+// Find the header you want to open
+const targetHeader = document.querySelector('.wdyd-header'); // or any .woof-accordion-header
+
+// Simulate a click
+targetHeader.click();
+
+// Or manually trigger the same logic:
+targetHeader.classList.add("mactive");
+targetHeader.querySelector(".icon").innerHTML = '<svg><!-- minus icon --></svg>';
+targetHeader.nextElementSibling.style.display = "block";
+
+// Add click event listeners to all tags
+document.addEventListener('DOMContentLoaded', function() {
+  const tags = document.querySelectorAll('.tag');
+  
+  tags.forEach(tag => {
+    tag.addEventListener('click', function() {
+      const tagText = this.textContent.trim();
+      
+      // Set this tag as active
+      setActiveTag(this);
+      
+      // Update accordion content based on tag
+      updateAccordionContent(tagText);
+
+      const accordionHeader = document.querySelector('.wdyd-header');
+      if (accordionHeader) {
+     
+      }
+
+
+    });
+  });
+});
+const scrubcaps = document.querySelector('.scrubcaps-wrapper');
+
+scrubcaps.addEventListener('wheel', function (e) {
+  // Only act when it's a vertical scroll
+  if (e.deltaY !== 0) {
+    e.preventDefault(); // prevent vertical scroll
+    scrubcaps.scrollLeft += e.deltaY; // scroll horizontally instead
+  }
+}, { passive: false });
+
+
+
+document.addEventListener('DOMContentLoaded', function() {
+  const currentProductId = {{ product.id }};
+  const currentProductElement = document.querySelector('.flexerd[data-id="' + currentProductId + '"]');
+  
+  if (currentProductElement) {
+  /*
+    currentProductElement.scrollIntoView({
+      behavior: 'smooth',
+      block: 'nearest',
+      inline: 'nearest'
+    });
+    */
+  }
+});
+</script>
+
+
+<script>
+function countCompressionSocks() {
+  let totalCount = 0;
+  
+  // Method 1: Try to get cart from Shopify's cart.js
+  fetch('/cart.js')
+    .then(response => response.json())
+    .then(cart => {
+      cart.items.forEach(item => {
+        if (item.product_type === 'Compression Socks') {
+          totalCount += item.quantity;
+        }
+      });      
+      const addPointsSpan = document.querySelector('.add-points-text span');
+      if (!addPointsSpan) return;
+      
+      if (totalCount === 0) {
+          addPointsSpan.textContent = 'Add 2 pairs to receive 10% off';
+      } else if (totalCount === 1) {
+          addPointsSpan.textContent = 'Add 1 more pair to receive 10% off';
+      } else if (totalCount === 2) {
+          addPointsSpan.textContent = 'Add 2 more pairs for 25% off + FREE Shipping';
+      } else if (totalCount === 3) {
+          addPointsSpan.textContent = 'Add 1 more pair to receive 25% off + FREE Shipping';
+      } else if (totalCount === 4) {
+          addPointsSpan.textContent = 'Add 2 more pairs for 30% off';
+      } else if (totalCount === 5) {
+          addPointsSpan.textContent = 'Add 1 more pair to receive 30% off';
+      } else if (totalCount >= 6) {
+          addPointsSpan.textContent = 'Congratulations! You got 30% off + FREE Shipping';
+      }
+    })
+    .catch(() => {
+      // Method 2: Try to access global cart object
+      if (typeof window.cart !== 'undefined' && window.cart.items) {
+        window.cart.items.forEach(item => {
+          if (item.product_type === 'Compression Socks') {
+            totalCount += item.quantity;
+          }
+        });
+        const addPointsSpan = document.querySelector('.add-points-text span');
+        if (!addPointsSpan) return;
+        
+        if (totalCount === 0) {
+            addPointsSpan.textContent = 'Add 2 pairs to receive 10% off';
+        } else if (totalCount === 1) {
+            addPointsSpan.textContent = 'Add 1 more pair to receive 10% off';
+        } else if (totalCount === 2) {
+            addPointsSpan.textContent = 'Add 2 more pairs for 25% off + FREE Shipping';
+        } else if (totalCount === 3) {
+            addPointsSpan.textContent = 'Add 1 more pair to receive 25% off + FREE Shipping';
+        } else if (totalCount === 4) {
+            addPointsSpan.textContent = 'Add 2 more pairs for 30% off';
+        } else if (totalCount === 5) {
+            addPointsSpan.textContent = 'Add 1 more pair to receive 30% off';
+        } else if (totalCount >= 6) {
+            addPointsSpan.textContent = 'Congratulations! You got 30% off + FREE Shipping';
+        }       
+      }
+    });
+
+
+}
+
+// Initialize on page load
+document.addEventListener('DOMContentLoaded', countCompressionSocks);
+
+// Listen for cart updates
+document.addEventListener('cart:updated', countCompressionSocks);
+document.addEventListener('cart:refresh', countCompressionSocks);
+
+document.addEventListener("scroll", function () {
+    if (window.innerWidth < 1201) return;
+  const photos = document.querySelector(".oneway.product__photos.product__photos--beside");
+  const lovedSection = document.querySelector(".tag-container");
+
+  if (!photos || !lovedSection) return;
+
+  const lovedTop = lovedSection.getBoundingClientRect().top;
+
+  if (lovedTop <= 0) {
+    // Once we've reached or passed .loved-by-thousands
+    photos.style.position = "relative";
+  } else {
+    // Before reaching .loved-by-thousands
+    photos.style.position = "fixed";
+  }
+});
+</script>

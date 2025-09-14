@@ -1,0 +1,178 @@
+<section class="headline-section">
+  <p class="headline-text">{{ section.settings.headline_text }}</p>
+  
+  <!-- Countdown for start time -->
+  <div class="countdown-container" id="start-countdown">
+    <div class="time">
+      <span id="start-hours">00</span> <span>HRS</span>
+    </div>
+    <div class="time">
+      <span id="start-minutes">00</span> <span>MIN</span>
+    </div>
+  </div>
+
+  <!-- Countdown for end time (initially hidden) -->
+  <div class="countdown-container" id="end-countdown" style="display:none;">
+    <div class="time">
+      <span id="end-hours">00</span> <span>HRS</span>
+    </div>
+    <div class="time">
+      <span id="end-minutes">00</span> <span>MIN</span>
+    </div>
+  </div>
+
+  <!-- New subtitle below the countdown -->
+  <p class="subtitle-text">{{ section.settings.subtitle_text }}</p>
+</section>
+
+<style>
+  .headline-section {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-top: 16px;
+    padding-bottom: 16px;
+    background-color: {{ section.settings.background_color }};
+    color: {{ section.settings.text_color }};
+    text-align: center;
+    flex-direction: column;
+  }
+
+  .countdown-container {
+    display: flex;
+    gap: 20px;
+    font-size: 20px;
+  }
+
+  .time span:first-child {
+    font-weight: bold;
+    font-size: 20px;
+  }
+
+  .headline-text {
+    margin-top: 4px;
+    margin-bottom: 0;
+    font-size: 15px;
+  }
+
+  .subtitle-text {
+    margin-top: 0px;
+    font-size: 14px;
+  }
+</style>
+
+<script>
+  function startCountdown(startDate, endDate, promoDuration) {
+    const startCountdownElement = document.getElementById("start-countdown");
+    const endCountdownElement = document.getElementById("end-countdown");
+
+    // Convert to Australian time zone (AEST or AEDT)
+    function toAustralianTimeZone(date) {
+      return new Date(new Date(date).toLocaleString("en-US", { timeZone: "Australia/Sydney" }));
+    }
+
+    function updateCountdown() {
+      const now = toAustralianTimeZone(new Date());
+      const startTime = toAustralianTimeZone(startDate).getTime();
+      const endTime = toAustralianTimeZone(endDate).getTime();
+      const distanceToStart = startTime - now.getTime();
+      const distanceToEnd = endTime - now.getTime();
+
+      if (distanceToStart > 0) {
+        // Update Start Countdown
+        const hours = Math.floor(distanceToStart / (1000 * 60 * 60));
+        const minutes = Math.floor((distanceToStart % (1000 * 60 * 60)) / (1000 * 60));
+
+        document.getElementById("start-hours").textContent = hours;
+        document.getElementById("start-minutes").textContent = minutes;
+      } else if (distanceToEnd > 0) {
+        // Hide Start Countdown and Show End Countdown
+        startCountdownElement.style.display = "none";
+        endCountdownElement.style.display = "flex";
+
+        // Update End Countdown
+        const hours = Math.floor(distanceToEnd / (1000 * 60 * 60));
+        const minutes = Math.floor((distanceToEnd % (1000 * 60 * 60)) / (1000 * 60));
+
+        document.getElementById("end-hours").textContent = hours;
+        document.getElementById("end-minutes").textContent = minutes;
+      } else {
+        // Promo has ended
+        startCountdownElement.innerHTML = "<p>Offer expired!</p>";
+        endCountdownElement.innerHTML = "<p>Offer expired!</p>";
+        clearInterval(interval);
+      }
+    }
+
+    updateCountdown();
+    const interval = setInterval(updateCountdown, 1000);
+  }
+
+  document.addEventListener("DOMContentLoaded", function () {
+    const startTime = "{{ section.settings.start_time }}";
+    const promoDuration = parseInt("{{ section.settings.promo_duration }}", 10); // Duration in hours
+    const endTime = new Date(new Date(startTime).getTime() + promoDuration * 60 * 60 * 1000); // Calculate end time
+
+    startCountdown(startTime, endTime);
+  });
+</script>
+
+{% schema %}
+{
+  "name": "Headline Countdown",
+  "settings": [
+    {
+      "type": "textarea",
+      "id": "headline_text",
+      "label": "Headline Text",
+      "default": "Flash Sale: 15% OFF on all products"
+    },
+    {
+      "type": "textarea",
+      "id": "subtitle_text",
+      "label": "Subtitle Text",
+      "default": "Limited Time Offer"
+    },
+    {
+      "type": "text",
+      "id": "start_time",
+      "label": "Start Time (YYYY-MM-DDTHH:MM:SS)",
+      "default": "2024-12-25T00:00:00",
+      "info": "Enter the start time in the format: YYYY-MM-DDTHH:MM:SS"
+    },
+    {
+      "type": "number",
+      "id": "promo_duration",
+      "label": "Promo Duration (Hours)",
+      "default": 24,
+      "info": "Enter the duration of the promo in hours."
+    },
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "Background Color",
+      "default": "#000000"
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "Text Color",
+      "default": "#FFFFFF"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Headline Countdown",
+      "category": "Custom",
+      "settings": {
+        "headline_text": "Take 30% off with code XMAS",
+        "subtitle_text": "Offer valid until stock lasts",
+        "start_time": "2024-12-25T00:00:00",
+        "promo_duration": 24,
+        "background_color": "#000000",
+        "text_color": "#FFFFFF"
+      }
+    }
+  ]
+}
+{% endschema %}

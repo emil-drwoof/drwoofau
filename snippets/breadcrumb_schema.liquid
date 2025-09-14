@@ -1,0 +1,207 @@
+<script type="application/ld+json"> {
+"@context": "https://schema.org",
+"@type": "Organization",
+"name": "{{ shop.name }}",
+"url": "{{shop.url}}",
+"@id": "{{shop.url}}#Organization",
+"logo": "https://www.drwoofapparel.com.au/cdn/shop/files/Untitled-2_8e4e0372-7496-4014-bef7-2f26f5748b39_200x.jpg?v=1661621388",
+"contactPoint": [
+  {
+      "@type": "ContactPoint",
+      "telephone": "{{shop.phone}}",
+      "contactType": "sales",
+      "areaServed": "AU"
+  },
+  {
+      "@type": "ContactPoint",
+      "telephone": "{{shop.phone}}",
+      "contactType": "technical support",
+      "areaServed": "AU",
+      "availableLanguage": "EN"
+  },
+  {
+      "@type": "ContactPoint",
+      "telephone": "{{shop.phone}}",
+      "contactType": "customer support",
+      "areaServed": "AU",
+      "availableLanguage": "EN"
+  }
+  ],
+"sameAs": [
+      "{{ settings.social_facebook_link }}",
+      "{{ settings.social_instagram_link }}",
+      "{{ settings.social_tiktok_link }}",
+      "{{ settings.social_youtube_link }}"
+  ]
+  }
+</script>
+
+<script type="application/ld+json">
+{
+"@context": "https://schema.org/",
+"@type": "WebSite",
+"name": "{{ shop.name }}",
+"url": "{{shop.url}}",
+"potentialAction": {
+"@type": "SearchAction",
+"target": "https://www.drwoofapparel.com.au/search?type=product&q={search_term_string}",
+"query-input": "required name=search_term_string"}}
+</script>
+
+<script type="application/ld+json">{
+"@context": "https://schema.org",
+"@type": "LocalBusiness",
+"Address": "Dr Woof Warehouse 20 Litoria Court, Epping VIC 3076",
+"name":"{{ shop.name }}",
+"image":"https://www.drwoofapparel.com.au/cdn/shop/files/Untitled-2_8e4e0372-7496-4014-bef7-2f26f5748b39_200x.jpg?v=1661621388",
+"@id": "{{shop.url}}#LocalBusiness",
+"url":"{{shop.url}}",
+"telephone": "{{shop.phone}}",
+"email": "{{shop.email}}",
+"description": "{{shop.description}}",
+"numberOfEmployees": "50",
+"hasMap": "https://www.google.com/maps/place/2%2F1+Secombe+Pl,+Moorebank+NSW+2170,+Australia/@-33.9430309,150.9259923,18z/data=!3m1!4b1!4m6!3m5!1s0x6b12950ba4f9b791:0x38d663164b360ee1!8m2!3d-33.9430331!4d150.9272798!16s%2Fg%2F11c0v3z5tj?entry=tts&shorturl=1",
+"founder": {
+"@type": "Person",
+"name": "{{ shop.name }}",
+"URL": "{{shop.url}}",
+"Address": "https://www.google.com/maps/place/2%2F1+Secombe+Pl,+Moorebank+NSW+2170,+Australia/@-33.9430309,150.9259923,18z/data=!3m1!4b1!4m6!3m5!1s0x6b12950ba4f9b791:0x38d663164b360ee1!8m2!3d-33.9430331!4d150.9272798!16s%2Fg%2F11c0v3z5tj?entry=tts&shorturl=1"},
+"geo": {
+"@type": "GeoCoordinates",
+"latitude": "-33.9430309",
+"longitude": "150.9259923"},
+"openingHoursSpecification": {
+"@type": "OpeningHoursSpecification",
+"dayOfWeek": [
+"Monday",
+"Tuesday",
+"Wednesday",
+"Thursday",
+"Friday"],
+"opens": "08:00",
+"closes": "17:00"},
+"areaServed": {
+"@type": "Country",
+"url": "https://www.wikidata.org/wiki/Q408",
+"name": "Australia"},
+"department": {
+"Address": "Dr Woof Warehouse 20 Litoria Court, Epping VIC 3076",
+"@type": "LocalBusiness",
+"name": "{{ shop.name }}",
+"image": "https://www.drwoofapparel.com.au/cdn/shop/files/Untitled-2_8e4e0372-7496-4014-bef7-2f26f5748b39_200x.jpg?v=1661621388",
+"telephone": "{{shop.phone}}"}
+}
+</script>
+
+<script type="application/ld+json">{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [{
+    "@type": "ListItem",
+    "position": 1,
+    "name": "Home",
+    "item": "{{ shop.url }}"
+  }
+  
+  {%- if request.page_type == 'page' -%}, {
+    "@type": "ListItem",
+    "position": 2,
+    "name": "{{ page.title | strip_html | strip_newlines | strip }}",
+    "item": "{{ shop.url }}{{ product.url }}"
+  }
+  {%- endif -%}
+
+  {%- if request.page_type == 'product' -%}, {
+    "@type": "ListItem",
+    "position": 2,
+    "name": "{{ product.title | strip_html | strip_newlines | strip | escape }}",
+    "item": "{{ shop.url }}{{ product.url }}"
+  }
+  {%- endif -%}
+  
+  {%- if request.page_type == 'page' -%}, {
+    "@type": "ListItem",
+    "position": 2,
+    "name": "{{ page.title | strip_html | strip_newlines | strip | escape }}",
+    "item": "{{ shop.url }}{{ page.url }}"
+  }
+  {%- endif -%}
+  
+  {%- if request.page_type == 'policy' -%}, {
+    "@type": "ListItem",
+    "position": 2,
+    "name": "{{ shop.privacy_policy.title | strip_html | strip_newlines | strip | escape }}",
+    "item": "{{ shop.url }}{{ shop.privacy_policy.url }}"
+  }
+  {%- endif -%}
+  
+  {%- if request.page_type == 'collection' -%}, {
+    "@type": "ListItem",
+    "position": 2,
+    "name": "{{ collection.title | strip_html | strip_newlines | strip | escape }}",
+    "item": "{{ shop.url }}{{ collection.url }}"
+  }
+  {%- endif -%}
+  
+  {%- if request.page_type == 'blog' -%}, {
+    "@type": "ListItem",
+    "position": 2,
+    "name": "{{ blog.title | strip_html | strip_newlines | strip | escape }}",
+    "item": "{{ shop.url }}{{ blog.url }}"
+  }
+  {%- endif -%}
+  
+  {%- if request.page_type == 'article' -%}, {
+    "@type": "ListItem",
+    "position": 2,
+    "name": "{{ blog.title | strip_html | strip_newlines | strip | escape }}",
+    "item": "{{ shop.url }}{{ blog.url }}"
+  }, {
+    "@type": "ListItem",
+    "position": 3,
+    "name": "{{ article.title | strip_html | strip_newlines | strip | escape }}",
+    "item": "{{ shop.url }}{{ article.url }}"
+  }
+  {%- endif -%}
+  ]
+}
+</script>
+
+{%- if request.page_type == 'collection' -%}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "CollectionPage",
+  "name": "{{ page_title }}",
+  "description": "{{ page_description | strip_html }}",
+  "url": "{{ shop.url }}{{ collection.url }}",
+  "image": "{{ shop.url }}{{ collection.featured_image | image_url }}",
+  "mainEntity": {
+    "@type": "ItemList",
+    "itemListElement": [
+      {% for product in collection.products %}
+      {
+        "@type": "ListItem",
+        "position": "{{ forloop.index }}",
+        "url": "{{ shop.url }}{{ product.url }}"
+      }{% unless forloop.last %},{% endunless %}
+      {% endfor %}
+    ]
+  }
+}
+</script>
+{%- endif -%}
+
+{%- if request.page_type == 'article' -%}
+<script type="application/ld+json">{
+    "@context": "https://schema.org/",
+    "@type": "CreativeWorkSeries",
+    "name": "{{ article.title }}",
+    "aggregateRating": {
+        "@type": "AggregateRating",
+        "ratingValue": "5",
+        "bestRating": "5",
+        "ratingCount": "12"
+    }
+}</script>
+{%- endif -%}

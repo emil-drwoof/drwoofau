@@ -1,0 +1,460 @@
+{% include 'product-template-xmasmenpants',
+  section_id: product.id,
+
+  product_shipping_callout: section.settings.product_shipping_callout,
+  product_image_size: section.settings.product_image_size,
+  product_image_type: section.settings.product_image_type,
+  product_zoom_enable: section.settings.product_zoom_enable,
+  variant_type: section.settings.variant_type,
+  variant_labels_enable: section.settings.variant_labels_enable,
+  sku_enable: section.settings.sku_enable,
+  quantity_enable: section.settings.quantity_enable,
+  inventory_enable: section.settings.inventory_enable,
+  inventory_threshold: section.settings.inventory_threshold,
+  inventory_transfers_enable: section.settings.inventory_transfers_enable,
+  enable_payment_button: section.settings.enable_payment_button,
+  social_enable: section.settings.social_enable,
+  video_looping: section.settings.enable_video_looping,
+  video_style: section.settings.product_video_style
+%}
+
+
+{% if settings.enable_product_reviews %}
+  <div id="Reviews-{{ product.id }}" class="index-section product-reviews product-reviews--full">
+    <div class="page-width">
+      <div id="shopify-product-reviews" data-id="{{product.id}}">{{ product.metafields.spr.reviews }}</div>
+    </div>
+  </div>
+{% endif %}
+<style>
+  .main-textamonials{
+    margin-bottom:0 !important;
+  }
+  {% if section.settings.enable_ab_size %}
+    .scrubcaps-wrapper{
+      margin-bottom:36px !important;
+    }
+
+  {% endif %}
+</style>
+<script>
+  $(document).ready(function(){
+
+
+  $(".image-overlay").on("click", function() {
+      {% if section.settings.enable_ab_size %}
+          $dron = ""
+          $dron = $(".atv").html()
+          switch ($dron) {
+            case "XXS":
+            $(".size-desc").html("XXS (AU 4-6)")
+            break;
+          case "XS":
+            $(".size-desc").html("XS (AU 6-8)")
+            break;
+          case "S":
+            $(".size-desc").html("S (AU 8-10)")
+            break;
+          case "M":
+            $(".size-desc").html("M (AU 10-12)")
+            break;
+          case "L":
+            $(".size-desc").html("L (AU 12-14)")
+            break;
+          case "XL":
+            $(".size-desc").html("XL (AU 14-16)")
+            break;            
+          case "XXL":
+            $(".size-desc").html("XXL(AU 16-18)")
+            break;
+          default:
+            $(".size-desc").html("Small (Women 5.5-8 | Men 4.5-7)")
+        }
+      {% endif %}
+  })
+
+
+  
+    {% if section.settings.enable_ab_size %}
+  var interval = setInterval(function() {
+      if ($(".atv").length) {
+          $dron = $(".atv").html()
+          switch ($dron) {
+            case "XXS":
+            $(".size-desc").html("XXS (AU 4-6)")
+            break;
+          case "XS":
+            $(".size-desc").html("XS (AU 6-8)")
+            break;
+          case "S":
+            $(".size-desc").html("S (AU 8-10)")
+            break;
+          case "M":
+            $(".size-desc").html("M (AU 10-12)")
+            break;
+          case "L":
+            $(".size-desc").html("L (AU 12-14)")
+            break;
+          case "XL":
+            $(".size-desc").html("XL (AU 14-16)")
+            break;            
+          case "XXL":
+            $(".size-desc").html("XXL(AU 16-18)")
+            break;
+          default:
+            alert("not working")
+        }
+          clearInterval(interval); // Stop the interval when the div is fully loaded
+      } 
+    }, 1000); 
+{% endif %}
+
+
+
+    $(document).on("click",".btn-primer",function(){
+      
+    {% if section.settings.enable_ab_size %}
+
+        $size = $(this).html()
+
+        switch ($size) {
+          case "XXS":
+            $(".size-desc").html("XXS (AU 4-6)")
+            break;
+          case "XS":
+            $(".size-desc").html("XS (AU 6-8)")
+            break;
+          case "S":
+            $(".size-desc").html("S (AU 8-10)")
+            break;
+          case "M":
+            $(".size-desc").html("M (AU 10-12)")
+            break;
+          case "L":
+            $(".size-desc").html("L (AU 12-14)")
+            break;
+          case "XL":
+            $(".size-desc").html("XL (AU 14-16)")
+            break;            
+          case "XXL":
+            $(".size-desc").html("XXL(AU 16-18)")
+            break;
+          default:
+            alert("not working")
+        }
+
+
+    {% endif %}
+    })
+
+  })
+</script>
+
+{% schema %}
+  {
+    "name": "Product pages",
+    "settings": [
+      {
+        "type": "header",
+        "content": "Caps A/B testing"
+      },
+      {
+        "type": "checkbox",
+        "id": "enable_ab_size",
+        "label": "Enable caps A/B testing for sizing",
+        "default": false
+      },
+      {
+        "type": "checkbox",
+        "id": "abtestnoicons",
+        "label": "Enable AB test no icons",
+        "default": false
+      },
+      {
+        "type": "checkbox",
+        "id": "abtestdavideo",
+        "label": "Enable video below atc",
+        "default": false
+      },
+      {
+        "type": "checkbox",
+        "id": "enable_ab",
+        "label": "Enable caps A/B testing",
+        "default": false
+      },
+      {
+        "type": "checkbox",
+        "id": "abtesting1",
+        "label": "Enable ab testing 1",
+        "default": false
+      },
+      {
+        "type": "checkbox",
+        "id": "abtesting2",
+        "label": "Enable Freeset Offer",
+        "default": false
+      },
+      {
+        "type": "image_picker",
+        "id": "freesetcap",
+        "label": "Freeset caps image"
+      },
+      {
+        "type": "checkbox",
+        "id": "dark_theme",
+        "label": "Dark Theme"
+      },
+      {
+        "type": "header",
+        "content": "Media"
+      },
+      {
+        "type": "select",
+        "id": "product_image_size",
+        "label": "Image size",
+        "default": "large",
+        "options": [
+          {
+            "value": "small",
+            "label": "Small"
+          },
+          {
+            "value": "medium",
+            "label": "Medium"
+          },
+          {
+            "value": "large",
+            "label": "Large"
+          }
+        ]
+      },
+      {
+        "type": "select",
+        "id": "product_image_type",
+        "label": "Image style",
+        "default": "stacked",
+        "options": [
+          {
+            "value": "stacked",
+            "label": "Stacked"
+          },
+          {
+            "value": "slider",
+            "label": "Fade"
+          }
+        ]
+      },
+      {
+        "type": "checkbox",
+        "id": "product_zoom_enable",
+        "label": "Enable image zoom",
+        "default": true
+      },
+      {
+        "type": "checkbox",
+        "id": "enable_video_looping",
+        "label": "Enable video looping",
+        "default": true
+      },
+      {
+        "type": "select",
+        "id": "product_video_style",
+        "label": "Video style",
+        "default": "muted",
+        "options": [
+          {
+            "value": "muted",
+            "label": "Video without sound"
+          },
+          {
+            "value": "unmuted",
+            "label": "Video with sound"
+          }
+        ],
+        "info": "Video with sound will not autoplay"
+      },
+      {
+        "type": "header",
+        "content": "Product settings"
+      },
+      {
+        "type": "checkbox",
+        "id": "enable_payment_button",
+        "label": "Show dynamic checkout button",
+        "info": "Lets customers check out directly using a familiar payment method. [Learn more](https://help.shopify.com/manual/using-themes/change-the-layout/dynamic-checkout)",
+        "default": true
+      },
+      {
+        "type": "text",
+        "id": "product_shipping_callout",
+        "label": "Callout text",
+        "info": "E.g. Free shipping + returns"
+      },
+      {
+        "type": "select",
+        "id": "variant_type",
+        "label": "Variant picker style",
+        "default": "button",
+        "options": [
+          {
+            "value": "button",
+            "label": "Buttons"
+          },
+          {
+            "value": "dropdown",
+            "label": "Dropdown"
+          }
+        ]
+      },
+      {
+        "type": "checkbox",
+        "id": "variant_labels_enable",
+        "label": "Show variant labels",
+        "default": true
+      },
+      {
+        "type": "checkbox",
+        "id": "sku_enable",
+        "label": "Show SKU"
+      },
+      {
+        "type": "checkbox",
+        "id": "inventory_enable",
+        "label": "Show inventory notice"
+      },
+      {
+        "type": "range",
+        "id": "inventory_threshold",
+        "label": "Inventory threshold",
+        "default": 10,
+        "min": 0,
+        "max": 20,
+        "step": 2
+      },
+      {
+        "type": "checkbox",
+        "id": "inventory_transfers_enable",
+        "label": "Show inventory transfer notice",
+        "info": "Learn how to create inventory transfers [here](https://help.shopify.com/en/manual/products/inventory/transfers/create-transfer)"
+      },
+      {
+        "type": "checkbox",
+        "id": "quantity_enable",
+        "label": "Show quantity field"
+      },
+      {
+        "type": "checkbox",
+        "id": "social_enable",
+        "label": "Enable social sharing",
+        "default": true
+      },
+      {
+      "type": "color",
+       "id": "color_link",
+      "label": "Background-color",
+       "default": "#2980b9"
+   },
+    {
+     "type":"image_picker",
+     "id":"img1",
+     "label":"Add_Icons"
+  },
+  {
+   "type":"text",
+     "id":"txt",
+     "label":"Add_text"
+  },
+
+
+  {
+     "type":"image_picker",
+     "id":"img2",
+     "label":"Add_Icons"
+  },
+  {
+   "type":"text",
+     "id":"txt_",
+     "label":"Add_text"
+  },
+
+  
+  
+    {
+     "type":"image_picker",
+     "id":"img3",
+     "label":"Add_Icons"
+  },
+  {
+   "type":"text",
+     "id":"txt1",
+     "label":"Add_text"
+  },
+  {
+   "type":"text",
+     "id":"txt2",
+     "label":"Standard Shipping"
+  },
+  {
+   "type":"text",
+     "id":"txt3",
+     "label":"Scrub Caps"
+  },
+  {
+   "type":"text",
+     "id":"txt4",
+     "label":"Women’s Underscrubs"
+  },{
+   "type":"text",
+     "id":"txt5",
+     "label":"Men’s Underscrubs "
+  },{
+   "type":"text",
+     "id":"txt6",
+     "label":"Socks"
+  },{
+   "type":"text",
+     "id":"txt7",
+     "label":"Charms"
+  },{
+   "type":"text",
+     "id":"txt8",
+     "label":"Women’s Scrub Tops"
+  },{
+   "type":"text",
+     "id":"txt9",
+     "label":"Women’s Scrub Pants "
+  },{
+   "type":"text",
+     "id":"txt10",
+     "label":"Men’s Scrub Tops"
+  },{
+   "type":"text",
+     "id":"txt11",
+     "label":"Men’s Scrub pants"
+  }
+  
+]
+
+    
+  }
+{% endschema %}
+{% comment %}
+{% if product.metafields.loox.num_reviews %}
+  
+<script id="looxSchemaJson" type="application/ld+json">
+{
+	"@context": "http://schema.org",
+	"@type": "Product",
+	"@id": {{ canonical_url | json }},
+	"aggregateRating": {
+		"@type": "AggregateRating",
+		"ratingValue": "{{ product.metafields.loox.avg_rating }}",
+		"reviewCount": "{{ product.metafields.loox.num_reviews }}"
+	},
+	"name": {{ product.title | json }}
+}
+</script>
+{% endif %}
+{% endcomment %}
+
+	 {% comment %} <div id="looxReviews" data-product-id="{{product.id}}" class="loox-reviews-default">{{ product.metafields.loox.reviews }}</div> {% endcomment %}

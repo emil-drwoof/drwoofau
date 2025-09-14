@@ -1,0 +1,220 @@
+
+{% comment %}
+  This sections requires the same `paginate_by` variable value as
+  the other sections for the ajax loading to work.
+  If you change the number below, it must also be changed in:
+  - sections/collection-template
+  - sections/featured-collection-slider
+  - snippets/page-block-featured-collection-slider
+{% endcomment %}
+{%- assign paginate_by = 24 -%}
+
+{%- assign collection = collections[section.settings.home_featured_products] -%}
+{%- assign ajax_paginate = false -%}
+{% if collection %}
+  {% if collection.all_products_count > paginate_by %}
+    {%- assign ajax_paginate = true -%}
+  {% endif %}
+{% endif %}
+
+{%- assign grid_item_width = 'grid-product--small' -%}
+{%- assign scrollable = true -%}
+{% case section.settings.per_row %}
+  {% when 'small' %}
+    {%- if collection.all_products_count <= 3 -%}
+      {%- assign scrollable = false -%}
+    {%- endif -%}
+  {% when 'medium' %}
+    {%- assign grid_item_width = 'grid-product--medium' -%}
+  {% when 'large' %}
+    {%- assign grid_item_width = 'grid-product--large' -%}
+{% endcase %}
+
+<div class="index-section index-section--overflow-scroller{% if section.settings.alt %} index-section--alt{% endif %}">
+
+  <div
+    id="CollectionSection-{{ section.id }}"
+    data-section-id="{{ section.id }}"
+    data-section-type="featured-collection"
+    data-scrollable="true"
+    data-product-sliders-mobile="false"
+    data-paginate="{{ ajax_paginate }}"
+    data-paginate-by="{{ paginate_by }}"
+    data-collection-url="{{ collection.url }}"
+    data-collection-count="{{ collection.all_products_count }}"
+    {% if section.settings.per_row == 'small' and collection.all_products_count <= 3 %} data-center-grid{% endif %}
+    data-aos>
+ <div class="page-width">
+         <header class="section-header aos-init aos-animate" data-aos="">
+            <h2 class="section-header__title appear-delay">
+               {{ section.settings.title }}
+            </h2>
+           <p style="margin-top:30px">{{ section.settings.description }}</p>
+         </header>
+      </div>
+
+    <div class="overflow-scroll-wrap" data-ajax-loader>
+      <button
+        type="button"
+        class="btn btn--tertiary overflow-scroller__arrow overflow-scroller__arrow--left overflow-scroller--disable-left small--hide"
+        {% unless scrollable %}hidden{% endunless %}
+        aria-hidden="true"
+        data-arrow>
+        <svg aria-hidden="true" focusable="false" role="presentation" class="icon icon-chevron-left" viewBox="0 0 284.49 498.98"><path d="M249.49 0a35 35 0 0 1 24.75 59.75L84.49 249.49l189.75 189.74a35.002 35.002 0 1 1-49.5 49.5L10.25 274.24a35 35 0 0 1 0-49.5L224.74 10.25A34.89 34.89 0 0 1 249.49 0z"/></svg>
+      </button>
+      <button
+        type="button"
+        class="btn btn--tertiary overflow-scroller__arrow overflow-scroller__arrow--right small--hide"
+        {% unless scrollable %}hidden{% endunless %}
+        aria-hidden="true"
+        data-arrow>
+        <svg aria-hidden="true" focusable="false" role="presentation" class="icon icon-chevron-right" viewBox="0 0 284.49 498.98"><path d="M35 498.98a35 35 0 0 1-24.75-59.75l189.74-189.74L10.25 59.75a35.002 35.002 0 0 1 49.5-49.5l214.49 214.49a35 35 0 0 1 0 49.5L59.75 488.73A34.89 34.89 0 0 1 35 498.98z"/></svg>
+      </button>
+      <div
+        class="overflow-scroller"
+        data-pagination-wrapper>
+        <div
+          class="grid grid--uniform grid--scattered-large-2 grid--scattered-small-2"
+          data-aos="overflow__animation"
+          data-product-container>
+
+        
+		{% for block in section.blocks %}
+          {% include 'items-grid-item2' %}
+            {% endfor %}
+
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+<style>
+ .grid-product__title {
+    font-size: 18px!important;
+    font-weight: 500;
+    margin-bottom: 7px;
+    text-transform: capitalize!important;
+	    line-height: 1.2;
+}
+</style>  
+
+
+{% schema %}
+  {
+    "name": "Dr Woof Slider collection",
+    "settings": [
+      {
+        "type": "text",
+        "id": "title",
+        "label": "Heading",
+        "default": "Lorem ipsum dolor sit amet "
+      },
+      {
+        "type": "text",
+        "id": "description",
+        "label": "Description",
+		"default":"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur"
+      },
+      {
+        "type": "select",
+        "id": "per_row",
+        "label": "Products per row (Desktop)",
+        "default": "3",
+        "options": [
+{
+            "value": "2",
+            "label": "2"
+          },
+          {
+            "value": "3",
+            "label": "3"
+          },
+          {
+            "value": "4",
+            "label": "4"
+          },
+          {
+            "value": "5",
+            "label": "5"
+          }
+        ]
+      },
+		{
+        "type": "select",
+        "id": "per_row_mobile",
+        "label": "Products per row (Mobile)",
+        "default": "3",
+        "options": [
+          {
+            "value": "2",
+            "label": "2"
+          },
+			{
+            "value": "3",
+            "label": "3"
+          },
+          {
+            "value": "4",
+            "label": "4"
+          },
+          {
+            "value": "5",
+            "label": "5"
+          }
+        ]
+      }
+	  
+    ],
+	"blocks": [
+{
+"type": "content",
+      "name": "Content ",
+  	  "settings": [
+{
+          "type": "text",
+          "id": "title",
+          "label": "Title",
+		  "default":"Lorem ipsum dolor sit amet "
+    },
+{
+          "type": "text",
+          "id": "link",
+          "label": "Link a href",
+		  "default":"#"
+    },
+{
+          "type": "text",
+          "id": "link_name",
+          "label": "Button name",
+			"default":"View"
+    },
+{
+          "type": "image_picker",
+          "id": "background_image",
+          "label": "Image on library"
+    },
+{
+  "type": "range",
+  "id": "star",
+  "min": 0,
+  "max": 5,
+  "step": 1,
+  "label": "Rating",
+  "default": 5
+},
+{
+          "type": "text",
+          "id": "star_num",
+          "label": "Text after star",
+		   "default":"Lorem ipsum dolor sit amet "
+    }
+]
+}
+
+],
+    "presets": [{
+      "name": "Dr Woof Slider collection"
+    }]
+  }
+{% endschema %}

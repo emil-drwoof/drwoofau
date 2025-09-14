@@ -1,0 +1,82 @@
+{
+  "sections": {
+    "custom_html_y8fDJx": {
+      "type": "custom-html",
+      "settings": {
+        "custom_html": "<img data-swift-lazy=\"1\" loading=\"lazy\" class=\"\" src=\"\/\/www.drwoofapparel.com.au\/cdn\/shop\/files\/Horizontal_logo_transparent_background_blue_2_7dc8a8de-20c6-4155-8747-0810a5b4b5e0_210x.png?v=1704080588\" srcset=\"\/\/www.drwoofapparel.com.au\/cdn\/shop\/files\/Horizontal_logo_transparent_background_blue_2_7dc8a8de-20c6-4155-8747-0810a5b4b5e0_210x.png?v=1704080588 1x, \/\/www.drwoofapparel.com.au\/cdn\/shop\/files\/Horizontal_logo_transparent_background_blue_2_7dc8a8de-20c6-4155-8747-0810a5b4b5e0_210x@2x.png?v=1704080588 2x\" alt=\"Dr. Woof Apparel AU\" style=\"display:block;margin:30px auto 0;\">"
+      }
+    },
+    "featured_content_NLHpiU": {
+      "type": "featured-content",
+      "disabled": true,
+      "settings": {
+        "title": "",
+        "text": "<p><strong>Mastering the Art of How to Put Compression Socks On<\/strong><\/p>",
+        "align_text": "center",
+        "narrow_column": false,
+        "enlarge_text": true,
+        "alt": false
+      }
+    },
+    "headerv4_fdwLiF": {
+      "type": "headerv4",
+      "settings": {
+        "boxhero": "shopify:\/\/shop_images\/mastering-the-art-of-how-to-put-compression-socks-on_750x_5ce6e188-69e0-4187-958a-bc1e1e2a9671.webp",
+        "mobile_boxhero": "shopify:\/\/shop_images\/mastering-the-art-of-how-to-put-compression-socks-on_750x_5ce6e188-69e0-4187-958a-bc1e1e2a9671.webp"
+      }
+    },
+    "featured_content_7i8qTh": {
+      "type": "featured-content",
+      "settings": {
+        "title": "",
+        "text": "<p>Say goodbye to struggles and discomfort! In this comprehensive guide, we'll show you how to put <a href=\"https:\/\/www.drwoofapparel.com.au\/collections\/compression-socks\">compression socks<\/a>on with ease and efficiency. You'll learn about common challenges and misconceptions surrounding compression socks and get a step-by-step guide to mastering their application.<\/p>",
+        "align_text": "center",
+        "narrow_column": true,
+        "enlarge_text": false,
+        "alt": false
+      }
+    },
+    "featured_content_XgpgUf": {
+      "type": "featured-content",
+      "settings": {
+        "title": "<b>The Importance of Wearing Compression Socks<\/b>",
+        "text": "<p>Compression socks are an essential part of healthcare professionals' attire. These socks offer numerous health benefits, from improving blood circulation to reducing foot fatigue. But for these benefits to be fully realized, learning how to put compression socks on correctly is crucial.<\/p>",
+        "align_text": "center",
+        "narrow_column": true,
+        "enlarge_text": false,
+        "alt": false
+      }
+    },
+    "adsection_DFck6h": {
+      "type": "adsection",
+      "settings": {
+        "darktheme": true,
+        "deskmartop": 20,
+        "deskmarbot": 20,
+        "mobmartop": 0,
+        "mobmarbot": 30,
+        "bigtext": "",
+        "reviewstars_text": "",
+        "bigtextsize": 36,
+        "textbut": "Shop",
+        "buttonlink": "shopify:\/\/collections\/compression-socks",
+        "bgcolor": "#050507"
+      }
+    },
+    "custom_html_3Jq8JP": {
+      "type": "custom-html",
+      "settings": {
+        "custom_html": "<img data-swift-lazy=\"1\" loading=\"lazy\" class=\"\" src=\"\/\/www.drwoofapparel.com.au\/cdn\/shop\/files\/Horizontal_logo_transparent_background_blue_2_7dc8a8de-20c6-4155-8747-0810a5b4b5e0_210x.png?v=1704080588\" srcset=\"\/\/www.drwoofapparel.com.au\/cdn\/shop\/files\/Horizontal_logo_transparent_background_blue_2_7dc8a8de-20c6-4155-8747-0810a5b4b5e0_210x.png?v=1704080588 1x, \/\/www.drwoofapparel.com.au\/cdn\/shop\/files\/Horizontal_logo_transparent_background_blue_2_7dc8a8de-20c6-4155-8747-0810a5b4b5e0_210x@2x.png?v=1704080588 2x\" alt=\"Dr. Woof Apparel AU\" style=\"display:block;margin:0 auto;\">"
+      }
+    }
+  },
+  "order": [
+    "custom_html_y8fDJx",
+    "featured_content_NLHpiU",
+    "headerv4_fdwLiF",
+    "featured_content_7i8qTh",
+    "featured_content_XgpgUf",
+    "adsection_DFck6h",
+    "custom_html_3Jq8JP"
+  ]
+}

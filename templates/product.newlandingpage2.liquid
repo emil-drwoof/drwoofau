@@ -1,0 +1,276 @@
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link
+  rel="preconnect"
+  href="https://fonts.gstatic.com"
+  crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Oxygen:wght@300;400;700&display=swap" rel="stylesheet">
+
+{% include 'product-content.zipifypages', contentprt: 'header' %}{% section 'product-template-nlp' %}
+{% assign heading = product.metafields.sf_image_with_text.heading %}
+
+<div class="desktoponly">
+  {% if heading != blank %}
+    {% include 'product-text-with-image' %}
+  {% else %}
+    {% section 'product-sections-bundle-new' %}
+  {% endif %}
+</div>
+
+<div class="mobile-only">
+  {% include "storyslider" %}
+    <div class="boxer green dv">
+    <h2>Invest in Quality: Scrubs for a Lifetime</h2>
+    <div class="flexer">
+      <div class="fleft">
+        <img src="{{ 'left1.png' | asset_img_url: 'master' }}" alt="Image">
+      </div>
+      <div class="fmid">
+
+        <img src="{{ 'mid.png' | asset_img_url: 'master' }}" alt="Image">
+      </div>
+      <div class="fright">
+        <img src="{{ 'right2.png' | asset_img_url: 'master' }}" alt="Image">
+      </div>
+    </div>
+    <div class="flexer">
+      <div class="fleft">
+        <img
+          src="{{ 'logob.png' | asset_img_url: 'master' }}"
+          alt="Image"
+          style="margin-left:auto;margin-right:auto;display:block;margin-top:12px;">
+      </div>
+      <div class="fmid"></div>
+      <div class="fright">
+        <p style="font-family: 'futuraptbold';text-align:center;margin-top:12px;">Other<br/>brands</p>
+      </div>
+    </div>
+    <!-- <img src="https://cdn.shopify.com/s/files/1/0573/7250/8344/files/chart.png?v=1682873632" class="fullwidth"> -->
+    <img src="https://cdn.shopify.com/s/files/1/0573/7250/8344/files/chart.png?v=1682873632" class="fullwidth mv">
+  </div>
+  <div class="boxer">
+    {% include "popularpicks" %}
+  </div>
+
+</div>
+{% include 'yellow' %}
+{% include "boses.liquid" %}
+<div class="boxer">
+  <h2 class="custtitle">Customer Reviews</h2>
+</div>
+
+{% if product.metafields.loox.num_reviews %}
+  <script id="looxSchemaJson" type="application/ld+json">
+    {
+    "@context": "http://schema.org",
+                                                                                                                                        	"@type": "Product",
+                                                                                                                                        	"@id": {{ canonical_url | json }},
+    "aggregateRating": {
+                                                                                                                                        		"@type": "AggregateRating",
+                                                                                                                                        		"ratingValue": "{{ product.metafields.loox.avg_rating }}",
+    "reviewCount": "{{ product.metafields.loox.num_reviews }}"
+    },
+                                                                                                                                        	"name": {{ product.title | json }}
+    }
+  </script>
+{% endif %}
+<div
+  id="looxReviews"
+  data-product-id="{{product.id}}"
+  class="loox-reviews-default">{{ product.metafields.loox.reviews }}</div>
+
+{% section 'product-recommendations' %}
+
+{% include "greenslider" %}
+<div class="page-width">
+  <p class="dv" style="margin: 80px auto 60px;text-align:center;width:60%;font-size: 20px;line-height: 142.7%;text-align: center;color: #050507;">At Dr Woof Apparel, we respect and value all opinions - So while the viewpoints discussed by program participants may be interesting and thought-provoking, it does not necessarily reflect the views and opinions of our brand.</p>
+  <h4 class="smalltitle">Follow us</h4>
+  <img
+    class="dv"
+    src="https://cdn.shopify.com/s/files/1/0573/7250/8344/files/social.png?v=1684459626"
+    style="margin:20px auto;display:block;">
+</div>
+
+{% include "trio" %}
+<style>
+  .smalltitle {
+    font-family: 'futuraptbold';
+    font-size: 28px;
+    line-height: 142.7%;
+    text-align: center;
+    color: #050507;
+  }
+  .footer_text {
+    display: none;
+  }
+  .notifwarning {
+    background: rgba(237, 192, 69, 0.19);
+    padding: 20px;
+    border: 1px solid #EDC045;
+    border-radius: 8px;
+    margin-bottom: 18px;
+  }
+  @media only screen and (max-width:480px) {
+    .notifwarning {
+      display: none;
+    }
+    .dv {
+      display: none;
+    }
+  }
+  .notifwarning p {
+    color: #000;
+    font-family: 'futurapt';
+    text-align: center;
+    margin-bottom: 0;
+  }
+  .normal_price,
+  .product__price,
+  .product-single__prices span.normal_price {
+    display: inline-block !important;
+  }
+  .green {
+    background: #BDD1BE;
+    padding: 80px 12px;
+  }
+  .green .fmid img {
+    position: relative;
+    top: -6px;
+  }
+  .green .flexer {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+  }
+  .green .flexer .fmid {
+    flex: 0 0 50%;
+  }
+  .green .flexer .fleft,
+  .green .flexer .fright {
+    flex: 0 0 22%;
+  }
+  .green h2 {
+    color: #050507;
+    font-size: 40px;
+    text-align: center;
+    font-family: 'futuraptbold';
+  }
+  .mv {
+    display: none !important;
+  }
+  .dv {
+    display: block
+  }
+  @media only screen and (max-width:768px) {
+    p.main-textamonials {
+      margin-top: 11px;
+    }
+    .product__main-photos.product__main-photos--slider {
+      padding-bottom: 7px !important;
+    }
+  }
+  @media only screen and (max-width:480px) {
+    .mv {
+      display: block !important;
+    }
+    .dv {
+      display: none !important;
+    }
+  }
+</style>
+
+{% comment %}
+THIS SECTION WAS UPDATED BY CASEY. IT USED TO SHOW THE LOOX REVIEW DIV. I'VE MOVED THAT TO- PRODUCT.SECTIONS         
+{% endcomment %}{% assign my_value = product.metafields.sf_product_redirecti.product_redirection_link %}
+{% if my_value %}
+  <input
+    type="hidden"
+    value="{{ my_value }}"
+    id="metafield_url">
+  <script>
+    $(document).ready(function() {
+      var get_url_link = $("#metafield_url").val();
+      window.location.href = get_url_link;
+    });
+  </script>
+{% endif %}
+
+
+
+{%- if collection -%}
+  <div class="text-center">
+    <a href="{{ collection.url }}" class="btn btn--tertiary">
+      &xlarr; {{ 'products.general.collection_return' | t: collection: collection.title }}
+    </a>
+  </div>
+{%- endif -%}
+<style>
+  .product__price {
+    color: red !important;
+  }
+  .normal_price .product__price {
+    color: #525252 !important;
+  }
+</style>
+<script>
+
+  // Override default values of shop.strings for each template.
+// Alternate product templates can change values of
+// add to cart button, sold out, and unavailable states here.
+  theme.productStrings = {
+    addToCart: {{ 'products.product.add_to_cart' | t | json }},
+    soldOut: {{ 'products.product.sold_out' | t | json }},
+    unavailable: {{ 'products.product.unavailable' | t | json }}
+  };
+</script>
+<script type="text/javascript">
+  var _learnq = _learnq || [];
+  var item = {
+                                                                          Name: {{ product.title | json }},
+  ProductID: {{ product.id | json }},
+  Categories: {{ product.collections | map: 'title' | json }},
+  ImageURL: "https:{{ product.featured_image.src | img_url: 'grande' }}",
+  URL: "{{ shop.secure_url }}{{ product.url }}",
+  Brand: {{ product.vendor | json }},
+  Price: {{ product.price | money | json }},
+  CompareAtPrice: {{ product.compare_at_price_max | money | json }}
+  };
+  _learnq.push(['track', 'Viewed Product', item]);
+                                                                        _learnq.push(['trackViewedItem', {
+                                                                          Title: item.Name,
+                                                                          ItemId: item.ProductID,
+                                                                          Categories: item.Categories,
+                                                                          ImageUrl: item.ImageURL,
+                                                                          Url: item.URL,
+                                                                          Metadata: {
+                                                                            Brand: item.Brand,
+                                                                            Price: item.Price,
+                                                                            CompareAtPrice: item.CompareAtPrice
+                                                                          }
+                                                                        }]);</script>
+{% include 'product-content.zipifypages', contentprt: 'footer' %}
+
+<script type="text/javascript">
+  var _learnq = _learnq || [];
+  var item = {
+                                                                          Name: {{ product.title | json }},
+  ProductID: {{ product.id | json }},
+  Categories: {{ product.collections | map: 'title' | json }},
+  ImageURL: "https:{{ product.featured_image.src | img_url: 'grande' }}",
+  URL: "{{ shop.secure_url }}{{ product.url }}",
+  Brand: {{ product.vendor | json }},
+  Price: {{ product.price | money | json }},
+  CompareAtPrice: {{ product.compare_at_price_max | money | json }}
+  };
+  _learnq.push(['track', 'Viewed Product', item]);
+                                                                        _learnq.push(['trackViewedItem', {
+                                                                          Title: item.Name,
+                                                                          ItemId: item.ProductID,
+                                                                          Categories: item.Categories,
+                                                                          ImageUrl: item.ImageURL,
+                                                                          Url: item.URL,
+                                                                          Metadata: {
+                                                                            Brand: item.Brand,
+                                                                            Price: item.Price,
+                                                                            CompareAtPrice: item.CompareAtPrice
+                                                                          }
+                                                                        }]);</script>

@@ -1,0 +1,1780 @@
+{%- assign show_selectors = false -%}
+{%- assign currency_selector = false -%}
+{%- assign locale_selector = false -%}
+
+{%- if section.settings.show_currency_selector and shop.enabled_currencies.size > 1 -%}
+  {%- assign currency_selector = true -%}
+{%- endif -%}
+
+{%- if section.settings.show_locale_selector and shop.enabled_locales.size > 1 -%}
+  {%- assign locale_selector = true -%}
+{%- endif -%}
+
+{%- if currency_selector or locale_selector -%}
+  {%- assign show_selectors = true -%}
+{%- endif -%}
+<div class="page-width" actualheight="55.3906px" actualwidth="1300px" actualmaxheight="none" actualmaxwidth="1300px" actualminheight="0px" actualminwidth="0px" windowheight="633"><style>
+	.acc-heading {
+		margin: 10px 0 !important;
+		padding: 15px 50px 15px 0;
+		border-top: 1px solid;
+		border-bottom: 1px solid;
+		position: relative;
+		cursor: pointer;
+	}
+	.acc-heading::after {
+		position: absolute;
+		content: '+';
+		right: 15px;
+		top: 45%;
+		transform: translateY(-50%);
+		font-size: 25px;
+	}
+	.acc-heading.active-acc-heading::after {
+		content: '-';
+	}
+  .h2.appear-delay{
+    font-weight:600;
+  }
+  .footer{
+    margin-bottom: 20px;
+
+  }
+  footer .rte p{
+    max-width: 461px;
+    margin-left: auto;
+    margin-right: auto;
+    display:block;
+  }
+  footer .rte strong{
+    font-weight:400;
+    color:#f5be15;
+
+  }
+  @media only screen and (max-width:480px){
+    footer .page-width{
+      padding:0 23px !important;
+    }
+    .newsletter-form-group{
+      width:100%;
+      max-width:100% !important;
+    }
+    .newsletter-form-group__submit{
+      font-size:18px;
+      font-weight:900;
+    }
+    .newsletter-form-group__input,
+    .rte.rte--block.appear-delay-1{
+      font-size: 20px !important;
+      text-align: left;
+      line-height: 1.6;
+    }
+    .h2.appear-delay{
+      font-weight:600;
+      font-size:37px;
+    }
+  }
+  body{
+    width:100% !important;
+    overflow-x:hidden;
+  }
+</style>
+<!--
+<div style="max-width: 800px; margin: 0 auto 100px;" actualheight="55.3906px" actualwidth="800px" actualmaxheight="none" actualmaxwidth="800px" actualminheight="0px" actualminwidth="0px" windowheight="633">
+	<h4 class="acc-heading" onclick="$(this).next('.acc-panel').slideToggle();$(this).toggleClass('active-acc-heading')" actualheight="55.3906px" actualwidth="800px" actualmaxheight="none" actualmaxwidth="none" actualminheight="0px" actualminwidth="0px" windowheight="633">A sneak peek at the year to come … shhhh</h4>
+	<div class="acc-panel" style="display: none;text-align: center;" actualheight="auto" actualwidth="auto" actualmaxheight="none" actualmaxwidth="none" actualminheight="0px" actualminwidth="0px" windowheight="633">
+		<p>Hey Woof Pack,</p>
+		<p>Ron, Dave and An here. We can’t thank you enough for your support last year. </p>
+		<p>When we started this little Australian scrubs brand in 2019, we had no idea how many amazing healthcare professionals we’d get to meet. To us, Dr Woof Apparel is more just a place where you can buy medical scrubs and accessories online – it’s a vehicle that we can use to bring joy to the medical world.</p>
+		<p>In 2023 we’ll be ramping up our mission to make the medical world smile. If you’re curious, here’s what we’ll be focusing on: </p>
+		<img style="max-width: 300px;" src="https://cdn.shopify.com/s/files/1/0573/7250/8344/files/071_NOMV_B_W_Front_Female.jpg?v=1672991542" alt="nomv black and white front female" actualheight="auto" actualwidth="auto" actualmaxheight="none" actualmaxwidth="300px" actualminheight="0px" actualminwidth="0px" windowheight="633">
+		<h3 actualheight="auto" actualwidth="auto" actualmaxheight="none" actualmaxwidth="none" actualminheight="0px" actualminwidth="0px" windowheight="633">1. New collabs with charities that you know and respect.</h3>
+		<img style="max-width: 300px;" src="https://cdn.shopify.com/s/files/1/0573/7250/8344/files/DR.Woof_Test_edits_4.3.1_540x.jpg?v=1662559257" alt="New collabs with charities" actualheight="auto" actualwidth="auto" actualmaxheight="none" actualmaxwidth="300px" actualminheight="0px" actualminwidth="0px" windowheight="633">
+		<h3 actualheight="auto" actualwidth="auto" actualmaxheight="none" actualmaxwidth="none" actualminheight="0px" actualminwidth="0px" windowheight="633">2. Growing ROUNDS by Dr. Woof</h3>
+		<p><a href="https://www.drwoofapparel.com.au/pages/rounds" actualheight="auto" actualwidth="auto" actualmaxheight="none" actualmaxwidth="none" actualminheight="0px" actualminwidth="0px" windowheight="633">Rounds</a> is a project that we started in 2022 with the aim of giving healthcare workers a louder voice on social media. It’s already starting conversations about important healthcare topics on <a href="https://www.tiktok.com/@drwoofapparel" actualheight="auto" actualwidth="auto" actualmaxheight="none" actualmaxwidth="none" actualminheight="0px" actualminwidth="0px" windowheight="633">Tiktok</a>, <a href="https://www.instagram.com/drwoofapparel/" actualheight="auto" actualwidth="auto" actualmaxheight="none" actualmaxwidth="none" actualminheight="0px" actualminwidth="0px" windowheight="633">Instagram</a> &amp; <a href="https://www.youtube.com/@drwoofapparel" actualheight="auto" actualwidth="auto" actualmaxheight="none" actualmaxwidth="none" actualminheight="0px" actualminwidth="0px" windowheight="633">Youtube</a>. </p>
+		<img style="max-width: 300px;" src="https://cdn.shopify.com/s/files/1/0573/7250/8344/products/W-FernGreenJoggers2DRWoof_AprilShoot_Product_xx13488_900x.jpg?v=1669024093" alt="fern green joggers2 drwoof" actualheight="auto" actualwidth="auto" actualmaxheight="none" actualmaxwidth="300px" actualminheight="0px" actualminwidth="0px" windowheight="633">
+		<h3 actualheight="auto" actualwidth="auto" actualmaxheight="none" actualmaxwidth="none" actualminheight="0px" actualminwidth="0px" windowheight="633">3. Green scrubs. </h3>
+		<p>No, not green the color.  We’re working on a new environmentally friendly, fully-recycled premium scrubs fabric that’s just as soft as our famous softer-than-pajamas blend. </p>
+		<img style="max-width: 300px;" src="https://cdn.shopify.com/s/files/1/0573/7250/8344/files/W_Peri_Group_3.jpg?v=1672991571" alt="Hospital scrubs that don’t suck" actualheight="auto" actualwidth="auto" actualmaxheight="none" actualmaxwidth="300px" actualminheight="0px" actualminwidth="0px" windowheight="633">
+		<h3 actualheight="auto" actualwidth="auto" actualmaxheight="none" actualmaxwidth="none" actualminheight="0px" actualminwidth="0px" windowheight="633">4. Hospital scrubs that don’t suck</h3>
+		<p>We’re looking into a few exciting options for getting Dr. Woof scrubs and accessory options for our friends in public and private hospitals. </p>
+		<img style="max-width: 300px;" src="https://cdn.shopify.com/s/files/1/0573/7250/8344/files/077_Whales_Front_Female.jpg?v=1672991571" alt="Whales Front Female" actualheight="auto" actualwidth="auto" actualmaxheight="none" actualmaxwidth="300px" actualminheight="0px" actualminwidth="0px" windowheight="633">
+		<h3 actualheight="auto" actualwidth="auto" actualmaxheight="none" actualmaxwidth="none" actualminheight="0px" actualminwidth="0px" windowheight="633">5. More of the scrubs and medical accessories you love</h3>
+		<p>We’re also working on more fun, comfortable. premium quality <a href="https://www.drwoofapparel.com.au/collections/scrub-caps" actualheight="auto" actualwidth="auto" actualmaxheight="none" actualmaxwidth="none" actualminheight="0px" actualminwidth="0px" windowheight="633">scrub caps</a>, <a href="https://www.drwoofapparel.com.au/collections/stethoscope-charms" actualheight="auto" actualwidth="auto" actualmaxheight="none" actualmaxwidth="none" actualminheight="0px" actualminwidth="0px" windowheight="633">stethoscope charms</a>, <a href="https://www.drwoofapparel.com.au/collections/women/Underscrubs" actualheight="auto" actualwidth="auto" actualmaxheight="none" actualmaxwidth="none" actualminheight="0px" actualminwidth="0px" windowheight="633">underscrubs</a> and <a href="https://www.drwoofapparel.com.au/collections/women" actualheight="auto" actualwidth="auto" actualmaxheight="none" actualmaxwidth="none" actualminheight="0px" actualminwidth="0px" windowheight="633">medical scrubs</a>  – including this beauty (eta February.)</p>
+	</div>
+</div>
+-->
+</div>
+<footer
+  class="site-footer text-center"
+  data-section-id="{{ section.id }}"
+  data-section-type="footer-section">
+  {% comment %} start of section added by Casey {% endcomment %}
+  <div class="iconcontainer">
+    <div class="iconrow">
+      <div class="iconcolumn">
+        <img
+          data-swift-lazy="1"
+          loading="lazy"
+          src="https://cdn.shopify.com/s/files/1/0374/6237/6507/files/Truck_1600x.png"
+          width="100%"
+          alt="Truck">
+        <h4>FREE SECURED SHIPPING</h4>
+      </div>
+      <div class="iconcolumn">
+        <img
+          data-swift-lazy="1"
+          loading="lazy"
+          src="https://cdn.shopify.com/s/files/1/0374/6237/6507/files/Doghouse_1600x.png"
+          width="100%"
+          alt="Doghouse">
+        <h4>AUSSIE FAMILY BUSINESS</h4>
+      </div>
+      <div class="iconcolumn">
+        <img
+          data-swift-lazy="1"
+          loading="lazy"
+          src="https://cdn.shopify.com/s/files/1/0374/6237/6507/files/Award_750x.png"
+          width="100%"
+          alt="Award">
+        <h4>60-DAY 
+          GUARANTEE</h4>
+      </div>
+    </div>
+    <div class="iconrow">
+      <div class="iconcolumn">
+        <p>Over $145 on domestic orders</p>
+      </div>
+      <div class="iconcolumn">
+        <p>Run by medical workers</p>
+      </div>
+      <div class="iconcolumn">
+        <p>Love it or your money back
+        </p>
+      </div>
+    </div>
+  </div>
+  {% comment %} end of section added by Casey {% endcomment %}
+  {% if section.settings.show_newsletter %}
+    <div class="site-footer__section site-footer__section--newsletter" data-aos>
+      <div class="page-width">
+        {% if section.settings.newsletter_title != blank %}
+          <div class="h2 appear-delay">{{ section.settings.newsletter_title }}</div>
+        {% endif %}
+
+        {% if section.settings.newsletter_richtext != blank %}
+          <div class="rte rte--block appear-delay-1">
+            {{ section.settings.newsletter_richtext }}
+          </div>
+        {% endif %}
+
+        <div class="appear-delay-2">
+          {% include 'newsletter-form', section_id: section.id, snippet_context: 'footer' %}
+        </div>
+      </div>
+    </div>
+  {% endif %}
+  <div class="page-width footer_text">
+    {% if section.settings.footer_richtext %}
+      {{ section.settings.footer_richtext }}
+    {% endif %}
+  </div>
+  <div class="page-width">
+    <div class="footer-bottom">
+
+      {%- if show_selectors -%}
+        {%- form 'localization', class: 'multi-selectors site-footer__section' -%}
+          {%- if locale_selector -%}
+            <div class="multi-selectors__item">
+              <h2 class="visually-hidden" id="LangHeading">
+                {{ 'general.language.dropdown_label' | t }}
+              </h2>
+
+              <div class="disclosure" data-disclosure-locale>
+                <button
+                  type="button"
+                  class="faux-select disclosure__toggle"
+                  aria-expanded="false"
+                  aria-controls="LangList"
+                  aria-describedby="LangHeading"
+                  data-disclosure-toggle>
+                  <span class="multi-picker__label">
+                    {{ form.current_locale.endonym_name }}
+                  </span>
+                </button>
+                <ul
+                  id="LangList"
+                  class="disclosure-list"
+                  data-disclosure-list>
+                  {% for locale in form.available_locales %}
+                    <li class="disclosure-list__item {% if locale.iso_code == form.current_locale.iso_code %}disclosure-list__item--current{% endif %}">
+                      <a
+                        class="disclosure-list__option"
+                        href="#"
+                        lang="{{ locale.iso_code }}"
+                        {% if locale.iso_code == form.current_locale.iso_code %}aria-current="true"{% endif %}
+                        data-value="{{ locale.iso_code }}"
+                        data-disclosure-option>
+                        {{ locale.endonym_name }}
+                      </a>
+                    </li>
+                  {%- endfor -%}
+                </ul>
+                <input
+                  type="hidden"
+                  name="locale_code"
+                  id="LocaleSelector"
+                  value="{{ form.current_locale.iso_code }}"
+                  data-disclosure-input />
+              </div>
+            </div>
+          {%- endif -%}
+
+          {%- if currency_selector -%}
+            <div class="multi-selectors__item">
+              <h2 class="visually-hidden" id="CurrencyHeading">
+                {{ 'general.currency.dropdown_label' | t }}
+              </h2>
+
+              <div class="disclosure" data-disclosure-currency>
+                <button
+                  type="button"
+                  class="faux-select disclosure__toggle"
+                  aria-expanded="false"
+                  aria-controls="CurrencyList"
+                  aria-describedby="CurrencyHeading"
+                  data-disclosure-toggle>
+                  {% if section.settings.show_currency_flags %}
+                    <span
+                      class="currency-flag currency-flag--small"
+                      data-flag="{{ form.current_currency.iso_code }}"
+                      aria-hidden="true"></span>
+                  {% endif %}
+                  <span class="multi-picker__label">
+                    {{ form.current_currency.iso_code }}
+                    {%- if form.current_currency.symbol -%}
+                      {{ form.current_currency.symbol }}{%- endif -%}
+                  </span>
+                </button>
+                <ul
+                  id="CurrencyList"
+                  class="disclosure-list"
+                  data-disclosure-list>
+                  {% for currency in form.available_currencies %}
+                    <li class="disclosure-list__item {% if currency.iso_code == form.current_currency.iso_code %}disclosure-list__item--current{% endif %}">
+                      <a
+                        class="disclosure-list__option"
+                        href="#"
+                        {% if currency.iso_code == form.current_currency.iso_code %}aria-current="true"{% endif %}
+                        data-value="{{ currency.iso_code }}"
+                        data-disclosure-option>
+                        {% if section.settings.show_currency_flags %}
+                          <span
+                            class="currency-flag"
+                            data-flag="{{ currency.iso_code }}"
+                            aria-hidden="true"></span>
+                        {% endif %}
+                        <span class="multi-picker__label">
+                          {{ currency.iso_code }}
+                          {%- if currency.symbol -%}
+                            {{ currency.symbol }}{%- endif -%}
+                        </span>
+                      </a>
+                    </li>
+                  {%- endfor -%}
+                </ul>
+                <input
+                  type="hidden"
+                  name="currency_code"
+                  value="{{ form.current_currency.iso_code }}"
+                  data-disclosure-input>
+              </div>
+            </div>
+          {%- endif -%}
+        {%- endform -%}
+      {%- endif -%}
+ <div class="Mobile-shown-only site-footer__section">
+  <h2 class="mobile-h2">Currency Selector</h2>
+      <!-- Custom visible dropdown with only AU, NZ, SG -->
+<div class="currency-dropdown" id="CustomCurrencyDropdownmobile" style="display:inline-block;text-align:center;">
+  <div class="currency-selected" id="CurrencySelectedmobile"></div>
+  <div class="currency-options" id="CurrencyOptionsmobile">
+    <div class="currency-option" data-code="AUD">
+      <img class="currency-flag" src="https://flagcdn.com/au.svg" alt="AUD" style="margin-left:0">
+      AUD
+    </div>
+    <div class="currency-option" data-code="NZD">
+      <img class="currency-flag" src="https://flagcdn.com/nz.svg" alt="NZD" style="margin-left:0">
+      NZD
+    </div>
+    <div class="currency-option" data-code="SGD">
+      <img class="currency-flag" src="https://flagcdn.com/sg.svg" alt="SGD" style="margin-left:0">
+      SGD
+    </div>
+  </div>
+</div>
+</div>
+
+      {% if section.settings.show_social_icons %}
+        <div class="Mobile-shown-only site-footer__section">
+          <h2 class="mobile-h2">Follow us</h2>
+          {% include 'social-icons', social_class: 'footer__social' %}
+        </div>
+      {% endif %}
+
+      <div class="grid">
+
+        {% for block in section.blocks %}
+          {% case block.type %}
+            {% when 'Menus' %}
+              {% if block.settings.menu != blank %}
+              <div class="accordion_heading grid__item">
+                {% assign menu = linklists[block.settings.menu] %}
+                <h3 class="main_heading">
+                  {{ menu.title }}
+                  <div class="plus">
+                    {% render 'collapsible-icons' %}
+                  </div>
+                  <div class="minus" style="display:none;">
+                    {% render 'collapsible-icons' %}
+                  </div>
+                </h3>
+                {% for link in linklists[block.settings.menu].links %}
+                  <div class="accordion_subheading" style="display:none;">
+                    <a href="{{ link.url }}">{{ link.title }}</a>
+                  </div>
+                {% endfor %}
+              </div>
+
+
+
+              {% comment %}
+              {% if linklists[block.settings.menu].links.size > 0 %}
+              <ul class="no-bullets inline-list site-footer__linklist">
+              {% for link in linklists[block.settings.menu].links %}
+              <li><a href="{{ link.url }}">{{ link.title }}</a></li>
+              {% endfor %}
+              </ul>
+              {% endif %}
+              {% endcomment %}
+
+
+              <div class="grid__item medium-up--two-eighths footer-bottom-inner">
+
+                <h5 class="main_heading">
+                  {{ menu.title }}
+                </h5>
+                {%- assign footer_linklist = block.settings.menu -%}
+                {% if linklists[block.settings.menu].links.size > 0 %}
+
+                  <ul
+                    class="site-footer__linklist
+                    {% if inline_list %}list--inline{% endif %}">
+                    {%- for link in linklists[footer_linklist].links -%}
+                      <li class="site-footer__linklist-item">
+                        <a
+                          href="{{ link.url }}"
+                          {% if link.current %}
+                          aria-current="page"
+                          {% endif %}>
+                          {{ link.title | escape }}
+                        </a>
+                      </li>
+                    {%- endfor -%}
+                  </ul>
+                {% endif %}
+              {% endif %}
+            </div>
+          {% endcase %}
+        {% endfor %}
+
+
+
+        <div class="accordion_heading grid__item">
+          <h3 class="main_heading">
+            {{ section.settings.heading }}
+            <div class="plus">
+              {% render 'collapsible-icons' %}
+            </div>
+            <div class="minus" style="display:none;">
+              {% render 'collapsible-icons' %}
+            </div>
+          </h3>
+
+          <div class="accordion_subheading" style="display:none;">
+            {% if section.settings.subheading1 != blank %}
+              <div class="footer-more-info-inner">
+                <img src="{{ section.settings.image_1 | img_url: '25x'}}" alt="{{ section.settings.image_1.alt | escape }}" />
+                {{ section.settings.subheading1 }}
+              </div>
+            {% endif %}
+            {% if section.settings.subheading2 != blank %}
+              <div class="footer-more-info-inner">
+                <img src="{{ section.settings.image_2 | img_url: '25x'}}" alt="{{ section.settings.image_2.alt | escape }}" />
+                {{ section.settings.subheading2 }}
+              </div>
+            {% endif %}
+            {% if section.settings.subheading3 != blank %}
+              <div class="footer-more-info-inner">
+                <img src="{{ section.settings.image_3 | img_url: '25x'}}" alt="{{ section.settings.image_3.alt | escape }}" />
+                {{ section.settings.subheading3 }}
+              </div>
+            {% endif %}
+          </div>
+        </div>
+
+        <div class="footer-more-info grid__item medium-up--two-eighths footer-bottom-inner">
+          <h5 class="main_heading">
+            {{ section.settings.heading }}
+          </h5>
+
+          
+
+
+
+
+
+          {% if section.settings.subheading1 != blank %}
+            <div class="footer-more-info-inner">
+              <img src="{{ section.settings.image_1 | img_url: '25x'}}" alt="{{ section.settings.image_1.alt | escape }}" />
+              {{ section.settings.subheading1 }}
+            </div>
+          {% endif %}
+          {% if section.settings.subheading2 != blank %}
+            <div class="footer-more-info-inner">
+              <img src="{{ section.settings.image_2 | img_url: '25x'}}" alt="{{ section.settings.image_2.alt | escape }}" />
+              {{ section.settings.subheading2 }}
+            </div>
+          {% endif %}
+          {% if section.settings.subheading3 != blank %}
+            <div class="footer-more-info-inner">
+              <img src="{{ section.settings.image_3 | img_url: '25x'}}" alt="{{ section.settings.image_3.alt | escape }}" /> {{ section.settings.subheading3 }}
+            </div>
+          {% endif %}
+                   <style>
+  #CurrencySelector {
+    display: none;
+  }
+
+  .currency-dropdown {
+    position: relative;
+    font-family: sans-serif;
+    width: 88px;
+    margin-bottom: 12px;
+    display: block;
+    /* text-align: left !important; */
+    border-radius: 8px;
+    margin-left: 34px;
+    border: 1px solid #ccc;
+  }
+  
+  .currency-selected {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 8px;
+    background: white;    
+    border-radius: 6px;
+    cursor: pointer;
+    gap: 8px;
+  }
+
+  .currency-options {
+    display: none;
+    position: absolute;
+    top: 110%;
+    left: 0;
+    background: white;
+    border:1px solid #ccc;
+    border-radius: 6px;
+    
+    z-index: 999;
+    width: 100%;
+    max-height: 250px;
+    overflow-y: auto;
+  }
+
+  .currency-dropdown.open .currency-options {
+    display: block;
+  }
+
+  .currency-option {
+    display: flex;
+    align-items: center;
+    padding: 6px 10px;
+    cursor: pointer;
+    gap: 8px;
+  }
+
+  .currency-option:hover {
+    background: #f1f1f1;
+  }
+
+  .currency-flag {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    object-fit: cover;
+    flex-shrink: 0;
+    position: relative;
+    display: inline-block;
+    vertical-align: middle;
+    width: 25px !important;
+    height: 25px !important;
+    overflow: hidden;
+    border-radius: 50%;
+    margin-left: 0;
+    box-shadow: 0 0 1px #0000004d inset;
+  }
+  
+  
+  @media only screen and (max-width:480px){
+    .currency-dropdown {
+      width:87px;
+      margin-left:0;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    }
+      .currency-flag {
+        margin-left: 0px;
+      }
+   #CustomCurrencyDropdown{
+      display:block;
+   }
+  }
+</style>
+
+<!-- Shopify's original hidden selector for geo detection -->
+<select id="CurrencySelector" name="currency" aria-label="Currency selector">
+  {% for currency in shop.enabled_currencies %}
+    <option value="{{ currency.iso_code }}" {% if currency.iso_code == cart.currency.iso_code %}selected{% endif %}>
+      {{ currency.iso_code }}
+    </option>
+  {% endfor %}
+</select>
+
+<!-- Custom visible dropdown with only AU, NZ, SG -->
+<div class="currency-dropdown" id="CustomCurrencyDropdown">
+  <div class="currency-selected" id="CurrencySelected"></div>
+  <div class="currency-options" id="CurrencyOptions">
+    <div class="currency-option" data-code="AUD">
+      <img class="currency-flag" src="https://flagcdn.com/au.svg" alt="AUD">
+      AUD
+    </div>
+    <div class="currency-option" data-code="NZD">
+      <img class="currency-flag" src="https://flagcdn.com/nz.svg" alt="NZD">
+      NZD
+    </div>
+    <div class="currency-option" data-code="SGD">
+      <img class="currency-flag" src="https://flagcdn.com/sg.svg" alt="SGD">
+      SGD
+    </div>
+  </div>
+</div>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    const select = document.getElementById('CurrencySelector');
+    const dropdown = document.getElementById('CustomCurrencyDropdown');
+    const selected = document.getElementById('CurrencySelected');
+    const options = dropdown.querySelectorAll('.currency-option');
+
+    const flagMap = {
+      "AUD": "au",
+      "NZD": "nz",
+      "SGD": "sg"
+    };
+
+    function updateSelected(code) {
+      const flag = flagMap[code.toUpperCase()] || "au";
+      selected.innerHTML = `
+        <img class="currency-flag" src="https://flagcdn.com/${flag}.svg" alt="${code}">
+        <span>${code}</span>
+      `;
+    }
+
+    // Fallback to AUD if current currency isn't allowed
+    const allowed = ['AUD', 'NZD', 'SGD'];
+    if (!allowed.includes(select.value)) {
+      select.value = 'AUD';
+    }
+
+    updateSelected(select.value);
+
+    options.forEach(option => {
+      option.addEventListener('click', () => {
+        const code = option.getAttribute('data-code');
+        select.value = code;
+        updateSelected(code);
+        dropdown.classList.remove('open');
+        select.dispatchEvent(new Event('change'));
+      });
+    });
+
+    selected.addEventListener('click', (e) => {
+      e.stopPropagation();
+      dropdown.classList.toggle('open');
+    });
+
+    document.addEventListener('click', () => {
+      dropdown.classList.remove('open');
+    });
+  });
+
+
+
+    document.addEventListener('DOMContentLoaded', function () {
+    const select = document.getElementById('CurrencySelector');
+    const dropdown = document.getElementById('CustomCurrencyDropdownmobile');
+    const selected = document.getElementById('CurrencySelectedmobile');
+    const options = dropdown.querySelectorAll('.currency-option');
+
+    const flagMap = {
+      "AUD": "au",
+      "NZD": "nz",
+      "SGD": "sg"
+    };
+
+    function updateSelected(code) {
+      const flag = flagMap[code.toUpperCase()] || "au";
+      selected.innerHTML = `
+        <img class="currency-flag" src="https://flagcdn.com/${flag}.svg" alt="${code}">
+        <span>${code}</span>
+      `;
+    }
+
+    // Fallback to AUD if current currency isn't allowed
+    const allowed = ['AUD', 'NZD', 'SGD'];
+    if (!allowed.includes(select.value)) {
+      select.value = 'AUD';
+    }
+
+    updateSelected(select.value);
+
+    options.forEach(option => {
+      option.addEventListener('click', () => {
+        const code = option.getAttribute('data-code');
+        select.value = code;
+        updateSelected(code);
+        dropdown.classList.remove('open');
+        select.dispatchEvent(new Event('change'));
+      });
+    });
+
+    selected.addEventListener('click', (e) => {
+      e.stopPropagation();
+      dropdown.classList.toggle('open');
+    });
+
+    document.addEventListener('click', () => {
+      dropdown.classList.remove('open');
+    });
+  });
+</script>
+
+          {% if section.settings.show_social_icons %}
+            <div class="site-footer__section">
+              {% include 'social-icons', social_class: 'footer__social' %}
+            </div>
+          {% endif %}
+        </div>
+      </div>
+    </div>
+  </div>
+
+  {% if section.settings.show_payment_icons %}
+    {% unless shop.enabled_payment_types == empty %}
+      <div class="site-footer__section">
+        <ul class="inline-list payment-icons">
+          {% for type in shop.enabled_payment_types %}
+            <li class="icon--payment">
+              {{ type | payment_type_svg_tag }}
+            </li>
+          {% endfor %}
+        </ul>
+      </div>
+    {% endunless %}
+  {% endif %}
+
+
+
+
+
+  <div class="page-width">
+    <div class="site-footer__section site-footer__copyright">
+      {% if section.settings.show_copyright %}
+        <span>
+          &copy; {{ 'now' | date: '%Y' }} {{ shop.name }}
+          {% if section.settings.copyright_text != blank %}
+            {{ section.settings.copyright_text }}
+          {% endif %}
+        </span>
+      {% endif %}
+    </div>
+  </div>
+</footer>
+
+
+
+<div class="main_country">
+  {% for block in section.blocks %}
+    {% case block.type %}
+      {% when 'Store' %}
+      {% if forloop.index == 1 %}
+        <div class="country_flag">
+          {% if block.settings.flag_image != blank %}
+            <img src="{{block.settings.flag_image | img_url:'master'}}" alt="{{ block.settings.flag_image.alt | escape }}">
+          {% endif %}
+        </div>
+        <div class="country_name">
+          <span>{{ block.settings.country_name }}</span>
+        </div>
+      {% endif %}
+    {% endcase %}
+  {% endfor %}
+</div>
+<div id="country-overlay" class="popups_country">
+  <div id="country-popup">
+    <div class="label">
+      <label>
+        SELECT A COUNTRY
+      </label>
+    </div>
+    <select class="redirect-country-url">
+      {% for block in section.blocks %}
+        {% case block.type %}
+          {% when 'Store' %}
+
+          <option value="{{block.settings.country_store_link}}">{{ block.settings.country_name }}</option>
+        {% endcase %}
+      {% endfor %}
+    </select>
+    <button class="country-redirect">
+      Enter
+    </button>
+  </div>
+</div>
+
+<style>
+{% if product.title contains "Men" or product.title contains "men" or collection.title contains "Men" or collection.title contains "men" or product.handle contains "scrub-set" %}
+  .product-tabs-data[value='{{ section.settings.women-hide-color |  handleize }}'],
+  .variant-input[data-value='{{ section.settings.men-hide-color }}']{
+    display:none !important;
+  }
+  .product-tabs-data[value='{{ section.settings.women-hide-color2 |  handleize }}'],
+  .variant-input[data-value='{{ section.settings.men-hide-color2 }}']{
+    display:none !important;
+  }
+  .product-tabs-data[value='{{ section.settings.women-hide-color3 |  handleize }}'],
+  .variant-input[data-value='{{ section.settings.men-hide-color3 }}']{
+    display:none !important;
+  }
+{% endif %}
+
+{% if product.title contains "Women" or product.title contains "women" or collection.title contains "Women" or collection.title contains "women"  or product.handle contains "scrub-set" %}
+  .product-tabs-data[value='{{ section.settings.women-hide-color |  handleize  }}'],
+  .variant-input[data-value='{{ section.settings.women-hide-color }}']{
+    display:none !important;
+  }
+  .product-tabs-data[value='{{ section.settings.women-hide-color2 |  handleize  }}'],
+  .variant-input[data-value='{{ section.settings.women-hide-color2 }}']{
+    display:none !important;
+  }
+  .product-tabs-data[value='{{ section.settings.women-hide-color3 |  handleize  }}'],
+  .variant-input[data-value='{{ section.settings.women-hide-color3 }}']{
+    display:none !important;
+  }
+{% endif %}
+
+
+.variant-input[data-value='Twilight Blue'],
+  .variant-input[data-arrange='twilight-blue'],
+  li.tag.product-tabs-data[value='twilight-blue'] {
+    order: 7;
+  }
+  .variant-input[data-value='Navy'],
+  .variant-input[data-arrange='navy'],
+  li.tag.product-tabs-data[value='navy'] {
+    order: 1;
+  }
+  .variant-input[data-value='Cool Gray'],
+  .variant-input[data-arrange='cool-gray'],
+  li.tag.product-tabs-data[value='cool-gray'] {
+    order: 3;
+  }
+  .variant-input[data-value='Black'],
+  .variant-input[data-arrange='black'],
+  li.tag.product-tabs-data[value='black'] {
+    order: 2;
+  }
+  .variant-input[data-value='Ceil Blue'],
+  .variant-input[data-arrange='ceil-blue'],
+  li.tag.product-tabs-data[value='ceil-blue'] {
+    order: 9;
+  }
+  .variant-input[data-value='Burgundy'],
+  .variant-input[data-arrange='burgundy'],
+  li.tag.product-tabs-data[value='burgundy'] {
+    order: 10;
+  }
+  .variant-input[data-value='Fern Green'],
+  .variant-input[data-arrange='fern-green'],
+  li.tag.product-tabs-data[value='fern-green'] {
+    order: 4;
+  }
+  .variant-input[data-value='Shadow Gray'],
+  .variant-input[data-arrange='shadow-gray'],
+  li.tag.product-tabs-data[value='shadow-gray'] {
+    order: 8;
+  }
+  .variant-input[data-value='Royal Blue'],
+  .variant-input[data-arrange='royal-blue'],
+  li.tag.product-tabs-data[value='royal-blue'] {
+    order: 5;
+  }
+  .variant-input[data-value='Wasabi'],
+  .variant-input[data-arrange='wasabi'],
+  li.tag.product-tabs-data[value='wasabi'] {
+    order: 6;
+  }
+  .variant-input[data-value='Steel Gray'],
+  .variant-input[data-arrange='steel-gray'],
+  li.tag.product-tabs-data[value='steel-gray'] {
+    order: 11;
+  }
+  .variant-input[data-value='Baby Pink'],
+  .variant-input[data-arrange='baby-pink'],
+  li.tag.product-tabs-data[value='baby-pink'] {
+    order: 5;
+  }
+  .variant-input[data-value='Blurple'],
+  .variant-input[data-arrange='blurple'],
+  li.tag.product-tabs-data[value='blurple'] {
+    order: 6;
+  }
+  .variant-input[data-value='White'],
+  .variant-input[data-arrange='white'],
+  li.tag.product-tabs-data[value='white'] {
+    order: 12;
+  }
+  .variant-input[data-value='Misty Blue'],
+  .variant-input[data-arrange='misty-blue'],
+  li.tag.product-tabs-data[value='misty-blue'] {
+    order: 14;
+  }
+.color-option[value='mint'],
+  .variant-input[data-value='Mint'],
+  .variant-input[data-arrange='mint'],
+  li.tag.product-tabs-data[value='mint'] {
+    order: {{ section.settings.color_mint }};
+  }
+  .color-option[value='bold-magenta'],
+  .variant-input[data-value='Bold Magenta'],
+  .variant-input[data-arrange='bold-magenta'],
+  li.tag.product-tabs-data[value='bold-magenta'] {
+    order: {{ section.settings.color_bold-magenta }};
+  }
+
+    .color-option[value='navy'],
+.variant-input[data-value='Navy'],
+.variant-input[data-arrange='navy'],
+li.tag.product-tabs-data[value='navy'] {
+  order: {{ section.settings.color_navy }};
+}
+
+.color-option[value='cool-gray'],
+.variant-input[data-value='Cool Gray'],
+.variant-input[data-arrange='cool-gray'],
+li.tag.product-tabs-data[value='cool-gray'] {
+  order: {{ section.settings.color_cool-ray }};
+}
+
+.color-option[value='black'],
+.variant-input[data-value='Black'],
+.variant-input[data-arrange='black'],
+li.tag.product-tabs-data[value='black'] {
+  order: {{ section.settings.color_black }};
+}
+
+.color-option[value='ceil-blue'],
+.variant-input[data-value='Ceil Blue'],
+.variant-input[data-arrange='ceil-blue'],
+li.tag.product-tabs-data[value='ceil-blue'] {
+  order: {{ section.settings.color_ceil-blue }};
+}
+
+.color-option[value='burgundy'],
+.variant-input[data-value='Burgundy'],
+.variant-input[data-arrange='burgundy'],
+li.tag.product-tabs-data[value='burgundy'] {
+  order: {{ section.settings.color_burgundy }};
+}
+
+.color-option[value='fern-green'],
+.variant-input[data-value='Fern Green'],
+.variant-input[data-arrange='fern-green'],
+li.tag.product-tabs-data[value='fern-green'] {
+  order: {{ section.settings.color_fern-green }};
+}
+
+.color-option[value='shadow-gray'],
+.variant-input[data-value='Shadow Gray'],
+.variant-input[data-arrange='shadow-gray'],
+li.tag.product-tabs-data[value='shadow-gray'] {
+  order: {{ section.settings.color_shadow-gray }};
+}
+
+.color-option[value='royal-blue'],
+.variant-input[data-value='Royal Blue'],
+.variant-input[data-arrange='royal-blue'],
+li.tag.product-tabs-data[value='royal-blue'] {
+  order: {{ section.settings.color_royal-blue }};
+}
+
+.color-option[value='steel-gray'],
+.variant-input[data-value='Steel Gray'],
+.variant-input[data-arrange='steel-gray'],
+li.tag.product-tabs-data[value='steel-gray'] {
+  order: {{ section.settings.color_steel-gray }};
+}
+
+.color-option[value='baby-pink'],
+.variant-input[data-value='Baby Pink'],
+.variant-input[data-arrange='baby-pink'],
+li.tag.product-tabs-data[value='baby-pink'] {
+  order: {{ section.settings.color_baby-pink }};
+}
+
+.color-option[value='blurple'],
+.variant-input[data-value='Blurple'],
+.variant-input[data-arrange='blurple'],
+li.tag.product-tabs-data[value='blurple'] {
+  order: {{ section.settings.color_blurple }};
+}
+
+.color-option[value='white'],
+.variant-input[data-value='White'],
+.variant-input[data-arrange='white'],
+li.tag.product-tabs-data[value='white'] {
+  order: {{ section.settings.color_white }};
+}
+
+.color-option[value='misty-blue'],
+.variant-input[data-value='Misty Blue'],
+.variant-input[data-arrange='misty-blue'],
+li.tag.product-tabs-data[value='misty-blue'] {
+  order: {{ section.settings.color_misty-blue }};
+}
+
+.color-option[value='twilight-blue'],
+.variant-input[data-value='Twilight Blue'],
+.variant-input[data-arrange='twilight-blue'],
+li.tag.product-tabs-data[value='twilight-blue'] {
+  order: {{ section.settings.color_twilight-blue }};
+}
+
+.color-option[value='apricot'],
+.variant-input[data-value='Apricot'],
+.variant-input[data-arrange='apricot'],
+li.tag.product-tabs-data[value='apricot'] {
+  order: {{ section.settings.color_apricot }};
+}
+
+.color-option[value='eucalyptus'],
+.variant-input[data-value='Eucalyptus'],
+.variant-input[data-arrange='eucalyptus'],
+li.tag.product-tabs-data[value='eucalyptus'] {
+  order: 20;
+}
+
+.color-option[value='caribbean-blue'],
+.variant-input[data-value='Caribbean Blue'],
+.variant-input[data-arrange='caribbean-blue'],
+li.tag.product-tabs-data[value='caribbean-blue'] {
+  order: {{ section.settings.color_caribbean-blue }};
+}
+
+.color-option[value='mermaid-teal'],
+.variant-input[data-value='Mermaid Teal'],
+.variant-input[data-arrange='Mermaid Teal'],
+li.tag.product-tabs-data[value='mermaid-teal'] {
+  order: {{ section.settings.color_mermaid-teal }};
+}
+
+.color-option[value='double-purple'],
+.variant-input[data-value='Double Purple'],
+.variant-input[data-arrange='double-purple'],
+li.tag.product-tabs-data[value='double-purple'] {
+  order: 21;
+}
+
+.color-option[value='whimsical-coral'],
+.variant-input[data-value='Whimsical Coral'],
+.variant-input[data-arrange='whimsical-coral'],
+li.tag.product-tabs-data[value='whimsical-coral'] {
+  order: {{ section.settings.color_whimsical-coral }};
+}
+
+.color-option[value='wasabi'],
+.variant-input[data-value='Wasabi'],
+.variant-input[data-arrange='wasabi'],
+li.tag.product-tabs-data[value='wasabi'] {
+  order: 21;
+}
+
+.color-option[value='bold-magenta'],
+.variant-input[data-value='Bold Magenta'],
+.variant-input[data-arrange='bold-magenta'],
+li.tag.product-tabs-data[value='bold-magenta'] {
+  order: 21;
+}
+
+.color-option[value='hoppy-easter'],
+.variant-input[data-value='Hoppy Easter'],
+.variant-input[data-arrange='hoppy-easter'],
+li.tag.product-tabs-data[value='hoppy-easter'] {
+  order: {{ section.settings.color_hoppy-easter }};
+}
+
+.color-option[value='blush'],
+.variant-input[data-value='Blush'],
+.variant-input[data-arrange='blush'],
+li.tag.product-tabs-data[value='blush'] {
+  order: {{ section.settings.color_blush }};
+}
+
+.color-option[value='aussie-natives'],
+.variant-input[data-value='Aussie Natives'],
+.variant-input[data-arrange='aussie-natives'],
+li.tag.product-tabs-data[value='aussie-natives'] {
+  order: {{ section.settings.color_aussie-natives }};
+}
+
+.color-option[value='lavender'],
+.variant-input[data-value='Lavender'],
+.variant-input[data-arrange='lavender'],
+li.tag.product-tabs-data[value='lavender'] {
+  order: {{ section.settings.color_lavender }};
+}
+
+.color-option[value='pistachio'],
+.variant-input[data-value='Pistachio'],
+.variant-input[data-arrange='pistachio'],
+li.tag.product-tabs-data[value='pistachio'] {
+  order: {{ section.settings.color_pistachio }};
+}
+
+.color-option[value='hunter-green'],
+.variant-input[data-value='Hunter Green'],
+.variant-input[data-arrange='hunter-green'],
+li.tag.product-tabs-data[value='hunter-green'] {
+  order: {{ section.settings.color_hunter-green }};
+}
+
+.color-option[value='aubergine'],
+.variant-input[data-value='Aubergine'],
+.variant-input[data-arrange='aubergine'],
+li.tag.product-tabs-data[value='aubergine'] {
+  order: {{ section.settings.color_aubergine }};
+}
+
+.color-option[value='rosewood'],
+.variant-input[data-value='Rosewood'],
+.variant-input[data-arrange='rosewood'],
+li.tag.product-tabs-data[value='rosewood'] {
+  order: {{ section.settings.color_rosewood }};
+}
+
+.color-option[value='power-mauve'],
+.variant-input[data-value='Power Mauve'],
+.variant-input[data-arrange='power-mauve'],
+li.tag.product-tabs-data[value='power-mauve'] {
+  order: {{ section.settings.color_power-mauve }};
+}
+
+.color-option[value='christmas'],
+.variant-input[data-value='Christmas'],
+.variant-input[data-arrange='christmas'],
+li.tag.product-tabs-data[value='christmas'] {
+  order: {{ section.settings.color_christmas }};
+}
+
+.color-option[value='pink-punch'],
+.variant-input[data-value='Pink Punch'],
+.variant-input[data-arrange='pink-punch'],
+li.tag.product-tabs-data[value='pink-punch'] {
+  order: {{ section.settings.color_pink-punch }};
+}
+
+.color-option[value='whitsundays-sand'],
+.variant-input[data-value='Whitsundays Sand'],
+.variant-input[data-arrange='whitsundays-sand'],
+li.tag.product-tabs-data[value='whitsundays-sand'] {
+  order: {{ section.settings.color_whitsundays-sand }};
+}
+
+.color-option[value='dark-olive'],
+.variant-input[data-value='Dark Olive'],
+.variant-input[data-arrange='dark-olive'],
+li.tag.product-tabs-data[value='dark-olive'] {
+  order: {{ section.settings.color_dark-olive }};
+}
+
+.color-option[value='hamilton-island-blue'],
+.variant-input[data-value='Hamilton Island Blue'],
+.variant-input[data-arrange='hamilton-island-blue'],
+li.tag.product-tabs-data[value='hamilton-island-blue'] {
+  order: {{ section.settings.color_hamilton-island-blue }};
+}
+
+.color-option[value='blue-mountains'],
+.variant-input[data-value='Blue Mountains'],
+.variant-input[data-arrange='blue-mountains'],
+li.tag.product-tabs-data[value='blue-mountains'] {
+  order: {{ section.settings.color_blue-mountains }};
+}
+
+.color-option[value='pastel-lavender'],
+.variant-input[data-value='Pastel Lavender'],
+.variant-input[data-arrange='pastel-lavender'],
+li.tag.product-tabs-data[value='pastel-lavender'] {
+  order: {{ section.settings.color_pastel-lavender }};
+}
+
+.color-option[value='byron-bay'],
+.variant-input[data-value='Byron Bay'],
+.variant-input[data-arrange='byron-bay'],
+li.tag.product-tabs-data[value='byron-bay'] {
+  order: {{ section.settings.color_byron-bay }};
+}
+
+.color-option[value='cordovan'],
+.variant-input[data-value='Cordovan'],
+.variant-input[data-arrange='cordovan'],
+li.tag.product-tabs-data[value='cordovan'] {
+  order: {{ section.settings.color_cordovan }};
+}
+
+.color-option[value='red-wine'],
+.variant-input[data-value='Red Wine'],
+.variant-input[data-arrange='red-wine'],
+li.tag.product-tabs-data[value='red-wine'] {
+  order: {{ section.settings.color_red-wine }};
+}
+
+.color-option[value='espresso'],
+.variant-input[data-value='Espresso'],
+.variant-input[data-arrange='espresso'],
+li.tag.product-tabs-data[value='espresso'] {
+  order: {{ section.settings.color_espresso }};
+}
+
+.color-option[value='chocolate-brownie'],
+.variant-input[data-value='Chocolate Brownie'],
+.variant-input[data-arrange='chocolate-brownie'],
+li.tag.product-tabs-data[value='chocolate-brownie'] {
+  order: {{ section.settings.color_chocolate-brownie }};
+}
+
+.color-option[value='popberry'],
+.variant-input[data-value='Popberry'],
+.variant-input[data-arrange='popberry'],
+li.tag.product-tabs-data[value='popberry'] {
+  order: {{ section.settings.color_popberry }};
+}
+.color-option[value='jacaranda'],
+.variant-input[data-value='Jacaranda'],
+.variant-input[data-arrange='jacaranda'],
+li.tag.product-tabs-data[value='jacaranda'] {
+  order: {{ section.settings.color_jacaranda }};
+}
+.site-footer__section p{
+    color:#fff;
+  }
+  .site-footer__section--newsletter{
+    margin-bottom:60px !important;
+  }
+  .index-section{
+    margin: 20px 0 50px !important;
+  }
+  @media only screen and (max-width:480px){
+    .site-footer__section--newsletter{
+      padding:50px 0 !important;
+    }
+    .acc-heading{
+      font-size:14px;
+    }
+  }
+</style>
+
+{% schema %}
+  {
+    "name": "Footer",
+    "settings": [
+      {
+        "type": "text",
+        "id": "men-hide-color",
+        "label": "Men Hide Color"
+      },
+      {
+        "type": "text",
+        "id": "men-hide-color2",
+        "label": "Men Hide Color"
+      },
+      {
+        "type": "text",
+        "id": "men-hide-color3",
+        "label": "Men Hide Color"
+      },
+      {
+        "type": "text",
+        "id": "women-hide-color",
+        "label": "Women Hide Color"
+      },
+      {
+        "type": "text",
+        "id": "women-hide-color2",
+        "label": "Women Hide Color"
+      },
+      {
+        "type": "text",
+        "id": "women-hide-color3",
+        "label": "Women Hide Color"
+      },
+      {
+        "type": "header",
+        "content": "Newsletter"
+      },
+      {
+        "type": "checkbox",
+        "id": "show_newsletter",
+        "label": "Show newsletter signup",
+        "info": "Customers who subscribe will have their email address added to the 'accepts marketing' [customer list](/admin/customers?query=&accepts_marketing=1).",
+        "default": true
+      },
+      {
+        "type": "text",
+        "id": "newsletter_title",
+        "label": "Newsletter heading",
+        "default": "Sign up and save"
+      },
+      {
+        "type": "richtext",
+        "id": "newsletter_richtext",
+        "label": "Text",
+        "default": "<p>Let customers know about the key benefits of joining your newsletter.</p>"
+      }, {
+        "type": "header",
+        "content": "Swatches Order"
+      }, {
+        "type": "range",
+        "id": "color_twilight-blue",
+        "label": "Order Twilight Blue",
+        "default": 15,
+        "min": 1,
+        "max": 40,
+        "step": 1
+      }, {
+        "type": "range",
+        "id": "color_navy",
+        "label": "Order Navy",
+        "default": 1,
+        "min": 1,
+        "max": 40,
+        "step": 1
+      }, {
+        "type": "range",
+        "id": "color_cool-ray",
+        "label": "Order Cool Gray",
+        "default": 3,
+        "min": 1,
+        "max": 40,
+        "step": 1
+      }, {
+        "type": "range",
+        "id": "color_black",
+        "label": "Order Black",
+        "default": 2,
+        "min": 1,
+        "max": 40,
+        "step": 1
+      }, {
+        "type": "range",
+        "id": "color_ceil-blue",
+        "label": "Order Ceil Blue",
+        "default": 9,
+        "min": 1,
+        "max": 40,
+        "step": 1
+      }, {
+        "type": "range",
+        "id": "color_burgundy",
+        "label": "Order Burgundy",
+        "default": 10,
+        "min": 1,
+        "max": 40,
+        "step": 1
+      }, {
+        "type": "range",
+        "id": "color_fern-green",
+        "label": "Order Fern Green",
+        "default": 4,
+        "min": 1,
+        "max": 40,
+        "step": 1
+      }, {
+        "type": "range",
+        "id": "color_shadow-gray",
+        "label": "Order Shadow Gray",
+        "default": 7,
+        "min": 1,
+        "max": 40,
+        "step": 1
+      }, {
+        "type": "range",
+        "id": "color_royal-blue",
+        "label": "Order Royal Blue",
+        "default": 8,
+        "min": 1,
+        "max": 40,
+        "step": 1
+      }, {
+        "type": "range",
+        "id": "color_steel-gray",
+        "label": "Order Steel Gray",
+        "default": 11,
+        "min": 1,
+        "max": 40,
+        "step": 1
+      }, {
+        "type": "range",
+        "id": "color_baby-pink",
+        "label": "Order Baby Pink",
+        "default": 5,
+        "min": 1,
+        "max": 40,
+        "step": 1
+      }, {
+        "type": "range",
+        "id": "color_blurple",
+        "label": "Order Blurple",
+        "default": 6,
+        "min": 1,
+        "max": 40,
+        "step": 1
+      }, {
+        "type": "range",
+        "id": "color_white",
+        "label": "Order White",
+        "default": 12,
+        "min": 1,
+        "max": 40,
+        "step": 1
+      }, {
+        "type": "range",
+        "id": "color_misty-blue",
+        "label": "Order Misty Blue",
+        "default": 14,
+        "min": 1,
+        "max": 40,
+        "step": 1
+      }, {
+        "type": "range",
+        "id": "color_mint",
+        "label": "Order Mint",
+        "default": 2,
+        "min": 1,
+        "max": 40,
+        "step": 1
+      }, {
+        "type": "range",
+        "id": "color_bold-magenta",
+        "label": "Order Bold Magenta",
+        "default": 1,
+        "min": 1,
+        "max": 40,
+        "step": 1
+      }, {
+        "type": "range",
+        "id": "color_whimsical-coral",
+        "label": "Order Whimsical Coral",
+        "default": 1,
+        "min": 1,
+        "max": 40,
+        "step": 1
+      }, 
+      {
+        "type": "range",
+        "id": "color_caribbean-blue",
+        "label": "Order Caribbean Blue",
+        "default": 20,
+        "min": 1,
+        "max": 40,
+        "step": 1
+      },     
+      {
+        "type": "range",
+        "id": "color_mermaid-teal",
+        "label": "Order Mermaid Teal",
+        "default": 20,
+        "min": 1,
+        "max": 40,
+        "step": 1
+      },  
+      {
+        "type": "range",
+        "id": "color_hoppy-easter",
+        "label": "Order Hoppy Easter",
+        "default": 20,
+        "min": 1,
+        "max": 40,
+        "step": 1
+      },  
+      {
+        "type": "range",
+        "id": "color_blush",
+        "label": "Order Blush",
+        "default": 20,
+        "min": 1,
+        "max": 40,
+        "step": 1
+      },  
+      {
+        "type": "range",
+        "id": "color_aussie-natives",
+        "label": "Order Aussie Natives",
+        "default": 20,
+        "min": 1,
+        "max": 40,
+        "step": 1
+      },  
+      {
+        "type": "range",
+        "id": "color_lavender",
+        "label": "Order Lavender",
+        "default": 20,
+        "min": 1,
+        "max": 40,
+        "step": 1
+      },  
+      {
+        "type": "range",
+        "id": "color_pistachio",
+        "label": "Order Pistachio",
+        "default": 20,
+        "min": 1,
+        "max": 40,
+        "step": 1
+      },
+      {
+        "type": "range",
+        "id": "color_apricot",
+        "label": "Order Apricot",
+        "default": 20,
+        "min": 1,
+        "max": 40,
+        "step": 1
+      },
+      {
+        "type": "range",
+        "id": "color_hunter-green",
+        "label": "Order Hunter Green",
+        "default": 20,
+        "min": 1,
+        "max": 40,
+        "step": 1
+      },
+      {
+        "type": "range",
+        "id": "color_aubergine",
+        "label": "Order Aubergine",
+        "default": 20,
+        "min": 1,
+        "max": 40,
+        "step": 1
+      },
+      {
+        "type": "range",
+        "id": "color_rosewood",
+        "label": "Order Rosewood",
+        "default": 20,
+        "min": 1,
+        "max": 40,
+        "step": 1
+      },
+      {
+        "type": "range",
+        "id": "color_power-mauve",
+        "label": "Order Power Mauve",
+        "default": 20,
+        "min": 1,
+        "max": 40,
+        "step": 1
+      },
+      {
+        "type": "range",
+        "id": "color_christmas",
+        "label": "Order christmas",
+        "default": 6,
+        "min": 1,
+        "max": 40,
+        "step": 1
+      },
+      {
+        "type": "range",
+        "id": "color_pink-punch",
+        "label": "Order Pink Punch",
+        "default": 6,
+        "min": 1,
+        "max": 40,
+        "step": 1
+      },
+      {
+        "type": "range",
+        "id": "color_whitsundays-sand",
+        "label": "Order Whitsundays Sand",
+        "default": 40,
+        "min": 1,
+        "max": 40,
+        "step": 1
+      },
+      {
+        "type": "range",
+        "id": "color_dark-olive",
+        "label": "Order Dark Olive",
+        "default": 40,
+        "min": 1,
+        "max": 40,
+        "step": 1
+      },   
+      {
+        "type": "range",
+        "id": "color_hamilton-island-blue",
+        "label": "Order Hamilton Island Blue",
+        "default": 40,
+        "min": 1,
+        "max": 40,
+        "step": 1
+      },       
+      {
+        "type": "range",
+        "id": "color_blue-mountains",
+        "label": "Order Blue Mountains",
+        "default": 40,
+        "min": 1,
+        "max": 40,
+        "step": 1
+      },    
+      {
+        "type": "range",
+        "id": "color_pastel-lavender",
+        "label": "Order Pastel Lavender",
+        "default": 40,
+        "min": 1,
+        "max": 40,
+        "step": 1
+      },  
+      {
+        "type": "range",
+        "id": "color_byron-bay",
+        "label": "Order Byron Bay",
+        "default": 40,
+        "min": 1,
+        "max": 40,
+        "step": 1
+      },    
+      {
+        "type": "range",
+        "id": "color_cordovan",
+        "label": "Order Cordovan",
+        "default": 40,
+        "min": 1,
+        "max": 40,
+        "step": 1
+      },   
+            {
+        "type": "range",
+        "id": "color_red-wine",
+        "label": "Order Red Wine",
+        "default": 40,
+        "min": 1,
+        "max": 40,
+        "step": 1
+      },  
+      {
+        "type": "range",
+        "id": "color_espresso",
+        "label": "Order Espresso",
+        "default": 40,
+        "min": 1,
+        "max": 40,
+        "step": 1
+      },  
+      {
+        "type": "range",
+        "id": "color_chocolate-brownie",
+        "label": "Order Chocolate Brownie",
+        "default": 40,
+        "min": 1,
+        "max": 40,
+        "step": 1
+      },   
+      {
+        "type": "range",
+        "id": "color_popberry",
+        "label": "Order Popberry",
+        "default": 40,
+        "min": 1,
+        "max": 40,
+        "step": 1
+      }, 
+      {
+        "type": "range",
+        "id": "color_jacaranda",
+        "label": "Order Jacaranda",
+        "default": 40,
+        "min": 1,
+        "max": 40,
+        "step": 1
+      },          
+      {
+        "type": "header",
+        "content": "Footer Text"
+      }, {
+        "type": "richtext",
+        "id": "footer_richtext",
+        "label": "Footer Text"
+      }, {
+        "type": "header",
+        "content": "Language selector",
+        "info": "To add a language, go to your [language settings.](/admin/settings/languages)"
+      }, {
+        "type": "checkbox",
+        "id": "show_locale_selector",
+        "label": "Show language selector",
+        "default": true
+      }, {
+        "type": "header",
+        "content": "Currency selector",
+        "info": "To add a currency, go to your [currency settings.](/admin/settings/payments)"
+      }, {
+        "type": "checkbox",
+        "id": "show_currency_selector",
+        "label": "Show currency selector",
+        "default": true
+      }, {
+        "type": "checkbox",
+        "id": "show_currency_flags",
+        "label": "Show currency flags",
+        "default": true
+      }, {
+        "type": "text",
+        "id": "heading",
+        "label": "Main Heading"
+      }, {
+        "type": "image_picker",
+        "id": "image_1",
+        "label": "Image 1"
+      }, {
+        "type": "image_picker",
+        "id": "image_2",
+        "label": "Image 2"
+      }, {
+        "type": "image_picker",
+        "id": "image_3",
+        "label": "Image 3"
+      }, {
+        "type": "richtext",
+        "id": "subheading1",
+        "label": "Telephone text"
+      }, {
+        "type": "richtext",
+        "id": "subheading2",
+        "label": "Email text"
+      }, {
+        "type": "richtext",
+        "id": "subheading3",
+        "label": "Address text"
+      }, {
+        "type": "header",
+        "content": "Additional footer content"
+      }, {
+        "type": "checkbox",
+        "id": "show_social_icons",
+        "label": "Show social icons",
+        "default": true
+      }, {
+        "type": "link_list",
+        "id": "menu",
+        "label": "Choose a menu",
+        "default": "footer",
+        "info": "Optional. This menu won't show dropdown items"
+      }, {
+        "type": "checkbox",
+        "id": "show_payment_icons",
+        "label": "Show payment icons"
+      }, {
+        "type": "checkbox",
+        "id": "show_copyright",
+        "label": "Show copyright"
+      }, {
+        "type": "text",
+        "id": "copyright_text",
+        "label": "Additional copyright text"
+      }, {
+        "type": "checkbox",
+        "id": "show_Store_switcher",
+        "label": "Country Selector",
+        "default": true
+      }
+
+
+
+    ],
+    "blocks": [
+      {
+        "type": "Store",
+        "name": "Store",
+        "limit": 2,
+        "settings": [
+          {
+            "type": "text",
+            "id": "country_name",
+            "label": "Show Country Name"
+          }, {
+            "type": "image_picker",
+            "id": "flag_image",
+            "label": "Show Country flags"
+          }, {
+            "type": "url",
+            "id": "country_store_link",
+            "label": "Link"
+          }
+        ]
+      }, {
+        "type": "Menus",
+        "name": "Menus",
+        "settings": [
+          {
+            "type": "link_list",
+            "id": "menu",
+            "label": "Choose a menu",
+            "info": "Optional. This menu won't show dropdown items"
+          }
+        ]
+      }
+    ]
+  }
+{% endschema %}

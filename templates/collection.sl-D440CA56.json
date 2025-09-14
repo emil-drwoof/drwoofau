@@ -1,0 +1,60 @@
+{
+  "sections": {
+    "collection-headervar": {
+      "type": "dr-woof-hero-scrubs",
+      "settings": {
+        "pad": "30px",
+        "desktop_positioning": 0,
+        "height": 90,
+        "mobile_height": 50,
+        "image_webp_pc": "",
+        "image_webp_mobile": ""
+      }
+    },
+    "collection-header": {
+      "type": "dr-woof-hero-scrubs3",
+      "settings": {
+        "pad": "30px",
+        "enable_auto": true,
+        "desktop_positioning": 0,
+        "height": 90,
+        "mobile_height": 46,
+        "image_lib_pc": "shopify:\/\/shop_images\/COLLECTION_BANNER_TEMPLATE_PC_2400_x_900_px_3.png",
+        "image_webp_pc": "",
+        "image_lib_mobile": "shopify:\/\/shop_images\/COLLECTION_BANNER_TEMPLATE_MOBILE_1600_x_900_px_3.jpg",
+        "image_webp_mobile": ""
+      }
+    },
+    "collection-filter": {
+      "type": "collection-thumbnail-filter",
+      "settings": {
+        "title_enable": false
+      }
+    },
+    "collection-filters": {
+      "type": "collection-filters-def",
+      "settings": {
+        "filter_type": "groups",
+        "tags_combine": false,
+        "collection_title_enable": true,
+        "collection_filter_enable": true,
+        "collection_sort_enable": true
+      }
+    },
+    "main-collection": {
+      "type": "collection-template-caps",
+      "settings": {
+        "per_row_desktop": 3,
+        "per_row_mobile": "2",
+        "description_bottom": false
+      }
+    }
+  },
+  "order": [
+    "collection-headervar",
+    "collection-header",
+    "collection-filter",
+    "collection-filters",
+    "main-collection"
+  ]
+}

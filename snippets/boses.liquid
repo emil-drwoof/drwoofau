@@ -1,0 +1,55 @@
+<div class="boses">
+  <div class="flexer">
+    <div class="duo">
+      <img src="{{ 'boses.png' | asset_img_url: 'master' }}" alt="Medical Workers">
+    </div>
+    <div class="duo">
+      <h4>For Medical Workers,<br/> by Medical Workers</h4>
+      <p>We're Ron, Dave and An — the oddball group of Aussie healthcare workers behind Dr. Woof scrubs.</p>
+      <p>Our goal is to create medical apparel that is a joy to look at and a joy to wear. We can't take the heartbreak out of medicine, but through comfortable, functional and playful designs we can bring little pops of joy into the everyday life of the people who wear our brand.</p>
+    </div>
+  </div>
+</div>
+<style>
+  .boses {
+    padding: 80px 20px;
+    background: rgba(237, 192, 69, 0.08);
+    max-width: 1300px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 80px;
+  }
+
+  .boses img {
+    width: 100%;
+  }
+
+  .boses .flexer {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+  }
+  .boses .flexer .duo {
+    flex: 0 0 48%;
+  }
+  .boses h4 {
+    font-family: 'futurapt';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 42px;
+    line-height: 110%;
+    color: #0B0D30;
+  }
+  .boses p {
+    font-family: 'Oxygen';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 145%;
+  }
+  @media only screen and (max-width:480px){
+    .boses{
+        display:none;
+    }
+  }
+</style>

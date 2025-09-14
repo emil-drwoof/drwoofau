@@ -1,0 +1,796 @@
+<!doctype html>
+<html class="no-js" lang="{{ request.locale.iso_code }}">
+<head>
+<link rel='preconnect dns-prefetch' href='https://api.config-security.com/' crossorigin />
+<link rel='preconnect dns-prefetch' href='https://conf.config-security.com/' crossorigin />
+<link rel='preconnect dns-prefetch' href='https://triplewhale-pixel.web.app/' crossorigin />
+<script>
+/* >> TriplePixel :: start*/
+window.TriplePixelData={TripleName:"dr-woof-apparel-au.myshopify.com",ver:"1.9"},function(W,H,A,L,E,_,B,N){function O(U,T,P,H,R){void 0===R&&(R=!1),H=new XMLHttpRequest,P?(H.open("POST",U,!0),H.setRequestHeader("Content-Type","application/json")):H.open("GET",U,!0),H.send(JSON.stringify(P||{})),H.onreadystatechange=function(){4===H.readyState&&200===H.status?(R=H.responseText,U.includes(".txt")?eval(R):P||(N[B]=R)):(299<H.status||H.status<200)&&T&&!R&&(R=!0,O(U,T-1))}}if(N=window,!N[H+"sn"]){N[H+"sn"]=1;try{A.setItem(H,1+(0|A.getItem(H)||0)),(E=JSON.parse(A.getItem(H+"U")||"[]")).push(location.href),A.setItem(H+"U",JSON.stringify(E))}catch(e){}var i,m,p;A.getItem('"!nC`')||(_=A,A=N,A[H]||(L=function(){return Date.now().toString(36)+"_"+Math.random().toString(36)},E=A[H]=function(t,e){return"State"==t?E.s:(W=L(),(E._q=E._q||[]).push([W,t,e]),W)},E.s="Installed",E._q=[],E.ch=W,B="configSecurityConfModel",N[B]=1,O("https://conf.config-security.com/model",5),i=L(),m=A[atob("c2NyZWVu")],_.setItem("di_pmt_wt",i),p={id:i,action:"profile",avatar:_.getItem("auth-security_rand_salt_"),time:m[atob("d2lkdGg=")]+":"+m[atob("aGVpZ2h0")],host:A.TriplePixelData.TripleName,url:window.location.href,ref:document.referrer,ver:window.TriplePixelData.ver},O("https://api.config-security.com/",5,p),O("https://triplewhale-pixel.web.app/dot1.9.txt",5)))}}("","TriplePixel",localStorage);
+/* << TriplePixel :: end*/
+</script>
+
+
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="{{ settings.color_button }}">
+  <link rel="canonical" href="{{ canonical_url }}">
+  {%- if settings.favicon -%}
+    <link rel="shortcut icon" href="{{ settings.favicon | img_url: '32x32' }}" type="image/png" />
+  {%- endif -%}
+  <title>Dr. Woof Apparel | Premium Scrubs & Accessories</title>
+  {%- if page_description -%}
+  <meta name="description" content="{{ page_description | escape }}">
+  {%- endif -%}
+  {% include 'social-meta-tags' %}
+  {% include 'critical-css' %}
+ {{ 'custom.css' | asset_url | stylesheet_tag }}
+  
+  {{ content_for_header }}  
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script> 
+<script>
+$( document ).ready(function() {
+$('.cart__footer .grid').append('<div class="grid__item medium-up--one-half text-center medium-up--text-left medium-up--push-one-half new-adding"></div>');
+$(".new-adding").append($(".site-footer__section .payment-icons").clone());
+$('.cart__footer .grid .new-adding').insertBefore('.cart__footer .grid .medium-up--text-right');
+});
+  </script>
+  
+ 
+{% include 'swift_preload_font' with settings.type_header_family %}
+{% include 'swift_preload_font' with settings.type_base_family %}
+{% include 'hulkcode_common' %}{% if template contains 'product' or template contains 'cart' %}<script src='https://volumediscount.hulkapps.com/api/v2/frontend/hulkcode.js' defer='defer'></script>{% endif %}</head>
+
+<body data-instant-intensity="viewport"    class="template-{{ template | replace: '.', ' ' | truncatewords: 1, '' | handle }}{% if settings.cart_type == 'sticky' and cart.item_count > 0 and template != 'cart' %} body--sticky-cart-open{% endif %}{% if cart.item_count > 0 %} cart-has-items{% endif %}" data-transitions="{{ settings.animate_page_transitions }}" ontouchstart="return true;">
+<div id="OverscrollLoader" class="overscroll-loader" aria-hidden="true">
+    <svg aria-hidden="true" focusable="false" role="presentation" class="icon icon--full-color icon-loader--full-color"><path class="icon-loader__close" d="M19 17.61l27.12 27.13m0-27.12L19 44.74"/><path class="icon-loader__path" d="M40 90a40 40 0 1 1 20 0"/></svg>
+  </div>
+  <div class="root">
+   {%- assign loader_size = settings.desktop_loader_width | append: 'x' -%}
+    {%- assign loader_size_mobile = settings.mobile_loader_width | append: 'x' -%}
+    <div class="splash-screen">
+      {% if settings.logo_loader_image != blank %}
+        <div class="splash-screen__loader">
+          <img data-swift-lazy="1" loading="lazy"
+            class="loader-logo__img"
+            src="{{ settings.logo_loader_image | img_url: loader_size }}"
+            srcset="{{ settings.logo_loader_image | img_url: loader_size }} 1x, {{ settings.logo_loader_image | img_url: loader_size, scale: 2 }} 2x"
+            aria-hidden="true">
+        </div>
+      {% else %}
+        <span class="loader-text">{{ 'general.accessibility.loading' | t }}</span>
+      {% endif %}
+    </div>
+
+    <a class="in-page-link visually-hidden skip-link" href="#MainContent">{{ 'general.accessibility.skip_to_content' | t }}</a>
+
+    <div id="PageContainer" class="page-container">
+      
+      <div class="transition-body">
+        {% section 'header' %}
+        <main class="main-content" id="MainContent">
+          	{{ content_for_layout }}	
+             </main>
+        {% section 'social' %}
+        {% section 'footer' %}
+      </div>
+    </div>
+
+    {% section 'newsletter-popup' %}
+
+
+    {% if settings.animate_page_transition_style == 'page-logo' %}
+      <div class="loader-logo">
+        {% if settings.logo_loader_image != blank %}
+          <div class="splash-screen__loader">
+            <img data-swift-lazy="1" loading="lazy"
+              class="loader-logo__img"
+              src="{{ settings.logo_loader_image | img_url: loader_size }}"
+              srcset="{{ settings.logo_loader_image | img_url: loader_size }} 1x, {{ settings.logo_loader_image | img_url: loader_size, scale: 2 }} 2x"
+              aria-hidden="true">
+          </div>
+        {% else %}
+          <span class="loader-text">{{ 'general.accessibility.loading' | t }}</span>
+        {% endif %}
+      </div>
+    {% endif %}
+  </div>
+
+  <div id="ProductScreens"></div>
+ 
+  {% if settings.cart_type == 'drawer' %}
+
+  {% include 'cart-drawer' %}
+  {% endif %}
+
+	{{ shop.metafields.loox["global_html_body"] }}
+
+{% render 'spurit_sct_theme_snippet' %}
+
+
+  {% render 'page-footer.zipifypages', renderctx: 'thm', ocuapp: ocuapp %}  
+  
+           
+  <!--- Scripts from head --->
+ 
+<script defer>
+!function(e){if(!window.pintrk){window.pintrk = function () {
+window.pintrk.queue.push(Array.prototype.slice.call(arguments))};var
+  n=window.pintrk;n.queue=[],n.version="3.0";var
+  t=document.createElement("script");t.async=!0,t.src=e;var
+  r=document.getElementsByTagName("script")[0];
+  r.parentNode.insertBefore(t,r)}}("https://s.pinimg.com/ct/core.js");
+pintrk('load', '2613236035659', {em: '<user_email_address>'});
+pintrk('page');
+</script>
+<noscript>
+<img data-swift-lazy="1" loading="lazy" height="1" width="1" style="display:none;" alt=""
+  src="https://ct.pinterest.com/v3/?event=init&tid=2613236035659&pd[em]=<hashed_email_address>&noscript=1" />
+</noscript>
+
+<script defer>
+  pintrk('track', 'pagevisit', {
+  });
+</script>  
+  
+{% render 'header-scripts.zipifypages', renderctx: 'thm' %}
+
+   
+  
+  <script src="{{ 'vendor-v2.js' | asset_url | split: '?' | first }}" defer></script>
+  
+  <script src="{{ 'theme.js' | asset_url }}" defer></script>
+
+
+ {%- if request.page_type contains 'customers/' -%}
+    <script src="{{ 'shopify_common.js' | shopify_asset_url }}" defer></script>
+  {%- endif -%}
+
+    <!-- Hotjar Tracking Code for www.drwoofapparel.com -->
+<script defer>
+    (function(h,o,t,j,a,r){
+        h.hj=h.hj||function(){(h.hj.q=h.hj.q||[]).push(arguments)};
+        h._hjSettings={hjid:1908831,hjsv:6};
+        a=o.getElementsByTagName('head')[0];
+        r=o.createElement('script');r.async=1;
+        r.src=t+h._hjSettings.hjid+j+h._hjSettings.hjsv;
+        a.appendChild(r);
+    })(window,document,'https://static.hotjar.com/c/hotjar-','.js?sv=');
+</script>
+<!-- Critical for loader -->
+  {% include 'load-css' %}
+	{{ shop.metafields.loox["global_html_head"] }}
+<!-- Scripts inside body tag -->
+
+{% if settings.animate_page_transitions %}
+      <script>window.setTimeout(function() { document.body.className += " loaded"; }, 25);</script>
+    {% endif %}
+<!-- End scripts inside body tag -->
+<script async>
+    var theme = {
+      stylesheet: "{{ 'theme.scss.css' | asset_url }}",
+      template: {{ template | json }},
+      routes: {
+        cart: "{{ routes.cart_url }}",
+        cartAdd: "{{ routes.cart_add_url }}",
+        cartChange: "{{ routes.cart_change_url }}"
+      },
+      strings: {
+        addToCart: {{ 'products.product.add_to_cart' | t | json }},
+        soldOut: {{ 'products.product.sold_out' | t | json }},
+        unavailable: {{ 'products.product.unavailable' | t | json }},
+        regularPrice: {{ 'products.general.regular_price' | t | json }},
+        salePrice: {{ 'products.general.sale_price' | t | json }},
+        stockLabel: {{ 'products.product.stock_label' | t: count: '[count]' | json }},
+        willNotShipUntil: {{ 'products.product.will_not_ship_until' | t: date: '[date]' | json }},
+        willBeInStockAfter: {{ 'products.product.will_be_in_stock_after' | t: date: '[date]' | json }},
+        waitingForStock: {{ 'products.product.waiting_for_stock' | t | json }},
+        cartItems: {{ 'cart.general.item_count' | t: count: '[count]' | json }},
+        cartConfirmDelete: {{ 'cart.general.delete_confirm' | t | json }},
+        cartTermsConfirmation: {{ 'cart.general.terms_confirm' | t | json }}
+      },
+      settings: {
+        dynamicVariantsEnable: true,
+        cartType: {{ settings.cart_type | json }},
+        moneyFormat: {{ shop.money_format | json }},
+        quickView: {{ settings.quick_shop_enable }},
+        hoverProductGrid: {{ settings.product_hover_image }},
+        themeName: 'Streamline',
+        themeVersion: "3.0.5"
+      }
+    };
+
+    document.documentElement.className = document.documentElement.className.replace('no-js', 'js');
+  </script>
+
+
+  
+
+  
+{% if template contains 'product' or template contains 'cart' %}
+
+
+<script async>
+window.addEventListener('load', (event) => {
+$.getScript('https://volumediscount.hulkapps.com/api/v2/frontend/hulkcode.js');
+  });
+  </script>
+  {% endif %} 
+{% include 'swift_core' %}
+{% if template contains 'cart' %}
+  <script>
+
+
+
+var checkExist = setInterval(function() {
+
+   if ($('.hulkapps-cart-total').length) {
+if( hulkapps.discounts.original_price_total != hulkapps.discounts.discounted_price_total ) {
+
+$(".btn.cart__checkout").before('<div class="doubly-message" style="margin:1em;text-align:justify; color: {{ settings.color_warning_text }}; font-size:{{ settings.text_size }}px;font-family:{{ settings.warning_font_new | font_face }}">{{ settings.volume_text }}</div>');
+      clearInterval(checkExist);
+   
+   }
+   }
+}, 500);
+
+
+
+  </script>
+
+
+                       {% endif %}
+         
+ <script>window.KlarnaThemeGlobals={};{%case template.name%} {%when"product"%} window.KlarnaThemeGlobals.data_purchase_amount={{product.first_available_variant.price}};window.KlarnaThemeGlobals.productVariants={{product.variants|json}};window.KlarnaThemeGlobals.documentCopy=document.cloneNode(true);{%when"cart"%} window.KlarnaThemeGlobals.data_purchase_amount={{cart.total_price}};window.KlarnaThemeGlobals.documentCopy=document.cloneNode(true);{%endcase%}</script>
+
+  {% render 'shogun-head' %}
+{% if template contains 'custom_builder' %}
+<script>
+  
+  window.addEventListener('DOMContentLoaded', (event) => {
+  //Function that change button text depending on variant availibillity 
+ 
+   function change_btn(){
+     console.log("Changing btn...");
+     
+     window.disabled=false;
+     
+     setTimeout(function(){  
+
+     
+     $("select.hidden-custom-bundle").each(function(){
+     
+       if($(this).children('option:selected').hasClass('disabled_box')) {
+         $(this).next('.builder_top_slide').find('#title_builder_box').attr('style','color:red');
+
+       window.disabled=true;
+       } else {
+       $(this).next('.builder_top_slide').find('#title_builder_box').attr('style','');
+       }
+     
+     });
+   
+if(window.disabled){
+ // console.log("About to change to sold-out");
+   $("#add_to_cart_box span").text("SOLD OUT");
+} else {
+  
+ // console.log("About to change to add-to-bag");
+  
+   $("#add_to_cart_box span").text("ADD TO BAG");
+}
+     
+   }, 500);  
+     
+  }
+  
+$("#add_to_cart_box").on('click',function() {
+  
+//Alert when trying add to cart with one or more missing selections and highlight missing chosen options
+window.options_chosen=true;
+$(".options-select").each(function(){
+let type= $(this).parent().parent(".builder_card").attr('data-type');
+if($(this).children("option:selected").attr('data-status') && type != "cap" && type != "under"){
+$(this).prev('label').attr('style','color:red');
+window.options_chosen=false
+} else {
+  
+  if(!window.cap_box || !window.under_box) {
+  window.options_chosen=false;
+  }
+
+
+}
+
+});
+if(!window.options_chosen){
+   throw new Error("Please, select all the options available");
+}
+
+
+  
+  
+  
+  
+//Setup handle for cart AJAX API call
+window.custom_products=[];
+$(".builder_card").each(function(){
+let title = $(this).children('.builder_top_slide').children('.column_box_top').children('.builder_top_slide_title').children("p.builder_card_title").children('#title_builder_box').text();
+let val = $(this).children('.hidden-custom-bundle').children('option:selected').text();
+let content = title+" / "+val;
+window.custom_products.push(content);
+})
+
+
+window.box_property={};
+
+window.custom_products.forEach(function(item, index){
+
+var key=index+1;
+  var key=key;
+window.box_property[key]=item;
+
+
+});
+  
+
+var dis_property=  window.box_property ;
+var data = JSON.stringify({ 
+    quantity:1, 
+    id: {{ product.first_available_variant.id }}, 
+  properties: dis_property
+  
+  })
+  
+  
+  //Add product to cart
+
+  $.ajax({
+  url:'/cart/add.js',
+  type: 'post',
+  dataType: 'json',
+  contentType: "application/json",
+  data: data,
+    success: function(result){
+window.location.href = "https://www.drwoofapparel.com/cart";
+    
+}
+  // Optional: success/error functions
+})
+  
+ 
+});  
+
+
+
+    
+    //console.log("Finishing....");
+    
+    $(".builder_card").each(function(){
+let type = $(this).attr('data-type');
+let handle = ".master_box_top[data-id='"+type+"']";
+$(handle).append($(this).clone());
+$(this).remove();
+});
+    //console.log("About to finish...");
+    
+    /* Change master selector */
+    
+   
+   
+    $(".options-select").on('change', function(){
+
+
+$(this).attr('data-temp','hellou');
+if($(this).val()!="Select an option"){
+  //console.log("Option changed...");
+  console.log("Classes: "+$(this)[0].classList);
+  
+  if ($(this).hasClass('master_sizes') || $(this).hasClass('master_designs')){
+var handle = "option[data-option1='"+$(".options-select[data-temp='hellou']").children('option:selected').attr('data-value')+"']";
+  } else {
+    let parent = $(this).parent().parent(); 
+    let color = parent.find("select.options-select[data-name='Color']").children('option:selected').attr('data-value');
+    let size = parent.find("select.options-select[data-name='Size']").children('option:selected').attr('data-value');
+  var handle = "option[data-option1='"+size+"'][data-option2='"+color+"']";
+    console.log("Dump handle: "+handle);
+  }
+  console.log("Option changed w/ handle: "+handle);
+$(this).parent().parent().children("select.hidden-custom-bundle").children(handle).prop('selected','true');
+
+//change_btn($(this).parent().parent().children('select.hidden-custom-bundle'));
+  change_btn();
+}
+$(this).attr('data-temp','');
+    });
+   
+   
+    
+    $(".builder_card[data-type='cap'] select.options-select, .builder_card[data-type='under'] select.options-select").on('change', function(){
+     let type = $(this).children("option:selected").attr('data-type');
+      console.log("Type: "+type);
+      if($(this).children("option:selected").attr('data-status')) {
+        if(type.includes('Scrub Cap')) {      
+window.cap_box =false;
+        } else {
+window.under_box =false;        
+}
+      } else {
+        if(type.includes('Scrub Cap')) {      
+window.cap_box =true;
+        } else {
+window.under_box =true;        
+}
+      }
+      
+     // console.log("Under box: "+window.under_box);
+      //console.log("Cap box: "+window.cap_box);
+      if(!$(this).hasClass('master_designs') && !$(this).hasClass('master_sizes')) { 
+        console.log("Changing two");
+let val = $(this).children('option:selected').attr('data-value');
+
+let type = $(this).parent().parent(".builder_card").attr('data-type');
+
+let pre_handle = ".builder_card[data-type='"+type+"'] select.options-select";
+
+$(pre_handle).children("option[data-status='true']").prop('selected',true);
+
+let handle ="option[data-value='"+val+"']";
+
+$(this).children(handle).prop('selected', true);
+        console.log("Status: "+$(this).children("option:selected").attr('data-status'));
+      if($(this).children("option:selected").attr('data-status')) {
+        if(type=="cap") {      
+window.cap_box =false;
+        } else {
+window.under_box =false;        
+}
+      } else {
+        if(type=="cap") {      
+window.cap_box =true;
+        } else {
+window.under_box =true;        
+}
+      }
+    }
+});
+    
+    
+      $(".img_single_box").each(function(){
+let handles=['fadeThree','fadeFour','fadeFive'];
+let randomElement = _.sample(handles);;
+$(this).addClass(randomElement);
+$(this).attr('style','opacity:1')
+});
+    
+    $("button.master_box_top_label").on('click', function(){
+$(".builder_card").hide()
+$(this).parent().children('.builder_card').each(function(){
+
+$(this).toggle();
+});
+});
+$(".master_box_top[data-id='cap'] .builder_card").show();
+    });
+
+  
+  
+  
+  
+  
+//Control color swatches
+window.addEventListener('load', (event) => {
+
+  function last_word(words) {
+    var n = words.split(" ");
+    return n[n.length - 1];
+
+}
+  
+  function isColor(strColor){
+  var s = new Option().style;
+  s.color = strColor;
+  return s.color == strColor;
+}
+  
+$(".color_swatch_box").each(function(){
+var color= $(this).attr('data-color').toLowerCase();
+if (isColor(color)) {
+$(this).attr('style','background-color:'+color)
+} else {
+var color = last_word(color);
+
+if (isColor(color)) {
+$(this).attr('style','background-color:'+color)
+}
+
+}
+
+});
+
+$(".color_swatch_box_btn").on('click',function(){
+
+$(this).parent().children('button.color_swatch_box_btn').children('div.color_swatch_box').each(function(){
+$(this).removeClass('chosen_color_box');
+});
+
+$(this).children('div.color_swatch_box').addClass('chosen_color_box');
+
+});
+  
+  
+  $(".color_swatch_box").on('click', function(){
+var handle = $(this).attr('data-color');
+
+var handle = "option[data-value='"+handle+"']";
+console.log(handle);
+var handle = $(this).parent().parent().parent().children(".options-select[data-name='Color']").children(handle);
+$(handle).prop('selected', true).trigger("change");
+    let img = $(handle).attr('data-img');
+    $(this).parent().parent().parent().prev('.builder_top_slide').children('.column_box_top').children('.builder_top_slide_img').children('img.builder_card_image').attr('src',img);
+
+});
+  
+$(".master_designs").on('change', function(){
+let img = $(this).children('option:selected').attr('data-img');
+    let title = $(this).children('option:selected').text();
+let source = $(this).children('option:selected').attr('data-source');
+  let reviews = $(this).children('option:selected').attr('data-reviews');
+  let numi = $(this).children('option:selected').attr('data-numi');
+  let type = $(this).children('option:selected').attr('data-type');
+let handle = "select[data-source='"+source+"']";
+  
+$(this).parent().parent().children(".builder_top_slide").children(".column_box_top").children('.builder_top_slide_img').children('.builder_card_image').attr('src',img);
+    $(this).parent(".custom_builder_option").prev('.builder_top_slide').children('.column_box_top').children('.builder_top_slide_title').children('p').children('b').text(title);
+$(this).parent().parent().children("select.pre-hidden-custom-bundle").removeClass("hidden-custom-bundle");
+$(handle).addClass("hidden-custom-bundle");
+if(type.includes('Scrub Cap')) {
+  
+    window.final_handle = "div.builder_card[data-type='cap'] .master_sizes.options-select";
+    //window.pre_final_handle="div.builder_card[data-type='cap'] .builder_top_slide_reviews span";
+  window.final_reviews="div.builder_card[data-type='cap'] .loox-rating";
+    
+  } else {
+    
+  window.final_handle = "div.builder_card[data-type='under'] .master_sizes.options-select";
+    //window.pre_final_handle="div.builder_card[data-type='under'] .builder_top_slide_reviews span";
+    window.final_reviews="div.builder_card[data-type='under'] .loox-rating";
+  }
+  
+ 
+
+$(window.final_handle).find('option').remove();  
+$(window.final_handle).append('<option data-status="true" selected="" style="color:gray">Select an option</option>');
+$(handle).children("option").each(function(){
+let txt = $(this).text();
+let val = $(this).attr("data-option1");
+let this_handle="<option data-name='Size' data-value='"+val+"'>"+val+"</option>";
+if(txt != "0") {
+  
+  
+
+
+  //$(window.pre_final_handle).text(reviews);
+  $(window.final_handle).append(this_handle);
+  let titling = reviews+" rating ("+numi+" votes)";
+  $(window.final_reviews).children('span').text(numi);
+  $(window.final_reviews).attr('title',titling);
+  $(window.final_reviews).show();
+}
+});
+});
+
+  
+$(".scrub_caps_hidden").each(function(){
+let title = $(this).attr('data-title');
+let img = $(this).attr('data-img');
+let source = $(this).attr('data-source');
+let type = $(this).attr('data-type');
+let reviews = $(this).attr('data-reviews');
+  let numi = $(this).attr('data-numi');
+let post_handle = "select[data-source='"+source+"'][data-type='"+type+"']";
+  
+let handle ="<option data-img='"+img+"' data-source='"+source+"' data-type='"+type+"' data-reviews='"+reviews+"' data-numi='"+numi+"'>"+title+"</option>";
+
+  
+  if (type.includes('Scrub Cap')){
+    
+    $("div.builder_card[data-type='cap'] .master_designs").append(handle);
+    $(post_handle).prependTo("div.builder_card[data-type='cap']");
+  } else {
+$("div.builder_card[data-type='under'] .master_designs").append(handle);
+  $(post_handle).prependTo("div.builder_card[data-type='under']");
+  }
+
+});
+
+
+  
+  }); 
+  </script>
+
+<style>
+  /* Init imgs */
+  img.img_single_box {
+  height: 100%;
+    object-fit: cover;
+    
+    
+    transition: opacity 0.4s ease 0s;
+    width: 100%;
+    
+  }
+  
+  .imgs_wrapper_box {
+  display:flex;
+  }
+  
+  .color_swatch_box {
+  border-radius: 50%;    
+    height: 3vh;
+    width: 3vh;
+  }
+  
+  .color_swatch_box_btn {
+  width:8%;
+    padding: 0 15px;
+  }
+  
+  .chosen_color_box {
+  box-shadow: 0 0 1pt 0pt black;
+    border: 2px solid white;
+    background-color: navy;
+  }
+  
+  /* Finish init imgs and start general styling */
+  
+  
+  .builder_top_slide, .custom_builder_option {
+  display:flex; 
+  }
+  
+  .custom_builder_option { 
+  flex-direction:column;
+  }
+  
+  .custom_builder_option {
+  border-left: 0.5px solid rgb(229, 229, 229);
+  }
+  
+  .builder_card, .builder_box {
+  border-top: 0.5px solid gray;
+    border-bottom: 0.5px solid rgb(229, 229, 229);
+  }
+  
+  .options-select {
+  border: 1px solid black;
+    
+  }
+  .builder_card, .builder_box {
+  padding: 8%;
+  }
+  
+  .custom_builder_option {
+  margin-left: -10%;
+    padding-left: 8%;
+  }
+  
+  .builder_top_slide .column_box_top:nth-child(2) {
+  margin-left:15%;
+    width:100%;
+  }
+  
+  .options-select {
+  width:100%;
+    color:gray !important;
+  }
+  
+  .fadeFive {
+    
+    transition: opacity 7s ease-in-out !important;
+    -moz-transition: opacity 7s ease-in-out !important;
+    -webkit-transition: opacity 7s ease-in-out !important;
+}
+  
+  .fadeFour {
+    
+    transition: opacity 5s ease-in-out !important;
+    -moz-transition: opacity 5s ease-in-out !important;
+    -webkit-transition: opacity 5s ease-in-out !important;
+}
+  
+  .fadeThree {
+    
+    transition: opacity 3s ease-in-out !important;
+    -moz-transition: opacity 3s ease-in-out !important;
+    -webkit-transition: opacity 3s ease-in-out !important;
+}
+  
+  .builder_card:hover {
+  box-shadow: 2px 2px 2px 1px rgb(0 0 0 / 20%);
+  }
+  
+  select.options-select[data-name='Color'] {
+    display: none;
+}
+  
+  .builder_card_image {
+  transform: translateX(-19%);
+  }
+  
+  .custom_builder_option * {
+    padding: 10px;
+}
+  
+  /*
+
+  @media screen and (min-width: 1200px) {
+  .builder_card {
+  width:120%;
+  }
+  
+  .custom_builder_option {
+  width: 50%;
+    margin-left: 0.1em;
+    float: right;
+
+  }
+  
+  div.custom_builder_option select {
+  width: 80%;
+  }
+  .grid__item.medium-up--three-fifths {
+  margin-top:10vw;
+  }
+}
+  
+  @media screen and (min-width: 769px) {
+  @media screen and (max-width: 1200px) {
+    .builder_card {
+  display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  }
+  }
+  
+  
+  
+  
+  @media screen and (max-width: 769px) {
+     .builder_card {
+    flex-direction: column;
+    display: flex;
+    justify-content: center;
+     }
+    
+    .builder_card_title {
+    text-align: center;
+    }
+    
+    .builder_card_image {
+        margin-right: auto;
+    margin-left: auto;
+    }
+    
+    .custom_builder_option {
+    flex-direction: column;
+    display: flex;
+    }
+    
+    .custom_builder_label {
+        margin-right: auto;
+    margin-left: auto;
+    margin-top: 1em;
+    }
+    
+  }
+  
+ */ 
+  
+</style>
+{% endif %}
+</body>
+</html>

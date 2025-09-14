@@ -1,0 +1,53 @@
+{% include 'product-content.zipifypages', contentprt: 'header' %}{% section 'product-template' %}
+{% assign heading = product.metafields.sf_image_with_text.heading %}
+{% if heading != blank %}
+{% include 'product-text-with-image' %}
+{% else %}
+{% section 'product-sections' %}
+{% endif %}
+{% if product.metafields.loox.num_reviews %}
+<script id="looxSchemaJson" type="application/ld+json">
+{
+	"@context": "http://schema.org",
+	"@type": "Product",
+	"@id": {{ canonical_url | json }},
+	"aggregateRating": {
+		"@type": "AggregateRating",
+		"ratingValue": "{{ product.metafields.loox.avg_rating }}",
+		"reviewCount": "{{ product.metafields.loox.num_reviews }}"
+	},
+	"name": {{ product.title | json }}
+}
+</script>
+{% endif %}
+
+{% comment %}
+THIS SECTION WAS UPDATED BY CASEY. IT USED TO SHOW THE LOOX REVIEW DIV. I'VE MOVED THAT TO- PRODUCT.SECTIONS         
+{% endcomment %}
+
+
+	
+
+	<div id="looxReviews" data-product-id="{{product.id}}" class="loox-reviews-default">{{ product.metafields.loox.reviews }}</div>
+{% section 'product-recommendations' %}
+
+{%- if collection -%}
+  <div class="text-center">
+    <a href="{{ collection.url }}" class="btn btn--tertiary">
+      &xlarr; {{ 'products.general.collection_return' | t: collection: collection.title }}
+    </a>
+  </div>
+{%- endif -%}
+
+
+<script>
+  // Override default values of shop.strings for each template.
+  // Alternate product templates can change values of
+  // add to cart button, sold out, and unavailable states here.
+  theme.productStrings = {
+    addToCart: {{ 'products.product.add_to_cart' | t | json }},
+    soldOut: {{ 'products.product.sold_out' | t | json }},
+    unavailable: {{ 'products.product.unavailable' | t | json }}
+  };
+</script>
+{% include 'product-content.zipifypages', contentprt: 'footer' %}

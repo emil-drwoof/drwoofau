@@ -1,0 +1,277 @@
+{
+  "wrapper": "div#div_id.div_class[attribute-one=value]",
+  "sections": {
+    "annoucement_x9dJTY": {
+      "type": "annoucement",
+      "settings": {
+        "a_text1": "OVER 50, 000 COMFY DOCS AND NURSES",
+        "a_text2": ""
+      }
+    },
+    "custom": {
+      "type": "custom-html",
+      "settings": {
+        "custom_html": "<img data-swift-lazy=\"1\" loading=\"lazy\" class=\"\" src=\"\/\/www.drwoofapparel.com.au\/cdn\/shop\/files\/Horizontal_logo_transparent_background_blue_2_7dc8a8de-20c6-4155-8747-0810a5b4b5e0_210x.png?v=1704080588\" srcset=\"\/\/www.drwoofapparel.com.au\/cdn\/shop\/files\/Horizontal_logo_transparent_background_blue_2_7dc8a8de-20c6-4155-8747-0810a5b4b5e0_210x.png?v=1704080588 1x, \/\/www.drwoofapparel.com.au\/cdn\/shop\/files\/Horizontal_logo_transparent_background_blue_2_7dc8a8de-20c6-4155-8747-0810a5b4b5e0_210x@2x.png?v=1704080588 2x\" alt=\"Dr. Woof Apparel AU\" style=\"display:block;margin:30px auto 0;\">"
+      }
+    },
+    "headerv3": {
+      "type": "headerv3",
+      "settings": {
+        "boxhero": "shopify:\/\/shop_images\/Untitled_design_1_9e8b5e95-1380-42d7-bd76-e3a27a40b3cc.jpg"
+      }
+    },
+    "logo_list_Hjya9y": {
+      "type": "logo-list",
+      "blocks": {
+        "logo_image_QTatjD": {
+          "type": "logo_image",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/16_34d94e59-4c1b-413d-88e2-4623b7f2d66b.png",
+            "image_mobile": "shopify:\/\/shop_images\/16_34d94e59-4c1b-413d-88e2-4623b7f2d66b.png",
+            "link": "",
+            "logotitle": "",
+            "logotext": ""
+          }
+        },
+        "logo_image_qJCxJ9": {
+          "type": "logo_image",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/5_3fe9f91b-4930-4556-bd95-ad75e6011855.png",
+            "image_mobile": "shopify:\/\/shop_images\/5_3fe9f91b-4930-4556-bd95-ad75e6011855.png",
+            "link": "",
+            "logotitle": "",
+            "logotext": ""
+          }
+        },
+        "logo_image_eQwUX3": {
+          "type": "logo_image",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/7_c356a721-dac5-4b68-addd-2e87f397de0e.png",
+            "image_mobile": "shopify:\/\/shop_images\/7_c356a721-dac5-4b68-addd-2e87f397de0e.png",
+            "link": "",
+            "logotitle": "",
+            "logotext": ""
+          }
+        },
+        "logo_image_tixEDp": {
+          "type": "logo_image",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/13_2af6a184-b184-45dc-bbb1-a0e1b38c3303.png",
+            "image_mobile": "shopify:\/\/shop_images\/13_2af6a184-b184-45dc-bbb1-a0e1b38c3303.png",
+            "link": "",
+            "logotitle": "",
+            "logotext": ""
+          }
+        },
+        "logo_image_a8YfMU": {
+          "type": "logo_image",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/6_3be1044b-e113-47e5-8702-a61288c059c2.png",
+            "image_mobile": "shopify:\/\/shop_images\/6_3be1044b-e113-47e5-8702-a61288c059c2.png",
+            "link": "",
+            "logotitle": "",
+            "logotext": ""
+          }
+        },
+        "logo_image_z7Qa4W": {
+          "type": "logo_image",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/10_4030e2f7-5fdd-465d-b3ab-416dba98cdca.png",
+            "image_mobile": "shopify:\/\/shop_images\/10_4030e2f7-5fdd-465d-b3ab-416dba98cdca.png",
+            "link": "",
+            "logotitle": "",
+            "logotext": ""
+          }
+        },
+        "logo_image_iGpFp8": {
+          "type": "logo_image",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/8_e07a751a-9924-410d-b347-b22cf5cdd565.png",
+            "image_mobile": "shopify:\/\/shop_images\/8_e07a751a-9924-410d-b347-b22cf5cdd565.png",
+            "link": "",
+            "logotitle": "",
+            "logotext": ""
+          }
+        },
+        "logo_image_aPA48g": {
+          "type": "logo_image",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/14_dad1d655-7f47-4218-90c4-c80b53ad922c.png",
+            "image_mobile": "shopify:\/\/shop_images\/14_dad1d655-7f47-4218-90c4-c80b53ad922c.png",
+            "link": "",
+            "logotitle": "",
+            "logotext": ""
+          }
+        },
+        "logo_image_4DkLbb": {
+          "type": "logo_image",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/18_17432400-33e7-4f37-b9b9-a90e081f3595.png",
+            "image_mobile": "shopify:\/\/shop_images\/18_17432400-33e7-4f37-b9b9-a90e081f3595.png",
+            "link": "",
+            "logotitle": "",
+            "logotext": ""
+          }
+        },
+        "logo_image_rBJzCb": {
+          "type": "logo_image",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/17_50a72747-e5d5-43a0-91a3-7e80892aac67.png",
+            "image_mobile": "shopify:\/\/shop_images\/17_50a72747-e5d5-43a0-91a3-7e80892aac67.png",
+            "link": "",
+            "logotitle": "",
+            "logotext": ""
+          }
+        }
+      },
+      "block_order": [
+        "logo_image_QTatjD",
+        "logo_image_qJCxJ9",
+        "logo_image_eQwUX3",
+        "logo_image_tixEDp",
+        "logo_image_a8YfMU",
+        "logo_image_z7Qa4W",
+        "logo_image_iGpFp8",
+        "logo_image_aPA48g",
+        "logo_image_4DkLbb",
+        "logo_image_rBJzCb"
+      ],
+      "settings": {
+        "leftscroll": true,
+        "title": "Proudly serving",
+        "logo_opacity": 100,
+        "alt": false
+      }
+    },
+    "adneon": {
+      "type": "adneon",
+      "settings": {
+        "adtitle": "Your day in Dr. Woof Scrubs",
+        "adbutton": "Shop now",
+        "bollink": "shopify:\/\/collections\/women"
+      }
+    },
+    "dualanimated": {
+      "type": "dualanimated",
+      "settings": {
+        "image_left": false,
+        "imagebig": "shopify:\/\/shop_images\/IMG_1262.jpg",
+        "contenttime": "7:00 AM",
+        "contenttitle": "Hit snooze 8 times.Get ready in 2.5 mins flat. Still look good.",
+        "contenttext1": "Wrinkle-resistant fabric because ironing sucks.",
+        "contenttext2": "Subtle tailoring so you look polished even if you don’t feel it.",
+        "contenttext3": ""
+      }
+    },
+    "dualanimated_YpCgTR": {
+      "type": "dualanimated",
+      "settings": {
+        "image_left": true,
+        "imagebig": "shopify:\/\/shop_images\/IMG_0059_75c5ef17-5971-45c6-a8eb-39c94315d53e.jpg",
+        "contenttime": "8:00 AM",
+        "contenttitle": "Be the star of your coffee shop. Make the suit and heels crowd jealous.",
+        "contenttext1": "Give off main-character energy with a colour and fit that fires your confidence.",
+        "contenttext2": "Always look fresh – your personality doesn’t fade in the wash, so neither do our scrubs.",
+        "contenttext3": ""
+      }
+    },
+    "dualanimated_gVc9TY": {
+      "type": "dualanimated",
+      "settings": {
+        "image_left": false,
+        "imagebig": "shopify:\/\/shop_images\/IMG_0242.jpg",
+        "contenttime": "10:10 AM",
+        "contenttitle": "Chest compressions for 7 minutes straight, and not a sweat patch in sight",
+        "contenttext1": "Sweat-wicking technology for the driest pits in the ICU.",
+        "contenttext2": "Move with ease thanks to 4-way stretch fabric. ",
+        "contenttext3": ""
+      }
+    },
+    "dualanimated_TpMkn6": {
+      "type": "dualanimated",
+      "settings": {
+        "image_left": true,
+        "imagebig": "shopify:\/\/shop_images\/IMG_9908.jpg",
+        "contenttime": "12:00 PM",
+        "contenttitle": "A quick nap. When your scrubs feel like pyjamas, why not?",
+        "contenttext1": "Experience fabric so silky soft our customers won’t stop raving about.",
+        "contenttext2": "Wake up looking fresher than ever – wrinkle resistance saves the day again.",
+        "contenttext3": ""
+      }
+    },
+    "dualanimated_HmWTbE": {
+      "type": "dualanimated",
+      "settings": {
+        "image_left": false,
+        "imagebig": "shopify:\/\/shop_images\/IMG_0150_1345484d-b7ec-4587-9d28-ad1fa310251d.jpg",
+        "contenttime": "3:00 PM",
+        "contenttitle": "Drop your key card. Keep your dignity.",
+        "contenttext1": "Keep your crack under wraps in pants designed for bending and stretching. ",
+        "contenttext2": "Find the perfect pants to cover your 🍑with sizes XXS to 3XL in a range of styles and inseams. ",
+        "contenttext3": ""
+      }
+    },
+    "dualanimated_F3zW6f": {
+      "type": "dualanimated",
+      "settings": {
+        "image_left": true,
+        "imagebig": "shopify:\/\/shop_images\/IMG_1547.jpg",
+        "contenttime": "5:00 PM",
+        "contenttitle": "See your boss looking for people to stay late. Distract her with pens and snacks.",
+        "contenttext1": "Up to 12 pockets so you can be more prepared than a boy scout.",
+        "contenttext2": "Big, deep, functional pocket designs that easily hold phones, keys, snacks and more.",
+        "contenttext3": ""
+      }
+    },
+    "dualanimated_yKW3wx": {
+      "type": "dualanimated",
+      "settings": {
+        "image_left": false,
+        "imagebig": "shopify:\/\/shop_images\/IMG_1489.jpg",
+        "contenttime": "8:00 PM",
+        "contenttitle": "Arrive home looking as fresh as when you left. Hate your pyjamas for not being as comfy as your scrubs.",
+        "contenttext1": "",
+        "contenttext2": "",
+        "contenttext3": ""
+      }
+    },
+    "adsection_zyrYhE": {
+      "type": "adsection",
+      "settings": {
+        "darktheme": true,
+        "deskmartop": 20,
+        "deskmarbot": 20,
+        "mobmartop": 0,
+        "mobmarbot": 30,
+        "bigtext": "BUNDLE DEALS: BUY 2 SETS GET 1 SET FREE",
+        "reviewstars_text": "",
+        "bigtextsize": 36,
+        "textbut": "SHOP NOW",
+        "buttonlink": "shopify:\/\/collections\/women",
+        "bgcolor": "#0b0d32"
+      }
+    },
+    "custom_html_U3DXKA": {
+      "type": "custom-html",
+      "settings": {
+        "custom_html": "<img data-swift-lazy=\"1\" loading=\"lazy\" class=\"\" src=\"\/\/www.drwoofapparel.com.au\/cdn\/shop\/files\/Horizontal_logo_transparent_background_blue_2_7dc8a8de-20c6-4155-8747-0810a5b4b5e0_210x.png?v=1704080588\" srcset=\"\/\/www.drwoofapparel.com.au\/cdn\/shop\/files\/Horizontal_logo_transparent_background_blue_2_7dc8a8de-20c6-4155-8747-0810a5b4b5e0_210x.png?v=1704080588 1x, \/\/www.drwoofapparel.com.au\/cdn\/shop\/files\/Horizontal_logo_transparent_background_blue_2_7dc8a8de-20c6-4155-8747-0810a5b4b5e0_210x@2x.png?v=1704080588 2x\" alt=\"Dr. Woof Apparel AU\" style=\"display:block;margin:30px auto 30px;\">"
+      }
+    }
+  },
+  "order": [
+    "annoucement_x9dJTY",
+    "custom",
+    "headerv3",
+    "logo_list_Hjya9y",
+    "adneon",
+    "dualanimated",
+    "dualanimated_YpCgTR",
+    "dualanimated_gVc9TY",
+    "dualanimated_TpMkn6",
+    "dualanimated_HmWTbE",
+    "dualanimated_F3zW6f",
+    "dualanimated_yKW3wx",
+    "adsection_zyrYhE",
+    "custom_html_U3DXKA"
+  ]
+}

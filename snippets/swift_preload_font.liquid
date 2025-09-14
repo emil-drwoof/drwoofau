@@ -1,0 +1,14 @@
+
+{% if swift_preload_font and swift_preload_font != blank %}
+    {% capture ff_output %}
+    {{ swift_preload_font  | font_face }}
+    {% endcapture %}
+    {% assign font_files = ff_output | split: "src: " | last | split: 'url("' %}
+    {% for line in font_files %}
+        {% if line contains '")' %}
+            {% assign font_url = line | split: '")' | first %}
+            {% assign font_type = line | split: 'format("' | last | split: '")' | first %}
+            <link rel="preload" as="font" href="{{ font_url }}" type="font/{{ font_type }}" crossorigin="anonymous">
+        {% endif %}
+    {% endfor %}
+{% endif %}

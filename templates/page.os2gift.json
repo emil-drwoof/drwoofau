@@ -1,0 +1,18 @@
+{
+  "wrapper": "div#div_id.div_class[attribute-one=value]",
+  "sections": {
+    "main": {
+      "type": "page-pagetemplate",
+      "custom_css": [
+        "h1{display: none}"
+      ],
+      "settings": {
+        "page_title_enable": true,
+        "page_content_enable": true
+      }
+    }
+  },
+  "order": [
+    "main"
+  ]
+}

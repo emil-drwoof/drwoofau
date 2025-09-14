@@ -1,0 +1,11 @@
+{
+  "sections": {
+    "main-content": {
+      "type": "page-faq-template",
+      "settings": {}
+    }
+  },
+  "order": [
+    "main-content"
+  ]
+}

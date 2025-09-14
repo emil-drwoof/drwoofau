@@ -1,0 +1,481 @@
+{
+  "wrapper": "div#div_id.div_class[attribute-one=value]",
+  "sections": {
+    "annoucement_x9dJTY": {
+      "type": "annoucement",
+      "settings": {
+        "a_text1": "OVER 50, 000 COMFY DOCS AND NURSES",
+        "a_text2": ""
+      }
+    },
+    "custom": {
+      "type": "custom-html",
+      "settings": {
+        "custom_html": "<img data-swift-lazy=\"1\" loading=\"lazy\" class=\"\" src=\"\/\/www.drwoofapparel.com.au\/cdn\/shop\/files\/Horizontal_logo_transparent_background_blue_2_7dc8a8de-20c6-4155-8747-0810a5b4b5e0_210x.png?v=1704080588\" srcset=\"\/\/www.drwoofapparel.com.au\/cdn\/shop\/files\/Horizontal_logo_transparent_background_blue_2_7dc8a8de-20c6-4155-8747-0810a5b4b5e0_210x.png?v=1704080588 1x, \/\/www.drwoofapparel.com.au\/cdn\/shop\/files\/Horizontal_logo_transparent_background_blue_2_7dc8a8de-20c6-4155-8747-0810a5b4b5e0_210x@2x.png?v=1704080588 2x\" alt=\"Dr. Woof Apparel AU\" style=\"display:block;margin:30px auto 0;\">"
+      }
+    },
+    "headerv4_keNyj3": {
+      "type": "headerv4",
+      "settings": {
+        "boxhero": "shopify:\/\/shop_images\/NEW_LISTICLE_BANNER_1.png",
+        "mobile_boxhero": "shopify:\/\/shop_images\/Untitled_design_1_9e8b5e95-1380-42d7-bd76-e3a27a40b3cc.jpg"
+      }
+    },
+    "headerv3": {
+      "type": "headerv3",
+      "disabled": true,
+      "settings": {
+        "boxhero": "shopify:\/\/shop_images\/Untitled_design_1_9e8b5e95-1380-42d7-bd76-e3a27a40b3cc.jpg"
+      }
+    },
+    "hero_KfrByq": {
+      "type": "hero",
+      "settings": {
+        "big_header_text": "Scrubs You Can Wear and Wear",
+        "subtitle_text": "<div style=\"color:#000; width:62%;text-align:left;margin:0 auto 20px;\">✅Designed to last with our 17-step quality checkprocess<br>\n✅Ultra-soft comfort that feels like a hug<br>\n✅9-functional pockets designed for healthcare<br>\n<\/div>\n<p style=\"text-align:center;color:#000\"><b>TRUSTED BY 50,000+ COMFY AUSSIE NURSES & DOCTORS<br>\n3700+ 5 Star Reviews\n⭐⭐⭐⭐⭐<br><\/b><\/p>",
+        "button_text": "BUY 2 SETS - GET 1 SET FREE | SHOP NOW",
+        "button_link": "shopify:\/\/collections\/women",
+        "background_color": "#ffffff",
+        "desktop_padding_top": 50,
+        "desktop_padding_bottom": 50,
+        "mobile_padding_top": 30,
+        "mobile_padding_bottom": 30,
+        "main_heading_font_size": 48,
+        "subheading_font_size": 18,
+        "main_heading_color": "#000000",
+        "subheading_color": "#000000",
+        "mobile_main_heading_font_size": 36,
+        "mobile_subheading_font_size": 16
+      }
+    },
+    "linehr_GCHAzF": {
+      "type": "linehr",
+      "settings": {
+        "padding_top_desktop": 0,
+        "padding_bottom_desktop": 0,
+        "padding_top_mobile": 0,
+        "padding_bottom_mobile": 0,
+        "margin_top_desktop": 20,
+        "margin_bottom_desktop": 0,
+        "margin_top_mobile": 0,
+        "margin_bottom_mobile": 0,
+        "border_top_color": "#ebebeb"
+      }
+    },
+    "custom_html_HqWgDh": {
+      "type": "custom-html",
+      "settings": {
+        "custom_html": "<br><h1 style=\"font-size: 36px;\"><u>Your day in Dr. Woof Scrubs<\/u><\/h1>"
+      }
+    },
+    "dualanimated": {
+      "type": "dualanimated",
+      "settings": {
+        "image_left": false,
+        "imagebig": "shopify:\/\/shop_images\/IMG_1262.jpg",
+        "contenttime": "7:00 AM",
+        "contenttitle": "Hit snooze 8 times.Get ready in 2.5 mins flat. Still look good.",
+        "contenttext1": "Wrinkle-resistant fabric because ironing sucks.",
+        "contenttext2": "Subtle tailoring so you look polished even if you don’t feel it.",
+        "contenttext3": ""
+      }
+    },
+    "dualanimated_YpCgTR": {
+      "type": "dualanimated",
+      "settings": {
+        "image_left": true,
+        "imagebig": "shopify:\/\/shop_images\/IMG_0059_75c5ef17-5971-45c6-a8eb-39c94315d53e.jpg",
+        "contenttime": "8:00 AM",
+        "contenttitle": "Be the star of your coffee shop. Make the suit and heels crowd jealous.",
+        "contenttext1": "Give off main-character energy with a colour and fit that fires your confidence.",
+        "contenttext2": "Always look fresh – your personality doesn’t fade in the wash, so neither do our scrubs.",
+        "contenttext3": ""
+      }
+    },
+    "dualanimated_gVc9TY": {
+      "type": "dualanimated",
+      "settings": {
+        "image_left": false,
+        "imagebig": "shopify:\/\/shop_images\/IMG_0242.jpg",
+        "contenttime": "10:10 AM",
+        "contenttitle": "Chest compressions for 7 minutes straight, and not a sweat patch in sight",
+        "contenttext1": "Sweat-wicking technology for the driest pits in the ICU.",
+        "contenttext2": "Move with ease thanks to 4-way stretch fabric. ",
+        "contenttext3": ""
+      }
+    },
+    "dualanimated_TpMkn6": {
+      "type": "dualanimated",
+      "settings": {
+        "image_left": true,
+        "imagebig": "shopify:\/\/shop_images\/IMG_9908.jpg",
+        "contenttime": "12:00 PM",
+        "contenttitle": "A quick nap. When your scrubs feel like pyjamas, why not?",
+        "contenttext1": "Experience fabric so silky soft our customers won’t stop raving about.",
+        "contenttext2": "Wake up looking fresher than ever – wrinkle resistance saves the day again.",
+        "contenttext3": ""
+      }
+    },
+    "dualanimated_HmWTbE": {
+      "type": "dualanimated",
+      "settings": {
+        "image_left": false,
+        "imagebig": "shopify:\/\/shop_images\/IMG_0150_1345484d-b7ec-4587-9d28-ad1fa310251d.jpg",
+        "contenttime": "3:00 PM",
+        "contenttitle": "Drop your key card. Keep your dignity.",
+        "contenttext1": "Keep your crack under wraps in pants designed for bending and stretching. ",
+        "contenttext2": "Find the perfect pants to cover your 🍑with sizes XXS to 3XL in a range of styles and inseams. ",
+        "contenttext3": ""
+      }
+    },
+    "dualanimated_F3zW6f": {
+      "type": "dualanimated",
+      "settings": {
+        "image_left": true,
+        "imagebig": "shopify:\/\/shop_images\/IMG_1547.jpg",
+        "contenttime": "5:00 PM",
+        "contenttitle": "See your boss looking for people to stay late. Distract her with pens and snacks.",
+        "contenttext1": "Up to 12 pockets so you can be more prepared than a boy scout.",
+        "contenttext2": "Big, deep, functional pocket designs that easily hold phones, keys, snacks and more.",
+        "contenttext3": ""
+      }
+    },
+    "dualanimated_yKW3wx": {
+      "type": "dualanimated",
+      "settings": {
+        "image_left": false,
+        "imagebig": "shopify:\/\/shop_images\/IMG_1489.jpg",
+        "contenttime": "8:00 PM",
+        "contenttitle": "Arrive home looking as fresh as when you left. Hate your pyjamas for not being as comfy as your scrubs.",
+        "contenttext1": "",
+        "contenttext2": "",
+        "contenttext3": ""
+      }
+    },
+    "linehr_kH8NkP": {
+      "type": "linehr",
+      "settings": {
+        "padding_top_desktop": 0,
+        "padding_bottom_desktop": 0,
+        "padding_top_mobile": 0,
+        "padding_bottom_mobile": 0,
+        "margin_top_desktop": 20,
+        "margin_bottom_desktop": 0,
+        "margin_top_mobile": 20,
+        "margin_bottom_mobile": 0,
+        "border_top_color": "#ebebeb"
+      }
+    },
+    "hero_nLqLjK": {
+      "type": "hero",
+      "settings": {
+        "big_header_text": "\"Australia's Longest Scrubs Guarantee: 60 Days!\"",
+        "subtitle_text": "Two full months to decide - unmatched in Australia. Love our scrubs or return for a full refund, no questions. Free exchanges included.",
+        "button_text": "SHOP NOW",
+        "button_link": "shopify:\/\/collections\/women",
+        "background_color": "#ffffff",
+        "desktop_padding_top": 50,
+        "desktop_padding_bottom": 50,
+        "mobile_padding_top": 30,
+        "mobile_padding_bottom": 30,
+        "main_heading_font_size": 48,
+        "subheading_font_size": 18,
+        "main_heading_color": "#000000",
+        "subheading_color": "#000000",
+        "mobile_main_heading_font_size": 36,
+        "mobile_subheading_font_size": 16
+      }
+    },
+    "linehr_3R3h8M": {
+      "type": "linehr",
+      "settings": {
+        "padding_top_desktop": 20,
+        "padding_bottom_desktop": 20,
+        "padding_top_mobile": 10,
+        "padding_bottom_mobile": 10,
+        "margin_top_desktop": 20,
+        "margin_bottom_desktop": 10,
+        "margin_top_mobile": 10,
+        "margin_bottom_mobile": 5,
+        "border_top_color": "#ebebeb"
+      }
+    },
+    "text_and_image_rWLmnD": {
+      "type": "text-and-image",
+      "settings": {
+        "image": "shopify:\/\/shop_images\/WHY_YOU_LL_LOVE_OUR_SCRUBS_3.gif",
+        "image_width": 480,
+        "subtitle": "",
+        "title": "Tougher Than Your Longest Night Shift",
+        "text": "<p>Your resilience deserves scrubs to match. Ours can handle everything from code blues to coffee spills, lasting longer than your degree. Don't believe it? Watch our inseams hold 93kg - that's a baby elephant's worth of durability. Built to endure, just like you.<\/p>",
+        "button_label": "SHOP NOW",
+        "button_link": "shopify:\/\/collections\/women",
+        "button_style": "primary",
+        "layout": "left",
+        "alt": false
+      }
+    },
+    "linehr_XTRJiK": {
+      "type": "linehr",
+      "settings": {
+        "padding_top_desktop": 0,
+        "padding_bottom_desktop": 0,
+        "padding_top_mobile": 0,
+        "padding_bottom_mobile": 0,
+        "margin_top_desktop": 0,
+        "margin_bottom_desktop": 0,
+        "margin_top_mobile": 0,
+        "margin_bottom_mobile": 0,
+        "border_top_color": "#ebebeb"
+      }
+    },
+    "advanced_content_UbKXia": {
+      "type": "advanced-content",
+      "blocks": {
+        "video_6geL9e": {
+          "type": "video",
+          "settings": {
+            "video_url": "https:\/\/cdn.shopify.com\/videos\/c\/o\/v\/3c13f6af71424a2cb2ca2a3626de3392.mp4",
+            "width": "33%",
+            "alignment": "top-middle"
+          }
+        },
+        "video_dctDky": {
+          "type": "video",
+          "settings": {
+            "video_url": "https:\/\/cdn.shopify.com\/videos\/c\/o\/v\/b72c5c0cb4fb4eaea3fa8d7e3a781544.mp4",
+            "width": "33%",
+            "alignment": "top-middle"
+          }
+        },
+        "video_TMdCDP": {
+          "type": "video",
+          "settings": {
+            "video_url": "https:\/\/cdn.shopify.com\/videos\/c\/o\/v\/23ae219f351d4904b908311813f8f54d.mp4",
+            "width": "33%",
+            "alignment": "top-middle"
+          }
+        }
+      },
+      "block_order": [
+        "video_6geL9e",
+        "video_dctDky",
+        "video_TMdCDP"
+      ],
+      "settings": {
+        "full_width": false,
+        "space_around": true,
+        "alt": false
+      }
+    },
+    "logo_list_adNaCn": {
+      "type": "logo-list",
+      "blocks": {
+        "logo_image_dXmnhn": {
+          "type": "logo_image",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/Truck_1600x_c6730f1b-6713-48cb-b825-46c34dea16e2.png",
+            "image_mobile": "shopify:\/\/shop_images\/Truck_1600x_c6730f1b-6713-48cb-b825-46c34dea16e2.png",
+            "link": "",
+            "logotitle": "Free secured shipping",
+            "logotext": "Over $150 on domestic orders"
+          }
+        },
+        "logo_image_PepQJ6": {
+          "type": "logo_image",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/Doghouse_1600x_41530f32-19e4-4713-93f0-2721c14269c2.png",
+            "image_mobile": "shopify:\/\/shop_images\/Doghouse_1600x_41530f32-19e4-4713-93f0-2721c14269c2.png",
+            "link": "",
+            "logotitle": "Aussie family business",
+            "logotext": "Run by medical workers"
+          }
+        },
+        "logo_image_QPYKyE": {
+          "type": "logo_image",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/Award_750x_9dd04e23-79e7-40e3-933a-670ba3458258.png",
+            "image_mobile": "shopify:\/\/shop_images\/Award_750x_9dd04e23-79e7-40e3-933a-670ba3458258.png",
+            "link": "",
+            "logotitle": "60-day guarantee",
+            "logotext": "Love it or your money back"
+          }
+        }
+      },
+      "block_order": [
+        "logo_image_dXmnhn",
+        "logo_image_PepQJ6",
+        "logo_image_QPYKyE"
+      ],
+      "settings": {
+        "leftscroll": false,
+        "title": "",
+        "logo_opacity": 100,
+        "alt": false
+      }
+    },
+    "linehr_Ef4new": {
+      "type": "linehr",
+      "settings": {
+        "padding_top_desktop": 0,
+        "padding_bottom_desktop": 0,
+        "padding_top_mobile": 0,
+        "padding_bottom_mobile": 0,
+        "margin_top_desktop": 0,
+        "margin_bottom_desktop": 0,
+        "margin_top_mobile": 0,
+        "margin_bottom_mobile": 0,
+        "border_top_color": "#ebebeb"
+      }
+    },
+    "faq_section_7rxccH": {
+      "type": "faq-section",
+      "blocks": {
+        "rich_text_Qmheem": {
+          "type": "rich-text",
+          "settings": {
+            "title": "",
+            "text": "<p><strong>FREQUENTLY ASKED QUESTIONS<\/strong><\/p>",
+            "align_text": "left"
+          }
+        },
+        "question_8mfmBz": {
+          "type": "question",
+          "settings": {
+            "title": "Are your scrubs true to size?",
+            "text": "<p><em>Yes! Most of our customers find the fit perfect. To ensure the best fit, simply compare your measurements with our detailed sizing chart. Plus, we offer easy exchanges if it’s not the right size.<\/em><\/p>"
+          }
+        },
+        "question_jqMnBX": {
+          "type": "question",
+          "settings": {
+            "title": "What size am I?",
+            "text": "<p><em>Finding your perfect size is simple. Just check our sizing chart to match your measurements. We provide separate charts for women and men for easy reference.<\/em><\/p>"
+          }
+        },
+        "question_iPAAnW": {
+          "type": "question",
+          "settings": {
+            "title": "Do you offer petite and tall sizes?",
+            "text": "<p><em>Yes! Our core colours are available in regular, petite, and tall sizes. For limited edition releases, availability may vary based on demand, but we’re always expanding our options.<\/em><\/p>"
+          }
+        },
+        "question_UjnEey": {
+          "type": "question",
+          "settings": {
+            "title": "How do I care for my Dr. Woof scrubs?",
+            "text": "<p><em>Keep them looking great with a cold machine wash inside-out and tumble dry on low. It’s that easy—our scrubs are built to last with minimal care.<\/em><\/p>"
+          }
+        },
+        "question_pamAnU": {
+          "type": "question",
+          "settings": {
+            "title": "Will you be offering more sizes and colours soon?",
+            "text": "<p><em>Absolutely! We’re constantly adding new sizes and colors. Sign up for our mailing list at the bottom of the page to stay updated on all our latest releases.<\/em><\/p>"
+          }
+        },
+        "question_PehBWC": {
+          "type": "question",
+          "settings": {
+            "title": "Any plans for larger sizes?",
+            "text": "<p><em>Yes! We introduced 3XL in late 2023 and are committed to expanding our size range to ensure everyone can find the perfect fit.<\/em><\/p>"
+          }
+        },
+        "question_pPxxVm": {
+          "type": "question",
+          "settings": {
+            "title": "Frequently asked question",
+            "text": "<p>Use this text to answer questions in as much detail as possible for your customers. [MxHGyqobsbI]<\/p>"
+          }
+        },
+        "question_yPW33L": {
+          "type": "question",
+          "settings": {
+            "title": "What is your return policy?",
+            "text": "<p><em>We offer a 60-day return policy for clean, unworn items in their original packaging. Returns are easy, and we’re here to help make the process seamless.<\/em><\/p>"
+          }
+        },
+        "question_xBXdfW": {
+          "type": "question",
+          "settings": {
+            "title": "How do I initiate a return?",
+            "text": "<p><em>Just send us an email, and we’ll guide you through the simple steps to return your item. We’re here to make it hassle-free.<\/em><\/p>"
+          }
+        },
+        "question_ttAm4x": {
+          "type": "question",
+          "settings": {
+            "title": "How long does it take to receive my refund?",
+            "text": "<p><em>Once we receive and inspect your return, refunds are processed within 5 business days. Depending on your payment method, it may take a little longer to appear in your account.<\/em><\/p>"
+          }
+        }
+      },
+      "block_order": [
+        "rich_text_Qmheem",
+        "question_8mfmBz",
+        "question_jqMnBX",
+        "question_iPAAnW",
+        "question_UjnEey",
+        "question_pamAnU",
+        "question_PehBWC",
+        "question_pPxxVm",
+        "question_yPW33L",
+        "question_xBXdfW",
+        "question_ttAm4x"
+      ],
+      "settings": {
+        "page_title_enable": false,
+        "page_content_enable": false
+      }
+    },
+    "adsection_zyrYhE": {
+      "type": "adsection",
+      "settings": {
+        "darktheme": true,
+        "deskmartop": 20,
+        "deskmarbot": 20,
+        "mobmartop": 0,
+        "mobmarbot": 30,
+        "bigtext": "BUNDLE DEALS: BUY 2 SETS GET 1 SET FREE",
+        "reviewstars_text": "",
+        "bigtextsize": 36,
+        "textbut": "SHOP NOW",
+        "buttonlink": "shopify:\/\/collections\/women",
+        "bgcolor": "#0b0d32"
+      }
+    },
+    "custom_html_U3DXKA": {
+      "type": "custom-html",
+      "settings": {
+        "custom_html": "<img data-swift-lazy=\"1\" loading=\"lazy\" class=\"\" src=\"\/\/www.drwoofapparel.com.au\/cdn\/shop\/files\/Horizontal_logo_transparent_background_blue_2_7dc8a8de-20c6-4155-8747-0810a5b4b5e0_210x.png?v=1704080588\" srcset=\"\/\/www.drwoofapparel.com.au\/cdn\/shop\/files\/Horizontal_logo_transparent_background_blue_2_7dc8a8de-20c6-4155-8747-0810a5b4b5e0_210x.png?v=1704080588 1x, \/\/www.drwoofapparel.com.au\/cdn\/shop\/files\/Horizontal_logo_transparent_background_blue_2_7dc8a8de-20c6-4155-8747-0810a5b4b5e0_210x@2x.png?v=1704080588 2x\" alt=\"Dr. Woof Apparel AU\" style=\"display:block;margin:30px auto 30px;\">"
+      }
+    }
+  },
+  "order": [
+    "annoucement_x9dJTY",
+    "custom",
+    "headerv4_keNyj3",
+    "headerv3",
+    "hero_KfrByq",
+    "linehr_GCHAzF",
+    "custom_html_HqWgDh",
+    "dualanimated",
+    "dualanimated_YpCgTR",
+    "dualanimated_gVc9TY",
+    "dualanimated_TpMkn6",
+    "dualanimated_HmWTbE",
+    "dualanimated_F3zW6f",
+    "dualanimated_yKW3wx",
+    "linehr_kH8NkP",
+    "hero_nLqLjK",
+    "linehr_3R3h8M",
+    "text_and_image_rWLmnD",
+    "linehr_XTRJiK",
+    "advanced_content_UbKXia",
+    "logo_list_adNaCn",
+    "linehr_Ef4new",
+    "faq_section_7rxccH",
+    "adsection_zyrYhE",
+    "custom_html_U3DXKA"
+  ]
+}

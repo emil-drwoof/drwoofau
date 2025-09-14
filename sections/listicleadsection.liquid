@@ -1,0 +1,55 @@
+<section class="listicle">
+    <h4>{{ section.settings.title }}</h4>
+    <a href="https://www.drwoofapparel.com.au/products/dr-woof-scrub-set"><button class="header-button">SHOP NOW</button></a>
+</section>
+
+<style>
+    .listicle {
+        display:flex;
+        justify-content: space-between;
+        flex-wrap:wrap;
+        align-items: center;
+        max-width: 1300px;
+        margin-left: auto;
+        margin-right: auto;
+        margin-top: 40px;
+        margin-bottom: 40px;
+    }
+    .listicle h4 {
+        font-size:35px;
+        text-decoration:underline;
+    }
+    .listicle .header-button {
+        padding-left:28px;
+        padding-right:28px;
+    }
+    @media only screen and (max-width:480px){
+        .listicle {
+            width:100%;
+            padding-left:12px;
+            padding-right:12px;
+        }
+    }
+</style>
+
+{% schema %}
+    {
+      "name": "Listicle",
+      "settings": [
+            {
+            "type": "text",
+            "id": "title",
+            "label": "Heading",
+            "default": "A Day in the Life of Marcus Pierce"
+          }
+      
+      ],
+      "presets": [
+        {
+          "category": "A section",
+          "name": "Listicle"
+        }
+      ]
+    }
+    {% endschema %}
+    

@@ -1,0 +1,575 @@
+{% if cart.item_count > 0 %}
+{% section 'cart_free_shipping' %}
+{% endif %}
+
+<div class="cart-inner">
+  <div class="page-width page-content">
+
+    <div id="CartPage" class="grid">
+      <div class="grid__item">
+
+        <header class="section-header">
+          <h1 class="section-header__title">
+
+            <!--    {{ 'cart.general.title' | t }} -->
+          </h1>
+        </header>
+
+        <form action="{{ routes.cart_url }}" method="post" novalidate class="cart{% if cart.item_count == 0 %} cart--empty{% endif %}">
+
+          {% comment %}
+          Empty cart state
+          {% endcomment %}
+          <!-- l02 -->
+          <div class="cart__empty-text text-center">
+            <p>{{ 'cart.general.empty' | t }}</p>
+            <p>
+              <a href="{{ routes.root_url }}" class="btn">{{ 'cart.general.continue_shopping' | t }}</a>
+            </p>
+          </div>
+
+          {% comment %}
+          Cart table headers. Hidden if no items
+          {% endcomment %}
+
+          {% comment %}
+          <div class="cart__row small--hide cart__header-labels">
+            <div class="grid grid--full">
+              <div class="grid__item medium-up--one-half medium-up--push-one-half">
+                <div class="grid grid--full">
+                  <div class="grid__item one-third">
+                    {{ 'cart.label.price' | t }}
+                  </div>
+                  <div class="grid__item one-third text-center">
+                    {{ 'cart.label.quantity' | t }}
+                  </div>
+                  <div class="grid__item one-third text-right">
+                    {{ 'cart.label.total' | t }}
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          {% endcomment %}
+          {% comment %}
+          Cart items. If no items, include an hidden element to reference
+          as our template
+          {% endcomment %}
+          <div class="cart__items" data-cart-item-list>
+            {%- assign cartItems = 'template ' | split: ' ' -%}
+            {% if cart.items.size > 0 %}
+            {%- assign cartItems = cart.items -%}
+            {% endif %}
+
+            {% for item in cartItems %}
+            {% assign Show_Price = false %}
+
+            {% assign HANDLElast = '' %}            
+            {% assign notsame = false %}
+            {% assign firstvalue = false %} 
+            {% assign PriceHERE = false %} 
+
+            {% assign NormalPriceHERE = false %} 
+            {% assign NormalPrice = '' %} 
+
+            {% assign Cp_PriceHERE = false %} 
+            {% assign Cp_Price = '' %} 
+            {%- assign itemPropertiexs = item.properties -%}
+
+            {% for p in itemPropertiexs %}
+            {% if p.first == '__groups' %}
+            {% assign firstvalue =  true %} 
+            {% if p.last == item.product.handle %}           
+            {% assign notsame = true %}
+            {% assign Show_Price = true %}
+
+            {% assign HANDLElast= p.last %}
+
+            {% endif %}
+            {% endif %}
+
+            {% if p.first == '__groupsnormalPrice' %}
+            {% assign NormalPrice =  p.last %}
+            {% assign NormalPriceHERE = true  %}
+            {% endif %}
+
+
+
+            {% if p.first == '__groupsproduct__price' %}
+            {% assign Cp_Price = p.last %}
+            {% assign Cp_PriceHERE = true %}
+            {% endif %}
+
+            
+              {% if p.first == '__baseqty' %}
+            {% assign __baseqty = p.last %}
+            {% assign __baseqtytrue = true %}
+            {% endif %}
+            
+            {% endfor %}
+
+            <div class="cart__item cart__row{% if item == 'template' %} ajax-cart__template{% endif %} th_pb_cart_line" data-cart-item data-cart-item-id="{{ item.key }}" aria-live="polite" data-idth="{{ item.id }}" data-indexth="{{ forloop.index }}">
+              <div class="grid grid--full cart__row--table-large">
+
+                <div class="grid__item">
+                  <div class="cart__row-product">
+                    {% assign itemImage = true %}
+                    {% if item.image == blank and item.product.featured_image == blank %}
+                    {% assign itemImage = false %}
+                    {% endif %}
+                    <div class="cart__product-image-wrap">
+                      <a
+                         href="{{ item.url }}"
+                         class="cart__product-image{% if itemImage %} lazyload{% endif %}"
+                         data-cart-item-href
+                         data-cart-item-background-image
+                         data-sizes="auto"
+                         {% if itemImage %}
+                         data-bgset="{% include 'bgset', image: item.image %}"
+                         {% endif %}>
+                      </a>
+                      <noscript>
+                        <img data-swift-lazy="1" loading="lazy"   src="{{ item.image | img_url: '80x80' }}" alt="{{ item.title }}">
+                      </noscript>
+                    </div>                      
+
+                    <div class="cart__row-content">
+                      <a href="{{ item.url }}" class="cart__product-name" data-cart-item-href data-cart-item-title>
+                        <span class="cart_title">{{ item.product.title }}</span>
+                      </a>
+
+
+
+                      <span data-cart-item-price-container class="medium-up--hide small--hide">
+                        <div class="original_price_cart">
+                          {%- if item.original_price != item.final_price -%}
+                          <span class="visually-hidden">{{ 'products.general.regular_price' | t }}</span>
+                          <del class="cart__item-price--original th_item_price"><span class='hulkapps-cart-item-price' data-key='{{item.key}}'><div class="qb-price-item" data-id="{{ item.key }}">{{ item.original_price | money_with_currency }}</div></span></del>
+                          <span class="visually-hidden">{{ 'products.general.sale_price' | t }}</span>
+                          <span class="cart__item-price cart__item-price--bold">{{ item.final_price | money_with_currency }}</span>
+                          {%- else -%}
+
+                          {% if HANDLElast == item.product.handle %}
+                          <div class="cart__item-price th_item_price">
+                            <span class='hulkapps-cart-item-price' data-key='{{item.key}}'>
+                              <div class="qb-price-item" data-id="{{ item.key }}">
+                                {{ NormalPrice }}
+                              </div>
+                            </span>
+                          </div>
+                          {% else %}
+                          <div class="cart__item-price th_item_price">
+                            <span class='hulkapps-cart-item-price' data-key='{{item.key}}'>
+                              <div class="qb-price-item" data-id="{{ item.key }}">
+                                {{ item.original_price | money_with_currency }}
+                              </div>
+                            </span>
+                          </div>
+                          {% endif %}
+
+
+                          {%- endif -%}
+                        </div> 
+                      </span>
+                      {%- assign itemProperties = 'template ' | split: ' ' -%}
+                      {%- assign property_size = item.properties | size -%}
+                      <div class='hulkapps-reminder' data-key='{{item.key}}'></div>{% if property_size > 0 %}
+                      {%- assign itemProperties = item.properties -%}
+                      {% endif %}
+
+                      <div class="cart__checkout-wrapper update-cart-btn">
+                        <button type="submit" name="update" class="btn update-cart">
+                          {{ 'cart.general.update' | t }}
+                        </button>
+                      </div>
+
+
+
+
+                      <div class="cart__item-subtitle" data-cart-item-property-list>
+
+                        <span class="th_bundle_discount_text"></span>
+                        {%- comment -%}{% for p in itemProperties %}
+                        {%- if p.first contains 'th_bundle_' -%}{%- continue -%}{%- endif -%}
+
+
+                        {% assign first_character_in_key = p.first | truncate: 1, '' %}
+                        {% unless p.last == blank or first_character_in_key == '_' %}
+                        <div class="{% if p == 'template' %} ajax-cart__template{% endif %}{% if p.last == blank %} visually-hidden{% endif %}" data-cart-item-property>
+                          {{ p.first }}:
+
+                          {% comment %}
+                          Check if there was an uploaded file associated
+                          {% endcomment %}
+                          {% if p.last contains '/uploads/' %}
+                          <a href="{{ p.last }}">
+{% assign file_type = p.last | split: '.' | last | downcase %}
+{% assign file_types = 'jpg,jpeg,webp,gif,png,apng,avif,svg,bmp,ico,tiff' | split: ',' %}
+{% if file_types contains file_type %}
+  <div class="bcpo-cart-file"><img alt="Dr.Woof" src="{{ p.last }}" style="max-width: 50px; height: auto;"></div>
+{% else %}
+  <span class="bcpo-cart-file">Uploaded file</span>
+{% endif %}
+</a>
+                          {% else %}
+                          {{ p.last }}
+                          {% endif %}
+                        </div>
+                        {% endunless %}
+                        {% endfor %}{%- endcomment -%}{% for p in itemProperties %}
+                        {%- unless p.last == blank or p.first contains '__' -%}
+                        <li class="product-details__item product-details__item--property{%if property_size == 0%} hide{% endif %}" data-cart-item-property>
+                          <span class="product-details__item-label" data-cart-item-property-name>{{ p.first }}: </span>                  
+
+                          {%- comment -%}
+                          Check if there was an uploaded file associated
+                          {%- endcomment -%}
+                          <span data-cart-item-property-value>
+                            {%- if p.last contains "uploads" -%}
+                            <a href="{{ p.last }}">Uploaded File</a>
+                            {%- else -%}
+                            {{ p.last }}
+                            {%- endif -%}
+                          </span>
+                        </li>
+                        {%- endunless -%}
+                        {% endfor %}
+                        {%- if property_sizee > 0 -%}
+                        <button type="button" class="edit_cart_option btn btn--primary button" data-product_id="{{item.product_id}}" data-key="{{item.key}}" data-variant_id="{{item.variant_id}}" data-quantity="{{item.quantity}}">Edit Options</button>
+                        {%- endif -%}
+                      </div>
+
+                      <div class="medium-up--hide">
+                        <div data-cart-item-discount-list>
+                          {%- for discount_allocation in item.line_level_discount_allocations -%}
+                          <div data-cart-item-discount>
+                            <small><span data-cart-item-discount-title>{{ discount_allocation.discount_application.title }}</span> (-<span data-cart-item-discount-amount>{{ discount_allocation.amount | money_with_currency }}</span>)</small>
+                          </div>
+                          {%- endfor -%}
+                        </div>
+
+                        {%- if item.unit_price_measurement -%}
+                        {%- capture unit_price_base_unit -%}
+                        {%- if item.unit_price_measurement -%}
+                        {%- if item.unit_price_measurement.reference_value != 1 -%}
+                        {{ item.unit_price_measurement.reference_value }}
+                        {%- endif -%}
+                        {{ item.unit_price_measurement.reference_unit }}
+                        {%- endif -%}
+                        {%- endcapture -%}
+
+                        <div data-cart-item-unit-price class="product__unit-price">{{ item.unit_price | money_with_currency }}/{{ unit_price_base_unit }}</div>
+                        {%- endif -%}
+                      </div>
+                      <div class="grid grid--full cart__row--table price-qty" data-firstvalue="{{ firstvalue }}_{{notsame}}">
+
+                        <!--                       <div class="grid__item one-third small--hide">
+<div data-cart-item-price-container>
+{%- if item.original_price != item.final_price -%}
+<span class="visually-hidden">{{ 'products.general.regular_price' | t }}</span>
+<del class="cart__item-price--original th_item_price"><span class='hulkapps-cart-item-price' data-key='{{item.key}}'><div class="qb-price-item" data-id="{{ item.key }}">{{ item.original_price | money_with_currency }}</div></span></del>
+<span class="visually-hidden">{{ 'products.general.sale_price' | t }}</span>
+<div class="cart__item-price cart__item-price--bold">{{ item.final_price | money_with_currency }}</div>
+{%- else -%}
+{% if HANDLElast == item.product.handle %}
+<div class="cart__item-price th_item_price">
+<span class='hulkapps-cart-item-price' data-key='{{item.key}}'>
+<div class="qb-price-item" data-id="{{ item.key }}">
+{{ NormalPrice }}
+</div>
+</span>
+</div>
+{% else %}
+<div class="cart__item-price th_item_price">
+<span class='hulkapps-cart-item-price' data-key='{{item.key}}'>
+<div class="qb-price-item" data-id="{{ item.key }}">
+{{ item.original_price | money_with_currency }}
+</div>
+</span>
+</div>
+{% endif %}
+{%- endif -%}
+</div>
+
+<div data-cart-item-discount-list>
+{%- for discount_allocation in item.line_level_discount_allocations -%}
+<div data-cart-item-discount>
+<small><span data-cart-item-discount-title>{{ discount_allocation.discount_application.title }}</span> (-<span data-cart-item-discount-amount>{{ discount_allocation.amount | money_with_currency }}</span>)</small>
+</div>
+{%- endfor -%}
+</div>
+
+{%- if item.unit_price_measurement -%}
+{%- capture unit_price_base_unit -%}
+{%- if item.unit_price_measurement -%}
+{%- if item.unit_price_measurement.reference_value != 1 -%}
+{{ item.unit_price_measurement.reference_value }}
+{%- endif -%}
+{{ item.unit_price_measurement.reference_unit }}
+{%- endif -%}
+{%- endcapture -%}
+
+<div data-cart-item-unit-price class="product__unit-price">{{ item.unit_price | money_with_currency }}/{{ unit_price_base_unit }}</div>
+{%- endif -%}
+</div> -->
+
+                        <div class="grid__item one-half default_variant">
+
+                          <span class="cart__item-subtitle cart__item-subtitle--inline cart_variant" data-cart-item-variant-title>
+                            {%- unless item.product.has_only_default_variant -%}
+                            {{ item.variant.title }}
+                            {%- endunless -%}
+                          </span>
+                        </div>
+                        <div class="grid__item one-half text-right Cart-hidden-data">
+                          <div data-cart-item-line-price-container>
+                            {%- if item.original_line_price != item.final_line_price -%}
+                            <span class="visually-hidden">{{ 'products.general.regular_price' | t }}</span>
+                            <del class="cart__item-price--original th_item_line_price"><span class='hulkapps-cart-item-line-price' data-key='{{item.key}}'><div class="qb-total-line-item" data-id="{{ item.key }}">{{ item.original_line_price | money_with_currency }}</div></span></del>
+                            <span class="visually-hidden">{{ 'products.general.sale_price' | t }}</span>
+                            <div class="cart__item-price cart__item-price--bold">{{ item.final_line_price | money_with_currency }}</div>
+                            {%- else -%}
+
+                            {% assign class_Name = 'ss' %}
+
+                            {% if firstvalue == false and Show_Price == false %}
+                            {% assign class_Name = 'Select_price_Combination' %}
+                            {% endif %}
+                            {% if firstvalue == true and Show_Price == true %}
+                            {% assign class_Name = 'Select_price_Combination' %}
+                            {% endif %}
+
+
+                            {% assign notsame = '' %}
+                            {% for p in itemProperties %}
+                            {% if p.first == '__groups' %}
+                            {% assign notsame = p.last | strip_html %}
+                            {% endif %}
+                            {% endfor %}
+
+
+
+                            {% if HANDLElast == item.product.handle %}
+
+                            <div class="cart__item-price th_item_line_price total-price-remove {{ class_Name }} {{ firstvalue }} {{ Show_Price }}">
+                              {% assign mainprice = NormalPrice | split:'$' %}
+                              <span>  ${{ mainprice[1] | times: item.quantity }}</span>
+
+                              
+                          <p data-property = "{{ notsame }}" class="{% if item.id == 43272026063106 or item.id == 43272054112514 or item.id == 43048672166146 or item.id == 43096458625282 %}nocursor{% endif %} Custom_cart__remove cart__remove th_pb_remove_cart_item" data-priceehere="${{ mainprice[1] | times: item.quantity }}" {% if item.id == 43272026063106 or item.id == 43272054112514 or item.id == 43048672166146 or item.id == 43096458625282 %}style="opacity:0;"{% endif %}>
+                                <svg height="20px" width="20px" viewBox="0 0 20 20" class="BaseIcon-sc-8v47i9-0 eMYyyx"><g fill-rule="evenodd" fill="currentColor"><path d="M12.527 4.01c0-.244.007-.458 0-.671-.015-.382-.228-.587-.6-.59a148.54 148.54 0 00-3.04.003c-.35.004-.554.206-.572.562-.011.226-.002.453-.002.696h4.214zM5.645 5.265c-.014.112-.026.16-.025.21.102 3.16.196 6.32.314 9.48.034.91.765 1.615 1.703 1.628 1.847.026 3.695.026 5.542.002.973-.013 1.697-.742 1.732-1.713.112-3.077.207-6.154.306-9.23.004-.126-.02-.253-.03-.377H5.645zm8.08-1.224h2.132c.566 0 1.132.004 1.697-.001.41-.004.74.096.765.58.02.403-.246.61-.785.619-.347.006-.695.001-1.191.001 0 .865.02 1.691-.004 2.517-.064 2.329-.15 4.656-.22 6.985-.052 1.791-1.275 3.029-3.073 3.05-1.763.019-3.527.02-5.29-.002-1.781-.022-2.985-1.226-3.047-3.016-.102-2.976-.198-5.953-.297-8.93-.006-.179-.02-.358-.035-.604-.36 0-.688.002-1.015 0-.593-.005-.854-.186-.862-.593-.008-.419.241-.603.837-.605 1.065-.003 2.13-.001 3.195-.001h.582c0-.315-.01-.561.002-.807.043-.897.715-1.635 1.608-1.668 1.13-.04 2.264-.04 3.393 0 .892.033 1.563.773 1.606 1.671.012.245.002.492.002.804z"></path><path d="M8.622 10.868c0 .93.002 1.861-.002 2.792-.002.517-.233.82-.619.783-.457-.045-.583-.353-.582-.774.008-1.878.002-3.757.005-5.635.001-.494.214-.755.593-.758.381-.003.6.26.603.75.005.947.001 1.894.002 2.842m2.398-.023c0 .948.003 1.895-.002 2.843-.002.486-.224.758-.597.76-.374 0-.598-.271-.599-.757-.003-1.895-.004-3.79 0-5.685.002-.477.241-.759.62-.726.434.037.581.319.58.723-.006.948-.002 1.895-.002 2.842m2.398.017c0 .931.002 1.862-.001 2.793-.002.52-.228.822-.614.788-.457-.04-.59-.346-.587-.769.007-1.878.006-3.756 0-5.635 0-.42.126-.728.592-.76.381-.024.605.253.608.74.006.948.002 1.896.002 2.843"></path></g></svg>  
+                              </p>
+                          
+
+                            </div>
+                            {% else %}
+                            <div class="cart__item-price th_item_line_price total-price-remove {{ class_Name }} {{ firstvalue }} {{ Show_Price }}">
+                              <span class='hulkapps-cart-item-line-price' data-key='{{item.key}}'>
+                                <div class="qb-total-line-item" data-id="{{ item.key }}">
+                                  {{ item.original_line_price | money_with_currency }}
+                                </div>
+                              </span>
+                              
+                              <a href="{{ routes.cart_change_url }}?line={{ forloop.index }}&amp;quantity=0" class="{% if item.id == 43272026063106 or item.id == 43272054112514 or item.id == 43048672166146 or item.id == 43096458625282 %}nocursor{% endif %} cart__remove th_pb_remove_cart_item" data-cart-item-delete data-priceehere="{{ item.original_line_price | money_with_currency }}" {% if item.id == 43272026063106 or item.id == 43272054112514 or item.id == 43048672166146 or item.id == 43096458625282 %}style="opacity:0;"{% endif %}>
+                                <!--   {{ 'cart.general.remove' | t }} -->
+                                <svg height="20px" width="20px" viewBox="0 0 20 20" class="BaseIcon-sc-8v47i9-0 eMYyyx"><g fill-rule="evenodd" fill="currentColor"><path d="M12.527 4.01c0-.244.007-.458 0-.671-.015-.382-.228-.587-.6-.59a148.54 148.54 0 00-3.04.003c-.35.004-.554.206-.572.562-.011.226-.002.453-.002.696h4.214zM5.645 5.265c-.014.112-.026.16-.025.21.102 3.16.196 6.32.314 9.48.034.91.765 1.615 1.703 1.628 1.847.026 3.695.026 5.542.002.973-.013 1.697-.742 1.732-1.713.112-3.077.207-6.154.306-9.23.004-.126-.02-.253-.03-.377H5.645zm8.08-1.224h2.132c.566 0 1.132.004 1.697-.001.41-.004.74.096.765.58.02.403-.246.61-.785.619-.347.006-.695.001-1.191.001 0 .865.02 1.691-.004 2.517-.064 2.329-.15 4.656-.22 6.985-.052 1.791-1.275 3.029-3.073 3.05-1.763.019-3.527.02-5.29-.002-1.781-.022-2.985-1.226-3.047-3.016-.102-2.976-.198-5.953-.297-8.93-.006-.179-.02-.358-.035-.604-.36 0-.688.002-1.015 0-.593-.005-.854-.186-.862-.593-.008-.419.241-.603.837-.605 1.065-.003 2.13-.001 3.195-.001h.582c0-.315-.01-.561.002-.807.043-.897.715-1.635 1.608-1.668 1.13-.04 2.264-.04 3.393 0 .892.033 1.563.773 1.606 1.671.012.245.002.492.002.804z"></path><path d="M8.622 10.868c0 .93.002 1.861-.002 2.792-.002.517-.233.82-.619.783-.457-.045-.583-.353-.582-.774.008-1.878.002-3.757.005-5.635.001-.494.214-.755.593-.758.381-.003.6.26.603.75.005.947.001 1.894.002 2.842m2.398-.023c0 .948.003 1.895-.002 2.843-.002.486-.224.758-.597.76-.374 0-.598-.271-.599-.757-.003-1.895-.004-3.79 0-5.685.002-.477.241-.759.62-.726.434.037.581.319.58.723-.006.948-.002 1.895-.002 2.842m2.398.017c0 .931.002 1.862-.001 2.793-.002.52-.228.822-.614.788-.457-.04-.59-.346-.587-.769.007-1.878.006-3.756 0-5.635 0-.42.126-.728.592-.76.381-.024.605.253.608.74.006.948.002 1.896.002 2.843"></path></g></svg>  
+                              </a>
+                            
+                            </div>
+                            {% endif %}
+
+
+
+
+
+                            {%- endif -%}
+                          </div>
+                        </div>
+
+
+
+
+                        <div class="grid__item Cart-hidden-data" {% if item.id == 43272026063106 or item.id == 43272054112514 or item.id == 43048672166146 or item.id == 43096458625282 %}style="opacity:0;"{% endif %}>
+
+                          <div class="qty-main">
+
+                            <label for="updates_{{ item.key }}" class="visually-hidden" data-cart-item-label-quantity>
+                              {{ 'cart.label.quantity' | t }}
+                            </label>
+
+
+                            {% assign notsame = '' %}
+                            {% assign removeProduct = false  %}
+
+                            {% for p in itemProperties %}
+                            {% if p.first == '__groups' %}
+                            {% assign notsame = p.last | strip_html %}
+                            {% assign removeProduct = true %}
+
+                            {% endif %}
+                            {% endfor %}
+                            {% if removeProduct == true %}
+
+                            <div  class="minus_icon1 qty-icons Custom_cart__quantity_icon"> 
+                              <svg height="12px" width="12px" viewBox="0 0 12 2" class="BaseIcon-sc-8v47i9-0 eMYyyx"><path d="M10.335 1h-8.92" stroke="currentColor" stroke-width="1.5" fill="none" fill-rule="evenodd" stroke-linecap="square"></path></svg>
+                            </div>
+                            <input data-base="{{__baseqty }}" data-index="{{forloop.index}}" data-property = "{{ notsame }}" type="number" class="Custom_cart__quantity cart__quantity" value="{{ item.quantity }}" min="0" data-id="{{ item.key }}">
+                            <div class="plus_icon1 qty-icons Custom_cart__quantity_icon">
+                              <svg height="12px" width="12px" class="BaseIcon-sc-8v47i9-0 eMYyyx"><g stroke="currentColor" stroke-width="1.5" fill="none" fill-rule="evenodd" stroke-linecap="square"><path d="M6 1.665v8.92M10.335 6h-8.92"></path></g></svg>
+                            </div>
+
+                            {% else %}
+
+                            <div class="minus_icon qty-icons"> 
+                              <svg height="12px" width="12px" viewBox="0 0 12 2" class="BaseIcon-sc-8v47i9-0 eMYyyx"><path d="M10.335 1h-8.92" stroke="currentColor" stroke-width="1.5" fill="none" fill-rule="evenodd" stroke-linecap="square"></path></svg>
+                            </div>
+                            <input data-index="{{forloop.index}}" type="number" name="updates[]" id="updates_{{ item.key }}" class="cart__quantity" value="{{ item.quantity }}" min="0" data-id="{{ item.key }}" data-cart-item-input-quantity>
+                            <div class="plus_icon qty-icons">
+                              <svg height="12px" width="12px" class="BaseIcon-sc-8v47i9-0 eMYyyx"><g stroke="currentColor" stroke-width="1.5" fill="none" fill-rule="evenodd" stroke-linecap="square"><path d="M6 1.665v8.92M10.335 6h-8.92"></path></g></svg>
+                            </div>
+
+                            {% endif %}
+
+
+
+                          </div>   
+
+                        </div>
+
+
+                       </div>
+
+
+
+                    </div>
+                  </div>
+                </div>
+              </div>
+            
+              
+            </div>
+            {% endfor %}
+          </div>
+          {% if cart.item_count > 0 %}
+          <div class="cart__item cart__row">
+            <div class="cart__checkout-wrapper">
+              <a href="{{ routes.root_url }}">
+                {{ 'cart.general.continue_shopping' | t }} 
+
+              </a>
+            </div>
+          </div> 
+          {% endif  %}
+
+          
+          
+          <div class="cart__row cart__footer ss">
+            <div class="grid">
+              {% if settings.cart_notes_enable %}
+              <div class="grid__item medium-up--seven-twelfths">
+                <div class="cart__note" data-cart-note-container>
+                  <label for="CartSpecialInstructions">{{ 'cart.general.note' | t }}</label>
+                  <textarea name="note" class="input-full" id="CartSpecialInstructions" data-cart-note>{{ cart.note }}</textarea>
+                </div>
+              </div>
+              {% endif %}
+              <div class="grid__item text-center">
+
+                {% comment %}
+                If the cart has no discount, then include a discount element with a template class
+                so that it is hidden but still available for use client-side by theme.js
+                {% endcomment %}
+                {%- assign cartDiscounts = 'template ' | split: ' ' -%}
+                {% if cart.cart_level_discount_applications.size > 0 %}
+                {%- assign cartDiscounts = cart.cart_level_discount_applications -%}
+                {% endif %}
+
+                <div data-cart-discount-container{% if cartDiscounts contains 'template' %} class="hide"{% endif %}>
+                  <div class="cart__discounts">
+                    <div class="h3">
+                      {{ 'cart.general.discounts' | t }}
+                    </div>
+                    <div class="cart__note" data-cart-discount-content>
+                      {% for cart_discount in cart.cart_level_discount_applications %}
+                      <div class="cart__discount" data-cart-discount>
+                        <span class="cart__discount-title" data-cart-discount-title>
+                          {{ cart_discount.title }}
+                        </span>
+                        -<span data-cart-discount-amount>{{ cart_discount.total_allocated_amount | money_with_currency }}</span>
+                      </div>
+                      {% endfor %}
+                    </div>
+                  </div>
+                </div>
+
+                <div class="h3 cart__subtotal ">
+                  <span class="cart__subtotal_title"> {{ 'cart.general.subtotal' | t }} </span>
+                  <span data-cart-subtotal class="th_cart_total_price"><span class='hulkapps-cart-original-total'><span class="wcp-original-cart-total">{{ cart.total_price | money}}</span>
+            <span class="wcp-cart-total"></span>
+            <div class="additional-notes">
+                <span class="wcp-minimums-note"></span>
+                <span class="wcp-extra-note "></span>
+            </div>{% render "wcp_multi_currency_msg" %}</span></span>
+                </div>
+
+
+                {% if settings.cart_terms_conditions_enable %}
+                <p class="cart__note cart__note--terms">
+                  <input type="checkbox" id="CartPageAgree" />
+                  <label for="CartPageAgree">
+                    {% if settings.cart_terms_conditions_link != blank %}
+                    {{ 'cart.general.terms_html' | t: url: settings.cart_terms_conditions_link }}
+                    {% else %}
+                    {{ 'cart.general.terms' | t }}
+                    {% endif %}
+                  </label>
+                </p>
+                {% endif %}
+
+
+
+
+
+                <button type="submit" name="checkout" class="btn cart__checkout{% if settings.cart_terms_conditions_enable %} cart__checkout--page{% endif %}" data-cart-submit>
+                  <div class="checkout_button">
+                    <span>{{ 'cart.general.checkout' | t }}</span>
+                  </div>  
+                </button>
+
+                <p class="cart__note">
+                  {{ 'cart.general.shipping_at_checkout' | t }}
+                </p>
+                {% if additional_checkout_buttons and settings.cart_additional_buttons %}
+                <div class="additional-checkout-buttons">{{ content_for_additional_checkout_buttons }}</div>
+                {% endif %}
+              </div>
+
+
+
+
+            </div>
+          </div>
+
+
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+{% if settings.enable_product_loox_reviews_cart %} {% comment %} this block was created by belowyellow.com {% endcomment %}
+<div id="looxReviews" data-loox-aggregate data-or-productIds="{{ cart.items | map: 'product' | map: 'id' | join: ',' }}" data-visibility="hide_when_empty"></div>
+{% endif %}
+
+<script>
+  window.addEventListener('load', (event) => {
+    pintrk('track', 'AddToCart', {
+      currency: 'AUD'
+    });
+  });
+  
+</script>
+<style>
+  .nocursor:hover{
+    cursor:normal;
+  }
+</style>

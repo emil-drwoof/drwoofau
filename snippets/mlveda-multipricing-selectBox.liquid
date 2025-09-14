@@ -1,0 +1,108 @@
+<script>
+$m(".mlvedaform").bind("DOMSubtreeModified", function() {
+ 
+  $m("label:contains('mlveda_country')").each(function(){
+  	if ($m(this).parent().css('display') !== 'none') {
+        $m(this).parent().css('display', 'none');
+    }
+  });
+
+});
+
+</script>
+
+
+<script>
+
+var mlveda_condition_flag = false;
+var mlveda_observer = new MutationObserver(function(mutations){
+		 
+			mutations.forEach(function(mutation) {
+		
+    
+                    
+               $m("fieldset:not(.mlveda_country,.vichitra)").each(function(){
+                      var flag = 1;
+
+                      $m(this).find("input").each(function(option){
+						 var str = $m(this).val().trim();
+
+						if($m(this).val() !== ""){
+                       
+
+							var res = pattern.test(str);
+
+							if(res){
+							  flag=2;
+								return;
+							}
+							else{
+							  $m(this).parent().parent().addClass("vichitra");
+								flag = 0;
+								return false;
+							}
+						}
+                      
+                      });
+
+                      if(flag==2){
+//                        console.log("it's time for magic");
+                        console.log($m(this).parent());
+                        $m(this).parent().css("display" , "none");
+                      
+                        
+                        var mlveda_interval = setInterval(function() {
+//                   console.log("setInterval 1");
+                   if($ && $._data($("form[action='/cart/add'] fieldset input")[0]).events && $._data($("form[action='/cart/add'] fieldset input")[0]).events.change[0]){
+                     clearInterval(mlveda_interval);
+                      var event1 = new Event("change", {
+                        bubbles: true
+                      });
+                     mlveda_condition_flag = true;
+//                     console.log("in set timeout 1");
+
+                     $m("fieldset.mlveda_country").each(function(){
+                     	if(country && country !== null && $m(this).find("input:radio[value="+country+"]").length > 0){
+                          $m(this).attr("mlveda_country_found","true");
+//                          console.log("vf : ",$m(this).find("input:radio[value="+country+"]"));	
+                          $m(this).find("input:radio[value="+country+"]").click();
+                          $m(this).find("input:radio[name='mlveda_country'][value="+country+"]").val(country).trigger("click");
+                          $m("fieldset.mlveda_country").val(country)[0].dispatchEvent(new Event("change",{bubbles : true}));
+                        }
+                        else if(continent && continent !== null && $m(this).find("input:radio[value="+continent+"]").length > 0){
+                          $m(this).attr("mlveda_continent_found","true");
+//                        	console.log($m(this).find("input:radio[value="+continent+"]"));	
+                          $m(this).find("input:radio[value="+continent+"]").click();
+                          $m(this).find("input:radio[name='mlveda_country'][value="+continent+"]").val(continent).trigger("click");
+                          $m("fieldset.mlveda_country").val(continent)[0].dispatchEvent(new Event("change",{bubbles : true}));
+                        }
+                        else if(country !== null && continent !== null && $m(this).find("input:radio[value=intl]").length > 0){
+//                         	console.log($m(this).find("input:radio[value=intl]"));
+                          $m(this).find("input:radio[value=intl]").click()
+						  $m(this).find("input:radio[name='mlveda_country'][value='intl']").val("intl").trigger("click");
+                          $m("fieldset.mlveda_country").val("intl")[0].dispatchEvent(new Event("change",{bubbles : true}));
+                        }
+                     });
+
+                 	} 
+                }, 100);
+                        
+                     
+                            $m(this).addClass("mlveda_country");
+                      }
+                    });
+            });
+        });
+  
+  var div2 = document.querySelector('body');
+	
+	
+		mlveda_observer.observe(document, { childList: true , subtree : true});
+
+ window.onload = function(){
+    setTimeout(function(){
+    	 $m("<style type=\"text/css\">  div.mlvedaform span.money {visibility:visible;}</style>").appendTo("head");
+         $m("<style type='text/css'>button[name='add']{visibility : visible;}</style>").appendTo("head");
+    },2000);
+  }
+  </script>

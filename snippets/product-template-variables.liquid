@@ -1,0 +1,184 @@
+{%- assign current_variant = product.selected_or_first_available_variant -%}
+{%- assign days_price_valid_until = 10 | times: 86400 -%}
+{%- assign gtin_option = 'gtin' -%}
+{%- assign is_barcode_available = false -%}
+{%- if current_variant.barcode != blank -%}
+  {%- assign is_barcode_available = true -%}
+  {%- assign gtin_string_length = current_variant.barcode | size -%}
+  {%- if gtin_string_length == 8 or gtin_string_length == 12 or gtin_string_length == 13 or gtin_string_length == 14 -%}
+    {%- assign is_valid_gtin_length = true -%}
+    {%- assign gtin_option = gtin_option | append: gtin_string_length -%}
+  {%- endif -%}
+{%- endif -%}
+{%- assign review_rating = false -%}
+{% if settings.enable_product_reviews %}
+  {% if product.metafields.spr.reviews %}
+    {% capture review_data %}{{ product.metafields.spr.reviews }}{% endcapture %}
+    {%- assign rating_keyword = '"ratingValue"' -%}
+    {%- assign rd_a1 = review_data | split: rating_keyword -%}
+    {%- assign rd_a2 = rd_a1[1] | split: "=" -%}
+    {%- assign rd_a3 = rd_a2[1] | split: '"' -%}
+    {%- assign review_rating = rd_a3[1] | plus: 1 | minus: 1 -%}
+
+    {%- assign count_keyword = '"reviewCount"' -%}
+    {%- assign rd_a1 = review_data | split: count_keyword -%}
+    {%- assign rd_a2 = rd_a1[1] | split: "=" -%}
+    {%- assign rd_a3 = rd_a2[1] | split: '"' -%}
+    {%- assign review_count = rd_a3[1] | plus: 1 | minus: 1 -%}
+  {% endif %}
+{% endif %}
+
+{% comment %} Time now {% endcomment %}
+{%- assign month = "now" | date: "%m" -%}
+{%- assign year = "now" | date: "%Y" -%}
+
+<script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "ProductGroup",
+        "name": {{ product.title | replace: "$month$", month | replace: "$year$", year | json }},
+        "description": {{ page_description | replace: "$month$", month | replace: "$year$", year | strip_html | json }},
+        "url": "{{ shop.url }}{{ product.url }}"
+        {%- if product.metafields.loox.num_reviews != blank -%},
+              "aggregateRating": {
+              "@type": "AggregateRating",
+              "ratingValue": "{{ product.metafields.loox.avg_rating }}",
+              "reviewCount": "{{ product.metafields.loox.num_reviews }}"
+                  }
+            {% else %}
+            ,"aggregateRating": {
+              "@type": "AggregateRating",
+              "ratingValue": 5,
+              "reviewCount": 50}
+          {%- endif -%}
+        ,"brand": {
+            "@type": "brand",
+            "name": "{{ shop.name }}"
+        },
+        "productGroupID": {{ current_variant.sku | json }},
+        "variesBy": [
+          "https://schema.org/size",
+          "https://schema.org/color"
+        ],
+        {%- if product.variants -%}
+        "hasVariant": [
+        {%- for variant in product.variants -%}
+          {
+            "@type": "Product",
+            "sku": {{ current_variant.sku | json }},
+          {%- if is_barcode_available and is_valid_gtin_length %}
+            "{{gtin_option}}": {{ current_variant.barcode | json }},
+            "productId": {{ current_variant.barcode | json }},
+          {%- elsif is_barcode_available %}
+            "mpn": {{ current_variant.barcode | json }},
+            "productId": {{ current_variant.barcode | json }},
+          {%- endif -%}
+
+          {% if variant.image %}
+            "image": "http:{{ variant.featured_media.preview_image.src | img_url: '1024x1024' }}",
+            {% else %}
+            "image": "https://www.drwoofapparel.com.au/cdn/shop/files/Horizontal_logo_transparent_background_blue_2_7dc8a8de-20c6-4155-8747-0810a5b4b5e0_210x.png?v=1704080588",
+          {% endif %}
+          "name": {{ product.title | replace: "$month$", month | replace: "$year$", year | json }},
+          "description": {{ page_description | replace: "$month$", month | replace: "$year$", year | strip_html | json }},
+
+           {% if current_color != blank %}
+            "color": {{ current_color| json }},
+             {% else %}
+             "color": "black",
+          {% endif %}
+          {% if product.variants.title != blank %}
+            "size" : {{ product.variants.title| json  }},
+            {% else %}
+            "size" : "Small",
+          {% endif %}
+            
+            "offers": {
+                "@type": "Offer",
+                "url" : "{{ shop.url }}{{ variant.url }}",
+                "priceCurrency" : "{{ shop.currency }}",
+                "price" : "{{ variant.price | divided_by: 100.00 }}",
+                "priceValidUntil": "{{ 'now' | date: '%s' | plus: days_price_valid_until | date: '%Y-%m-%d'}}",
+                "availability":"https://schema.org/{% if product.available %}InStock{% else %}OutOfStock{% endif %}"
+                }
+          {%- if product.metafields.loox.num_reviews != blank -%},
+              "aggregateRating": {
+              "@type": "AggregateRating",
+              "ratingValue": "{{ product.metafields.loox.avg_rating }}",
+              "reviewCount": "{{ product.metafields.loox.num_reviews }}"
+                  }
+            {% else %}
+            ,"aggregateRating": {
+              "@type": "AggregateRating",
+              "ratingValue": 5,
+              "reviewCount": 50}
+          {%- endif -%}
+            }{% unless forloop.last %},{% endunless %}
+          {%- endfor -%}
+        ]
+          {%- endif -%}
+            }
+        </script>
+
+{% comment %} -> Dr.Woof
+<script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "Product",
+        "name": {{ product.title | replace: "$month$", month | replace: "$year$", year | json }},
+        "image": "https:{{ product.featured_media.preview_image | img_url: '1024x1024' }}",
+        "description": {{ product.description | replace: "$month$", month | replace: "$year$", year | strip_html | json }},
+        "brand": {{ product.vendor | json }},
+        "sku": {{ current_variant.sku | json }},
+        {%- if is_barcode_available and is_valid_gtin_length %}
+            "{{gtin_option}}": {{ current_variant.barcode | json }},
+            "productId": {{ current_variant.barcode | json }},
+        {%- elsif is_barcode_available %}
+            "mpn": {{ current_variant.barcode | json }},
+            "productId": {{ current_variant.barcode | json }},
+        {%- endif -%}
+        "offers": {
+            "@type": "Offer",
+            "url": "{{ shop.url }}{{ product.url }}",
+            "priceCurrency": "{{ cart.currency.iso_code }}",
+            "price": "{{ current_variant.price | divided_by: 100.00 }}",
+            "priceValidUntil": "{{ 'now' | date: '%s' | plus: days_price_valid_until | date: '%Y-%m-%d'}}",
+            "availability":"https://schema.org/{% if product.available %}InStock{% else %}OutOfStock{% endif %}"
+        },
+        {%- if product.metafields.loox.num_reviews != blank -%}
+        "aggregateRating": {
+            "@type": "AggregateRating",
+            "ratingValue": "{{ product.metafields.loox.avg_rating }}",
+            "reviewCount": "{{ product.metafields.loox.num_reviews }}"
+        }
+        {%- endif -%}
+    }
+</script>
+
+{% endcomment %}
+
+
+
+
+
+
+
+
+{%- assign product_thumb_size = '180x' -%}
+{%- assign product_zoom_size = '1800x1800' -%}
+{%- assign product_image_size = '620x' -%}
+
+{% case product_image_size %}
+  {% when 'small' %}
+    {%- assign product_image_width = 'medium-up--two-fifths' -%}
+    {%- assign product_description_width = 'medium-up--three-fifths' -%}
+    {%- assign product_image_size = '480x' -%}
+  {% when 'medium' %}
+    {%- assign product_image_width = 'medium-up--one-half' -%}
+    {%- assign product_description_width = 'medium-up--one-half' -%}
+    {%- assign product_image_size = '620x' -%}
+  {% when 'large' %}
+    {%- assign product_image_width = 'medium-up--three-fifths' -%}
+    {%- assign product_description_width = 'medium-up--two-fifths' -%}
+    {%- assign product_image_size = '740x' -%}
+{% endcase %}

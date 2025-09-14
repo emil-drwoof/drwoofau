@@ -1,0 +1,110 @@
+{
+  "sections": {
+    "collection-header": {
+      "type": "dr-woof-hero-scrubs3",
+      "settings": {
+        "pad": "30px",
+        "enable_auto": true,
+        "desktop_positioning": 0,
+        "height": 90,
+        "mobile_height": 50,
+        "image_lib_pc": "shopify:\/\/shop_images\/COLLECTION_BANNER_TEMPLATE_PC_2400_x_900_px_2_8a273de2-6a7a-457d-9419-d97c7ae1c319.png",
+        "image_webp_pc": "",
+        "image_lib_mobile": "shopify:\/\/shop_images\/Mobile_Collection_Banner_1x1_a579676c-3bae-4f0e-aac7-31d192040e0a.jpg",
+        "image_webp_mobile": ""
+      }
+    },
+    "collection-filter": {
+      "type": "collection-thumbnail-filter",
+      "blocks": {
+        "fd5b6d2f-6d56-4333-b742-1914d13f027c": {
+          "type": "Image",
+          "settings": {
+            "image_thumbnail": "shopify:\/\/shop_images\/6_0de63b41-c88d-4bf1-bc81-ab1027a5a3b6.png",
+            "collection_title": "Scrub Tops",
+            "linkurl": "https:\/\/www.drwoofapparel.com.au\/collections\/men\/scrub-tops"
+          }
+        },
+        "a0f6a687-b68b-49b3-97c2-6234d49e41f0": {
+          "type": "Image",
+          "settings": {
+            "image_thumbnail": "shopify:\/\/shop_images\/7_416cfe99-14b5-402e-a102-a6c5a38eb463.png",
+            "collection_title": "Scrub Pants",
+            "linkurl": "https:\/\/www.drwoofapparel.com.au\/collections\/men\/scrub-pants"
+          }
+        },
+        "dc582afe-d23f-4d67-bc1b-ff888999b8cc": {
+          "type": "Image",
+          "settings": {
+            "image_thumbnail": "shopify:\/\/shop_images\/8_a768ded0-a882-4884-9454-3218a5b3ec4c.png",
+            "collection_title": "Underscrubs",
+            "linkurl": "https:\/\/www.drwoofapparel.com.au\/collections\/men\/underscrubs-men"
+          }
+        },
+        "f5cae287-2f9c-48bc-a266-fba70afce910": {
+          "type": "Image",
+          "settings": {
+            "image_thumbnail": "shopify:\/\/shop_images\/9_2b5e2e18-8e37-403d-af64-3f90eb48aa1d.png",
+            "collection_title": "Outerwear",
+            "linkurl": "https:\/\/www.drwoofapparel.com.au\/collections\/men\/outerwear"
+          }
+        },
+        "79585222-b8ae-4bd2-b466-001a89979fba": {
+          "type": "Image",
+          "settings": {
+            "image_thumbnail": "shopify:\/\/shop_images\/10_5b200487-ee31-4202-879c-f84cfb462d8c.png",
+            "collection_title": "Bundles",
+            "linkurl": "https:\/\/www.drwoofapparel.com.au\/collections\/deals-1?view=OS2defaultmen"
+          }
+        }
+      },
+      "block_order": [
+        "fd5b6d2f-6d56-4333-b742-1914d13f027c",
+        "a0f6a687-b68b-49b3-97c2-6234d49e41f0",
+        "dc582afe-d23f-4d67-bc1b-ff888999b8cc",
+        "f5cae287-2f9c-48bc-a266-fba70afce910",
+        "79585222-b8ae-4bd2-b466-001a89979fba"
+      ],
+      "settings": {
+        "title_enable": false
+      }
+    },
+    "collection-filters": {
+      "type": "collection-filters-def",
+      "blocks": {
+        "c504fff0-bdd4-49c9-931f-f75dea9a4b90": {
+          "type": "color_group",
+          "settings": {
+            "title": "",
+            "tag_list": "Burgundy \nHeather grey \nGreen"
+          }
+        }
+      },
+      "block_order": [
+        "c504fff0-bdd4-49c9-931f-f75dea9a4b90"
+      ],
+      "settings": {
+        "filter_type": "groups",
+        "tags_combine": false,
+        "collection_title_enable": false,
+        "collection_filter_enable": false,
+        "collection_sort_enable": false
+      }
+    },
+    "main-collection": {
+      "type": "collection-template-scrubs",
+      "settings": {
+        "per_row_desktop": 3,
+        "per_row_mobile": "2",
+        "description_bottom": true,
+        "pre-navy": true
+      }
+    }
+  },
+  "order": [
+    "collection-header",
+    "collection-filter",
+    "collection-filters",
+    "main-collection"
+  ]
+}

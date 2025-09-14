@@ -1,0 +1,29 @@
+{%- assign collection_tag = collection.metafields.custom.collection_tag.value -%}
+
+{% comment %} Time now {% endcomment %}
+{%- assign month = "now" | date: "%m" -%}
+{%- assign year = "now" | date: "%Y" -%}
+
+{%- if template contains 'collection' -%}
+  {%- liquid 
+    assign title = page_title
+    assign description = page_description
+
+    if collection_tag
+      for metaobject in collection_tag
+      if request.path contains metaobject.name
+        assign title = metaobject.title
+        assign description = metaobject.description
+        break
+      endif
+     endfor
+   endif
+  -%}
+  
+  <title>{{ title | replace: "$month$", month | replace: "$year$", year }}{% unless title contains 'Dr. Woof Apparel' %} | {{ shop.name }}{% endunless %}</title>
+  {%- if description -%}<meta name="description" content="{{ description | replace: "$month$", month | replace: "$year$", year | escape }}">{%- endif -%}
+  
+  {%- else -%}
+  <title>{{ page_title | replace: "$month$", month | replace: "$year$", year }}{% unless page_title contains 'Dr. Woof Apparel' %} | {{ shop.name }}{% endunless %}{%- if current_tags %} &ndash; tagged {{ canonical_url | split: '/' | last | replace: "-", " "}}{% endif %}</title>
+  {%- if page_description -%}<meta name="description" content="{{ page_description | replace: "$month$", month | replace: "$year$", year | escape }}{%- if current_tags %} &ndash; tagged {{ canonical_url | split: '/' | last | replace: "-", " "}}{% endif %}">{%- endif -%}
+{%- endif -%}

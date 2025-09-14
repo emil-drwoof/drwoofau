@@ -1,0 +1,69 @@
+{
+  "sections": {
+    "collection-headervar": {
+      "type": "dr-woof-hero-scrubs",
+      "disabled": true,
+      "settings": {
+        "pad": "40px",
+        "desktop_positioning": 0,
+        "height": 99,
+        "mobile_height": 100,
+        "image_lib_pc": "shopify:\/\/shop_images\/COLLECTION_BANNER_TEMPLATE_PC_2400_x_900_px_3.webp",
+        "image_webp_pc": "",
+        "image_lib_mobile": "shopify:\/\/shop_images\/COLLECTION_BANNER_TEMPLATE_MOBILE_1600_x_900_px_1_c418c87c-e501-486e-81c0-b68e35e53edf.jpg",
+        "image_webp_mobile": ""
+      }
+    },
+    "collection-header": {
+      "type": "dr-woof-hero-scrubs3",
+      "settings": {
+        "pad": "30px",
+        "enable_auto": true,
+        "desktop_positioning": 0,
+        "height": 90,
+        "mobile_height": 50,
+        "image_lib_pc": "shopify:\/\/shop_images\/COLLECTION_BANNER_TEMPLATE_PC_2400_x_900_px_11.png",
+        "image_webp_pc": "",
+        "image_lib_mobile": "shopify:\/\/shop_images\/COLLECTION_BANNER_TEMPLATE_MOBILE_1600_x_900_px_12_d3c2cdd2-923f-4258-91ae-48d1cdf67bd8.jpg",
+        "image_webp_mobile": ""
+      }
+    },
+    "collection-filter": {
+      "type": "collection-thumbnail-filter",
+      "settings": {
+        "title_enable": false
+      }
+    },
+    "collection-filters": {
+      "type": "collection-filters-def",
+      "settings": {
+        "filter_type": "groups",
+        "tags_combine": false,
+        "collection_title_enable": true,
+        "collection_filter_enable": true,
+        "collection_sort_enable": true
+      }
+    },
+    "main-collection": {
+      "type": "collection-template-caps",
+      "settings": {
+        "super_text_1": "",
+        "super_link_1": "",
+        "super_text_2": "",
+        "super_link_2": "",
+        "super_text_3": "",
+        "super_link_3": "",
+        "per_row_desktop": 3,
+        "per_row_mobile": "2",
+        "description_bottom": true
+      }
+    }
+  },
+  "order": [
+    "collection-headervar",
+    "collection-header",
+    "collection-filter",
+    "collection-filters",
+    "main-collection"
+  ]
+}

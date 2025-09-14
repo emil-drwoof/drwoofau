@@ -1,0 +1,26 @@
+{
+  "sections": {
+    "collection-header": {
+      "type": "dr-woof-hero-scrubs2",
+      "settings": {}
+    },
+    "collection-filter": {
+      "type": "collection-thumbnail-filter",
+      "settings": {}
+    },
+    "collection-filters": {
+      "type": "collection-filters-def",
+      "settings": {}
+    },
+    "main-collection": {
+      "type": "collection-scrunies",
+      "settings": {}
+    }
+  },
+  "order": [
+    "collection-header",
+    "collection-filter",
+    "collection-filters",
+    "main-collection"
+  ]
+}

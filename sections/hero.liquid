@@ -1,0 +1,232 @@
+<section class="hero-{{ section.id }}" style="
+    {% if section.settings.background_image != blank %}
+        background-image: url('{{ section.settings.background_image | img_url: 'master' }}');
+        background-size: cover;
+        background-position: center;
+    {% else %}
+        background-color: {{ section.settings.background_color }};
+    {% endif %}
+    padding-top: {{ section.settings.desktop_padding_top }}px;
+    padding-bottom: {{ section.settings.desktop_padding_bottom }}px;
+">
+    <div class="hero-content-{{ section.id }} page-width">
+        <h1 class="hero-title-{{ section.id }}" style="
+            font-size: {{ section.settings.main_heading_font_size }}px;
+            color: {{ section.settings.main_heading_color }};
+        ">
+            {{ section.settings.big_header_text }}
+        </h1>
+        <div class="hero-subtitle-{{ section.id }}" style="
+            font-size: {{ section.settings.subheading_font_size }}px;
+            color: {{ section.settings.subheading_color }};
+        ">
+            {{ section.settings.subtitle_text }}
+        </div>
+        <a href="{{ section.settings.button_link }}" class="hero-button-{{ section.id }}">
+            {{ section.settings.button_text }}
+        </a>
+    </div>
+</section>
+
+<style>
+  .hero-{{ section.id }} {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      width: 100%;
+      color: #fff; /* Optional: default text color */
+      padding-left:20px;
+      padding-right:20px;
+  }
+
+  .hero-title-{{ section.id }} {
+      font-weight: 700;
+      margin: 0;
+  }
+
+  .hero-subtitle-{{ section.id }} {
+    margin: 10px auto;
+ 
+  }
+
+  .hero-button-{{ section.id }} {
+      display:block;
+      padding: 15px 30px;
+      background-color: #000;
+      color: #fff;
+      text-decoration: none;
+      border-radius: 50px; /* Corrected for button border-radius */
+      margin-top: 20px;
+      font-weight: 600;
+      max-width:500px;
+      margin-left:auto;
+      margin-right:auto;
+  }
+
+  .hero-button-{{ section.id }}:hover {
+      background-color: #333;
+  }
+
+  /* Mobile-specific styles */
+  @media only screen and (max-width: 480px) {
+      .hero-{{ section.id }} {
+          padding-top: {{ section.settings.mobile_padding_top }}px;
+          padding-bottom: {{ section.settings.mobile_padding_bottom }}px;
+      }
+      .hero-title-{{ section.id }} {
+          font-size: {{ section.settings.mobile_main_heading_font_size }}px;
+
+      }
+      .hero-subtitle-{{ section.id }} {
+          font-size: {{ section.settings.mobile_subheading_font_size }}px;
+
+      }
+      .hero-subtitle-{{ section.id }} div {
+        max-width:100% !important;
+          width:100% !important;
+          padding-left:16px;
+          padding-right:16px;
+        }
+
+  }
+</style>
+
+{% if template.suffix == 'sl-41D65473' %}
+  <script>
+    /* window.location.href == ""; */
+    window.location.replace("/pages/your-day-in-dr-woof-scrubs2");
+  </script>
+{% endif %}
+{% schema %}
+{
+  "name": "Hero Section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "big_header_text",
+      "label": "Big Header Text",
+      "default": "Lorem Ipsum"
+    },
+    {
+      "type": "textarea",
+      "id": "subtitle_text",
+      "label": "Subtitle Text",
+      "default": "Lorem Ipsum Dolor Sit Amet"
+    },
+    {
+      "type": "text",
+      "id": "button_text",
+      "label": "Button Text",
+      "default": "Shop Now"
+    },
+    {
+      "type": "url",
+      "id": "button_link",
+      "label": "Button Link"
+    },
+    {
+      "type": "image_picker",
+      "id": "background_image",
+      "label": "Background Image"
+    },
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "Background Color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "range",
+      "id": "desktop_padding_top",
+      "label": "Desktop Padding Top",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "default": 50
+    },
+    {
+      "type": "range",
+      "id": "desktop_padding_bottom",
+      "label": "Desktop Padding Bottom",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "default": 50
+    },
+    {
+      "type": "range",
+      "id": "mobile_padding_top",
+      "label": "Mobile Padding Top",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "default": 30
+    },
+    {
+      "type": "range",
+      "id": "mobile_padding_bottom",
+      "label": "Mobile Padding Bottom",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "default": 30
+    },
+    {
+      "type": "range",
+      "id": "main_heading_font_size",
+      "label": "Main Heading Font Size (Desktop)",
+      "min": 10,
+      "max": 100,
+      "step": 1,
+      "default": 48
+    },
+    {
+      "type": "range",
+      "id": "subheading_font_size",
+      "label": "Subheading Font Size (Desktop)",
+      "min": 10,
+      "max": 50,
+      "step": 1,
+      "default": 18
+    },
+    {
+      "type": "color",
+      "id": "main_heading_color",
+      "label": "Main Heading Color",
+      "default": "#000000"
+    },
+    {
+      "type": "color",
+      "id": "subheading_color",
+      "label": "Subheading Color",
+      "default": "#000000"
+    },
+    {
+      "type": "range",
+      "id": "mobile_main_heading_font_size",
+      "label": "Main Heading Font Size (Mobile)",
+      "min": 10,
+      "max": 100,
+      "step": 1,
+      "default": 36
+    },
+    {
+      "type": "range",
+      "id": "mobile_subheading_font_size",
+      "label": "Subheading Font Size (Mobile)",
+      "min": 10,
+      "max": 50,
+      "step": 1,
+      "default": 16
+    }
+  ],
+  "presets": [
+    {
+      "name": "Hero Section",
+      "category": "Custom Sections"
+    }
+  ]
+}
+{% endschema %}

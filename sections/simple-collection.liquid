@@ -1,0 +1,396 @@
+<!-- section/simple-collection.liquid -->
+<div id="sec-id-{{ section.id }}" class="simple-collection {% if section.settings.enable_slider %}slider-enabled{% endif %}">
+<div class="simple-collection-wrapper {% if section.settings.enable_slider %}slider-track{% endif %}">
+  {% for block in section.blocks %}  
+    <div class="quad {% if section.settings.enable_slider %}slide{% endif %}">
+      <a href="{{ block.settings.col_url }}">
+        <img alt="{{ block.settings.col_image.alt }}" data-src="{{ block.settings.col_image | img_url: '300x300' }}" class="desktop_only lazyload" loading="lazy" />
+        <img alt="{{ block.settings.col_image_mobile.alt }}" data-src="{{ block.settings.col_image_mobile | img_url: '300x300' }}" class="mobile_only lazyload" loading="lazy" />
+        <p>{{ block.settings.col_name }}</p>
+      </a>
+    </div>
+  {% endfor %}
+</div>
+
+{% if section.settings.enable_slider %}
+  <button class="slider-nav slider-prev" aria-label="Previous">
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+      <path d="M15 18l-6-6 6-6"/>
+    </svg>
+  </button>
+  <button class="slider-nav slider-next" aria-label="Next">
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+      <path d="M9 18l6-6-6-6"/>
+    </svg>
+  </button>
+{% endif %}
+</div>
+
+<style>
+@font-face {
+font-family: futura2;
+src: url({{ 'futura.otf' | asset_url }});
+}
+
+/* Original styles */
+#sec-id-{{ section.id }} {
+margin-top: {{ section.settings.simp-martop }}px !important;
+margin-bottom: {{ section.settings.simp-marbot }}px !important;
+}
+.simple-collection img {
+border: 1px solid #EBEBEB;
+}
+.simple-collection-wrapper {
+max-width: 1300px;
+margin-left: auto;
+margin-right: auto;
+display: flex;
+flex-wrap: wrap;
+justify-content: space-between;
+}
+.simple-collection-wrapper img {
+width: 83%;
+display: block;
+margin-left: auto;
+margin-right: auto;
+margin-bottom: 20px;
+border-radius: 8px;
+}
+.simple-collection-wrapper .quad {
+flex: 0 0 24%;
+margin-bottom: 48px;
+}
+.simple-collection-wrapper .quad p {
+font-weight: 800;
+text-align: center;
+}
+.desktop_only {
+display: block !important;
+}
+.mobile_only {
+display: none !important;
+}
+#sec-id-{{ section.id }} {
+border-bottom: 1px solid #EBEBEB;
+}
+
+/* Slider-specific styles */
+.slider-enabled {
+position: relative;
+overflow: hidden;
+}
+
+.slider-track {
+flex-wrap: nowrap;
+transition: transform 0.3s ease-in-out;
+}
+
+.slider-enabled .quad {
+flex: 0 0 calc(100% / 4);
+margin-bottom: 0;
+padding: 0 10px;
+}
+
+.slider-nav {
+position: absolute;
+top: 42%;
+transform: translateY(-50%);
+width: 40px;
+height: 40px;
+background: white;
+border: 1px solid #ddd;
+border-radius: 50%;
+cursor: pointer;
+display: flex;
+align-items: center;
+justify-content: center;
+z-index: 2;
+}
+
+.slider-prev {
+left: 10px;
+}
+
+.slider-next {
+right: 10px;
+}
+
+@media only screen and (max-width: 1400px) {
+.simple-collection {
+  padding-left: 20px;
+  padding-right: 20px;
+}
+}
+
+@media only screen and (max-width: 480px) {
+  .slider-nav {
+    top:35%;
+  }
+.desktop_only {
+  display: none !important;
+}
+.mobile_only {
+  display: block !important;
+}
+.simple-collection-wrapper .quad {
+  flex: 0 0 48%;
+  margin-bottom: 20px;
+}
+.slider-enabled .quad {
+  flex: 0 0 calc(100% / 2);
+}
+#sec-id-{{ section.id }} {
+  margin-top: {{ section.settings.mobsimp-martop }}px !important;
+  margin-bottom: {{ section.settings.mobsimp-marbot }}px !important; 
+}
+}
+</style>
+
+<!-- Previous HTML and Style code remains the same until the script section -->
+
+<!-- Previous HTML and Style code remains the same until the script section -->
+
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+  // Original lazyload functionality remains the same
+  var lazyloadImages = document.querySelectorAll("img.lazyload");    
+  var lazyloadThrottleTimeout;
+  
+  function lazyload() {
+    if(lazyloadThrottleTimeout) {
+      clearTimeout(lazyloadThrottleTimeout);
+    }    
+    
+    lazyloadThrottleTimeout = setTimeout(function() {
+      var scrollTop = window.pageYOffset;
+      lazyloadImages.forEach(function(img) {
+        if(img.offsetTop < (window.innerHeight + scrollTop)) {
+          img.src = img.dataset.src;
+          img.classList.remove('lazyload');
+        }
+      });
+      if(lazyloadImages.length == 0) { 
+        document.removeEventListener("scroll", lazyload);
+        window.removeEventListener("resize", lazyload);
+        window.removeEventListener("orientationChange", lazyload);
+      }
+    }, 20);
+  }
+  
+  document.addEventListener("scroll", lazyload);
+  window.addEventListener("resize", lazyload);
+  window.addEventListener("orientationChange", lazyload);
+
+  // Enhanced Slider functionality with swipe support
+  {% if section.settings.enable_slider %}
+    const sliders = document.querySelectorAll('.slider-enabled');
+    
+    sliders.forEach(slider => {
+      const track = slider.querySelector('.slider-track');
+      const slides = slider.querySelectorAll('.quad');
+      const prevBtn = slider.querySelector('.slider-prev');
+      const nextBtn = slider.querySelector('.slider-next');
+      let currentIndex = 0;
+      
+      // Drag functionality variables
+      let isDragging = false;
+      let startX = 0;
+      let currentX = 0;
+      let diffX = 0;
+      let lastDragTime = 0;
+      let dragVelocity = 0;
+      
+      // Prevent default drag behavior
+      track.addEventListener('dragstart', (e) => e.preventDefault());
+      
+      // Touch events
+      track.addEventListener('touchstart', handleDragStart);
+      track.addEventListener('touchmove', handleDragMove);
+      track.addEventListener('touchend', handleDragEnd);
+      
+      // Mouse events
+      track.addEventListener('mousedown', handleDragStart);
+      track.addEventListener('mousemove', handleDragMove);
+      track.addEventListener('mouseup', handleDragEnd);
+      track.addEventListener('mouseleave', handleDragEnd);
+
+      function getPositionX(event) {
+        return event.type.includes('mouse') ? event.pageX : event.touches[0].clientX;
+      }
+
+      function handleDragStart(event) {
+        isDragging = true;
+        startX = getPositionX(event);
+        currentX = startX;
+        lastDragTime = Date.now();
+        
+        track.style.transition = 'none';
+        track.style.cursor = 'grabbing';
+      }
+
+      function handleDragMove(event) {
+        if (!isDragging) return;
+        
+        event.preventDefault();
+        const x = getPositionX(event);
+        diffX = x - startX;
+        currentX = x;
+        
+        // Calculate velocity
+        const currentTime = Date.now();
+        const timeDiff = currentTime - lastDragTime;
+        dragVelocity = diffX / timeDiff;
+        lastDragTime = currentTime;
+
+        // Move the track with the drag
+        const currentTranslate = -currentIndex * slides[0].offsetWidth + diffX;
+        track.style.transform = `translateX(${currentTranslate}px)`;
+      }
+
+      function handleDragEnd() {
+        if (!isDragging) return;
+        isDragging = false;
+        
+        track.style.transition = 'transform 0.3s ease-out';
+        track.style.cursor = 'grab';
+
+        // Determine direction and velocity-based thresholds
+        const dragDistance = Math.abs(diffX);
+        const dragDirection = diffX > 0 ? 'right' : 'left';
+        const minDragToSlide = slides[0].offsetWidth * 0.1; // 10% of slide width
+        const isQuickDrag = Math.abs(dragVelocity) > 0.5; // Threshold for quick swipe
+
+        // Decide whether to change slide based on drag distance and velocity
+        if (dragDistance > minDragToSlide || isQuickDrag) {
+          if (dragDirection === 'left' && currentIndex < slides.length - (window.innerWidth <= 480 ? 3 : 6)) {
+            currentIndex++;
+          } else if (dragDirection === 'right' && currentIndex > 0) {
+            currentIndex--;
+          }
+        }
+
+        updateSlidePosition();
+      }
+
+      function updateSlidePosition() {
+        const slideWidth = slides[0].offsetWidth;
+        track.style.transform = `translateX(${-(currentIndex * slideWidth)}px)`;
+      }
+
+      // Button navigation
+      prevBtn.addEventListener('click', () => {
+        if (currentIndex > 0) {
+          currentIndex--;
+          track.style.transition = 'transform 0.3s ease-out';
+          updateSlidePosition();
+        }
+      });
+
+      nextBtn.addEventListener('click', () => {
+        const maxIndex = window.innerWidth <= 480 ? 
+          slides.length - 2 : // Show 3 slides on mobile
+          slides.length - 4;  // Show 6 slides on desktop
+        
+        if (currentIndex < maxIndex) {
+          currentIndex++;
+          track.style.transition = 'transform 0.3s ease-out';
+          updateSlidePosition();
+        }
+      });
+
+      // Handle window resize
+      window.addEventListener('resize', () => {
+        setTimeout(updateSlidePosition, 100);
+      });
+    });
+  {% endif %}
+});
+</script>
+
+<!-- Rest of the code (schema, etc.) remains the same -->
+
+<!-- Rest of the code (schema, etc.) remains the same -->
+
+{% schema %}
+{
+"name": "Simple Collection",
+"settings": [
+  {
+    "type": "checkbox",
+    "id": "enable_slider",
+    "label": "Enable Slider (AB Testing)",
+    "default": false
+  },
+  {
+    "type": "range",
+    "id": "simp-martop",
+    "label": "Space on top",
+    "default": 20,
+    "min": 0,
+    "max": 100,
+    "step": 20
+  },
+  {
+    "type": "range",
+    "id": "simp-marbot",
+    "label": "Space at the bottom",
+    "default": 20,
+    "min": 0,
+    "max": 100,
+    "step": 20
+  },
+  {
+    "type": "range",
+    "id": "mobsimp-martop",
+    "label": "Space on top",
+    "default": 20,
+    "min": 0,
+    "max": 100,
+    "step": 20
+  },
+  {
+    "type": "range",
+    "id": "mobsimp-marbot",
+    "label": "Space at the bottom",
+    "default": 20,
+    "min": 0,
+    "max": 100,
+    "step": 20
+  }
+],
+"blocks": [
+  {
+    "name": "List",
+    "type": "list",
+    "settings": [
+      {
+        "type": "image_picker",
+        "id": "col_image",
+        "label": "Image"
+      },
+      {
+        "type": "image_picker",
+        "id": "col_image_mobile",
+        "label": "Mobile Image"
+      },
+      {
+        "type": "text",
+        "label": "Collection Name",
+        "id": "col_name"
+      },
+      {
+        "type": "url",
+        "label": "Collection Url",
+        "id": "col_url" 
+      }
+    ]
+  }
+],
+"presets": [
+  {
+    "category": "V2",
+    "name": "Simple Collection"
+  }
+]
+}
+{% endschema %}

@@ -1,0 +1,38 @@
+<div class="popwrapper">
+  <h2 class="title-left">Browse other popular picks</h2>
+  <div class="popslider">
+    <div class="popslide">
+      {% assign pop1 = product.metafields.sf_sliders.popular_image_1 %}
+      {% if pop1 %}
+        <img src="{{ pop1 }}">
+      {% else %}
+        <img src="https://cdn.shopify.com/s/files/1/0573/7250/8344/files/25_360x_ba96f7bd-5ab1-488c-a519-36710b27cbac.jpg?v=1682207827">
+      {% endif %}
+    </div>
+    <div class="popslide">
+      {% assign pop2 = product.metafields.sf_sliders.popular_image_2 %}
+      {% if pop2 %}
+        <img src="{{ pop2 }}">
+      {% else %}
+        <img src="https://cdn.shopify.com/s/files/1/0573/7250/8344/files/26_360x_2e5fe417-c0c8-4973-b03f-e9043b06f2fa.jpg?v=1682207827">  
+      {% endif %}
+    </div>
+    <div class="popslide">
+      {% assign pop3 = product.metafields.sf_sliders.popular_image_3 %}
+      {% if pop3 %}
+        <img src="{{ pop3 }}">
+      {% else %}
+      <img src="https://cdn.shopify.com/s/files/1/0573/7250/8344/files/27_360x_4070e078-edae-4bbf-aaea-2bb72f5d9a72.jpg?v=1682207827">  
+      {% endif %}
+    </div>
+    <div class="popslide">
+      {% assign pop4 = product.metafields.sf_sliders.popular_image_4 %}
+      {% if pop4 %}
+        <img src="{{ pop4 }}">
+      {% else %}
+        <img src="https://cdn.shopify.com/s/files/1/0573/7250/8344/files/28_360x_b58ee703-f345-4da9-9760-87e5f5939bef.jpg?v=1682207827">  
+      {% endif %}
+    </div>
+  </div>
+</div>
+

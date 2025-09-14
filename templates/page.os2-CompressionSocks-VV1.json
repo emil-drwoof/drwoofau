@@ -1,0 +1,271 @@
+{
+  "sections": {
+    "custom_html_y8fDJx": {
+      "type": "custom-html",
+      "settings": {
+        "custom_html": "<img data-swift-lazy=\"1\" loading=\"lazy\" class=\"\" src=\"\/\/www.drwoofapparel.com.au\/cdn\/shop\/files\/Horizontal_logo_transparent_background_blue_2_7dc8a8de-20c6-4155-8747-0810a5b4b5e0_210x.png?v=1704080588\" srcset=\"\/\/www.drwoofapparel.com.au\/cdn\/shop\/files\/Horizontal_logo_transparent_background_blue_2_7dc8a8de-20c6-4155-8747-0810a5b4b5e0_210x.png?v=1704080588 1x, \/\/www.drwoofapparel.com.au\/cdn\/shop\/files\/Horizontal_logo_transparent_background_blue_2_7dc8a8de-20c6-4155-8747-0810a5b4b5e0_210x@2x.png?v=1704080588 2x\" alt=\"Dr. Woof Apparel AU\" style=\"display:block;margin:30px auto 0;\">"
+      }
+    },
+    "a155aa5c-40ac-40b5-8a70-5059e600e448": {
+      "type": "headerv2",
+      "blocks": {
+        "16c1b801-5445-4096-9718-10b5b06f0f49": {
+          "type": "list",
+          "settings": {
+            "text_list": "Fatigue-busting graduated compression",
+            "icon_image": "shopify:\/\/shop_images\/badge1_c6034989-69e7-40b0-9b9c-20fc1d4303f4.png"
+          }
+        },
+        "57eaf7c2-b51a-429f-9c6b-d84222894a17": {
+          "type": "list",
+          "settings": {
+            "text_list": "Varicose veins prevention",
+            "icon_image": "shopify:\/\/shop_images\/badge1_c6034989-69e7-40b0-9b9c-20fc1d4303f4.png"
+          }
+        },
+        "list_nG8cQ9": {
+          "type": "list",
+          "settings": {
+            "text_list": "Proudly designed in Australia",
+            "icon_image": "shopify:\/\/shop_images\/badge1_c6034989-69e7-40b0-9b9c-20fc1d4303f4.png"
+          }
+        },
+        "6046898d-b597-4393-b1e3-032f2c454626": {
+          "type": "list",
+          "settings": {
+            "text_list": "Cushioned luxury for your feet",
+            "icon_image": "shopify:\/\/shop_images\/badge1_c6034989-69e7-40b0-9b9c-20fc1d4303f4.png"
+          }
+        },
+        "list_BaVwdk": {
+          "type": "list",
+          "settings": {
+            "text_list": "Cute & trendy designs",
+            "icon_image": "shopify:\/\/shop_images\/badge1_c6034989-69e7-40b0-9b9c-20fc1d4303f4.png"
+          }
+        },
+        "list_x97hrA": {
+          "type": "list",
+          "settings": {
+            "text_list": "60-Day money back guarantee",
+            "icon_image": "shopify:\/\/shop_images\/badge1_c6034989-69e7-40b0-9b9c-20fc1d4303f4.png"
+          }
+        }
+      },
+      "block_order": [
+        "16c1b801-5445-4096-9718-10b5b06f0f49",
+        "57eaf7c2-b51a-429f-9c6b-d84222894a17",
+        "list_nG8cQ9",
+        "6046898d-b597-4393-b1e3-032f2c454626",
+        "list_BaVwdk",
+        "list_x97hrA"
+      ],
+      "settings": {
+        "colored_header": "",
+        "colored_header_size": 16,
+        "colored_header_size_mobile": 18,
+        "header_color": "#ffffff",
+        "added_bigger_button_hero": false,
+        "added_date": true,
+        "enable_men": true,
+        "hide_review_stars": true,
+        "top_mode": true,
+        "light_theme": false,
+        "main_header": "Not Just for Grandma: 6 Surprising Ways Dr Woof's Compression Socks Help Nurses Fight Varicose Veins",
+        "main_header_size": 40,
+        "main_header_size_mobile": 32,
+        "main_header_space": 40,
+        "content": "Dr. Woof's Graduated Compression Socks deliver essential support, improve your venous blood flow and transforming tiring shifts into pain free comfort for your feet.",
+        "textaroundtop": "",
+        "textaroundbottom": "",
+        "button_text_1": "Order Now & Save Up To 35%",
+        "button_1_url": "shopify:\/\/collections\/compression-socks",
+        "button_text_2": "",
+        "button_2_url": "",
+        "header_image": "shopify:\/\/shop_images\/Compression_Socks_Listicle_-_6_Reasons_Why_1.gif",
+        "mobile_image": "shopify:\/\/shop_images\/Compression_Socks_Listicle_-_6_Reasons_Why_1.gif",
+        "bg_color": "#ffffff",
+        "margin-top": 0,
+        "margin-bottom": 20
+      }
+    },
+    "68681b12-95a9-4f19-8144-7b29406c141b": {
+      "type": "twocollist",
+      "blocks": {
+        "9e75c267-5f40-4a7f-b782-ee506ff29a05": {
+          "type": "list",
+          "settings": {
+            "list_image": "shopify:\/\/shop_images\/Compression_Socks_Listicle_-_6_Reasons_Why_4.jpg",
+            "list_title": "1. Prevention is Key: Not Just for the Elderly",
+            "list_text": "Compression socks aren't just for the elderly or those with existing varicose veins. A study by Sharif Nia et al. (2020) found that wearing compression socks can significantly reduce the risk of developing varicose veins, especially for nurses who spend long hours on their feet. By incorporating Dr Woof's compression socks into your daily routine, you can take proactive steps to maintain healthy legs, regardless of your age.",
+            "button_text": "",
+            "button_url": ""
+          }
+        },
+        "38994c72-bee0-4291-9231-8d197500fad9": {
+          "type": "list",
+          "settings": {
+            "list_image": "shopify:\/\/shop_images\/Compression_Socks_Listicle_-_6_Reasons_Why_1.jpg",
+            "list_title": "2. Lab-Tested Graduated Compression for Venous Health",
+            "list_text": "Dr Woof's compression socks feature lab-tested graduated compression that promotes healthy blood flow, reducing the risk of varicose veins. The scientifically designed compression profile helps prevent venous issues commonly faced by nurses who spend long hours on their feet, ensuring your legs stay healthy and energized throughout your shift.",
+            "button_text": "",
+            "button_url": ""
+          }
+        },
+        "list_T6RnyN": {
+          "type": "list",
+          "settings": {
+            "list_image": "shopify:\/\/shop_images\/Compression_Socks_Listicle_-_6_Reasons_Why_7.jpg",
+            "list_title": "3. Reduces Leg Fatigue and Swelling",
+            "list_text": "Studies show that wearing compression socks can significantly reduce leg fatigue and swelling, two common symptoms of varicose veins. Dr Woof's socks provide the perfect amount of compression to alleviate these symptoms, helping nurses feel energized and focused throughout their shifts.",
+            "button_text": "",
+            "button_url": ""
+          }
+        },
+        "list_kFJEBz": {
+          "type": "list",
+          "settings": {
+            "list_image": "shopify:\/\/shop_images\/Compression_Socks_Listicle_-_6_Reasons_Why_5.jpg",
+            "list_title": "4. Recover Like an Athlete on Your Days Off",
+            "list_text": "Just like professional athletes, nurses can benefit from Dr Woof's compression socks to help them recover after long, demanding shifts. These socks improve blood circulation, reduce muscle soreness, and alleviate leg fatigue, ensuring that your days off are actually your days OFF.",
+            "button_text": "",
+            "button_url": ""
+          }
+        },
+        "list_6pBr9c": {
+          "type": "list",
+          "settings": {
+            "list_image": "shopify:\/\/shop_images\/RonSOCKs_-_Made_with_Clipchamp.gif",
+            "list_title": "5. Aussie Owned: Uncompromising Quality",
+            "list_text": "In a market flooded with subpar products, Dr Woof's Graduated Compression Socks stand out for their unwavering quality. Founded by a family of three Aussie doctors, our commitment to high standards is personal. We ensure each pair is robust, maintaining stretch and comfort even after extensive use – a reliable choice for nurses who deserve the best. With Dr Woof, you can trust that you're getting a product that's designed to last.",
+            "button_text": "",
+            "button_url": ""
+          }
+        },
+        "list_39FdQp": {
+          "type": "list",
+          "settings": {
+            "list_image": "shopify:\/\/shop_images\/Compression_Socks_Listicle_-_6_Reasons_Why_2.jpg",
+            "list_title": "6. Padded Perfection: Step with Comfort",
+            "list_text": "Imagine a sock that feels like a soft embrace for your feet. That's Dr Woof's Graduated Compression Socks. Designed specifically with nurses in mind, they feature extra-thick padding and ultra-soft material, ensuring your comfort on even the longest shifts. It's the comfort you need to keep going, step after step. With Dr Woof, you can focus on your patients, not your aching feet.",
+            "button_text": "",
+            "button_url": ""
+          }
+        },
+        "list_nDFFEC": {
+          "type": "list",
+          "settings": {
+            "list_image": "shopify:\/\/shop_images\/Compression_Socks_Listicle_-_6_Reasons_Why_6.jpg",
+            "list_title": "7. Try, Love, or Return: 60-Day Promise",
+            "list_text": "At Dr Woof, we understand the hesitation of buying online without feeling the product first. That's why we offer a 60-Day Money Back Guarantee. With a 96% satisfaction rate across all our products, we're confident in our socks, but if they don't meet your expectations, we honor returns with ease. It's risk-free comfort, tailored for nurses. Try Dr Woof's compression socks today and experience the difference for yourself.",
+            "button_text": "",
+            "button_url": ""
+          }
+        }
+      },
+      "block_order": [
+        "9e75c267-5f40-4a7f-b782-ee506ff29a05",
+        "38994c72-bee0-4291-9231-8d197500fad9",
+        "list_T6RnyN",
+        "list_kFJEBz",
+        "list_6pBr9c",
+        "list_39FdQp",
+        "list_nDFFEC"
+      ],
+      "settings": {
+        "deskmartop": 40,
+        "deskmarbot": 40,
+        "mobmartop": 20,
+        "mobmarbot": 20
+      }
+    },
+    "advanced_content_7w4nzG": {
+      "type": "advanced-content",
+      "blocks": {
+        "image_xVigmp": {
+          "type": "image",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/Capture_d73cef14-157e-4784-89eb-a26b4dbecc7b.jpg",
+            "link": "",
+            "width": "33%",
+            "alignment": "top-middle"
+          }
+        },
+        "image_bxfKbz": {
+          "type": "image",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/Capture_afae5400-4093-459c-8e6a-65ef755e1b01.jpg",
+            "link": "",
+            "width": "33%",
+            "alignment": "top-middle"
+          }
+        },
+        "image_cpHEyi": {
+          "type": "image",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/Amy_N..jpg",
+            "link": "",
+            "width": "33%",
+            "alignment": "top-middle"
+          }
+        }
+      },
+      "block_order": [
+        "image_xVigmp",
+        "image_bxfKbz",
+        "image_cpHEyi"
+      ],
+      "settings": {
+        "full_width": false,
+        "space_around": true,
+        "alt": false
+      }
+    },
+    "text_and_image_6CTcBf": {
+      "type": "text-and-image",
+      "settings": {
+        "image": "shopify:\/\/shop_images\/RonSOCKs_-_Made_with_Clipchamp_1.gif",
+        "image_width": 700,
+        "subtitle": "",
+        "title": "How To Use Compression Socks",
+        "text": "<p>Pop your hand in, flip 'em inside out, slide your foot in, ease over your heel, roll 'em up, smooth any bumps, and adjust to your vibe.<\/p>",
+        "button_label": "",
+        "button_link": "",
+        "button_style": "primary",
+        "layout": "right",
+        "alt": false
+      }
+    },
+    "adsection_DFck6h": {
+      "type": "adsection",
+      "settings": {
+        "darktheme": true,
+        "deskmartop": 20,
+        "deskmarbot": 20,
+        "mobmartop": 0,
+        "mobmarbot": 30,
+        "bigtext": "AUTUMN SALE UP TO 35% OFF",
+        "reviewstars_text": "",
+        "bigtextsize": 36,
+        "textbut": "Shop",
+        "buttonlink": "shopify:\/\/collections\/compression-socks",
+        "bgcolor": "#050507"
+      }
+    },
+    "custom_html_3Jq8JP": {
+      "type": "custom-html",
+      "settings": {
+        "custom_html": "<img data-swift-lazy=\"1\" loading=\"lazy\" class=\"\" src=\"\/\/www.drwoofapparel.com.au\/cdn\/shop\/files\/Horizontal_logo_transparent_background_blue_2_7dc8a8de-20c6-4155-8747-0810a5b4b5e0_210x.png?v=1704080588\" srcset=\"\/\/www.drwoofapparel.com.au\/cdn\/shop\/files\/Horizontal_logo_transparent_background_blue_2_7dc8a8de-20c6-4155-8747-0810a5b4b5e0_210x.png?v=1704080588 1x, \/\/www.drwoofapparel.com.au\/cdn\/shop\/files\/Horizontal_logo_transparent_background_blue_2_7dc8a8de-20c6-4155-8747-0810a5b4b5e0_210x@2x.png?v=1704080588 2x\" alt=\"Dr. Woof Apparel AU\" style=\"display:block;margin:0 auto;\">"
+      }
+    }
+  },
+  "order": [
+    "custom_html_y8fDJx",
+    "a155aa5c-40ac-40b5-8a70-5059e600e448",
+    "68681b12-95a9-4f19-8144-7b29406c141b",
+    "advanced_content_7w4nzG",
+    "text_and_image_6CTcBf",
+    "adsection_DFck6h",
+    "custom_html_3Jq8JP"
+  ]
+}

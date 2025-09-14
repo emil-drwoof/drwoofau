@@ -1,0 +1,1740 @@
+<script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js"></script>
+
+<style>
+    {% if section.settings.collection_filter_enable %}
+    .collection-title {
+      flex: 0 0 64%;
+      text-align: left;
+    }
+    @media only screen and (max-width:480px){
+      .collection-title{
+        margin-bottom:0 !important;
+      }
+      .collection-dropdowns,
+      .collection-title {
+        flex: 0 0 50%;
+        text-align: left;
+      }
+    }
+  {% else %}
+    .collection-title {
+      flex: 0 0 100%;
+      text-align: center;
+    }
+  {% endif %}
+</style>
+<style>
+  body {
+      
+  }
+
+  .dropdown {
+      position: relative;
+      display: inline-block;
+      margin-right: 20px;
+  }
+
+  .dropdown > ul {
+      list-style-type: none;
+      padding: 0;
+      margin: 0;
+  }
+
+  .dropdown > ul > li {
+    cursor: pointer;
+    padding: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    min-width: auto;
+    padding-right: 9px;
+  }
+  .dropdown > ul > li > .droptitle{
+    position:relative;
+    display:inline-block;
+    width: auto;
+    padding-right:12px;
+  }
+
+  .dropdown > ul > li:hover {
+      background-color: #f0f0f0;
+  }
+
+  .dropdown-content {
+      display:flex;
+      display: none;
+      position: absolute;
+      background-color: #fff;
+      min-width: 200px;
+      box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
+      z-index: 2;
+      margin-top: 5px;
+      width:782px;
+      padding:18px 12px;
+  }
+  #sizeDropdown .dropdown-content {
+    width:419px;
+  }
+  #sizeDropdown .dropdown-content .flexer{
+    flex-direction: column;
+    height:139px;
+    width:324px;
+  }
+  #colorDropdown .dropdown-content .flexer{
+    flex-direction: column;
+    height:221px;
+  }
+  #sizeDropdown .dropdown-content .flexer label{
+    flex:0 0 34px;
+  }
+  .dropdown-content .color-option {
+      display: flex;
+      align-items: center;
+      padding: 8px 16px;
+      cursor: pointer;
+      flex: 0 0 34px;
+      break-inside: avoid;
+  }
+
+  .dropdown-content .color-option:hover {
+      background-color: #f0f0f0;
+  }
+
+  .color-swatch2 {
+      display: inline-block;
+      width: 20px;
+      height: 20px;
+      border-radius: 50%;
+      margin-right: 10px;
+      border: 2px solid transparent;
+      transition: border 0.3s ease;
+  }
+
+  .color-option:hover .color-swatch2 {
+      border: 2px solid white;
+      box-shadow: 0 0 0 2px black;
+  }
+
+  .dropdown-content label {
+      display: block;
+      padding: 8px 16px;
+      cursor: pointer;
+      flex:0 0 33%;
+  }
+
+  .dropdown-content label:hover {
+      background-color: #f0f0f0;
+  }
+
+  .dropdown-content input[type="checkbox"] {
+      margin-right: 10px;
+  }
+
+  .dropdown.open .dropdown-content {
+      display: block;
+  }
+
+  .dropdown.open .fa-chevron-down {
+      display: none;
+  }
+
+  .dropdown:not(.open) .fa-chevron-up {
+      display: none;
+  }
+  .dropdown-content label{
+    padding:3px 16px !important;
+    margin-bottom:0 !important;
+  }
+  @media only screen and (max-width:480px){
+    .dropdown-content .color-option {
+      font-size:14px;
+      flex:0 0 34px;
+    }
+    .dropdown-content{
+      display:flex;
+      flex-wrap:wrap;
+    }
+    .dropdown-content > label{
+      flex:0 0 100%;
+      font-size:14px;
+      line-height:30px;
+    }
+    .type-filter.dropdown-content label {
+      display: block;
+      padding: 8px 16px;
+      cursor: pointer;
+      flex:0 0 33px;
+    }
+  }
+</style>
+<div class="page-width">
+  <div class="collection-filters flexer">
+    <div class="collection-title">
+      {% if section.settings.collection_title_enable %}
+      
+        <h1 class="section-header__title appear-delay">
+          {{ collection.title }}
+        </h1>
+      
+      {% endif %}
+    </div>
+    {% assign current_tags = current_tags | downcase | handleize %}
+
+    {% if section.settings.collection_filter_enable %}
+      {% assign my_filter = collection.metafields.sf_collection.filter %}
+      {% if my_filter == 1 %}
+        
+
+      <div class="collection-dropdowns">
+        <div class="collection-dropdowns__item" style="flex:0 0 100% !important; width:100% !important">
+            <label for="SortTags" class="hidden-label">{{ 'collections.filters.title_tags' | t }}</label>
+            <select name="SortTags" id="SortTags">
+            <option value="{{ routes.collections_url }}/{% if collection.handle != blank %}{{ collection.handle }}{% else %}all{% endif %}"{% if current_tags == tag1 %}{% endif %} selected="selected">Filter & Sort</option>
+            {% assign tag1 = collection.metafields.sf_collection.tag_1 %}
+
+            {% if tag1 %}
+                {% assign tag = tag1 | downcase | handleize %}
+                <option value="{{ routes.collections_url }}/{% if collection.handle != blank %}{{ collection.handle }}{% else %}all{% endif %}/{{ tag1 | handleize }}"{% if current_tags == tag %}selected="selected"{% endif %}>
+                {% if collection.metafields.sf_collection.tag_1_name %}
+                    {{ collection.metafields.sf_collection.tag_1_name }}
+                {% else %}
+                    {{ tag1 }}{% endif %}
+                </option>
+            {% endif %}
+
+
+            {% assign tag2 = collection.metafields.sf_collection.tag_2 %}
+
+            {% if tag2 %}
+                {% assign tag = tag2 | downcase | handleize %}
+                <option value="{{ routes.collections_url }}/{% if collection.handle != blank %}{{ collection.handle }}{% else %}all{% endif %}/{{ tag2 | handleize }}"{% if current_tags == tag %} selected="selected"{% endif %}>
+                {% if collection.metafields.sf_collection.tag_2_name %}
+                    {{ collection.metafields.sf_collection.tag_2_name }}
+                {% else %}
+                    {{ tag2 }}{% endif %}
+                </option>
+            {% endif %}
+
+            {% assign tag3 = collection.metafields.sf_collection.tag_3 %}
+
+            {% if tag3 %}
+                {% assign tag = tag3 | downcase | handleize %}
+                <option value="{{ routes.collections_url }}/{% if collection.handle != blank %}{{ collection.handle }}{% else %}all{% endif %}/{{ tag3 | handleize }}"{% if current_tags == tag %} selected="selected"{% endif %}>
+                {% if collection.metafields.sf_collection.tag_3_name %}
+                    {{ collection.metafields.sf_collection.tag_3_name }}
+                {% else %}
+                    {{ tag3 }}{% endif %}
+                </option>
+            {% endif %}
+
+            {% assign tag4 = collection.metafields.sf_collection.tag_4 %}
+
+            {% if tag4 %}
+                {% assign tag = tag4 | downcase | handleize %}
+                <option value="{{ routes.collections_url }}/{% if collection.handle != blank %}{{ collection.handle }}{% else %}all{% endif %}/{{ tag4 | handleize }}"{% if current_tags == tag %} selected="selected"{% endif %}>
+                {% if collection.metafields.sf_collection.tag_4_name %}
+                    {{ collection.metafields.sf_collection.tag_4_name }}
+                {% else %}
+                    {{ tag4 }}{% endif %}
+                </option>
+            {% endif %}
+
+            {% assign tag5 = collection.metafields.sf_collection.tag_5 %}
+
+            {% if tag5 %}
+                {% assign tag = tag5 | downcase | handleize %}
+                <option value="{{ routes.collections_url }}/{% if collection.handle != blank %}{{ collection.handle }}{% else %}all{% endif %}/{{ tag5 | handleize }}"{% if current_tags == tag %} selected="selected"{% endif %}>
+                {% if collection.metafields.sf_collection.tag_5_name %}
+                    {{ collection.metafields.sf_collection.tag_5_name }}
+                {% else %}
+                    {{ tag5 }}{% endif %}
+                </option>
+            {% endif %}
+
+
+            {% assign tag6 = collection.metafields.sf_collection.tag_6 %}
+
+            {% if tag6 %}
+                {% assign tag = tag6 | downcase | handleize %}
+                <option value="{{ routes.collections_url }}/{% if collection.handle != blank %}{{ collection.handle }}{% else %}all{% endif %}/{{ tag6 | handleize }}"{% if current_tags == tag %} selected="selected"{% endif %}>
+                {% if collection.metafields.sf_collection.tag_6_name %}
+                    {{ collection.metafields.sf_collection.tag_6_name }}
+                {% else %}
+                    {{ tag6 }}{% endif %}
+                </option>
+            {% endif %}
+
+
+            {% assign tag7 = collection.metafields.sf_collection.tag_7 %}
+
+            {% if tag7 %}
+                {% assign tag = tag7 | downcase | handleize %}
+                <option value="{{ routes.collections_url }}/{% if collection.handle != blank %}{{ collection.handle }}{% else %}all{% endif %}/{{ tag7 | handleize }}"{% if current_tags == tag %} selected="selected"{% endif %}>
+                {% if collection.metafields.sf_collection.tag_7_name %}
+                    {{ collection.metafields.sf_collection.tag_7_name }}
+                {% else %}
+                    {{ tag7 }}{% endif %}
+                </option>
+            {% endif %}
+
+            {% assign tag8 = collection.metafields.sf_collection.tag_8 %}
+
+            {% if tag8 %}
+                {% assign tag = tag8 | downcase | handleize %}
+                <option value="{{ routes.collections_url }}/{% if collection.handle != blank %}{{ collection.handle }}{% else %}all{% endif %}/{{ tag8 | handleize }}"{% if current_tags == tag %} selected="selected"{% endif %}>
+                {% if collection.metafields.sf_collection.tag_8_name %}
+                    {{ collection.metafields.sf_collection.tag_8_name }}
+                {% else %}
+                    {{ tag8 }}{% endif %}
+                </option>
+            {% endif %}
+
+
+
+            {% assign my_page1 = collection.metafields.sf_collection.page_link_1 %}
+            {% if my_page1 %}
+                <option value="{{  my_page1 }}">{{ collection.metafields.sf_collection.page_link_1_name }}</option>
+            {% endif %}
+
+
+            {% assign my_page2 = collection.metafields.sf_collection.page_link_2 %}
+            {% if my_page2 %}
+                <option value="{{  my_page2 }}">{{ collection.metafields.sf_collection.page_link_2_name }}</option>
+            {% endif %}
+
+            {% assign my_page3 = collection.metafields.sf_collection.page_link_3 %}
+            {% if my_page3 %}
+                <option value="{{ my_page3 }}">{{ collection.metafields.sf_collection.page_link_3_name }}</option>
+            {% endif %}
+
+
+            {% assign my_page4 = collection.metafields.sf_collection.page_link_4 %}
+            {% if my_page4 %}
+                <option value="{{  my_page4 }}">{{ collection.metafields.sf_collection.page_link_4_name }}</option>
+            {% endif %}
+            </select>
+        </div>
+        </div>
+      {% endif %}
+    {% endif %}
+
+  </div>
+</div>
+
+<div class="page-width" style="display:none;">
+  <div
+    class="collection-filter__wrapper"
+    data-section-id="{{ section.id }}"
+    data-section-type="collection-filter"
+    data-combine-tags="{{ section.settings.tags_combine }}">
+    
+
+      {% assign my_swatches = collection.metafields.sf_collection.swatches %}
+      {% if my_swatches == 1 %}
+        {% include 'collection-filters', location: 'CollectionFilter' %}
+      {% endif %}
+          
+
+    {% if section.settings.collection_sort_enable %}
+        {% assign my_sort = collection.metafields.sf_collection.sort %}
+        {% if my_sort == 1 %}
+          <div class="collection-dropdowns" style="margin-top:20px;margin-bottom:20px;">
+              <div class="collection-dropdowns__item">
+              {%- assign sort_by = collection.sort_by | default: collection.default_sort_by -%}
+              <label for="SortBy" class="hidden-label">{{ 'collections.sorting.title' | t }}</label>
+              <select name="SortBy" id="SortBy" data-default-sortby="{{ collection.default_sort_by }}">
+          
+              <option value="title-ascending"{% if sort_by == collection.default_sort_by %} {% endif %} selected="selected">Sort</option>
+              {% for option in collection.sort_options %}
+              <option value="{{ option.value }}" {% if option.value == sort_by %}{% endif %}>{{ option.name }}</option>
+              {% endfor %}
+              </select>
+              </div>
+          <!-- collection-dropdowns__item -->
+          </div>
+        {% endif %}
+      {% endif %}
+  </div>
+  
+    
+
+</div>
+
+
+<style>
+  .collection-filters{
+    display:flex;
+    justify-content: space-between;
+  }
+  {% unless section.settings.collection_title_enable %}
+  .collection-filters{
+    margin:0 !important;
+    margin-top:0 !important;
+    margin-bottom:0 !important;
+  }    
+
+    {% endunless %}
+
+  {% if current_tags == "underscrubs" or current_tags == "outerwear" or collection.handle == 'underscrubs-1' or current_tags == "underscrubs-men"  %}
+        @media only screen and (max-width:480px){
+          .collection-filter__inner .slick-track,
+            li.tag.product-tabs-data.slick-slide
+          {
+            width:100% !important;
+            display: flex;
+          }
+        }
+  {% endif %}
+
+</style>
+<style>
+  .gender_options{
+    margin-top:28px;
+    margin-bottom:38px;
+    display:block;
+    
+  }
+  .gender_options .flexer{
+    justify-content:center !important;
+  }
+  .gender_options .active{
+    padding-bottom:4px;
+    border-bottom:2px solid #050507;
+    font-weight:600;
+  }
+  .gender_options span{
+    padding-left:10px;
+    padding-right:10px;
+    padding-bottom:4px;
+    margin-right:10px;
+    margin-left:10px;
+  }
+  .gender_options span:hover{
+    cursor:pointer;
+    border-bottom:2px solid #050507;
+  }
+  .gender_wrapper{
+    display:inline-block;
+    width:auto;
+  }
+</style>
+<style>
+  @media (min-width: 481px) {
+       .mobile-container {
+           display: none !important;
+       }
+       .colfilter{
+         display:flex;flex-wrap:wrap;justify-content:space-between;margin-bottom:0px;margin-bottom:20px;
+       }
+   }
+
+   .mobile-container {
+      
+   }
+
+   .header {
+       display: flex;
+       justify-content: space-between;
+       align-items: center;
+       padding: 0 0 12px;
+       border-bottom: 1px solid #e5e7eb;
+   }
+
+   .filter-section {
+       display: flex;
+       align-items: center;
+       gap: 1rem;
+   }
+
+   .filter-button {
+       display: flex;
+       align-items: center;
+       gap: 0.5rem;
+       background: none;
+       border: none;
+       cursor: pointer;
+       color: #374151;
+   }
+
+   .total-count {
+       color: #6b7280;
+   }
+
+   .view-controls {
+       display: flex;
+       gap: 0.5rem;
+       flex: 0 0 26%;
+   }
+
+   .view-button {
+       padding: 0.5rem;
+       background: none;
+       border: none;
+       cursor: pointer;
+   }
+
+   .view-button.active {
+       background-color: #f3f4f6;
+   }
+
+   .product-grid {
+       padding: 1rem;
+       display: grid;
+       grid-template-columns: repeat(2, 1fr);
+       gap: 1rem;
+   }
+
+   .product-grid.list-view {
+       grid-template-columns: 1fr;
+   }
+
+   .product-card {
+       border: 1px solid #e5e7eb;
+       border-radius: 0.5rem;
+       overflow: hidden;
+       background: white;
+   }
+
+   .list-view .product-card {
+       display: flex;
+       align-items: center;
+   }
+
+   .product-image {
+       width: 100%;
+       aspect-ratio: 1;
+       object-fit: cover;
+   }
+
+   .list-view .product-image {
+       width: 6rem;
+   }
+
+   .product-info {
+       padding: 1rem;
+   }
+
+   .product-name {
+       font-weight: 500;
+       margin-bottom: 0.25rem;
+   }
+
+   .product-price {
+       color: #6b7280;
+   }
+   .filter-button:hover{
+     cursor:pointer;
+   }
+   .extot{
+       display:block;
+     }
+     .mobile-filter{
+       display:none;
+     }
+   @media only screen and (max-width:480px){
+     .mobile-filter{
+       width:100%;
+       height:100vh;
+       position: fixed;
+       top:0px;
+       left:0;
+       background:#fff;
+       z-index: 99999;
+       overflow-y: auto;
+       padding-top:12px;
+       border-bottom:1px solid #eee;
+     }
+     .filter-closer{
+       font-weight: 900;
+       top: 10px;
+       right: 25px;
+       font-size: 25px;
+       position: absolute;
+     }
+     .extot{
+       display:none !important;
+     }
+     .extot,
+     .dropdown > ul,
+     .colfilter{display:none;}
+     .dropdown{
+       width:100%;
+       margin-right:0;
+       box-shadow:none;
+     }
+     .dropdown-content{
+       box-shadow:none;
+       position:static;
+       width:100%;
+       border-bottom:none;
+       padding-bottom:20px;
+       margin-bottom:12px;
+     }
+
+     .mobile-filter-section {
+margin-bottom: 15px;
+display:block;
+}
+
+.filter-header {
+display: flex;
+justify-content: space-between;
+align-items: center;
+padding: 10px 24px;
+cursor: pointer;
+font-weight: bold;
+}
+
+.arrow-icons {
+display: flex;
+align-items: center;
+}
+
+.arrow-icons .fa-chevron-up {
+display: none;
+}
+
+.mobile-filter-section.active .fa-chevron-down {
+display: none;
+}
+
+.mobile-filter-section.active .fa-chevron-up {
+display: block;
+}
+
+.mobile-filter-section.active .dropdown-content {
+display: flex !important;
+}
+
+hr {
+margin: 15px 0;
+border: none;
+border-top: 1px solid #eee;
+}
+
+.dropdown-content > .flexer {
+display: flex;
+height:326px;
+flex-direction: column;
+}
+
+.size-filter > .flexer {
+max-height:142px;
+}
+.size-filter > .flexer label{
+flex:0 0 34px;
+}
+.type-filter label {
+width:100%;
+}  
+.filter-closer {
+display: block;
+text-align: right;
+font-size: 24px;
+margin-bottom: 20px;
+cursor: pointer;
+}
+.mobile-filter-header{
+width:100%;
+padding:10px 24px 14px;
+font-weight:800;
+border-bottom:1px solid #eee;
+}
+.bot-buttons{
+	position:absolute;
+	z-index:9999;
+	bottom:0;
+	left:0;
+  width:100%;
+  padding:12px;
+  border-top:1px solid #aaa;
+}
+.bot-buttons:hover{
+  cursor:pointer;
+}
+.bot-buttons .flexer{
+	width:100%;
+	display:flex;
+	flex-wrap:wrap;
+	justify-content:space-between;
+  gap:10px;
+  
+}
+.bot-buttons button{
+	border:1px solid #aaa;
+  border-radius: 8px;
+	padding:12px 18px;
+}
+.bot-buttons button:first-child{
+  flex:0 0 38%;
+}
+.bot-buttons button:nth-child(2){
+  color:#fff;
+  background-color: #222122;
+  flex:0 0 59%;
+}
+
+
+   }
+</style>
+
+<div class="page-width">
+    <div class="mobile-container">
+      <div class="header">
+        <div class="filter-section">
+          <button class="filter-button">
+              <svg viewBox="0 0 24 24" width="20" height="20" stroke="currentColor" fill="none" stroke-width="2">
+                  <path d="M3 6h18M6 12h12M9 18h6" stroke-linecap="round" stroke-linejoin="round" />
+              </svg>
+              FILTER
+          </button>
+        </div>
+        {% assign product_count = collection.products_count %}
+        <span class="total-count">{{ product_count }} Total</span>
+        <div class="view-controls" style="display:none">
+          <!-- 
+            <button class="view-button" id="listView">
+                <svg viewBox="0 0 24 24" width="20" height="20" stroke="currentColor" fill="none" stroke-width="2">
+                    <rect x="3" y="3" width="18" height="7" rx="1" />
+                    <rect x="3" y="14" width="18" height="7" rx="1" />
+                </svg>
+            </button>
+            <button class="view-button active" id="gridView">
+                <svg viewBox="0 0 24 24" width="20" height="20" stroke="currentColor" fill="none" stroke-width="2">
+                    <rect x="3" y="3" width="7" height="7" rx="1" />
+                    <rect x="14" y="3" width="7" height="7" rx="1" />
+                    <rect x="3" y="14" width="7" height="7" rx="1" />
+                    <rect x="14" y="14" width="7" height="7" rx="1" />
+                </svg>
+            </button>
+            -->
+        </div>
+      </div>
+    </div>
+
+    <div class="colfilter">
+          <div class="idonso">
+            <div class="dropdown" id="colorDropdown">
+              <ul>
+                  <li>
+                    <span class="droptitle">Colour</span>            
+                      <span>
+                          <i class="fas fa-chevron-down"></i>
+                          <i class="fas fa-chevron-up"></i>
+                      </span>
+                  </li>
+              </ul>
+            
+              <div class="dropdown-content color">
+                <div class="flexer">
+                  <div class="color-option product-tabs-data" value="baby-pink">
+                    <span class="color-swatch2" style="background-color: #FFC0CB;"></span>
+                    <span class="color-name">Baby pink</span>
+                  </div>
+<!--
+                  <div class="color-option product-tabs-data" value="blurple">
+                    <span class="color-swatch2" style="background-color: #8A7FA3;"></span>
+                    <span class="color-name">Blurple</span>
+                  </div>
+
+                  <div class="color-option product-tabs-data" value="double-purple">
+                    <span class="color-swatch2" style="background-color: #663399;"></span>
+                    <span class="color-name">Double purple</span>
+                  </div>
+-->
+                  <div class="color-option product-tabs-data" value="mermaid-teal">
+                    <span class="color-swatch2" style="background-color: #008080;"></span>
+                    <span class="color-name">Mermaid teal</span>
+                  </div>
+<!--
+                  <div class="color-option product-tabs-data" value="lavender">
+                    <span class="color-swatch2" style="background-color: #8E4585;"></span>
+                    <span class="color-name">Lavender</span>
+                  </div>
+
+                  <div class="color-option product-tabs-data" value="pistachio">
+                    <span class="color-swatch2" style="background-color: #93c572;"></span>
+                    <span class="color-name">Pistachio</span>
+                  </div>
+-->
+
+<!--
+                  <div class="color-option product-tabs-data" value="eucalyptus">
+                    <span class="color-swatch2" style="background-color: #8FBC8F;"></span>
+                    <span class="color-name">Eucalyptus</span>
+                  </div>
+
+                  <div class="color-option product-tabs-data" value="apricot">
+                    <span class="color-swatch2" style="background-color: #FFA500;"></span>
+                    <span class="color-name">Apricot</span>
+                  </div>
+
+                  <div class="color-option product-tabs-data" value="hunter-green">
+                    <span class="color-swatch2" style="background-color: #2F4F4F;"></span>
+                    <span class="color-name">Hunter green</span>
+                  </div>
+-->
+                  <!--
+                  <div class="color-option product-tabs-data" value="aubergine">
+                    <span class="color-swatch2" style="background-color: #4B0082;"></span>
+                    <span class="color-name">Aubergine</span>
+                  </div>
+--><!--
+                  <div class="color-option product-tabs-data" value="bold-magenta">
+                    <span class="color-swatch2" style="background-color: #B03060;"></span>
+                    <span class="color-name">Bold magenta</span>
+                  </div>
+                  -->
+<!--
+                  <div class="color-option product-tabs-data" value="twilight-blue">
+                    <span class="color-swatch2" style="background-color: #1C2C4C;"></span>
+                    <span class="color-name">Twilight blue</span>
+                  </div>
+-->
+                  <div class="color-option product-tabs-data" value="navy">
+                    <span class="color-swatch2" style="background-color: #21244C;"></span>
+                    <span class="color-name">Navy</span>
+                  </div>
+                  <div class="color-option product-tabs-data" value="burgundy">
+                    <span class="color-swatch2" style="background-color: #800020"></span>
+                    <span class="color-name">Burgundy</span>
+                  </div>
+                  <div class="color-option product-tabs-data" value="shadow-gray">
+                    <span class="color-swatch2" style="background-color: #808080"></span>
+                    <span class="color-name">Shadow Gray</span>
+                  </div>
+                  <div class="color-option product-tabs-data" value="mint">
+                    <span class="color-swatch2" style="background-color: #3eb489"></span>
+                    <span class="color-name">Mint</span>
+                  </div>
+                 <div class="color-option product-tabs-data" value="bold-magenta">
+                    <span class="color-swatch2" style="background-color: #B03060;"></span>
+                    <span class="color-name">Bold magenta</span>
+                  </div>
+              <div class="color-option product-tabs-data" value="pistachio">
+                <span class="color-swatch2" style="background-color: #93c572;"></span>
+                <span class="color-name">Pistachio</span>
+              </div>
+              <div class="color-option product-tabs-data" value="steel-gray">
+                <span class="color-swatch2" style="background-color: #939799;"></span>
+                <span class="color-name">Steel Gray</span>
+              </div>
+
+                  <div class="color-option product-tabs-data" value="ceil-blue">
+                    <span class="color-swatch2" style="background-color: #92a1cf;"></span>
+                    <span class="color-name">Ceil Blue</span>
+                  </div>
+
+                  <div class="color-option product-tabs-data" value="black">
+                    <span class="color-swatch2" style="background-color: #000000;"></span>
+                    <span class="color-name">Black</span>
+                  </div>
+
+                  <div class="color-option product-tabs-data" value="cool-gray">
+                    <span class="color-swatch2" style="background-color: #A4B0BE;"></span>
+                    <span class="color-name">Cool gray</span>
+                  </div>
+
+                  <div class="color-option product-tabs-data" value="fern-green">
+                    <span class="color-swatch2" style="background-color: #4B7B6E;"></span>
+                    <span class="color-name">Fern green</span>
+                  </div>
+
+                  <div class="color-option product-tabs-data" value="royal-blue">
+                    <span class="color-swatch2" style="background-color: #0052CC;"></span>
+                    <span class="color-name">Royal blue</span>
+                  </div>
+
+                  <div class="color-option product-tabs-data" value="caribbean-blue">
+                    <span class="color-swatch2" style="background-color: #1F5768;"></span>
+                    <span class="color-name">Caribbean blue</span>
+                  </div>
+
+                  <div class="color-option product-tabs-data" value="blush">
+                    <span class="color-swatch2" style="background-color: #B03060;"></span>
+                    <span class="color-name">Blush</span>
+                  </div>
+<!--
+                  <div class="color-option product-tabs-data" value="dark-olive">
+                    <span class="color-swatch2" style="background-color: 4E544B;"></span>
+                    <span class="color-name">Dark Olive</span>
+                  </div>
+
+                  <div class="color-option product-tabs-data" value="power-mauve">
+                    <span class="color-swatch2" style="background-color: #DB7093;"></span>
+                    <span class="color-name">Power mauve</span>
+                  </div>
+                  -->
+<!--
+                  <div class="color-option product-tabs-data" value="whitsundays-sand">
+                    <span class="color-swatch2" style="background-color: #D2B48C;"></span>
+                    <span class="color-name">Whitsundays sand</span>
+                  </div>
+
+                  <div class="color-option product-tabs-data" value="christmas">
+                    <span class="color-swatch2" style="background-image: url(https://www.drwoofapparel.com.au/cdn/shop/t/64/assets/christmas_50x.png); background-color: christmas;"></span>
+                    <span class="color-name">Christmas</span>
+                  </div>
+                  -->
+                  {% comment %}
+                  {% for option in options %}
+                    {%- assign color_image = option | handle | append: '.' | append: swatch_file_extension | asset_img_url: '50x' | prepend: 'https:' | split: '?' | first -%}
+                    {%- assign color_swatch_fallback = option | split: ' ' | last | handle -%}
+                    {% assign disoption = option | handleize %}
+                    
+                    <div class="color-option product-tabs-data" value="{{ disoption }}">
+                      <span class="color-swatch2" style="background-color: {% case disoption %}
+            {% when "navy" %}
+              #1E1E2F
+            {% when "black" %}
+              #000000
+            {% when "caribbean-blue" %}
+              #1F5768
+            {% when "fern-green" %}
+              #4B7B6E
+            {% when "cool-gray" %}
+              #A4B0BE
+            {% when "royal-blue" %}
+              #0052CC
+            {% when "baby-pink" %}
+              #FFC0CB
+            {% when "blurple" %}
+              #8A7FA3
+            {% when "whitsundays-sand" %}
+              #D2B48C
+            {% when "lavender" %}
+              #8E4585
+            {% when "twilight-blue" %}
+              #1C2C4C
+            {% when "whimsical-coral" %}
+              #FF6B6B
+            {% when "hunter-green" %}
+              #2F4F4F
+            {% when "christmas" %}
+              tree
+            {% when "mermaid-teal" %}
+              #008080
+            {% when "eucalyptus" %}
+              #8FBC8F
+            {% when "apricot" %}
+              #FFA500
+            {% when "aubergine" %}
+              #4B0082
+            {% when "blush" %}
+              #B03060
+            {% when "power-mauve" %}
+              #DB7093
+            {% when "double-purple" %}
+              #663399
+            {% when "bold-magenta" %}
+              #B03060
+            {% else %}
+              #000000
+          {% endcase %};"></span>
+                      <span class="color-name">{{ option | capitalize }}</span>
+                    </div>
+                  {% endfor %}
+                  {% endcomment %}
+                </div>
+              </div>
+            </div>
+
+            <div class="dropdown" id="sizeDropdown">
+              <ul>
+                  <li>
+                    <span class="droptitle">Size</span>            
+                      
+                      <span>
+                          <i class="fas fa-chevron-down"></i>
+                          <i class="fas fa-chevron-up"></i>
+                      </span>
+                  </li>
+              </ul>
+              <div class="dropdown-content size">
+                <div class="flexer">
+                  <label><input type="checkbox" value="XXS"> XXS</label>
+                  <label><input type="checkbox" value="XS"> XS</label>
+                  <label><input type="checkbox" value="S"> S</label>
+                  <label><input type="checkbox" value="M"> M</label>
+                  <label><input type="checkbox" value="L"> L</label>
+                  <label><input type="checkbox" value="XL"> XL</label>
+                  <label><input type="checkbox" value="XXL"> XXL</label>
+                  <label><input type="checkbox" value="3XL"> 3XL</label>
+
+                </div>
+
+              </div>
+            </div>
+            <div class="dropdown" id="categoryDropdown" style="display:none;">
+              <ul>
+                  <li>
+                    <span class="droptitle">Category</span>  
+                      
+                      <span>
+                          <i class="fas fa-chevron-down"></i>
+                          <i class="fas fa-chevron-up"></i>
+                      </span>
+                  </li>
+              </ul>
+              <div class="dropdown-content">
+                  <label><input type="checkbox" value="Scrub Tops"> Core</label>
+                  <label><input type="checkbox" value="Scrub Pants"> Limited Edition</label>
+              </div>
+            </div>
+            <div class="dropdown" id="categoryDropdown">
+              <ul>
+                  <li>
+                    <span class="droptitle">Type</span>
+                      <span>
+                          <i class="fas fa-chevron-down"></i>
+                          <i class="fas fa-chevron-up"></i>
+                      </span>
+                  </li>
+              </ul>
+              <div class="dropdown-content category-links type">
+                <div class="flexer">
+                  <label>
+                    <input type="checkbox" value="scrub-tops">
+                    Scrub Tops
+                  </label>
+                  <label>
+                    <input type="checkbox" value="scrub-pants">
+                    Scrub Pants
+                  </label>
+                  <label>
+                    <input type="checkbox" value="printed-pattern-scrub-tops">
+                    Printed Scrub Tops
+                  </label>
+                  <label>
+                    <input type="checkbox" value="compression-socks">
+                    Compression Socks
+                  </label>
+                  <label>
+                    <input type="checkbox" value="scrub-caps">
+                    Scrub Caps
+                  </label>
+                  <label>
+                    <input type="checkbox" value="outerwear">
+                    Outerwear
+                  </label>
+                  <label>
+                    <input type="checkbox" value="underscrubs">
+                    Underscrubs
+                  </label>
+                  <label>
+                    <input type="checkbox" value="scrunchies">
+                    Scrunchies
+                  </label>
+                  <label>
+                    <input type="checkbox" value="sneakers">
+                    Sneakers
+                  </label>
+                </div>
+              </div>
+            </div>
+        </div>
+    {% assign product_count = collection.products_count %}
+      <div class="extot" style="display:flex;align-items:center;flex-wrap:wrap">
+        <span style="border-bottom:1px solid #000;width:auto">{{ product_count }} Total</span>
+      </div>
+    </div> <!-- desktop filter -->
+
+
+    <div class="mobile-filter">
+      <div class="mobile-filter-header">FILTER</div>
+      <span class="filter-closer">x</span>
+      <div class="bot-buttons">
+        <div class="flexer">
+          <button class="filter-clear">Clear</button>
+          <button class="filter-all">View all</button>
+        </div>
+      </div>
+      <div class="filter-wrapper">
+        <div class="mobile-filter-section">
+          <div class="filter-header">
+            <span>Colour</span>
+            <span class="arrow-icons">
+              <i class="fas fa-chevron-down"></i>
+              <i class="fas fa-chevron-up"></i>
+            </span>
+          </div>
+          <div class="dropdown-content color-filter color">
+            <div class="flexer" style="flex-direction:column;">
+              <div class="color-option product-tabs-data" value="baby-pink">
+                <span class="color-swatch2" style="background-color: #FFC0CB;"></span>
+                <span class="color-name">Baby pink</span>
+              </div>
+<!--
+              <div class="color-option product-tabs-data" value="blurple">
+                <span class="color-swatch2" style="background-color: #8A7FA3;"></span>
+                <span class="color-name">Blurple</span>
+              </div>
+
+              <div class="color-option product-tabs-data" value="double-purple">
+                <span class="color-swatch2" style="background-color: #663399;"></span>
+                <span class="color-name">Double purple</span>
+              </div>
+-->
+              <div class="color-option product-tabs-data" value="mermaid-teal">
+                <span class="color-swatch2" style="background-color: #008080;"></span>
+                <span class="color-name">Mermaid teal</span>
+              </div>
+              
+<!--
+              <div class="color-option product-tabs-data" value="lavender">
+                <span class="color-swatch2" style="background-color: #8E4585;"></span>
+                <span class="color-name">Lavender</span>
+              </div>
+
+              <div class="color-option product-tabs-data" value="pistachio">
+                <span class="color-swatch2" style="background-color: #93c572;"></span>
+                <span class="color-name">Pistachio</span>
+              </div>
+-->
+
+<!--
+              <div class="color-option product-tabs-data" value="eucalyptus">
+                <span class="color-swatch2" style="background-color: #8FBC8F;"></span>
+                <span class="color-name">Eucalyptus</span>
+              </div>
+-->
+              <!--
+              <div class="color-option product-tabs-data" value="apricot">
+                <span class="color-swatch2" style="background-color: #FFA500;"></span>
+                <span class="color-name">Apricot</span>
+              </div>
+              -->
+<!--
+              <div class="color-option product-tabs-data" value="hunter-green">
+                <span class="color-swatch2" style="background-color: #2F4F4F;"></span>
+                <span class="color-name">Hunter green</span>
+              </div>
+
+              <div class="color-option product-tabs-data" value="aubergine">
+                <span class="color-swatch2" style="background-color: #4B0082;"></span>
+                <span class="color-name">Aubergine</span>
+              </div>
+              -->
+<!--
+              <div class="color-option product-tabs-data" value="bold-magenta">
+                <span class="color-swatch2" style="background-color: #B03060;"></span>
+                <span class="color-name">Bold magenta</span>
+              </div>
+              -->
+<!--
+              <div class="color-option product-tabs-data" value="twilight-blue">
+                <span class="color-swatch2" style="background-color: #1C2C4C;"></span>
+                <span class="color-name">Twilight blue</span>
+              </div>
+-->
+                  <div class="color-option product-tabs-data" value="navy">
+                    <span class="color-swatch2" style="background-color: #21244C;"></span>
+                    <span class="color-name">Navy</span>
+                  </div>
+                  <div class="color-option product-tabs-data" value="burgundy">
+                    <span class="color-swatch2" style="background-color: #800020"></span>
+                    <span class="color-name">Burgundy</span>
+                  </div>
+                  <div class="color-option product-tabs-data" value="shadow-gray">
+                    <span class="color-swatch2" style="background-color: #808080"></span>
+                    <span class="color-name">Shadow Gray</span>
+                  </div>
+                  <div class="color-option product-tabs-data" value="mint">
+                    <span class="color-swatch2" style="background-color: #3eb489"></span>
+                    <span class="color-name">Mint</span>
+                  </div>
+                 <div class="color-option product-tabs-data" value="bold-magenta">
+                    <span class="color-swatch2" style="background-color: #B03060;"></span>
+                    <span class="color-name">Bold magenta</span>
+                  </div>
+              <div class="color-option product-tabs-data" value="pistachio">
+                <span class="color-swatch2" style="background-color: #93c572;"></span>
+                <span class="color-name">Pistachio</span>
+              </div>
+              <div class="color-option product-tabs-data" value="steel-gray">
+                <span class="color-swatch2" style="background-color: #939799;"></span>
+                <span class="color-name">Steel Gray</span>
+              </div>
+
+              <div class="color-option product-tabs-data" value="black">
+                <span class="color-swatch2" style="background-color: #000000;"></span>
+                <span class="color-name">Black</span>
+              </div>
+
+              <div class="color-option product-tabs-data" value="cool-gray">
+                <span class="color-swatch2" style="background-color: #A4B0BE;"></span>
+                <span class="color-name">Cool gray</span>
+              </div>
+
+              <div class="color-option product-tabs-data" value="fern-green">
+                <span class="color-swatch2" style="background-color: #4B7B6E;"></span>
+                <span class="color-name">Fern green</span>
+              </div>
+
+              <div class="color-option product-tabs-data" value="royal-blue">
+                <span class="color-swatch2" style="background-color: #0052CC;"></span>
+                <span class="color-name">Royal blue</span>
+              </div>
+
+              <div class="color-option product-tabs-data" value="caribbean-blue">
+                <span class="color-swatch2" style="background-color: #1F5768;"></span>
+                <span class="color-name">Caribbean blue</span>
+              </div>
+
+              <div class="color-option product-tabs-data" value="blush">
+                <span class="color-swatch2" style="background-color: #B03060;"></span>
+                <span class="color-name">Blush</span>
+              </div>
+<!--
+              <div class="color-option product-tabs-data" value="dark-olive">
+                <span class="color-swatch2" style="background-color: 4E544B;"></span>
+                <span class="color-name">Dark Olive</span>
+              </div>
+
+              <div class="color-option product-tabs-data" value="power-mauve">
+                <span class="color-swatch2" style="background-color: #DB7093;"></span>
+                <span class="color-name">Power mauve</span>
+              </div>
+              -->
+<!--
+              <div class="color-option product-tabs-data" value="whitsundays-sand">
+                <span class="color-swatch2" style="background-color: #D2B48C;"></span>
+                <span class="color-name">Whitsundays sand</span>
+              </div>
+
+              <div class="color-option product-tabs-data" value="christmas">
+                <span class="color-swatch2" style="background-image: url(https://www.drwoofapparel.com.au/cdn/shop/t/64/assets/christmas_50x.png); background-color: christmas;"></span>
+                <span class="color-name">Christmas</span>
+              </div>
+-->
+            </div>
+          </div>
+        </div>
+        <hr>
+        <div class="mobile-filter-section">
+          <div class="filter-header">
+            <span>Size</span>
+            <span class="arrow-icons">
+              <i class="fas fa-chevron-down"></i>
+              <i class="fas fa-chevron-up"></i>
+            </span>
+          </div>
+          <div class="dropdown-content size-filter size">
+            <div class="flexer">
+              <label><input type="checkbox" value="XXS"> XXS</label>
+              <label><input type="checkbox" value="XS"> XS</label>
+              <label><input type="checkbox" value="S"> S</label>
+              <label><input type="checkbox" value="M"> M</label>
+              <label><input type="checkbox" value="L"> L</label>
+              <label><input type="checkbox" value="XL"> XL</label>
+              <label><input type="checkbox" value="XXL"> XXL</label>
+              <label><input type="checkbox" value="3XL"> 3XL</label>
+
+            </div>
+
+          </div>
+        </div>
+        <hr>
+
+
+        <div class="mobile-filter-section">
+          <div class="filter-header">
+            <span>Type</span>
+            <span class="arrow-icons">
+              <i class="fas fa-chevron-down"></i>
+              <i class="fas fa-chevron-up"></i>
+            </span>
+          </div>
+          <div class="dropdown-content category-links type-filter type">
+            <div class="flexer">
+              <label>
+                <input type="checkbox" value="scrub-tops">
+                Scrub Tops
+              </label>
+              <label>
+                <input type="checkbox" value="scrub-pants">
+                Scrub Pants
+              </label>
+              <label>
+                <input type="checkbox" value="printed-pattern-scrub-tops">
+                Printed Scrub Tops
+              </label>
+              <label>
+                <input type="checkbox" value="compression-socks">
+                Compression Socks
+              </label>
+              <label>
+                <input type="checkbox" value="scrub-caps">
+                Scrub Caps
+              </label>
+              <label>
+                <input type="checkbox" value="outerwear">
+                Outerwear
+              </label>
+              <label>
+                <input type="checkbox" value="underscrubs">
+                Underscrubs
+              </label>
+              <label>
+                <input type="checkbox" value="scrunchies">
+                Scrunchies
+              </label>
+              <label>
+                <input type="checkbox" value="sneakers">
+                Sneakers
+              </label>
+            </div>
+          </div>
+        </div>
+
+
+      </div> <!-- filter-wrapper -->
+    </div> <!-- mobile-filter -->
+    
+    <div class="activetags"></div>
+  </div> <!-- page-width -->
+<script>
+  const dropdowns = document.querySelectorAll('.dropdown');
+
+  dropdowns.forEach(dropdown => {
+      const menuItem = dropdown.querySelector('ul > li');
+      menuItem.addEventListener('click', (event) => {
+          event.stopPropagation();
+          closeAllDropdowns();
+          dropdown.classList.toggle('open');
+      });
+  });
+
+  function closeAllDropdowns() {
+      dropdowns.forEach(dropdown => {
+          dropdown.classList.remove('open');
+      });
+  }
+
+  document.addEventListener('click', (event) => {
+      if (!event.target.closest('.dropdown')) {
+          closeAllDropdowns();
+      }
+  });
+
+  $(document).ready(function(){
+// Check if screen is mobile (max-width: 480px)
+    if (window.matchMedia('(max-width: 480px)').matches) {
+        // Your existing mobile-only JavaScript
+        $(".filter-all").click(function(){
+          $(".mobile-filter").hide()
+        })
+        $(".filter-clear").click(function(){          
+          $(".clear-all").trigger("click")
+        })
+        $(".filter-closer").click(function(){
+          $(".mobile-filter").hide()
+        })
+
+        /*
+        $(".dropdown-content label").click(function(){
+         
+            
+            // Toggle between 'flex' and 'none' display styles
+            if ($(".dropdown-content").css("display") === "none") {
+                $(".dropdown-content").css("display", "flex");
+            } else {
+                $(".dropdown-content").css("display", "none");
+            }
+        });
+        
+        $(".dropdown-content div").click(function(){
+           
+            
+            // Toggle between 'flex' and 'none' display styles
+            if ($(".dropdown-content").css("display") === "none") {
+                $(".dropdown-content").css("display", "flex");
+            } else {
+                $(".dropdown-content").css("display", "none");
+            }
+        });
+*/
+$(".filter-button").click(function(){
+  $(".mobile-filter").show();
+})
+        
+
+    }
+});
+
+$(document).ready(function() {
+  // Make sure first section is open by default
+  $('.mobile-filter-section:nth-of-type(2)').find('.dropdown-content').hide();
+  $('.mobile-filter-section:nth-of-type(3)').find('.dropdown-content').hide();
+  $('.mobile-filter-section').first().addClass('active').find('.dropdown-content').show();
+  
+  $('.filter-header').on('click', function() {
+    const $section = $(this).parents('.mobile-filter-section');
+    const $content = $section.find('.dropdown-content');
+    const wasActive = $section.hasClass('active');
+    
+    // Close all sections
+    $('.mobile-filter-section').removeClass('active').not($section).find('.dropdown-content').hide();
+    
+    // Toggle clicked section
+    if (!wasActive) {
+      $section.addClass('active');
+      $content.slideDown();
+    } else {
+      $section.removeClass('active');
+      $content.slideUp();
+    }
+  });
+});
+$(document).ready(function() {
+    // Create filter tags container
+    if (!$('.active-filters').length) {
+        $('<div class="active-filters"></div>').insertAfter('.activetags');
+    }
+
+    // Add clear all button
+    const $clearAllBtn = $(`
+        <button class="filter-tag clear-all">
+            CLEAR ALL
+        </button>
+    `).hide();
+    $('.active-filters').prepend($clearAllBtn);
+
+    // Function to handle type checkbox changes
+    function handleTypeCheckboxChange($checkbox) {
+        const typeValue = $checkbox.val();
+        const $matchingProducts = $(`.grid__item.grid-product.${typeValue}`);
+        
+        // Reset only color selection and size checkboxes
+        $('.color-option').removeClass('tag--active');
+        $('.dropdown-content.size input[type="checkbox"]').prop('checked', false);
+        
+        // Update product visibility
+        updateProductVisibility();
+    }
+
+    // Main function to update product visibility
+    function updateProductVisibility() {
+        // Get active color (one with tag--active class)
+        const activeColor = $('.color-option.tag--active').attr('value');
+        
+        // Get checked filters by category
+        const checkedTypes = $('.dropdown-content.type input[type="checkbox"]:checked')
+            .map(function() {
+                return $(this).val();
+            })
+            .get();
+            
+        const checkedSizes = $('.dropdown-content.size input[type="checkbox"]:checked')
+            .map(function() {
+                return $(this).val();
+            })
+            .get();
+
+        // First hide all products
+        $('.grid__item.grid-product').hide();
+        
+        // Show products that match the filtering criteria
+        $('.grid__item.grid-product').each(function() {
+            const $item = $(this);
+            let matchesColor = true;
+            let matchesType = true;
+            let matchesSize = true;
+            
+            // Check color (if selected)
+            if (activeColor && !$item.hasClass(activeColor)) {
+                matchesColor = false;
+            }
+            
+            // Check types (OR condition)
+            if (checkedTypes.length > 0) {
+                matchesType = false; // Reset to false
+                // Item should match AT LEAST ONE selected type
+                checkedTypes.forEach(type => {
+                    if ($item.hasClass(type)) {
+                        matchesType = true;
+                    }
+                });
+            }
+            
+            // Check sizes (AND condition)
+            if (checkedSizes.length > 0) {
+                checkedSizes.forEach(size => {
+                    if (!$item.hasClass(size)) {
+                        matchesSize = false;
+                    }
+                });
+            }
+            
+            // Show item if it matches ALL conditions
+            if (matchesColor && matchesType && matchesSize) {
+                $item.show();
+            }
+        });
+
+        // Update filter tags after visibility update
+        updateFilterTags();
+    }
+
+    // Function to update filter tags
+    function updateFilterTags() {
+        // Clear existing filter tags except clear all button
+        $('.filter-tag:not(.clear-all)').remove();
+        
+        // Get active color
+        const $activeColor = $('.color-option.tag--active');
+        
+        // Get checked filters
+        const $checkedFilters = $('.dropdown-content input[type="checkbox"]:checked');
+        
+        // If no filters, hide clear all button
+        if (!$activeColor.length && !$checkedFilters.length) {
+            $clearAllBtn.hide();
+            return;
+        }
+
+        // Show clear all button if there are any filters
+        $clearAllBtn.show();
+
+        // Add color tag if active
+        if ($activeColor.length) {
+            const colorName = $activeColor.find('.color-name').text();
+            $(`<button class="filter-tag color-tag">
+                <span class="tag-dot" style="background-color: ${$activeColor.find('.color-swatch2').css('background-color')}"></span>
+                ${colorName}
+                <span class="remove-tag">×</span>
+            </button>`).appendTo('.active-filters');
+        }
+
+        // Add filter tags for checkboxes
+        $checkedFilters.each(function() {
+            const filterValue = $(this).val();
+            const filterType = $(this).closest('.dropdown-content').hasClass('type') ? 'type-tag' : 'size-tag';
+            $(`<button class="filter-tag ${filterType}">
+                ${filterValue}
+                <span class="remove-tag">×</span>
+            </button>`).appendTo('.active-filters');
+        });
+    }
+
+    // Handle removing individual filters
+    $(document).on('click', '.filter-tag:not(.clear-all)', function() {
+        const $tag = $(this);
+        if ($tag.hasClass('color-tag')) {
+            // Remove active color
+            $('.color-option.tag--active').removeClass('tag--active');
+        } else {
+            // Get filter value without the × symbol
+            const filterText = $tag.clone()
+                .children()
+                .remove()
+                .end()
+                .text()
+                .trim();
+            
+            // Uncheck corresponding checkbox
+            $(`.dropdown-content input[value="${filterText}"]`).prop('checked', false);
+        }
+        updateProductVisibility();
+    });
+
+    // Handle clear all
+    $(document).on('click', '.clear-all', function() {
+        // Clear color selection
+        $('.color-option.tag--active').removeClass('tag--active');
+        // Uncheck all checkboxes
+        $('.dropdown-content input[type="checkbox"]').prop('checked', false);
+        updateProductVisibility();
+    });
+
+    // Listen for color selection changes
+    $('.color-option').on('click', function() {
+        $('.color-option').removeClass('tag--active');
+        $(this).addClass('tag--active');
+        updateProductVisibility();
+    });
+
+    // Listen for checkbox changes
+    $('.dropdown-content.type input[type="checkbox"]').on('change', function() {
+        handleTypeCheckboxChange($(this));
+    });
+
+    $('.dropdown-content.size input[type="checkbox"]').on('change', function() {
+        updateProductVisibility();
+    });
+
+    // Initial call to set initial state
+    updateProductVisibility();
+});
+</script>
+
+<style>
+  .active-filters {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    padding: 0 0 10px;
+}
+@media only screen and (max-width:480px){
+  .active-filters {
+    margin-top:11px;
+  }
+  
+}
+.filter-tag {
+    display: inline-flex;
+    align-items: center;
+    padding: 5px 10px;
+    background: #f5f5f5;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 14px;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.filter-tag:hover {
+    background: #eee;
+}
+
+.filter-tag .tag-dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    margin-right: 6px;
+    display: inline-block;
+}
+
+.filter-tag .remove-tag {
+    margin-left: 6px;
+    font-size: 18px;
+    line-height: 1;
+}
+
+.clear-all {
+    background: #fff;
+    border: 1px solid #000;
+    color: #000;
+    font-weight: 500;
+}
+
+.clear-all:hover {
+    background: #000;
+    color: #fff;
+}
+</style>
+{% schema %}
+  {
+    "name": "Collection filter",
+    "max_blocks": 15,
+    "settings": [
+      {
+        "type": "select",
+        "id": "filter_type",
+        "label": "Filter mode",
+        "default": "groups",
+        "options": [
+          {
+            "value": "none",
+            "label": "Off"
+          }, {
+            "value": "dropdown",
+            "label": "All tag dropdown"
+          }, {
+            "value": "groups",
+            "label": "Tag groups"
+          }
+        ],
+        "info": "Add tag groups with the content area below"
+      }, {
+        "type": "checkbox",
+        "id": "tags_combine",
+        "label": "Enable tag combinations"
+      },
+      {
+        "type": "checkbox",
+        "id": "collection_title_enable",
+        "label": "Show collection title",
+        "default": true
+      },
+       {
+        "type": "checkbox",
+        "id": "collection_filter_enable",
+        "label": "Show filter options",
+        "default": true
+      },
+       {
+        "type": "checkbox",
+        "id": "collection_sort_enable",
+        "label": "Show sort options",
+        "default": true
+      }
+    ],
+    "blocks": [
+      {
+        "type": "tags_group",
+        "name": "Tag group",
+        "settings": [
+          {
+            "type": "text",
+            "id": "title",
+            "label": "Heading",
+            "default": "Tag Group"
+          }, {
+            "type": "textarea",
+            "id": "tag_list",
+            "label": "Tag list (one per line)",
+            "default": "First tag \nSecond tag \nThird tag",
+            "info": "Tags are case sensitive and must match your product tag exactly"
+          }
+        ]
+      }, {
+        "type": "color_group",
+        "name": "Color swatches",
+        "settings": [
+          {
+            "type": "text",
+            "id": "title",
+            "label": "Heading",
+            "default": "Color"
+          }, {
+            "type": "textarea",
+            "id": "tag_list",
+            "label": "Swatch list (one per line)",
+            "default": "Burgundy \nHeather grey \nGreen",
+            "info": "Products must be tagged with their color in order to appear here. Tags are case sensitive and must match your product tag exactly. Ex: 'Heather grey'. [Learn how to set up swatches](https://archetypethemes.co/blogs/impulse/how-do-i-set-up-color-swatch2es)."
+          }
+        ]
+      }
+    ],
+    "presets": [
+      {
+        "name": "Collection Filter",
+        "category": "Collections",
+        "settings": {
+          "filter_type": "groups",
+          "tags_combine": false,
+          "collection_title_enable": true,
+          "collection_filter_enable": true,
+          "collection_sort_enable": true
+        },
+        "blocks": [
+          {
+            "type": "tags_group",
+            "settings": {
+              "title": "Tag Group",
+              "tag_list": "First tag \nSecond tag \nThird tag"
+            }
+          },
+          {
+            "type": "color_group",
+            "settings": {
+              "title": "Color",
+              "tag_list": "Burgundy \nHeather grey \nGreen"
+            }
+          }
+        ]
+      }
+    ]
+  }
+{% endschema %}

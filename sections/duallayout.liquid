@@ -1,0 +1,172 @@
+<section class="dualanimated-{{ section.id }}">
+    <div class="page-width">
+        <div class="flexer">
+            {% if section.settings.image_left %}
+                <div class="fullduo imageduo">
+                    {% if section.settings.videobig %}
+                        <video class="fullwidth-video lazyload" autoplay muted loop controls preload="none" poster="{{ section.settings.video_poster | img_url: 'master' }}">
+                            <source data-src="{{ section.settings.videobig | file_url }}" type="video/mp4">
+                            Your browser does not support the video tag.
+                        </video>
+                    {% else %}
+                        <img data-src="{{ section.settings.imagebig  | img_url: 'master' }}" class="fullwidth-img lazyload" data-aos="fade-right" alt="{{ section.settings.contenttitle }}">
+                    {% endif %}
+                </div>
+                <div class="fullduo contentduo">
+                    <div class="dualcontent">
+                        <p class="dualtime"><span class="underliner">{{ section.settings.contenttime }}</span></p>
+                        <h4 class="dualtitle">{{ section.settings.contenttitle }}</h4>
+                        {% if section.settings.contenttext1 != blank %}
+                            <p>{{ section.settings.contenttext1 }}</p>
+                        {% endif %}
+                    </div>
+                </div>
+            {% else %}
+                <div class="fullduo contentduo">
+                    <div class="dualcontent">
+                        <p class="dualtime"><span class="underliner">{{ section.settings.contenttime }}</span></p>
+                        <h4 class="dualtitle">{{ section.settings.contenttitle }}</h4>
+                        {% if section.settings.contenttext1 != blank %}
+                            <p>{{ section.settings.contenttext1 }}</p>
+                        {% endif %}
+                    </div>
+                </div>
+                <div class="fullduo imageduo">
+                    {% if section.settings.videobig %}
+                        <video class="fullwidth-video lazyload" autoplay muted loop controls preload="none" poster="{{ section.settings.video_poster | img_url: 'master' }}">
+                            <source data-src="{{ section.settings.videobig | file_url }}" type="video/mp4">
+                            Your browser does not support the video tag.
+                        </video>
+                    {% else %}
+                        <img data-src="{{ section.settings.imagebig | img_url: 'master' }}" class="fullwidth-img lazyload" data-aos="fade-left" alt="{{ section.settings.contenttitle }}">
+                    {% endif %}
+                </div>
+            {% endif %}
+        </div>
+    </div>
+</section>
+
+
+<style>
+    .dualanimated-{{ section.id }} {
+        padding-top: 40px;
+        padding-bottom: 40px;
+        {% if section.settings.background_color %}
+            background: {{ section.settings.background_color }};
+        {% else %}
+            background: #fff8f5;
+        {% endif %}
+    }
+
+    .dualanimated-{{ section.id }} .fullduo {
+        width: 50%;
+        flex: 0 0 50%;
+        display: flex;
+        align-items: center;
+        flex-wrap: wrap;
+        justify-content: flex-start;
+    }
+
+    .dualanimated-{{ section.id }} .dualcontent {
+        padding: 20px 50px;
+    }
+
+    .dualanimated-{{ section.id }} .fullwidth-img,
+    .dualanimated-{{ section.id }} .fullwidth-video {
+        width: 100%;
+    }
+
+    /* Lazyload fade-in effect */
+    .lazyload {
+        opacity: 0;
+        transition: opacity 300ms ease-in-out;
+    }
+
+    .lazyloaded {
+        opacity: 1;
+    }
+
+    @media only screen and (max-width: 480px) {
+        .dualanimated-{{ section.id }} .fullduo {
+            width: 100%;
+            flex: 0 0 100%;
+        }
+        .dualanimated-{{ section.id }} .imageduo {
+            order: 1;
+        }
+        .dualanimated-{{ section.id }} .contentduo {
+            order: 2;
+        }
+    }
+</style>
+
+<script>
+  // Check if LazyLoad.js is already loaded
+  if (typeof LazyLoad === 'undefined') {
+      var script = document.createElement('script');
+      script.src = "https://cdnjs.cloudflare.com/ajax/libs/vanilla-lazyload/17.5.1/lazyload.min.js";
+      document.head.appendChild(script);
+      
+      script.onload = function() {
+          // Initialize LazyLoad after script loads
+          var lazyLoadInstance = new LazyLoad({
+              elements_selector: ".lazyload"
+          });
+      };
+  } else {
+      // Initialize LazyLoad immediately if the script is already loaded
+      var lazyLoadInstance = new LazyLoad({
+          elements_selector: ".lazyload"
+      });
+  }
+</script>
+
+{% schema %}
+    {
+      "name": "Dual Section",
+      "tag": "section",
+      "class": "slideshow",
+      "settings": [        
+        {
+            "type": "checkbox",
+            "id": "image_left",
+            "label": "Show image to the left"
+        },
+        {
+            "type": "color",
+            "id": "background_color",
+            "label": "Background color",
+            "default": "#ffffff"
+        },
+        {
+            "type": "image_picker",
+            "id": "imagebig",
+            "label": "Featured image"
+        },
+        {
+            "type": "video",
+            "id": "videobig",
+            "label": "Featured video (MP4 only)"
+        },
+        {
+            "type": "image_picker",
+            "id": "video_poster",
+            "label": "Video Poster (Image shown before video loads)"
+        },  
+        {
+            "type": "text",
+            "id": "contenttitle",
+            "label": "Content Title"
+        },
+        {
+            "type": "textarea",
+            "id": "contenttext1",
+            "label": "Ordinary Text"
+        }
+      ],
+      "presets": [{
+        "name": "Dual Section",
+        "category": "Collection"
+      }]
+    }
+{% endschema %}

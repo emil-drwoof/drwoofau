@@ -1,0 +1,1428 @@
+{% comment %}
+  Product Page Snippet
+  Usage: {% render 'product-page', product: product %}
+{% endcomment %}
+
+<div class="product-page">
+  <!-- Product Name -->
+  <div class="product-name">
+    <h1 class="h1 product-single__title">{{ product.title }}</h1>
+  </div>
+
+  <!-- Reviews Section -->
+   {% comment %}
+            <div class='jdgm-widget jdgm-preview-badge' data-id='{{ product.id }}'> 
+              {{ product.metafields.judgeme.badge }} 
+            </div> 
+{% endcomment %}
+  <!-- Dynamic Pricing -->
+  <div class="product-price">
+    {% if product.compare_at_price > product.price %}
+      <span class="original-price">
+          {% if cart.currency.iso_code == 'SGD' %}
+            {{ product.compare_at_price | money_with_currency }}
+          {% elsif cart.currency.iso_code == 'NZD' %}
+            {{ product.compare_at_price | money_with_currency }}
+          {% else %}
+            {{ product.compare_at_price | money }}
+          {% endif %}
+      </span>
+      <span class="sale-price">
+          {% if cart.currency.iso_code == 'SGD' %}
+            {{ product.price | money_with_currency }}
+          {% elsif cart.currency.iso_code == 'NZD' %}
+            {{ product.price | money_with_currency }}
+          {% else %}
+            {{ product.price | money }}
+          {% endif %}         
+        </span>
+      {% assign discount_percentage = product.compare_at_price | minus: product.price | times: 100 | divided_by: product.compare_at_price %}
+      <span class="discount-badge">SAVE {{ discount_percentage }}%</span>
+    {% else %}
+          {% if cart.currency.iso_code == 'SGD' %}
+           <span class="current-price">{{ product.price | money_with_currency }}</span>
+          {% elsif cart.currency.iso_code == 'NZD' %}
+            <span class="current-price">{{ product.price | money_with_currency }}</span>
+          {% else %}
+            <span class="current-price">{{ product.price | money }}</span>
+          {% endif %}
+    {% endif %}
+         {% if cart.currency.iso_code == 'SGD' %}
+            {% if product.price >= 12600 %}    
+              <span class="freeshipping">FREE Shipping</span>
+              {% else %}
+              <span class="freeshipping" style="display:none">FREE Shipping</span>
+            {% endif %}
+          {% elsif cart.currency.iso_code == 'NZD' %}
+            {% if product.price >= 15600 %}    
+              <span class="freeshipping">FREE Shipping</span>
+              {% else %}
+              <span class="freeshipping" style="display:none">FREE Shipping</span>
+            {% endif %}
+          {% else %}
+            {% if product.price >= 14500 %}    
+              <span class="freeshipping">FREE Shipping</span>
+              {% else %}
+              <span class="freeshipping" style="display:none">FREE Shipping</span>
+            {% endif %}
+          {% endif %}
+    
+    
+  </div>
+
+  
+  <!-- Sign Up Section -->
+  <div class="signup-section" style="display:none">
+    <div class="signup-content">
+      <div class="signup-icon">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+          <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
+        </svg>
+      </div>
+      <span class="signup-text">Sign up for 20% off (₱870)</span>
+      <button class="claim-offer-btn">CLAIM OFFER</button>
+    </div>
+  </div>
+
+  <!-- Curated Packs Buttons -->
+  <div class="curated-packs">
+    <button class="pack-btn cactive" data-pack="curated">Curated Packs</button>
+    <a href="https://www.drwoofapparel.com.au/products/bamboo-black-compression-socks"><button class="pack-btn" data-pack="singles">Build a Pack / Singles</button></a>    
+  </div>
+
+  <!-- Dynamic Variant Options -->
+  {% for option in product.options_with_values %}
+    <div class="variant-option">
+      <label class="option-label">
+        {{ option.name }}: 
+        <span class="selected-value">Choose your {{ option.name | downcase }}.</span>
+        {% if option.name == 'Size' %}          
+          <a href="https://www.drwoofapparel.com.au/pages/compression-socks-sizing-chart" class="size-chart-link">📏 Size Chart</a>
+        {% endif %}
+      </label>
+      
+      <div class="option-values">
+        {% for value in option.values %}
+          <button class="option-btn" 
+                  data-option="{{ option.name }}" 
+                  data-value="{{ value }}">
+            {{ value }}
+          </button>
+        {% endfor %}
+      </div>
+    </div>
+  {% endfor %}
+
+  <!-- Colors Section (Curated Products) -->
+  <div class="colors-section">
+    <label class="option-label">Design: 
+      <span class="selected-colors">
+        {% assign curated_collection = collections['curated'] %}
+        {% if curated_collection.products.size > 0 %}
+          {{ curated_collection.products.first.title }}
+        {% else %}
+          Select a product
+        {% endif %}
+      </span>
+    </label>
+    
+    <div class="color-options">
+      {% assign curated_collection = collections['curated'] %}
+      {% if curated_collection.products.size > 0 %}
+        {% for curated_product in curated_collection.products limit: 12 %}
+          {% assign product_title_lower = curated_product.title | downcase %}
+          {% assign pack_type = '' %}
+          {% if product_title_lower contains '6 pack' or product_title_lower contains '6-pack' or product_title_lower contains '6pack' or product_title_lower contains 'six pack' or product_title_lower contains 'six-pack' %}
+            {% assign pack_type = '6-pack' %}
+          {% elsif product_title_lower contains '4 pack' or product_title_lower contains '4-pack' or product_title_lower contains '4pack' or product_title_lower contains 'four pack' or product_title_lower contains 'four-pack' %}
+            {% assign pack_type = '4-pack' %}
+          {% endif %}
+          
+          <a href="{{ curated_product.url }}" class="color-option-link">
+            <div class="color-option{% if curated_product.handle == product.handle %} current-product{% endif %}" 
+                 data-color="{{ curated_product.handle }}"
+                 data-product-id="{{ curated_product.id }}"
+                 data-product-title="{{ curated_product.title | escape }}"
+                 data-product-tags="{{ curated_product.tags | join: ',' | escape }}"
+                 data-pack-type="{{ pack_type }}">
+              {% if curated_product.featured_image %}
+                <img src="{{ curated_product.featured_image | img_url: '120x120' }}" 
+                     alt="{{ curated_product.title | escape }}" 
+                     class="color-preview">
+              {% else %}
+                <div class="color-preview-placeholder">
+                  {{ curated_product.title | truncate: 2, '' }}
+                </div>
+              {% endif %}
+              <div class="product-tags">
+                {% for tag in curated_product.tags limit: 2 %}
+                  <span class="tag">{{ tag }}</span>
+                {% endfor %}
+              </div>
+            </div>
+          </a>
+        {% endfor %}
+      {% else %}
+        <!-- Fallback if curated collection is empty -->
+        <div class="color-option selected" data-color="fallback">
+          <div class="color-preview-placeholder">No Products</div>
+        </div>
+      {% endif %}
+    </div>
+  </div>
+
+  <!-- Pack Quantity Section -->
+  <div class="pack-quantity">
+    <label class="option-label" style="display:none;">Pack Quantity: <span class="quantity-number">2</span></label>
+    
+    <div class="quantity-options">
+      <div class="quantity-option cactive">
+        <span class="quantity-badge best-deal">BEST DEAL</span>
+        <div class="quantity-details">
+          <span class="quantity-title">6-Pack</span>
+          <span class="packprice">
+          {% if cart.currency.iso_code == 'SGD' %}
+            $21.86 SGD/pair + FREE shipping
+          {% elsif cart.currency.iso_code == 'NZD' %}
+            $28.31 NZD/pair + FREE shipping
+          {% else %}
+            $24.43/pair + FREE shipping
+          {% endif %}  
+          </span>
+        </div>
+      </div>
+      
+      <div class="quantity-option">
+        <div class="quantity-details">
+          <span class="quantity-title">4-Pack</span>
+          <span class="packprice">
+          {% if cart.currency.iso_code == 'SGD' %}
+            $20.40 SGD/pair
+          {% elsif cart.currency.iso_code == 'NZD' %}
+            $26.42 NZD/pair
+          {% else %}
+            $26.18/pair
+          {% endif %}  
+        </span>
+          
+        </div>
+      </div>
+      
+    </div>
+  </div>
+
+  <!-- Quantity Selector -->
+  <div class="quantity-selector" style="display:none;">
+    <select id="quantity" name="quantity">
+      {% for i in (1..10) %}
+        <option value="{{ i }}" {% if i == 1 %}selected{% endif %}>{{ i }}</option>
+      {% endfor %}
+    </select>
+  </div>
+
+  <!-- Add to Cart Button -->
+  <div class="greenmark">
+    <button class="add-to-cart-btn" onclick="addToCart()">
+      Select A Size
+    </button>
+    <div class="ugs_container" style="margin-top:20px;">
+                            <div class="video-gallery">
+                              <div class="video-container zero1">
+                                <video class="video" src="https://cdn.shopify.com/videos/c/o/v/588a4bf270f34609a6a5cf9449f76b96.mp4" autoplay="" muted="" loop="" playsinline="" preload="metadata"></video>
+                                  <span>Why nurses should wear compression socks</span>
+                              </div>
+                              <div class="video-container zero2">
+                                  <video class="video" src="https://cdn.shopify.com/videos/c/o/v/6d2ffd6bfccb45dba2325f93a4992dfc.mp4" autoplay="" muted="" loop="" playsinline="" preload="metadata"></video>
+                                  <span>How To Wear Compression Socks</span>
+                              </div>
+                              <div class="video-container zero3">
+                                <video class="video" src="https://cdn.shopify.com/videos/c/o/v/9ea0f4b08fba42b0a3628acb3ccf9c65.mp4" autoplay="" muted="" loop="" playsinline="" preload="metadata"></video>
+                                  
+                                  <span>Make sure your day off is actually a day off</span>
+                              </div>
+                              <!-- 
+                              <div class="video-container zero4">
+                                  <video class="video" src="https://cdn.shopify.com/videos/c/o/v/c5fb46949ef64a199884f1995b514bfc.mp4" autoplay muted loop playsinline preload="metadata"></video>
+                              </div>
+                              -->
+                            </div>
+                          </div>
+                          
+                      <div class="main-icon-cont" style="margin-top:-19px;padding:5px 0px 20px;" actualheight="118.453px" actualwidth="462px" actualmaxheight="none" actualmaxwidth="none" actualminheight="0px" actualminwidth="0px" windowheight="611">
+                        <div class="preorder-text" style="padding: 0px 20px 12px; margin-bottom: 12px; display: none;" actualheight="auto" actualwidth="auto" actualmaxheight="none" actualmaxwidth="none" actualminheight="0px" actualminwidth="0px" windowheight="611">
+                           <p>Pre-order now to secure your preferred design. Your entire order will ship once this item becomes available.</p>
+                           <p style="margin-top:10px;color:red;">**We're expecting to restock the color you picked on <span class="preorderdate">September 10</span>. Thanks for your patience!**</p>
+                        </div>
+                        <div class="sub-icon-cont" actualheight="108.453px" actualwidth="153.984px" actualmaxheight="none" actualmaxwidth="none" actualminheight="auto" actualminwidth="auto" windowheight="611">
+                           <div class="sub-icon-cont1" actualheight="71.4531px" actualwidth="90px" actualmaxheight="none" actualmaxwidth="90px" actualminheight="0px" actualminwidth="0px" windowheight="611">
+                            {% if section.settings.img1 %}
+                              <img alt="Dr.Woof" src="{{ section.settings.img1 | img_url: 'master' }}" alt="Untitled_design_2" style="max-width:80px;" actualheight="66.6562px" actualwidth="80px" actualmaxheight="none" actualmaxwidth="80px" actualminheight="0px" actualminwidth="0px" windowheight="611">
+                              {% else %}
+                              <img src="//www.drwoofapparel.com.au/cdn/shop/files/Untitled_design_2_a0e5c991-5d95-460f-9590-276a5fd6565b_90x75.png?v=1641224575" alt="Untitled_design_2" style="max-width:80px;" actualheight="66.6562px" actualwidth="80px" actualmaxheight="none" actualmaxwidth="80px" actualminheight="0px" actualminwidth="0px" windowheight="611">
+                            {% endif %}
+                              
+                           </div>
+                           <div class="sub-icon-cont2" actualheight="32px" actualwidth="133.984px" actualmaxheight="none" actualmaxwidth="none" actualminheight="0px" actualminwidth="0px" windowheight="611">
+                              <p style="font-size:0.77em;">
+                              {% if section.settings.txt %}
+                                {{ section.settings.txt }}
+                                {% else %}
+                                Free shipping over $100 🇦🇺
+                              {% endif %}
+                                </p>
+                           </div>
+                        </div>
+                        <div class="sub-icon-cont" actualheight="108.453px" actualwidth="153.984px" actualmaxheight="none" actualmaxwidth="none" actualminheight="auto" actualminwidth="auto" windowheight="611">
+                           <div class="sub-icon-cont1" actualheight="71.4531px" actualwidth="90px" actualmaxheight="none" actualmaxwidth="90px" actualminheight="0px" actualminwidth="0px" windowheight="611">                            
+                            {% if section.settings.img2 %}
+                            <img src="{{ section.settings.img2 | img_url: 'master' }}" alt="Untitled_design_2" style="max-width:80px;" actualheight="66.6562px" actualwidth="80px" actualmaxheight="none" actualmaxwidth="80px" actualminheight="0px" actualminwidth="0px" windowheight="611">
+                            {% else %}
+                            <img src="//www.drwoofapparel.com.au/cdn/shop/files/Untitled_design_3_fe7d88e9-de18-4dbc-8a2b-5388f6c269e9_90x75.png?v=1673564143" alt="Ships from Sydney, AU" style="max-width:80px;" actualheight="66.6562px" actualwidth="80px" actualmaxheight="none" actualmaxwidth="80px" actualminheight="0px" actualminwidth="0px" windowheight="611">
+                          {% endif %}
+                              
+                           </div>
+                           <div class="sub-icon-cont2" actualheight="16px" actualwidth="133.984px" actualmaxheight="none" actualmaxwidth="none" actualminheight="0px" actualminwidth="0px" windowheight="611">
+                              <p style="font-size:0.77em;">
+                              {% if section.settings.txt_ %}
+                                {{ section.settings.txt_ }}
+                                {% else %}
+                                Ships from Sydney, AU
+                              {% endif %}</p>
+                           </div>
+                        </div>
+                        <div class="sub-icon-cont" actualheight="108.453px" actualwidth="153.984px" actualmaxheight="none" actualmaxwidth="none" actualminheight="auto" actualminwidth="auto" windowheight="611">
+                           <div class="sub-icon-cont1" actualheight="71.4531px" actualwidth="90px" actualmaxheight="none" actualmaxwidth="90px" actualminheight="0px" actualminwidth="0px" windowheight="611">
+                            {% if section.settings.img3 %}
+                              <img src="{{ section.settings.img3 | img_url: 'master' }}" alt="Untitled_design_2" style="max-width:80px;" actualheight="66.6562px" actualwidth="80px" actualmaxheight="none" actualmaxwidth="80px" actualminheight="0px" actualminwidth="0px" windowheight="611">
+                              {% else %}
+                              <img src="//www.drwoofapparel.com.au/cdn/shop/files/Untitled_design_1_a36d0b5e-4591-400b-b7c9-9897261f312c_90x75.png?v=1673564168" alt="60-day hassle-free returns" style="max-width:80px;" actualheight="66.6562px" actualwidth="80px" actualmaxheight="none" actualmaxwidth="80px" actualminheight="0px" actualminwidth="0px" windowheight="611">
+                            {% endif %}
+                              
+                           </div>
+                           <div class="sub-icon-cont2" actualheight="32px" actualwidth="133.984px" actualmaxheight="none" actualmaxwidth="none" actualminheight="0px" actualminwidth="0px" windowheight="611">
+                              <p style="font-size:0.77em;">
+                                {% if section.settings.txt1 %}
+                                  {{ section.settings.txt1 }}
+                                  {% else %}
+                                60-day hassle-free returns                                
+                              {% endif %}
+                              </p>
+                           </div>
+                        </div>
+                     </div>
+  </div>
+
+</div>
+      
+{% assign curated_products_json = "[" %}
+{% assign comma = "" %}
+
+{% if product.metafields.sf_curated.product_1 %}
+  {% assign curated_product = all_products[product.metafields.sf_curated.product_1] %}
+  {% for variant in curated_product.variants %}
+    {% capture variant_json %}
+      {{ comma }}{
+        "product_handle": "{{ product.metafields.sf_curated.product_1 }}",
+        "variant_id": {{ variant.id }},
+        "variant_title": "{{ variant.title | escape }}",
+        "available": {{ variant.available | json }},
+        "inventory_quantity": {{ variant.inventory_quantity }}
+      }
+    {% endcapture %}
+    {% assign curated_products_json = curated_products_json | append: variant_json %}
+    {% assign comma = "," %}
+  {% endfor %}
+{% endif %}
+
+{% if product.metafields.sf_curated.product_2 %}
+  {% assign curated_product = all_products[product.metafields.sf_curated.product_2] %}
+  {% for variant in curated_product.variants %}
+    {% capture variant_json %}
+      {{ comma }}{
+        "product_handle": "{{ product.metafields.sf_curated.product_2 }}",
+        "variant_id": {{ variant.id }},
+        "variant_title": "{{ variant.title | escape }}",
+        "available": {{ variant.available | json }},
+        "inventory_quantity": {{ variant.inventory_quantity }}
+      }
+    {% endcapture %}
+    {% assign curated_products_json = curated_products_json | append: variant_json %}
+    {% assign comma = "," %}
+  {% endfor %}
+{% endif %}
+
+{% if product.metafields.sf_curated.product_3 %}
+  {% assign curated_product = all_products[product.metafields.sf_curated.product_3] %}
+  {% for variant in curated_product.variants %}
+    {% capture variant_json %}
+      {{ comma }}{
+        "product_handle": "{{ product.metafields.sf_curated.product_3 }}",
+        "variant_id": {{ variant.id }},
+        "variant_title": "{{ variant.title | escape }}",
+        "available": {{ variant.available | json }},
+        "inventory_quantity": {{ variant.inventory_quantity }}
+      }
+    {% endcapture %}
+    {% assign curated_products_json = curated_products_json | append: variant_json %}
+    {% assign comma = "," %}
+  {% endfor %}
+{% endif %}
+
+{% if product.metafields.sf_curated.product_4 %}
+  {% assign curated_product = all_products[product.metafields.sf_curated.product_4] %}
+  {% for variant in curated_product.variants %}
+    {% capture variant_json %}
+      {{ comma }}{
+        "product_handle": "{{ product.metafields.sf_curated.product_4 }}",
+        "variant_id": {{ variant.id }},
+        "variant_title": "{{ variant.title | escape }}",
+        "available": {{ variant.available | json }},
+        "inventory_quantity": {{ variant.inventory_quantity }}
+      }
+    {% endcapture %}
+    {% assign curated_products_json = curated_products_json | append: variant_json %}
+    {% assign comma = "," %}
+  {% endfor %}
+{% endif %}
+
+{% if product.metafields.sf_curated.product_5 %}
+  {% assign curated_product = all_products[product.metafields.sf_curated.product_5] %}
+  {% for variant in curated_product.variants %}
+    {% capture variant_json %}
+      {{ comma }}{
+        "product_handle": "{{ product.metafields.sf_curated.product_5 }}",
+        "variant_id": {{ variant.id }},
+        "variant_title": "{{ variant.title | escape }}",
+        "available": {{ variant.available | json }},
+        "inventory_quantity": {{ variant.inventory_quantity }}
+      }
+    {% endcapture %}
+    {% assign curated_products_json = curated_products_json | append: variant_json %}
+    {% assign comma = "," %}
+  {% endfor %}
+{% endif %}
+
+{% if product.metafields.sf_curated.product_6 %}
+  {% assign curated_product = all_products[product.metafields.sf_curated.product_6] %}
+  {% for variant in curated_product.variants %}
+    {% capture variant_json %}
+      {{ comma }}{
+        "product_handle": "{{ product.metafields.sf_curated.product_6 }}",
+        "variant_id": {{ variant.id }},
+        "variant_title": "{{ variant.title | escape }}",
+        "available": {{ variant.available | json }},
+        "inventory_quantity": {{ variant.inventory_quantity }}
+      }
+    {% endcapture %}
+    {% assign curated_products_json = curated_products_json | append: variant_json %}
+    {% assign comma = "," %}
+  {% endfor %}
+{% endif %}
+
+{% assign curated_products_json = curated_products_json | append: "]" %}
+
+{% comment %}
+  Build curated product info for availability checking
+  Only check products that have metafield values (not empty)
+{% endcomment %}
+{% assign curated_product_info = "[" %}
+{% assign comma = "" %}
+
+{% for i in (1..6) %}
+  {% assign metafield_key = 'product_' | append: i %}
+  {% assign metafield_value = product.metafields.sf_curated[metafield_key] %}
+  {% if metafield_value != blank and metafield_value != empty %}
+    {% assign curated_product = all_products[metafield_value] %}
+    {% if curated_product %}
+      {% capture product_info %}
+        {{ comma }}{
+          "handle": "{{ metafield_value }}",
+          "available": {{ curated_product.available | json }},
+          "id": {{ curated_product.id }},
+          "exists": true
+        }
+      {% endcapture %}
+      {% assign curated_product_info = curated_product_info | append: product_info %}
+      {% assign comma = "," %}
+    {% else %}
+      {% comment %}Product handle exists but product not found{% endcomment %}
+      {% capture product_info %}
+        {{ comma }}{
+          "handle": "{{ metafield_value }}",
+          "available": false,
+          "id": null,
+          "exists": false
+        }
+      {% endcapture %}
+      {% assign curated_product_info = curated_product_info | append: product_info %}
+      {% assign comma = "," %}
+    {% endif %}
+  {% endif %}
+{% endfor %}
+
+{% assign curated_product_info = curated_product_info | append: "]" %}
+
+<script>
+  // Store product data globally for easy access
+  window.productVariants = {{ product.variants | json }};
+  window.productOptions = {{ product.options | json }};
+  var curatedVariants = {{ curated_products_json }};
+  var curatedProductInfo = {{ curated_product_info }};
+  console.log('Product Variants:', window.productVariants);
+  console.log('Product Options:', window.productOptions);
+  console.log('Curated Variants:', curatedVariants);
+  console.log('Curated Product Info:', curatedProductInfo);
+</script>
+
+          <style>
+          .ugs_container{
+              margin-top: 0px;
+              margin-bottom:20px;
+          }
+          {% if section.settings.abtestnoicons %}
+            .ugs_container{
+                margin-top: -2px;
+            }
+          {% endif %}
+          
+          .ugs_container span{
+            font-size: 11px;
+            font-weight: 800;
+          }
+          
+          .ugs_container .video-gallery {
+              display: flex;
+              gap: 10px;
+          }
+          
+          .ugs_container .video-container {
+              flex: 1;
+              overflow: hidden;
+              position: relative;
+          }
+          
+          .ugs_container .video {
+              width: 100%;
+              height: auto;
+              transition: transform 0.3s ease-in-out;
+              object-fit: cover;
+          }
+          
+          .ugs_container .video-container:hover {
+              transform: scale(1.05);
+              cursor:pointer;
+          }
+          </style>
+
+
+<style>
+  .packprice{
+    font-size:12px;
+  }
+.product-page {
+  max-width: 480px;
+  margin: 0 auto;
+  padding: 0;
+
+}
+.greenmark {
+    margin-top: 20px;
+    padding: 10px !important;
+    background: #e0ede9;
+}
+span.freeshipping {
+    background: #888;
+    COLOR: #FFF;
+    PADDING: 4px 8px;
+    font-size: 12px;
+    font-weight: 800;
+    border-radius: 4px;
+}
+.product-name h1 {
+
+}
+
+.product-reviews {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 16px;
+}
+
+.stars {
+  display: flex;
+  gap: 2px;
+  color: #ffa500;
+}
+
+.review-count {
+  font-size: 14px;
+  color: #666;
+}
+
+.product-price {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 16px;
+}
+
+.original-price {
+  text-decoration: line-through;
+  color: #999;
+  font-size: 20px;
+}
+
+.sale-price, .current-price {
+  font-size: 20px;
+  //font-weight: 600;
+  color: #000;
+}
+
+.discount-badge {
+  background: #dc3545;
+  color: white;
+  padding: 4px 8px;
+  border-radius: 4px;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.signup-section {
+  background: #f0f9ff;
+  border: 1px solid #0ea5e9;
+  border-radius: 8px;
+  padding: 12px;
+  margin-bottom: 20px;
+}
+
+.signup-content {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.signup-icon {
+  color: #059669;
+}
+
+.signup-text {
+  flex: 1;
+  font-size: 14px;
+  color: #000;
+}
+
+.claim-offer-btn {
+  background: #000;
+  color: white;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 4px;
+  font-size: 12px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.curated-packs {
+  display: flex;
+  gap: 2px;
+  margin-bottom: 12px;
+  background: #f8f9fa;
+  border-radius: 8px;
+  padding: 4px;
+}
+.curated-packs a{
+  flex: 0 0 50%;
+}
+.pack-btn {
+  flex: 1;
+  width:100%;
+  background: transparent;
+  border: 1px solid #ccc;
+  padding: 12px 16px;
+  border-radius: 6px;
+  font-size: 14px;
+  cursor: pointer;
+  transition: all 0.2s;
+  
+}
+
+.pack-btn.cactive {
+  background: #000;
+  color: white;
+}
+
+.variant-option {
+  margin-bottom: 20px;
+}
+
+.option-label {
+  display: block;
+  font-size: 14px;
+  font-weight: 500;
+  margin-bottom: 8px;
+  color: #000;
+}
+
+.selected-value {
+  font-weight: normal;
+  color: #666;
+}
+
+.size-chart-link {
+  color: #0ea5e9;
+  text-decoration: none;
+  font-size: 12px;
+  margin-left: 8px;
+}
+
+.option-values {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.option-btn {
+  background: white;
+  border: 1px solid #ddd;
+  padding: 12px 20px;
+  border-radius: 6px;
+  font-size: 14px;
+  cursor: pointer;
+  transition: all 0.2s;
+  min-width: 60px;
+}
+
+.option-btn:hover, .option-btn.selected {
+  border-color: #000;
+  background: #f8f9fa;
+}
+
+.colors-section {
+  margin-bottom: 20px;
+}
+
+.selected-colors {
+  font-weight: normal;
+  color: #666;
+}
+
+.color-options {
+  display: flex;
+  gap: 8px;
+  margin-top: 8px;
+  overflow-x:auto;
+  width:100%;
+}
+
+.color-option-link {
+  text-decoration: none;
+  color: inherit;
+}
+
+.color-option {
+  width: 80px;
+  height: auto;
+  border: 2px solid #ddd;
+  border-radius: 8px;
+  overflow: hidden;
+  cursor: pointer;
+  transition: all 0.2s;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+}
+
+.color-option.selected {
+  border-color: #000;
+}
+
+.color-option.current-product {
+  border-color: #000;
+  background: #f8fff9;
+}
+
+.color-option.current-product .tag {
+  background: #000;
+  color: white;
+}
+
+.color-option.hidden {
+  display: none;
+}
+
+.color-preview {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+  display: block;
+}
+
+.color-preview-placeholder {
+  width: 100%;
+  height: 70px;
+  background: #f8f9fa;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 12px;
+  color: #666;
+  font-weight: 600;
+}
+
+.product-tags {
+  padding: 4px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2px;
+  min-height: 30px;
+  align-items: flex-start;
+  display:none;
+}
+
+.tag {
+  background: #e9ecef;
+  color: #495057;
+  font-size: 8px;
+  padding: 1px 4px;
+  border-radius: 2px;
+  font-weight: 500;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 35px;
+}
+
+.color-option.selected .tag {
+  background: #000;
+  color: white;
+}
+
+.pack-quantity {
+  margin-bottom: 20px;
+}
+
+.quantity-number {
+  font-weight: normal;
+  color: #666;
+}
+
+.quantity-options {
+  display: flex;
+  gap: 8px;
+  margin-top: 8px;
+}
+
+.quantity-option {
+  flex: 1;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 12px;
+  cursor: pointer;
+  transition: all 0.2s;
+  position: relative;
+}
+
+.quantity-option.cactive {
+  background: #000;
+  color: white;
+}
+
+.quantity-badge {
+  position: absolute;
+  top: -8px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #059669;
+  color: white;
+  font-size: 10px;
+  padding: 2px 6px;
+  border-radius: 4px;
+  font-weight: 600;
+}
+
+.quantity-details {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+}
+
+.quantity-title {
+  font-weight: 600;
+  font-size: 14px;
+}
+
+.quantity-price {
+  font-size: 12px;
+  color: #666;
+}
+
+.quantity-option.cactive .quantity-price {
+  color: #ccc;
+}
+
+.quantity-selector {
+  margin-bottom: 16px;
+}
+
+.quantity-selector select {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  font-size: 14px;
+  background: white;
+}
+
+.add-to-cart-btn {
+  width: 100%;
+  background: #6c757d;
+  color: white;
+  border: none;
+  padding: 16px;
+  border-radius: 6px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.add-to-cart-btn:hover {
+  background: #5a6268;
+}
+
+.add-to-cart-btn.ready {
+  background: #000;
+}
+
+.add-to-cart-btn:disabled {
+  background: #dc3545;
+  cursor: not-allowed;
+}
+
+/* Responsive adjustments */
+@media (max-width: 480px) {
+  .color-options {
+    gap: 6px;
+  }
+  .pack-btn{
+    font-size:13px;
+  }
+  .color-option {
+    width: 70px;
+    height: auto;
+  }
+  
+  .color-preview {
+    height: auto;
+  }
+  
+  .color-preview-placeholder {
+    height: 60px;
+    font-size: 10px;
+  }
+  .sale-price,
+  .original-price{
+    font-size:14px !important;
+  }
+  .product-page{
+
+  }
+  .main-icon-cont{
+    margin-left:0 !important;
+    margin-right:0 !important;
+  }
+  
+}
+</style>
+
+<script>
+// Function to check if all curated products are available
+// Only checks products that have metafield values (not empty)
+function checkCuratedProductsAvailability() {
+  // If no curated products have values, return true (allow ATC)
+  if (curatedProductInfo.length === 0) {
+    console.log('No curated products configured, allowing ATC');
+    return true;
+  }
+  
+  // Check each curated product that has a metafield value
+  for (let productInfo of curatedProductInfo) {
+    if (!productInfo.available || !productInfo.exists) {
+      console.log('Curated product not available:', productInfo.handle, 'Available:', productInfo.available, 'Exists:', productInfo.exists);
+      return false;
+    }
+  }
+  
+  console.log('All configured curated products are available');
+  return true;
+}
+
+// Handle curated pack buttons
+document.querySelectorAll('.pack-btn').forEach(btn => {
+  btn.addEventListener('click', function() {
+    document.querySelectorAll('.pack-btn').forEach(b => b.classList.remove('cactive'));
+    this.classList.add('cactive');
+  });
+});
+
+// Handle variant options
+document.querySelectorAll('.option-btn').forEach(btn => {
+  btn.addEventListener('click', function() {
+    const option = this.dataset.option;
+    document.querySelectorAll(`[data-option="${option}"]`).forEach(b => b.classList.remove('selected'));
+    this.classList.add('selected');
+
+    // Update selected value display
+    const label = this.closest('.variant-option').querySelector('.selected-value');
+    if (label) {
+      label.textContent = this.dataset.value;
+    }
+
+    updateAddToCartButton();
+  });
+});
+
+// Handle pack quantity options with filtering and free shipping toggle
+document.querySelectorAll('.quantity-option').forEach((option, index) => {
+  option.addEventListener('click', function() {
+    document.querySelectorAll('.quantity-option').forEach(o => o.classList.remove('cactive'));
+    this.classList.add('cactive');
+
+    // Update quantity display
+    const title = this.querySelector('.quantity-title').textContent;
+    document.querySelector('.quantity-number').textContent = title.split('-')[0];
+    
+    // Filter products based on pack type AND trigger auto-click
+    const selectedPack = title.toLowerCase();
+    filterProductsByPack(selectedPack, true); // Pass true to enable auto-click
+    
+    // Toggle free shipping visibility based on which button was clicked
+    const freeShippingElement = document.querySelector('.freeshipping');
+    if (freeShippingElement) {
+      if (index === 1) { // .quantity-option:nth-child(2) (4-Pack button - 0-indexed, so index 1)
+        freeShippingElement.style.display = 'none';
+      } else {
+        freeShippingElement.style.display = '';
+      }
+    }
+    
+    // Update add to cart button after pack change
+    updateAddToCartButton();
+  });
+});
+
+// Function to extract design tag from product tags
+function extractDesignTag(productTagsString) {
+  if (!productTagsString) return 'Select a design';
+  
+  const tags = productTagsString.split(',');
+  
+  // Look for tag with "design:" in it
+  for (let tag of tags) {
+    const tagLower = tag.toLowerCase().trim();
+    if (tagLower.includes('design:')) {
+      // Extract text after "design:"
+      const designPart = tag.split(':')[1];
+      if (designPart) {
+        return designPart.trim();
+      }
+    }
+  }
+  
+  // If no design tag found, return first tag or fallback
+  return tags[0] ? tags[0].trim() : 'Select a design';
+}
+
+// Function to filter products by pack type
+function filterProductsByPack(packType, shouldAutoClick = false) {
+  console.log('Filtering by pack type:', packType);
+  
+  const colorOptions = document.querySelectorAll('.color-option');
+  let hasVisibleProducts = false;
+  const currentProduct = document.querySelector('.color-option.current-product');
+  const currentlySelectedProduct = document.querySelector('.color-option.selected');
+  
+  // First pass: just show/hide products based on pack type
+  colorOptions.forEach(option => {
+    const productTitle = (option.dataset.productTitle || '').toLowerCase();
+    
+    // Check if product title contains the pack type we're looking for
+    let shouldShow = false;
+    if (packType === '6-pack') {
+      shouldShow = productTitle.includes('6 pack') || productTitle.includes('6-pack') || productTitle.includes('6pack') || productTitle.includes('six pack') || productTitle.includes('six-pack');
+    } else if (packType === '4-pack') {
+      shouldShow = productTitle.includes('4 pack') || productTitle.includes('4-pack') || productTitle.includes('4pack') || productTitle.includes('four pack') || productTitle.includes('four-pack');
+    }
+    
+    const linkWrapper = option.parentElement;
+    
+    if (shouldShow) {
+      option.classList.remove('hidden');
+      linkWrapper.style.display = 'block';
+      hasVisibleProducts = true;
+    } else {
+      option.classList.add('hidden');
+      linkWrapper.style.display = 'none';
+    }
+  });
+  
+  // Clear all selections first
+  colorOptions.forEach(option => {
+    option.classList.remove('selected');
+  });
+  
+  // Handle selection: ONLY select current product if it's visible
+  if (!hasVisibleProducts) {
+    // No products match - show message
+    const selectedColorsSpan = document.querySelector('.selected-colors');
+    if (selectedColorsSpan) {
+      selectedColorsSpan.textContent = 'No products available';
+    }
+  } else {
+    // Check if current product is visible and select ONLY if it is
+    if (currentProduct && !currentProduct.classList.contains('hidden')) {
+      currentProduct.classList.add('selected');
+      
+      // Update the design text with current product
+      const productTags = currentProduct.dataset.productTags;
+      const designTag = extractDesignTag(productTags);
+      const selectedColorsSpan = document.querySelector('.selected-colors');
+      if (selectedColorsSpan) {
+        selectedColorsSpan.textContent = designTag;
+      }
+    } else {
+      // Current product is not visible, don't select anything initially
+      const selectedColorsSpan = document.querySelector('.selected-colors');
+      if (selectedColorsSpan) {
+        selectedColorsSpan.textContent = 'Select a design';
+      }
+      
+      // If shouldAutoClick is true (pack button was clicked), trigger click on first visible product
+      if (shouldAutoClick) {
+        const firstVisibleProduct = document.querySelector('.color-option:not(.hidden)');
+        if (firstVisibleProduct) {
+          // Trigger a click event on the first visible product
+          firstVisibleProduct.click();
+        }
+      }
+    }
+  }
+}
+
+// Handle curated product selection in colors section (updated to prevent default link behavior when just selecting)
+document.querySelectorAll('.color-option').forEach(option => {
+  option.addEventListener('click', function(e) {
+    // Prevent the link from navigating when just selecting
+    e.preventDefault();
+    
+    // Remove selected class from all visible options
+    document.querySelectorAll('.color-option:not(.hidden)').forEach(o => o.classList.remove('selected'));
+    
+    // Add selected class to clicked option
+    this.classList.add('selected');
+    
+    // Update the selected colors text with design tag from data-product-tags
+    const productTags = this.dataset.productTags;
+    const designTag = extractDesignTag(productTags);
+    const selectedColorsSpan = document.querySelector('.selected-colors');
+    
+    if (selectedColorsSpan) {
+      selectedColorsSpan.textContent = designTag;
+    }
+    
+    // Store selected curated product data for later use
+    const selectedCuratedProduct = {
+      handle: this.dataset.color,
+      id: this.dataset.productId,
+      title: this.dataset.productTitle,
+      tags: this.dataset.productTags ? this.dataset.productTags.split(',') : [],
+      designTag: designTag,
+      packType: this.dataset.packType
+    };
+    
+    window.selectedCuratedProduct = selectedCuratedProduct;
+    console.log('Selected curated product:', selectedCuratedProduct);
+    
+    // Update add to cart button after selection
+    updateAddToCartButton();
+  });
+  
+  // Handle double-click to navigate to product page
+  option.addEventListener('dblclick', function(e) {
+    const link = this.parentElement.href;
+    if (link) {
+      window.location.href = link;
+    }
+  });
+});
+
+// Updated Add to Cart button logic with inventory quantity check
+function updateAddToCartButton() {
+  const selectedType = document.querySelector('[data-option="Type"].selected')?.dataset.value;
+  const selectedSize = document.querySelector('[data-option="Size"].selected')?.dataset.value;
+  const btn = document.querySelector('.add-to-cart-btn');
+
+  // First check if curated products are available
+  if (!checkCuratedProductsAvailability()) {
+    btn.classList.remove('ready');
+    btn.textContent = 'Curated Products Unavailable';
+    btn.disabled = true;
+    return;
+  }
+
+  if (selectedType && selectedSize) {
+    const selectedTitle = `${selectedType} / ${selectedSize}`;
+
+    const curatedOk = curatedVariants.reduce((acc, variant) => {
+      if (
+        !acc.foundHandles.includes(variant.product_handle) &&
+        variant.variant_title === selectedTitle &&
+        variant.available
+      ) {
+        acc.foundHandles.push(variant.product_handle);
+        acc.inventoryQuantities.push(variant.inventory_quantity);
+      }
+      return acc;
+    }, { foundHandles: [], inventoryQuantities: [] });
+
+    const allHandles = [...new Set(curatedVariants.map(v => v.product_handle))];
+
+    if (curatedOk.foundHandles.length === allHandles.length) {
+      // Check if any of the variants have inventory quantity of 5 or below
+      const hasLowStock = curatedOk.inventoryQuantities.some(qty => qty <= 5);
+      
+      if (hasLowStock) {
+        btn.classList.remove('ready');
+        btn.textContent = 'Unavailable';
+        btn.disabled = true;
+      } else {
+        btn.classList.add('ready');
+        btn.textContent = 'Add to Cart';
+        btn.disabled = false;
+      }
+    } else {
+      btn.classList.remove('ready');
+      btn.textContent = 'Out of Stock';
+      btn.disabled = true;
+    }
+  } else {
+    btn.classList.remove('ready');
+    btn.textContent = 'Select A Size';
+    btn.disabled = false;
+  }
+}
+
+// ✅ FIXED: Add to Cart function with proper error handling
+function addToCart() {
+  console.log('Add to cart function called');
+  
+  const selectedType = document.querySelector('[data-option="Type"].selected')?.dataset.value;
+  const selectedSize = document.querySelector('[data-option="Size"].selected')?.dataset.value;
+  const quantityInput = document.getElementById('quantity');
+  const quantity = parseInt(quantityInput ? quantityInput.value : '1') || 1;
+
+  console.log('Selected options:', { selectedType, selectedSize, quantity });
+
+  // Check if curated products are available before proceeding
+  if (!checkCuratedProductsAvailability()) {
+    alert('Some curated products are not available. Please contact support.');
+    return;
+  }
+
+  if (!selectedType || !selectedSize) {
+    alert('Please select all options');
+    return;
+  }
+
+  const currentVariant = getSelectedVariant();
+  console.log('Current variant found:', currentVariant);
+
+  if (!currentVariant) {
+    alert('Variant not found. Please try selecting your options again.');
+    return;
+  }
+
+  if (!currentVariant.available) {
+    alert('This variant is currently out of stock.');
+    return;
+  }
+
+  // Check inventory quantity before allowing add to cart
+  if (currentVariant.inventory_quantity <= 5) {
+    alert('This item is currently unavailable due to low stock.');
+    return;
+  }
+
+  // Prepare items to add to cart
+  const itemsToAdd = [{
+    id: currentVariant.id,
+    quantity: quantity
+  }];
+
+  console.log('Items to add:', itemsToAdd);
+
+  // Disable button during request
+  const addButton = document.querySelector('.add-to-cart-btn');
+  const originalText = addButton.textContent;
+  addButton.disabled = true;
+  addButton.textContent = 'Adding...';
+
+  // Add to cart via AJAX
+  fetch('/cart/add.js', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+      'Accept': 'application/json'
+    },
+    body: JSON.stringify({ items: itemsToAdd })
+  })
+  .then(response => {
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    return response.json();
+  })
+  .then(data => {
+    console.log('Cart updated successfully:', data);
+    
+    // Re-enable button
+    addButton.disabled = false;
+    addButton.textContent = originalText;
+    
+    // Check if cart_open function exists, otherwise redirect to cart
+    if (typeof cart_open === 'function') {
+      cart_open();
+    } else {
+      // Fallback: redirect to cart page or show success message
+      window.location.href = '/cart';
+    }
+  })
+  .catch(error => {
+    console.error('Error adding to cart:', error);
+    
+    // Re-enable button
+    addButton.disabled = false;
+    addButton.textContent = originalText;
+    
+    // More specific error messages
+    let errorMessage = 'Error adding to cart. ';
+    if (error.message.includes('422')) {
+      errorMessage += 'The selected variant is not available.';
+    } else if (error.message.includes('404')) {
+      errorMessage += 'Product not found.';
+    } else {
+      errorMessage += 'Please try again.';
+    }
+    
+    alert(errorMessage);
+  });
+}
+
+// ✅ IMPROVED: Get selected variant function with better error handling
+function getSelectedVariant() {
+  const selectedOptions = {};
+  
+  // Get all selected options
+  document.querySelectorAll('.option-btn.selected').forEach(btn => {
+    selectedOptions[btn.dataset.option] = btn.dataset.value;
+  });
+
+  console.log('Selected options for variant lookup:', selectedOptions);
+
+  // Make sure we have product variants available
+  if (typeof window.productVariants === 'undefined') {
+    console.error('Product variants not available');
+    return null;
+  }
+
+  const variants = window.productVariants;
+  const productOptions = window.productOptions;
+
+  if (!variants || !productOptions) {
+    console.error('Product data not properly loaded');
+    return null;
+  }
+
+  // Find matching variant
+  const matchingVariant = variants.find(variant => {
+    return Object.keys(selectedOptions).every(option => {
+      const optionIndex = productOptions.indexOf(option);
+      if (optionIndex === -1) {
+        console.warn(`Option "${option}" not found in product options`);
+        return false;
+      }
+      return variant.options[optionIndex] === selectedOptions[option];
+    });
+  });
+
+  console.log('Matching variant:', matchingVariant);
+  return matchingVariant;
+}
+
+// Initialize with current product selection and proper filtering
+document.addEventListener('DOMContentLoaded', function() {
+  console.log('Product data initialized:', {
+    variants: window.productVariants,
+    options: window.productOptions
+  });
+  
+  // First, remove all selected classes to start fresh
+  document.querySelectorAll('.color-option').forEach(o => o.classList.remove('selected'));
+  
+  // Check if current product exists and select ONLY the current product
+  const currentProduct = document.querySelector('.color-option.current-product');
+  
+  if (currentProduct) {
+    currentProduct.classList.add('selected');
+    
+    // Update selected colors text with design tag from data-product-tags
+    const productTags = currentProduct.dataset.productTags;
+    const designTag = extractDesignTag(productTags);
+    const selectedColorsSpan = document.querySelector('.selected-colors');
+    if (selectedColorsSpan) {
+      selectedColorsSpan.textContent = designTag;
+    }
+    
+    // Check if current product is 4-pack or 6-pack and set appropriate button active
+    const currentProductTitle = (currentProduct.dataset.productTitle || '').toLowerCase();
+    const is4Pack = currentProductTitle.includes('4 pack') || currentProductTitle.includes('4-pack') || currentProductTitle.includes('4pack') || currentProductTitle.includes('four pack') || currentProductTitle.includes('four-pack');
+    const is6Pack = currentProductTitle.includes('6 pack') || currentProductTitle.includes('6-pack') || currentProductTitle.includes('6pack') || currentProductTitle.includes('six pack') || currentProductTitle.includes('six-pack');
+    
+    if (is4Pack) {
+      // Make 4-Pack button active
+      document.querySelectorAll('.quantity-option').forEach(o => o.classList.remove('cactive'));
+      const fourPackButton = document.querySelector('.quantity-option:nth-child(2)'); // 4-Pack is second button
+      if (fourPackButton) {
+        fourPackButton.classList.add('cactive');
+        document.querySelector('.quantity-number').textContent = '4';
+        
+        // Hide free shipping for 4-pack
+        const freeShippingElement = document.querySelector('.freeshipping');
+        if (freeShippingElement) {
+          freeShippingElement.style.display = 'none';
+        }
+      }
+      // Filter to show 4-pack products (without auto-click on load)
+      filterProductsByPack('4-pack', false);
+    } else if (is6Pack) {
+      // Keep 6-Pack button active (default) - filter without auto-click
+      filterProductsByPack('6-pack', false);
+    } else {
+      // If current product is neither, apply default 6-pack filter without auto-click
+      filterProductsByPack('6-pack', false);
+    }
+  } else {
+    // No current product, just apply default 6-pack filter (don't select any product, no auto-click)
+    const selectedColorsSpan = document.querySelector('.selected-colors');
+    if (selectedColorsSpan) {
+      selectedColorsSpan.textContent = 'Select a design';
+    }
+    filterProductsByPack('6-pack', false);
+  }
+  
+  // Initial button state check
+  updateAddToCartButton();
+});
+</script>

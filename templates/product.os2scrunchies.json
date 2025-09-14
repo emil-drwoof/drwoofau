@@ -1,0 +1,122 @@
+{
+  "sections": {
+    "product-template": {
+      "type": "product-template",
+      "settings": {
+        "abtestdavideo": false,
+        "product_image_size": "large",
+        "product_image_type": "slider",
+        "product_zoom_enable": false,
+        "enable_video_looping": false,
+        "product_video_style": "muted",
+        "enable_payment_button": false,
+        "product_shipping_callout": "",
+        "variant_type": "button",
+        "variant_labels_enable": false,
+        "sku_enable": false,
+        "inventory_enable": false,
+        "inventory_threshold": 4,
+        "inventory_transfers_enable": false,
+        "quantity_enable": false,
+        "social_enable": false,
+        "abtesting3image": "shopify:\/\/shop_images\/UPSELL_SCRUNCHIE_AU.jpg",
+        "abtesting3imagemob": "shopify:\/\/shop_images\/SCRUNCHIE_AU_b3669a2b-42fe-44cd-862b-6c19c9f71f95.jpg",
+        "img1": "shopify:\/\/shop_images\/4_2c9aee3f-aec7-4015-a798-7c27f3a591f0.png",
+        "txt": "93% satisfaction rate from 40,000+ customers",
+        "txt_": "Free & Fast shipping over $145",
+        "color_link": "#2980b9",
+        "img2": "shopify:\/\/shop_images\/Untitled_design_2_4043dd2d-b061-4ce9-a771-22be6e7d9d6e.png",
+        "txt1": "Dispatch from Melbourne within 24 hours",
+        "img3": "shopify:\/\/shop_images\/Untitled_design_1_a36d0b5e-4591-400b-b7c9-9897261f312c.png",
+        "txt2": "60-day hassle-free returns & exchange",
+        "txt3": "",
+        "txt4": "",
+        "txt5": "",
+        "txt6": "",
+        "txt7": "",
+        "txt8": "",
+        "txt9": "",
+        "txt10": "",
+        "txt11": ""
+      }
+    },
+    "new_product_story_neDDU4": {
+      "type": "new-product-story",
+      "disabled": true,
+      "settings": {
+        "section_title": "Your ponytail will love this (And, let’s be honest,  so will your wrist.)",
+        "product_story_img_1": "shopify:\/\/shop_images\/52_0c702f42-03f7-4ddf-8a0f-0268f533dd98.jpg",
+        "product_story_title_1": "Made with off-cut scrub cap fabric — this scrunchie is rubbish in the best possible way.",
+        "product_story_img_2": "shopify:\/\/shop_images\/PDP_-_Story_Section_Images_1_97e2869b-c1df-4ff3-abde-41000659b401.jpg",
+        "product_story_title_2": "With a huge 6cm frill, there ain’t nothing subtle about a Dr Woof scrunchie.",
+        "product_story_img_3": "shopify:\/\/shop_images\/54_96c65e4d-8559-42c4-8b86-92d8ac0827fe.jpg",
+        "product_story_title_3": "Every Dr Woof scrunchie matches a cap in our collection, so you’ll never be without your favorite print.",
+        "product_story_img_4": "shopify:\/\/shop_images\/55_7fc6f5ce-8f5b-4a7f-946f-5c090c6eb2f4.jpg",
+        "product_story_title_4": "Buy 3 scrunchies, and watch in wonder at checkout as one becomes auto-magically free."
+      }
+    },
+    "duallayout_6zJH9t": {
+      "type": "duallayout",
+      "settings": {
+        "image_left": true,
+        "background_color": "#d6e6ff",
+        "imagebig": "shopify:\/\/shop_images\/LANDING_PAGE_PDP_4.png",
+        "contenttitle": "From the Front Lines, For the Front Lines",
+        "contenttext1": "At Dr. Woof Apparel, we’re more than just another uniform brand—we’re clinicians who share your commitment to patient care. Founded by a family of three veterinarians, two of whom are still actively working full-time, we stay on top of every challenge you face in the real world. Because we’re in the trenches too, we obsess over every design detail—continually refining based on your feedback and cutting no corners. The result? Medical apparel that stands up to the longest shifts, created by professionals who truly understand what you need—every single day."
+      }
+    },
+    "stories": {
+      "type": "product-section-scrunchies",
+      "disabled": true,
+      "settings": {}
+    },
+    "reviews": {
+      "type": "looxreviews",
+      "settings": {}
+    },
+    "recommendations": {
+      "type": "product-recommendations",
+      "settings": {
+        "show_product_recommendations": true,
+        "product_recommendations_heading": "You may also like",
+        "per_row": "small"
+      }
+    },
+    "173857130741772c64": {
+      "type": "apps",
+      "blocks": {
+        "judge_me_reviews_review_widget_AUBabQ": {
+          "type": "shopify:\/\/apps\/judge-me-reviews\/blocks\/review_widget\/61ccd3b1-a9f2-4160-9fe9-4fec8413e5d8",
+          "settings": {}
+        }
+      },
+      "block_order": [
+        "judge_me_reviews_review_widget_AUBabQ"
+      ],
+      "settings": {}
+    },
+    "173857131252f251df": {
+      "type": "apps",
+      "blocks": {
+        "judge_me_reviews_review_snippet_widget_Qq3CyG": {
+          "type": "shopify:\/\/apps\/judge-me-reviews\/blocks\/review_snippet_widget\/61ccd3b1-a9f2-4160-9fe9-4fec8413e5d8",
+          "settings": {}
+        }
+      },
+      "block_order": [
+        "judge_me_reviews_review_snippet_widget_Qq3CyG"
+      ],
+      "settings": {}
+    }
+  },
+  "order": [
+    "product-template",
+    "new_product_story_neDDU4",
+    "duallayout_6zJH9t",
+    "stories",
+    "reviews",
+    "recommendations",
+    "173857130741772c64",
+    "173857131252f251df"
+  ]
+}

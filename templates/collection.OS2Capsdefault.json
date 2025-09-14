@@ -1,0 +1,145 @@
+{
+  "sections": {
+    "collection-headervar": {
+      "type": "dr-woof-hero-scrubs",
+      "disabled": true,
+      "settings": {
+        "pad": "40px",
+        "desktop_positioning": 0,
+        "height": 99,
+        "mobile_height": 100,
+        "image_lib_pc": "shopify:\/\/shop_images\/COLLECTION_BANNER_TEMPLATE_PC_2400_x_900_px_3.webp",
+        "image_webp_pc": "",
+        "image_lib_mobile": "shopify:\/\/shop_images\/COLLECTION_BANNER_TEMPLATE_MOBILE_1600_x_900_px_1_c418c87c-e501-486e-81c0-b68e35e53edf.jpg",
+        "image_webp_mobile": ""
+      }
+    },
+    "collection-header": {
+      "type": "dr-woof-hero-scrubs3",
+      "settings": {
+        "pad": "30px",
+        "enable_auto": true,
+        "desktop_positioning": 0,
+        "height": 90,
+        "mobile_height": 50,
+        "image_lib_pc": "shopify:\/\/shop_images\/COLLECTION_BANNER_TEMPLATE_PC_2400_x_900_px_11.png",
+        "image_webp_pc": "",
+        "image_lib_mobile": "shopify:\/\/shop_images\/COLLECTION_BANNER_TEMPLATE_MOBILE_1600_x_900_px_12_d3c2cdd2-923f-4258-91ae-48d1cdf67bd8.jpg",
+        "image_webp_mobile": ""
+      }
+    },
+    "replo_replo_text_below_banner_3x7rxf": {
+      "type": "replo-replo-text-below-banner",
+      "settings": {
+        "replo_text_e352686d-11b3-4326-ad82-8260998ffdde": "<p>Scrub Caps<\/p>",
+        "replo_text_ffb59253-7bb2-43f4-99c4-ed60813402d8": "<p>Tired of sore ears from mask straps? Our Scrub Caps come with built-in button loops for painless, all-day wear. With fresh prints by Australian designers (no more outdated patterns) and crafted from 100% cotton, these caps keep you comfortable while accommodating every hair type.<\/p>"
+      }
+    },
+    "collection-filter": {
+      "type": "collection-thumbnail-filter",
+      "blocks": {
+        "image_8TqUUT": {
+          "type": "Image",
+          "settings": {
+            "image_thumbnail": "shopify:\/\/shop_images\/Best_Seller_3a2bb51e-61b3-44c6-9482-ed5183c3190e.png",
+            "collection_title": "Best Sellers",
+            "linkurl": "https:\/\/www.drwoofapparel.com.au\/collections\/scrub-caps?sort_by=best-selling"
+          }
+        },
+        "image_GN8qiL": {
+          "type": "Image",
+          "settings": {
+            "image_thumbnail": "shopify:\/\/shop_images\/New_Releases_24414532-024f-487b-ab7c-79aaec81b263.png",
+            "collection_title": "New Releases",
+            "linkurl": "https:\/\/www.drwoofapparel.com.au\/collections\/scrub-caps?sort_by=created-descending"
+          }
+        },
+        "image_aGN4f7": {
+          "type": "Image",
+          "settings": {
+            "image_thumbnail": "shopify:\/\/shop_images\/Animals_68ff0ea2-525e-489c-9f04-c26699b93b92.png",
+            "collection_title": "Animals",
+            "linkurl": "https:\/\/www.drwoofapparel.com.au\/collections\/scrub-caps\/animal-patterns"
+          }
+        },
+        "image_g4d3hc": {
+          "type": "Image",
+          "settings": {
+            "image_thumbnail": "shopify:\/\/shop_images\/Nature_c3cb1e59-2fea-46ac-894f-b67cfbe26260.png",
+            "collection_title": "Nature",
+            "linkurl": "https:\/\/www.drwoofapparel.com.au\/collections\/scrub-caps\/nature-patterns"
+          }
+        },
+        "image_DgUNiU": {
+          "type": "Image",
+          "settings": {
+            "image_thumbnail": "shopify:\/\/shop_images\/Whimsical_abcfd8d3-c9d9-427f-895f-3bb41278c5da.png",
+            "collection_title": "Whimsical",
+            "linkurl": "https:\/\/www.drwoofapparel.com.au\/collections\/scrub-caps\/whimsical-patterns"
+          }
+        },
+        "image_UTbeFK": {
+          "type": "Image",
+          "settings": {
+            "image_thumbnail": "shopify:\/\/shop_images\/Causes_398ae2ce-8814-4d5c-8f46-95faf46359ff.png",
+            "collection_title": "Causes",
+            "linkurl": "https:\/\/www.drwoofapparel.com.au\/collections\/scrub-caps\/causes-patterns"
+          }
+        },
+        "image_TJaLVB": {
+          "type": "Image",
+          "settings": {
+            "image_thumbnail": "shopify:\/\/shop_images\/Solids.png",
+            "collection_title": "Solids",
+            "linkurl": "https:\/\/www.drwoofapparel.com.au\/collections\/scrub-caps\/solid-patterns"
+          }
+        }
+      },
+      "block_order": [
+        "image_8TqUUT",
+        "image_GN8qiL",
+        "image_aGN4f7",
+        "image_g4d3hc",
+        "image_DgUNiU",
+        "image_UTbeFK",
+        "image_TJaLVB"
+      ],
+      "settings": {
+        "title_enable": false
+      }
+    },
+    "collection-filters": {
+      "type": "collection-filters-def",
+      "disabled": true,
+      "settings": {
+        "filter_type": "groups",
+        "tags_combine": false,
+        "collection_title_enable": true,
+        "collection_filter_enable": true,
+        "collection_sort_enable": true
+      }
+    },
+    "main-collection": {
+      "type": "collection-template-caps",
+      "settings": {
+        "super_text_1": "",
+        "super_link_1": "",
+        "super_text_2": "",
+        "super_link_2": "",
+        "super_text_3": "",
+        "super_link_3": "",
+        "per_row_desktop": 3,
+        "per_row_mobile": "2",
+        "description_bottom": true
+      }
+    }
+  },
+  "order": [
+    "collection-headervar",
+    "collection-header",
+    "replo_replo_text_below_banner_3x7rxf",
+    "collection-filter",
+    "collection-filters",
+    "main-collection"
+  ]
+}

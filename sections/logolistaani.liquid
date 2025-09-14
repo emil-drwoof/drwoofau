@@ -1,0 +1,155 @@
+{% stylesheet %}
+    .logo-slider-section {
+      color: #050507;
+      text-align: center;
+      padding: 40px 20px;
+    }
+  
+    .logo-slider-section h2 {
+      font-family: Futura, sans-serif;
+      font-size: 32px;
+      font-weight: 600;
+    }
+  
+    .logo-flex-container {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      flex-wrap: wrap;
+      margin-top: 40px;
+    }
+  
+    .slider-column {
+      width: 22%;
+      height: 175px;
+      overflow: hidden;
+      border-radius: 8px;
+    }
+  
+    .slider {
+      display: flex;
+      flex-direction: column;
+    }
+  
+    .slide {
+      height: 175px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+  
+    .slide img {
+      max-height: 100%;
+      max-width: 100%;
+      object-fit: contain;
+    }
+  
+    @keyframes slideUpPause {
+      0%, 40% { transform: translateY(0); }
+      50%, 90% { transform: translateY(-50%); }
+      100% { transform: translateY(0); }
+    }
+  
+    .col-1 .slider {
+      animation: slideUpPause 8s ease-in-out infinite;
+    }
+  
+    .col-2 .slider {
+      animation: slideUpPause 8s ease-in-out infinite;
+      animation-delay: 2s;
+    }
+  
+    .col-3 .slider {
+      animation: slideUpPause 8s ease-in-out infinite;
+      animation-delay: 4s;
+    }
+  
+    .col-4 .slider {
+      animation: slideUpPause 8s ease-in-out infinite;
+      animation-delay: 6s;
+    }
+    
+    /* Mobile Responsive Styles */
+    @media screen and (max-width: 480px) {
+      .logo-flex-container {
+        gap: 15px;
+      }
+      
+      .slider-column {
+        width: 45%; /* 2 columns */
+        height: 150px;
+        margin-bottom: 15px;
+      }
+      
+      .slide {
+        height: 150px;
+      }
+      
+      .logo-slider-section h2 {
+        
+        font-weight: 600;
+      }
+    }
+{% endstylesheet %}
+  
+<div class="logo-slider-section">
+  {% if section.settings.heading != blank %}
+    <h2>{{ section.settings.heading }}</h2>
+  {% endif %}
+  <div class="logo-flex-container">
+    {% for i in (1..4) %}
+      <div class="slider-column col-{{ i }}">
+        <div class="slider">
+          {% assign start_index = i | minus: 1 | times: 2 %}
+          {% for j in (0..1) %}
+            {% assign block_index = start_index | plus: j %}
+            {% assign block = section.blocks[block_index] %}
+            {% if block != nil and block.settings.logo != blank %}
+              <div class="slide">
+                <img src="{{ block.settings.logo | img_url: 'medium' }}" alt="Logo {{ block_index | plus: 1 }}">
+              </div>
+            {% endif %}
+          {% endfor %}
+        </div>
+      </div>
+    {% endfor %}
+  </div>
+</div>
+  
+{% schema %}
+{
+  "name": "Animated Logo Slider",
+  "tag": "section",
+  "max_blocks": 16,
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Proudly serving"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "logo",
+      "name": "Logo",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "logo",
+          "label": "Logo Image"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Animated Logo Slider",
+      "category": "Custom",
+      "settings": {
+        "heading": "Proudly serving"
+      }
+    }
+  ]
+}
+{% endschema %}

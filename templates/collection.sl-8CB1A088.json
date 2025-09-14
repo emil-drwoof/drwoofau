@@ -1,0 +1,94 @@
+{
+  "sections": {
+    "collection-header": {
+      "type": "dr-woof-hero-scrubs2",
+      "settings": {
+        "pad": "30px",
+        "desktop_positioning": 0,
+        "height": 90,
+        "mobile_height": 50,
+        "image_webp_pc": "",
+        "image_webp_mobile": ""
+      }
+    },
+    "collection-filter": {
+      "type": "collection-thumbnail-filter",
+      "blocks": {
+        "de843cbf-99ec-4a7c-a28b-fdcbb6239dfd": {
+          "type": "Image",
+          "settings": {
+            "image_thumbnail": "shopify:\/\/shop_images\/1_103b2069-76e3-4f23-9e40-812aadc954e9.png",
+            "collection_title": "Scrub Tops",
+            "linkurl": "https:\/\/www.drwoofapparel.com.au\/collections\/women\/scrub-tops"
+          }
+        },
+        "11484184-ec91-4489-a101-815d8031d180": {
+          "type": "Image",
+          "settings": {
+            "collection_title": "Scrub Pants",
+            "linkurl": "https:\/\/www.drwoofapparel.com.au\/collections\/women\/scrub-pants"
+          }
+        },
+        "299eff06-9630-469a-8031-7b5c1598bf02": {
+          "type": "Image",
+          "settings": {
+            "collection_title": "",
+            "linkurl": ""
+          }
+        },
+        "ae235370-784d-43b9-975e-620b5f1527b3": {
+          "type": "Image",
+          "settings": {
+            "collection_title": "",
+            "linkurl": ""
+          }
+        }
+      },
+      "block_order": [
+        "de843cbf-99ec-4a7c-a28b-fdcbb6239dfd",
+        "11484184-ec91-4489-a101-815d8031d180",
+        "299eff06-9630-469a-8031-7b5c1598bf02",
+        "ae235370-784d-43b9-975e-620b5f1527b3"
+      ],
+      "settings": {
+        "title_enable": true
+      }
+    },
+    "collection-filters": {
+      "type": "collection-filters-def",
+      "blocks": {
+        "dcf20a01-c67b-4ca5-943e-337c8023afa9": {
+          "type": "color_group",
+          "settings": {
+            "title": "",
+            "tag_list": "Burgundy \nHeather grey \nGreen"
+          }
+        }
+      },
+      "block_order": [
+        "dcf20a01-c67b-4ca5-943e-337c8023afa9"
+      ],
+      "settings": {
+        "filter_type": "groups",
+        "tags_combine": false,
+        "collection_title_enable": false,
+        "collection_filter_enable": false,
+        "collection_sort_enable": true
+      }
+    },
+    "main-collection": {
+      "type": "collection-template-scrubs",
+      "settings": {
+        "per_row_desktop": 3,
+        "per_row_mobile": "1",
+        "description_bottom": false
+      }
+    }
+  },
+  "order": [
+    "collection-header",
+    "collection-filter",
+    "collection-filters",
+    "main-collection"
+  ]
+}

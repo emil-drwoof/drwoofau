@@ -1,0 +1,1000 @@
+<!-- snippets/product-template-o2.liquid -->
+<script
+  src="https://code.jquery.com/jquery-3.6.0.min.js"
+  integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
+  crossorigin="anonymous"></script>
+  <style>
+
+    @font-face {
+        font-family: futuraptbold;
+        font-weight: bold;
+        src: url("https://cdn.shopify.com/s/files/1/0573/7250/8344/files/FuturaPTBold.otf?v=1682068317") format("opentype");
+    }
+    @font-face {
+        font-family: futurapt;
+        font-weight: normal;
+        src: url("https://cdn.shopify.com/s/files/1/0573/7250/8344/files/FuturaPTMedium.otf?v=1682068317") format("opentype");
+    }
+    
+</style>
+
+<script>
+  var comprice = {}
+  var normprice = {}
+  {% for variant in product.variants %}
+    var x = "{{ variant.compare_at_price }}"
+    var y = "{{ variant.price }}"
+    var a = "{{ variant.title }}"
+    a = a.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/-$/, '').replace(/^-/, '');
+    comprice[a] = x
+    normprice[a] = y
+  {% endfor %}
+  </script> 
+  
+<div  
+  id="ProductSection-{{ section_id }}"
+  class="product-section gohere"
+  data-section-id="{{ section_id }}"
+  data-section-type="product-template"
+  {% if isModal %}
+  data-subsection
+  {% endif %}
+  data-variant-type="{{ variant_type }}"
+  {% if inventory_enable %}
+  data-inventory="true"
+  data-inventory-threshold="{{ inventory_threshold }}"
+  {% endif %}
+  {% if inventory_transfers_enable %}
+  data-incoming-inventory="true"
+  {% endif %}
+  {% if product_image_type == 'stacked' %}
+  data-images-stacked="true"
+  {% endif %}
+  data-video-style="{{ video_style }}"
+  {% unless isModal %}
+  data-enable-history-state="true"
+  {% endunless %}>
+
+  {% include 'product-template-variables' %}
+
+  <div class="page-content">
+    <div class="page-width">
+
+<div class="predate" style="display:none">
+  
+{% assign prenavy = all_products.women-classic-6-pocket-joggers.metafields.sf_product_bundle.preorder_navy %}
+<span class="prenavy">{{ prenavy }}</span>
+
+{% assign pregray = all_products.women-classic-6-pocket-joggers.metafields.sf_product_bundle.preorder_cool_gray %}
+<span class="pregray">{{ pregray }}</span>
+
+
+{% assign preblack = all_products.women-classic-6-pocket-joggers.metafields.sf_product_bundle.preorder_black %}
+<span class="preblack">{{ preblack }}</span>
+
+{% assign pregreen = all_products.women-classic-6-pocket-joggers.metafields.sf_product_bundle.preorder_fern_green %}
+<span class="pregreen">{{ pregreen }}</span>
+
+{% assign preroyalblue = all_products.women-classic-6-pocket-joggers.metafields.sf_product_bundle.preorder_royal_blue %}
+<span class="preblue">{{ preroyalblue }}</span>
+
+{% assign prepopberry = all_products.women-classic-6-pocket-joggers.metafields.sf_product_bundle.preorder_popberry %}
+<span class="prepopberry">{{ prepopberry }}</span>
+
+{% assign prejacaranda = all_products.women-classic-6-pocket-joggers.metafields.sf_product_bundle.preorder_jacaranda %}
+<span class="prejacaranda">{{ prejacaranda }}</span>
+
+
+
+{% assign prebabypink = all_products.women-classic-6-pocket-joggers.metafields.sf_product_bundle.preorder_baby_pink %}
+<span class="prebabypink">{{ prebabypink }}</span>
+
+
+{% assign preshadowgray = all_products.women-classic-6-pocket-joggers.metafields.sf_product_bundle.preorder_shadow_gray %}
+<span class="preshadowgray">{{ preshadowgray }}</span>
+
+
+
+{% assign preburgundy = all_products.women-classic-6-pocket-joggers.metafields.sf_product_bundle.preorder_burgundy %}
+<span class="preburgundy">{{ preburgundy }}</span>
+
+
+{% assign preceilblue = all_products.women-classic-6-pocket-joggers.metafields.sf_product_bundle.preorder_ceil_blue %}
+<span class="preceilblue">{{ preceilblue }}</span>
+
+
+
+
+{% assign premint = all_products.women-classic-6-pocket-joggers.metafields.sf_product_bundle.preorder_mint %}
+<span class="premint">{{ premint }}</span>
+
+
+{% assign prewhite = all_products.women-classic-6-pocket-joggers.metafields.sf_product_bundle.preorder_white %}
+<span class="prewhite">{{ prewhite }}</span>
+
+
+{% assign precblue = all_products.women-classic-6-pocket-joggers.metafields.sf_product_bundle.preorder_caribbean_blue %}
+<span class="precblue">{{ precblue }}</span>
+
+
+{% assign preaunatives = all_products.women-classic-6-pocket-joggers.metafields.sf_product_bundle.preorder_aussie_natives %}
+<span class="preaunatives">{{ preaunatives }}</span>
+
+{% assign prewcoral = all_products.women-classic-6-pocket-joggers.metafields.sf_product_bundle.preorder_whimsical_coral %}
+<span class="prewcoral">{{ prewcoral }}</span>
+
+{% assign preblurple = all_products.women-classic-6-pocket-joggers.metafields.sf_product_bundle.preorder_blurple %}
+<span class="preblurple">{{ preblurple }}</span>
+
+{% assign preeucalyptus = all_products.women-classic-6-pocket-joggers.metafields.sf_product_bundle.preorder_eucalyptus %}
+<span class="preeucalyptus">{{ preeucalyptus }}</span>
+
+
+{% assign premistyblue = all_products.women-classic-6-pocket-joggers.metafields.sf_product_bundle.preorder_misty_blue %}
+<span class="premistyblue">{{ premistyblue }}</span>
+
+
+{% assign pretwilightblue = all_products.women-classic-6-pocket-joggers.metafields.sf_product_bundle.preorder_twilight_blue %}
+<span class="pretwilightblue">{{ pretwilightblue }}</span>
+{% assign preboldmagenta = all_products.women-classic-6-pocket-joggers.metafields.sf_product_bundle.preorder_bold_magenta %}
+<span class="preboldmagenta">{{ preboldmagenta }}</span>
+
+{% assign preblush = all_products.women-classic-6-pocket-joggers.metafields.sf_product_bundle.preorder_blush %}
+<span class="preblush">{{ preblush }}</span>
+
+{% assign predoublepurple  = all_products.women-classic-6-pocket-joggers.metafields.sf_product_bundle.preorder_double_purple %}
+<span class="predoublepurple">{{ predoublepurple }}</span>
+
+{% assign prelavender  = all_products.metafields.women-classic-6-pocket-joggers.preorder_lavender %}
+<span class="prelavender">{{ prelavender }}</span>
+{% assign preaubergine  = all_products.women-classic-6-pocket-joggers.metafields.sf_product_bundle.preorder_aubergine %}
+<span class="preaubergine">{{ preaubergine }}</span>
+
+{% assign prerosewood = all_products.women-classic-6-pocket-joggers.metafields.sf_product_bundle.preorder_rosewood %}
+<span class="prerosewood">{{ prerosewood }}</span>
+
+{% assign premermaidteal = all_products.women-classic-6-pocket-joggers.metafields.sf_product_bundle.mermaid_teal %}
+<span class="premermaidteal">{{ premermaidteal }}</span>
+
+{% assign preapricot = all_products.women-classic-6-pocket-joggers.metafields.sf_product_bundle.preorder_apricot %}
+<span class="preapricot">{{ preapricot }}</span>
+
+{% assign predarkolive = all_products.women-classic-6-pocket-joggers.metafields.sf_product_bundle.preorder_dark-olive %}
+<span class="predarkolive">{{ predarkolive }}</span>
+
+
+{% assign presteelgray = all_products.women-classic-6-pocket-joggers.metafields.sf_product_bundle.preorder_steel_gray %}
+<span class="presteelgray">{{ presteelgray }}</span>
+
+{% assign prebluemountains = all_products.women-classic-6-pocket-joggers.metafields.sf_product_bundle.preorder_blue_mountains %}
+<span class="prebluemountains">{{ prebluemountains }}</span>
+
+{% assign prepastellavender = all_products.women-classic-6-pocket-joggers.metafields.sf_product_bundle.preorder_pastel_lavender %}
+<span class="prepastellavender">{{ prepastellavender }}</span>
+
+{% assign prebyronbay = all_products.women-classic-6-pocket-joggers.metafields.sf_product_bundle.preorder_byron-bay %}
+<span class="prebyronbay">{{ prebyronbay }}</span>
+
+{% assign preespresso = all_products.women-classic-6-pocket-joggers.metafields.sf_product_bundle.preorder_espresso %}
+<span class="preespresso">{{ preespresso }}</span>
+
+{% assign prechocolatebrownie = all_products.women-classic-6-pocket-joggers.metafields.sf_product_bundle.preorder_chocolate-brownie %}
+<span class="prechocolatebrownie">{{ prechocolatebrownie }}</span>
+
+{% assign precordovan = all_products.women-classic-6-pocket-joggers.metafields.sf_product_bundle.preorder_cordovan %}
+<span class="precordovan">{{ prcordovan }}</span>
+
+{% assign preredwine = all_products.women-classic-6-pocket-joggers.metafields.sf_product_bundle.preorder_red-wine %}
+<span class="preredwine">{{ preredwine }}</span>
+
+{% assign prepopberry = all_products.women-classic-6-pocket-joggers.metafields.sf_product_bundle.preorder_popberry %}
+<span class="prepopberry">{{ prepopberry }}</span>
+
+{% assign prejacaranda = all_products.women-classic-6-pocket-joggers.metafields.sf_product_bundle.preorder_jacaranda %}
+<span class="prejacaranda">{{ prejacaranda }}</span>
+
+</div>
+<!-- back here milski -->
+
+      
+        <style>
+          .desktop-view {
+            display: block;
+          }
+          .mobile-view {
+            display: none;
+          }
+          
+          @media only screen and (max-width:768px) {
+            .desktop-view {
+              display: none !important;
+            }
+            .mobile-view {
+              display: block !important;
+            }
+          }
+        </style>
+        <div class="product-single__header mobile-view" style="margin-bottom:35px">
+
+          {% if settings.vendor_enable %}
+            <div class="product-single__vendor">
+              {{ product.vendor }}
+            </div>
+          {% endif %}
+
+          {% if sku_enable %}
+            <p class="product-single__sku" data-sku>
+              {% if current_variant.sku %}
+                {{ current_variant.sku }}
+              {% endif %}
+            </p>
+          {% endif %}
+
+          {% if isModal %}
+            <p class="h1 product-single__title">
+              {{ product.title }}
+            </p>
+          {% else %}
+            <p class="h1 product-single__title">
+              {{ product.title }}
+            </p>
+          {% endif %}
+
+          {% if settings.enable_product_reviews %}
+            {% if isModal %}
+              {%- assign review_link = product.url | within: collection | append: '#Reviews-' | append: product.id -%}
+            {% else %}
+              {%- assign review_link = '#Reviews-' | append: product.id -%}
+            {% endif %}
+            <a href="{{ review_link }}" class="product-single__review-link">
+              <span class="shopify-product-reviews-badge" data-id="{{ product.id }}"></span>
+            </a>
+          {% endif %}
+
+          {% if settings.enable_product_loox_reviews %}
+            {% comment %} this block was created by belowyellow.com {% endcomment %}
+            <a href="#looxReviews" class="product-single__review-link">{% render 'loox_reviews' %}</a>
+          {% endif %}
+
+          <!-- Start of Judge.me code --> 
+          <div class='jdgm-widget jdgm-preview-badge' data-id='{{ product.id }}'> 
+            {{ product.metafields.judgeme.badge }} 
+          </div> 
+        <!-- End of Judge.me code -->
+
+          <div class="product-single__prices  bundle_template grid-product__price">
+            {% if product.compare_at_price_max > product.price %}
+              {%- assign hide_sale_price = true -%}
+              {% if current_variant.compare_at_price %}
+                {%- assign hide_sale_price = false -%}
+              {% endif %}
+            {% endif %}
+            
+              <style>
+                p.afterpay-paragraph {
+                  display: block !important;
+                }
+                p.afterpay-paragraph .afterpay-text2 {
+                  display: none;
+                }
+              </style>
+              {% assign normal_price = product.metafields.sf_product_bundle.normal_price %}
+              {% assign sf_product_bundlecompare_price = product.metafields.sf_product_bundle.compare_price %}
+              {% assign disc = product.metafields.sf_product_bundle.discount_code %}
+              {% assign intro = product.metafields.sf_product_bundle.intro_text %}
+              {% assign intro2 = product.metafields.sf_product_bundle.intro_text2 %}
+              {% assign intro3 = product.metafields.sf_product_bundle.intro_text_3 %}
+              {% assign disc_additional = product.metafields.sf_product_bundle.discount_code_additional_text %}
+              
+              {% if sf_product_bundlecompare_price != blank or normal_price != blank %}
+                <span class="{% if hide_sale_price %} hide{% endif %}{% if normal_price != blank %} normal_price{% endif %}" data-price-wrapper>
+                  <span
+                    class="1 product__price product__price--compare"
+                    data-product-price-compare
+                    data-price="${{ sf_product_bundlecompare_price }}">
+                    ${{ sf_product_bundlecompare_price }}
+                  </span>
+                </span>
+                {% if normal_price != blank %}
+                  <span
+                    data-price="${{ normal_price }}"
+                    class="2 normalPrice product__price{% if current_variant.compare_at_price > current_variant.price %} sale-price{% endif %}"
+                    data-product-price>
+                    <!-- 0 -->
+                    ${{ normal_price }}
+                    <span style="margin-bottom:12px;color:black; font-size: medium;display:inline-block"></span>
+                  </span>
+                  <p>
+                    <span>
+                      {% if disc or disc != blank %}<!-- 1 -->(using code {{ disc }} at checkout.
+                        {% if disc_additional or disc_additional != blank %}
+                          {{ disc_additional }}{% endif %}){% endif %}
+                    </span>
+                  </p>
+                {% endif %}
+
+              {% else %}
+                <span
+                  data-price=" {{ current_variant.compare_at_price | money_with_currency }}"
+                  class="{% if hide_sale_price %} hide{% endif %}"
+                  data-price-wrapper>
+                  <span class="8 product__price product__price--compare" data-product-price-compare>
+                    {% if current_variant.compare_at_price > current_variant.price %}
+                      {{ current_variant.compare_at_price | money_with_currency }}
+                    {% endif %}
+                  </span>
+                </span>
+                <span class="3 visually-hidden" data-price-a11y>{{ 'products.general.regular_price' | t }}</span>
+                <span
+                  data-price=" {{ current_variant.price | money_with_currency }}"
+                  class="9 normalPrice product__price{% if current_variant.compare_at_price > current_variant.price %} sale-price{% endif %}"
+                  data-product-price>
+                  {{ current_variant.price | money_with_currency }}
+                </span>
+              {% endif %}
+
+
+            
+
+            {% comment %}
+            THIS SECTION WAS UPDATED BY CASEY - TO SHOW PRODUCT DESCRIPTION INSTEAD OF PRODUCT CALLOUT
+            {% endcomment %}
+
+            {% comment %} 
+            <span class="product__note">
+            <p>&nbsp;</p>
+            {{ product.description }} 
+            <p>&nbsp;</p>
+            </span>
+            {% endcomment %}
+          </div>
+        </div>
+      
+
+
+
+      <div class="grid">
+        <div class="product-image-left grid__item {{ product_image_width }}">
+
+            {% include 'product-images'
+             , section_id: section_id,
+             isModal: isModal,
+             video_looping: video_looping,
+             video_style: video_style %}
+
+          
+          
+          <div class="fullimage ddoo" style="margin-top:0x; margin-bottom:0px">
+            {% if product.metafields.sf_product_bundle.cts_desktop_image_1 %}
+              <img src="{{ product.metafields.sf_product_bundle.cts_desktop_image_1 }}" class="desktopshow" alt="use code scrup">
+            {% endif %}
+            {% if product.metafields.sf_product_bundle.cts_mobile_image_1 %}
+              <img src="{{ product.metafields.sf_product_bundle.cts_mobile_image_1 }}" class="mobileshow" alt="use code scrup">
+            {% endif %}
+          </div>
+
+        </div>
+
+        <div class="product-content-right grid__item {{ product_description_width }}{% if product_image_type == 'stacked' %} product-single__sticky{% endif %} {{ product.title | truncate: 3, "" }}" data-title="">
+          <div class="product-single__meta">
+
+            {% if product.type == 'Surgical Scrub Cap' %}
+              <p class="main-textamonials">{{ section.settings.txt3 }}</p>
+            {% endif %}
+            {% if product.type == 'Women Performance Underscrubs' %}
+              <p class="main-textamonials">{{ section.settings.txt4 }}</p>
+            {% endif %}
+            {% if product.type == 'Men’s Underscrubs' %}
+              <p class="main-textamonials">{{ section.settings.txt5 }}</p>
+            {% endif %}
+            {% if product.type == 'Compression Socks' %}
+              <p class="main-textamonials">{{ section.settings.txt6 }}</p>
+            {% endif %}
+            {% if product.type == 'Stethoscope Charms' %}
+              <p class="main-textamonials">{{ section.settings.txt7 }}</p>
+            {% endif %}
+            {% if product.type == 'Women Scrub Tops' %}
+              <p class="main-textamonials">{{ section.settings.txt8 }}</p>
+            {% endif %}
+            {% if product.type == 'Women Scrub Pants' %}
+              <p class="main-textamonials">{{ section.settings.txt9 }}</p>
+            {% endif %}
+            {% if product.type == 'Men Scrub Tops' %}
+              <p class="main-textamonials">{{ section.settings.txt10 }}</p>
+            {% endif %}
+            {% if product.type == 'Men Scrub Pants' %}
+              <p class="main-textamonials">{{ section.settings.txt11 }}</p>
+            {% endif %}
+            <div class="product-single__header desktop-view">
+              {% if settings.vendor_enable %}
+                <div class="product-single__vendor">
+                  {{ product.vendor }}
+                </div>
+              {% endif %}
+
+              {% if sku_enable %}
+                <p class="product-single__sku" data-sku>
+                  {% if current_variant.sku %}
+                    {{ current_variant.sku }}
+                  {% endif %}
+                </p>
+              {% endif %}
+
+              {% if isModal %}
+                <p class="h1 product-single__title">
+                  {{ product.title }}
+                </p>
+              {% else %}
+                <h1 class="h1 product-single__title">
+                  {{ product.title }}
+                </h1>
+              {% endif %}
+
+              {% if settings.enable_product_reviews %}
+                {% if isModal %}
+                  {%- assign review_link = product.url | within: collection | append: '#Reviews-' | append: product.id -%}
+                {% else %}
+                  {%- assign review_link = '#Reviews-' | append: product.id -%}
+                {% endif %}
+                <a href="{{ review_link }}" class="product-single__review-link">
+                  <span class="shopify-product-reviews-badge" data-id="{{ product.id }}"></span>
+                </a>
+              {% endif %}
+
+              {% if settings.enable_product_loox_reviews %}
+                {% comment %} this block was created by belowyellow.com {% endcomment %}
+                <a href="#looxReviews" class="product-single__review-link">{% render 'loox_reviews' %}</a>
+              {% endif %}
+                        <!-- Start of Judge.me code --> 
+            <div class='jdgm-widget jdgm-preview-badge' data-id='{{ product.id }}'> 
+              {{ product.metafields.judgeme.badge }} 
+            </div> 
+          <!-- End of Judge.me code -->
+              <a name="top"></a>
+              {% comment %}
+              {% if product.id == 7815295336706 or product.id == 7815303627010 or product.id == 7815283802370 or product.id == 7815290028290 or product.id == 7815271776514 or product.id == 7815268663554 or product.id == 7815312441602 %}
+                <div class="warning-text">FINAL SALE</div>
+              {% endif %}
+            {% endcomment %}
+              <div class="product-single__prices bundle_template grid-product__price">
+
+                {% if product.compare_at_price_max > product.price %}
+                  {%- assign hide_sale_price = true -%}
+                  {% if current_variant.compare_at_price %}
+                    {%- assign hide_sale_price = false -%}
+                  {% endif %}
+                {% endif %}
+
+                
+                  <style>
+                    p.afterpay-paragraph {
+                      display: block !important;
+                    }
+                    p.afterpay-paragraph .afterpay-text2 {
+                      display: none;
+                    }
+                  </style>
+                  {% assign normal_price = product.metafields.sf_product_bundle.normal_price %}
+                  {% assign sf_product_bundlecompare_price = product.metafields.sf_product_bundle.compare_price %}
+                  {% assign disc = product.metafields.sf_product_bundle.discount_code %}
+                  {% assign intro = product.metafields.sf_product_bundle.intro_text %}
+                  {% assign intro2 = product.metafields.sf_product_bundle.intro_text2 %}
+                  {% assign intro3 = product.metafields.sf_product_bundle.intro_text_3 %}
+                  {% assign disc_additional = product.metafields.sf_product_bundle.discount_code_additional_text %}
+
+                  {% if sf_product_bundlecompare_price != blank or normal_price != blank %}
+                    <span class="{% if hide_sale_price %} hide{% endif %}{% if normal_price != blank %} normal_price{% endif %}" data-price-wrapper>
+                      <span
+                        class="1 product__price product__price--compare"
+                        data-product-price-compare
+                        data-price="${{ sf_product_bundlecompare_price }}">
+                        ${{ sf_product_bundlecompare_price }}
+                      </span>
+                    </span>
+                    {% if normal_price != blank %}
+                      <span
+                        data-price="${{ normal_price }}"
+                        class="2 normalPrice product__price{% if current_variant.compare_at_price > current_variant.price %} sale-price{% endif %}"
+                        data-product-price><!-- 0 -->${{ normal_price }}
+                        <span style="margin-bottom:12px;color:black; font-size: medium;display:inline-block"></span>
+                      </span>
+                      <p>
+                        <span>
+                          {% if disc or disc != blank %}<!-- 1 -->(using code {{ disc }} at checkout.
+                            {% if disc_additional or disc_additional != blank %}
+                              {{ disc_additional }}{% endif %}){% endif %}
+                        </span>
+                      </p>
+                    {% endif %}
+
+                  {% else %}
+
+                    <span
+                      data-price=" {{ current_variant.compare_at_price | money_with_currency }}"
+                      class="{% if hide_sale_price %} hide{% endif %}"
+                      data-price-wrapper>
+                      <span class="8 product__price product__price--compare" data-product-price-compare>
+                        {% if current_variant.compare_at_price > current_variant.price %}
+                          {{ current_variant.compare_at_price | money_with_currency }}
+                        {% endif %}
+                      </span>
+                    </span>
+                    <span class="3 visually-hidden" data-price-a11y>{{ 'products.general.regular_price' | t }}</span>
+                    <span
+                      data-price=" {{ current_variant.price | money_with_currency }}"
+                      class="9 normalPrice product__price{% if current_variant.compare_at_price > current_variant.price %} sale-price{% endif %}"
+                      data-product-price>
+                      {{ current_variant.price | money_with_currency }}
+                      <!-- k -->
+                    </span>
+                  {% endif %}
+                
+                {% comment %}
+                THIS SECTION WAS UPDATED BY CASEY - TO SHOW PRODUCT DESCRIPTION INSTEAD OF PRODUCT CALLOUT
+                {% endcomment %}
+
+                <a id="mytoper"></a>
+
+                {% comment %} <span class="product__note">
+                <p>&nbsp;</p>  {{ product.description }} <p>&nbsp;</p> 
+                </span>   {% endcomment %}
+
+              </div>
+              {% if product.id == 7815295336706 or product.id == 7815303627010 or product.id == 7815283802370 or product.id == 7815290028290 or product.id == 7815271776514 or product.id == 7815268663554 or product.id == 7815312441602 %}
+                <div class="warning-text">
+                  <p>This product cannot be returned or exchanged unless faulty.</p>
+                  <p>NOTE: The sizing is DIFFERENT to our normal range, we recommend going up a size up for a better fit. If you're unsure, feel free to speak with sizing expert at hello@drwoofapparel.com.au</p>
+                </div>
+              {% endif %}
+              <div data-product-unit-wrapper class="product__unit-price {% unless current_variant.unit_price_measurement %} hide{% endunless %}">
+                {%- capture unit_price_base_unit -%}
+                  {%- if current_variant.unit_price_measurement -%}
+                    {%- if current_variant.unit_price_measurement.reference_value != 1 -%}
+                      {{ current_variant.unit_price_measurement.reference_value }}
+                    {%- endif -%}
+                    {{ current_variant.unit_price_measurement.reference_unit }}
+                  {%- endif -%}
+                {%- endcapture -%}
+
+                {{ current_variant.unit_price | money_with_currency }}/{{ unit_price_base_unit }}
+              </div>
+
+              {% comment %} {%- if shop.taxes_included or shop.shipping_policy.body != blank -%}
+              <div class="product__policies rte">
+              <small>
+              {%- if shop.taxes_included -%}
+              {{ 'products.product.include_taxes' | t }}
+              {%- endif -%}
+              {%- if shop.shipping_policy.body != blank -%}
+              {{ 'products.product.shipping_policy_html' | t: link: shop.shipping_policy.url }}
+              {%- endif -%}
+              </small>
+              </div>
+              {%- endif -%}{% endcomment %}
+
+
+              {% for tag in product.tags %}
+                {% assign product_tag = tag | strip %}
+                <div class="pop-up-modal">
+                  <div class="pop-up-content">
+                                                                          <button type="button" class="btn btn--circle btn--large close-button">
+            <svg aria-hidden="true" focusable="false" role="presentation" class="icon icon-close" viewBox="0 0 64 64">
+               <path d="M19 17.61l27.12 27.13m0-27.12L19 44.74"></path>
+            </svg>
+            <span class="icon__fallback-text">Close (esc)</span>
+         </button>
+                    {% if product.tags contains 'men' or product.tags contains 'Men' or product.tags contains 'MEN' %}
+                      <span class="size-chart-content men-chart">
+                        {{ pages[settings.product_content].content }}
+                      </span>
+                    {% elsif product.tags contains 'women' or product.tags contains 'Women' or product.tags contains 'WOMEN' %}
+                      <span class="size-chart-content women-chart">
+                        {{ pages[settings.product_content_women].content }}
+                      </span>
+                    {% endif %}
+                  </div>
+                </div>
+              {% endfor %}
+
+
+              {%- if inventory_enable or inventory_transfers_enable -%}
+                {%- assign variants_with_inventory_tracking = product.variants | where: 'inventory_management', 'shopify' -%}
+
+                <script>
+                  // Store inventory quantities in JS because they're no longer
+// available directly in JS when a variant changes.
+// Have an object that holds all potential products so it works
+// with quick view or with multiple featured products.
+                  window.inventories = window.inventories || {};
+                  window.inventories['{{section_id}}'] = {};{% for variant in variants_with_inventory_tracking %}window.inventories['{{section_id}}'][{{variant.id}}] = {
+                      'quantity': {{ variant.inventory_quantity | default: 0 }},
+                      'incoming': {{ variant.incoming | default: false | json }},
+                      'next_incoming_date': {{ variant.next_incoming_date | date: format: 'date' | json }}
+                    };{% endfor %}
+                </script>
+
+                {%- assign inventory_visible = false -%}
+                {% if inventory_enable and current_variant.inventory_management == 'shopify' %}
+                  {%- if current_variant.inventory_quantity <= inventory_threshold and current_variant.inventory_quantity >= 0 -%}
+                    {%- assign inventory_visible = true -%}
+                  {%- endif -%}
+                {% endif %}
+                {% if current_variant.inventory_quantity == 0 %}
+                  {%- assign inventory_visible = false -%}
+                {% endif %}
+
+   
+              {% endif %}
+            </div>
+
+
+
+            {% unless isModal %}
+
+              {% comment %}
+              Shopify's product form attaches a number of tracking
+              scripts that cause slower load times and false statistics.
+              Quick view modals request these on-demand.
+              {% endcomment %}
+
+              
+              {% include 'Bundle_product-form-os2'
+              , section_id: section_id,
+              variant_type: variant_type,
+              variant_labels_enable: variant_labels_enable,
+              quantity_enable: quantity_enable,
+              enable_payment_button: enable_payment_button %}
+
+              
+            {% else %}
+              <div
+                id="ProductFormPlaceholder-{{ section_id }}"
+                data-url="{{ product.url | within: collection }}"
+                data-template="{{ product.template_suffix }}"
+                class="product-form-holder">
+                {% if product.options.size > 0 %}
+                  {% for i in (1..product.options.size) %}
+                    <div class="placeholder-content" style="min-height: 86px; max-width: 66%;"></div>
+                  {% endfor %}
+                {% endif %}
+                <div class="placeholder-content" style="min-height: 86px;"></div>
+              </div>
+            {% endunless %}
+
+
+            <span id="ShopifyKlarnaOnSiteMessagingAppElement"></span>
+            {%- if settings.trust_image != blank -%}
+              <div class="aos-animate trust-image" style="max-width: {{ settings.trust_image.width }}px;">
+                <div class="image-wrap " style="height: 0; padding-bottom: {{ 100 | divided_by: settings.trust_image.aspect_ratio }}%;">
+                  {%- assign img_url = settings.trust_image | img_url: '1x1' | replace: '_1x1.', '_{width}x.' -%}
+                  <img
+                    data-swift-lazy="1"
+                    loading="lazy"
+                    class="lazyload"
+                    data-src="{{ img_url }}"
+                    data-widths="[360, 540]"
+                    data-aspectratio="{{ settings.trust_image.aspect_ratio }}"
+                    data-sizes="auto"
+                    alt="{{ settings.trust_image.alt }}">
+                  <noscript>
+                    <img
+                      data-swift-lazy="1"
+                      loading="lazy"
+                      class="lazyloaded"
+                      src="{{ settings.trust_image | img_url: '540x' }}"
+                      alt="{{ settings.trust_image.alt }}">
+                  </noscript>
+                </div>
+              </div>
+            {%- endif -%}
+
+            <div class="fullimage" style="margin-top:16px; margin-bottom:3px">
+              {% if product.metafields.sf_product_bundle.cts_desktop_image %}
+                <img src="{{ product.metafields.sf_product_bundle.cts_desktop_image }}" class="desktopshow" alt="USE CODE SCRUBUP">
+              {% endif %}
+              {% if product.metafields.sf_product_bundle.cts_mobile_image %}
+                <img src="{{ product.metafields.sf_product_bundle.cts_mobile_image }}" class="mobileshow" alt="USE CODE SCRUBUP">
+              {% endif %}
+            </div>
+
+            <style>
+              .fullimage img{
+                display:block;
+                width:100%;
+                height:auto;
+              }
+              .desktopshow{
+                display:block !important;
+              }
+              .mobileshow{
+                display:none !important;
+              }
+              @media only screen and (max-width:480px){
+                .fullimage img{
+                  display: block;
+                  width: 108%;
+                  max-width: 1000%;
+                  height: auto;
+                  margin-left: -15px;
+                  margin-right: -15px;
+                }
+                .desktopshow{
+                  display:none !important;
+                }
+                .mobileshow{
+                  display:block !important;
+                }             
+              }
+            </style>
+            {% unless product.type == "Printed Pattern Scrub Tops"  or product.type == 'Printed Pattern Scrub Pants' %}
+              {% assign cts_product_1_a = product.metafields.sf_product_bundle.cts_product_1_a %}
+              {% unless cts_product_1_a == blank %}
+                {% render 'completetheset' %}
+              {% endunless %}
+            {% endunless %}
+
+
+
+            {% comment %}
+            THIS SECTION WAS UPDATED BY CASEY - TO SHOW THE NESSECARY DISCOUNT CODE NEAR THE BUY NOW BUTTON
+            {% endcomment %}
+            {% if disc or disc != blank %}
+              <!-- <p><br/>💡 Get {{ product.title }} for only ${{ normal_price }} using code <strong>{{ disc }}</strong> at checkout</p><p>&nbsp;</p> -->
+            {% endif %}
+
+            {% if settings.additional_content_style == 'expandable' %}
+
+              {% include 'product-additional-content', section_id: section_id %}
+
+            {% else %}
+              {% include '', section_id: section_id %}
+            {% endif %}
+            <div
+              class="th_pb_section"
+              id="th_product_bundle"
+              data-id="{{ product.id }}"></div>
+            <div
+              id="th_pb_qty_bundle"
+              class="th_pb_qty_bundle_cls"
+              data-pid="{{ product.id }}"></div>
+
+            {% if social_enable %}
+              {% include 'social-sharing', share_title: product.title, share_permalink: product.url, share_image: product %}
+            {% endif %}
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<style>
+  .warning-text {
+    color: red;
+    font-size: 14px;
+    font-weight: bold;
+    position: relative;
+    top: -8px;
+  }
+  .pop-up-modal {
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    opacity: 0;
+    display: none;
+    transform: scale(1.1);
+    transition: visibility 0s linear 0.25s, opacity 0.25s 0s, transform 0.25s;
+  }
+
+  .pop-up-content {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: white;
+    padding: 1rem 1.5rem;
+    width: auto;
+    border-radius: 0.5rem;
+    height: 70vh;
+    overflow: auto;
+  }
+  .pop-up-content table {
+    table-layout: auto;
+  }
+  .close-button {
+    float: right;
+    width: 1.5rem;
+    line-height: 1.5rem;
+    text-align: center;
+    cursor: pointer;
+    border-radius: 0.25rem;
+    background-color: lightgray;
+  }
+  .close-button:hover {
+    background-color: darkgray;
+  }
+  .show-pop-up {
+    z-index: 12;
+    opacity: 1;
+    display: block;
+    transform: scale(1.0);
+    transition: visibility 0s linear 0s, opacity 0.25s 0s, transform 0.25s;
+  }
+  .trigger-pop-up {
+    margin: 10px 0;
+    width: 100%;
+  }
+  @media only screen and (max-width: 749px) {
+    .threeway .product__main-photos--slider .product__slide {
+      margin-left: 0 !important;
+      margin-right: 12px;
+    }
+    .threeway .slick-slide {
+      height: 45vh !important;
+
+    }
+
+    .threeway .slick-slide img {
+      height: 45vh !important;
+    }
+    .product-single__prices > *,
+    .main-textamonials,
+    .afterpay-placement {
+      margin-bottom: 0 !important;
+
+    }
+    .product__main-photos {
+      padding-bottom: 0 !important;
+    }
+    .pop-up-content,
+    .size-chart-content table {
+      width: 100%;
+    }
+    .size-chart-content th,
+    .size-chart-content td {
+      padding: 10px;
+    }
+  }
+
+  @media only screen and (max-width:490px) {
+    .threeway .slick-slide {
+      width: 236px;
+    }
+    .threeway .product__photos img {
+      height: auto !important;
+    }
+    .slick-dots {
+
+      bottom: 32px;
+      position: relative !important;
+    }
+
+
+    .product__main-photos .slick-dots {
+      z-index: 9 !important;
+
+    }
+    .product__thumb-item.slick-active{
+
+    }
+  }
+</style>
+<script>
+  const modal = document.querySelector(".pop-up-modal");
+  const trigger = document.querySelector(".trigger-pop-up");
+  const closeButton = document.querySelector(".close-button");
+
+  function toggleModal() {
+    modal.classList.toggle("show-pop-up");
+  }
+
+  function windowOnClick(event) {
+    if (event.target === modal) {
+      toggleModal();
+    }
+  }
+  trigger.addEventListener("click", toggleModal);
+  closeButton.addEventListener("click", toggleModal);
+  window.addEventListener("click", windowOnClick);
+</script>
+
+<script>
+  const myInterval = setInterval(afterpay, 1000);
+
+  function afterpay() {
+    var data_price = $(".product-single__prices.bundle_template.grid-product__price span.normalPrice").attr("data-price");
+    var data_price_1 = data_price.replace("$", "")
+    var data_price_2 = parseFloat(data_price_1 / 4);
+    var data_price_3 = data_price_2.toFixed(2);
+    $("strong.afterpay-instalments").text("$" + data_price_3 + " AUD");
+  }
+
+  function myStopFunction() {
+    clearInterval(myInterval);
+  }
+
+
+  $(function() {
+    $bgs = $(".quener").val()
+
+
+
+    $collectionname = $(".collection-title").val()
+    if ($collectionname == "Scrub Caps") {
+
+      $stickysize = $(".varin:checked").attr("op_val")
+      var stickycolor = $(".variant-change-color .variant__label-info  span").html()
+      $stickyprice = $(".normalPrice").html()
+      $(".sticky-size .sizer").html($stickysize)
+
+
+      $(".sticky-price .pricer").html($stickyprice)
+    } else {
+      $stickysize = $(".custom-option-value").attr("data-matched")
+      $stickytype = $(".varin[option_index='3']:checked").attr("op_val")
+      var stickycolor = $(".variant-change-color .variant__label-info  span").html()
+      $stickyprice = $(".normalPrice").html()
+      $(".sticky-size .sizer").html($stickysize)
+      $(".sticky-type").html($stickytype)
+      stickycolor = stickycolor.trim();
+      var stickycolor = stickycolor.replace('Baby ', '');
+      $(".swatch-circle").css({
+        "background-image": "url(" + $bgs + ")",
+        "background-color": stickycolor
+      });
+      $(".sticky-price .pricer").html($stickyprice)
+    }
+
+/*
+  $.fn.isInViewport = function() {
+    var elementTop = $(this).offset().top;
+    var elementBottom = elementTop + $(this).outerHeight();
+    var viewportTop = $(window).scrollTop();
+    var viewportBottom = viewportTop + $(window).height();
+    return elementBottom > viewportTop && elementTop < viewportBottom;
+  };
+  
+  $(window).bind("load", function() {
+  if ($('.main-cont2').isInViewport()) {
+         $('.mobile-atc').css({"bottom": "-100px"});
+    } else {
+         $('.mobile-atc').css({"bottom": "0"});
+    }
+  });
+  
+  $(window).on('resize scroll', function(e) {
+  if ($('.main-cont2').isInViewport()) {
+         $('.mobile-atc').css({"bottom": "-100px"});
+    } else {
+         $('.mobile-atc').css({"bottom": "0"});
+    }
+    e.preventDefault();
+  });
+*/
+
+    $(".mobile-atc").css({"bottom": "-100px"})
+    $(window).scroll(function() {
+      $(window).scrollTop() >= 800
+        ? $(".mobile-atc").css({"bottom": "0"})
+        : $(".mobile-atc").css({"bottom": "-100px"});
+    });
+
+  });
+
+
+
+  </script>
+  {% if product.handle == "scrunchies" %}
+  <script>
+    window.location.replace("https://www.drwoofapparel.com.au/collections/scrunchies");
+  </script>
+  {% endif %}
+{% if product.id == 8005417533698 or product.id == 6701376274616  or product.id == 6701376078008  or product.id == 7461809127682  or product.id == 7819011490050  or product.id == 800006085043 or product.id == 8000060850434  or product.id == 7461809160450  or product.id == 6751392006328 or product.id == 7461809258754 or product.id == 6751389483192  or product.id == 6751404523704 or product.id == 7473530503426  or product.id == 6701375455416 or product.id == 7473526767874  or product.id == 7815271776514 or product.id == 7815268663554  or product.id == 6751389483192 or product.id == 7461809258754 %}
+<style>
+
+</style>
+    {% endif %}

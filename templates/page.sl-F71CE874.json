@@ -1,0 +1,228 @@
+{
+  "sections": {
+    "custom_html_y8fDJx": {
+      "type": "custom-html",
+      "settings": {
+        "custom_html": "<img data-swift-lazy=\"1\" loading=\"lazy\" class=\"\" src=\"\/\/www.drwoofapparel.com.au\/cdn\/shop\/files\/Horizontal_logo_transparent_background_blue_2_7dc8a8de-20c6-4155-8747-0810a5b4b5e0_210x.png?v=1704080588\" srcset=\"\/\/www.drwoofapparel.com.au\/cdn\/shop\/files\/Horizontal_logo_transparent_background_blue_2_7dc8a8de-20c6-4155-8747-0810a5b4b5e0_210x.png?v=1704080588 1x, \/\/www.drwoofapparel.com.au\/cdn\/shop\/files\/Horizontal_logo_transparent_background_blue_2_7dc8a8de-20c6-4155-8747-0810a5b4b5e0_210x@2x.png?v=1704080588 2x\" alt=\"Dr. Woof Apparel AU\" style=\"display:block;margin:30px auto 0;\">"
+      }
+    },
+    "a155aa5c-40ac-40b5-8a70-5059e600e448": {
+      "type": "headerv2",
+      "blocks": {
+        "16c1b801-5445-4096-9718-10b5b06f0f49": {
+          "type": "list",
+          "settings": {
+            "text_list": "Cloud-Like Softness",
+            "icon_image": "shopify:\/\/shop_images\/badge1_c6034989-69e7-40b0-9b9c-20fc1d4303f4.png"
+          }
+        },
+        "57eaf7c2-b51a-429f-9c6b-d84222894a17": {
+          "type": "list",
+          "settings": {
+            "text_list": "Joyful Colours & Prints",
+            "icon_image": "shopify:\/\/shop_images\/badge1_c6034989-69e7-40b0-9b9c-20fc1d4303f4.png"
+          }
+        },
+        "list_nG8cQ9": {
+          "type": "list",
+          "settings": {
+            "text_list": "Proudly designed in Melbourne",
+            "icon_image": "shopify:\/\/shop_images\/badge1_c6034989-69e7-40b0-9b9c-20fc1d4303f4.png"
+          }
+        },
+        "6046898d-b597-4393-b1e3-032f2c454626": {
+          "type": "list",
+          "settings": {
+            "text_list": "Flattering, Runway-Ready Cuts",
+            "icon_image": "shopify:\/\/shop_images\/badge1_c6034989-69e7-40b0-9b9c-20fc1d4303f4.png"
+          }
+        },
+        "list_BaVwdk": {
+          "type": "list",
+          "settings": {
+            "text_list": "Affordable Indulgence",
+            "icon_image": "shopify:\/\/shop_images\/badge1_c6034989-69e7-40b0-9b9c-20fc1d4303f4.png"
+          }
+        }
+      },
+      "block_order": [
+        "16c1b801-5445-4096-9718-10b5b06f0f49",
+        "57eaf7c2-b51a-429f-9c6b-d84222894a17",
+        "list_nG8cQ9",
+        "6046898d-b597-4393-b1e3-032f2c454626",
+        "list_BaVwdk"
+      ],
+      "settings": {
+        "colored_header": "",
+        "colored_header_size": 16,
+        "colored_header_size_mobile": 18,
+        "header_color": "#ffffff",
+        "added_date": true,
+        "enable_men": true,
+        "hide_review_stars": true,
+        "top_mode": false,
+        "light_theme": false,
+        "main_header": "5 Reasons Your Cheeks Deserve Dr. Woof's Buttery Scrub Embrace",
+        "main_header_size": 40,
+        "main_header_size_mobile": 32,
+        "main_header_space": 40,
+        "content": "From buttery softness to paparazzi-worthy cuts, Dr. Woof's scrubs elevate healthcare fashion with premium comfort, cheeky charisma, and quality craftsmanship - all without requiring a luxury price tag. Get ready to turn every shift into a runaway hit!",
+        "button_text_1": "SHOP NOW",
+        "button_1_url": "shopify:\/\/collections\/women",
+        "button_text_2": "",
+        "button_2_url": "",
+        "header_image": "shopify:\/\/shop_images\/Women_Scrubs_Listicle_-_6_Reasons_Why.gif",
+        "mobile_image": "shopify:\/\/shop_images\/Women_Scrubs_Listicle_-_6_Reasons_Why.gif",
+        "bg_color": "#ffffff",
+        "margin-top": 0,
+        "margin-bottom": 20
+      }
+    },
+    "68681b12-95a9-4f19-8144-7b29406c141b": {
+      "type": "twocollist",
+      "blocks": {
+        "9e75c267-5f40-4a7f-b782-ee506ff29a05": {
+          "type": "list",
+          "settings": {
+            "list_image": "shopify:\/\/shop_images\/Women_Scrubs_Listicle_-_6_Reasons_Why.jpg",
+            "list_title": "1. Award-Winning Butt Cuddlers for Your Hardworking Cheeks",
+            "list_text": "These cloud-like scrubs will make you question if the angels secretly quilted your booty covers while you were sleeping. With over 3,000 glowing reviews praising their heavenly softness, these scrubs offer a buttery luxury that lets your backend bask in comfort all shift long."
+          }
+        },
+        "38994c72-bee0-4291-9231-8d197500fad9": {
+          "type": "list",
+          "settings": {
+            "list_image": "shopify:\/\/shop_images\/Women_Scrubs_Listicle_-_6_Reasons_Why_1.jpg",
+            "list_title": "2. Wearable Confetti to Brighten the Dullest Day",
+            "list_text": "Why blend into the drab hospital scenery when you could be rocking scrubs that vibrate with joy like a walking disco ball? Let these poppin' patterns and vibrant shades be the life of the party on even the most dismal days."
+          }
+        },
+        "list_6pBr9c": {
+          "type": "list",
+          "settings": {
+            "list_image": "shopify:\/\/shop_images\/WomenScrubsListicle-6ReasonsWhy3-ezgif.com-optimize.gif",
+            "list_title": "3. Seams So Stout, They'll Hold a Dingo's Weight Without Batting an Eye",
+            "list_text": "These scrubs are absolute units - built to outlast a roo-versus-croc match, our scrubs boast iron-clad seams that scoff at extreme wear. Trusted by over 40,000 healthcare heroes, Dr. Woof's scrubs ace the test of durability against fluids, long hours, and the rigors of the job. They're the unexpected champions in lasting toughness."
+          }
+        },
+        "list_T6RnyN": {
+          "type": "list",
+          "settings": {
+            "list_image": "shopify:\/\/shop_images\/DrWoof_Jan24_Ecomm7838-Edit-web.jpg",
+            "list_title": "4. Tailored to Trick Everyone Into Thinking You're An Underwear Model",
+            "list_text": "These tailored scrubs understand that every body is a nice body, conforming respectfully to your luscious curves without demanding any slimming underpants or forceful sculpting. With a 96% customer satisfaction rate, ditch the drama queens, this fabric plays nice."
+          }
+        },
+        "list_kFJEBz": {
+          "type": "list",
+          "settings": {
+            "list_image": "shopify:\/\/shop_images\/Women_Scrubs_Listicle_-_6_Reasons_Why_2.jpg",
+            "list_title": "5. Designer Looks That Won't Leave You Eating Ramen",
+            "list_text": "Label luxury for the cost of a lil bougie basic? Oh you fancy! We're talking premium indulgence usually reserved for the old money golf club set - but without that musty, mothball smell. Plus, with our unbeatable 60-day return guarantee, indulgence is risk-free."
+          }
+        }
+      },
+      "block_order": [
+        "9e75c267-5f40-4a7f-b782-ee506ff29a05",
+        "38994c72-bee0-4291-9231-8d197500fad9",
+        "list_6pBr9c",
+        "list_T6RnyN",
+        "list_kFJEBz"
+      ],
+      "settings": {
+        "deskmartop": 40,
+        "deskmarbot": 40,
+        "mobmartop": 20,
+        "mobmarbot": 20
+      }
+    },
+    "advanced_content_7w4nzG": {
+      "type": "advanced-content",
+      "blocks": {
+        "image_xVigmp": {
+          "type": "image",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/Women_Scrubs_Listicle_-_6_Reasons_Why_7.jpg",
+            "link": "",
+            "width": "33%",
+            "alignment": "top-middle"
+          }
+        },
+        "image_bxfKbz": {
+          "type": "image",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/Women_Scrubs_Listicle_-_6_Reasons_Why_8.jpg",
+            "link": "",
+            "width": "33%",
+            "alignment": "top-middle"
+          }
+        },
+        "image_cpHEyi": {
+          "type": "image",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/Women_Scrubs_Listicle_-_6_Reasons_Why_9.jpg",
+            "link": "",
+            "width": "33%",
+            "alignment": "top-middle"
+          }
+        }
+      },
+      "block_order": [
+        "image_xVigmp",
+        "image_bxfKbz",
+        "image_cpHEyi"
+      ],
+      "settings": {
+        "full_width": false,
+        "space_around": true,
+        "alt": false
+      }
+    },
+    "text_and_image_6CTcBf": {
+      "type": "text-and-image",
+      "settings": {
+        "image": "shopify:\/\/shop_images\/WomenScrubsListicle-6ReasonsWhy4-ezgif.com-optimize.gif",
+        "image_width": 700,
+        "subtitle": "",
+        "title": "Peer Reviewed",
+        "text": "<p>\"Peer Reviewed\" isn't just a fancy term we toss around; it's our badge of honor, starring our scrubs and judged by the toughest critics - our customers.<\/p>",
+        "button_label": "",
+        "button_link": "",
+        "button_style": "primary",
+        "layout": "right",
+        "alt": false
+      }
+    },
+    "adsection_DFck6h": {
+      "type": "adsection",
+      "settings": {
+        "darktheme": true,
+        "deskmartop": 20,
+        "deskmarbot": 20,
+        "mobmartop": 0,
+        "mobmarbot": 30,
+        "bigtext": "NEW YEAR SALE BUY 2 SETS GET 1 SET FREE",
+        "reviewstars_text": "",
+        "bigtextsize": 36,
+        "textbut": "Shop",
+        "buttonlink": "shopify:\/\/collections\/women",
+        "bgcolor": "#050507"
+      }
+    },
+    "custom_html_3Jq8JP": {
+      "type": "custom-html",
+      "settings": {
+        "custom_html": "<img data-swift-lazy=\"1\" loading=\"lazy\" class=\"\" src=\"\/\/www.drwoofapparel.com.au\/cdn\/shop\/files\/Horizontal_logo_transparent_background_blue_2_7dc8a8de-20c6-4155-8747-0810a5b4b5e0_210x.png?v=1704080588\" srcset=\"\/\/www.drwoofapparel.com.au\/cdn\/shop\/files\/Horizontal_logo_transparent_background_blue_2_7dc8a8de-20c6-4155-8747-0810a5b4b5e0_210x.png?v=1704080588 1x, \/\/www.drwoofapparel.com.au\/cdn\/shop\/files\/Horizontal_logo_transparent_background_blue_2_7dc8a8de-20c6-4155-8747-0810a5b4b5e0_210x@2x.png?v=1704080588 2x\" alt=\"Dr. Woof Apparel AU\" style=\"display:block;margin:0 auto;\">"
+      }
+    }
+  },
+  "order": [
+    "custom_html_y8fDJx",
+    "a155aa5c-40ac-40b5-8a70-5059e600e448",
+    "68681b12-95a9-4f19-8144-7b29406c141b",
+    "advanced_content_7w4nzG",
+    "text_and_image_6CTcBf",
+    "adsection_DFck6h",
+    "custom_html_3Jq8JP"
+  ]
+}

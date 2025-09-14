@@ -1,0 +1,606 @@
+{% if section.settings.image_webp_pc and section.settings.image_lib_mobile %}
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@1,900&family=Open+Sans&display=swap" rel="stylesheet">
+<style>
+.__b{}
+  {% unless section.settings.border_disable %}
+    .Cus_buttons_wrapper_btns a{
+      border:none !important;
+    }
+    {% endunless %}
+  #shopify-section-{{section.id}}{display:flex;flex-wrap: wrap;width:100%;}
+  #shopify-section-{{section.id}} p{    margin: 5px 0 0 0;}
+  .__pc{display:block!important}
+  {% unless block.settings.text_content %}
+  .__mobile{display:none!important}
+  {% endunless }
+  #drwoof-hero-{{ section.id }} img{width:100%}
+  #shopify-section-{{section.id}} .__button{margin-bottom:30px;flex:0 0 49%;margin:auto;text-align:center;display:flex;align-items:center;justify-content:center;min-height:54px;padding:14px 0;border:none !important;}
+  #shopify-section-{{section.id}} .__container{max-width:1200px;width:80%;margin-left:auto;margin-right:auto;display:flex;margin-bottom:30px}
+  #shopify-section-{{section.id}} .__hero{ height:{{section.settings.height}}vh }
+  #drwoof-hero-{{ section.id }}{
+  {%if section.settings.image_webp_pc != ""%}
+background:url({{ section.settings.image_webp_pc | img_url: 'master' }}) no-repeat;
+  	  {%else%}
+background:url({{ section.settings.image_lib_pc | img_url: 'master'}}) no-repeat;
+      {%endif%}
+  }
+  .mobile-only{
+  display:none !important;
+  }
+    {% if section.settings.desktop_disable %}
+  .template-index .main-hero-wrapper .section-header__title{
+    display: none !important;
+  }
+{% endif %}
+{% if section.settings.desktop_positioning > 1 %}
+  .Cus_buttons_wrapper_btns{
+    position:absolute !important; bottom: {{ section.settings.desktop_positioning }}px;
+    width:100%;
+    left:0;
+  }
+  .main-hero-wrapper{
+    position:relative !important;
+  }
+  .adjuster{
+    position:static !important;
+  }
+{% endif %}
+@media only screen and (max-width: 768px) {
+.smobile-only{
+  display:flex !important;
+}  
+}  
+@media only screen and (max-width: 600px) {
+
+
+.mobile-only{
+  display:flex !important;
+}
+    .__pc{display:none!important}
+  .__mobile{display:block!important}
+  #shopify-section-{{section.id}} .__container{width:100%}  
+  #shopify-section-{{section.id}} .__hero{ height:{{section.settings.mobile_height}}vh }  
+  #drwoof-hero-{{ section.id }}{
+    {%if section.settings.image_webp_mobile != ""%}
+background:url({{ section.settings.image_webp_mobile| img_url: 'master' }}) no-repeat;
+  	  {%elsif section.settings.image_lib_mobile != blank %}
+background:url({{ section.settings.image_lib_mobile | img_url: 'master'}}) no-repeat;
+  {%elsif section.settings.image_webp_pc != ""%}
+background:url({{ section.settings.image_webp_pc| img_url: 'master' }}) no-repeat;
+  	  {%else%}
+background:url({{ section.settings.image_lib_pc | img_url: 'master'}}) no-repeat;
+      {%endif%}
+  }
+}
+
+{% unless section.settings.image_lib_pc and section.settings.image_webp_pc %}
+  #shopify-section-dr-woof-hero{
+    display:none;
+  }
+{% endunless %}
+
+{% unless section.settings.image_lib_mobile and section.settings.image_webp_mobile %}
+  #shopify-section-dr-woof-hero{
+    display:none;
+  }
+{% endunless %}
+@media only screen and (min-width:480px){
+  .__container{
+    top:{{ section.settings.desktop_positioning }}px;
+  }
+}
+</style>
+  <div id="drwoof-hero-{{ section.id }}" class="__hero main-hero-wrapper" style="flex:0 0 100%;
+                                              display:flex;
+                                              flex-wrap: wrap;
+                                              width:100%;
+                                              background-position:center;
+                                              background-size:cover;
+">
+  <div class="__container adjuster" style="align-self:center;display: flex; flex-wrap: wrap; position:relative;">
+{% for block in section.blocks %}
+
+{%if block.type == 'text'%}  
+  <div class="__pc section-header__title" style="font-weight:bold;font-size:{{ block.settings.font_size }}px;flex:0 0 100%;text-align:center;color:{{ block.settings.text_color }};{% if block.settings.shadow_enable %}text-shadow: 0px 0px 14px {{ block.settings.shadow_color | color_modify: 'alpha', 0.50 }};{% endif %}">
+    {{ block.settings.text_content }}
+  </div>
+{% endif %}
+{% endfor%}
+<div class="Cus_buttons_wrapper_btns">
+{% for block in section.blocks %}
+{% if block.type == 'button'%}    
+<div class="" style="padding-top:30px;">
+  <a class=" __pc btn" href="{{block.settings.link}}" style="float:{{block.settings.float}};width:fit-content;{% if block.settings.color_button_desktop %}background:{{block.settings.color_button_desktop}};{% endif %}{% if block.settings.color_text_button_desktop %}color:{{block.settings.color_text_button_desktop}};{% endif %}">
+	{{ block.settings.text_content }}
+  </a>    
+</div>    
+{% endif %}
+{% endfor%}
+    </div>
+</div>
+</div>
+
+
+{% for block in section.blocks %}
+
+{%if block.type == 'review' %}    
+  {% if block.settings.marquee_enable %}
+      <style>
+      .banner_text_announcmenet{
+         overflow-x:hidden;
+         padding-top: 20px !important;
+         padding-bottom: 20px !important;
+         display:block;
+         margin: 0 auto;
+         position: relative;
+         overflow: hidden;
+         font-size:0;
+      }
+         .marky img{
+            height:{{ block.settings.marquee_image_size }}px;
+            padding-right:{{ block.settings.marquee_image_spacing }}px;
+         }
+         @media only screen and (max-width:480px){
+            .marky img{
+               height:{{ block.settings.m_marquee_image_size }}px;
+               padding-right:{{ block.settings.m_marquee_image_spacing }}px;
+            }
+         }
+         .marky{
+            width:100%;
+            -moz-transform: translateX(100%);
+                -webkit-transform: translateX(100%);
+                transform: translateX(100%);
+                -moz-animation: scroll-left {{ block.settings.marquee_image_speed }}s linear infinite;
+                -webkit-animation: scroll-left {{ block.settings.marquee_image_speed }}s linear infinite;
+                animation: scroll-left {{ block.settings.marquee_image_speed }}s linear infinite; 
+                display: flex;
+               align-items: center;
+         }
+
+         @media only screen and (max-width:480px){
+            .marky{
+            width:100%;
+            -moz-transform: translateX(100%);
+                -webkit-transform: translateX(100%);
+                transform: translateX(100%);
+                -moz-animation: scroll-left {{ block.settings.m_marquee_image_speed }}s linear infinite;
+                -webkit-animation: scroll-left {{ block.settings.m_marquee_image_speed }}s linear infinite;
+                animation: scroll-left {{ block.settings.m_marquee_image_speed }}s linear infinite; 
+                display: flex;
+               align-items: center;
+            }
+         }
+      
+         @-moz-keyframes scroll-left {
+                0% {
+                    -moz-transform: translateX(0%);
+                }
+                100% {
+                    -moz-transform: translateX(-500%);
+                }
+            }
+            
+            @-webkit-keyframes scroll-left {
+                0% {
+                    -webkit-transform: translateX(0%);
+                }
+                100% {
+                    -webkit-transform: translateX(-500%);
+                }
+            }
+            
+            @keyframes scroll-left {
+                0% {
+                    -moz-transform: translateX(0%);
+                    -webkit-transform: translateX(0%);
+                    transform: translateX(0%);
+                }
+                100% {
+                    -moz-transform: translateX(-500%);
+                    -webkit-transform: translateX(-500%);
+                    transform: translateX(-500%);
+                }
+            }
+      </style>
+  {% endif %}
+  {% if block.settings.hide == 'true'%}
+  <style>
+  #drwoof-hero-{{ section.id }} .rate{display:none}
+@media only screen and (max-width: 600px) {
+  #drwoof-hero-{{ section.id }} .rate{display:block}
+}
+</style>
+  {% endif %} 
+  <div class="rate banner_text_announcmenet" style="text-align:center;flex: 0 0 100%;color:{{block.settings.text_color}};flex: 0 0 100%;background-color:{{ block.settings.background_color }};padding: 3px 20px 4.8px;">
+   <span class="marky">{% if block.settings.marquee_logo  %}<img src="{{ block.settings.marquee_logo | img_url: '200x200' }}" style="display:inline-block"/> {% endif %}<span style="font-weight:500">{{block.settings.text_content}}</span> {% if block.settings.marquee_logo2  %}<img src="{{ block.settings.marquee_logo2 | img_url: '200x200' }}" style="display:inline-block"/> {% endif %} {% if block.settings.marquee_logo3  %}<img src="{{ block.settings.marquee_logo3 | img_url: '200x200' }}" style="display:inline-block"/> {% endif %} {% if block.settings.marquee_logo4  %}<img src="{{ block.settings.marquee_logo4 | img_url: '200x200' }}" style="display:inline-block"/> {% endif %}
+      
+      
+   {% if block.settings.marquee_logo  %}<img src="{{ block.settings.marquee_logo | img_url: '200x200' }}" style="display:inline-block"/> {% endif %}<span style="font-weight:500"></span> {% if block.settings.marquee_logo2  %}<img src="{{ block.settings.marquee_logo2 | img_url: '200x200' }}" style="display:inline-block"/> {% endif %} {% if block.settings.marquee_logo3  %}<img src="{{ block.settings.marquee_logo3 | img_url: '200x200' }}" style="display:inline-block"/> {% endif %} {% if block.settings.marquee_logo4  %}<img src="{{ block.settings.marquee_logo4 | img_url: '200x200' }}" style="display:inline-block"/> {% endif %} {% if block.settings.marquee_logo  %}<img src="{{ block.settings.marquee_logo | img_url: '200x200' }}" style="display:inline-block"/> {% endif %}<span style="font-weight:500"></span> {% if block.settings.marquee_logo2  %}<img src="{{ block.settings.marquee_logo2 | img_url: '200x200' }}" style="display:inline-block"/> {% endif %} {% if block.settings.marquee_logo3  %}<img src="{{ block.settings.marquee_logo3 | img_url: '200x200' }}" style="display:inline-block"/> {% endif %} {% if block.settings.marquee_logo4  %}<img src="{{ block.settings.marquee_logo4 | img_url: '200x200' }}" style="display:inline-block"/> {% endif %} {% if block.settings.marquee_logo  %}<img src="{{ block.settings.marquee_logo | img_url: '200x200' }}" style="display:inline-block"/> {% endif %}<span style="font-weight:500"></span> {% if block.settings.marquee_logo2  %}<img src="{{ block.settings.marquee_logo2 | img_url: '200x200' }}" style="display:inline-block"/> {% endif %} {% if block.settings.marquee_logo3  %}<img src="{{ block.settings.marquee_logo3 | img_url: '200x200' }}" style="display:inline-block"/> {% endif %} {% if block.settings.marquee_logo4  %}<img src="{{ block.settings.marquee_logo4 | img_url: '200x200' }}" style="display:inline-block"/> {% endif %}
+
+   {% if block.settings.marquee_logo  %}<img src="{{ block.settings.marquee_logo | img_url: '200x200' }}" style="display:inline-block"/> {% endif %}<span style="font-weight:500"></span> {% if block.settings.marquee_logo2  %}<img src="{{ block.settings.marquee_logo2 | img_url: '200x200' }}" style="display:inline-block"/> {% endif %} {% if block.settings.marquee_logo3  %}<img src="{{ block.settings.marquee_logo3 | img_url: '200x200' }}" style="display:inline-block"/> {% endif %} {% if block.settings.marquee_logo4  %}<img src="{{ block.settings.marquee_logo4 | img_url: '200x200' }}" style="display:inline-block"/> {% endif %} {% if block.settings.marquee_logo  %}<img src="{{ block.settings.marquee_logo | img_url: '200x200' }}" style="display:inline-block"/> {% endif %}<span style="font-weight:500"></span> {% if block.settings.marquee_logo2  %}<img src="{{ block.settings.marquee_logo2 | img_url: '200x200' }}" style="display:inline-block"/> {% endif %} {% if block.settings.marquee_logo3  %}<img src="{{ block.settings.marquee_logo3 | img_url: '200x200' }}" style="display:inline-block"/> {% endif %} {% if block.settings.marquee_logo4  %}<img src="{{ block.settings.marquee_logo4 | img_url: '200x200' }}" style="display:inline-block"/> {% endif %} {% if block.settings.marquee_logo  %}<img src="{{ block.settings.marquee_logo | img_url: '200x200' }}" style="display:inline-block"/> {% endif %}<span style="font-weight:500"></span> {% if block.settings.marquee_logo2  %}<img src="{{ block.settings.marquee_logo2 | img_url: '200x200' }}" style="display:inline-block"/> {% endif %} {% if block.settings.marquee_logo3  %}<img src="{{ block.settings.marquee_logo3 | img_url: '200x200' }}" style="display:inline-block"/> {% endif %} {% if block.settings.marquee_logo4  %}<img src="{{ block.settings.marquee_logo4 | img_url: '200x200' }}" style="display:inline-block"/> {% endif %}
+      {% if block.settings.marquee_logo  %}<img src="{{ block.settings.marquee_logo | img_url: '200x200' }}" style="display:inline-block"/> {% endif %}<span style="font-weight:500"></span> {% if block.settings.marquee_logo2  %}<img src="{{ block.settings.marquee_logo2 | img_url: '200x200' }}" style="display:inline-block"/> {% endif %} {% if block.settings.marquee_logo3  %}<img src="{{ block.settings.marquee_logo3 | img_url: '200x200' }}" style="display:inline-block"/> {% endif %} {% if block.settings.marquee_logo4  %}<img src="{{ block.settings.marquee_logo4 | img_url: '200x200' }}" style="display:inline-block"/> {% endif %} {% if block.settings.marquee_logo  %}<img src="{{ block.settings.marquee_logo | img_url: '200x200' }}" style="display:inline-block"/> {% endif %}<span style="font-weight:500"></span> {% if block.settings.marquee_logo2  %}<img src="{{ block.settings.marquee_logo2 | img_url: '200x200' }}" style="display:inline-block"/> {% endif %} {% if block.settings.marquee_logo3  %}<img src="{{ block.settings.marquee_logo3 | img_url: '200x200' }}" style="display:inline-block"/> {% endif %} {% if block.settings.marquee_logo4  %}<img src="{{ block.settings.marquee_logo4 | img_url: '200x200' }}" style="display:inline-block"/> {% endif %} {% if block.settings.marquee_logo  %}<img src="{{ block.settings.marquee_logo | img_url: '200x200' }}" style="display:inline-block"/> {% endif %}<span style="font-weight:500"></span> {% if block.settings.marquee_logo2  %}<img src="{{ block.settings.marquee_logo2 | img_url: '200x200' }}" style="display:inline-block"/> {% endif %} {% if block.settings.marquee_logo3  %}<img src="{{ block.settings.marquee_logo3 | img_url: '200x200' }}" style="display:inline-block"/> {% endif %} {% if block.settings.marquee_logo4  %}<img src="{{ block.settings.marquee_logo4 | img_url: '200x200' }}" style="display:inline-block"/> {% endif %}
+      {% if block.settings.marquee_logo  %}<img src="{{ block.settings.marquee_logo | img_url: '200x200' }}" style="display:inline-block"/> {% endif %}<span style="font-weight:500"></span> {% if block.settings.marquee_logo2  %}<img src="{{ block.settings.marquee_logo2 | img_url: '200x200' }}" style="display:inline-block"/> {% endif %} {% if block.settings.marquee_logo3  %}<img src="{{ block.settings.marquee_logo3 | img_url: '200x200' }}" style="display:inline-block"/> {% endif %} {% if block.settings.marquee_logo4  %}<img src="{{ block.settings.marquee_logo4 | img_url: '200x200' }}" style="display:inline-block"/> {% endif %} {% if block.settings.marquee_logo  %}<img src="{{ block.settings.marquee_logo | img_url: '200x200' }}" style="display:inline-block"/> {% endif %}<span style="font-weight:500"></span> {% if block.settings.marquee_logo2  %}<img src="{{ block.settings.marquee_logo2 | img_url: '200x200' }}" style="display:inline-block"/> {% endif %} {% if block.settings.marquee_logo3  %}<img src="{{ block.settings.marquee_logo3 | img_url: '200x200' }}" style="display:inline-block"/> {% endif %} {% if block.settings.marquee_logo4  %}<img src="{{ block.settings.marquee_logo4 | img_url: '200x200' }}" style="display:inline-block"/> {% endif %} {% if block.settings.marquee_logo  %}<img src="{{ block.settings.marquee_logo | img_url: '200x200' }}" style="display:inline-block"/> {% endif %}<span style="font-weight:500"></span> {% if block.settings.marquee_logo2  %}<img src="{{ block.settings.marquee_logo2 | img_url: '200x200' }}" style="display:inline-block"/> {% endif %} {% if block.settings.marquee_logo3  %}<img src="{{ block.settings.marquee_logo3 | img_url: '200x200' }}" style="display:inline-block"/> {% endif %} {% if block.settings.marquee_logo4  %}<img src="{{ block.settings.marquee_logo4 | img_url: '200x200' }}" style="display:inline-block"/> {% endif %}
+      {% if block.settings.marquee_logo  %}<img src="{{ block.settings.marquee_logo | img_url: '200x200' }}" style="display:inline-block"/> {% endif %}<span style="font-weight:500"></span> {% if block.settings.marquee_logo2  %}<img src="{{ block.settings.marquee_logo2 | img_url: '200x200' }}" style="display:inline-block"/> {% endif %} {% if block.settings.marquee_logo3  %}<img src="{{ block.settings.marquee_logo3 | img_url: '200x200' }}" style="display:inline-block"/> {% endif %} {% if block.settings.marquee_logo4  %}<img src="{{ block.settings.marquee_logo4 | img_url: '200x200' }}" style="display:inline-block"/> {% endif %} {% if block.settings.marquee_logo  %}<img src="{{ block.settings.marquee_logo | img_url: '200x200' }}" style="display:inline-block"/> {% endif %}<span style="font-weight:500"></span> {% if block.settings.marquee_logo2  %}<img src="{{ block.settings.marquee_logo2 | img_url: '200x200' }}" style="display:inline-block"/> {% endif %} {% if block.settings.marquee_logo3  %}<img src="{{ block.settings.marquee_logo3 | img_url: '200x200' }}" style="display:inline-block"/> {% endif %} {% if block.settings.marquee_logo4  %}<img src="{{ block.settings.marquee_logo4 | img_url: '200x200' }}" style="display:inline-block"/> {% endif %} {% if block.settings.marquee_logo  %}<img src="{{ block.settings.marquee_logo | img_url: '200x200' }}" style="display:inline-block"/> {% endif %}<span style="font-weight:500"></span> {% if block.settings.marquee_logo2  %}<img src="{{ block.settings.marquee_logo2 | img_url: '200x200' }}" style="display:inline-block"/> {% endif %} {% if block.settings.marquee_logo3  %}<img src="{{ block.settings.marquee_logo3 | img_url: '200x200' }}" style="display:inline-block"/> {% endif %} {% if block.settings.marquee_logo4  %}<img src="{{ block.settings.marquee_logo4 | img_url: '200x200' }}" style="display:inline-block"/> {% endif %}
+
+         {% if block.settings.marquee_logo  %}<img src="{{ block.settings.marquee_logo | img_url: '200x200' }}" style="display:inline-block"/> {% endif %}<span style="font-weight:500"></span> {% if block.settings.marquee_logo2  %}<img src="{{ block.settings.marquee_logo2 | img_url: '200x200' }}" style="display:inline-block"/> {% endif %} {% if block.settings.marquee_logo3  %}<img src="{{ block.settings.marquee_logo3 | img_url: '200x200' }}" style="display:inline-block"/> {% endif %} {% if block.settings.marquee_logo4  %}<img src="{{ block.settings.marquee_logo4 | img_url: '200x200' }}" style="display:inline-block"/> {% endif %} {% if block.settings.marquee_logo  %}<img src="{{ block.settings.marquee_logo | img_url: '200x200' }}" style="display:inline-block"/> {% endif %}<span style="font-weight:500"></span> {% if block.settings.marquee_logo2  %}<img src="{{ block.settings.marquee_logo2 | img_url: '200x200' }}" style="display:inline-block"/> {% endif %} {% if block.settings.marquee_logo3  %}<img src="{{ block.settings.marquee_logo3 | img_url: '200x200' }}" style="display:inline-block"/> {% endif %} {% if block.settings.marquee_logo4  %}<img src="{{ block.settings.marquee_logo4 | img_url: '200x200' }}" style="display:inline-block"/> {% endif %} {% if block.settings.marquee_logo  %}<img src="{{ block.settings.marquee_logo | img_url: '200x200' }}" style="display:inline-block"/> {% endif %}<span style="font-weight:500"></span> {% if block.settings.marquee_logo2  %}<img src="{{ block.settings.marquee_logo2 | img_url: '200x200' }}" style="display:inline-block"/> {% endif %} {% if block.settings.marquee_logo3  %}<img src="{{ block.settings.marquee_logo3 | img_url: '200x200' }}" style="display:inline-block"/> {% endif %} {% if block.settings.marquee_logo4  %}<img src="{{ block.settings.marquee_logo4 | img_url: '200x200' }}" style="display:inline-block"/> {% endif %}
+         {% if block.settings.marquee_logo  %}<img src="{{ block.settings.marquee_logo | img_url: '200x200' }}" style="display:inline-block"/> {% endif %}<span style="font-weight:500"></span> {% if block.settings.marquee_logo2  %}<img src="{{ block.settings.marquee_logo2 | img_url: '200x200' }}" style="display:inline-block"/> {% endif %} {% if block.settings.marquee_logo3  %}<img src="{{ block.settings.marquee_logo3 | img_url: '200x200' }}" style="display:inline-block"/> {% endif %} {% if block.settings.marquee_logo4  %}<img src="{{ block.settings.marquee_logo4 | img_url: '200x200' }}" style="display:inline-block"/> {% endif %} {% if block.settings.marquee_logo  %}<img src="{{ block.settings.marquee_logo | img_url: '200x200' }}" style="display:inline-block"/> {% endif %}<span style="font-weight:500"></span> {% if block.settings.marquee_logo2  %}<img src="{{ block.settings.marquee_logo2 | img_url: '200x200' }}" style="display:inline-block"/> {% endif %} {% if block.settings.marquee_logo3  %}<img src="{{ block.settings.marquee_logo3 | img_url: '200x200' }}" style="display:inline-block"/> {% endif %} {% if block.settings.marquee_logo4  %}<img src="{{ block.settings.marquee_logo4 | img_url: '200x200' }}" style="display:inline-block"/> {% endif %} {% if block.settings.marquee_logo  %}<img src="{{ block.settings.marquee_logo | img_url: '200x200' }}" style="display:inline-block"/> {% endif %}<span style="font-weight:500"></span> {% if block.settings.marquee_logo2  %}<img src="{{ block.settings.marquee_logo2 | img_url: '200x200' }}" style="display:inline-block"/> {% endif %} {% if block.settings.marquee_logo3  %}<img src="{{ block.settings.marquee_logo3 | img_url: '200x200' }}" style="display:inline-block"/> {% endif %} {% if block.settings.marquee_logo4  %}<img src="{{ block.settings.marquee_logo4 | img_url: '200x200' }}" style="display:inline-block"/> {% endif %}
+
+         {% if block.settings.marquee_logo  %}<img src="{{ block.settings.marquee_logo | img_url: '200x200' }}" style="display:inline-block"/> {% endif %}<span style="font-weight:500"></span> {% if block.settings.marquee_logo2  %}<img src="{{ block.settings.marquee_logo2 | img_url: '200x200' }}" style="display:inline-block"/> {% endif %} {% if block.settings.marquee_logo3  %}<img src="{{ block.settings.marquee_logo3 | img_url: '200x200' }}" style="display:inline-block"/> {% endif %} {% if block.settings.marquee_logo4  %}<img src="{{ block.settings.marquee_logo4 | img_url: '200x200' }}" style="display:inline-block"/> {% endif %} {% if block.settings.marquee_logo  %}<img src="{{ block.settings.marquee_logo | img_url: '200x200' }}" style="display:inline-block"/> {% endif %}<span style="font-weight:500"></span> {% if block.settings.marquee_logo2  %}<img src="{{ block.settings.marquee_logo2 | img_url: '200x200' }}" style="display:inline-block"/> {% endif %} {% if block.settings.marquee_logo3  %}<img src="{{ block.settings.marquee_logo3 | img_url: '200x200' }}" style="display:inline-block"/> {% endif %} {% if block.settings.marquee_logo4  %}<img src="{{ block.settings.marquee_logo4 | img_url: '200x200' }}" style="display:inline-block"/> {% endif %} {% if block.settings.marquee_logo  %}<img src="{{ block.settings.marquee_logo | img_url: '200x200' }}" style="display:inline-block"/> {% endif %}<span style="font-weight:500"></span> {% if block.settings.marquee_logo2  %}<img src="{{ block.settings.marquee_logo2 | img_url: '200x200' }}" style="display:inline-block"/> {% endif %} {% if block.settings.marquee_logo3  %}<img src="{{ block.settings.marquee_logo3 | img_url: '200x200' }}" style="display:inline-block"/> {% endif %} {% if block.settings.marquee_logo4  %}<img src="{{ block.settings.marquee_logo4 | img_url: '200x200' }}" style="display:inline-block"/> {% endif %}
+         
+      </span>  
+  </div>
+{% endif %}  
+
+{% endfor %}
+
+
+<div class="__container mobile-only" style="display:flex;flex-wrap: wrap;">
+{% for block in section.blocks %}
+{%if block.type == 'button'%}    
+  <a class="__button btn" href="{{block.settings.link}}" style="margin-top:20px;{% if block.settings.color_button_mobile %}background:{{block.settings.color_button_mobile}};{% endif %}{% if block.settings.color_text_button_mobile %}color:{{block.settings.color_text_button_mobile}};{% endif %}">
+	{{ block.settings.text_content_mobile }}
+  </a>
+{%elsif block.type == 'text'%}  
+  <div class="__mobile section-header__title" style="margin-top:20px;padding:0 20px;font-weight:bold;font-size:{{ block.settings.font_size_m }}px;flex:0 0 100%;align-self:center;text-align:center;color:{{ block.settings.text_color2 }};">
+    {% if block.settings.text_content_mobile %}{{ block.settings.text_content_mobile }}{% else %}{{ block.settings.text_content }}{% endif %}
+  </div>
+{% endif%}
+{% endfor%}
+</div>
+  {% endif %}
+<style>
+  .__button:hover{
+    background:#fff !important
+    color:#0b0d32 !important
+    border:1px solid #0b0d32 !important;
+  }
+   
+</style>
+{% schema %}
+{
+   "name": "Dr Woof Hero",
+   "max_blocks": 10,
+   "settings": [
+      {
+         "type": "text",
+         "id": "pad",
+         "label": "outside space",
+         "default": "30px"
+      },
+      {
+         "type": "range",
+         "id": "desktop_positioning",
+         "min": -100,
+         "max": 100,
+         "step": 2,
+         "unit": "px",
+         "label": "Text and Button positioning on desktop",
+         "default": 0
+      },
+      {
+         "type": "checkbox",
+         "id": "desktop_disable",
+         "label": "Hide on desktop",
+         "default": false
+      },
+      {
+         "type": "checkbox",
+         "id": "border_disable",
+         "label": "Show Border",
+         "default": false
+      },
+      {
+         "type": "range",
+         "id": "height",
+         "min": 1,
+         "max": 101,
+         "step": 1,
+         "label": "Height",
+         "default": 90
+      },
+      {
+         "type": "range",
+         "id": "mobile_height",
+         "min": 1,
+         "max": 101,
+         "step": 1,
+         "label": "Mobile height",
+         "default": 50
+      },
+      {
+         "type": "image_picker",
+         "id": "image_lib_pc",
+         "label": "Image on PC 1440 x 900 recommend"
+      },
+      {
+         "type": "text",
+         "id": "image_webp_pc",
+         "label": "Image on PC base64 1440 x 900 recommend"
+      },
+      {
+         "type": "image_picker",
+         "id": "image_lib_mobile",
+         "label": "Image on mobile 400 x 300 recommend"
+      },
+      {
+         "type": "text",
+         "id": "image_webp_mobile",
+         "label": "Image on PC base64 400 x 300 recommend"
+      }
+   ],
+   "blocks": [
+      {
+         "type": "text",
+         "name": "Hero text",
+         "settings": [
+            {
+               "type": "richtext",
+               "id": "text_content",
+               "label": "Main text content"
+            },
+            {
+               "type": "richtext",
+               "id": "text_content_mobile",
+               "label": "Main text content mobile"
+            },
+            {
+               "type": "checkbox",
+               "id": "shadow_enable",
+               "label": "Enable Text Shadow",
+               "default": true
+            },
+            {
+               "type": "color",
+               "id": "shadow_color",
+               "label": "Shadow color",
+               "default": "#000000"
+            },
+            {
+               "type": "color",
+               "id": "text_color",
+               "label": "Main text color for desktop",
+               "default": "#f1f1f1"
+            },
+            {
+               "type": "color",
+               "id": "text_color2",
+               "label": "Main text color for mobile",
+               "default": "#f1f1f1"
+            },
+            {
+               "type": "range",
+               "id": "font_size",
+               "min": 12,
+               "max": 100,
+               "step": 1,
+               "unit": "px",
+               "label": "Font size",
+               "default": 26
+            },
+            {
+               "type": "range",
+               "id": "font_size_m",
+               "min": 12,
+               "max": 100,
+               "step": 1,
+               "unit": "px",
+               "label": "Font size on mobile",
+               "default": 20
+            }
+         ]
+      },
+      {
+         "type": "button",
+         "name": "Button",
+         "settings": [
+            {
+               "type": "text",
+               "id": "text_content",
+               "label": "Desktop text button",
+               "default": "Shop ..."
+            },
+            {
+               "type": "text",
+               "id": "text_content_mobile",
+               "label": "Mobile text button"
+            },
+            {
+              "type": "color",
+              "id": "color_button_desktop",
+              "label": "Desktop button color"
+            },
+            {
+              "type": "color",
+              "id": "color_button_mobile",
+              "label": "Mobile button color"
+            },
+            {
+              "type": "color",
+              "id": "color_text_button_desktop",
+              "label": "desktop button text color"
+            },
+            {
+              "type": "color",
+              "id": "color_text_button_mobile",
+              "label": "Mobile button text color"
+            },
+            {
+               "type": "text",
+               "id": "link",
+               "label": "link",
+               "default": "#"
+            },
+            {
+               "type": "radio",
+               "id": "float",
+               "label": "Floating",
+               "options": [
+                  {
+                     "value": "left",
+                     "label": "Left"
+                  },
+                  {
+                     "value": "right",
+                     "label": "Right"
+                  }
+               ],
+               "default": "right"
+            }
+         ]
+      },
+      {
+         "type": "review",
+         "name": "Reviews",
+         "settings": [
+            {
+               "type": "image_picker",
+               "id": "marquee_logo",
+               "label": "Marquee logo"
+            },
+            {
+               "type": "textarea",
+               "id": "text_content",
+               "label": "Main text content",
+               "default": "Trusted by 5000+ Doctors"
+            },
+            {
+               "type": "image_picker",
+               "id": "marquee_logo2",
+               "label": "Marquee logo"
+            },
+            {
+               "type": "textarea",
+               "id": "text_content2",
+               "label": "Main text content",
+               "default": "Trusted by 5000+ Doctors"
+            },
+            {
+               "type": "image_picker",
+               "id": "marquee_logo3",
+               "label": "Marquee logo"
+            },
+            {
+               "type": "textarea",
+               "id": "text_content3",
+               "label": "Main text content",
+               "default": "Trusted by 5000+ Doctors"
+            },
+            {
+               "type": "image_picker",
+               "id": "marquee_logo4",
+               "label": "Marquee logo"
+            },
+            {
+               "type": "textarea",
+               "id": "text_content4",
+               "label": "Main text content",
+               "default": "Trusted by 5000+ Doctors"
+            },
+            {
+               "type": "checkbox",
+               "id": "marquee_enable",
+               "label": "Enable Marquee",
+               "default": false
+            },
+            {
+               "type": "range",
+               "id": "marquee_image_size",
+               "min": 20,
+               "max": 200,
+               "step": 10,
+               "unit": "px",
+               "label": "Image size",
+               "default": 40
+            },            {
+               "type": "range",
+               "id": "m_marquee_image_size",
+               "min": 20,
+               "max": 200,
+               "step": 10,
+               "unit": "px",
+               "label": "Mobile image size",
+               "default": 40
+            },
+            {
+               "type": "range",
+               "id": "marquee_image_spacing",
+               "min": 20,
+               "max": 200,
+               "step": 10,
+               "unit": "px",
+               "label": "Image spacing",
+               "default": 40
+            },
+            {
+               "type": "range",
+               "id": "m_marquee_image_spacing",
+               "min": 20,
+               "max": 200,
+               "step": 10,
+               "unit": "px",
+               "label": "Mobile image spacing",
+               "default": 40
+            },
+            {
+               "type": "range",
+               "id": "marquee_image_speed",
+               "min": 10,
+               "max": 200,
+               "step": 10,
+               "unit": "s",
+               "label": "Animation speed (higher is slower)",
+               "default": 20
+            },
+            {
+               "type": "range",
+               "id": "m_marquee_image_speed",
+               "min": 10,
+               "max": 200,
+               "step": 10,
+               "unit": "s",
+               "label": "Mobile animation speed (higher is slower)",
+               "default": 20
+            },
+            {
+               "type": "color",
+               "id": "text_color",
+               "label": "Main text color",
+               "default": "#ffffff"
+            },
+            {
+               "type": "color",
+               "id": "background_color",
+               "label": "Background color",
+               "default": "#000000"
+            },
+            {
+               "type": "radio",
+               "id": "hide",
+               "label": "Hide on PC",
+               "options": [
+                  {
+                     "value": "true",
+                     "label": "True"
+                  },
+                  {
+                     "value": "false",
+                     "label": "False"
+                  }
+               ],
+               "default": "true"
+            }
+         ]
+      }
+   ],
+   "presets": [
+      {
+         "name": "Dr Woof Hero",
+         "category": "Image",
+         "blocks": []
+      }
+   ]
+}
+{% endschema %}

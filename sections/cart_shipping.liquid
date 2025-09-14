@@ -1,0 +1,59 @@
+     <div class="free_shipping">
+     <div class="page-width">
+	{% assign shipping_quotient = section.settings.Price_id %}
+   {% assign shipping_procent = cart.total_price | divided_by: shipping_quotient  %}
+   {% if shipping_procent < 100 %}
+      {% assign cart_value = cart.total_price | money_without_currency%}
+      {% assign cartSubTotal = section.settings.Price_id | minus: cart_value %} 
+      {% assign leftamount = cartSubTotal | times: 100 | money  %}
+      <p> {{section.settings.shipping_message | replace: '[price]', leftamount }}</p>
+      <div class="bar">
+        <div class="bar-inner" data-percent="{{ shipping_procent}}%"></div>
+      </div>
+   {% else %}
+       <p> {{section.settings.success_message }}</p>
+     <div class="bar">
+      <div class="bar-inner" data-percent="100%"> </div>
+    </div>
+   {% endif  %}
+
+      </div></div>
+{% schema %}
+  {
+    "name": "Cart_free_shipping",
+    "settings": [
+      {
+        "id": "shipping_message",
+        "type": "text",
+        "label": "Free Shipping Message"
+        
+      },
+        {
+        "id": "Price_id",
+        "type": "text",
+        "label": "Free Shipping Price"
+     
+      },
+
+      {
+        "id": "success_message",
+        "type": "text",
+        "label": "Success Message"
+
+       }
+    ]
+  }
+{% endschema %}
+<script>
+  
+(function(document) {
+  var bars = [].slice.call(document.querySelectorAll('.bar-inner'));
+  bars.map(function(bar, index) {
+    setTimeout(function() {
+    	bar.style.width = bar.dataset.percent;
+    }, index * 1000);
+  });
+})
+  
+  
+</script>  

@@ -1,0 +1,125 @@
+{
+  "sections": {
+    "be5745bf-13a8-4f4b-a32b-8ec5d3807a4b": {
+      "type": "dr-woof-hero-scrubs3",
+      "settings": {
+        "pad": "30px",
+        "enable_auto": true,
+        "desktop_positioning": 0,
+        "height": 90,
+        "mobile_height": 50,
+        "image_lib_pc": "shopify:\/\/shop_images\/COLLECTION_BANNER_TEMPLATE_PC_2400_x_900_px_5.png",
+        "image_webp_pc": "",
+        "image_lib_mobile": "shopify:\/\/shop_images\/COLLECTION_BANNER_TEMPLATE_MOBILE_1600_x_900_px_5.jpg",
+        "image_webp_mobile": ""
+      }
+    },
+    "collection-header": {
+      "type": "dr-woof-hero-scrubs3",
+      "disabled": true,
+      "settings": {
+        "pad": "30px",
+        "enable_auto": false,
+        "desktop_positioning": 0,
+        "height": 90,
+        "mobile_height": 50,
+        "image_lib_pc": "shopify:\/\/shop_images\/desktop.webp",
+        "image_webp_pc": "",
+        "image_lib_mobile": "shopify:\/\/shop_images\/desktop.webp",
+        "image_webp_mobile": ""
+      }
+    },
+    "collection-filter": {
+      "type": "collection-thumbnail-filter",
+      "blocks": {
+        "6d7f0d23-e91e-494a-972c-e6e572193564": {
+          "type": "Image",
+          "settings": {
+            "image_thumbnail": "shopify:\/\/shop_images\/6_0de63b41-c88d-4bf1-bc81-ab1027a5a3b6.png",
+            "collection_title": "Scrub Tops",
+            "linkurl": "https:\/\/www.drwoofapparel.com.au\/collections\/men\/scrub-tops?view=sl-F09B0760"
+          }
+        },
+        "cda1e4d3-8bfe-4a1e-8cf4-2560a3d6111b": {
+          "type": "Image",
+          "settings": {
+            "image_thumbnail": "shopify:\/\/shop_images\/7_416cfe99-14b5-402e-a102-a6c5a38eb463.png",
+            "collection_title": "Scrub Pants",
+            "linkurl": "https:\/\/www.drwoofapparel.com.au\/collections\/men\/scrub-pants?view=sl-F09B0760"
+          }
+        },
+        "8e9e9602-1c13-47af-ac2f-b9fc08dd0a14": {
+          "type": "Image",
+          "settings": {
+            "image_thumbnail": "shopify:\/\/shop_images\/8_a768ded0-a882-4884-9454-3218a5b3ec4c.png",
+            "collection_title": "Underscrubs",
+            "linkurl": "https:\/\/www.drwoofapparel.com.au\/collections\/men\/underscrubs-men?view=sl-F09B0760"
+          }
+        },
+        "d119dc9b-a07f-4a05-86ea-d1a3ed1a0bc3": {
+          "type": "Image",
+          "settings": {
+            "image_thumbnail": "shopify:\/\/shop_images\/9_2b5e2e18-8e37-403d-af64-3f90eb48aa1d.png",
+            "collection_title": "Outerwear",
+            "linkurl": "https:\/\/www.drwoofapparel.com.au\/collections\/men\/outerwear?view=sl-F09B0760"
+          }
+        },
+        "8301276d-4046-466f-a40c-fe3c8424163f": {
+          "type": "Image",
+          "settings": {
+            "image_thumbnail": "shopify:\/\/shop_images\/10_5b200487-ee31-4202-879c-f84cfb462d8c.png",
+            "collection_title": "Bundle Deals",
+            "linkurl": "https:\/\/www.drwoofapparel.com.au\/collections\/deals-1?view=sl-F09B0760"
+          }
+        }
+      },
+      "block_order": [
+        "6d7f0d23-e91e-494a-972c-e6e572193564",
+        "cda1e4d3-8bfe-4a1e-8cf4-2560a3d6111b",
+        "8e9e9602-1c13-47af-ac2f-b9fc08dd0a14",
+        "d119dc9b-a07f-4a05-86ea-d1a3ed1a0bc3",
+        "8301276d-4046-466f-a40c-fe3c8424163f"
+      ],
+      "settings": {
+        "title_enable": true
+      }
+    },
+    "collection-filters": {
+      "type": "collection-filters-def",
+      "blocks": {
+        "bc703139-6932-4e01-a35f-49363205a2a3": {
+          "type": "color_group",
+          "settings": {
+            "title": "",
+            "tag_list": "Burgundy \nHeather grey \nGreen"
+          }
+        }
+      },
+      "block_order": [
+        "bc703139-6932-4e01-a35f-49363205a2a3"
+      ],
+      "settings": {
+        "filter_type": "groups",
+        "tags_combine": false,
+        "collection_title_enable": false,
+        "collection_filter_enable": false,
+        "collection_sort_enable": false
+      }
+    },
+    "main-collection": {
+      "type": "collection-template-scrubs",
+      "settings": {
+        "per_row_desktop": 3,
+        "per_row_mobile": "2",
+        "description_bottom": false
+      }
+    }
+  },
+  "order": [
+    "be5745bf-13a8-4f4b-a32b-8ec5d3807a4b",
+    "collection-header",
+    "collection-filter",
+    "collection-filters",
+    "main-collection"
+  ]
+}

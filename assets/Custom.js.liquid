@@ -1,0 +1,561 @@
+function getDataIdByColor(color) {
+  // Find the option that has the varname attribute matching the color
+  const option = $('#ProductSelect-8894162862338 option[varname="' + color + '"]');
+  
+  // Get the data-id attribute from the matched option
+  const dataId = option.attr('data-id');
+  
+  return dataId;
+}
+
+let curr = ''
+
+function disableJavaScript(t) {
+    var a = $("<div>").html(t);
+    return a.find("script").remove(), a.html();
+}
+$(document).ready(function () {
+    
+    $(document).on("click",".markF",function(e){
+           e.preventDefault()
+           $markFcolor = $(".prohandleactive").attr("data-value")
+           $dataId = getDataIdByColor($markFcolor);
+           $dataxx = { id: $dataId, quantity: 1 },
+                      jQuery.ajax({
+                          type: "POST",
+                          url: "/cart/add.js",
+                          data: $dataxx,
+                          dataType: "json",
+                          success: function (t) {
+                              cart_update();
+                          },
+                      }),
+                      console.log("gsdgsdg")
+    })
+    console.log("XXXXXXXXXXXX"),
+        console.log("XXXXXXXXXXXX"),
+        console.log("XXXXXXXXXXXX"),
+        console.log("XXXXXXXXXXXX"),
+        console.log("XXXXXXXXXXXX"),
+        console.log("XXXXXXXXXXXX"),
+        console.log("IIIIIIIIIIII"),
+        /*
+        setTimeout(function () {
+            $("[data-value='S'] label[op_val='S']").length ? $("[data-value='S'] label[op_val='S']").trigger("click") : $("[data-value='XL'] label[op_val='XL']").trigger("click");
+        }, 500),
+        */
+        setTimeout(function () {
+            $(".custom-option-value").show();
+        }, 3e3),
+        ($gonavy = $("h1.section-header__title").hasClass("gonavy")) && $(".color-swatch--navyv").trigger("click"),
+        console.log("gsdsgsd"),
+        $(".all-colors label").on("click", function () {
+            ($class = $(this).attr("datacounter")), $(".feature-img img").hide(), $("." + $class).show();
+        }),
+        setTimeout(function () {
+            $(".sticky-size .sizer").is(":empty") && $(".sticky-size").hide(),
+                $(".sticky-color .swatch-circle")[0].hasAttribute("style") || $(".sticky-color").hide(),
+                $(".sticky-type").is(":empty") && $(".sticky-type").hide(),
+                $(".sticky-price .pricer").is(":empty") && $(".sticky-price").hide();
+        }, 1e3),
+        480 > $(window).width() &&
+            $("#toper").click(function (t) {
+                t.preventDefault(), $("html, body").animate({}, 500);
+            }),
+        $(window).resize(function () {
+            480 > $(window).width() &&
+                $("#toper").click(function (t) {
+                    t.preventDefault(), $("html, body").animate({}, 500);
+                });
+        }),
+        $(".close_button").click(function () {
+            $(this).closest(".slide-nav__overflow").removeClass("js-menu--is-open"), $(this).parent().parent().find("button.btn.site-nav__thumb-button.js-toggle-slide-nav").trigger("click");
+        });
+    var e = 0;
+    $(window).scroll(function () {
+        if (0 == $(this).scrollTop()) $(".header-wrapper").removeClass("fix_header");
+        else {
+            var t = $(this).scrollTop();
+            Math.abs(e - t) >= 0 && (t > e ? $(".header-wrapper").removeClass("fix_header") : $(".header-wrapper").addClass("fix_header"), (e = t));
+        }
+    }),
+        ($col = $.trim($(".variant-change-color .variant__label-info span").html())),
+        $(document).on("click", ".variant-change-color .variant-input-wrap .variant-input", function () {
+            if (
+                ($(".variant-input").removeClass("prohandleactive"),
+                $(this).addClass("prohandleactive"),
+                ($dis = $("[data-handle='current'][data-value='S'").hasClass("disabled")) ? $(".variant-input[data-value='XS'] label").trigger("click") : $(".variant-input[data-value='S'] label").trigger("click"),
+                ($size = $(".variant-input-wrap[data-index='option1'] input:checked").val()),
+                ($color = $(".variant-input-wrap[data-index='option2'] input:checked").val()),
+                console.log("AAYAYYAYAYA" + $color + "YAYAYYAYA"),
+                $(".variant-input-wrap[data-index='option3']").length)
+            )
+                console.log("AAYAYYAYAYAYAYAYYAYA"),
+                    (t = (t = $size + " / " + $color + " / " + ($inseam = $(".variant-input-wrap[data-index='option3'] input:checked").val()))
+                        .toLowerCase()
+                        .replace(/[^a-z0-9]+/g, "-")
+                        .replace(/-$/, "")
+                        .replace(/^-/, "")),
+                    ($x = parseFloat(comprice[t] / 100).toFixed(2)),
+                    ($y = parseFloat(normprice[t] / 100).toFixed(2)),
+                    console.log($x + " | " + $y + " | " + t),
+                    curr = Shopify.currency.active == 'AUD' ? '' : Shopify.currency.active,
+                    isNaN($x) || ($(".grid-product__price del").html("$" + $x + " " + curr), $(".grid-product__price .sale-price").html("$" + $y + " " + curr));
+            else if ((console.log("ABABABABBABABAABxx"), $(".variant-input-wrap[data-index='option2']").length)) {
+                var t;
+                console.log("YOYOYOYOYOYO"),
+                    (t = (t = $size + " / " + $color)
+                        .toLowerCase()
+                        .replace(/[^a-z0-9]+/g, "-")
+                        .replace(/-$/, "")
+                        .replace(/^-/, "")),
+                    ($x = parseFloat(comprice[t] / 100).toFixed(2)),
+                    ($y = parseFloat(normprice[t] / 100).toFixed(2)),
+                    curr = Shopify.currency.active == 'AUD' ? '' : Shopify.currency.active,
+                    isNaN($x) || ($(".grid-product__price del").html("$" + $x + " " + curr), $(".grid-product__price .sale-price").html("$" + $y + " " + curr));
+            }
+            $nowcol = $.trim($(this).attr("data-value"));
+            var a = !1,
+                e = $(this).attr("data-handle");
+            for (let t = 0; t < colorarray.length; t++) {
+                let e = colorarray[t].split(" - ");
+                var i = $(this).find("label").attr("op_val"),
+                    o = e[1]
+                        .toLowerCase()
+                        .replace(/[^a-z0-9]+/g, "-")
+                        .replace(/-$/, "")
+                        .replace(/^-/, "");
+                if (
+                    (i = i
+                        .toLowerCase()
+                        .replace(/[^a-z0-9]+/g, "-")
+                        .replace(/-$/, "")
+                        .replace(/^-/, "")) == o
+                ) {
+                    var n = e[2];
+                    $(".datahere").html(n), $(".dotspacer").show(), (a = !0);
+                }
+            }
+            0 == a && ($(".datahere").html(""), $(".dotspacer").hide()),
+                setTimeout(function () {
+                    if (
+                        ((function () {
+                            for (var t, a = [], e = window.location.href.slice(window.location.href.indexOf("?") + 1).split("&"), i = 0; i < e.length; i++) (t = e[i].split("=")), a.push(t[0]), (a[t[0]] = t[1]);
+                            return a;
+                        })().variant,
+                        "current" == e)
+                    ) {
+                        var t = window.location.href;
+                        console.log(t);
+                    } else {
+                        var a = window.location.href;
+                        if (window.location.href.indexOf("/collections/") > -1) {
+                            var i = a.split("/")[6].split("?")[0];
+                            t = a.replace(i, e);
+                            console.log("test");
+                        } else {
+                            (i = a.split("/")[4].split("?")[0]), (t = a.replace(i, e));
+                            console.log("test222");
+                        }
+                    }
+                    $col = $nowcol;
+                }, 100);
+                
+        }),
+        $(document).on("click", ".variant-input[data-index='option3'] .label_options", function (t) {
+            if (
+                (($ok1 = "notok"),
+                ($oknarin1 = "not ok"),
+                ($size = $(".variant-input-wrap[data-index='option1'] input:checked").val()),
+                ($color = $(".variant-input-wrap[data-index='option2'] input:checked").val()),
+                $(".variant-input-wrap[data-index='option3']").length)
+            )
+                (a = (a = $size + " / " + $color + " / " + ($inseam = $(".variant-input-wrap[data-index='option3'] input:checked").val()))
+                    .toLowerCase()
+                    .replace(/[^a-z0-9]+/g, "-")
+                    .replace(/-$/, "")
+                    .replace(/^-/, "")),
+                    ($x = parseFloat(comprice[a] / 100).toFixed(2)),
+                    ($y = parseFloat(normprice[a] / 100).toFixed(2)),
+                    console.log($x + " | " + $y + " | " + a),
+                                        curr = Shopify.currency.active == 'AUD' ? '' : Shopify.currency.active,
+                    isNaN($x) || ($(".grid-product__price del").html("$" + $x + " " + curr), $(".grid-product__price .sale-price").html("$" + $y + " " + curr));
+            else if ($(".variant-input-wrap[data-index='option2']").length) {
+                var a;
+                (a = (a = $size + " / " + $color)
+                    .toLowerCase()
+                    .replace(/[^a-z0-9]+/g, "-")
+                    .replace(/-$/, "")
+                    .replace(/^-/, "")),
+                    ($x = parseFloat(comprice[a] / 100).toFixed(2)),
+                    ($y = parseFloat(normprice[a] / 100).toFixed(2)),
+                                        curr = Shopify.currency.active == 'AUD' ? '' : Shopify.currency.active,
+                    isNaN($x) || ($(".grid-product__price del").html("$" + $x + " " + curr), $(".grid-product__price .sale-price").html("$" + $y + " " + curr));
+            }
+        }),
+        $(document).on("click", ".product__thumb-item", function (t) {
+            t.preventDefault();
+            var a = $(this).attr("data-index");
+            $(".product__thumb-item").removeClass("Active--slide"),
+                $(this).addClass("Active--slide"),
+                $(".product__main-photos-wrapper .product__slide").removeClass("starting-slide"),
+                $(".product__main-photos-wrapper .product__slide").addClass("secondary-slide"),
+                $('.product__main-photos-wrapper .product__slide[data-index="' + a + '"]').addClass("starting-slide"),
+                $('.product__main-photos-wrapper .product__slide[data-index="' + a + '"]').removeClass("secondary-slide"),
+                $(this).find(".product__thumb span").hasClass("product__thumb-icon") ? $(".product__slide.starting-slide video").trigger("play") : console.log("xxx");
+        }),
+$(document).on("afterChange", ".Main--ProductPhotos", function (t, a, e, i) {
+    console.log(i);
+    setTimeout(function () {
+        let t = jQuery(".Main--ProductPhotos");
+
+        // Check if the slide has a video
+        if ((t.find(".starting-slide video").length) || (t.find(".slick-active video").length)) {
+            // t.find(".image-wrap img").hide();
+            t.find("video").trigger("play");
+        } else {
+            t.find("img").show();
+           // t.find("video").trigger("pause");
+        }
+    }, 300);
+}),
+        $(".Main--ProductPhotos").on("beforeChange", function (t, a, e) {
+            setTimeout(function () {
+                jQuery(".Main--ProductPhotos .slick-current.slick-active").find("div").hasClass("product__video-wrapper")
+                    ? (console.log("111111111111"), jQuery(".Main--ProductPhotos .slick-current.slick-active video").trigger("play"))
+                    : (console.log("222222222222"), console.log("xxx"));
+            }, 300);
+        }),
+        jQuery(".Main--ProductPhotos").on("beforeChange", function () {
+            console.log("chnage Event"),
+                setTimeout(function () {
+                    jQuery(".Main--ProductPhotos .slick-current.slick-active").find("div").hasClass("product__video-wrapper")
+                        ? (console.log("111111111111"), jQuery(".Main--ProductPhotos .slick-current.slick-active video").trigger("play"))
+                        : (console.log("222222222222"), console.log("xxx"));
+                }, 300);
+        }),
+        $("button.label.collapsible-trigger.collapsible-trigger-btn.collapsible-trigger-btn--borders").eq(0).trigger("click");
+}),
+    jQuery(document).on("click", ".custom-ajax-size .variant-input", function () {
+        if (
+            (console.log("sizechangessdfsdfsdf"),
+            ($size = $(".variant-input-wrap[data-index='option1'] input:checked").val()),
+            ($color = $(".variant-input-wrap[data-index='option2'] input:checked").val()),
+            $(".variant-input-wrap[data-index='option3']").length)
+        )
+            (t = (t = $size + " / " + $color + " / " + ($inseam = $(".variant-input-wrap[data-index='option3'] input:checked").val()))
+                .toLowerCase()
+                .replace(/[^a-z0-9]+/g, "-")
+                .replace(/-$/, "")
+                .replace(/^-/, "")),
+                ($x = parseFloat(comprice[t] / 100).toFixed(2)),
+                ($y = parseFloat(normprice[t] / 100).toFixed(2)),
+                console.log($x + " | " + $y + " | " + t),
+                                    curr = Shopify.currency.active == 'AUD' ? '' : Shopify.currency.active,
+                    isNaN($x) || ($(".grid-product__price del").html("$" + $x + " " + curr), $(".grid-product__price .sale-price").html("$" + $y + " " + curr));
+        else if ($(".variant-input-wrap[data-index='option2']").length) {
+            var t;
+            (t = (t = $size + " / " + $color)
+                .toLowerCase()
+                .replace(/[^a-z0-9]+/g, "-")
+                .replace(/-$/, "")
+                .replace(/^-/, "")),
+                ($x = parseFloat(comprice[t] / 100).toFixed(2)),
+                ($y = parseFloat(normprice[t] / 100).toFixed(2)),
+                    curr = Shopify.currency.active == 'AUD' ? '' : Shopify.currency.active,
+                    isNaN($x) || ($(".grid-product__price del").html("$" + $x + " " + curr), $(".grid-product__price .sale-price").html("$" + $y + " " + curr));
+        }
+        var a = $(this).attr("data-value").trim().toLowerCase(),
+            e = $('.displayHidden span[data-matched="' + a + '"]').html();
+        $(this).parents(".variant-wrapper").find(".variant__label .variant__label-info .custom-option-value").html(e);
+    }),
+    $(".input-group").on("click", ".button-plus", function (t) {
+        t.preventDefault();
+        var a = $(t.target).data("field"),
+            e = $(t.target).closest("div"),
+            i = parseInt(e.find("input[name=" + a + "]").val(), 10);
+        isNaN(i) ? e.find("input[name=" + a + "]").val(0) : e.find("input[name=" + a + "]").val(i + 1);
+    }),
+    $(".input-group").on("click", ".button-minus", function (t) {
+        t.preventDefault();
+        var a = $(t.target).data("field"),
+            e = $(t.target).closest("div"),
+            i = parseInt(e.find("input[name=" + a + "]").val(), 10);
+        console.log(i), 1 == i ? e.find("input[name=" + a + "]").val(1) : !isNaN(i) && i > 0 ? e.find("input[name=" + a + "]").val(i - 1) : e.find("input[name=" + a + "]").val(0);
+    }),
+    $(".product-tabs-data").click(function () {
+        var t = $(this).attr("value");
+        ($counterat = 0),
+            $(".product-tabs-data").removeClass("tag--active"),
+            $(this).addClass("tag--active"),
+            $("div#CollectionAjaxContent .grid__item").hide(),
+            $("div#CollectionAjaxContent .grid__item").each(function () {
+                $.trim($(this).find("span.product__title_color_variants").attr("var-name")).includes(t) && $(this).show(), $(this).hasClass("main-metafield-image") && $(this).show();
+            }),
+            ($itemcount = parseInt($("div#CollectionAjaxContent .grid__item:visible").length) - 2),
+            $("div#CollectionAjaxContent .grid__item:visible").each(function () {
+                $(this).css("order", $counterat), $counterat++;
+            }),
+            $itemcount > 0 && $itemcount < 7
+                ? ($(".main-metafield-image").eq(1).hide(), $(".main-metafield-image").eq(0).css("order", -1))
+                : ($(".main-metafield-image").eq(0).css("order", -1), $(".main-metafield-image").eq(1).css("order", 10));
+    }),
+    $(document).ready(function () {
+        $(".main-metafield-image").eq(1).hide(),
+            $(".main-metafield-image").eq(0).css("order", -1),
+            $(".close-button").click(function () {
+                $(".pop-up-modal").removeClass("show-pop-up");
+            }),
+            setTimeout(function () {
+                $(".zip-widget__wrapper").addClass("hide");
+                var t = $(".zip-widget__wrapper").html();
+                $(t).insertAfter(".afterpay-paragraph"), $(".zip-widget__wrapper").addClass("active");
+            }, 1e3),
+            769 > $(window).width()
+                ? $("ul.no-bullets.tag-list.tag-list--swatches.slick-carousel").slick({ autoplay: !1, infinite: !1, slidesToShow: 10, slidesToScroll: 1, responsive: [{ breakpoint: 600, settings: { slidesToShow: 8, slidesToScroll: 1 } }] })
+                : $("ul.no-bullets.tag-list.tag-list--swatches.slick-carousel").hasClass("slick-initialized") && $("ul.no-bullets.tag-list.tag-list--swatches.slick-carousel").slick("unslick");
+    }),
+    $(window).on("resize", function () {
+        769 > $(window).width()
+            ? $("ul.no-bullets.tag-list.tag-list--swatches.slick-carousel").slick({ autoplay: !1, infinite: !1, slidesToShow: 10, slidesToScroll: 1, responsive: [{ breakpoint: 600, settings: { slidesToShow: 8, slidesToScroll: 1 } }] })
+            : $("ul.no-bullets.tag-list.tag-list--swatches.slick-carousel").hasClass("slick-initialized") && $("ul.no-bullets.tag-list.tag-list--swatches.slick-carousel").slick("unslick");
+    }),
+    $(document).on("change", ".product-section.is-modal .variant-input input", function (t) {
+        console.log("inseam");
+        var a = $("select.custom-product-single__variants.no-js option:selected").attr("value"),
+            e = window.location.href;
+        if (e.indexOf("=") > 0) {
+            var i = e.substring(0, e.indexOf("=")) + "=" + a;
+            window.history.replaceState({}, document.title, i);
+        }
+    });
+var xxx = $(".varin[checked='checked']").attr("op_val"),
+    yyy = $(".variant__label span[data-option-index='1']").html(),
+    curr_indx = yyy,
+    curr_val = xxx,
+    optionlength = $(".variant-wrapper").length;
+jsonoption = {};
+optionlength = $(".variant-wrapper").length;
+$(this).parents(".variant-wrapper").find(".variant__label-info span").html(curr_val),
+    $(".product-single__variants.no-js option").each(function () {
+        var t = $(this).attr("varname"),
+            a = $(this).data("avail");
+        jsonoption[t] = a;
+    }),
+    setTimeout(function () {
+        $(".varin:disabled[option_index='2']").each(function () {
+            $(this).parent().addClass("supdis");
+        });
+    }, 1e3),
+    3 == optionlength ||
+        ($(".label_options[option_index='2']").each(function () {
+            var t = $(this).attr("op_val"),
+                a = jsonoption[xxx + " / " + t];
+            console.log(a), $(this).parent().removeClass("disabled"), void 0 === a ? $(this).parent().addClass("supdis") : "unavailable" == a && $(this).parent().removeClass("supdis");
+        }),
+        $(".label_options[option_index='1']").each(function () {
+            var t = $(this).attr("op_val") + " / " + yyy.trim(),
+                a = jsonoption[t];
+            console.log(a), $(this).parent().removeClass("disabled"), void 0 === a ? $(this).parent().addClass("supdis") : "unavailable" == a && $(this).parent().removeClass("supdis");
+        })),
+    $(".custom-option-value").html($(".varin[name=Size][checked=checked").val()),
+    $(document).ready(function () {
+        $(".add-to-cart").on("click", function (a) {
+            a.preventDefault(),
+            console.log("HHHHHHHHHHH"),
+                $("body").hasClass("os2scrunchies")
+                    ? (($dataxx = { id: ($varidx = $("input[name=data-product-variant-id]").val()), quantity: 1 }),
+                      jQuery.ajax({
+                          type: "POST",
+                          url: "/cart/add.js",
+                          data: $dataxx,
+                          dataType: "json",
+                          success: function (t) {
+                              cart_update();
+                          },
+                      }),
+                      console.log("gsdgsdg"))
+                    : $("body").hasClass("product") &&
+                      (($dataxx = { id: ($varidx = $("input[name=data-product-variant-id]").val()), quantity: 1 }),
+                      jQuery.ajax({
+                          type: "POST",
+                          url: "/cart/add.js",
+                          data: $dataxx,
+                          dataType: "json",
+                          success: function (t) {
+                              cart_update();
+                          },
+                      }),
+                      console.log(" yy y y yy y y")),
+                ($addon = $("#addon").val()),
+                ($namePlacement = $("#namePlacement").val()),
+                ($nameFirstline = $("#nameFirstline").val()),
+                ($nameSecondline = $("#nameSecondline").val()),
+                ($nameColor = $("#nameColor").val()),
+                ($logoPlacement = $("#logoPlacement").val()),
+                ($logoName = $("#logoName").val()),
+                ($initials = $("#initials").val()),
+                ($initialsColor = $("#initialsColor").val()),
+                ($tekalang = $(".add-to-cart span").html()),
+                ($thisaddon = $("#addon").val()),
+                $(".add-to-cart span").html("ADDING TO BAG..."),
+                ($realcount1 = parseInt($(".cart__item[dataid='43048672166146'").find(".cart__quantity").val())),
+                ($realcount2 = parseInt($(".cart__item[dataid='43096458625282'").find(".cart__quantity").val())),
+                ($realcount3 = parseInt($(".cart__item[dataid='43272026063106'").find(".cart__quantity").val())),
+                ($realcount4 = parseInt($(".cart__item[dataid='45814306570498'").find(".cart__quantity").val())),
+                isNaN($realcount1) && ($realcount1 = 0),
+                isNaN($realcount2) && ($realcount2 = 0),
+                isNaN($realcount3) && ($realcount3 = 0),
+                isNaN($realcount4) && ($realcount4 = 0),
+                "Name" != $thisaddon && "Sleeve Mate" != $thisaddon && "Name + Sleeve Mate" != $thisaddon
+                    ? ($(".add-to-cart span").html($tekalang),
+                      ($aet = $(".variant-wrapper:nth-of-type(3) .variant__label-info span").length
+                          ? $.trim($(".variant-wrapper .custom-option-value").html()) +
+                            " / " +
+                            $.trim($(".variant-change-color .variant__label-info span:first-child").html()) +
+                            " / " +
+                            $.trim($(".variant-wrapper:nth-of-type(3) .variant__label-info span").html())
+                          : $.trim($(".variant-wrapper .custom-option-value").html()) + " / " + $.trim($(".variant-change-color .variant__label-info span:first-child").html())),
+                      $(".product-single__variants")
+                          .children()
+                          .each(function () {
+                              $(this).attr("varname") == $aet &&
+                                  (($dataazz = {
+                                      id: ($actualvarid = $(this).val()),
+                                      quantity: 1,
+                                      properties: {
+                                          "ADD ON": $addon,
+                                          "Title Placement": $namePlacement,
+                                          "Title Firstline": $nameFirstline,
+                                          "Title Secondline": $nameSecondline,
+                                          "Title Color": $nameColor,
+                                          "Logo Placement": $logoPlacement,
+                                          "Logo Name": $logoName,
+                                          initials: $initials,
+                                          initialsColor: $initialsColor,
+                                      },
+                                  }),
+                                  jQuery.ajax({
+                                      type: "POST",
+                                      url: "/cart/add.js",
+                                      data: $dataazz,
+                                      dataType: "json",
+                                      success: function (t) {
+                                          cart_update();
+                                      },
+                                  }));
+                          }))
+                    : setTimeout(function () {
+                          $(".add-to-cart span").html($tekalang),
+                              ($aet = $(".variant-wrapper:nth-of-type(3) .variant__label-info span").length
+                                  ? $.trim($(".variant-wrapper .custom-option-value").html()) +
+                                    " / " +
+                                    $.trim($(".variant-change-color .variant__label-info span:first-child").html()) +
+                                    " / " +
+                                    $.trim($(".variant-wrapper:nth-of-type(3) .variant__label-info span").html())
+                                  : $.trim($(".variant-wrapper .custom-option-value").html()) + " / " + $.trim($(".variant-change-color .variant__label-info span:first-child").html())),
+                              $(".product-single__variants")
+                                  .children()
+                                  .each(function () {
+                                      $(this).attr("varname") == $aet &&
+                                          (($dataazz = {
+                                              id: ($actualvarid = $(this).val()),
+                                              quantity: 1,
+                                              properties: {
+                                                  "ADD ON": $addon,
+                                                  "Title Placement": $namePlacement,
+                                                  "Title Firstline": $nameFirstline,
+                                                  "Title Secondline": $nameSecondline,
+                                                  "Title Color": $nameColor,
+                                                  "Logo Placement": $logoPlacement,
+                                                  "Logo Name": $logoName,
+                                                  initials: $initials,
+                                                  initialsColor: $initialsColor,
+                                              },
+                                          }),
+                                          jQuery.ajax({
+                                              type: "POST",
+                                              url: "/cart/add.js",
+                                              data: $dataazz,
+                                              dataType: "json",
+                                              success: function (t) {
+                                                  cart_update();
+                                              },
+                                          }));
+                                  });
+                      }, 100),
+                setTimeout(function () {
+                    "Name" == $thisaddon &&
+                        (jQuery.post("/cart/update.js", { updates: { 43272026063106: $realcount3, 43272054112514: $realcount3, 43048672166146: $realcount1 + 1, 43096458625282: $realcount2, 45814306570498: $realcount4 } }).done(function () {
+                            cart_update();
+                        }),
+                        $(".drawer__inner").removeClass("overlay-applied"),
+                        $(".cart_drawer_custom").html($(t).find(".cart_drawer_custom").html()),
+                        $(".unlockmsg").html($(t).find(".unlockshtml").html()),
+                        $(".cart-all-products").slick({ dots: !0, infinite: !0, speed: 300, slidesToShow: 1, slidesToScroll: 1, dots: !0, arrows: !0 }),
+                        jQuery("a.open-cart-drawer-new").trigger("click"),
+                        cart_update(),
+                        $(".addmyname").hide(),
+                        $(".addicon").hide(),
+                        $(".tleft").show(),
+                        $(".tprice").html("18 to $30"),
+                        $(".add-to-cart span").html($tekalang)),
+                        "Sleeve Mate" == $thisaddon &&
+                            (jQuery
+                                .post("/cart/update.js", { updates: { 43272026063106: $realcount3, 43272054112514: $realcount3, 43048672166146: $realcount1, 43096458625282: $realcount2 + 1, 45814306570498: $realcount4 } })
+                                .done(function () {
+                                    cart_update();
+                                }),
+                            $(".drawer__inner").removeClass("overlay-applied"),
+                            $(".cart_drawer_custom").html($(t).find(".cart_drawer_custom").html()),
+                            $(".unlockmsg").html($(t).find(".unlockshtml").html()),
+                            $(".cart-all-products").slick({ dots: !0, infinite: !0, speed: 300, slidesToShow: 1, slidesToScroll: 1, dots: !0, arrows: !0 }),
+                            jQuery("a.open-cart-drawer-new").trigger("click"),
+                            cart_update(),
+                            $(".addmyname").hide(),
+                            $(".addicon").hide(),
+                            $(".tleft").show(),
+                            $(".tprice").html("18 to $30"),
+                            $(".add-to-cart span").html($tekalang)),
+                        "Name + Sleeve Mate" == $thisaddon &&
+                            (jQuery
+                                .post("/cart/update.js", { updates: { 43272026063106: $realcount3 + 1, 43272054112514: $realcount3 + 1, 43048672166146: $realcount1, 43096458625282: $realcount2, 45814306570498: $realcount4 } })
+                                .done(function () {
+                                    cart_update();
+                                }),
+                            $(".drawer__inner").removeClass("overlay-applied"),
+                            $(".cart_drawer_custom").html($(t).find(".cart_drawer_custom").html()),
+                            $(".unlockmsg").html($(t).find(".unlockshtml").html()),
+                            $(".cart-all-products").slick({ dots: !0, infinite: !0, speed: 300, slidesToShow: 1, slidesToScroll: 1, dots: !0, arrows: !0 }),
+                            jQuery("a.open-cart-drawer-new").trigger("click"),
+                            $(".addmyname").hide(),
+                            $(".addicon").hide(),
+                            $(".tleft").show(),
+                            $(".tprice").html("18 to $30"),
+                            $(".add-to-cart span").html($tekalang),
+                            cart_update()),
+                        "Add Logo" == $thisaddon &&
+                            (jQuery
+                                .post("/cart/update.js", { updates: { 43272026063106: $realcount3, 43272054112514: $realcount3, 43048672166146: $realcount1, 43096458625282: $realcount2, 45814306570498: $realcount4 + 1 } })
+                                .done(function () {
+                                    cart_update();
+                                }),
+                            $(".drawer__inner").removeClass("overlay-applied"),
+                            $(".cart_drawer_custom").html($(t).find(".cart_drawer_custom").html()),
+                            $(".unlockmsg").html($(t).find(".unlockshtml").html()),
+                            $(".cart-all-products").slick({ dots: !0, infinite: !0, speed: 300, slidesToShow: 1, slidesToScroll: 1, dots: !0, arrows: !0 }),
+                            jQuery("a.open-cart-drawer-new").trigger("click"),
+                            $(".addmyname").hide(),
+                            $(".addicon").hide(),
+                            $(".tleft").show(),
+                            $(".tprice").html("18 to $30"),
+                            $(".add-to-cart span").html($tekalang),
+                            cart_update());
+                }, 2e3);
+        });
+    }),
+    $(document).ready(function () {
+        var t = setInterval(function () {
+            $(".slick-dots").length && clearInterval(t);
+        }, 100);
+    });

@@ -1,0 +1,94 @@
+{% schema %}
+    {
+      "name": "Custom Text Section",
+      "settings": [
+        {
+          "type": "text",
+          "id": "custom_text",
+          "label": "Text Content",
+          "default": "Your custom text here"
+        },
+        {
+          "type": "color",
+          "id": "text_color",
+          "label": "Text Color",
+          "default": "#000000"
+        },
+        {
+          "type": "range",
+          "id": "text_size",
+          "label": "Text Size (Desktop)",
+          "default": 16,
+          "min": 12,
+          "max": 48,
+          "unit": "px"
+        },
+        {
+          "type": "select",
+          "id": "text_alignment_desktop",
+          "label": "Text Alignment (Desktop)",
+          "default": "left",
+          "options": [
+            { "value": "left", "label": "Left" },
+            { "value": "center", "label": "Center" },
+            { "value": "right", "label": "Right" }
+          ]
+        },
+        {
+          "type": "range",
+          "id": "text_size_mobile",
+          "label": "Text Size (Mobile)",
+          "default": 14,
+          "min": 10,
+          "max": 36,
+          "unit": "px"
+        },
+        {
+          "type": "select",
+          "id": "text_alignment_mobile",
+          "label": "Text Alignment (Mobile)",
+          "default": "center",
+          "options": [
+            { "value": "left", "label": "Left" },
+            { "value": "center", "label": "Center" },
+            { "value": "right", "label": "Right" }
+          ]
+        }
+      ],
+      "presets": [
+        {
+          "name": "Custom Text Section",
+          "category": "Custom"
+        }
+      ]
+    }
+    {% endschema %}
+    
+    <style>
+      .custom-text {
+        width:100%;
+        max-width:1300px;
+        color: {{ section.settings.text_color }};
+      }
+      
+      /* Desktop (481px and up) */
+      @media (min-width: 481px) {
+        .custom-text {
+          font-size: {{ section.settings.text_size }}px;
+          text-align: {{ section.settings.text_alignment_desktop }};
+        }
+      }
+    
+      /* Mobile (480px and below) */
+      @media (max-width: 480px) {
+        .custom-text {
+          font-size: {{ section.settings.text_size_mobile }}px;
+          text-align: {{ section.settings.text_alignment_mobile }};
+        }
+      }
+    </style>
+    
+    <div class="custom-text">
+      {{ section.settings.custom_text }}
+    </div>
+    

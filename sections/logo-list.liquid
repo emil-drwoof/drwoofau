@@ -1,0 +1,352 @@
+{% style %}
+.logo-bar--{{ section.id }} {
+  opacity: {{ section.settings.logo_opacity | divided_by: 100.0 }};
+}
+{% endstyle %}
+
+<div class="index-section{% if section.settings.alt %} index-section--alt{% endif %} logolist-{{ section.id  }}">
+  
+  <div class="page-width" data-aos="logo__animation">
+    {% if section.settings.title != blank %}
+      <header class="section-header" data-aos>
+        <h2 class="section-header__title appear-delay">
+          {{ section.settings.title | escape }}
+        </h2>
+      </header>
+    {% endif %}
+    {% if section.settings.leftscroll %}
+    <div class="scroll-container scroller"  data-speed="fast" data-animated="true">
+      {% else %}
+      <div class="scroll-container">      
+    {% endif %}
+    {% if section.blocks.size > 0 %}
+      <div class="logo-bar logo-bar--{{ section.id }}">
+        {% for block in section.blocks %}
+          <div class="logo-bar__item" {{ block.shopify_attributes }}>
+            {% if block.settings.link != blank %}
+              <a href="{{ block.settings.link }}" class="logo-bar__link">
+            {% endif %}
+            {% if block.settings.image != blank %}
+              {%- assign img_url = block.settings.image | img_url: '1x1' | replace: '_1x1.', '_{width}x.' -%}
+              {% if section.settings.leftscroll %}
+              <div class="logo-wrapper deskview">
+                <img data-swift-lazy="1" loading="lazy"   class="logo-bar__image lazyload"
+                data-src="{{ img_url }}"
+                data-widths="[180, 360, 540, 750]"
+                data-aspectratio="{{ block.settings.image.aspect_ratio }}"
+                data-sizes="auto"
+                alt="{{ block.settings.image.alt }}">
+              </div>
+              {% else %}
+              <div class="logo-wrapper deskview">
+                <img class="logo-bar__image"
+                src="{{ block.settings.image | img_url: "x100" }}"
+                alt="{{ block.settings.image.alt }}">
+              </div>
+              {% endif %}
+              <div class="logo-wrapper mobview">
+                <img class="logo-bar__image"
+                src="{{ block.settings.image | img_url: "x100" }}"
+                alt="{{ block.settings.image.alt }}">
+              </div>              
+            {% else %}
+              {{ 'logo' | placeholder_svg_tag: 'placeholder-svg' }}
+            {% endif %}
+            <div class="logocontent"><p class="logotitle"><strong>{{ block.settings.logotitle }}</strong></p>
+            <p class="logotext">{{ block.settings.logotext }}</p></div>
+            {% if block.settings.link != blank %}
+              </a>
+            {% endif %}
+          </div>
+        {% endfor %}
+      </div>
+    {% endif %}
+    </div>
+  </div>
+
+</div>
+
+<style>
+  .logocontent{
+    margin-left:auto;
+    margin-right:auto;
+  }
+  .logocontent p{
+    margin-bottom:6px;
+  }
+  .logo-bar{
+    display:flex;
+    align-items:flex-start !important;
+    
+  }
+  .logolist-{{ section.id  }}{
+    margin-top: 40px !important;
+  }
+  .logo-bar__item .logo-wrapper{
+    min-height: 92px;
+  }
+  .logo-bar__item .logo-wrapper img{
+    width:100%;
+  }
+
+
+  .logolist-{{ section.id  }}  .scroll-container {
+  width: 100%;
+  overflow: hidden; /* Hide scrollbar */
+  position: relative;
+  display: flex;
+  {% if section.settings.leftscroll %}
+  mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent); /* Creates the blurred edges */
+  {% endif %}
+}
+
+
+.scroll-container {
+  max-width: 1300px;
+}
+
+.logo-bar {
+  padding-block: 1rem;
+  flex-wrap: nowrap;
+  
+}
+@media only screen and (max-width:480px){
+  .logo-bar {
+    margin-bottom:0 !important;
+  }
+}
+.scroll-container[data-animated="true"] {
+  overflow: hidden;
+  {% if section.settings.leftscroll %}
+  -webkit-mask: linear-gradient(
+    90deg,
+    transparent,
+    white 20%,
+    white 80%,
+    transparent
+  );
+  mask: linear-gradient(90deg, transparent, white 20%, white 80%, transparent);
+  {% endif %}
+}
+
+.scroll-container[data-animated="true"] .logo-bar {
+  width: max-content;
+  flex-wrap: nowrap;
+  animation: scroll var(--_animation-duration, 40s)
+    var(--_animation-direction, forwards) linear infinite;
+}
+
+.scroll-container[data-direction="right"] {
+  --_animation-direction: reverse;
+}
+.scroll-container[data-direction="left"] {
+  --_animation-direction: forwards;
+}
+
+.scroll-container[data-speed="fast"] {
+  --_animation-duration: 20s;
+}
+
+.scroll-container[data-speed="slow"] {
+  --_animation-duration: 60s;
+}
+
+@keyframes scroll {
+  to {
+    transform: translate(calc(-50% - 0.5rem));
+  }
+}
+
+/* general styles */
+
+
+
+
+
+
+
+  @media only screen and (min-width:481px){
+    p.logotitle{
+    font-size:17px;
+  }
+  .logotext{
+    font-size:13px;
+  }
+    .logo-bar{
+      width:100% !important;
+      margin-left:auto;
+      margin-right:auto;
+      align-items:flex-start;
+      justify-content: space-around !important;
+    }
+    {% if section.settings.leftscroll %}
+      .logolist-{{ section.id  }}  .logo-bar__item{
+      flex:0 0 15% !important;
+    }
+{% else %}
+.logo-bar__item{
+      flex:0 0 12% !important;
+    }
+{% endif %}
+  }
+
+  .deskview{
+    display:block;
+  }
+  .mobview{
+    display:none;
+  }
+@media only screen and (max-width:480px){
+  .deskview{
+    display:none;
+  }
+  .mobview{
+    display:block;
+  }
+  .scroll-container[data-animated="true"] .logo-bar {
+    width:100%;
+  }
+  p.logotitle{
+    font-size: 12px;
+  }
+  .logotext{
+    margin-bottom:40px;
+  }
+  .logotext{
+    font-size: 12px;
+  }
+  .logo-bar__item{
+        margin:0 !important;
+      }
+ .logo-bar__item{
+  flex:0 0 32% !important;
+ }
+  .logo-bar__item .logo-wrapper{
+    min-height: 77px !important;
+  }
+  .logo-bar__item .logo-wrapper img{
+    width:100%;
+  }
+  .logocontent{
+    font-size:15px;
+  }
+}
+</style>
+{% if section.settings.leftscroll %}
+<script>
+const scrollers = document.querySelectorAll(".scroller");
+
+// If a user hasn't opted in for recuded motion, then we add the animation
+if (!window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+  addAnimation();
+}
+
+function addAnimation() {
+  scrollers.forEach((scroller) => {
+    // add data-animated="true" to every `.scroller` on the page
+    scroller.setAttribute("data-animated", true);
+
+    // Make an array from the elements within `.scroller-inner`
+    const scrollerInner = scroller.querySelector(".logo-bar--{{ section.id }}");
+    const scrollerContent = Array.from(scrollerInner.children);
+
+    // For each item in the array, clone it
+    // add aria-hidden to it
+    // add it into the `.scroller-inner`
+    scrollerContent.forEach((item) => {
+      const duplicatedItem = item.cloneNode(true);
+      duplicatedItem.setAttribute("aria-hidden", true);
+      scrollerInner.appendChild(duplicatedItem);
+    });
+  });
+}
+
+</script>
+{% endif %}
+{% schema %}
+  {
+    "name": "Logo list",
+    "max_blocks": 10,
+    "settings": [
+      {
+        "type": "checkbox",
+        "id": "leftscroll",
+        "label": "Scroll to the left"
+      },
+      {
+        "type": "text",
+        "id": "title",
+        "label": "Heading"
+      },
+      {
+        "type": "range",
+        "id": "logo_opacity",
+        "label": "Logo opacity",
+        "default": 76,
+        "min": 0,
+        "max": 100,
+        "step": 2,
+        "unit": "%"
+      },
+      {
+        "type": "checkbox",
+        "id": "alt",
+        "label": "Use alternate section color"
+      }
+    ],
+    "blocks": [
+      {
+        "type": "logo_image",
+        "name": "Logo",
+        "settings": [
+          {
+            "type": "image_picker",
+            "id": "image",
+            "label": "Image"
+          },
+          {
+            "type": "image_picker",
+            "id": "image_mobile",
+            "label": "Mobile Image"
+          },
+          {
+            "type": "url",
+            "id": "link",
+            "label": "Link",
+            "info": "Optional"
+          },
+          {
+            "type": "text",
+            "id": "logotitle",
+            "label": "Logo title"
+          },
+          {
+            "type": "text",
+            "id": "logotext",
+            "label": "logo text"
+          }
+        ]
+      }
+    ],
+    "presets": [
+      {
+        "name": "Logo list",
+        "category": "Image",
+        "blocks": [
+          {
+            "type": "logo_image"
+          },
+          {
+            "type": "logo_image"
+          },
+          {
+            "type": "logo_image"
+          },
+          {
+            "type": "logo_image"
+          }
+        ]
+      }
+    ]
+  }
+{% endschema %}

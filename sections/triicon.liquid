@@ -1,0 +1,357 @@
+<!-- sections/collection-slider.liquid -->
+{%- assign collection = collections[section.settings.selected_collection] -%}
+<div class="collection-slider slidertop{{ section.id }} {% if section.settings.dark_theme %}darktheme{% endif %}" >
+  <div class="pager-wrapper">
+    {% if section.settings.show_title %}
+      <div class="title-wrapper">
+        {% if section.settings.sec_name %}
+          <h4>{{ section.settings.sec_name }}</h4>
+        {% else %}
+          <h4>{{ collection.title }}</h4>
+        {% endif %}
+      </div>
+      {% endif %}
+      {% unless section.settings.dark_theme %}
+        <div class="arrow-wrapper">
+          <img src="{{ 'leftlight.png' | asset_url }}" class="prev{{ section.id }}"/>
+          <img src="{{ 'rightlight.png' | asset_url }}" class="next{{ section.id }}"/>
+        </div>
+      {% else %}
+      <div class="arrow-wrapper">
+        <img src="{{ 'rightwhite.png' | asset_url }}" class="next{{ section.id }}"/>
+        <img src="{{ 'leftwhite.png' | asset_url }}" class="prev{{ section.id }}"/>
+      </div>
+      {% endunless %}
+  </div>
+{% unless section.settings.blocklist %}
+
+    <div class="collection-slider-wrapper slider{{ section.id }}">
+        {% for product in collection.products %}
+            <div class="product_slide">
+                <a href="{{ product.url }}" class="collection-slider-url">
+                    <img src="{{ product.featured_image.src | img_url: 'medium' }}" class="collection-slider-thumbnail"/>
+                    <div class="review"></div>
+                    <p><b>{{ product.title }}</b></p>
+                    <div class="product-price">
+                        {% if product.compare_at_price > product.price %}
+                            <p>
+                            <span class="original-price">{{ product.compare_at_price | money_with_currency }}</span>
+                            <span class="sale-price">{{ product.price | money_with_currency }}</span>
+                            </p>
+                        {% else %}
+                            <p class="regular-price">{{ product.price | money_with_currency }}</p>
+                        {% endif %}
+                    </div>
+                </a>
+            </div>
+        {% endfor %}
+    </div>
+
+    
+      {% else %}
+
+    <div class="collection-slider-wrapper slider{{ section.id }}">
+        {% for block in section.blocks %}
+            <div class="product_slide">
+                <a href="{{ block.settings.col_url }}" class="collection-slider-url">
+                    <img src="{{ block.settings.col_image | img_url: 'medium' }}" class="collection-slider-thumbnail"/>
+                    <div class="review"><img src="{{ 'stars.png' | asset_url }}" /></div>
+                    <p style="margin-bottom:12px;"><b>{{ block.settings.col_text }}</b></p>
+                    <p><b>{{ block.settings.col_name }}</b></p>
+                    
+                    {% comment %}
+                    <div class="product-price">
+                        {% if product.compare_at_price > product.price %}
+                            <p>
+                            <span class="original-price">{{ product.compare_at_price | money_with_currency }}</span>
+                            <span class="sale-price">{{ product.price | money_with_currency }}</span>
+                            </p>
+                        {% else %}
+                            <p class="regular-price">{{ product.price | money_with_currency }}</p>
+                        {% endif %}
+                    </div>
+                    {% endcomment %}
+                </a>
+            </div>
+        {% endfor %}
+    </div>
+      {% endunless %}
+
+</div>
+<style>
+  body{
+    width:100%;
+    overflow-x:hidden;
+  }
+
+
+  .review{
+    padding-left:20px;
+    margin-top:20px;
+  }
+  .slider{{ section.id }} .slick-slider{
+    padding-bottom:500px;
+  }
+  .slider{{ section.id }} .slick-list{
+    width:124%;
+    
+  }
+  .slider{{ section.id }} .slick-slide{
+    padding-right:16px;
+  }
+
+  .pager-wrapper{
+    max-width:1300px;
+    width:100%;
+    margin-left:auto;
+    margin-right:auto;
+    height:1px;
+    position:relative;
+    margin-bottom:86px;
+  }
+  .arrow-wrapper{
+      position: absolute;
+      top: 0px;
+      right: 0%;
+      z-index: 99;
+  }
+  .title-wrapper{
+      position: absolute;
+      top: 0px;
+      left: 0%;
+      z-index: 99;
+  }
+  .title-wrapper h4{
+    font-size:40px;
+    font-family: Futura;
+    font-weight:400;
+  }
+  .arrow-wrapper .fa{
+    padding: 0 7px;
+    font-size: 23px;
+  }
+  
+    .collection-slider{
+        width:100%;
+        display:block;
+        position:relative;
+    }
+
+    .collection-slider-wrapper{
+        max-width:1300px;
+        overflow-x: visible;
+        margin-left:auto;
+        margin-right:auto;
+        display:flex;
+        flex-wrap:wrap;
+        justify-content: space-between;
+    }
+    
+    .collection-slider-wrapper{
+      position: relative;
+      
+    }
+    .collection-slider-wrapper .product_slide{
+        /* flex:0 0 19%; */
+    }
+    .collection-slider-wrapper .product_slide .collection-slider-thumbnail{
+        width:100%;
+        display:block;
+        margin-bottom:8px;
+    }
+    .collection-slider-wrapper .product_slide p{
+      padding-bottom:12px;
+    }
+    
+    .collection-slider{
+      position: relative;
+      padding: 50px 0 80px;
+    }
+    
+    {% if section.settings.dark_theme %}
+    .slidertop{{ section.id }}{
+      position: relative;
+      padding: 50px 0;
+      background: #0B0D32 !important;
+    }
+    .slidertop{{ section.id }} h4{
+      color:#fff !important;
+    }
+    .slidertop{{ section.id }} p{
+      color:#fff !important;
+      margin-bottom: 8px;
+      padding-left: 20px;
+      padding-right: 20px;
+      padding-bottom: 7px;
+      padding-top: 8px;
+    }
+    .slidertop{{ section.id }} .collection-slider-url{
+      color: #fff !important;
+      border: #fff;
+      border-radius: 13px;
+      overflow: hidden;
+      display: block;
+      border: 1px #fff solid;
+    }
+    {% endif %}
+    .index-section{
+      margin:20px 0 80px !important;
+    }
+
+    @media only screen and (max-width:480px){
+      .logo-bar{
+        justify-content: space-around !important;
+      }
+      .logo-bar__item{
+        margin:0 !important;
+        flex:0 0 33% !important;
+      }
+      .collection-slider{
+        padding-left:12px;
+        padding-right:12px;
+      }
+
+      {% unless section.settings.dark_theme %}
+      .slidertop{{ section.id }} .collection-slider{
+        padding-bottom:20px !important;
+        }
+      {% endunless %}
+
+      .pager-wrapper{
+        margin-bottom:20px;
+        height:auto !important;
+      }
+      .popups_country{
+        display:none;
+      }
+      .arrow-wrapper{
+        display:none;
+      }
+      .title-wrapper h4{
+        width: 70%;
+        font-size: 40px;
+        font-family: Futura;
+        
+        font-weight: 400;
+        line-height: 1.2em;
+        /* padding-bottom: 36px; */
+        display: block;
+      }
+      .title-wrapper{
+        position:static;
+        margin-bottom:20px;
+      }
+    }
+</style>
+<script>
+
+$(document).ready(function(){
+
+  $('.slider{{ section.id }}').slick({
+    slidesToShow: 4,
+    prevArrow: $('.prev{{ section.id }}'),
+    nextArrow: $('.next{{ section.id }}'),
+    autoplay: false,
+    responsive: [
+      {
+        breakpoint: 1024,
+        settings: {
+          slidesToShow: 4
+        }
+      },
+      {
+        breakpoint: 600,
+        settings: {
+          slidesToShow: 2
+        }
+      },
+      {
+        breakpoint: 480,
+        settings: {
+          slidesToShow: 2
+        }
+      }
+      // You can unslick at a given breakpoint now by adding:
+      // settings: "unslick"
+      // instead of a settings object
+    ]
+  });
+
+
+
+})
+
+</script>
+{% schema %}
+  {
+    "name": "Tri Icon",
+    "settings": [
+      {
+        "type": "header",
+        "content": "Caps A/B testing"
+      },
+      {
+        "type": "checkbox",
+        "id": "blocklist",
+        "label": "Turn on block list",
+        "default": false
+      },
+      {
+        "type": "checkbox",
+        "id": "show_title",
+        "label": "Show title",
+        "default": false
+      },
+      {
+        "type": "checkbox",
+        "id": "dark_theme",
+        "label": "Dark Theme",
+        "default": false
+      },
+      {
+        "type": "collection",
+        "id": "selected_collection",
+        "label": "Collection"
+      },
+      {
+        "type": "text",
+        "label": "Section name",
+        "id": "sec_name"
+      }
+    ],
+    "blocks": [
+        {
+            "name": "List",
+            "type": "list",
+              "settings": [
+                {
+                    "type": "image_picker",
+                    "id": "col_image",
+                    "label": "Image"
+                },
+                {
+                    "type": "text",
+                    "label": "Collection Text",
+                    "id": "col_text"
+                },
+                {
+                    "type": "text",
+                    "label": "Collection Name",
+                    "id": "col_name"
+                },
+                {
+                    "type": "url",
+                    "label": "Collection Url",
+                    "id": "col_url" 
+                }
+            ]
+        }
+    ], 
+    "presets": [
+      {
+        "name": "Tri Icon",
+        "category": "Section"
+      }
+    ]
+  }
+{% endschema %}

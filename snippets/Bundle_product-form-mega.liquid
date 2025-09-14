@@ -1,0 +1,3297 @@
+<style>
+  .hidden-custom-bundle,
+  select.options-select[data-name='Color'] {
+    ;
+    // display:block !important;
+  }
+</style>
+
+
+
+{% if intro %}
+  <div>
+    <p>{{ intro }}</p>
+  </div>
+{% endif %}
+{% capture size_chart %}
+  {% for titletag in product.tags %}
+    {% assign titleHere = titletag | downcase | strip %}
+    {% if titleHere == 'sizechart_men' %}
+      <div class="Main_size_chart_custom">
+        <a
+          class="size_chart_custom"
+          target="_BLANK"
+          href="https://www.drwoofapparel.com.au/pages/sizing-men">Size chart</a>
+      </div>
+    {% endif %}
+    {% if titleHere == 'sizechart_women' %}
+      <div class="Main_size_chart_custom">
+        <a
+          class="size_chart_custom"
+          target="_BLANK"
+          href="https://www.drwoofapparel.com.au/pages/sizing-female">Size chart</a>
+      </div>
+    {% endif %}
+  {% endfor %}
+
+{% endcapture %}
+
+
+{% if template contains 'Bundle_Metafield' or template contains 'new-bundle-template' %}
+
+  {% capture error_msg %}
+    <div class="error_massage_Select">Please select Available Variants</div>
+  {% endcapture %}
+  <div class="Main_product_variants">
+
+    {% unless product.has_only_default_variant %}
+      <div class="Simple_variants">
+        {% for option in product.options_with_values %}
+          {% if variant_type == 'button' %}
+            {% include 'variant-button', section_id: section_id, option_drop: option %}
+          {% else %}
+            {% include 'variant-dropdown', section_id: section_id %}
+          {% endif %}
+        {% endfor %}
+      </div>
+    {% endunless %}
+    <div class="product_One_Shown">
+      <div class="custom_builder_option">
+        {{ error_msg }}
+        <select
+          name="id"
+          id="ProductSelect-{{ section_id }}"
+          class="product-single__variants no-js"
+          data-product-select>
+          {% for variant in product.variants %}
+            {% if variant.available %}
+              <option
+                data-vartitle="{{ variant.title }}"
+                data-avaiablity="yes"
+                data-text=""
+                {% if variant.featured_media %}data-image="{{ variant.featured_media | img_url:'medium' }} {% else %} data-image="{{ product.featured_image | img_url: 'medium' }}{% endif %}" {% if variant == product.selected_or_first_available_variant %}
+                                                        selected="selected" {% endif %}
+                                    value="
+                {{ variant.id }}
+                ">
+                {{ variant.title }} - {{ variant.price | money_with_currency }}
+              </option>
+            {% else %}
+              <option
+                data-vartitle="{{ variant.title }}"
+                data-avaiablity="no"
+                data-text="- Sold Out"
+                {% if variant.featured_media %}data-image="{{ variant.featured_media | img_url:'medium' }} {% else %} data-image="{{ product.featured_image | img_url: 'medium' }}{% endif %}">
+                {{ variant.title }} - {{ 'products.product.sold_out' | t }}
+              </option>
+            {% endif %}
+          {% endfor %}
+        </select>
+      </div>
+    </div>
+  </div>
+  {% assign product_type_1 = product.metafields.sf_product_bundle.product_type_1 %}
+
+  {% if product_type_1 %}
+    {% assign typehere = product_type_1 | strip_html | downcase %}
+
+    <div class="Main_bundle_Here" data-attr="{{ product_type_1 }}">
+
+      {% paginate collections['bundle-functionality'].products by 1000 %}
+        {% for product in collections['bundle-functionality'].products %}
+          {% assign product_type = product.type | strip_html | downcase %}
+          {% assign PTitle = product.title | strip_html | downcase %}
+          {% assign Phandle = product.handle %}
+
+          {% if typehere == product_type %}
+            <div class="master_box_top product_Hide {% if typehere == product_type %}{% if forloop.index == 1 %}product_One_Shown{% endif %}{% endif %}" data-Phandle="{{ Phandle }}">
+              <button class="master_box_top_label">
+                {{ settings.option_one }}
+              </button>
+              <div class="builder_card" data-type="cap">
+                <div class="builder_top_slide">
+                  <div class="column_box_top">
+                    <div class="builder_top_slide_img">
+                      <img class="builder_card_image" src="{{ product.featured_image | img_url: "medium" }}" alt="{{ product.featured_image.alt }}" >
+                    </div>
+                  </div>
+                  <div class="column_box_top">
+                    <div class="builder_top_slide_title">
+                      <p class="builder_card_title">
+                        <b id="title_builder_box">{{ product.title }}</b>
+                        <input
+                          type="hidden"
+                          class="bundleProdHandle"
+                          value="{{ product.handle }}">
+                      </p>
+                    </div>
+                    <div class="loox-rating" title="">
+
+                      <div class="loox-rating" title="{{ product.metafields.loox.avg_rating }} rating ({{ product.metafields.loox.num_reviews }} votes)">
+                        <i class="loox-icon loox-star"></i>
+                        <i class="loox-icon loox-star"></i>
+                        <i class="loox-icon loox-star"></i>
+                        <i class="loox-icon loox-star"></i>
+                        <i class="loox-icon loox-star"></i>&nbsp;<span>
+                          {{ product.metafields.loox.num_reviews }}</span>
+                      </div>
+
+                    </div>
+                    <p class="viewdetails" data-url="{{ product.url }}">View Details</p>
+                  </div>
+                </div>
+                <div class="custom_builder_option">
+
+                  <input
+                    type="hidden"
+                    name="data-product-id"
+                    value="{{ product.id }}">
+
+                  {% if product.tags contains 'men' or product.tags contains 'Men' or product.tags contains 'MEN' or product.tags contains 'women' or product.tags contains 'Women' or product.tags contains 'WOMEN' %}
+                    {% if product.options contains 'Size' %}
+                      <div class="size-chart-with-labels">
+                        <a class="trigger-pop-up-1">{{ settings.newsizechart }}</a>
+                      </div>
+                    {% endif %}
+                  {% endif %}
+                  <div class="pop-up-modal first_popup">
+                    <div class="pop-up-content">
+                      <button type="button" class="btn btn--circle btn--large screen-layer__close js-screen-close proddesclose">
+            <svg aria-hidden="true" focusable="false" role="presentation" class="icon icon-close" viewBox="0 0 64 64">
+               <path d="M19 17.61l27.12 27.13m0-27.12L19 44.74"></path>
+            </svg>
+            <span class="icon__fallback-text">Close (esc)</span>
+         </button>
+                      {% if product.tags contains 'men' or product.tags contains 'Men' or product.tags contains 'MEN' %}
+                        <span class="size-chart-content men-chart">
+                          {{ pages[settings.product_content].content }}
+                        </span>
+                      {% elsif product.tags contains 'women' or product.tags contains 'Women' or product.tags contains 'WOMEN' %}
+                        <span class="size-chart-content women-chart">
+                          {{ pages[settings.product_content_women].content }}
+                        </span>
+                      {% endif %}
+                    </div>
+                  </div>
+                  <!--         ========================================================================================= -->
+
+                  <label class="custom_builder_label Design_Products" style="order: 1;">
+                    Design</label>
+                  <select class="master_designs options-select" data-name="Design">
+                    <option
+                      data-Handle="option_select"
+                      data-Handle="option_select"
+                      data-status="true"
+                      selected="selected"
+                      style="color:gray">Select an option</option>
+                    {% paginate collections['bundle-functionality'].products by 1000 %}
+                      {% assign check_index = 0 %}
+                      {% for product in collections['bundle-functionality'].products %}
+                        {% assign product_type = product.type | strip_html | downcase %}
+
+                        {% if typehere == product_type %}
+                          {% assign check_index = check_index | plus: 1 %}
+
+                          {% assign SelectTitle = product.title | strip_html | downcase %}
+                          {% assign SelectHandle = product.handle | strip_html %}
+                          <option {% if product.available %}{% else %}disabled{% endif %} {% if product.metafields.sf_product_combined.product_handle != blank %}class="duplicate"{% endif %}data-Handle="{{ SelectHandle }}"data-img="{{product.featured_image | img_url: "medium" }}"data-source="{{ product.id}}"data-type="{{ product.type}}"data-reviews=""data-index="{{check_index}}"data-numi=""{% if SelectHandle == Phandle %}selected="selected"{% endif %}>{{ product.title }}</option>
+                        {% endif %}
+                      {% endfor %}
+                    {% endpaginate %}
+                  </select>
+
+                  <!--         ========================================================================================= -->
+
+
+
+                  {% unless product.has_only_default_variant %}
+                    {% for option in product.options_with_values %}
+                      {% if option.name == 'Color' or option.name == 'color' %}
+                        {% include 'bundle_button', section_id: section_id, option_drop: option %}
+                    {% else %}
+                      {% endif %}
+                    {% endfor %}
+
+
+                    {% for option in product.options_with_values %}
+                      {% if option.name == 'Color' or option.name == 'color' %}
+
+                        {% else %}
+                          <div class=" variant-wrapper variant-wrapper--{{ section.settings.variant_type }} js div_{{ forloop.index }} total_div">
+                            <label style="order:3" class="custom_builder_label">
+                              {{ option.name }}
+
+                            </label>
+                            {% assign downcaseoption = option.name | downcase %}
+                            {% if downcaseoption == 'size' %}
+                              {{ size_chart }}
+                            {% endif %}
+
+                            <div class="variant-input-wrap" data-index="option{{ forloop.index }}">
+                              <select class="master_sizes options-select" data-name="Size">
+                                <option
+                                  value="static"
+                                  data-status="true"
+                                  selected=""
+                                  style="color:gray">Select an option</option>
+
+                                {% for value in option.values %}
+                                  {%- assign variant_label_state = true -%}
+                                  {% if product.options.size == 1 %}
+                                    {% unless product.variants[forloop.index0].available %}
+                                      {%- assign variant_label_state = false -%}
+                                    {% endunless %}
+                                  {% endif %}
+                                  <option
+                                    value="{{ value | escape }}"
+                                    {% unless variant_label_state %}
+                                    disabled="disabled"
+                                    {% endunless %}
+                                    name="{{ option.name }}"
+                                    class="variant-input"
+                                    data-index="option{{ forloop.index }}">
+                                    {{ value }}
+                                    {% unless variant_label_state %}- Sold Out{% endunless %}
+                                  </option>
+                                {% endfor %}
+                              </select>
+                            </div>
+                          </div>
+                      {% endif %}
+                    {% endfor %}
+
+                  {% endunless %}
+
+                  {{ error_msg }}
+                  <select
+                    name="id"
+                    id="ProductSelect-{{ section_id }}"
+                    class="product-single__variants no-js"
+                    data-product-select>
+                    {% for variant in product.variants %}
+                      {% if variant.available %}
+                        <option
+                          data-vartitle="{{ variant.title }}"
+                          data-avaiablity="yes"
+                          data-text=""
+                          {% if variant.featured_media %}data-image="{{ variant.featured_media | img_url:'medium' }} {% else %} data-image="{{ product.featured_image | img_url: 'medium' }}{% endif %}" {% if variant == product.selected_or_first_available_variant %}
+                                                                            selected="selected" {% endif %}
+                                                        value="
+                          {{ variant.id }}
+                          ">
+                          {{ variant.title }} - {{ variant.price | money_with_currency }}
+                        </option>
+                      {% else %}
+                        <option
+                          data-vartitle="{{ variant.title }}"
+                          data-avaiablity="no"
+                          data-text="- Sold Out"
+                          {% if variant.featured_media %}data-image="{{ variant.featured_media | img_url:'medium' }} {% else %} data-image="{{ product.featured_image | img_url: 'medium' }}{% endif %}">
+                          {{ variant.title }} - {{ 'products.product.sold_out' | t }}
+                        </option>
+                      {% endif %}
+                    {% endfor %}
+                  </select>
+
+
+
+                </div>
+              </div>
+            </div>
+          {% endif %}
+        {% endfor %}
+      {% endpaginate %}
+    </div>
+  {% endif %}
+
+
+  {% assign product_type_2 = product.metafields.sf_product_bundle.product_type_2 %}
+  {% if product_type_2 %}
+    {% assign typehere = product_type_2 | strip_html | downcase %}
+    <div class="Main_bundle_Here">
+      {% paginate collections['bundle-functionality'].products by 1000 %}
+        {% for product in collections['bundle-functionality'].products %}
+          {% assign product_type = product.type | strip_html | downcase %}
+          {% assign PTitle = product.title | strip_html | downcase %}
+          {% assign Phandle = product.handle %}
+
+          {% if typehere == product_type %}
+            <div class="master_box_top product_Hide {% if typehere == product_type %}{% if forloop.index == 1 %}product_One_Shown{% endif %}{% endif %}" data-Phandle="{{ Phandle }}">
+              <button class="master_box_top_label">
+                {{ settings.option_one }}
+              </button>
+              <div class="builder_card" data-type="cap">
+                <div class="builder_top_slide">
+                  <div class="column_box_top">
+                    <div class="builder_top_slide_img">
+                      <img class="builder_card_image" src="{{ product.featured_image | img_url: "medium" }}" alt="{{ product.featured_image.alt }}" >
+                    </div>
+                  </div>
+                  <div class="column_box_top">
+                    <div class="builder_top_slide_title">
+                      <p class="builder_card_title">
+                        <b id="title_builder_box">{{ product.title }}</b>
+                        <input
+                          type="hidden"
+                          class="bundleProdHandle"
+                          value="{{ product.handle }}">
+                      </p>
+                    </div>
+                    <div class="loox-rating" title="">
+
+                      <div class="loox-rating" title="{{ product.metafields.loox.avg_rating }} rating ({{ product.metafields.loox.num_reviews }} votes)">
+                        <i class="loox-icon loox-star"></i>
+                        <i class="loox-icon loox-star"></i>
+                        <i class="loox-icon loox-star"></i>
+                        <i class="loox-icon loox-star"></i>
+                        <i class="loox-icon loox-star"></i>&nbsp;<span>
+                          {{ product.metafields.loox.num_reviews }}</span>
+                      </div>
+
+                    </div>
+
+                    <p class="viewdetails" data-url="{{ product.url }}">View Details</p>
+                  </div>
+                </div>
+                <div class="custom_builder_option">
+                  {% if product.tags contains 'men' or product.tags contains 'Men' or product.tags contains 'MEN' or product.tags contains 'women' or product.tags contains 'Women' or product.tags contains 'WOMEN' %}
+                    {% if product.options contains 'Size' %}
+                      <div class="size-chart-with-labels">
+                        <a class="trigger-pop-up-2">{{ settings.newsizechart }}</a>
+                      </div>
+                    {% endif %}
+                  {% endif %}
+                  <div class="pop-up-modal second-popup">
+                    <div class="pop-up-content">
+                      <button type="button" class="btn btn--circle btn--large screen-layer__close js-screen-close proddesclose">
+            <svg aria-hidden="true" focusable="false" role="presentation" class="icon icon-close" viewBox="0 0 64 64">
+               <path d="M19 17.61l27.12 27.13m0-27.12L19 44.74"></path>
+            </svg>
+            <span class="icon__fallback-text">Close (esc)</span>
+         </button>
+                      {% if product.tags contains 'men' or product.tags contains 'Men' or product.tags contains 'MEN' %}
+                        <span class="size-chart-content men-chart">
+                          {{ pages[settings.product_content].content }}
+                        </span>
+                      {% elsif product.tags contains 'women' or product.tags contains 'Women' or product.tags contains 'WOMEN' %}
+                        <span class="size-chart-content women-chart">
+                          {{ pages[settings.product_content_women].content }}
+                        </span>
+                      {% endif %}
+                    </div>
+                  </div>
+                  <input
+                  type="hidden"
+                    name="data-product-id"
+                    value="{{ product.id }}">
+
+                  <!--         ========================================================================================= -->
+
+                  <label class="custom_builder_label Design_Products" style="order: 1;">
+                    Design</label>
+
+                  <select class="master_designs options-select" data-name="Design">
+                    <option
+                      data-Handle="option_select"
+                      data-Handle="option_select"
+                      data-status="true"
+                      selected="selected"
+                      style="color:gray">Select an option</option>
+                    {% paginate collections['bundle-functionality'].products by 1000 %}
+                      {% assign SelectTitle2222 = '' %}
+                      {% assign check_index = 0 %}
+
+                      {% for product in collections['bundle-functionality'].products %}
+                        {% assign product_type = product.type | strip_html | downcase %}
+
+                        {% if typehere == product_type %}
+                          {% assign SelectTitle = product.title | strip_html | downcase %}
+                          {% assign SelectHandle = product.handle | strip_html %}
+                          {% assign check_index = check_index | plus: 1 %}
+
+
+                          <option
+                            {% if product.available %}{% else %}disabled{% endif %}
+                            value="{{forloop.index}}"
+                            data-Handle="{{ SelectHandle }}"
+                            data-img="{{product.featured_image | img_url: "medium" }}"
+                            data-index="{{check_index}}"
+                            data-source="{{ product.id}}"
+                            data-type="{{ product.type}}"
+                            data-reviews=""
+                            data-numi=""
+                            {% if SelectHandle == Phandle %}
+                            selected="selected"
+                            {% endif %}>{{ product.title }}</option>
+                        {% endif %}
+                      {% endfor %}
+                    {% endpaginate %}
+                  </select>
+
+                  <!--         ========================================================================================= -->
+
+
+
+                  {% unless product.has_only_default_variant %}
+                    {% for option in product.options_with_values %}
+                      {% if option.name == 'Color' or option.name == 'color' %}
+                        {% include 'bundle_button', section_id: section_id, option_drop: option %}
+                    {% else %}
+                      {% endif %}
+                    {% endfor %}
+
+
+                    {% for option in product.options_with_values %}
+                      {% if option.name == 'Color' or option.name == 'color' %}
+
+                        {% else %}
+                          <div class=" variant-wrapper variant-wrapper--{{ section.settings.variant_type }} js div_{{ forloop.index }} total_div">
+                            <label style="order:3" class="custom_builder_label">
+                              {{ option.name }}
+
+                            </label>
+
+
+                            {% assign downcaseoption = option.name | downcase %}
+                            {% if downcaseoption == 'size' %}
+                              {{ size_chart }}
+                            {% endif %}
+
+
+
+                            <div class="variant-input-wrap" data-index="option{{ forloop.index }}">
+                              <select class="master_sizes options-select" data-name="Size">
+                                <option
+                                  value="static"
+                                  data-status="true"
+                                  selected=""
+                                  style="color:gray">Select an option</option>
+
+                                {% for value in option.values %}
+                                  {%- assign variant_label_state = true -%}
+                                  {% if product.options.size == 1 %}
+                                    {% unless product.variants[forloop.index0].available %}
+                                      {%- assign variant_label_state = false -%}
+                                    {% endunless %}
+                                  {% endif %}
+                                  <option
+                                    value="{{ value | escape }}"
+                                    {% unless variant_label_state %}
+                                    disabled="disabled"
+                                    {% endunless %}
+                                    name="{{ option.name }}"
+                                    class="variant-input"
+                                    data-index="option{{ forloop.index }}">
+                                    {{ value }}
+                                    {% unless variant_label_state %}- Sold Out{% endunless %}
+                                  </option>
+                                {% endfor %}
+                              </select>
+                            </div>
+                          </div>
+                      {% endif %}
+                    {% endfor %}
+
+                  {% endunless %}
+
+
+
+                  {{ error_msg }}
+                  <select
+                    name="id"
+                    id="ProductSelect-{{ section_id }}"
+                    class="product-single__variants no-js"
+                    data-product-select>
+                    {% for variant in product.variants %}
+                      {% if variant.available %}
+                        <option
+                          data-vartitle="{{ variant.title }}"
+                          data-avaiablity="yes"
+                          data-text=""
+                          {% if variant.featured_media %}data-image="{{ variant.featured_media | img_url:'medium' }} {% else %} data-image="{{ product.featured_image | img_url: 'medium' }}{% endif %}" 
+                                                                    {% if variant == product.selected_or_first_available_variant %}
+                                                                            selected="selected" {% endif %} value="
+                          {{ variant.id }}
+                          ">
+                          {{ variant.title }} - {{ variant.price | money_with_currency }}
+                        </option>
+                      {% else %}
+                        <option
+                          data-vartitle="{{ variant.title }}"
+                          data-avaiablity="no"
+                          data-text="- Sold Out"
+                          {% if variant.featured_media %}data-image="{{ variant.featured_media | img_url:'medium' }} {% else %} data-image="{{ product.featured_image | img_url: 'medium' }}{% endif %}">
+                          {{ variant.title }} - {{ 'products.product.sold_out' | t }}
+                        </option>
+                      {% endif %}
+                    {% endfor %}
+                  </select>
+
+
+
+                </div>
+              </div>
+            </div>
+          {% endif %}
+        {% endfor %}
+      {% endpaginate %}
+    </div>
+
+  {% endif %}
+
+  {% assign product_type_3 = product.metafields.sf_product_bundle.product_type_3 %}
+  {% if product_type_3 %}
+    {% assign typehere = product_type_3 | strip_html | downcase %}
+    <div class="Main_bundle_Here">
+      {% paginate collections['bundle-functionality'].products by 1000 %}
+        {% for product in collections['bundle-functionality'].products %}
+          {% assign product_type = product.type | strip_html | downcase %}
+          {% assign PTitle = product.title | strip_html | downcase %}
+          {% assign Phandle = product.handle %}
+
+          {% if typehere == product_type %}
+            <div class="master_box_top product_Hide {% if typehere == product_type %}{% if forloop.index == 1 %}product_One_Shown{% endif %}{% endif %}" data-Phandle="{{ Phandle }}">
+              <button class="master_box_top_label">
+                {{ settings.option_one }}
+              </button>
+              <div class="builder_card" data-type="cap">
+                <div class="builder_top_slide">
+                  <div class="column_box_top">
+                    <div class="builder_top_slide_img">
+                      <img class="builder_card_image" src="{{ product.featured_image | img_url: "medium" }}" alt="{{ product.featured_image.alt }}" >
+                    </div>
+                  </div>
+                  <div class="column_box_top">
+                    <div class="builder_top_slide_title">
+                      <p class="builder_card_title">
+                        <b id="title_builder_box">{{ product.title }}</b>
+                        <input
+                          type="hidden"
+                          class="bundleProdHandle"
+                          value="{{ product.handle }}">
+                      </p>
+                    </div>
+                    <div class="loox-rating" title="">
+
+                      <div class="loox-rating" title="{{ product.metafields.loox.avg_rating }} rating ({{ product.metafields.loox.num_reviews }} votes)">
+                        <i class="loox-icon loox-star"></i>
+                        <i class="loox-icon loox-star"></i>
+                        <i class="loox-icon loox-star"></i>
+                        <i class="loox-icon loox-star"></i>
+                        <i class="loox-icon loox-star"></i>&nbsp;<span>
+                          {{ product.metafields.loox.num_reviews }}</span>
+                      </div>
+
+                    </div>
+                    <p class="viewdetails" data-url="{{ product.url }}">View Details</p>
+                  </div>
+                </div>
+                <div class="custom_builder_option">
+
+                  <input
+                    type="hidden"
+                    name="data-product-id"
+                    value="{{ product.id }}">
+                  {% if product.tags contains 'men' or product.tags contains 'Men' or product.tags contains 'MEN' or product.tags contains 'women' or product.tags contains 'Women' or product.tags contains 'WOMEN' %}
+                    {% if product.options contains 'Size' %}
+                      <div class="size-chart-with-labels">
+                        <a class="trigger-pop-up-3">{{ settings.newsizechart }}</a>
+                      </div>
+                    {% endif %}
+                  {% endif %}
+                  <div class="pop-up-modal third-popup">
+                    <div class="pop-up-content">
+                      <button type="button" class="btn btn--circle btn--large screen-layer__close js-screen-close proddesclose">
+            <svg aria-hidden="true" focusable="false" role="presentation" class="icon icon-close" viewBox="0 0 64 64">
+               <path d="M19 17.61l27.12 27.13m0-27.12L19 44.74"></path>
+            </svg>
+            <span class="icon__fallback-text">Close (esc)</span>
+         </button>
+                      {% if product.tags contains 'men' or product.tags contains 'Men' or product.tags contains 'MEN' %}
+                        <span class="size-chart-content men-chart">
+                          {{ pages[settings.product_content].content }}
+                        </span>
+                      {% elsif product.tags contains 'women' or product.tags contains 'Women' or product.tags contains 'WOMEN' %}
+                        <span class="size-chart-content women-chart">
+                          {{ pages[settings.product_content_women].content }}
+                        </span>
+                      {% endif %}
+                    </div>
+                  </div>
+
+                  <!--         ========================================================================================= -->
+
+                  <label class="custom_builder_label Design_Products" style="order: 1;">
+                    Design</label>
+
+                  <select class="master_designs options-select" data-name="Design">
+                    <option
+                      data-Handle="option_select"
+                      data-Handle="option_select"
+                      data-status="true"
+                      selected=""
+                      style="color:gray">Select an option</option>
+                    {% paginate collections['bundle-functionality'].products by 1000 %}
+                      {% for product in collections['bundle-functionality'].products %}
+                        {% assign product_type = product.type | strip_html | downcase %}
+
+                        {% if typehere == product_type %}
+                          {% assign SelectTitle = product.title | strip_html | downcase %}
+                          {% assign SelectHandle = product.handle | strip_html %}
+
+                          <option
+                            {% if product.available %}{% else %}disabled{% endif %}
+                            value="{{forloop.index}}"
+                            data-Handle="{{ SelectHandle }}"
+                            data-img="{{product.featured_image | img_url: "medium" }}"
+                            data-source="{{ product.id}}"
+                            data-type="{{ product.type}}"
+                            data-reviews=""
+                            data-numi=""
+                            {% if SelectHandle == Phandle %}
+                            selected="selected"
+                            {% endif %}>{{ product.title }}</option>
+                        {% endif %}
+                      {% endfor %}
+                    {% endpaginate %}
+                  </select>
+
+                  <!--         ========================================================================================= -->
+
+
+
+                  {% unless product.has_only_default_variant %}
+                    {% for option in product.options_with_values %}
+                      {% if option.name == 'Color' or option.name == 'color' %}
+                        {% include 'bundle_button', section_id: section_id, option_drop: option %}
+                    {% else %}
+                      {% endif %}
+                    {% endfor %}
+
+
+                    {% for option in product.options_with_values %}
+                      {% if option.name == 'Color' or option.name == 'color' %}
+
+                        {% else %}
+                          <div class=" variant-wrapper variant-wrapper--{{ section.settings.variant_type }} js div_{{ forloop.index }} total_div">
+                            <label style="order:3" class="custom_builder_label">
+                              {{ option.name }}
+
+                            </label>
+                            {% assign downcaseoption = option.name | downcase %}
+                            {% if downcaseoption == 'size' %}
+                              {{ size_chart }}
+                            {% endif %}
+
+                            <div class="variant-input-wrap" data-index="option{{ forloop.index }}">
+                              <select class="master_sizes options-select" data-name="Size">
+                                <option
+                                  value="static"
+                                  data-status="true"
+                                  selected=""
+                                  style="color:gray">Select an option</option>
+
+                                {% for value in option.values %}
+                                  {%- assign variant_label_state = true -%}
+                                  {% if product.options.size == 1 %}
+                                    {% unless product.variants[forloop.index0].available %}
+                                      {%- assign variant_label_state = false -%}
+                                    {% endunless %}
+                                  {% endif %}
+                                  <option
+                                    value="{{ value | escape }}"
+                                    {% unless variant_label_state %}
+                                    disabled="disabled"
+                                    {% endunless %}
+                                    name="{{ option.name }}"
+                                    class="variant-input"
+                                    data-index="option{{ forloop.index }}">
+                                    {{ value }}
+                                    {% unless variant_label_state %}- Sold Out{% endunless %}
+                                  </option>
+                                {% endfor %}
+                              </select>
+                            </div>
+                          </div>
+                      {% endif %}
+                    {% endfor %}
+
+                  {% endunless %}
+
+                  {{ error_msg }}
+
+                  <select
+                    name="id"
+                    id="ProductSelect-{{ section_id }}"
+                    class="product-single__variants no-js"
+                    data-product-select>
+                    {% for variant in product.variants %}
+                      {% if variant.available %}
+                        <option
+                          data-vartitle="{{ variant.title }}"
+                          data-avaiablity="yes"
+                          data-text=""
+                          {% if variant.featured_media %}data-image="{{ variant.featured_media | img_url:'medium' }} {% else %} data-image="{{ product.featured_image | img_url: 'medium' }}{% endif %}" {% if variant == product.selected_or_first_available_variant %}
+                                                                            selected="selected" {% endif %}
+                                                        value="
+                          {{ variant.id }}
+                          ">
+                          {{ variant.title }} - {{ variant.price | money_with_currency }}
+                        </option>
+                      {% else %}
+                        <option
+                          data-vartitle="{{ variant.title }}"
+                          data-avaiablity="no"
+                          data-text="- Sold Out"
+                          {% if variant.featured_media %}data-image="{{ variant.featured_media | img_url:'medium' }} {% else %} data-image="{{ product.featured_image | img_url: 'medium' }}{% endif %}">
+                          {{ variant.title }} - {{ 'products.product.sold_out' | t }}
+                        </option>
+                      {% endif %}
+                    {% endfor %}
+                  </select>
+
+
+
+                </div>
+              </div>
+            </div>
+          {% endif %}
+        {% endfor %}
+      {% endpaginate %}
+    </div>
+
+  {% endif %}
+
+  {% assign product_type_4 = product.metafields.sf_product_bundle.product_type_4 %}
+  {% if product_type_4 %}
+    {% assign typehere = product_type_4 | strip_html | downcase %}
+    <div class="Main_bundle_Here">
+      {% paginate collections['bundle-functionality'].products by 1000 %}
+        {% for product in collections['bundle-functionality'].products %}
+          {% assign product_type = product.type | strip_html | downcase %}
+          {% assign PTitle = product.title | strip_html | downcase %}
+          {% assign Phandle = product.handle %}
+
+          {% if typehere == product_type %}
+            <div class="master_box_top product_Hide {% if typehere == product_type %}{% if forloop.index == 1 %}product_One_Shown{% endif %}{% endif %}" data-Phandle="{{ Phandle }}">
+              <button class="master_box_top_label">
+                {{ settings.option_one }}
+              </button>
+              <div class="builder_card" data-type="cap">
+                <div class="builder_top_slide">
+                  <div class="column_box_top">
+                    <div class="builder_top_slide_img">
+                      <img class="builder_card_image" src="{{ product.featured_image | img_url: "medium" }}" alt="{{ product.featured_image.alt }}" >
+                    </div>
+                  </div>
+                  <div class="column_box_top">
+                    <div class="builder_top_slide_title">
+                      <p class="builder_card_title">
+                        <b id="title_builder_box">{{ product.title }}</b>
+                        <input
+                          type="hidden"
+                          class="bundleProdHandle"
+                          value="{{ product.handle }}">
+                      </p>
+                    </div>
+                    <div class="loox-rating" title="">
+
+                      <div class="loox-rating" title="{{ product.metafields.loox.avg_rating }} rating ({{ product.metafields.loox.num_reviews }} votes)">
+                        <i class="loox-icon loox-star"></i>
+                        <i class="loox-icon loox-star"></i>
+                        <i class="loox-icon loox-star"></i>
+                        <i class="loox-icon loox-star"></i>
+                        <i class="loox-icon loox-star"></i>&nbsp;<span>
+                          {{ product.metafields.loox.num_reviews }}</span>
+                      </div>
+
+                    </div>
+
+                    <p class="viewdetails" data-url="{{ product.url }}">View Details</p>
+
+                  </div>
+                </div>
+                <div class="custom_builder_option">
+
+                  <input
+                    type="hidden"
+                    name="data-product-id"
+                    value="{{ product.id }}">
+                  {% if product.tags contains 'men' or product.tags contains 'Men' or product.tags contains 'MEN' or product.tags contains 'women' or product.tags contains 'Women' or product.tags contains 'WOMEN' %}
+                    {% if product.options contains 'Size' %}
+                      <div class="size-chart-with-labels">
+                        <a class="trigger-pop-up-4">{{ settings.newsizechart }}</a>
+                      </div>
+                    {% endif %}
+                  {% endif %}
+                  <div class="pop-up-modal fourth-popup">
+                    <div class="pop-up-content">
+                      <button type="button" class="btn btn--circle btn--large screen-layer__close js-screen-close proddesclose">
+            <svg aria-hidden="true" focusable="false" role="presentation" class="icon icon-close" viewBox="0 0 64 64">
+               <path d="M19 17.61l27.12 27.13m0-27.12L19 44.74"></path>
+            </svg>
+            <span class="icon__fallback-text">Close (esc)</span>
+         </button>
+                      {% if product.tags contains 'men' or product.tags contains 'Men' or product.tags contains 'MEN' %}
+                        <span class="size-chart-content men-chart">
+                          {{ pages[settings.product_content].content }}
+                        </span>
+                      {% elsif product.tags contains 'women' or product.tags contains 'Women' or product.tags contains 'WOMEN' %}
+                        <span class="size-chart-content women-chart">
+                          {{ pages[settings.product_content_women].content }}
+                        </span>
+                      {% endif %}
+                    </div>
+                  </div>
+                  <!--         ========================================================================================= -->
+
+                  <label class="custom_builder_label Design_Products" style="order: 1;">
+                    Design</label>
+
+                  <select class="master_designs options-select" data-name="Design">
+                    <option
+                      data-Handle="option_select"
+                      data-Handle="option_select"
+                      data-status="true"
+                      selected=""
+                      style="color:gray">Select an option</option>
+                    {% paginate collections['bundle-functionality'].products by 1000 %}
+                      {% for product in collections['bundle-functionality'].products %}
+                        {% assign product_type = product.type | strip_html | downcase %}
+
+                        {% if typehere == product_type %}
+                          {% assign SelectTitle = product.title | strip_html | downcase %}
+                          {% assign SelectHandle = product.handle | strip_html %}
+
+                          <option
+                            {% if product.available %}{% else %}disabled{% endif %}
+                            value="{{forloop.index}}"
+                            data-Handle="{{ SelectHandle }}"
+                            data-img="{{product.featured_image | img_url: "medium" }}"
+                            data-source="{{ product.id}}"
+                            data-type="{{ product.type}}"
+                            data-reviews=""
+                            data-numi=""
+                            {% if SelectHandle == Phandle %}
+                            selected="selected"
+                            {% endif %}>{{ product.title }}</option>
+                        {% endif %}
+                      {% endfor %}
+                    {% endpaginate %}
+                  </select>
+
+                  <!--         ========================================================================================= -->
+
+
+
+                  {% unless product.has_only_default_variant %}
+                    {% for option in product.options_with_values %}
+                      {% if option.name == 'Color' or option.name == 'color' %}
+                        {% include 'bundle_button', section_id: section_id, option_drop: option %}
+                    {% else %}
+                      {% endif %}
+                    {% endfor %}
+
+                    {% for option in product.options_with_values %}
+                      {% if option.name == 'Color' or option.name == 'color' %}
+
+                        {% else %}
+                          <div class=" variant-wrapper variant-wrapper--{{ section.settings.variant_type }} js div_{{ forloop.index }} total_div">
+                            <label style="order:3" class="custom_builder_label">
+                              {{ option.name }}
+
+                            </label>
+                            {% assign downcaseoption = option.name | downcase %}
+                            {% if downcaseoption == 'size' %}
+                              {{ size_chart }}
+                            {% endif %}
+
+                            <div class="variant-input-wrap" data-index="option{{ forloop.index }}">
+                              <select class="master_sizes options-select" data-name="Size">
+                                <option
+                                  value="static"
+                                  data-status="true"
+                                  selected=""
+                                  style="color:gray">Select an option</option>
+
+                                {% for value in option.values %}
+                                  {%- assign variant_label_state = true -%}
+                                  {% if product.options.size == 1 %}
+                                    {% unless product.variants[forloop.index0].available %}
+                                      {%- assign variant_label_state = false -%}
+                                    {% endunless %}
+                                  {% endif %}
+                                  <option
+                                    value="{{ value | escape }}"
+                                    {% unless variant_label_state %}
+                                    disabled="disabled"
+                                    {% endunless %}
+                                    name="{{ option.name }}"
+                                    class="variant-input"
+                                    data-index="option{{ forloop.index }}">
+                                    {{ value }}
+                                    {% unless variant_label_state %}- Sold Out{% endunless %}
+                                  </option>
+                                {% endfor %}
+                              </select>
+                            </div>
+                          </div>
+                      {% endif %}
+                    {% endfor %}
+
+                  {% endunless %}
+
+
+                  {{ error_msg }}
+                  <select
+                    name="id"
+                    id="ProductSelect-{{ section_id }}"
+                    class="product-single__variants no-js"
+                    data-product-select>
+                    {% for variant in product.variants %}
+                      {% if variant.available %}
+                        <option
+                          data-vartitle="{{ variant.title }}"
+                          data-avaiablity="yes"
+                          data-text=""
+                          {% if variant.featured_media %}data-image="{{ variant.featured_media | img_url:'medium' }} {% else %} data-image="{{ product.featured_image | img_url: 'medium' }}{% endif %}" {% if variant == product.selected_or_first_available_variant %}
+                                                                            selected="selected" {% endif %}
+                                                        value="
+                          {{ variant.id }}
+                          ">
+                          {{ variant.title }} - {{ variant.price | money_with_currency }}
+                        </option>
+                      {% else %}
+                        <option
+                          data-vartitle="{{ variant.title }}"
+                          data-avaiablity="no"
+                          data-text="- Sold Out"
+                          {% if variant.featured_media %}data-image="{{ variant.featured_media | img_url:'medium' }} {% else %} data-image="{{ product.featured_image | img_url: 'medium' }}{% endif %}">
+                          {{ variant.title }} - {{ 'products.product.sold_out' | t }}
+                        </option>
+                      {% endif %}
+                    {% endfor %}
+                  </select>
+
+
+                </div>
+              </div>
+            </div>
+          {% endif %}
+        {% endfor %}
+      {% endpaginate %}
+    </div>
+
+  {% endif %}
+
+  {% assign product_type_5 = product.metafields.sf_product_bundle.product_type_5 %}
+  {% if product_type_5 %}
+    {% assign typehere = product_type_5 | strip_html | downcase %}
+    <div class="Main_bundle_Here">
+      {% paginate collections['bundle-functionality'].products by 1000 %}
+        {% for product in collections['bundle-functionality'].products %}
+          {% assign product_type = product.type | strip_html | downcase %}
+          {% assign PTitle = product.title | strip_html | downcase %}
+          {% assign Phandle = product.handle %}
+
+          {% if typehere == product_type %}
+            <div class="master_box_top product_Hide {% if typehere == product_type %}{% if forloop.index == 1 %}product_One_Shown{% endif %}{% endif %}" data-Phandle="{{ Phandle }}">
+              <button class="master_box_top_label">
+                {{ settings.option_one }}
+              </button>
+              <div class="builder_card" data-type="cap">
+                <div class="builder_top_slide">
+                  <div class="column_box_top">
+                    <div class="builder_top_slide_img">
+                      <img class="builder_card_image" src="{{ product.featured_image | img_url: "medium" }}" alt="{{ product.featured_image.alt }}" >
+                    </div>
+                  </div>
+                  <div class="column_box_top">
+                    <div class="builder_top_slide_title">
+                      <p class="builder_card_title">
+                        <b id="title_builder_box">{{ product.title }}</b>
+                        <input
+                          type="hidden"
+                          class="bundleProdHandle"
+                          value="{{ product.handle }}">
+                      </p>
+                    </div>
+                    <div class="loox-rating" title="">
+
+                      <div class="loox-rating" title="{{ product.metafields.loox.avg_rating }} rating ({{ product.metafields.loox.num_reviews }} votes)">
+                        <i class="loox-icon loox-star"></i>
+                        <i class="loox-icon loox-star"></i>
+                        <i class="loox-icon loox-star"></i>
+                        <i class="loox-icon loox-star"></i>
+                        <i class="loox-icon loox-star"></i>&nbsp;<span>
+                          {{ product.metafields.loox.num_reviews }}</span>
+                      </div>
+
+                    </div>
+
+                    <p class="viewdetails" data-url="{{ product.url }}">View Details</p>
+
+
+                  </div>
+                </div>
+                <div class="custom_builder_option">
+
+                  <input
+                    type="hidden"
+                    name="data-product-id"
+                    value="{{ product.id }}">
+                  {% if product.tags contains 'men' or product.tags contains 'Men' or product.tags contains 'MEN' or product.tags contains 'women' or product.tags contains 'Women' or product.tags contains 'WOMEN' %}
+                    {% if product.options contains 'Size' %}
+                      <div class="size-chart-with-labels">
+                        <a class="trigger-pop-up-5">{{ settings.newsizechart }}</a>
+                      </div>
+                    {% endif %}
+                  {% endif %}
+                  <div class="pop-up-modal fifth-popup">
+                    <div class="pop-up-content">
+                      <button type="button" class="btn btn--circle btn--large screen-layer__close js-screen-close proddesclose">
+            <svg aria-hidden="true" focusable="false" role="presentation" class="icon icon-close" viewBox="0 0 64 64">
+               <path d="M19 17.61l27.12 27.13m0-27.12L19 44.74"></path>
+            </svg>
+            <span class="icon__fallback-text">Close (esc)</span>
+         </button>
+                      {% if product.tags contains 'men' or product.tags contains 'Men' or product.tags contains 'MEN' %}
+                        <span class="size-chart-content men-chart">
+                          {{ pages[settings.product_content].content }}
+                        </span>
+                      {% elsif product.tags contains 'women' or product.tags contains 'Women' or product.tags contains 'WOMEN' %}
+                        <span class="size-chart-content women-chart">
+                          {{ pages[settings.product_content_women].content }}
+                        </span>
+                      {% endif %}
+                    </div>
+                  </div>
+                  <!--         ========================================================================================= -->
+
+                  <label class="custom_builder_label Design_Products" style="order: 1;">
+                    Design</label>
+
+                  <select class="master_designs options-select" data-name="Design">
+                    <option
+                      data-Handle="option_select"
+                      data-Handle="option_select"
+                      data-status="true"
+                      selected=""
+                      style="color:gray">Select an option</option>
+                    {% paginate collections['bundle-functionality'].products by 1000 %}
+                      {% for product in collections['bundle-functionality'].products %}
+                        {% assign product_type = product.type | strip_html | downcase %}
+
+                        {% if typehere == product_type %}
+                          {% assign SelectTitle = product.title | strip_html | downcase %}
+                          {% assign SelectHandle = product.handle | strip_html %}
+
+                          <option
+                            {% if product.available %}{% else %}disabled{% endif %}
+                            value="{{forloop.index}}"
+                            data-Handle="{{ SelectHandle }}"
+                            data-img="{{product.featured_image | img_url: "medium" }}"
+                            data-source="{{ product.id}}"
+                            data-type="{{ product.type}}"
+                            data-reviews=""
+                            data-numi=""
+                            {% if SelectHandle == Phandle %}
+                            selected="selected"
+                            {% endif %}>{{ product.title }}</option>
+                        {% endif %}
+                      {% endfor %}
+                    {% endpaginate %}
+                  </select>
+
+                  <!--         ========================================================================================= -->
+
+                  {% unless product.has_only_default_variant %}
+                    {% for option in product.options_with_values %}
+                      {% if option.name == 'Color' or option.name == 'color' %}
+                        {% include 'bundle_button', section_id: section_id, option_drop: option %}
+                    {% else %}
+                      {% endif %}
+                    {% endfor %}
+
+
+                    {% for option in product.options_with_values %}
+                      {% if option.name == 'Color' or option.name == 'color' %}
+
+                        {% else %}
+
+
+
+                          <div class=" variant-wrapper variant-wrapper--{{ section.settings.variant_type }} js div_{{ forloop.index }} total_div">
+                            <label style="order:3" class="custom_builder_label">
+                              {{ option.name }}
+
+                            </label>
+                            {% assign downcaseoption = option.name | downcase %}
+                            {% if downcaseoption == 'size' %}
+                              {{ size_chart }}
+                            {% endif %}
+
+                            <div class="variant-input-wrap" data-index="option{{ forloop.index }}">
+                              <select class="master_sizes options-select" data-name="Size">
+                                <option
+                                  value="static"
+                                  data-status="true"
+                                  selected=""
+                                  style="color:gray">Select an option</option>
+
+                                {% for value in option.values %}
+                                  {%- assign variant_label_state = true -%}
+                                  {% if product.options.size == 1 %}
+                                    {% unless product.variants[forloop.index0].available %}
+                                      {%- assign variant_label_state = false -%}
+                                    {% endunless %}
+                                  {% endif %}
+                                  <option
+                                    value="{{ value | escape }}"
+                                    {% unless variant_label_state %}
+                                    disabled="disabled"
+                                    {% endunless %}
+                                    name="{{ option.name }}"
+                                    class="variant-input"
+                                    data-index="option{{ forloop.index }}">
+                                    {{ value }}
+                                    {% unless variant_label_state %}- Sold Out{% endunless %}
+                                  </option>
+                                {% endfor %}
+                              </select>
+                            </div>
+                          </div>
+                      {% endif %}
+                    {% endfor %}
+
+                  {% endunless %}
+                  {{ error_msg }}
+
+                  <select
+                    name="id"
+                    id="ProductSelect-{{ section_id }}"
+                    class="product-single__variants no-js"
+                    data-product-select>
+                    {% for variant in product.variants %}
+                      {% if variant.available %}
+                        <option
+                          data-vartitle="{{ variant.title }}"
+                          data-avaiablity="yes"
+                          data-text=""
+                          {% if variant.featured_media %}data-image="{{ variant.featured_media | img_url:'medium' }} {% else %} data-image="{{ product.featured_image | img_url: 'medium' }}{% endif %}" {% if variant == product.selected_or_first_available_variant %}
+                                                                            selected="selected" {% endif %}
+                                                        value="
+                          {{ variant.id }}
+                          ">
+                          {{ variant.title }} - {{ variant.price | money_with_currency }}
+                        </option>
+                      {% else %}
+                        <option
+                          data-vartitle="{{ variant.title }}"
+                          data-avaiablity="no"
+                          data-text="- Sold Out"
+                          {% if variant.featured_media %}data-image="{{ variant.featured_media | img_url:'medium' }} {% else %} data-image="{{ product.featured_image | img_url: 'medium' }}{% endif %}">
+                          {{ variant.title }} - {{ 'products.product.sold_out' | t }}
+                        </option>
+                      {% endif %}
+                    {% endfor %}
+                  </select>
+
+
+
+                </div>
+              </div>
+            </div>
+          {% endif %}
+        {% endfor %}
+      {% endpaginate %}
+    </div>
+
+  {% endif %}
+
+  {% assign product_type_6 = product.metafields.sf_product_bundle.product_type_6 %}
+  {% if product_type_6 %}
+    {% assign typehere = product_type_6 | strip_html | downcase %}
+    <div class="Main_bundle_Here">
+      {% paginate collections['bundle-functionality'].products by 1000 %}
+        {% for product in collections['bundle-functionality'].products %}
+          {% assign product_type = product.type | strip_html | downcase %}
+          {% assign PTitle = product.title | strip_html | downcase %}
+          {% assign Phandle = product.handle %}
+
+          {% if typehere == product_type %}
+            <div class="master_box_top product_Hide {% if typehere == product_type %}{% if forloop.index == 1 %}product_One_Shown{% endif %}{% endif %}" data-Phandle="{{ Phandle }}">
+              <button class="master_box_top_label">
+                {{ settings.option_one }}
+              </button>
+              <div class="builder_card" data-type="cap">
+                <div class="builder_top_slide">
+                  <div class="column_box_top">
+                    <div class="builder_top_slide_img">
+                      <img class="builder_card_image" src="{{ product.featured_image | img_url: "medium" }}" alt="{{ product.featured_image.alt }}" >
+                    </div>
+                  </div>
+                  <div class="column_box_top">
+                    <div class="builder_top_slide_title">
+                      <p class="builder_card_title">
+                        <b id="title_builder_box">{{ product.title }}</b>
+                        <input
+                          type="hidden"
+                          class="bundleProdHandle"
+                          value="{{ product.handle }}">
+                      </p>
+                    </div>
+                    <div class="loox-rating" title="">
+
+                      <div class="loox-rating" title="{{ product.metafields.loox.avg_rating }} rating ({{ product.metafields.loox.num_reviews }} votes)">
+                        <i class="loox-icon loox-star"></i>
+                        <i class="loox-icon loox-star"></i>
+                        <i class="loox-icon loox-star"></i>
+                        <i class="loox-icon loox-star"></i>
+                        <i class="loox-icon loox-star"></i>&nbsp;<span>
+                          {{ product.metafields.loox.num_reviews }}</span>
+                      </div>
+
+                    </div>
+                    <p class="viewdetails" data-url="{{ product.url }}">View Details</p>
+                  </div>
+                </div>
+                <div class="custom_builder_option">
+
+                  <input
+                    type="hidden"
+                    name="data-product-id"
+                    value="{{ product.id }}">
+                  {% if product.tags contains 'men' or product.tags contains 'Men' or product.tags contains 'MEN' or product.tags contains 'women' or product.tags contains 'Women' or product.tags contains 'WOMEN' %}
+                    {% if product.options contains 'Size' %}
+                      <div class="size-chart-with-labels">
+                        <a class="trigger-pop-up-6">{{ settings.newsizechart }}</a>
+                      </div>
+                    {% endif %}
+                  {% endif %}
+                  <div class="pop-up-modal sixth-popup">
+                    <div class="pop-up-content">
+                      <button type="button" class="btn btn--circle btn--large screen-layer__close js-screen-close proddesclose">
+            <svg aria-hidden="true" focusable="false" role="presentation" class="icon icon-close" viewBox="0 0 64 64">
+               <path d="M19 17.61l27.12 27.13m0-27.12L19 44.74"></path>
+            </svg>
+            <span class="icon__fallback-text">Close (esc)</span>
+         </button>
+                      {% if product.tags contains 'men' or product.tags contains 'Men' or product.tags contains 'MEN' %}
+                        <span class="size-chart-content men-chart">
+                          {{ pages[settings.product_content].content }}
+                        </span>
+                      {% elsif product.tags contains 'women' or product.tags contains 'Women' or product.tags contains 'WOMEN' %}
+                        <span class="size-chart-content women-chart">
+                          {{ pages[settings.product_content_women].content }}
+                        </span>
+                      {% endif %}
+                    </div>
+                  </div>
+                  <!--         ========================================================================================= -->
+
+                  <label class="custom_builder_label Design_Products" style="order: 1;">
+                    Design</label>
+
+                  <select class="master_designs options-select" data-name="Design">
+                    <option
+                      data-Handle="option_select"
+                      data-Handle="option_select"
+                      data-status="true"
+                      selected=""
+                      style="color:gray">Select an option</option>
+                    {% paginate collections['bundle-functionality'].products by 1000 %}
+                      {% for product in collections['bundle-functionality'].products %}
+                        {% assign product_type = product.type | strip_html | downcase %}
+
+                        {% if typehere == product_type %}
+                          {% assign SelectTitle = product.title | strip_html | downcase %}
+                          {% assign SelectHandle = product.handle | strip_html %}
+
+                          <option
+                            {% if product.available %}{% else %}disabled{% endif %}
+                            value="{{forloop.index}}"
+                            data-Handle="{{ SelectHandle }}"
+                            data-img="{{product.featured_image | img_url: "medium" }}"
+                            data-source="{{ product.id}}"
+                            data-type="{{ product.type}}"
+                            data-reviews=""
+                            data-numi=""
+                            {% if SelectHandle == Phandle %}
+                            selected="selected"
+                            {% endif %}>{{ product.title }}</option>
+                        {% endif %}
+                      {% endfor %}
+                    {% endpaginate %}
+                  </select>
+
+                  <!--         ========================================================================================= -->
+
+                  {% unless product.has_only_default_variant %}
+                    {% for option in product.options_with_values %}
+                      {% if option.name == 'Color' or option.name == 'color' %}
+                        {% include 'bundle_button', section_id: section_id, option_drop: option %}
+                    {% else %}
+                      {% endif %}
+                    {% endfor %}
+
+
+                    {% for option in product.options_with_values %}
+                      {% if option.name == 'Color' or option.name == 'color' %}
+
+                        {% else %}
+                          <div class=" variant-wrapper variant-wrapper--{{ section.settings.variant_type }} js div_{{ forloop.index }} total_div">
+                            <label style="order:3" class="custom_builder_label">
+                              {{ option.name }}
+
+                            </label>
+                            {% assign downcaseoption = option.name | downcase %}
+                            {% if downcaseoption == 'size' %}
+                              {{ size_chart }}
+                            {% endif %}
+
+                            <div class="variant-input-wrap" data-index="option{{ forloop.index }}">
+                              <select class="master_sizes options-select" data-name="Size">
+                                <option
+                                  value="static"
+                                  data-status="true"
+                                  selected=""
+                                  style="color:gray">Select an option</option>
+
+                                {% for value in option.values %}
+                                  {%- assign variant_label_state = true -%}
+                                  {% if product.options.size == 1 %}
+                                    {% unless product.variants[forloop.index0].available %}
+                                      {%- assign variant_label_state = false -%}
+                                    {% endunless %}
+                                  {% endif %}
+                                  <option
+                                    value="{{ value | escape }}"
+                                    {% unless variant_label_state %}
+                                    disabled="disabled"
+                                    {% endunless %}
+                                    name="{{ option.name }}"
+                                    class="variant-input"
+                                    data-index="option{{ forloop.index }}">
+                                    {{ value }}
+                                    {% unless variant_label_state %}- Sold Out{% endunless %}
+                                  </option>
+                                {% endfor %}
+                              </select>
+                            </div>
+                          </div>
+                      {% endif %}
+                    {% endfor %}
+
+                  {% endunless %}
+
+                  {{ error_msg }}
+                  <select
+                    name="id"
+                    id="ProductSelect-{{ section_id }}"
+                    class="product-single__variants no-js"
+                    data-product-select>
+                    {% for variant in product.variants %}
+                      {% if variant.available %}
+                        <option
+                          data-vartitle="{{ variant.title }}"
+                          data-avaiablity="yes"
+                          data-text=""
+                          {% if variant.featured_media %}data-image="{{ variant.featured_media | img_url:'medium' }} {% else %} data-image="{{ product.featured_image | img_url: 'medium' }}{% endif %}" {% if variant == product.selected_or_first_available_variant %}
+                                                                            selected="selected" {% endif %}
+                                                        value="
+                          {{ variant.id }}
+                          ">
+                          {{ variant.title }} - {{ variant.price | money_with_currency }}
+                        </option>
+                      {% else %}
+                        <option
+                          data-vartitle="{{ variant.title }}"
+                          data-avaiablity="no"
+                          data-text="- Sold Out"
+                          {% if variant.featured_media %}data-image="{{ variant.featured_media | img_url:'medium' }} {% else %} data-image="{{ product.featured_image | img_url: 'medium' }}{% endif %}">
+                          {{ variant.title }} - {{ 'products.product.sold_out' | t }}
+                        </option>
+                      {% endif %}
+                    {% endfor %}
+                  </select>
+
+                </div>
+              </div>
+            </div>
+          {% endif %}
+        {% endfor %}
+      {% endpaginate %}
+    </div>
+
+  {% endif %}
+
+  {% assign product_type_7 = product.metafields.sf_product_bundle.product_type_7 %}
+  {% if product_type_7 %}
+    {% assign typehere = product_type_7 | strip_html | downcase %}
+    <div class="Main_bundle_Here">
+      {% paginate collections['bundle-functionality'].products by 1000 %}
+        {% for product in collections['bundle-functionality'].products %}
+          {% assign product_type = product.type | strip_html | downcase %}
+          {% assign PTitle = product.title | strip_html | downcase %}
+          {% assign Phandle = product.handle %}
+
+          {% if typehere == product_type %}
+            <div class="master_box_top product_Hide {% if typehere == product_type %}{% if forloop.index == 1 %}product_One_Shown{% endif %}{% endif %}" data-Phandle="{{ Phandle }}">
+              <button class="master_box_top_label">
+                {{ settings.option_one }}
+              </button>
+              <div class="builder_card" data-type="cap">
+                <div class="builder_top_slide">
+                  <div class="column_box_top">
+                    <div class="builder_top_slide_img">
+                      <img class="builder_card_image" src="{{ product.featured_image | img_url: "medium" }}" alt="{{ product.featured_image.alt }}" >
+                    </div>
+                  </div>
+                  <div class="column_box_top">
+                    <div class="builder_top_slide_title">
+                      <p class="builder_card_title">
+                        <b id="title_builder_box">{{ product.title }}</b>
+                        <input
+                          type="hidden"
+                          class="bundleProdHandle"
+                          value="{{ product.handle }}">
+                      </p>
+                    </div>
+                    <div class="loox-rating" title="">
+
+                      <div class="loox-rating" title="{{ product.metafields.loox.avg_rating }} rating ({{ product.metafields.loox.num_reviews }} votes)">
+                        <i class="loox-icon loox-star"></i>
+                        <i class="loox-icon loox-star"></i>
+                        <i class="loox-icon loox-star"></i>
+                        <i class="loox-icon loox-star"></i>
+                        <i class="loox-icon loox-star"></i>&nbsp;<span>
+                          {{ product.metafields.loox.num_reviews }}</span>
+                      </div>
+
+                    </div>
+                    <p class="viewdetails" data-url="{{ product.url }}">View Details</p>
+                  </div>
+                </div>
+                <div class="custom_builder_option">
+
+                  <input
+                    type="hidden"
+                    name="data-product-id"
+                    value="{{ product.id }}">
+                  {% if product.tags contains 'men' or product.tags contains 'Men' or product.tags contains 'MEN' or product.tags contains 'women' or product.tags contains 'Women' or product.tags contains 'WOMEN' %}
+                    {% if product.options contains 'Size' %}
+                      <div class="size-chart-with-labels">
+                        <a class="trigger-pop-up-7">{{ settings.newsizechart }}</a>
+                      </div>
+                    {% endif %}
+                  {% endif %}
+                  <div class="pop-up-modal seven-popup">
+                    <div class="pop-up-content">
+                      <button type="button" class="btn btn--circle btn--large screen-layer__close js-screen-close proddesclose">
+            <svg aria-hidden="true" focusable="false" role="presentation" class="icon icon-close" viewBox="0 0 64 64">
+               <path d="M19 17.61l27.12 27.13m0-27.12L19 44.74"></path>
+            </svg>
+            <span class="icon__fallback-text">Close (esc)</span>
+         </button>
+                      {% if product.tags contains 'men' or product.tags contains 'Men' or product.tags contains 'MEN' %}
+                        <span class="size-chart-content men-chart">
+                          {{ pages[settings.product_content].content }}
+                        </span>
+                      {% elsif product.tags contains 'women' or product.tags contains 'Women' or product.tags contains 'WOMEN' %}
+                        <span class="size-chart-content women-chart">
+                          {{ pages[settings.product_content_women].content }}
+                        </span>
+                      {% endif %}
+                    </div>
+                  </div>
+                  <!--         ========================================================================================= -->
+
+                  <label class="custom_builder_label Design_Products" style="order: 1;">
+                    Design</label>
+
+                  <select class="master_designs options-select" data-name="Design">
+                    <option
+                      data-Handle="option_select"
+                      data-Handle="option_select"
+                      data-status="true"
+                      selected=""
+                      style="color:gray">Select an option</option>
+                    {% paginate collections['bundle-functionality'].products by 1000 %}
+                      {% for product in collections['bundle-functionality'].products %}
+                        {% assign product_type = product.type | strip_html | downcase %}
+
+                        {% if typehere == product_type %}
+                          {% assign SelectTitle = product.title | strip_html | downcase %}
+                          {% assign SelectHandle = product.handle | strip_html %}
+
+                          <option
+                            {% if product.available %}{% else %}disabled{% endif %}
+                            value="{{forloop.index}}"
+                            data-Handle="{{ SelectHandle }}"
+                            data-img="{{product.featured_image | img_url: "medium" }}"
+                            data-source="{{ product.id}}"
+                            data-type="{{ product.type}}"
+                            data-reviews=""
+                            data-numi=""
+                            {% if SelectHandle == Phandle %}
+                            selected="selected"
+                            {% endif %}>{{ product.title }}</option>
+                        {% endif %}
+                      {% endfor %}
+                    {% endpaginate %}
+                  </select>
+
+                  <!--         ========================================================================================= -->
+
+                  {% unless product.has_only_default_variant %}
+                    {% for option in product.options_with_values %}
+                      {% if option.name == 'Color' or option.name == 'color' %}
+                        {% include 'bundle_button', section_id: section_id, option_drop: option %}
+                    {% else %}
+                      {% endif %}
+                    {% endfor %}
+
+
+                    {% for option in product.options_with_values %}
+                      {% if option.name == 'Color' or option.name == 'color' %}
+
+                        {% else %}
+                          <div class=" variant-wrapper variant-wrapper--{{ section.settings.variant_type }} js div_{{ forloop.index }} total_div">
+                            <label style="order:3" class="custom_builder_label">
+                              {{ option.name }}
+
+                            </label>
+                            {% assign downcaseoption = option.name | downcase %}
+                            {% if downcaseoption == 'size' %}
+                              {{ size_chart }}
+                            {% endif %}
+                            <div class="variant-input-wrap" data-index="option{{ forloop.index }}">
+                              <select class="master_sizes options-select" data-name="Size">
+                                <option
+                                  value="static"
+                                  data-status="true"
+                                  selected=""
+                                  style="color:gray">Select an option</option>
+
+                                {% for value in option.values %}
+                                  {%- assign variant_label_state = true -%}
+                                  {% if product.options.size == 1 %}
+                                    {% unless product.variants[forloop.index0].available %}
+                                      {%- assign variant_label_state = false -%}
+                                    {% endunless %}
+                                  {% endif %}
+                                  <option
+                                    value="{{ value | escape }}"
+                                    {% unless variant_label_state %}
+                                    disabled="disabled"
+                                    {% endunless %}
+                                    name="{{ option.name }}"
+                                    class="variant-input"
+                                    data-index="option{{ forloop.index }}">
+                                    {{ value }}
+                                    {% unless variant_label_state %}- Sold Out{% endunless %}
+                                  </option>
+                                {% endfor %}
+                              </select>
+                            </div>
+                          </div>
+                      {% endif %}
+                    {% endfor %}
+
+                  {% endunless %}
+
+                  {{ error_msg }}
+
+                  <select
+                    name="id"
+                    id="ProductSelect-{{ section_id }}"
+                    class="product-single__variants no-js"
+                    data-product-select>
+                    {% for variant in product.variants %}
+                      {% if variant.available %}
+                        <option
+                          data-vartitle="{{ variant.title }}"
+                          data-avaiablity="yes"
+                          data-text=""
+                          {% if variant.featured_media %}data-image="{{ variant.featured_media | img_url:'medium' }} {% else %} data-image="{{ product.featured_image | img_url: 'medium' }}{% endif %}" {% if variant == product.selected_or_first_available_variant %}
+                                                                            selected="selected" {% endif %}
+                                                        value="
+                          {{ variant.id }}
+                          ">
+                          {{ variant.title }} - {{ variant.price | money_with_currency }}
+                        </option>
+                      {% else %}
+                        <option
+                          data-vartitle="{{ variant.title }}"
+                          data-avaiablity="no"
+                          data-text="- Sold Out"
+                          {% if variant.featured_media %}data-image="{{ variant.featured_media | img_url:'medium' }} {% else %} data-image="{{ product.featured_image | img_url: 'medium' }}{% endif %}">
+                          {{ variant.title }} - {{ 'products.product.sold_out' | t }}
+                        </option>
+                      {% endif %}
+                    {% endfor %}
+                  </select>
+
+
+
+                </div>
+              </div>
+            </div>
+          {% endif %}
+        {% endfor %}
+      {% endpaginate %}
+    </div>
+
+  {% endif %}
+
+  {% assign product_type_8 = product.metafields.sf_product_bundle.product_type_8 %}
+  {% if product_type_8 %}
+    {% assign typehere = product_type_8 | strip_html | downcase %}
+    <div class="Main_bundle_Here">
+      {% paginate collections['bundle-functionality'].products by 1000 %}
+        {% for product in collections['bundle-functionality'].products %}
+          {% assign product_type = product.type | strip_html | downcase %}
+          {% assign PTitle = product.title | strip_html | downcase %}
+          {% assign Phandle = product.handle %}
+
+          {% if typehere == product_type %}
+            <div class="master_box_top product_Hide {% if typehere == product_type %}{% if forloop.index == 1 %}product_One_Shown{% endif %}{% endif %}" data-Phandle="{{ Phandle }}">
+              <button class="master_box_top_label">
+                {{ settings.option_one }}
+              </button>
+              <div class="builder_card" data-type="cap">
+                <div class="builder_top_slide">
+                  <div class="column_box_top">
+                    <div class="builder_top_slide_img">
+                      <img class="builder_card_image" src="{{ product.featured_image | img_url: "medium" }}" alt="{{ product.featured_image.alt }}" >
+                    </div>
+                  </div>
+                  <div class="column_box_top">
+                    <div class="builder_top_slide_title">
+                      <p class="builder_card_title">
+                        <b id="title_builder_box">{{ product.title }}</b>
+                        <input
+                          type="hidden"
+                          class="bundleProdHandle"
+                          value="{{ product.handle }}">
+                      </p>
+                    </div>
+                    <div class="loox-rating" title="">
+
+                      <div class="loox-rating" title="{{ product.metafields.loox.avg_rating }} rating ({{ product.metafields.loox.num_reviews }} votes)">
+                        <i class="loox-icon loox-star"></i>
+                        <i class="loox-icon loox-star"></i>
+                        <i class="loox-icon loox-star"></i>
+                        <i class="loox-icon loox-star"></i>
+                        <i class="loox-icon loox-star"></i>&nbsp;<span>
+                          {{ product.metafields.loox.num_reviews }}</span>
+                      </div>
+
+                    </div>
+                    <p class="viewdetails" data-url="{{ product.url }}">View Details</p>
+                  </div>
+                </div>
+                <div class="custom_builder_option">
+
+                  <input
+                    type="hidden"
+                    name="data-product-id"
+                    value="{{ product.id }}">
+                  {% if product.tags contains 'men' or product.tags contains 'Men' or product.tags contains 'MEN' or product.tags contains 'women' or product.tags contains 'Women' or product.tags contains 'WOMEN' %}
+                    {% if product.options contains 'Size' %}
+                      <div class="size-chart-with-labels">
+                        <a class="trigger-pop-up-8">{{ settings.newsizechart }}</a>
+                      </div>
+                    {% endif %}
+                  {% endif %}
+                  <div class="pop-up-modal eighth-popup">
+                    <div class="pop-up-content">
+                      <button type="button" class="btn btn--circle btn--large screen-layer__close js-screen-close proddesclose">
+            <svg aria-hidden="true" focusable="false" role="presentation" class="icon icon-close" viewBox="0 0 64 64">
+               <path d="M19 17.61l27.12 27.13m0-27.12L19 44.74"></path>
+            </svg>
+            <span class="icon__fallback-text">Close (esc)</span>
+         </button>
+                      {% if product.tags contains 'men' or product.tags contains 'Men' or product.tags contains 'MEN' %}
+                        <span class="size-chart-content men-chart">
+                          {{ pages[settings.product_content].content }}
+                        </span>
+                      {% elsif product.tags contains 'women' or product.tags contains 'Women' or product.tags contains 'WOMEN' %}
+                        <span class="size-chart-content women-chart">
+                          {{ pages[settings.product_content_women].content }}
+                        </span>
+                      {% endif %}
+                    </div>
+                  </div>
+                  <!--         ========================================================================================= -->
+
+                  <label class="custom_builder_label Design_Products" style="order: 1;">
+                    Design</label>
+
+                  <select class="master_designs options-select" data-name="Design">
+                    <option
+                      data-Handle="option_select"
+                      data-Handle="option_select"
+                      data-status="true"
+                      selected=""
+                      style="color:gray">Select an option</option>
+                    {% paginate collections['bundle-functionality'].products by 1000 %}
+                      {% for product in collections['bundle-functionality'].products %}
+                        {% assign product_type = product.type | strip_html | downcase %}
+
+                        {% if typehere == product_type %}
+                          {% assign SelectTitle = product.title | strip_html | downcase %}
+                          {% assign SelectHandle = product.handle | strip_html %}
+
+                          <option
+                            {% if product.available %}{% else %}disabled{% endif %}
+                            value="{{forloop.index}}"
+                            data-Handle="{{ SelectHandle }}"
+                            data-img="{{product.featured_image | img_url: "medium" }}"
+                            data-source="{{ product.id}}"
+                            data-type="{{ product.type}}"
+                            data-reviews=""
+                            data-numi=""
+                            {% if SelectHandle == Phandle %}
+                            selected="selected"
+                            {% endif %}>{{ product.title }}</option>
+                        {% endif %}
+                      {% endfor %}
+                    {% endpaginate %}
+                  </select>
+
+                  <!--         ========================================================================================= -->
+
+                  {% unless product.has_only_default_variant %}
+                    {% for option in product.options_with_values %}
+                      {% if option.name == 'Color' or option.name == 'color' %}
+                        {% include 'bundle_button', section_id: section_id, option_drop: option %}
+                    {% else %}
+                      {% endif %}
+                    {% endfor %}
+
+
+                    {% for option in product.options_with_values %}
+                      {% if option.name == 'Color' or option.name == 'color' %}
+
+                        {% else %}
+                          <div class=" variant-wrapper variant-wrapper--{{ section.settings.variant_type }} js div_{{ forloop.index }} total_div">
+                            <label style="order:3" class="custom_builder_label">
+                              {{ option.name }}
+
+                            </label>
+                            {% assign downcaseoption = option.name | downcase %}
+                            {% if downcaseoption == 'size' %}
+                              {{ size_chart }}
+                            {% endif %}
+                            <div class="variant-input-wrap" data-index="option{{ forloop.index }}">
+                              <select class="master_sizes options-select" data-name="Size">
+                                <option
+                                  value="static"
+                                  data-status="true"
+                                  selected=""
+                                  style="color:gray">Select an option</option>
+
+                                {% for value in option.values %}
+                                  {%- assign variant_label_state = true -%}
+                                  {% if product.options.size == 1 %}
+                                    {% unless product.variants[forloop.index0].available %}
+                                      {%- assign variant_label_state = false -%}
+                                    {% endunless %}
+                                  {% endif %}
+                                  <option
+                                    value="{{ value | escape }}"
+                                    {% unless variant_label_state %}
+                                    disabled="disabled"
+                                    {% endunless %}
+                                    name="{{ option.name }}"
+                                    class="variant-input"
+                                    data-index="option{{ forloop.index }}">
+                                    {{ value }}
+                                    {% unless variant_label_state %}- Sold Out{% endunless %}
+                                  </option>
+                                {% endfor %}
+                              </select>
+                            </div>
+                          </div>
+                      {% endif %}
+                    {% endfor %}
+
+                  {% endunless %}
+
+                  {{ error_msg }}
+
+                  <select
+                    name="id"
+                    id="ProductSelect-{{ section_id }}"
+                    class="product-single__variants no-js"
+                    data-product-select>
+                    {% for variant in product.variants %}
+                      {% if variant.available %}
+                        <option
+                          data-vartitle="{{ variant.title }}"
+                          data-avaiablity="yes"
+                          data-text=""
+                          {% if variant.featured_media %}data-image="{{ variant.featured_media | img_url:'medium' }} {% else %} data-image="{{ product.featured_image | img_url: 'medium' }}{% endif %}" {% if variant == product.selected_or_first_available_variant %}
+                                                                            selected="selected" {% endif %}
+                                                        value="
+                          {{ variant.id }}
+                          ">
+                          {{ variant.title }} - {{ variant.price | money_with_currency }}
+                        </option>
+                      {% else %}
+                        <option
+                          data-vartitle="{{ variant.title }}"
+                          data-avaiablity="no"
+                          data-text="- Sold Out"
+                          {% if variant.featured_media %}data-image="{{ variant.featured_media | img_url:'medium' }} {% else %} data-image="{{ product.featured_image | img_url: 'medium' }}{% endif %}">
+                          {{ variant.title }} - {{ 'products.product.sold_out' | t }}
+                        </option>
+                      {% endif %}
+                    {% endfor %}
+                  </select>
+
+
+
+                </div>
+              </div>
+            </div>
+          {% endif %}
+        {% endfor %}
+      {% endpaginate %}
+    </div>
+  {% endif %}
+
+
+  {% assign sf_product_bundlesingle_product = product.metafields.sf_product_bundle.single_product %}
+  {% if sf_product_bundlesingle_product %}
+    {% assign typehere = sf_product_bundlesingle_product | strip_html | downcase %}
+
+    <div class="Main_bundle_Here">
+      {% paginate collections['bundle-functionality'].products by 1000 %}
+        {% for product in collections['bundle-functionality'].products %}
+          {% assign product_type = product.handle %}
+          {% assign PTitle = product.title | strip_html | downcase %}
+          {% assign Phandle = product.handle %}
+
+          {% if typehere == product_type %}
+            <div class="master_box_top product_Hide {% if typehere == product_type %}{% if forloop.index == 1 %}product_One_Shown{% endif %}{% endif %}" data-Phandle="{{ Phandle }}">
+              <button class="master_box_top_label">
+                {{ settings.option_one }}
+              </button>
+              <div class="builder_card" data-type="cap">
+                <div class="builder_top_slide">
+                  <div class="column_box_top">
+                    <div class="builder_top_slide_img">
+                      <img class="builder_card_image" src="{{ product.featured_image | img_url: "medium" }}" alt="{{ product.featured_image.alt }}" >
+                    </div>
+                  </div>
+                  <div class="column_box_top">
+                    <div class="builder_top_slide_title">
+                      <p class="builder_card_title">
+                        <b id="title_builder_box">{{ product.title }}</b>
+                        <input
+                          type="hidden"
+                          class="bundleProdHandle"
+                          value="{{ product.handle }}">
+                      </p>
+                    </div>
+                    <div class="loox-rating" title="">
+
+                      <div class="loox-rating" title="{{ product.metafields.loox.avg_rating }} rating ({{ product.metafields.loox.num_reviews }} votes)">
+                        <i class="loox-icon loox-star"></i>
+                        <i class="loox-icon loox-star"></i>
+                        <i class="loox-icon loox-star"></i>
+                        <i class="loox-icon loox-star"></i>
+                        <i class="loox-icon loox-star"></i>&nbsp;<span>
+                          {{ product.metafields.loox.num_reviews }}</span>
+                      </div>
+
+                    </div>
+                    <p class="viewdetails" data-url="{{ product.url }}">View Details</p>
+                  </div>
+                </div>
+                <div class="custom_builder_option">
+
+                  <input
+                    type="hidden"
+                    name="data-product-id"
+                    value="{{ product.id }}">
+                  {% if product.tags contains 'men' or product.tags contains 'Men' or product.tags contains 'MEN' or product.tags contains 'women' or product.tags contains 'Women' or product.tags contains 'WOMEN' %}
+                    {% if product.options contains 'Size' %}
+                      <div class="size-chart-with-labels">
+                        <a class="trigger-pop-up-9">{{ settings.newsizechart }}</a>
+                      </div>
+                    {% endif %}
+                  {% endif %}
+                  <div class="pop-up-modal ninth-popup">
+                    <div class="pop-up-content">
+                      <button type="button" class="btn btn--circle btn--large screen-layer__close js-screen-close proddesclose">
+            <svg aria-hidden="true" focusable="false" role="presentation" class="icon icon-close" viewBox="0 0 64 64">
+               <path d="M19 17.61l27.12 27.13m0-27.12L19 44.74"></path>
+            </svg>
+            <span class="icon__fallback-text">Close (esc)</span>
+         </button>
+                      {% if product.tags contains 'men' or product.tags contains 'Men' or product.tags contains 'MEN' %}
+                        <span class="size-chart-content men-chart">
+                          {{ pages[settings.product_content].content }}
+                        </span>
+                      {% elsif product.tags contains 'women' or product.tags contains 'Women' or product.tags contains 'WOMEN' %}
+                        <span class="size-chart-content women-chart">
+                          {{ pages[settings.product_content_women].content }}
+                        </span>
+                      {% endif %}
+                    </div>
+                  </div>
+                  {% unless product.has_only_default_variant %}
+                    {% for option in product.options_with_values %}
+                      {% if option.name == 'Color' or option.name == 'color' %}
+                        {% include 'bundle_button', section_id: section_id, option_drop: option %}
+                    {% else %}
+                      {% endif %}
+                    {% endfor %}
+
+
+                    {% for option in product.options_with_values %}
+                      {% if option.name == 'Color' or option.name == 'color' %}
+
+                        {% else %}
+                          <div class=" variant-wrapper variant-wrapper--{{ section.settings.variant_type }} js div_{{ forloop.index }} total_div">
+                            <label style="order:3" class="custom_builder_label">
+                              {{ option.name }}
+
+                            </label>
+                            {% assign downcaseoption = option.name | downcase %}
+                            {% if downcaseoption == 'size' %}
+                              {{ size_chart }}
+                            {% endif %}
+                            <div class="variant-input-wrap" data-index="option{{ forloop.index }}">
+                              <select class="master_sizes options-select" data-name="Size">
+                                <option
+                                  value="static"
+                                  data-status="true"
+                                  selected=""
+                                  style="color:gray">Select an option</option>
+
+                                {% for value in option.values %}
+                                  {%- assign variant_label_state = true -%}
+                                  {% if product.options.size == 1 %}
+                                    {% unless product.variants[forloop.index0].available %}
+                                      {%- assign variant_label_state = false -%}
+                                    {% endunless %}
+                                  {% endif %}
+                                  <option
+                                    value="{{ value | escape }}"
+                                    {% unless variant_label_state %}
+                                    disabled="disabled"
+                                    {% endunless %}
+                                    name="{{ option.name }}"
+                                    class="variant-input"
+                                    data-index="option{{ forloop.index }}">
+                                    {{ value }}
+                                    {% unless variant_label_state %}- Sold Out{% endunless %}
+                                  </option>
+                                {% endfor %}
+                              </select>
+                            </div>
+                          </div>
+                      {% endif %}
+                    {% endfor %}
+
+                  {% endunless %}
+
+                  {{ error_msg }}
+
+                  <select
+                    name="id"
+                    id="ProductSelect-{{ section_id }}"
+                    class="product-single__variants no-js"
+                    data-product-select>
+                    {% for variant in product.variants %}
+                      {% if variant.available %}
+                        <option
+                          data-vartitle="{{ variant.title }}"
+                          data-avaiablity="yes"
+                          data-text=""
+                          {% if variant.featured_media %}data-image="{{ variant.featured_media | img_url:'medium' }} {% else %} data-image="{{ product.featured_image | img_url: 'medium' }}{% endif %}" {% if variant == product.selected_or_first_available_variant %}
+                                                                            selected="selected" {% endif %}
+                                                        value="
+                          {{ variant.id }}
+                          ">
+                          {{ variant.title }} - {{ variant.price | money_with_currency }}
+                        </option>
+                      {% else %}
+                        <option
+                          data-vartitle="{{ variant.title }}"
+                          data-avaiablity="no"
+                          data-text="- Sold Out"
+                          {% if variant.featured_media %}data-image="{{ variant.featured_media | img_url:'medium' }} {% else %} data-image="{{ product.featured_image | img_url: 'medium' }}{% endif %}">
+                          {{ variant.title }} - {{ 'products.product.sold_out' | t }}
+                        </option>
+                      {% endif %}
+                    {% endfor %}
+                  </select>
+
+
+
+                </div>
+              </div>
+            </div>
+          {% endif %}
+        {% endfor %}
+      {% endpaginate %}
+    </div>
+  {% endif %}
+
+
+  {% assign sf_product_bundlesingle_product__2 = product.metafields.sf_product_bundle.single_product__2 %}
+  {% if sf_product_bundlesingle_product__2 %}
+    {% assign typehere = sf_product_bundlesingle_product__2 | strip_html | downcase %}
+
+    <div class="Main_bundle_Here">
+      {% paginate collections['bundle-functionality'].products by 1000 %}
+        {% for product in collections['bundle-functionality'].products %}
+          {% assign product_type = product.handle %}
+          {% assign PTitle = product.title | strip_html | downcase %}
+          {% assign Phandle = product.handle %}
+
+          {% if typehere == product_type %}
+            <div class="test   master_box_top product_Hide {% if typehere == product_type %}{% if forloop.index == 1 %}product_One_Shown{% endif %}{% endif %}" data-Phandle="{{ Phandle }}">
+              <button class="master_box_top_label">
+                {{ settings.option_one }}
+              </button>
+              <div class="builder_card" data-type="cap">
+                <div class="builder_top_slide">
+                  <div class="column_box_top">
+                    <div class="builder_top_slide_img">
+                      <img class="builder_card_image" src="{{ product.featured_image | img_url: "medium" }}" alt="{{ product.featured_image.alt }}" >
+                    </div>
+                  </div>
+                  <div class="column_box_top">
+                    <div class="builder_top_slide_title">
+                      <p class="builder_card_title">
+                        <b id="title_builder_box">{{ product.title }}</b>
+                        <input
+                          type="hidden"
+                          class="bundleProdHandle"
+                          value="{{ product.handle }}">
+                      </p>
+                    </div>
+                    <div class="loox-rating" title="">
+
+                      <div class="loox-rating" title="{{ product.metafields.loox.avg_rating }} rating ({{ product.metafields.loox.num_reviews }} votes)">
+                        <i class="loox-icon loox-star"></i>
+                        <i class="loox-icon loox-star"></i>
+                        <i class="loox-icon loox-star"></i>
+                        <i class="loox-icon loox-star"></i>
+                        <i class="loox-icon loox-star"></i>&nbsp;<span>
+                          {{ product.metafields.loox.num_reviews }}</span>
+                      </div>
+
+                    </div>
+                    <p class="viewdetails" data-url="{{ product.url }}">View Details</p>
+                  </div>
+                </div>
+                <div class="custom_builder_option">
+
+                  <input
+                    type="hidden"
+                    name="data-product-id"
+                    value="{{ product.id }}">
+                  {% if product.tags contains 'men' or product.tags contains 'Men' or product.tags contains 'MEN' or product.tags contains 'women' or product.tags contains 'Women' or product.tags contains 'WOMEN' %}
+                    {% if product.options contains 'Size' %}
+                      <div class="size-chart-with-labels">
+                        <a class="trigger-pop-up-10">{{ settings.newsizechart }}</a>
+                      </div>
+                    {% endif %}
+                  {% endif %}
+                  <div class="pop-up-modal tenth-popup">
+                    <div class="pop-up-content">
+                      <button type="button" class="btn btn--circle btn--large screen-layer__close js-screen-close proddesclose">
+            <svg aria-hidden="true" focusable="false" role="presentation" class="icon icon-close" viewBox="0 0 64 64">
+               <path d="M19 17.61l27.12 27.13m0-27.12L19 44.74"></path>
+            </svg>
+            <span class="icon__fallback-text">Close (esc)</span>
+         </button>
+                      {% if product.tags contains 'men' or product.tags contains 'Men' or product.tags contains 'MEN' %}
+                        <span class="size-chart-content men-chart">
+                          {{ pages[settings.product_content].content }}
+                        </span>
+                      {% elsif product.tags contains 'women' or product.tags contains 'Women' or product.tags contains 'WOMEN' %}
+                        <span class="size-chart-content women-chart">
+                          {{ pages[settings.product_content_women].content }}
+                        </span>
+                      {% endif %}
+                    </div>
+                  </div>
+                  {% unless product.has_only_default_variant %}
+                    {% for option in product.options_with_values %}
+                      {% if option.name == 'Color' or option.name == 'color' %}
+                        {% include 'bundle_button', section_id: section_id, option_drop: option %}
+                    {% else %}
+                      {% endif %}
+                    {% endfor %}
+
+
+                    {% for option in product.options_with_values %}
+                      {% if option.name == 'Color' or option.name == 'color' %}
+
+                        {% else %}
+                          <div class=" variant-wrapper variant-wrapper--{{ section.settings.variant_type }} js div_{{ forloop.index }} total_div">
+                            <label style="order:3" class="custom_builder_label">
+                              {{ option.name }}
+
+                            </label>
+                            {% assign downcaseoption = option.name | downcase %}
+                            {% if downcaseoption == 'size' %}
+                              {{ size_chart }}
+                            {% endif %}
+                            <div class="variant-input-wrap" data-index="option{{ forloop.index }}">
+                              <select class="master_sizes options-select" data-name="Size">
+                                <option
+                                  value="static"
+                                  data-status="true"
+                                  selected=""
+                                  style="color:gray">Select an option</option>
+
+                                {% for value in option.values %}
+                                  {%- assign variant_label_state = true -%}
+                                  {% if product.options.size == 1 %}
+                                    {% unless product.variants[forloop.index0].available %}
+                                      {%- assign variant_label_state = false -%}
+                                    {% endunless %}
+                                  {% endif %}
+                                  <option
+                                    value="{{ value | escape }}"
+                                    {% unless variant_label_state %}
+                                    disabled="disabled"
+                                    {% endunless %}
+                                    name="{{ option.name }}"
+                                    class="variant-input"
+                                    data-index="option{{ forloop.index }}">
+                                    {{ value }}
+                                    {% unless variant_label_state %}- Sold Out{% endunless %}
+                                  </option>
+                                {% endfor %}
+                              </select>
+                            </div>
+                          </div>
+                      {% endif %}
+                    {% endfor %}
+
+                  {% endunless %}
+
+                  {{ error_msg }}
+
+                  <select
+                    name="id"
+                    id="ProductSelect-{{ section_id }}"
+                    class="product-single__variants no-js"
+                    data-product-select>
+                    {% for variant in product.variants %}
+                      {% if variant.available %}
+                        <option
+                          data-vartitle="{{ variant.title }}"
+                          data-avaiablity="yes"
+                          data-text=""
+                          {% if variant.featured_media %}data-image="{{ variant.featured_media | img_url:'medium' }} {% else %} data-image="{{ product.featured_image | img_url: 'medium' }}{% endif %}" {% if variant == product.selected_or_first_available_variant %}
+                                                                            selected="selected" {% endif %}
+                                                        value="
+                          {{ variant.id }}
+                          ">
+                          {{ variant.title }} - {{ variant.price | money_with_currency }}
+                        </option>
+                      {% else %}
+                        <option
+                          data-vartitle="{{ variant.title }}"
+                          data-avaiablity="no"
+                          data-text="- Sold Out"
+                          {% if variant.featured_media %}data-image="{{ variant.featured_media | img_url:'medium' }} {% else %} data-image="{{ product.featured_image | img_url: 'medium' }}{% endif %}">
+                          {{ variant.title }} - {{ 'products.product.sold_out' | t }}
+                        </option>
+                      {% endif %}
+                    {% endfor %}
+                  </select>
+
+
+
+                </div>
+              </div>
+            </div>
+          {% endif %}
+        {% endfor %}
+      {% endpaginate %}
+    </div>
+  {% endif %}
+
+
+  {% assign sf_product_bundlesingle_product__3 = product.metafields.sf_product_bundle.single_product__3 %}
+  {% if sf_product_bundlesingle_product__3 %}
+    {% assign typehere = sf_product_bundlesingle_product__3 | strip_html | downcase %}
+
+    <div class="Main_bundle_Here">
+      {% paginate collections['bundle-functionality'].products by 1000 %}
+        {% for product in collections['bundle-functionality'].products %}
+          {% assign product_type = product.handle %}
+          {% assign PTitle = product.title | strip_html | downcase %}
+          {% assign Phandle = product.handle %}
+
+          {% if typehere == product_type %}
+            <div class="test  master_box_top product_Hide {% if typehere == product_type %}{% if forloop.index == 1 %}product_One_Shown{% endif %}{% endif %}" data-Phandle="{{ Phandle }}">
+              <button class="master_box_top_label">
+                {{ settings.option_one }}
+              </button>
+              <div class="builder_card" data-type="cap">
+                <div class="builder_top_slide">
+                  <div class="column_box_top">
+                    <div class="builder_top_slide_img">
+                      <img class="builder_card_image" src="{{ product.featured_image | img_url: "medium" }}" alt="{{ product.featured_image.alt }}" >
+                    </div>
+                  </div>
+                  <div class="column_box_top">
+                    <div class="builder_top_slide_title">
+                      <p class="builder_card_title">
+                        <b id="title_builder_box">{{ product.title }}</b>
+                        <input
+                          type="hidden"
+                          class="bundleProdHandle"
+                          value="{{ product.handle }}">
+                      </p>
+                    </div>
+                    <div class="loox-rating" title="">
+
+                      <div class="loox-rating" title="{{ product.metafields.loox.avg_rating }} rating ({{ product.metafields.loox.num_reviews }} votes)">
+                        <i class="loox-icon loox-star"></i>
+                        <i class="loox-icon loox-star"></i>
+                        <i class="loox-icon loox-star"></i>
+                        <i class="loox-icon loox-star"></i>
+                        <i class="loox-icon loox-star"></i>&nbsp;<span>
+                          {{ product.metafields.loox.num_reviews }}</span>
+                      </div>
+
+                    </div>
+                    <p class="viewdetails" data-url="{{ product.url }}">View Details</p>
+                  </div>
+                </div>
+                <div class="custom_builder_option">
+
+                  <input
+                    type="hidden"
+                    name="data-product-id"
+                    value="{{ product.id }}">
+                  {% if product.tags contains 'men' or product.tags contains 'Men' or product.tags contains 'MEN' or product.tags contains 'women' or product.tags contains 'Women' or product.tags contains 'WOMEN' %}
+                    {% if product.options contains 'Size' %}
+                      <div class="size-chart-with-labels">
+                        <a class="trigger-pop-up-11">{{ settings.newsizechart }}</a>
+                      </div>
+                    {% endif %}
+                  {% endif %}
+                  <div class="pop-up-modal eleven-popup">
+                    <div class="pop-up-content">
+                      <button type="button" class="btn btn--circle btn--large screen-layer__close js-screen-close proddesclose">
+            <svg aria-hidden="true" focusable="false" role="presentation" class="icon icon-close" viewBox="0 0 64 64">
+               <path d="M19 17.61l27.12 27.13m0-27.12L19 44.74"></path>
+            </svg>
+            <span class="icon__fallback-text">Close (esc)</span>
+         </button>
+                      {% if product.tags contains 'men' or product.tags contains 'Men' or product.tags contains 'MEN' %}
+                        <span class="size-chart-content men-chart">
+                          {{ pages[settings.product_content].content }}
+                        </span>
+                      {% elsif product.tags contains 'women' or product.tags contains 'Women' or product.tags contains 'WOMEN' %}
+                        <span class="size-chart-content women-chart">
+                          {{ pages[settings.product_content_women].content }}
+                        </span>
+                      {% endif %}
+                    </div>
+                  </div>
+                  {% unless product.has_only_default_variant %}
+                    {% for option in product.options_with_values %}
+                      {% if option.name == 'Color' or option.name == 'color' %}
+                        {% include 'bundle_button', section_id: section_id, option_drop: option %}
+                    {% else %}
+                      {% endif %}
+                    {% endfor %}
+
+
+                    {% for option in product.options_with_values %}
+                      {% if option.name == 'Color' or option.name == 'color' %}
+
+                        {% else %}
+                          <div class=" variant-wrapper variant-wrapper--{{ section.settings.variant_type }} js div_{{ forloop.index }} total_div">
+                            <label style="order:3" class="custom_builder_label">
+                              {{ option.name }}
+
+                            </label>
+                            {% assign downcaseoption = option.name | downcase %}
+                            {% if downcaseoption == 'size' %}
+                              {{ size_chart }}
+                            {% endif %}
+                            <div class="variant-input-wrap" data-index="option{{ forloop.index }}">
+                              <select class="master_sizes options-select" data-name="Size">
+                                <option
+                                  value="static"
+                                  data-status="true"
+                                  selected=""
+                                  style="color:gray">Select an option</option>
+
+                                {% for value in option.values %}
+                                  {%- assign variant_label_state = true -%}
+                                  {% if product.options.size == 1 %}
+                                    {% unless product.variants[forloop.index0].available %}
+                                      {%- assign variant_label_state = false -%}
+                                    {% endunless %}
+                                  {% endif %}
+                                  <option
+                                    value="{{ value | escape }}"
+                                    {% unless variant_label_state %}
+                                    disabled="disabled"
+                                    {% endunless %}
+                                    name="{{ option.name }}"
+                                    class="variant-input"
+                                    data-index="option{{ forloop.index }}">
+                                    {{ value }}
+                                    {% unless variant_label_state %}- Sold Out{% endunless %}
+                                  </option>
+                                {% endfor %}
+                              </select>
+                            </div>
+                          </div>
+                      {% endif %}
+                    {% endfor %}
+
+                  {% endunless %}
+
+                  {{ error_msg }}
+
+                  <select
+                    name="id"
+                    id="ProductSelect-{{ section_id }}"
+                    class="product-single__variants no-js"
+                    data-product-select>
+                    {% for variant in product.variants %}
+                      {% if variant.available %}
+                        <option
+                          data-vartitle="{{ variant.title }}"
+                          data-avaiablity="yes"
+                          data-text=""
+                          {% if variant.featured_media %}data-image="{{ variant.featured_media | img_url:'medium' }} {% else %} data-image="{{ product.featured_image | img_url: 'medium' }}{% endif %}" {% if variant == product.selected_or_first_available_variant %}
+                                                                            selected="selected" {% endif %}
+                                                        value="
+                          {{ variant.id }}
+                          ">
+                          {{ variant.title }} - {{ variant.price | money_with_currency }}
+                        </option>
+                      {% else %}
+                        <option
+                          data-vartitle="{{ variant.title }}"
+                          data-avaiablity="no"
+                          data-text="- Sold Out"
+                          {% if variant.featured_media %}data-image="{{ variant.featured_media | img_url:'medium' }} {% else %} data-image="{{ product.featured_image | img_url: 'medium' }}{% endif %}">
+                          {{ variant.title }} - {{ 'products.product.sold_out' | t }}
+                        </option>
+                      {% endif %}
+                    {% endfor %}
+                  </select>
+
+
+
+                </div>
+              </div>
+            </div>
+          {% endif %}
+        {% endfor %}
+      {% endpaginate %}
+    </div>
+  {% endif %}
+
+  {% assign sf_product_bundlesingle_product__4 = product.metafields.sf_product_bundle.single_product__4 %}
+  {% if sf_product_bundlesingle_product__4 %}
+    {% assign typehere = sf_product_bundlesingle_product__4 | strip_html | downcase %}
+
+    <div class="Main_bundle_Here">
+      {% paginate collections['bundle-functionality'].products by 1000 %}
+        {% for product in collections['bundle-functionality'].products %}
+          {% assign product_type = product.handle %}
+          {% assign PTitle = product.title | strip_html | downcase %}
+          {% assign Phandle = product.handle %}
+
+          {% if typehere == product_type %}
+            <div class="test  master_box_top product_Hide {% if typehere == product_type %}{% if forloop.index == 1 %}product_One_Shown{% endif %}{% endif %}" data-Phandle="{{ Phandle }}">
+              <button class="master_box_top_label">
+                {{ settings.option_one }}
+              </button>
+              <div class="builder_card" data-type="cap">
+                <div class="builder_top_slide">
+                  <div class="column_box_top">
+                    <div class="builder_top_slide_img">
+                      <img class="builder_card_image" src="{{ product.featured_image | img_url: "medium" }}" alt="{{ product.featured_image.alt }}" >
+                    </div>
+                  </div>
+                  <div class="column_box_top">
+                    <div class="builder_top_slide_title">
+                      <p class="builder_card_title">
+                        <b id="title_builder_box">{{ product.title }}</b>
+                        <input
+                          type="hidden"
+                          class="bundleProdHandle"
+                          value="{{ product.handle }}">
+                      </p>
+                    </div>
+                    <div class="loox-rating" title="">
+
+                      <div class="loox-rating" title="{{ product.metafields.loox.avg_rating }} rating ({{ product.metafields.loox.num_reviews }} votes)">
+                        <i class="loox-icon loox-star"></i>
+                        <i class="loox-icon loox-star"></i>
+                        <i class="loox-icon loox-star"></i>
+                        <i class="loox-icon loox-star"></i>
+                        <i class="loox-icon loox-star"></i>&nbsp;<span>
+                          {{ product.metafields.loox.num_reviews }}</span>
+                      </div>
+
+                    </div>
+                    <p class="viewdetails" data-url="{{ product.url }}">View Details</p>
+                  </div>
+                </div>
+                <div class="custom_builder_option">
+
+                  <input
+                    type="hidden"
+                    name="data-product-id"
+                    value="{{ product.id }}">
+                  {% if product.tags contains 'men' or product.tags contains 'Men' or product.tags contains 'MEN' or product.tags contains 'women' or product.tags contains 'Women' or product.tags contains 'WOMEN' %}
+                    {% if product.options contains 'Size' %}
+                      <div class="size-chart-with-labels">
+                        <a class="trigger-pop-up-12">{{ settings.newsizechart }}</a>
+                      </div>
+                    {% endif %}
+                  {% endif %}
+                  <div class="pop-up-modal tweleve-popup">
+                    <div class="pop-up-content">
+                      <button type="button" class="btn btn--circle btn--large screen-layer__close js-screen-close proddesclose">
+            <svg aria-hidden="true" focusable="false" role="presentation" class="icon icon-close" viewBox="0 0 64 64">
+               <path d="M19 17.61l27.12 27.13m0-27.12L19 44.74"></path>
+            </svg>
+            <span class="icon__fallback-text">Close (esc)</span>
+         </button>
+                      {% if product.tags contains 'men' or product.tags contains 'Men' or product.tags contains 'MEN' %}
+                        <span class="size-chart-content men-chart">
+                          {{ pages[settings.product_content].content }}
+                        </span>
+                      {% elsif product.tags contains 'women' or product.tags contains 'Women' or product.tags contains 'WOMEN' %}
+                        <span class="size-chart-content women-chart">
+                          {{ pages[settings.product_content_women].content }}
+                        </span>
+                      {% endif %}
+                    </div>
+                  </div>
+                  {% unless product.has_only_default_variant %}
+                    {% for option in product.options_with_values %}
+                      {% if option.name == 'Color' or option.name == 'color' %}
+                        {% include 'bundle_button', section_id: section_id, option_drop: option %}
+                    {% else %}
+                      {% endif %}
+                    {% endfor %}
+
+
+                    {% for option in product.options_with_values %}
+                      {% if option.name == 'Color' or option.name == 'color' %}
+
+                        {% else %}
+                          <div class=" variant-wrapper variant-wrapper--{{ section.settings.variant_type }} js div_{{ forloop.index }} total_div">
+                            <label style="order:3" class="custom_builder_label">
+                              {{ option.name }}
+
+                            </label>
+                            {% assign downcaseoption = option.name | downcase %}
+                            {% if downcaseoption == 'size' %}
+                              {{ size_chart }}
+                            {% endif %}
+                            <div class="variant-input-wrap" data-index="option{{ forloop.index }}">
+                              <select class="master_sizes options-select" data-name="Size">
+                                <option
+                                  value="static"
+                                  data-status="true"
+                                  selected=""
+                                  style="color:gray">Select an option</option>
+
+                                {% for value in option.values %}
+                                  {%- assign variant_label_state = true -%}
+                                  {% if product.options.size == 1 %}
+                                    {% unless product.variants[forloop.index0].available %}
+                                      {%- assign variant_label_state = false -%}
+                                    {% endunless %}
+                                  {% endif %}
+                                  <option
+                                    value="{{ value | escape }}"
+                                    {% unless variant_label_state %}
+                                    disabled="disabled"
+                                    {% endunless %}
+                                    name="{{ option.name }}"
+                                    class="variant-input"
+                                    data-index="option{{ forloop.index }}">
+                                    {{ value }}
+                                    {% unless variant_label_state %}- Sold Out{% endunless %}
+                                  </option>
+                                {% endfor %}
+                              </select>
+                            </div>
+                          </div>
+                      {% endif %}
+                    {% endfor %}
+
+                  {% endunless %}
+
+                  {{ error_msg }}
+
+                  <select
+                    name="id"
+                    id="ProductSelect-{{ section_id }}"
+                    class="product-single__variants no-js"
+                    data-product-select>
+                    {% for variant in product.variants %}
+                      {% if variant.available %}
+                        <option
+                          data-vartitle="{{ variant.title }}"
+                          data-avaiablity="yes"
+                          data-text=""
+                          {% if variant.featured_media %}data-image="{{ variant.featured_media | img_url:'medium' }} {% else %} data-image="{{ product.featured_image | img_url: 'medium' }}{% endif %}" {% if variant == product.selected_or_first_available_variant %}
+                                                                            selected="selected" {% endif %}
+                                                                                               value="
+                          {{ variant.id }}
+                          ">
+                          {{ variant.title }} - {{ variant.price | money_with_currency }}
+                        </option>
+                      {% else %}
+                        <option
+                          data-vartitle="{{ variant.title }}"
+                          data-avaiablity="no"
+                          data-text="- Sold Out"
+                          {% if variant.featured_media %}data-image="{{ variant.featured_media | img_url:'medium' }} {% else %} data-image="{{ product.featured_image | img_url: 'medium' }}{% endif %}">
+                          {{ variant.title }} - {{ 'products.product.sold_out' | t }}
+                        </option>
+                      {% endif %}
+                    {% endfor %}
+                  </select>
+
+
+
+                </div>
+              </div>
+            </div>
+          {% endif %}
+        {% endfor %}
+      {% endpaginate %}
+    </div>
+  {% endif %}
+
+  {% assign sf_product_bundlesingle_product__5 = product.metafields.sf_product_bundle.single_product__5 %}
+  {% if sf_product_bundlesingle_product__5 %}
+    {% assign typehere = sf_product_bundlesingle_product__5 | strip_html | downcase %}
+
+    <div class="Main_bundle_Here">
+      {% paginate collections['bundle-functionality'].products by 1000 %}
+        {% for product in collections['bundle-functionality'].products %}
+          {% assign product_type = product.handle %}
+          {% assign PTitle = product.title | strip_html | downcase %}
+          {% assign Phandle = product.handle %}
+
+          {% if typehere == product_type %}
+            <div class="master_box_top product_Hide {% if typehere == product_type %}{% if forloop.index == 1 %}product_One_Shown{% endif %}{% endif %}" data-Phandle="{{ Phandle }}">
+              <button class="master_box_top_label">
+                {{ settings.option_one }}
+              </button>
+              <div class="builder_card" data-type="cap">
+                <div class="builder_top_slide">
+                  <div class="column_box_top">
+                    <div class="builder_top_slide_img">
+                      <img class="builder_card_image" src="{{ product.featured_image | img_url: "medium" }}" alt="{{ product.featured_image.alt }}" >
+                    </div>
+                  </div>
+                  <div class="column_box_top">
+                    <div class="builder_top_slide_title">
+                      <p class="builder_card_title">
+                        <b id="title_builder_box">{{ product.title }}</b>
+                        <input
+                          type="hidden"
+                          class="bundleProdHandle"
+                          value="{{ product.handle }}">
+                      </p>
+                    </div>
+                    <div class="loox-rating" title="">
+
+                      <div class="loox-rating" title="{{ product.metafields.loox.avg_rating }} rating ({{ product.metafields.loox.num_reviews }} votes)">
+                        <i class="loox-icon loox-star"></i>
+                        <i class="loox-icon loox-star"></i>
+                        <i class="loox-icon loox-star"></i>
+                        <i class="loox-icon loox-star"></i>
+                        <i class="loox-icon loox-star"></i>&nbsp;<span>
+                          {{ product.metafields.loox.num_reviews }}</span>
+                      </div>
+
+                    </div>
+                    <p class="viewdetails" data-url="{{ product.url }}">View Details</p>
+                  </div>
+                </div>
+                <div class="custom_builder_option">
+
+                  <input
+                    type="hidden"
+                    name="data-product-id"
+                    value="{{ product.id }}">
+                  {% if product.tags contains 'men' or product.tags contains 'Men' or product.tags contains 'MEN' or product.tags contains 'women' or product.tags contains 'Women' or product.tags contains 'WOMEN' %}
+                    {% if product.options contains 'Size' %}
+                      <div class="size-chart-with-labels">
+                        <a class="trigger-pop-up-13">{{ settings.newsizechart }}</a>
+                      </div>
+                    {% endif %}
+                  {% endif %}
+                  <div class="pop-up-modal thirteen-popup">
+                    <div class="pop-up-content">
+                      <button type="button" class="btn btn--circle btn--large screen-layer__close js-screen-close proddesclose">
+            <svg aria-hidden="true" focusable="false" role="presentation" class="icon icon-close" viewBox="0 0 64 64">
+               <path d="M19 17.61l27.12 27.13m0-27.12L19 44.74"></path>
+            </svg>
+            <span class="icon__fallback-text">Close (esc)</span>
+         </button>
+                      {% if product.tags contains 'men' or product.tags contains 'Men' or product.tags contains 'MEN' %}
+                        <span class="size-chart-content men-chart">
+                          {{ pages[settings.product_content].content }}
+                        </span>
+                      {% elsif product.tags contains 'women' or product.tags contains 'Women' or product.tags contains 'WOMEN' %}
+                        <span class="size-chart-content women-chart">
+                          {{ pages[settings.product_content_women].content }}
+                        </span>
+                      {% endif %}
+                    </div>
+                  </div>
+                  {% unless product.has_only_default_variant %}
+                    {% for option in product.options_with_values %}
+                      {% if option.name == 'Color' or option.name == 'color' %}
+                        {% include 'bundle_button', section_id: section_id, option_drop: option %}
+                    {% else %}
+                      {% endif %}
+                    {% endfor %}
+
+
+                    {% for option in product.options_with_values %}
+                      {% if option.name == 'Color' or option.name == 'color' %}
+
+                        {% else %}
+                          <div class=" variant-wrapper variant-wrapper--{{ section.settings.variant_type }} js div_{{ forloop.index }} total_div">
+                            <label style="order:3" class="custom_builder_label">
+                              {{ option.name }}
+
+                            </label>
+                            {% assign downcaseoption = option.name | downcase %}
+                            {% if downcaseoption == 'size' %}
+                              {{ size_chart }}
+                            {% endif %}
+                            <div class="variant-input-wrap" data-index="option{{ forloop.index }}">
+                              <select class="master_sizes options-select" data-name="Size">
+                                <option
+                                  value="static"
+                                  data-status="true"
+                                  selected=""
+                                  style="color:gray">Select an option</option>
+
+                                {% for value in option.values %}
+                                  {%- assign variant_label_state = true -%}
+                                  {% if product.options.size == 1 %}
+                                    {% unless product.variants[forloop.index0].available %}
+                                      {%- assign variant_label_state = false -%}
+                                    {% endunless %}
+                                  {% endif %}
+                                  <option
+                                    value="{{ value | escape }}"
+                                    {% unless variant_label_state %}
+                                    disabled="disabled"
+                                    {% endunless %}
+                                    name="{{ option.name }}"
+                                    class="variant-input"
+                                    data-index="option{{ forloop.index }}">
+                                    {{ value }}
+                                    {% unless variant_label_state %}- Sold Out{% endunless %}
+                                  </option>
+                                {% endfor %}
+                              </select>
+                            </div>
+                          </div>
+                      {% endif %}
+                    {% endfor %}
+
+                  {% endunless %}
+
+                  {{ error_msg }}
+
+                  <select
+                    name="id"
+                    id="ProductSelect-{{ section_id }}"
+                    class="product-single__variants no-js"
+                    data-product-select>
+                    {% for variant in product.variants %}
+                      {% if variant.available %}
+                        <option
+                          data-vartitle="{{ variant.title }}"
+                          data-avaiablity="yes"
+                          data-text=""
+                          {% if variant.featured_media %}data-image="{{ variant.featured_media | img_url:'medium' }} {% else %} data-image="{{ product.featured_image | img_url: 'medium' }}{% endif %}" {% if variant == product.selected_or_first_available_variant %}
+                                                                            selected="selected" {% endif %}
+                                                        value="
+                          {{ variant.id }}
+                          ">
+                          {{ variant.title }} - {{ variant.price | money_with_currency }}
+                        </option>
+                      {% else %}
+                        <option
+                          data-vartitle="{{ variant.title }}"
+                          data-avaiablity="no"
+                          data-text="- Sold Out"
+                          {% if variant.featured_media %}data-image="{{ variant.featured_media | img_url:'medium' }} {% else %} data-image="{{ product.featured_image | img_url: 'medium' }}{% endif %}">
+                          {{ variant.title }} - {{ 'products.product.sold_out' | t }}
+                        </option>
+                      {% endif %}
+                    {% endfor %}
+                  </select>
+
+
+
+                </div>
+              </div>
+            </div>
+          {% endif %}
+        {% endfor %}
+      {% endpaginate %}
+    </div>
+  {% endif %}
+  {% assign sf_product_bundlesingle_product_6 = product.metafields.sf_product_bundle.single_product_6 %}
+  {% if sf_product_bundlesingle_product_6 %}
+    {% assign typehere = sf_product_bundlesingle_product_6 | strip_html | downcase %}
+
+    <div class="Main_bundle_Here">
+      {% paginate collections['bundle-functionality'].products by 1000 %}
+        {% for product in collections['bundle-functionality'].products %}
+          {% assign product_type = product.handle %}
+          {% assign PTitle = product.title | strip_html | downcase %}
+          {% assign Phandle = product.handle %}
+
+          {% if typehere == product_type %}
+            <div class="test master_box_top product_Hide {% if typehere == product_type %}{% if forloop.index == 1 %}product_One_Shown{% endif %}{% endif %}" data-Phandle="{{ Phandle }}">
+              <button class="master_box_top_label">
+                {{ settings.option_one }}
+              </button>
+              <div class="builder_card" data-type="cap">
+                <div class="builder_top_slide">
+                  <div class="column_box_top">
+                    <div class="builder_top_slide_img">
+                      <img class="builder_card_image" src="{{ product.featured_image | img_url: "medium" }}" alt="{{ product.featured_image.alt }}" >
+                    </div>
+                  </div>
+                  <div class="column_box_top">
+                    <div class="builder_top_slide_title">
+                      <p class="builder_card_title">
+                        <b id="title_builder_box">{{ product.title }}</b>
+                        <input
+                          type="hidden"
+                          class="bundleProdHandle"
+                          value="{{ product.handle }}">
+                      </p>
+                    </div>
+                    <div class="loox-rating" title="">
+
+                      <div class="loox-rating" title="{{ product.metafields.loox.avg_rating }} rating ({{ product.metafields.loox.num_reviews }} votes)">
+                        <i class="loox-icon loox-star"></i>
+                        <i class="loox-icon loox-star"></i>
+                        <i class="loox-icon loox-star"></i>
+                        <i class="loox-icon loox-star"></i>
+                        <i class="loox-icon loox-star"></i>&nbsp;<span>
+                          {{ product.metafields.loox.num_reviews }}</span>
+                      </div>
+
+                    </div>
+                    <p class="viewdetails" data-url="{{ product.url }}">View Details</p>
+                  </div>
+                </div>
+                <div class="custom_builder_option">
+
+                  <input
+                    type="hidden"
+                    name="data-product-id"
+                    value="{{ product.id }}">
+                  {% if product.tags contains 'men' or product.tags contains 'Men' or product.tags contains 'MEN' or product.tags contains 'women' or product.tags contains 'Women' or product.tags contains 'WOMEN' %}
+                    {% if product.options contains 'Size' %}
+                      <div class="size-chart-with-labels">
+                        <a class="trigger-pop-up-10">{{ settings.newsizechart }}</a>
+                      </div>
+                    {% endif %}
+                  {% endif %}
+                  <div class="pop-up-modal tenth-popup">
+                    <div class="pop-up-content">
+                      <button type="button" class="btn btn--circle btn--large screen-layer__close js-screen-close proddesclose">
+            <svg aria-hidden="true" focusable="false" role="presentation" class="icon icon-close" viewBox="0 0 64 64">
+               <path d="M19 17.61l27.12 27.13m0-27.12L19 44.74"></path>
+            </svg>
+            <span class="icon__fallback-text">Close (esc)</span>
+         </button>
+                      {% if product.tags contains 'men' or product.tags contains 'Men' or product.tags contains 'MEN' %}
+                        <span class="size-chart-content men-chart">
+                          {{ pages[settings.product_content].content }}
+                        </span>
+                      {% elsif product.tags contains 'women' or product.tags contains 'Women' or product.tags contains 'WOMEN' %}
+                        <span class="size-chart-content women-chart">
+                          {{ pages[settings.product_content_women].content }}
+                        </span>
+                      {% endif %}
+                    </div>
+                  </div>
+                  {% unless product.has_only_default_variant %}
+                    {% for option in product.options_with_values %}
+                      {% if option.name == 'Color' or option.name == 'color' %}
+                        {% include 'bundle_button', section_id: section_id, option_drop: option %}
+                    {% else %}
+                      {% endif %}
+                    {% endfor %}
+
+
+                    {% for option in product.options_with_values %}
+                      {% if option.name == 'Color' or option.name == 'color' %}
+
+                        {% else %}
+                          <div class=" variant-wrapper variant-wrapper--{{ section.settings.variant_type }} js div_{{ forloop.index }} total_div">
+                            <label style="order:3" class="custom_builder_label">
+                              {{ option.name }}
+
+                            </label>
+                            {% assign downcaseoption = option.name | downcase %}
+                            {% if downcaseoption == 'size' %}
+                              {{ size_chart }}
+                            {% endif %}
+                            <div class="variant-input-wrap" data-index="option{{ forloop.index }}">
+                              <select class="master_sizes options-select" data-name="Size">
+                                <option
+                                  value="static"
+                                  data-status="true"
+                                  selected=""
+                                  style="color:gray">Select an option</option>
+
+                                {% for value in option.values %}
+                                  {%- assign variant_label_state = true -%}
+                                  {% if product.options.size == 1 %}
+                                    {% unless product.variants[forloop.index0].available %}
+                                      {%- assign variant_label_state = false -%}
+                                    {% endunless %}
+                                  {% endif %}
+                                  <option
+                                    value="{{ value | escape }}"
+                                    {% unless variant_label_state %}
+                                    disabled="disabled"
+                                    {% endunless %}
+                                    name="{{ option.name }}"
+                                    class="variant-input"
+                                    data-index="option{{ forloop.index }}">
+                                    {{ value }}
+                                    {% unless variant_label_state %}- Sold Out{% endunless %}
+                                  </option>
+                                {% endfor %}
+                              </select>
+                            </div>
+                          </div>
+                      {% endif %}
+                    {% endfor %}
+
+                  {% endunless %}
+
+                  {{ error_msg }}
+
+                  <select
+                    name="id"
+                    id="ProductSelect-{{ section_id }}"
+                    class="product-single__variants no-js"
+                    data-product-select>
+                    {% for variant in product.variants %}
+                      {% if variant.available %}
+                        <option
+                          data-vartitle="{{ variant.title }}"
+                          data-avaiablity="yes"
+                          data-text=""
+                          {% if variant.featured_media %}data-image="{{ variant.featured_media | img_url:'medium' }} {% else %} data-image="{{ product.featured_image | img_url: 'medium' }}{% endif %}" {% if variant == product.selected_or_first_available_variant %}
+                                                                            selected="selected" {% endif %}
+                                                        value="
+                          {{ variant.id }}
+                          ">
+                          {{ variant.title }} - {{ variant.price | money_with_currency }}
+                        </option>
+                      {% else %}
+                        <option
+                          data-vartitle="{{ variant.title }}"
+                          data-avaiablity="no"
+                          data-text="- Sold Out"
+                          {% if variant.featured_media %}data-image="{{ variant.featured_media | img_url:'medium' }} {% else %} data-image="{{ product.featured_image | img_url: 'medium' }}{% endif %}">
+                          {{ variant.title }} - {{ 'products.product.sold_out' | t }}
+                        </option>
+                      {% endif %}
+                    {% endfor %}
+                  </select>
+
+
+
+                </div>
+              </div>
+            </div>
+          {% endif %}
+        {% endfor %}
+      {% endpaginate %}
+    </div>
+  {% endif %}
+
+  <div class="error_message" style="display:none;">please select Available Products</div>
+  <div class="error_message2" style="display:none;">Oh no! It looks like you missed something. Please review your choices.</div>
+
+  <button
+    type="submit"
+    name="add"
+    id="add_to_cart_box"
+    data-add-to-cart=""
+    class="btn btn--tertiary btn--full add-to-cart"
+    data-maintitle="{{product.handle}}">
+    <span class="add_to_bundle" data-add-to-cart-text="">
+      ADD TO BAG
+    </span>
+    <span class="bundle_preparing" style="display:none;">
+      PREPARING YOUR BUNDLE...
+    </span>
+  </button>
+
+
+{% endif %}
+
+
+<style>
+  /* Init imgs */
+  img.img_single_box {
+    height: 100%;
+    object-fit: cover;
+
+
+    transition: opacity 0.4s ease 0s;
+    width: 100%;
+
+  }
+
+  .imgs_wrapper_box {
+    display: flex;
+  }
+
+  .color_swatch_box {
+    border-radius: 50%;
+    height: 3vh;
+    width: 3vh;
+    margin-top: 10px;
+  }
+
+  .color_swatch_box_btn {
+    width: 8%;
+    padding: 0 15px;
+  }
+
+  .chosen_color_box {
+    box-shadow: 0 0 1pt 0 black;
+    border: 2px solid white;
+
+  }
+
+  /* Finish init imgs and start general styling */
+
+
+  .builder_top_slide,
+  .custom_builder_option {
+    display: flex;
+  }
+
+  .custom_builder_option {
+    flex-direction: column;
+  }
+
+  .custom_builder_option {
+    border-left: 0.5px solid rgb(229, 229, 229);
+  }
+
+  .builder_card,
+  .builder_box {
+    border-top: 0.5px solid gray;
+    border-bottom: 0.5px solid rgb(229, 229, 229);
+  }
+
+  .options-select {
+    border: 1px solid black;
+
+  }
+  .builder_card,
+  .builder_box {
+    padding: 8%;
+  }
+
+  .custom_builder_option {
+    margin-left: -10%;
+    padding-left: 8%;
+  }
+
+  .builder_top_slide .column_box_top:nth-child(2) {
+    width: 100%;
+  }
+
+  .builder_top_slide {
+    margin-left: -3%;
+  }
+
+  .options-select {
+    width: 100%;
+    color: gray !important;
+  }
+
+  .fadeFive {
+
+    transition: opacity 7s ease-in-out !important;
+    -moz-transition: opacity 7s ease-in-out !important;
+    -webkit-transition: opacity 7s ease-in-out !important;
+  }
+
+  .fadeFour {
+
+    transition: opacity 5s ease-in-out !important;
+    -moz-transition: opacity 5s ease-in-out !important;
+    -webkit-transition: opacity 5s ease-in-out !important;
+  }
+
+  .fadeThree {
+
+    transition: opacity 3s ease-in-out !important;
+    -moz-transition: opacity 3s ease-in-out !important;
+    -webkit-transition: opacity 3s ease-in-out !important;
+  }
+
+  .builder_card:hover {
+    box-shadow: 2px 2px 2px 1px rgb(0 0 0 / 20%);
+  }
+
+  select.options-select[data-name='Color'] {
+    display: none;
+  }
+
+  .builder_card_image {
+    transform: translateX(-19%);
+  }
+
+  .custom_builder_option * {
+    padding: 0;
+  }
+  button.master_box_top_label {
+    display: none;
+  }
+
+  .master_sizes {
+    order: 4;
+  }
+  .master_designs {
+    order: 2;
+  }
+
+  .custom_builder_label {
+    margin-bottom: 0;
+    margin-top: 16px;
+    font-size: 16px;
+    text-transform: uppercase;
+  }
+  .options-select {
+    margin-top: 10px;
+    border-color: gray;
+    padding: 10px 10px 10px 20px;
+    font-size: 15px;
+  }
+  /*
+
+     @media screen and (min-width: 1200px) {
+     .builder_card {
+     width:120%;
+     }
+
+     .custom_builder_option {
+     width: 50%;
+     margin-left: 0.1em;
+     float: right;
+
+     }
+
+     div.custom_builder_option select {
+     width: 80%;
+     }
+     .grid__item.medium-up--three-fifths {
+     margin-top:10vw;
+     }
+     }
+
+     @media screen and (min-width: 769px) {
+     @media screen and (max-width: 1200px) {
+     .builder_card {
+     display: flex;
+     flex-direction: column;
+     align-items: center;
+     }
+     }
+     }
+
+
+
+
+     @media screen and (max-width: 769px) {
+     .builder_card {
+     flex-direction: column;
+     display: flex;
+     justify-content: center;
+     }
+
+     .builder_card_title {
+     text-align: center;
+     }
+
+     .builder_card_image {
+     margin-right: auto;
+     margin-left: auto;
+     }
+
+     .custom_builder_option {
+     flex-direction: column;
+     display: flex;
+     }
+
+     .custom_builder_label {
+     margin-right: auto;
+     margin-left: auto;
+     margin-top: 1em;
+     }
+
+     }
+
+     */
+
+
+
+  .custom_builder_option {
+    display: flex;
+  }
+
+  .variant-wrapper.variant-wrapper--button.js.total_div {
+    order: 1;
+  }
+
+  .variant-wrapper.variant-wrapper--button.js.div_1.total_div {
+    order: 3;
+  }
+
+
+  .product-single__variants {
+    order: 5;
+  }
+
+  label.custom_builder_label.Design_Products {
+    order: 2 !important;
+  }
+
+  select.master_designs.options-select {
+    order: 3 !important;
+  }
+  .variant-wrapper.variant-wrapper--button.js.div_3.total_div {
+    order: 6;
+  }
+  .product-single__variants {
+    order: 7;
+  }
+  .active__swatchs label {
+    box-shadow: 0 0 0 2px #000;
+  }
+
+  .error_massage_Select {
+    display: none;
+    order: 7;
+  }
+  .error_massage_Select.error_massage_Shown {
+    display: block;
+  }
+  /*.custom_builder_option .variant-input-wrap input{
+    height: auto;
+    width: auto;
+    overflow: unset;
+    position: relative;
+  } */
+  .builder_card span.variant__label-info {
+    display: none;
+  }
+  .custom_builder_option .size-chart-with-labels {
+    justify-content: flex-end;
+  }
+  .custom_builder_option .pop-up-modal th,
+  .custom_builder_option .pop-up-modal td {
+    padding: 10px 15px;
+  }
+  select.master_designs.options-select{
+    margin-top:4px !important;
+  }
+</style>
+
+<script>
+  $(document).on("click", ".pop-up-content span.close-button", function() {
+    $(".pop-up-modal").removeClass("show-pop-up");
+  });
+  $(document).on("click", "a.trigger-pop-up-4", function() {
+    $(".pop-up-modal.fourth-popup").addClass("show-pop-up");
+  });
+  $(document).on("click", "a.trigger-pop-up-2", function() {
+    $(".pop-up-modal.second-popup").addClass("show-pop-up");
+
+  });
+  $(document).on("click", "a.trigger-pop-up-3", function() {
+    $(".pop-up-modal.third-popup").addClass("show-pop-up");
+
+  });
+  $(document).on("click", "a.trigger-pop-up-5", function() {
+    $(".pop-up-modal.fifth-popup").addClass("show-pop-up");
+
+  });
+  $(document).on("click", "a.trigger-pop-up-6", function() {
+    $(".pop-up-modal.sixth-popup").addClass("show-pop-up");
+
+  });
+  $(document).on("click", "a.trigger-pop-up-7", function() {
+    $(".pop-up-modal.seven-popup").addClass("show-pop-up");
+
+  });
+  $(document).on("click", "a.trigger-pop-up-8", function() {
+    $(".pop-up-modal.eighth-popup").addClass("show-pop-up");
+
+  });
+  $(document).on("click", "a.trigger-pop-up-9", function() {
+    $(".pop-up-modal.ninth-popup").addClass("show-pop-up");
+
+  });
+  $(document).on("click", "a.trigger-pop-up-10", function() {
+    $(".pop-up-modal.tenth-popup").addClass("show-pop-up");
+
+  });
+  $(document).on("click", "a.trigger-pop-up-11", function() {
+    $(".pop-up-modal.eleven-popup").addClass("show-pop-up");
+
+  });
+  $(document).on("click", "a.trigger-pop-up-12", function() {
+    $(".pop-up-modal.tweleve-popup").addClass("show-pop-up");
+
+  });
+  $(document).on("click", "a.trigger-pop-up-13", function() {
+    $(".pop-up-modal.thirteen-popup").addClass("show-pop-up");
+
+  });
+  $(document).on("click", "a.trigger-pop-up-1", function() {
+    $(".pop-up-modal.first_popup").addClass("show-pop-up");
+
+  });
+</script>

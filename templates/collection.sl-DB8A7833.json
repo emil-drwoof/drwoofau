@@ -1,0 +1,120 @@
+{
+  "sections": {
+    "collection-header": {
+      "type": "dr-woof-hero-scrubs3",
+      "settings": {
+        "pad": "30px",
+        "enable_auto": true,
+        "desktop_positioning": 0,
+        "height": 90,
+        "mobile_height": 50,
+        "image_lib_pc": "shopify:\/\/shop_images\/COLLECTION_BANNER_TEMPLATE_PC_2400_x_900_px_13.png",
+        "image_webp_pc": "",
+        "image_lib_mobile": "shopify:\/\/shop_images\/COLLECTION_BANNER_TEMPLATE_MOBILE_1600_x_900_px_14.jpg",
+        "image_webp_mobile": ""
+      }
+    },
+    "collection-filter": {
+      "type": "collection-thumbnail-filter",
+      "blocks": {
+        "image_YTC6PL": {
+          "type": "Image",
+          "settings": {
+            "image_thumbnail": "shopify:\/\/shop_images\/Best_Seller.png",
+            "collection_title": "Best Seller",
+            "linkurl": ""
+          }
+        },
+        "image_RxVRYk": {
+          "type": "Image",
+          "settings": {
+            "image_thumbnail": "shopify:\/\/shop_images\/New_Releases.png",
+            "collection_title": "New Releases",
+            "linkurl": ""
+          }
+        },
+        "image_kprQkq": {
+          "type": "Image",
+          "settings": {
+            "image_thumbnail": "shopify:\/\/shop_images\/Animals.png",
+            "collection_title": "Animals",
+            "linkurl": ""
+          }
+        },
+        "image_HjBWzr": {
+          "type": "Image",
+          "settings": {
+            "image_thumbnail": "shopify:\/\/shop_images\/Nature.png",
+            "collection_title": "Nature",
+            "linkurl": ""
+          }
+        },
+        "image_zxhcjA": {
+          "type": "Image",
+          "settings": {
+            "image_thumbnail": "shopify:\/\/shop_images\/Medical.png",
+            "collection_title": "Medical",
+            "linkurl": ""
+          }
+        },
+        "image_VjzEDT": {
+          "type": "Image",
+          "settings": {
+            "image_thumbnail": "shopify:\/\/shop_images\/Whimsical.png",
+            "collection_title": "Whimsical",
+            "linkurl": ""
+          }
+        },
+        "image_bWBbhN": {
+          "type": "Image",
+          "settings": {
+            "image_thumbnail": "shopify:\/\/shop_images\/Causes.png",
+            "collection_title": "Causes",
+            "linkurl": ""
+          }
+        }
+      },
+      "block_order": [
+        "image_YTC6PL",
+        "image_RxVRYk",
+        "image_kprQkq",
+        "image_HjBWzr",
+        "image_zxhcjA",
+        "image_VjzEDT",
+        "image_bWBbhN"
+      ],
+      "settings": {
+        "title_enable": true
+      }
+    },
+    "collection-filters": {
+      "type": "collection-filters-def",
+      "disabled": true,
+      "settings": {
+        "filter_type": "groups",
+        "tags_combine": false,
+        "collection_title_enable": true,
+        "collection_filter_enable": true,
+        "collection_sort_enable": true
+      }
+    },
+    "main-collection": {
+      "type": "collection-template-pt",
+      "settings": {
+        "thumbnailcollection": true,
+        "super_text_1": "",
+        "super_link_1": "shopify:\/\/products\/anatomical-hearts-surgical-scrub-cap",
+        "per_row_desktop": 3,
+        "per_row_mobile": "2",
+        "description_bottom": true,
+        "pre-navy": false
+      }
+    }
+  },
+  "order": [
+    "collection-header",
+    "collection-filter",
+    "collection-filters",
+    "main-collection"
+  ]
+}

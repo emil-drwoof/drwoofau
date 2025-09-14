@@ -1,0 +1,382 @@
+<script src="https://cdn.tailwindcss.com"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
+<div class="bg-white min-h-screen flex items-center justify-center py-8">
+    <div class="max-w-md w-full bg-white rounded-xl shadow-lg overflow-hidden md:max-w-lg lg:max-w-xl border border-gray-200">
+        <div class="p-6">
+            <div class="mb-8">
+                <div class="flex items-center mb-4">
+                    <div class="w-8 h-8 flex items-center justify-center bg-gray-800 text-white rounded-full font-bold text-lg mr-3">1</div>
+                    <h2 class="text-xl font-semibold text-gray-800">Select Quantity</h2>
+                </div>
+                <div class="bg-gray-100 text-gray-800 text-xs font-semibold px-2.5 py-1 rounded-full inline-block mb-4">BEST DEAL</div>
+                <div class="flex justify-around space-x-4 mb-4">
+                    <button data-pairs="12" data-price-per-pair="3.80" class="quantity-btn flex-1 py-3 px-2 text-center border border-gray-800 rounded-lg shadow-sm font-medium text-gray-800 bg-gray-100 transition-all duration-200 ease-in-out hover:bg-gray-200 focus:outline-none focus:ring-2 focus:ring-gray-500 focus:ring-offset-2">
+                        <span class="block text-lg font-bold">12 Pairs</span>
+                        <span class="block text-sm">$3.80 / pair</span>
+                    </button>
+                    <button data-pairs="6" data-price-per-pair="4.20" class="quantity-btn flex-1 py-3 px-2 text-center border border-gray-300 rounded-lg shadow-sm font-medium text-gray-700 bg-white transition-all duration-200 ease-in-out hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-gray-500 focus:ring-offset-2">
+                        <span class="block text-lg font-bold">6 Pairs</span>
+                        <span class="block text-sm">$4.20 / pair</span>
+                    </button>
+                    <button data-pairs="3" data-price-per-pair="4.80" class="quantity-btn flex-1 py-3 px-2 text-center border border-gray-300 rounded-lg shadow-sm font-medium text-gray-700 bg-white transition-all duration-200 ease-in-out hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-gray-500 focus:ring-offset-2">
+                        <span class="block text-lg font-bold">3 Pairs</span>
+                        <span class="block text-sm">$4.80 / pair</span>
+                    </button>
+                </div>
+                <p class="text-right text-sm text-gray-500">1 Pair Per Pack</p>
+            </div>
+
+            <div class="mb-8">
+                <div class="flex items-center mb-4">
+                    <div class="w-8 h-8 flex items-center justify-center bg-gray-800 text-white rounded-full font-bold text-lg mr-3">2</div>
+                    <h2 class="text-xl font-semibold text-gray-800">Mix & Match Products</h2>
+                    <span class="ml-auto bg-gray-100 text-gray-800 text-sm font-medium px-3 py-1 rounded-full" id="pairs-to-go">12 Pairs to Go</span>
+                </div>
+                <div class="flex space-x-2 overflow-x-auto pb-2 mb-4">
+                    <button class="category-btn bg-gray-800 text-white px-4 py-2 rounded-full text-sm font-medium whitespace-nowrap">All</button>
+                    <button class="category-btn bg-gray-200 text-gray-700 px-4 py-2 rounded-full text-sm font-medium whitespace-nowrap">Best Sellers</button>
+                    <button class="category-btn bg-gray-200 text-gray-700 px-4 py-2 rounded-full text-sm font-medium whitespace-nowrap">Soft</button>
+                    <button class="category-btn bg-gray-200 text-gray-700 px-4 py-2 rounded-full text-sm font-medium whitespace-nowrap">Full</button>
+                    <button class="category-btn bg-gray-200 text-gray-700 px-4 py-2 rounded-full text-sm font-medium whitespace-nowrap">Bold</button>
+                </div>
+
+                <div class="product-list-container max-h-96 overflow-y-auto pr-2">
+                </div>
+
+                <button class="w-full text-center text-gray-800 font-medium py-3 mt-4 rounded-lg border border-gray-300 bg-gray-50 hover:bg-gray-100 transition-colors duration-200">
+                    Scroll for more styles <span class="ml-1">&#9660;</span>
+                </button>
+            </div>
+
+            <div class="mb-8">
+                <h3 class="text-lg font-semibold text-gray-800 mb-4">Can't Choose? Try our 3 Best Sellers!</h3>
+                <div class="flex items-center bg-white rounded-lg shadow-sm p-4 border border-gray-200">
+                    <div class="w-20 h-20 bg-gray-200 rounded-lg flex-shrink-0 mr-4"></div>
+                    <div>
+                        <h4 class="font-semibold text-gray-800 text-lg">Best Seller Pack</h4>
+                        <p class="text-gray-600 text-sm">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                    </div>
+                    <button class="ml-auto bg-gray-800 text-white px-6 py-2 rounded-lg font-medium hover:bg-gray-700 transition-colors duration-200">Shop</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="bg-gray-50 p-6 border-t border-gray-200">
+            <div class="flex justify-between items-center mb-4">
+                <div>
+                    <span class="text-gray-600 text-sm">Subtotal: <s class="text-gray-400">$67.20</s></span>
+                    <span class="text-2xl font-bold text-gray-800 ml-2" id="subtotal-display">$38.40</span>
+                </div>
+                <span class="bg-gray-100 text-gray-800 text-sm font-medium px-2.5 py-1 rounded-full" id="savings-display">You're Saving 42%</span>
+            </div>
+            <button id="add-to-cart-btn" class="w-full bg-gray-800 text-white py-4 rounded-lg text-lg font-bold shadow-md hover:bg-gray-700 transition-colors duration-200">
+                Add to Cart
+            </button>
+            <div class="flex items-center justify-between text-sm text-gray-600 mt-4">
+                <div class="flex items-center">
+                    <svg class="w-4 h-4 mr-1 text-gray-500" fill="currentColor" viewBox="0 0 20 20">
+                        <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+                    </svg>
+                    Delivered by Apr 4
+                </div>
+                <div class="flex items-center">
+                    <svg class="w-4 h-4 mr-1 text-gray-500" fill="currentColor" viewBox="0 0 20 20">
+                        <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                    </svg>
+                    FREE Shipping over $50
+                </div>
+            </div>
+            <div class="flex items-start text-sm text-gray-500 mt-4 pt-4 border-t border-gray-200">
+                <svg class="w-5 h-5 mr-3 text-gray-400 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                    <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+                </svg>
+                <p>Enjoy 30 days of free returns, with less than 1% of customers asking for their money back.</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    // This JavaScript array will be populated dynamically by Liquid.
+    let products = [];
+
+    // --- Liquid Product Data Injection ---
+    // This Liquid code will run on the Shopify server and populate the 'products' JS array.
+    // It iterates through all products in your store. You can change 'collections.all.products'
+    // to a specific collection if you only want products from that collection.
+    {% for product in collections.all.products %}
+        products.push({
+            id: {{ product.id | json }},
+            title: {{ product.title | json }},
+            description: {{ product.description | strip_html | truncate: 80 | json }},
+            price: {{ product.price | divided_by: 100.0 | json }}, // Price in dollars
+            image: {{ product.featured_image | img_url: '80x80' | json }}, // Get optimized image URL
+            tags: {{ product.tags | json }}, // Shopify product tags for filtering
+            variants: [{ id: {{ product.selected_or_first_available_variant.id | json }} }] // Crucial for cart adding
+            // You can add more product properties here if needed, e.g., product.vendor, product.type
+        });
+    {% endfor %}
+
+    // --- End Liquid Product Data Injection ---
+
+
+    let selectedPairsTotal = 12; // Default to 12 pairs
+    let pricePerPair = 3.80; // Default price per pair for 12 pairs (used for subtotal calculation based on bundle choice)
+    let selectedProducts = {}; // Stores { productId: quantity }
+    let currentPairsCount = 0; // Tracks how many pairs have been selected
+
+    // Function to update the UI based on selected products and pairs
+    function updateUI() {
+        currentPairsCount = Object.values(selectedProducts).reduce((sum, qty) => sum + qty, 0);
+        const remainingPairs = selectedPairsTotal - currentPairsCount;
+
+        $('#pairs-to-go').text(`${remainingPairs} Pairs to Go`);
+
+        let currentSubtotal = selectedPairsTotal * pricePerPair; // Subtotal based on bundle price
+
+        $('#subtotal-display').text(`$${currentSubtotal.toFixed(2)}`);
+
+        // Savings calculation (example: assuming 12 pairs is the best deal)
+        // This needs to be more dynamic based on actual product prices vs. bundle price.
+        // For a real store, you'd calculate the sum of individual product prices for the selected items
+        // and compare it to the bundle price.
+        const exampleIndividualProductPrice = 5.60; // Example individual price for comparison
+        const originalPriceIfBoughtIndividually = selectedPairsTotal * exampleIndividualProductPrice;
+        const savings = originalPriceIfBoughtIndividually - currentSubtotal;
+        const savingsPercentage = originalPriceIfBoughtIndividually > 0 ? ((savings / originalPriceIfBoughtIndividually) * 100).toFixed(0) : 0;
+        $('#savings-display').text(`You're Saving ${savingsPercentage}%`);
+
+        // Enable/disable add to cart if not enough pairs selected
+        if (remainingPairs > 0) {
+            $('#add-to-cart-btn').prop('disabled', true).addClass('opacity-50 cursor-not-allowed');
+        } else {
+            $('#add-to-cart-btn').prop('disabled', false).removeClass('opacity-50 cursor-not-allowed');
+        }
+
+        // Update individual product card buttons (only for visible products)
+        $('.product-card').each(function() {
+            const productId = $(this).data('product-id');
+            const currentQty = selectedProducts[productId] || 0;
+
+            const addBtn = $(this).find('.add-btn'); // Both "Add +" and "+" in quantity control
+            const removeBtn = $(this).find('.remove-btn');
+            const quantityControl = $(this).find('.quantity-control');
+            const productQuantitySpan = $(this).find('.product-quantity');
+
+            if (currentQty > 0) {
+                // If product is selected, show quantity control, hide initial Add +
+                addBtn.first().hide(); // Hide the initial "Add +" button
+                quantityControl.show();
+                productQuantitySpan.text(currentQty);
+                removeBtn.prop('disabled', false).removeClass('opacity-50 cursor-not-allowed');
+            } else {
+                // If product not selected, show initial Add +, hide quantity control
+                addBtn.first().show(); // Show the initial "Add +" button
+                quantityControl.hide();
+                removeBtn.prop('disabled', true).addClass('opacity-50 cursor-not-allowed');
+            }
+
+            // Always disable the "Add +" button if bundle is full or this product is already selected (max 1 per product)
+            if (currentPairsCount >= selectedPairsTotal || currentQty >= 1) {
+                addBtn.last().prop('disabled', true).addClass('opacity-50 cursor-not-allowed'); // Disable the "+" in quantity control
+                addBtn.first().prop('disabled', true).addClass('opacity-50 cursor-not-allowed'); // Disable the initial "Add +"
+            } else {
+                addBtn.last().prop('disabled', false).removeClass('opacity-50 cursor-not-allowed'); // Enable the "+" in quantity control
+                addBtn.first().prop('disabled', false).removeClass('opacity-50 cursor-not-allowed'); // Enable the initial "Add +"
+            }
+        });
+    }
+
+    // Function to render product cards
+    function renderProducts(filterTag = 'All') {
+        const productListContainer = $('.product-list-container');
+        productListContainer.empty(); // Clear existing products
+
+        let filteredProducts = products;
+        if (filterTag !== 'All') {
+            filteredProducts = products.filter(product => product.tags.includes(filterTag));
+        }
+
+        filteredProducts.forEach(product => {
+            const currentQty = selectedProducts[product.id] || 0;
+            const productCard = `
+                <div class="product-card flex items-center bg-white rounded-lg shadow-sm p-4 mb-3 border border-gray-200" data-product-id="${product.id}">
+                    <div class="w-20 h-20 bg-gray-200 rounded-lg flex-shrink-0 mr-4 overflow-hidden">
+                        <img src="${product.image}" alt="${product.title}" class="w-full h-full object-cover" onerror="this.onerror=null;this.src='https://placehold.co/80x80/e0e0e0/ffffff?text=Product';">
+                    </div>
+                    <div class="flex-grow">
+                        <h4 class="font-semibold text-gray-800 text-lg">${product.title}</h4>
+                        <p class="text-gray-600 text-sm">${product.description}</p>
+                        </div>
+                    <div class="ml-auto flex items-center">
+                        <button class="add-btn bg-gray-800 text-white px-6 py-2 rounded-lg font-medium hover:bg-gray-700 transition-colors duration-200 ${currentQty > 0 ? 'hidden' : ''}">Add +</button>
+                        <div class="quantity-control flex items-center border border-gray-300 rounded-lg ${currentQty === 0 ? 'hidden' : ''}">
+                            <button class="remove-btn p-2 text-gray-700 hover:bg-gray-100 rounded-l-lg transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-gray-500 focus:ring-offset-2">-</button>
+                            <span class="product-quantity px-3 text-lg font-medium">${currentQty}</span>
+                            <button class="add-btn p-2 text-gray-700 hover:bg-gray-100 rounded-r-lg transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-gray-500 focus:ring-offset-2">+</button>
+                        </div>
+                    </div>
+                </div>
+            `;
+            productListContainer.append(productCard);
+        });
+        updateUI(); // Always update UI after rendering products
+    }
+
+    $(document).ready(function() {
+        // IMPORTANT: Ensure products array has variant information
+        // I've added a `variants` property injection to your Liquid loop.
+        // This is crucial for Shopify's /cart/add.js endpoint.
+
+        // Initial render of products
+        renderProducts();
+
+        // Quantity Selection
+        $('.quantity-btn').on('click', function() {
+            $('.quantity-btn').removeClass('border-gray-800 bg-gray-100 text-gray-800').addClass('border-gray-300 bg-white text-gray-700');
+            $(this).addClass('border-gray-800 bg-gray-100 text-gray-800').removeClass('border-gray-300 bg-white text-gray-700');
+
+            selectedPairsTotal = parseInt($(this).data('pairs'));
+            pricePerPair = parseFloat($(this).data('price-per-pair'));
+
+            // Reset selected products when quantity changes
+            selectedProducts = {};
+            // Re-render products to reset their states and then update UI
+            renderProducts($('.category-btn.bg-gray-800').text());
+        });
+
+        // Set default quantity to 12 pairs on load
+        $('.quantity-btn[data-pairs="12"]').trigger('click');
+
+        // Category filtering
+        $('.category-btn').on('click', function() {
+            $('.category-btn').removeClass('bg-gray-800 text-white').addClass('bg-gray-200 text-gray-700');
+            $(this).addClass('bg-gray-800 text-white').removeClass('bg-gray-200 text-gray-700');
+            renderProducts($(this).text()); // Re-render with new filter
+        });
+
+        // Add Product Logic (Delegated event handling)
+        $('.product-list-container').on('click', '.add-btn', function() {
+            const $productCard = $(this).closest('.product-card');
+            const productId = $productCard.data('product-id');
+            const currentQty = selectedProducts[productId] || 0;
+
+            // Only allow adding if total pairs selected is less than the limit
+            // And if the current product quantity is 0 (assuming one "pair" per product selection)
+            if (currentPairsCount < selectedPairsTotal && currentQty === 0) {
+                selectedProducts[productId] = 1; // Set quantity to 1 for this product
+
+                // Immediately update the specific product card's UI
+                $productCard.find('.add-btn').first().hide(); // Hide the initial "Add +" button
+                $productCard.find('.quantity-control').show(); // Show the quantity control
+                $productCard.find('.product-quantity').text(1);
+                $productCard.find('.remove-btn').prop('disabled', false).removeClass('opacity-50 cursor-not-allowed');
+
+                updateUI(); // Update global UI elements and other product cards
+            } else {
+                console.log("Cannot add more of this product or maximum pairs selected!");
+            }
+        });
+
+        // Remove Product Logic (Delegated event handling)
+        $('.product-list-container').on('click', '.remove-btn', function() {
+            const $productCard = $(this).closest('.product-card');
+            const productId = $productCard.data('product-id');
+            const currentQty = selectedProducts[productId] || 0;
+
+            if (currentQty > 0) {
+                delete selectedProducts[productId]; // Remove product from selection
+
+                // Immediately update the specific product card's UI
+                $productCard.find('.add-btn').first().show(); // Show the initial "Add +" button
+                $productCard.find('.quantity-control').hide(); // Hide the quantity control
+                $productCard.find('.product-quantity').text(0);
+                $productCard.find('.remove-btn').prop('disabled', true).addClass('opacity-50 cursor-not-allowed');
+
+                updateUI(); // Update global UI elements and other product cards
+            }
+        });
+
+        // Add to Cart Button
+        $('#add-to-cart-btn').on('click', function() {
+            if (currentPairsCount === selectedPairsTotal) {
+                const itemsToAddToCart = [];
+                for (const productId in selectedProducts) {
+                    const product = products.find(p => p.id == productId); // Use == for ID comparison
+                    if (product) {
+                        // Ensure product.variants and product.variants[0] exist before accessing .id
+                        if (product.variants && product.variants.length > 0 && product.variants[0].id) {
+                            itemsToAddToCart.push({
+                                id: product.variants[0].id, // Use the default variant ID
+                                quantity: selectedProducts[productId],
+                                properties: {
+                                    '_bundle_item': 'true', // Custom property to mark as bundle item
+                                    '_bundle_quantity_type': `${selectedPairsTotal} pairs`
+                                }
+                            });
+                        } else {
+                            console.warn(`Product ${product.title} (ID: ${product.id}) has no valid variant ID. Cannot add to cart.`);
+                        }
+                    }
+                }
+
+                console.log("Items to add to cart:", itemsToAddToCart);
+
+                // --- Shopify AJAX API Integration ---
+                if (itemsToAddToCart.length > 0) {
+                    $.ajax({
+                        type: 'POST',
+                        url: '/cart/add.js',
+                        data: { items: itemsToAddToCart },
+                        dataType: 'json',
+                        success: function(response) {
+                            console.log('Successfully added to cart:', response);
+                            // Optionally, redirect to cart or show a success message
+                            window.location.href = '/cart'; // Redirect to cart page
+                        },
+                        error: function(xhr, status, error) {
+                            console.error('Error adding to cart:', xhr.responseText);
+                            try {
+                                const errorResponse = JSON.parse(xhr.responseText);
+                                alert(`Error adding to cart: ${errorResponse.message || error}`);
+                            } catch (e) {
+                                alert(`Error adding to cart: ${error}`);
+                            }
+                        }
+                    });
+                } else {
+                    alert("No products selected to add to cart.");
+                }
+
+            } else {
+                alert(`Please select exactly ${selectedPairsTotal} pairs to proceed.`);
+            }
+        });
+    });
+</script>
+
+{% schema %}
+{
+    "name": "Product Bundle Builder",
+    "settings": [
+        {
+            "type": "text",
+            "id": "heading",
+            "label": "Heading",
+            "default": "Build Your Custom Bundle"
+        },
+        {
+            "type": "collection",
+            "id": "products_collection",
+            "label": "Collection of products for bundle"
+        }
+    ],
+    "presets": [
+        {
+            "name": "Product Bundle Builder",
+            "category": "Custom"
+        }
+    ]
+}
+{% endschema %}

@@ -1,0 +1,87 @@
+{
+  "sections": {
+    "main": {
+      "type": "simple_product_customizer",
+      "blocks": {
+        "f8327e8b-8e4b-4011-b0af-3796db506a33": {
+          "type": "title",
+          "settings": {}
+        },
+        "ec2ed27b-9e86-4d66-a61f-8fa082ec7446": {
+          "type": "text",
+          "settings": {
+            "text": "{{ product.vendor }}",
+            "text_style": "uppercase"
+          }
+        },
+        "9322142b-974c-4374-a8a0-d400eb5cec49": {
+          "type": "price",
+          "settings": {}
+        },
+        "d1356a0e-cc94-403a-80f4-35ccd7054688": {
+          "type": "quantity_selector",
+          "settings": {}
+        },
+        "d5a10a6f-1467-4c4d-9ad3-8578a40417e0": {
+          "type": "variant_picker",
+          "settings": {
+            "picker_type": "button"
+          }
+        },
+        "124274c9-4369-4d4e-bfff-f60471e5e5d4": {
+          "type": "options",
+          "settings": {}
+        },
+        "ddc4427a-f469-45c2-a13e-79136f43a68b": {
+          "type": "description",
+          "settings": {}
+        },
+        "f24cb889-d5e5-470e-818c-ebbf625d3aeb": {
+          "type": "collapsible_tab",
+          "settings": {
+            "heading": "Collapsible tab 1",
+            "content": "<p>Tab Content <\/p>",
+            "icon": "check_mark"
+          }
+        },
+        "0f438bc0-fcaa-4df1-9c07-4d467054c4de": {
+          "type": "collapsible_tab",
+          "settings": {
+            "heading": "Collapsible tab 2",
+            "content": "<p>Tab Content <\/p>",
+            "icon": "chat_bubble"
+          }
+        },
+        "c6651cba-ebda-4b89-82d8-bdea316c03fb": {
+          "type": "buy_buttons",
+          "settings": {}
+        }
+      },
+      "block_order": [
+        "f8327e8b-8e4b-4011-b0af-3796db506a33",
+        "ec2ed27b-9e86-4d66-a61f-8fa082ec7446",
+        "9322142b-974c-4374-a8a0-d400eb5cec49",
+        "d1356a0e-cc94-403a-80f4-35ccd7054688",
+        "d5a10a6f-1467-4c4d-9ad3-8578a40417e0",
+        "124274c9-4369-4d4e-bfff-f60471e5e5d4",
+        "ddc4427a-f469-45c2-a13e-79136f43a68b",
+        "f24cb889-d5e5-470e-818c-ebbf625d3aeb",
+        "0f438bc0-fcaa-4df1-9c07-4d467054c4de",
+        "c6651cba-ebda-4b89-82d8-bdea316c03fb"
+      ],
+      "settings": {
+        "pc-primary-color": "#073949",
+        "pc-accent": "#45636e",
+        "pc-button-text": "#f1e9dc",
+        "pc-background": "#f4f2f2",
+        "pc-text": "#535151",
+        "border_radius": 11,
+        "element_sizing": 14,
+        "element_sizing_mobile": 13
+      }
+    }
+  },
+  "order": [
+    "main"
+  ]
+}

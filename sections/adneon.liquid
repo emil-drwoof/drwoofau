@@ -1,0 +1,92 @@
+<section class="addneon page-width">
+    <div class="flexer" style="align-items:center;">
+        <h3 class="adtitle">{{ section.settings.adtitle }}</h3> <a href="{{ section.settings.bollink }}"><button class="bollink">{{ section.settings.adbutton }}</button></a>
+    </div>
+    
+</section>
+<style>
+    .addneon {
+        padding-top:40px !important;
+        padding-bottom:40px !important;
+    }
+
+    .addneon .flexer{
+        justify-content:space-between
+    }
+    .adtitle{
+        font-size:38px;
+        position:relative;
+        margin-bottom:10px;
+    }
+    .adtitle:after{
+        content: "";
+        position: absolute;
+        width: 110%;
+        border-bottom: 2px solid black;
+        bottom: 0;
+        left: 0;
+    }
+    .bollink{
+        padding:8px 20px;
+        background:black;
+        border-radius: 8px;
+        color:#fff;
+
+    }
+    .addneon{
+        
+    }
+    @media only screen and (max-width:480px){
+        .adtitle:after{
+            content: "";
+            position: absolute;
+            width: 84%;
+            border-bottom: 2px solid black;
+            bottom: 0;
+            left: 0;
+        }
+        .adtitle{
+            font-size:30px;
+            position:relative;
+            flex:1;
+            padding-bottom:11px;
+        }
+        .addneon .bollink{
+            position: relative;
+            top: 12px;          
+        }
+        .addneon .bollink,
+        .addneon .adtitle{
+        
+        }
+    }
+</style>
+{% schema %}
+    {
+      "name": "Ad Neon",
+      "tag": "section",
+      "class": "slideshow",
+      "settings": [        
+
+        {
+            "type": "text",
+            "id": "adtitle",
+            "label": "Content Title"
+        },
+        {
+            "type": "text",
+            "id": "adbutton",
+            "label": "Button text"
+        },
+        {
+                  "type": "url",
+                  "id": "bollink",
+                  "label": "Button link"
+        }
+      ],
+      "presets": [{
+      "name": "Ad Neon",
+      "category": "Collection"
+    }]
+    }
+{% endschema %}

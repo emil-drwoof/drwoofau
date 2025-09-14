@@ -1,0 +1,53 @@
+<!-- section/headerv4.liquid -->
+<sections class="headerv3">
+    <div class="page-width">
+        <img src="{{ section.settings.boxhero | img_url: 'master' }}" class="fullwidth-image desktop-image" style="margin-top:40px;"/>
+        <img src="{{ section.settings.mobile_boxhero | img_url: 'master' }}" class="fullwidth-image mobile-image" style="margin-top:40px;"/>
+    </div>
+</sections>
+
+<style>
+    .headerv3, 
+    .fullwidth-image {
+        width: 100%;
+    }
+
+    .mobile-image {
+        display: none;
+    }
+
+    @media only screen and (max-width: 480px) {
+        .desktop-image {
+            display: none;
+        }
+        .mobile-image {
+            display: block;
+        }
+    }
+</style>
+
+{% schema %}
+{
+  "name": "headerv4",
+  "tag": "section",
+  "class": "slideshow",
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "boxhero",
+      "label": "Hero image"
+    },
+    {
+      "type": "image_picker",
+      "id": "mobile_boxhero",
+      "label": "Mobile Hero image"
+    }
+  ],
+  "presets": [
+    {
+      "category": "header",
+      "name": "Header V4"
+    }
+  ]
+}
+{% endschema %}

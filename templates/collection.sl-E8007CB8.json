@@ -1,0 +1,88 @@
+{
+  "sections": {
+    "82a2ed36-21e9-4d4a-a788-775df4566b7b": {
+      "type": "dr-woof-hero-scrubs3",
+      "blocks": {
+        "81efc0c2-d21e-47ff-9c7e-b32a6154c627": {
+          "type": "text",
+          "settings": {
+            "text_content": "",
+            "shadow_enable": true,
+            "shadow_color": "#000000",
+            "text_color": "#f1f1f1",
+            "text_color2": "#f1f1f1",
+            "font_size": 26,
+            "font_size_m": 20
+          }
+        }
+      },
+      "block_order": [
+        "81efc0c2-d21e-47ff-9c7e-b32a6154c627"
+      ],
+      "settings": {
+        "pad": "30px",
+        "desktop_positioning": 0,
+        "height": 90,
+        "mobile_height": 50,
+        "image_webp_pc": "",
+        "image_webp_mobile": ""
+      }
+    },
+    "collection-header": {
+      "type": "dr-woof-hero-scrubs2",
+      "settings": {
+        "pad": "30px",
+        "desktop_positioning": 0,
+        "height": 21,
+        "mobile_height": 11,
+        "image_lib_pc": "shopify:\/\/shop_images\/Collection_Banner_-_Desktop-_2800_x_350px.png",
+        "image_webp_pc": "",
+        "image_lib_mobile": "shopify:\/\/shop_images\/Collection_Banner_-_Desktop-_2800_x_350px.png",
+        "image_webp_mobile": ""
+      }
+    },
+    "collection-filter": {
+      "type": "collection-thumbnail-filter",
+      "settings": {
+        "title_enable": false
+      }
+    },
+    "collection-filters": {
+      "type": "collection-filters-def",
+      "blocks": {
+        "bd7a6b14-1186-4afd-9347-5850ec2708b2": {
+          "type": "color_group",
+          "settings": {
+            "title": "",
+            "tag_list": "Burgundy \nHeather grey \nGreen"
+          }
+        }
+      },
+      "block_order": [
+        "bd7a6b14-1186-4afd-9347-5850ec2708b2"
+      ],
+      "settings": {
+        "filter_type": "groups",
+        "tags_combine": false,
+        "collection_title_enable": true,
+        "collection_filter_enable": true,
+        "collection_sort_enable": true
+      }
+    },
+    "main-collection": {
+      "type": "collection-template-scrubs",
+      "settings": {
+        "per_row_desktop": 3,
+        "per_row_mobile": "2",
+        "description_bottom": false
+      }
+    }
+  },
+  "order": [
+    "82a2ed36-21e9-4d4a-a788-775df4566b7b",
+    "collection-header",
+    "collection-filter",
+    "collection-filters",
+    "main-collection"
+  ]
+}

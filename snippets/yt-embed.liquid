@@ -1,0 +1,17 @@
+{% comment %} belowyellow.com {% endcomment %}
+{% assign txt = data | split: ']' %}
+  {% assign z = txt.size | minus: 1 %}
+  {% if txt.size > 0 %}
+    {% for v in (0..z) %}
+      {% if txt[v] contains '[' %}
+        {% assign t = txt[v] | split: '[' %}
+        {{ t | first }}
+        <div class="youtube" data-embed="{{t | last }}"> 
+          <div class="play-button"></div>   
+        </div>
+      {% else %}{{ txt[v] }}
+      {% endif %}
+    {% endfor %}
+  {% else %}
+    {{ data }}
+  {% endif %}

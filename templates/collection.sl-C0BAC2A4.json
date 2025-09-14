@@ -1,0 +1,120 @@
+{
+  "sections": {
+    "be5745bf-13a8-4f4b-a32b-8ec5d3807a4b": {
+      "type": "dr-woof-hero-scrubs3",
+      "settings": {
+        "pad": "30px",
+        "desktop_positioning": 0,
+        "height": 90,
+        "mobile_height": 50,
+        "image_webp_pc": "",
+        "image_webp_mobile": ""
+      }
+    },
+    "collection-header": {
+      "type": "dr-woof-hero-scrubs3",
+      "settings": {
+        "pad": "30px",
+        "desktop_positioning": 0,
+        "height": 90,
+        "mobile_height": 50,
+        "image_lib_pc": "shopify:\/\/shop_images\/desktop.webp",
+        "image_webp_pc": "",
+        "image_lib_mobile": "shopify:\/\/shop_images\/desktop.webp",
+        "image_webp_mobile": ""
+      }
+    },
+    "collection-filter": {
+      "type": "collection-thumbnail-filter",
+      "blocks": {
+        "0657e65d-822f-4862-b217-b7f81cd6cb91": {
+          "type": "Image",
+          "settings": {
+            "image_thumbnail": "shopify:\/\/shop_images\/6_dc483e12-d014-4d5d-ab0d-f5ac05d40dc0.png",
+            "collection_title": "Scrub Tops",
+            "linkurl": "https:\/\/www.drwoofapparel.com.au\/collections\/men\/scrub-tops?view=sl-C0BAC2A4&slScreenshot=true"
+          }
+        },
+        "017f2253-f13a-4c24-bee0-796be410117b": {
+          "type": "Image",
+          "settings": {
+            "image_thumbnail": "shopify:\/\/shop_images\/7_1011f1b8-4bda-43f2-ae2d-e78bca90f247.png",
+            "collection_title": "Scrub Pants",
+            "linkurl": "https:\/\/www.drwoofapparel.com.au\/collections\/men\/scrub-pants?view=sl-C0BAC2A4&slScreenshot=true"
+          }
+        },
+        "f36aa45c-db25-4fdb-bc11-46a7a3ab9caa": {
+          "type": "Image",
+          "settings": {
+            "image_thumbnail": "shopify:\/\/shop_images\/8_dcf87b82-86a8-4aec-8fc7-81fd83ba461e.png",
+            "collection_title": "Underscrubs",
+            "linkurl": "https:\/\/www.drwoofapparel.com.au\/collections\/men\/underscrubs-men?view=sl-C0BAC2A4&slScreenshot=true"
+          }
+        },
+        "cce77a3e-3cb6-40f9-81ab-618389701848": {
+          "type": "Image",
+          "settings": {
+            "image_thumbnail": "shopify:\/\/shop_images\/9_36076499-0d89-4e54-b77c-d1a46b103975.png",
+            "collection_title": "Outerwears",
+            "linkurl": "https:\/\/www.drwoofapparel.com.au\/collections\/men\/outerwear?view=sl-C0BAC2A4&slScreenshot=true"
+          }
+        },
+        "19a804fd-88ed-4a5b-9ae1-4889ae06745d": {
+          "type": "Image",
+          "settings": {
+            "image_thumbnail": "shopify:\/\/shop_images\/10_82d6bc1b-3f8b-4720-80a3-c44db31b0f6b.png",
+            "collection_title": "Bundle Deals",
+            "linkurl": "https:\/\/www.drwoofapparel.com.au\/collections\/deals-1"
+          }
+        }
+      },
+      "block_order": [
+        "0657e65d-822f-4862-b217-b7f81cd6cb91",
+        "017f2253-f13a-4c24-bee0-796be410117b",
+        "f36aa45c-db25-4fdb-bc11-46a7a3ab9caa",
+        "cce77a3e-3cb6-40f9-81ab-618389701848",
+        "19a804fd-88ed-4a5b-9ae1-4889ae06745d"
+      ],
+      "settings": {
+        "title_enable": true
+      }
+    },
+    "collection-filters": {
+      "type": "collection-filters-def",
+      "blocks": {
+        "bc703139-6932-4e01-a35f-49363205a2a3": {
+          "type": "color_group",
+          "settings": {
+            "title": "",
+            "tag_list": "Burgundy \nHeather grey \nGreen"
+          }
+        }
+      },
+      "block_order": [
+        "bc703139-6932-4e01-a35f-49363205a2a3"
+      ],
+      "settings": {
+        "filter_type": "groups",
+        "tags_combine": false,
+        "collection_title_enable": false,
+        "collection_filter_enable": false,
+        "collection_sort_enable": false
+      }
+    },
+    "main-collection": {
+      "type": "collection-template-scrubs",
+      "settings": {
+        "per_row_desktop": 3,
+        "per_row_mobile": "2",
+        "description_bottom": false
+      }
+    }
+  },
+  "order": [
+    "be5745bf-13a8-4f4b-a32b-8ec5d3807a4b",
+    "collection-header",
+    "collection-filter",
+    "collection-filters",
+    "main-collection"
+  ]
+}

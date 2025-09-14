@@ -1,0 +1,153 @@
+<!-- snippets/header-desktop-nav.liquid -->
+{% unless limit %}
+  {%- assign limit = main_menu.links.size -%}
+{% endunless %}
+{% unless offset %}
+  {%- assign offset = 0 -%}
+{% endunless %}
+<ul
+  class="site-nav site-navigation small--hide">
+  {% for link in main_menu.links limit: limit offset: offset %}
+    {%- assign has_dropdown = false -%}
+    {% if link.links != blank or links.size > 0 %}
+      {%- assign has_dropdown = true -%}
+    {% endif %}
+
+    <li
+      class="site-nav__item site-nav__expanded-item{% if has_dropdown %} site-nav--has-dropdown{% endif %}{% unless template == 'index' %}{% if link.active %} site-nav--active{% endif %}{% endunless %}"
+      {% if has_dropdown %}aria-haspopup="true"{% endif %}>
+
+      <a href="{{ link.url }}" class="site-nav__link{% if has_dropdown %} site-nav__link--has-dropdown{% endif %}">
+        {{ link.title }}
+      </a> 
+      
+      {% if has_dropdown %}
+        
+        <svg xmlns="http://www.w3.org/2000/svg" class="iconsizer icon icon--wide" viewBox="0 0 512 512"><!--!Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.--><path stroke="#000" fill="#000" d="M233.4 406.6c12.5 12.5 32.8 12.5 45.3 0l192-192c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L256 338.7 86.6 169.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l192 192z"/></svg>
+
+        <svg xmlns="http://www.w3.org/2000/svg" class="iconsizer icon icon--wide icon-chevron-up" viewBox="0 0 448 512"><!--!Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.--><path d="M241 130.5l194.3 194.3c9.4 9.4 9.4 24.6 0 33.9l-22.7 22.7c-9.4 9.4-24.5 9.4-33.9 0L224 227.5 69.3 381.5c-9.4 9.3-24.5 9.3-33.9 0l-22.7-22.7c-9.4-9.4-9.4-24.6 0-33.9L207 130.5c9.4-9.4 24.6-9.4 33.9 0z"/></svg>
+        
+      {% endif %}
+      {% if has_dropdown %}
+        <div class="site-nav__dropdown text-left page-width">
+          <div class="flexer">
+              <div class="side">
+                <a href="{{ section.settings.right_link_1 }}"><img src="{{ section.settings.right_image_1 | img_url: '500x' }}" class="twoimage"></a>
+                  
+                <a href="{{ section.settings.right_link_2 }}"><img src="{{ section.settings.right_image_2 | img_url: '500x' }}" class="twoimage"></a>
+              </div>
+
+              <div class="midside">
+                <ul>            
+                  {% for childlink in link.links %}
+                  {%- assign has_sub_dropdown = false -%}
+                  {% if childlink.links != blank %}
+                    {%- assign has_sub_dropdown = true -%}
+                  {% endif %}
+      
+                  <li class="imagesource {% if childlink.active %}site-nav--active{% endif %}{% if has_sub_dropdown %} site-nav__deep-dropdown-trigger{% endif %}"  data-img="{% case childlink.url %}
+                      {% when '/collections/women/scrub-tops' %}
+                        https://cdn.shopify.com/s/files/1/0573/7250/8344/files/2_922e05fe-097f-490f-9371-87e47699e282.png?v=1711386663&width=300
+                      {% when '/collections/women/scrub-pants' %}
+                        https://cdn.shopify.com/s/files/1/0573/7250/8344/files/1_f45df840-ec91-4018-97c8-b49b18f41b06.png?v=1712142974&width=300
+                      {% when 'https://www.drwoofapparel.com.au/collections/women/jogger-scrub-pants' %}
+                        https://cdn.shopify.com/s/files/1/0573/7250/8344/files/1_81150710-ed12-412c-ad86-16b7c9267a1b.png?v=1711386664&width=300
+                      {% when 'https://www.drwoofapparel.com.au/collections/men/jogger-scrub-pants' %}
+                        https://cdn.shopify.com/s/files/1/0573/7250/8344/files/4_9ef94ce6-40d7-479f-8763-82b54d5db063.png?v=1711386664&width=300
+                      {% when '/collections/men/scrub-pants' %}
+                        https://cdn.shopify.com/s/files/1/0573/7250/8344/files/2_f27e9635-0f7b-408c-a72c-787079e89e37.png?v=1712142974&width=300
+                      {% when '/collections/men/scrub-tops' %}
+                        https://cdn.shopify.com/s/files/1/0573/7250/8344/files/5_ff812058-e6b2-4877-9f3b-b0cc42f818d5.png?v=1711386663&width=300
+                      {% when 'https://www.drwoofapparel.com.au/collections/layers' %}
+                        https://cdn.shopify.com/s/files/1/0573/7250/8344/files/7_2bfbd31e-980a-4183-84f3-b2599cc623f2.png?v=1711561585&width=300
+                      {% when 'https://www.drwoofapparel.com.au/collections/scrub-caps?sort_by=best-selling' %}
+                        https://cdn.shopify.com/s/files/1/0573/7250/8344/files/22_5d2dda42-66bf-40ec-8c16-0d69415f6f16.jpg?v=1716196578&width=300
+                      {% when 'https://www.drwoofapparel.com.au/collections/scrub-caps?sort_by=created-descending' %}
+                        https://cdn.shopify.com/s/files/1/0573/7250/8344/files/22_5d2dda42-66bf-40ec-8c16-0d69415f6f16.jpg?v=1716196578&width=300
+                      {% when 'https://www.drwoofapparel.com.au/collections/printed-pattern-scrub-tops?sort_by=best-selling' %}
+                        https://cdn.shopify.com/s/files/1/0573/7250/8344/files/29.png?v=1717393027&width=300
+                      {% when 'https://www.drwoofapparel.com.au/collections/printed-pattern-scrub-tops?sort_by=created-descending' %}
+                        https://cdn.shopify.com/s/files/1/0573/7250/8344/files/30.png?v=1717393027&width=300
+                      {% when 'https://www.drwoofapparel.com.au/collections/underscrubs' %}                              
+                              https://cdn.shopify.com/s/files/1/0573/7250/8344/collections/11.jpg?v=1711536084                 
+                      {% when '/products/womens-flare-scrub-pants' %}
+                            https://cdn.shopify.com/s/files/1/0573/7250/8344/files/New_Nav_Collection_Image_c3b93992-01c6-43f7-a952-5e6268d2b782.png?v=1752817304                              
+                      {% else %}
+                      {{ childlink.object.featured_image | img_url: '500x' }}
+                      {% endcase %}">
+                    <a href="{{ childlink.url }}" class="site-nav__dropdown-link site-nav__dropdown-link--second-level {% if has_sub_dropdown %} site-nav__dropdown-link--has-children{% endif %}">
+                      {{ childlink.title | escape }}
+                      {% if has_sub_dropdown %}                        
+                        <svg aria-hidden="true" focusable="false" role="presentation" class="icon icon--wide icon-chevron-down" viewBox="0 0 28 16"><path d="M1.57 1.59l12.76 12.77L27.1 1.59" stroke-width="2" stroke="#000" fill="none" fill-rule="evenodd"/></svg>
+                      {% endif %}
+                    </a>
+                    {% if has_sub_dropdown %}
+                      <ul class="site-nav__deep-dropdown">
+                        {% for grandchildlink in childlink.links %}
+                          <li>
+                            <a href="{{ grandchildlink.url }}" class="site-nav__dropdown-link" data-img="{% case grandchildlink.url %}
+                            {% when '/collections/women/scrub-tops' %}
+                              https://cdn.shopify.com/s/files/1/0573/7250/8344/files/2_922e05fe-097f-490f-9371-87e47699e282.png?v=1711386663&width=300
+                            {% when '/collections/women/scrub-pants' %}
+                              https://cdn.shopify.com/s/files/1/0573/7250/8344/files/1_81150710-ed12-412c-ad86-16b7c9267a1b.png?v=1711386664&width=300
+                            {% when '/collections/women/jogger-scrub-pants' %}
+                              https://cdn.shopify.com/s/files/1/0573/7250/8344/files/1_81150710-ed12-412c-ad86-16b7c9267a1b.png?v=1711386664&width=300
+                            {% when '/collections/men/jogger-scrub-pants' %}
+                              https://cdn.shopify.com/s/files/1/0573/7250/8344/files/4_9ef94ce6-40d7-479f-8763-82b54d5db063.png?v=1711386664&width=300
+                            {% when '/collections/men/scrub-pants' %}
+                              https://cdn.shopify.com/s/files/1/0573/7250/8344/files/4_9ef94ce6-40d7-479f-8763-82b54d5db063.png?v=1711386664&width=300
+                            {% when '/collections/men/scrub-tops' %}
+                              https://cdn.shopify.com/s/files/1/0573/7250/8344/files/5_ff812058-e6b2-4877-9f3b-b0cc42f818d5.png?v=1711386663&width=300
+                            {% when 'https://www.drwoofapparel.com.au/collections/underscrubs' %}                              
+                              https://cdn.shopify.com/s/files/1/0573/7250/8344/collections/11.jpg?v=1711536084
+                            {% when '/products/womens-flare-scrub-pants' %}
+                            https://cdn.shopify.com/s/files/1/0573/7250/8344/files/New_Nav_Collection_Image_c3b93992-01c6-43f7-a952-5e6268d2b782.png?v=1752817304                              
+                            {% else %}
+                            {{ grandchildlink.object.featured_image | img_url: '500x' }}
+                            {% endcase %}">
+                              {{ grandchildlink.title | escape }}
+                            </a>
+                          </li>
+                        {% endfor %}
+                      </ul>
+                    {% endif %}
+                  </li>
+                {% endfor %}  </ul>
+        
+              </div>
+
+              <div class="side">
+                <div class="hoverimage">
+
+                </div>
+              </div>
+
+          </div>
+
+
+        </div>
+      {% endif %}
+    </li>
+  {% endfor %}
+</ul>
+
+<style>
+  
+</style>
+<script>
+  $(document).ready(function(){
+    $(".site-nav__item").hover(function(){
+      $(this).find(".iconsizer").toggle()
+      
+    })
+    $(".imagesource").hover(function(){
+      
+      $imagesourch = $(this).attr("data-img")
+      if ( typeof $imagesourch !== "undefined" && $imagesourch) {
+        $(".hoverimage").html("<img src='" + $imagesourch + "' class='imghoverimage'>")
+      } 
+      
+    })
+
+  })
+</script>

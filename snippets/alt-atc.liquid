@@ -1,0 +1,19 @@
+{% comment %} belowyellow.com {% endcomment %}
+{% assign colist = settings.collectionList | split: ',' %}
+
+{% for clist in colist %}
+  {% assign newList = clist | split: '[' %}
+  {% assign btnName = newList | first %}
+  {% assign clists = newList | last | remove: ']' | downcase | strip %}
+  {% if cl contains clists %}
+  {% assign found = true %}
+    {% break %}
+  {% else %}
+    {% assign found = false %}
+  {% endif %}
+{% endfor %}
+{% if found %}
+{{btnName}}
+{% else %}
+{{ 'products.product.add_to_cart' | t }}
+{% endif %}

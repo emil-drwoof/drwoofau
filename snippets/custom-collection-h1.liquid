@@ -1,0 +1,14 @@
+{% comment %} Time now {% endcomment %}
+{%- assign month = "now" | date: "%m" -%}
+{%- assign year = "now" | date: "%Y" -%}
+
+{% case request.path %}
+{% when '/collections/baby-pink-scrubs/men' %}
+  Men's Baby Pink Scrubs
+{% when '/collections/shadow-gray-scrubs/women' %}
+  Women's Dark Gray Scrubs
+{% when '' %}
+  
+{% else %}
+    {{ collection.title | replace: "$month$", month | replace: "$year$", year }}
+{% endcase %}

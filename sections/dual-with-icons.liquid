@@ -1,0 +1,148 @@
+<!-- Section: Brand Value Proposition -->
+<section class="brand-proposition-section">
+    <div class="page-width">
+        <div class="container">
+            <div class="brand-image">
+              <img src="{{ section.settings.image | img_url: 'master' }}" alt="Brand image">
+            </div>
+        
+            <!-- List of Brand Propositions -->
+            <div class="brand-propositions">
+              {% for block in section.blocks %}
+              <div class="brand-proposition">
+                <div class="icon">
+                  <img src="{{ block.settings.icon | img_url: 'small' }}" alt="Icon">
+                </div>
+                <div class="text-content">
+                  <h3>{{ block.settings.title }}</h3>
+                  <p>{{ block.settings.subtitle }}</p>
+                </div>
+              </div>
+              {% endfor %}
+            </div>
+          </div>
+    </div>
+
+</section>
+
+<style>
+  .brand-proposition-section {
+    padding: 40px 0;
+  }
+
+  .brand-proposition-section .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+  }
+
+  /* Brand Image Styling */
+  .brand-image {
+    flex: 1;
+    padding-right: 40px;
+  }
+
+  .brand-image img {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+    border-radius: 8px;
+  }
+
+  /* Brand Propositions Styling */
+  .brand-propositions {
+    flex: 1;
+  }
+
+  .brand-proposition {
+    display: flex;
+    align-items: flex-start;
+    margin-bottom: 20px;
+  }
+
+  .brand-proposition .icon {
+    width: 40px;
+    height: 40px;
+    margin-right: 15px;
+  }
+
+  .brand-proposition .icon img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+  }
+
+  .brand-proposition .text-content {
+    max-width: 80%;
+  }
+
+  .brand-proposition h3 {
+    font-size: 18px;
+    font-weight: 600;
+    margin: 0 0 5px 0;
+  }
+
+  .brand-proposition p {
+    font-size: 14px;
+    color: #666;
+    margin: 0;
+  }
+
+  @media (max-width: 768px) {
+    .brand-proposition-section .container {
+      flex-direction: column;
+    }
+
+    .brand-image {
+      margin-bottom: 20px;
+      padding-right: 0;
+    }
+  }
+</style>
+
+<script>
+  // Optional JS if you want additional behavior or interaction
+</script>
+
+{% schema %}
+{
+  "name": "Brand Value Proposition",
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Brand Image"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "brand_value",
+      "name": "Brand Value Proposition",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "icon",
+          "label": "Icon"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Title",
+          "default": "Brand value proposition"
+        },
+        {
+          "type": "text",
+          "id": "subtitle",
+          "label": "Subtitle",
+          "default": "Subheadline supports the value proposition headline. Try to keep this MAX two lines."
+        }
+      ]
+    }
+  ],
+  "presets": [{
+        "name": "Brand Value Proposition",
+        "category": "Page"
+      }]
+}
+{% endschema %}
+

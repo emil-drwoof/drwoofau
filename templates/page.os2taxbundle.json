@@ -1,0 +1,304 @@
+{
+  "wrapper": "div#div_id.div_class[attribute-one=value]",
+  "sections": {
+    "custom": {
+      "type": "custom-html",
+      "settings": {
+        "custom_html": "<img data-swift-lazy=\"1\" loading=\"lazy\" class=\"\" src=\"\/\/www.drwoofapparel.com.au\/cdn\/shop\/files\/Horizontal_logo_transparent_background_blue_2_7dc8a8de-20c6-4155-8747-0810a5b4b5e0_210x.png?v=1704080588\" srcset=\"\/\/www.drwoofapparel.com.au\/cdn\/shop\/files\/Horizontal_logo_transparent_background_blue_2_7dc8a8de-20c6-4155-8747-0810a5b4b5e0_210x.png?v=1704080588 1x, \/\/www.drwoofapparel.com.au\/cdn\/shop\/files\/Horizontal_logo_transparent_background_blue_2_7dc8a8de-20c6-4155-8747-0810a5b4b5e0_210x@2x.png?v=1704080588 2x\" alt=\"Dr. Woof Apparel AU\" style=\"display:block;margin:30px auto 0;\">\n\n<style>\n.rte ul{\ntext-align:left;\ndisplay:inline-block;\nmargin-left:auto;\nmargin-right:auto;\n}\n<\/style>"
+      }
+    },
+    "headerv3": {
+      "type": "headerv3",
+      "settings": {
+        "boxhero": "shopify:\/\/shop_images\/Abstract_Illustrated_Cute_Cyan_3_Steps_Basic_Skincare_Tutorial_Minimalist_Infographic.webp"
+      }
+    },
+    "advanced_content_6HdUMF": {
+      "type": "advanced-content",
+      "blocks": {
+        "html_rTTcLH": {
+          "type": "html",
+          "settings": {
+            "code": "<h1 style=\"text-align:center;\"><b><font size=\"20\">  This scrubs discount hack is<br>so genius it feels illegal<\/font><\/b><\/h1>",
+            "width": "100%",
+            "alignment": "center"
+          }
+        }
+      },
+      "block_order": [
+        "html_rTTcLH"
+      ],
+      "settings": {
+        "full_width": false,
+        "space_around": false,
+        "alt": false
+      }
+    },
+    "featured_content_9e7dLU": {
+      "type": "featured-content",
+      "settings": {
+        "title": "",
+        "text": "<p>This week, we asked our stingiest team member to go full Einstein mode on scrubs pricing. And − in just a few hours − they worked out how to get scrubs at a price so good we thought it was a mistake.<\/p><p>Using only publicly available methods, our team member worked out how they could get:<\/p><ul><li>33% off at checkout<\/li><li>30% back in their taxes*<\/li><li>Free shipping<\/li><li>Free compression socks<\/li><\/ul><p>*Your tax entitlements may vary.<\/p><p> Here's how they did it: <\/p>",
+        "align_text": "left",
+        "narrow_column": true,
+        "enlarge_text": false,
+        "alt": false
+      }
+    },
+    "text_and_image_tdDqFJ": {
+      "type": "text-and-image",
+      "settings": {
+        "image": "shopify:\/\/shop_images\/Tax_Blog_3.png",
+        "image_width": 500,
+        "subtitle": "",
+        "title": "Bundle up, baby cakes",
+        "text": "<p>Lock in our biggest online promo with the Buy 2 Get 1 Free Scrub set deal.<\/p>",
+        "button_label": "SHOP NOW",
+        "button_link": "shopify:\/\/collections\/women",
+        "button_style": "secondary",
+        "layout": "left",
+        "alt": false
+      }
+    },
+    "text_and_image_KEKPXU": {
+      "type": "text-and-image",
+      "settings": {
+        "image": "shopify:\/\/shop_images\/1_41731215-cc0e-4f5f-8ddd-dfe86b19a6c3.png",
+        "image_width": 600,
+        "subtitle": "",
+        "title": "Savings so far",
+        "text": "<ul><li>33% off at checkout (Only $93.87\/set)<\/li><li>Free shipping<\/li><\/ul><p>🔥HOT TIP: Our bundles let you mix & match sizes. So if you're not after four pairs of scrubs, join forces with four friends and a pair each.<\/p>",
+        "button_label": "",
+        "button_link": "",
+        "button_style": "primary",
+        "layout": "right",
+        "alt": false
+      }
+    },
+    "text_and_image_fwU4rG": {
+      "type": "text-and-image",
+      "settings": {
+        "image": "shopify:\/\/shop_images\/Tax_Blog_4.png",
+        "image_width": 500,
+        "subtitle": "",
+        "title": "Say hey-o to the ATO",
+        "text": "<p>Fun fact: Aussie med workers can often claim <a href=\"https:\/\/www.ato.gov.au\/forms-and-instructions\" target=\"_blank\" title=\"https:\/\/www.ato.gov.au\/forms-and-instructions\">scrubs as an expense<\/a> on their tax returns. <\/p><p>Our team member used the tax calculator at the <a href=\"https:\/\/www.ato.gov.au\/individuals-and-families\/income-deductions-offsets-and-records\/in-detail\/occupation-and-industry-specific-guides\/l-q\/nurses-and-midwives-income-and-work-related-deductions\/deductions-for-work-expenses\" target=\"_blank\" title=\"https:\/\/www.ato.gov.au\/individuals-and-families\/income-deductions-offsets-and-records\/in-detail\/occupation-and-industry-specific-guides\/l-q\/nurses-and-midwives-income-and-work-related-deductions\/deductions-for-work-expenses\">ATO<\/a> to estimate that they'd get 30% of their scrubs purchase back at tax time.* (Only $63.36\/set with tax deduction)<\/p>",
+        "button_label": "",
+        "button_link": "",
+        "button_style": "primary",
+        "layout": "left",
+        "alt": false
+      }
+    },
+    "text_and_image_ELyX8q": {
+      "type": "text-and-image",
+      "settings": {
+        "image": "shopify:\/\/shop_images\/2_2725c0c9-857b-4751-a957-b03b050e4976.png",
+        "image_width": 600,
+        "subtitle": "",
+        "title": "Savings so far",
+        "text": "<ul><li>33% off at checkout<\/li><li>30% back at tax time*<\/li><li>1x free shipping<\/li><\/ul><p>*Our team member calculated this amount using their income and details. Your tax entitlements may vary. Check out our FAQs below for more info.<\/p>",
+        "button_label": "",
+        "button_link": "",
+        "button_style": "primary",
+        "layout": "right",
+        "alt": false
+      }
+    },
+    "text_and_image_LXWzL6": {
+      "type": "text-and-image",
+      "settings": {
+        "image": "shopify:\/\/shop_images\/Tax_Blog_6.png",
+        "image_width": 500,
+        "subtitle": "",
+        "title": "Get Your Gift",
+        "text": "<p>Want to know something else? When your scrubs arrive, you can get a free compression socks (excl. shipping) just for leaving a photo review. <\/p>",
+        "button_label": "",
+        "button_link": "",
+        "button_style": "primary",
+        "layout": "right",
+        "alt": false
+      }
+    },
+    "text_and_image_aGgXXD": {
+      "type": "text-and-image",
+      "settings": {
+        "image": "shopify:\/\/shop_images\/3_2f3e4721-0ab3-45ff-8784-335d9d51ac20.png",
+        "image_width": 600,
+        "subtitle": "",
+        "title": "Final result:",
+        "text": "<ul><li>33% off at checkout<\/li><li>30% back at tax time<\/li><li>Free shipping<\/li><li>Free compression socks (excl. shipping)<br\/><br\/>*Our team member calculated this amount using their income and details. Your tax entitlements may vary. Check out our FAQs below for more info.<\/li><\/ul>",
+        "button_label": "",
+        "button_link": "",
+        "button_style": "primary",
+        "layout": "left",
+        "alt": false
+      }
+    },
+    "adsection_zyrYhE": {
+      "type": "adsection",
+      "settings": {
+        "darktheme": true,
+        "deskmartop": 20,
+        "deskmarbot": 20,
+        "mobmartop": 0,
+        "mobmarbot": 30,
+        "bigtext": "GET ON THE ACTION",
+        "reviewstars_text": "",
+        "bigtextsize": 36,
+        "textbut": "SHOP NOW",
+        "buttonlink": "shopify:\/\/collections\/women",
+        "bgcolor": "#0b0d32"
+      }
+    },
+    "custom_html_ymnmNW": {
+      "type": "custom-html",
+      "disabled": true,
+      "settings": {
+        "custom_html": "<div data-rid=\"8338a0fe-5e8c-400d-b980-e4a396864a83\" data-replo-repeated-index=\".0.0\" style=\"display:flex;min-width:var(--rmw, auto);min-height:var(--rmh, auto);width:100%;max-width:900px;align-self:center;align-items:center;padding-top:30px;flex-direction:column;justify-content:center;flex-shrink:0;flex-basis:auto;gap:16px;position:relative;--rmw:auto;--rmh:auto\" class=\"rmq-b865e05e rmq-dab6845b rmq-542ba880 rmq-5a4e781d\" data-radium=\"true\">\n<div data-rid=\"d6686f45-d2b8-4369-a043-189e6748d5c1\" data-replo-repeated-index=\".0.0.0\" class=\"rmq-7bdb861c rmq-5c727098 rmq-73e28289 rmq-98eef734 alchemy-rte\" style=\"color:#000000FF;font-size:30px;align-self:stretch;text-align:center;font-family:Futura, sans-serif;font-weight:700;line-height:50px;padding-top:20px;padding-left:50px;padding-right:50px;background-color:#FFFFFF;text-align-last:center;flex-shrink:0;flex-basis:auto;overflow-wrap:break-word\" data-radium=\"true\"><span contenteditable=\"false\" data-testid=\"editable-content\" style=\"width:100%\" data-radium=\"true\"><h2>Bundle FAQs<\/h2><\/span><\/div>\n<div data-rid=\"40542897-e3cf-43a8-a0c8-c5ace89d2695\" data-replo-repeated-index=\".0.0.0\" style=\"display:flex;align-self:stretch;flex-direction:column;border-top-color:#090F341A;border-top-style:solid;border-top-width:1px;border-left-color:#090F341A;border-left-style:solid;border-left-width:1px;border-right-color:#090F341A;border-right-style:solid;border-right-width:1px;border-bottom-color:#090F341A;border-bottom-style:solid;border-bottom-width:1px;border-top-left-radius:10px;border-top-right-radius:10px;border-bottom-left-radius:10px;border-bottom-right-radius:10px;overflow:hidden;flex-shrink:0;flex-basis:auto;position:relative\" data-replo-collapsible=\"true\" class=\"rmq-279724f8 rmq-b0d77a5a rmq-8b4bc3af rmq-d634bf52\" data-radium=\"true\" data-state=\"closed\">\n<div data-rid=\"64ebea07-8638-4769-9bdc-a4338e4dfab6\" aria-expanded=\"false\" aria-controls=\"40542897-e3cf-43a8-a0c8-c5ace89d2695\" data-replo-repeated-index=\".0.0.0.0\" tabindex=\"0\" role=\"button\" style=\"display:flex;min-width:var(--rmw, auto);min-height:var(--rmh, auto);align-items:center;padding-top:15px;padding-left:26px;padding-right:26px;padding-bottom:15px;justify-content:space-between;flex-shrink:0;flex-basis:auto;gap:15px;position:relative;cursor:pointer;--rmw:auto;--rmh:auto\" class=\"rmq-de950720 rmq-c08c6c56 rmq-b9a5a823 rmq-b989695e\" data-radium=\"true\">\n<div data-rid=\"f93f8b9a-6a76-42a7-9701-1a6419ccfe27\" data-replo-repeated-index=\".0.0.0.0.0\" class=\"rmq-a6e3fcb4 rmq-c498128d rmq-2ccff18 rmq-9c73a985 alchemy-rte\" style=\"flex-grow:1;font-size:20px;text-align:left;font-family:Futura BdCn BT;font-weight:400;line-height:22px;letter-spacing:0px;text-align-last:left;flex-shrink:0;flex-basis:auto;overflow-wrap:break-word\" data-radium=\"true\"><span contenteditable=\"false\" data-testid=\"editable-content\" style=\"width:100%\" data-radium=\"true\"><p>CAN I SPLIT A BUNDLE BETWEEN FRIENDS?<\/p><\/span><\/div>\n<div data-rid=\"df0fa05b-6b16-47e8-986a-9b7a16b95bd1\" data-replo-repeated-index=\".0.0.0.0.0\" style=\"width:24px;height:24px;flex-shrink:0;flex-basis:auto;--replo-svg-width:100%;line-height:100%\" data-testid=\"icon-plus\" class=\"rmq-9eb2a102 rmq-b4e52560 rmq-1cc17555 rmq-c8dcd3e8\" data-radium=\"true\"><svg xmlns=\"http:\/\/www.w3.org\/2000\/svg\" viewbox=\"0 0 16 16\" width=\"1em\" height=\"1em\" fill=\"currentColor\" style=\"height:100%;width:var(--replo-svg-width, 100%)\"><path d=\"M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z\"><\/path><\/svg><\/div>\n<\/div>\n<div data-state=\"closed\" id=\"radix-:R9v7:\" hidden=\"\" class=\"replo-animated\" style=\"\"><\/div>\n<\/div>\n<div data-rid=\"429792b2-cbd0-4e46-a6fd-c28d566a6450\" data-replo-repeated-index=\".0.0.0\" style=\"display:flex;align-self:stretch;flex-direction:column;border-top-color:#090F341A;border-top-style:solid;border-top-width:1px;border-left-color:#090F341A;border-left-style:solid;border-left-width:1px;border-right-color:#090F341A;border-right-style:solid;border-right-width:1px;border-bottom-color:#090F341A;border-bottom-style:solid;border-bottom-width:1px;border-top-left-radius:10px;border-top-right-radius:10px;border-bottom-left-radius:10px;border-bottom-right-radius:10px;overflow:hidden;flex-shrink:0;flex-basis:auto;position:relative\" data-replo-collapsible=\"true\" class=\"rmq-279724f8 rmq-b0d77a5a rmq-8b4bc3af rmq-d634bf52\" data-radium=\"true\" data-state=\"closed\">\n<div data-rid=\"a46c82d4-5a07-426a-b822-447eac412e18\" aria-expanded=\"false\" aria-controls=\"429792b2-cbd0-4e46-a6fd-c28d566a6450\" data-replo-repeated-index=\".0.0.0.0\" tabindex=\"0\" role=\"button\" style=\"display:flex;min-width:var(--rmw, auto);min-height:var(--rmh, auto);align-items:center;padding-top:15px;padding-left:26px;padding-right:26px;padding-bottom:15px;justify-content:space-between;flex-shrink:0;flex-basis:auto;gap:15px;position:relative;cursor:pointer;--rmw:auto;--rmh:auto\" class=\"rmq-de950720 rmq-c08c6c56 rmq-b9a5a823 rmq-b989695e\" data-radium=\"true\">\n<div data-rid=\"76bc4dbf-e187-41c8-8537-901d8db07e9a\" data-replo-repeated-index=\".0.0.0.0.0\" class=\"rmq-a6e3fcb4 rmq-c498128d rmq-2ccff18 rmq-9c73a985 alchemy-rte\" style=\"flex-grow:1;font-size:20px;text-align:left;font-family:Futura BdCn BT;font-weight:400;line-height:22px;letter-spacing:0px;text-align-last:left;flex-shrink:0;flex-basis:auto;overflow-wrap:break-word\" data-radium=\"true\"><span contenteditable=\"false\" data-testid=\"editable-content\" style=\"width:100%\" data-radium=\"true\"><p>CAN MY BUNDLE INCLUDE MEN'S AND WOMEN'S SCRUBS?<\/p><\/span><\/div>\n<div data-rid=\"89911c97-79ef-4f67-8bda-7454b1c0a6f4\" data-replo-repeated-index=\".0.0.0.0.0\" style=\"width:24px;height:24px;flex-shrink:0;flex-basis:auto;--replo-svg-width:100%;line-height:100%\" data-testid=\"icon-plus\" class=\"rmq-9eb2a102 rmq-b4e52560 rmq-1cc17555 rmq-c8dcd3e8\" data-radium=\"true\"><svg xmlns=\"http:\/\/www.w3.org\/2000\/svg\" viewbox=\"0 0 16 16\" width=\"1em\" height=\"1em\" fill=\"currentColor\" style=\"height:100%;width:var(--replo-svg-width, 100%)\"><path d=\"M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z\"><\/path><\/svg><\/div>\n<\/div>\n<div data-state=\"closed\" id=\"radix-:Rdv7:\" hidden=\"\" class=\"replo-animated\" style=\"\"><\/div>\n<\/div>\n<div data-rid=\"9732606e-5c3e-4f92-87f1-429e2fda0cec\" data-replo-repeated-index=\".0.0.0\" style=\"display:flex;align-self:stretch;flex-direction:column;border-top-color:#090F341A;border-top-style:solid;border-top-width:1px;border-left-color:#090F341A;border-left-style:solid;border-left-width:1px;border-right-color:#090F341A;border-right-style:solid;border-right-width:1px;border-bottom-color:#090F341A;border-bottom-style:solid;border-bottom-width:1px;border-top-left-radius:10px;border-top-right-radius:10px;border-bottom-left-radius:10px;border-bottom-right-radius:10px;overflow:hidden;flex-shrink:0;flex-basis:auto;position:relative\" data-replo-collapsible=\"true\" class=\"rmq-279724f8 rmq-b0d77a5a rmq-8b4bc3af rmq-d634bf52\" data-radium=\"true\" data-state=\"closed\">\n<div data-rid=\"ea269ac9-f9a0-4530-b6a9-d945658cd012\" aria-expanded=\"false\" aria-controls=\"9732606e-5c3e-4f92-87f1-429e2fda0cec\" data-replo-repeated-index=\".0.0.0.0\" tabindex=\"0\" role=\"button\" style=\"display:flex;min-width:var(--rmw, auto);min-height:var(--rmh, auto);align-items:center;padding-top:15px;padding-left:26px;padding-right:26px;padding-bottom:15px;justify-content:space-between;flex-shrink:0;flex-basis:auto;gap:15px;position:relative;cursor:pointer;--rmw:auto;--rmh:auto\" class=\"rmq-de950720 rmq-c08c6c56 rmq-b9a5a823 rmq-b989695e\" data-radium=\"true\">\n<div data-rid=\"3bba528c-8d46-4446-a06c-1449ff9928b5\" data-replo-repeated-index=\".0.0.0.0.0\" style=\"display:flex;min-width:var(--rmw, auto);min-height:var(--rmh, auto);max-width:100%;align-self:stretch;align-items:center;justify-content:space-between;flex-shrink:0;flex-basis:auto;gap:15px;position:relative;--rmw:auto;--rmh:auto\" class=\"rmq-93680474 rmq-c08c6c56 rmq-b9a5a823 rmq-b989695e\" data-radium=\"true\"><div data-rid=\"88022292-66df-4ab5-a25e-e24403fa6278\" data-replo-repeated-index=\".0.0.0.0.0.0\" class=\"rmq-a6e3fcb4 rmq-c498128d rmq-2ccff18 rmq-9c73a985 alchemy-rte\" style=\"flex-grow:1;font-size:20px;text-align:left;font-family:Futura BdCn BT;font-weight:400;line-height:22px;letter-spacing:0px;text-align-last:left;flex-shrink:0;flex-basis:auto;overflow-wrap:break-word\" data-radium=\"true\"><span contenteditable=\"false\" data-testid=\"editable-content\" style=\"width:100%\" data-radium=\"true\"><p>WHAT COUPON CODE SHOULD I USE?<\/p><\/span><\/div><\/div>\n<div data-rid=\"5a56aa63-02a5-437b-a0af-bf14607d7f03\" data-replo-repeated-index=\".0.0.0.0.0\" style=\"width:24px;height:24px;flex-shrink:0;flex-basis:auto;--replo-svg-width:100%;line-height:100%\" data-testid=\"icon-plus\" class=\"rmq-9eb2a102 rmq-b4e52560 rmq-1cc17555 rmq-c8dcd3e8\" data-radium=\"true\"><svg xmlns=\"http:\/\/www.w3.org\/2000\/svg\" viewbox=\"0 0 16 16\" width=\"1em\" height=\"1em\" fill=\"currentColor\" style=\"height:100%;width:var(--replo-svg-width, 100%)\"><path d=\"M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z\"><\/path><\/svg><\/div>\n<\/div>\n<div data-state=\"closed\" id=\"radix-:Rhv7:\" hidden=\"\" class=\"replo-animated\" style=\"\"><\/div>\n<\/div>\n<\/div>"
+      }
+    },
+    "custom_html_8gcTVC": {
+      "type": "custom-html",
+      "disabled": true,
+      "settings": {
+        "custom_html": "<div data-rid=\"b102036a-d903-4812-b360-12c4f6fc0dfe\" data-replo-repeated-index=\".0.0\" style=\"display:flex;min-width:var(--rmw, auto);min-height:var(--rmh, auto);width:100%;max-width:900px;align-self:center;align-items:center;padding-top:30px;flex-direction:column;justify-content:center;flex-shrink:0;flex-basis:auto;gap:16px;position:relative;--rmw:auto;--rmh:auto\" class=\"rmq-b865e05e rmq-dab6845b rmq-542ba880 rmq-5a4e781d\" data-radium=\"true\">\n<div data-rid=\"8e6fda9c-7660-4bdd-8e7b-db37fe2f0b5f\" data-replo-repeated-index=\".0.0.0\" class=\"rmq-7bdb861c rmq-5c727098 rmq-73e28289 rmq-98eef734 alchemy-rte\" style=\"color:#000000FF;font-size:30px;align-self:stretch;text-align:center;font-family:Futura, sans-serif;font-weight:700;line-height:50px;padding-top:20px;padding-left:50px;padding-right:50px;background-color:#FFFFFF;text-align-last:center;flex-shrink:0;flex-basis:auto;overflow-wrap:break-word\" data-radium=\"true\"><span contenteditable=\"false\" data-testid=\"editable-content\" style=\"width:100%\" data-radium=\"true\"><h2>*Tax FAQs<\/h2><\/span><\/div>\n<div data-rid=\"4a7ce4e0-48d8-425c-8e59-fdd1dfcb3745\" data-replo-repeated-index=\".0.0.0\" style=\"display:flex;align-self:stretch;flex-direction:column;border-top-color:#090F341A;border-top-style:solid;border-top-width:1px;border-left-color:#090F341A;border-left-style:solid;border-left-width:1px;border-right-color:#090F341A;border-right-style:solid;border-right-width:1px;border-bottom-color:#090F341A;border-bottom-style:solid;border-bottom-width:1px;border-top-left-radius:10px;border-top-right-radius:10px;border-bottom-left-radius:10px;border-bottom-right-radius:10px;overflow:hidden;flex-shrink:0;flex-basis:auto;position:relative\" data-replo-collapsible=\"true\" class=\"rmq-279724f8 rmq-b0d77a5a rmq-8b4bc3af rmq-d634bf52\" data-radium=\"true\" data-state=\"closed\">\n<div data-rid=\"e9c6c137-1384-4924-a5f9-71515e6729a1\" aria-expanded=\"false\" aria-controls=\"4a7ce4e0-48d8-425c-8e59-fdd1dfcb3745\" data-replo-repeated-index=\".0.0.0.0\" tabindex=\"0\" role=\"button\" style=\"display:flex;min-width:var(--rmw, auto);min-height:var(--rmh, auto);align-items:center;padding-top:15px;padding-left:26px;padding-right:26px;padding-bottom:15px;justify-content:space-between;flex-shrink:0;flex-basis:auto;gap:15px;position:relative;cursor:pointer;--rmw:auto;--rmh:auto\" class=\"rmq-de950720 rmq-c08c6c56 rmq-b9a5a823 rmq-b989695e\" data-radium=\"true\">\n<div data-rid=\"2fe56627-8c97-4fe1-9859-1c11570a5ca7\" data-replo-repeated-index=\".0.0.0.0.0\" class=\"rmq-a6e3fcb4 rmq-c498128d rmq-2ccff18 rmq-9c73a985 alchemy-rte\" style=\"flex-grow:1;font-size:20px;text-align:left;font-family:Futura BdCn BT;font-weight:400;line-height:22px;letter-spacing:0px;text-align-last:left;flex-shrink:0;flex-basis:auto;overflow-wrap:break-word\" data-radium=\"true\"><span contenteditable=\"false\" data-testid=\"editable-content\" style=\"width:100%\" data-radium=\"true\"><p>ARE SCRUBS REALLY TAX DEDUCTABLE? <\/p><\/span><\/div>\n<div data-rid=\"5ef32dd6-4694-4a32-97f3-f432f1e7a4bd\" data-replo-repeated-index=\".0.0.0.0.0\" style=\"width:24px;height:24px;flex-shrink:0;flex-basis:auto;--replo-svg-width:100%;line-height:100%\" data-testid=\"icon-plus\" class=\"rmq-9eb2a102 rmq-b4e52560 rmq-1cc17555 rmq-c8dcd3e8\" data-radium=\"true\"><svg xmlns=\"http:\/\/www.w3.org\/2000\/svg\" viewbox=\"0 0 16 16\" width=\"1em\" height=\"1em\" fill=\"currentColor\" style=\"height:100%;width:var(--replo-svg-width, 100%)\"><path d=\"M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z\"><\/path><\/svg><\/div>\n<\/div>\n<div data-state=\"closed\" id=\"radix-:Ra37:\" hidden=\"\" class=\"replo-animated\" style=\"\"><\/div>\n<\/div>\n<div data-rid=\"aa469ab4-5f86-4518-8ba3-0e8c658f705d\" data-replo-repeated-index=\".0.0.0\" style=\"display:flex;align-self:stretch;flex-direction:column;border-top-color:#090F341A;border-top-style:solid;border-top-width:1px;border-left-color:#090F341A;border-left-style:solid;border-left-width:1px;border-right-color:#090F341A;border-right-style:solid;border-right-width:1px;border-bottom-color:#090F341A;border-bottom-style:solid;border-bottom-width:1px;border-top-left-radius:10px;border-top-right-radius:10px;border-bottom-left-radius:10px;border-bottom-right-radius:10px;overflow:hidden;flex-shrink:0;flex-basis:auto;position:relative\" data-replo-collapsible=\"true\" class=\"rmq-279724f8 rmq-b0d77a5a rmq-8b4bc3af rmq-d634bf52\" data-radium=\"true\" data-state=\"closed\">\n<div data-rid=\"0a38942f-02b9-4f73-a956-1854d9a5a762\" aria-expanded=\"false\" aria-controls=\"aa469ab4-5f86-4518-8ba3-0e8c658f705d\" data-replo-repeated-index=\".0.0.0.0\" tabindex=\"0\" role=\"button\" style=\"display:flex;min-width:var(--rmw, auto);min-height:var(--rmh, auto);align-items:center;padding-top:15px;padding-left:26px;padding-right:26px;padding-bottom:15px;justify-content:space-between;flex-shrink:0;flex-basis:auto;gap:15px;position:relative;cursor:pointer;--rmw:auto;--rmh:auto\" class=\"rmq-de950720 rmq-c08c6c56 rmq-b9a5a823 rmq-b989695e\" data-radium=\"true\">\n<div data-rid=\"64010185-5869-495f-9dd8-081990bb7fe4\" data-replo-repeated-index=\".0.0.0.0.0\" class=\"rmq-a6e3fcb4 rmq-c498128d rmq-2ccff18 rmq-9c73a985 alchemy-rte\" style=\"flex-grow:1;font-size:20px;text-align:left;font-family:Futura BdCn BT;font-weight:400;line-height:22px;letter-spacing:0px;text-align-last:left;flex-shrink:0;flex-basis:auto;overflow-wrap:break-word\" data-radium=\"true\"><span contenteditable=\"false\" data-testid=\"editable-content\" style=\"width:100%\" data-radium=\"true\"><p>HOW DID YOUR TEAM MEMBER  ESTIMATE THEIR DEDUCTION?<\/p><\/span><\/div>\n<div data-rid=\"064f14a6-efae-4fc8-a7f3-7773096b830d\" data-replo-repeated-index=\".0.0.0.0.0\" style=\"width:24px;height:24px;flex-shrink:0;flex-basis:auto;--replo-svg-width:100%;line-height:100%\" data-testid=\"icon-plus\" class=\"rmq-9eb2a102 rmq-b4e52560 rmq-1cc17555 rmq-c8dcd3e8\" data-radium=\"true\"><svg xmlns=\"http:\/\/www.w3.org\/2000\/svg\" viewbox=\"0 0 16 16\" width=\"1em\" height=\"1em\" fill=\"currentColor\" style=\"height:100%;width:var(--replo-svg-width, 100%)\"><path d=\"M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z\"><\/path><\/svg><\/div>\n<\/div>\n<div data-state=\"closed\" id=\"radix-:Re37:\" hidden=\"\" class=\"replo-animated\" style=\"\"><\/div>\n<\/div>\n<div data-rid=\"7996cd41-a863-43b8-a482-5e2529ef5969\" data-replo-repeated-index=\".0.0.0\" style=\"display:flex;align-self:stretch;flex-direction:column;border-top-color:#090F341A;border-top-style:solid;border-top-width:1px;border-left-color:#090F341A;border-left-style:solid;border-left-width:1px;border-right-color:#090F341A;border-right-style:solid;border-right-width:1px;border-bottom-color:#090F341A;border-bottom-style:solid;border-bottom-width:1px;border-top-left-radius:10px;border-top-right-radius:10px;border-bottom-left-radius:10px;border-bottom-right-radius:10px;overflow:hidden;flex-shrink:0;flex-basis:auto;position:relative\" data-replo-collapsible=\"true\" class=\"rmq-279724f8 rmq-b0d77a5a rmq-8b4bc3af rmq-d634bf52\" data-radium=\"true\" data-state=\"closed\">\n<div data-rid=\"319e0a3f-284e-44b5-819f-88f230f28cc3\" aria-expanded=\"false\" aria-controls=\"7996cd41-a863-43b8-a482-5e2529ef5969\" data-replo-repeated-index=\".0.0.0.0\" tabindex=\"0\" role=\"button\" style=\"display:flex;min-width:var(--rmw, auto);min-height:var(--rmh, auto);align-items:center;padding-top:15px;padding-left:26px;padding-right:26px;padding-bottom:15px;justify-content:space-between;flex-shrink:0;flex-basis:auto;gap:15px;position:relative;cursor:pointer;--rmw:auto;--rmh:auto\" class=\"rmq-de950720 rmq-c08c6c56 rmq-b9a5a823 rmq-b989695e\" data-radium=\"true\">\n<div data-rid=\"76aa3d3e-457f-4880-b848-169b3f8b6883\" data-replo-repeated-index=\".0.0.0.0.0\" style=\"display:flex;min-width:var(--rmw, auto);min-height:var(--rmh, auto);max-width:100%;align-self:stretch;align-items:center;justify-content:space-between;flex-shrink:0;flex-basis:auto;gap:15px;position:relative;--rmw:auto;--rmh:auto\" class=\"rmq-93680474 rmq-c08c6c56 rmq-b9a5a823 rmq-b989695e\" data-radium=\"true\"><div data-rid=\"601b7719-d63b-4df4-baaf-331aaead380e\" data-replo-repeated-index=\".0.0.0.0.0.0\" class=\"rmq-a6e3fcb4 rmq-c498128d rmq-2ccff18 rmq-9c73a985 alchemy-rte\" style=\"flex-grow:1;font-size:20px;text-align:left;font-family:Futura BdCn BT;font-weight:400;line-height:22px;letter-spacing:0px;text-align-last:left;flex-shrink:0;flex-basis:auto;overflow-wrap:break-word\" data-radium=\"true\"><span contenteditable=\"false\" data-testid=\"editable-content\" style=\"width:100%\" data-radium=\"true\"><p>WHAT DEDUCTION WOULD I GET?<\/p><\/span><\/div><\/div>\n<div data-rid=\"3e0fc371-a049-417a-a661-64ab4d89099a\" data-replo-repeated-index=\".0.0.0.0.0\" style=\"width:24px;height:24px;flex-shrink:0;flex-basis:auto;--replo-svg-width:100%;line-height:100%\" data-testid=\"icon-plus\" class=\"rmq-9eb2a102 rmq-b4e52560 rmq-1cc17555 rmq-c8dcd3e8\" data-radium=\"true\"><svg xmlns=\"http:\/\/www.w3.org\/2000\/svg\" viewbox=\"0 0 16 16\" width=\"1em\" height=\"1em\" fill=\"currentColor\" style=\"height:100%;width:var(--replo-svg-width, 100%)\"><path d=\"M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z\"><\/path><\/svg><\/div>\n<\/div>\n<div data-state=\"closed\" id=\"radix-:Ri37:\" hidden=\"\" class=\"replo-animated\" style=\"\"><\/div>\n<\/div>\n<\/div>"
+      }
+    },
+    "custom_html_i8eWm7": {
+      "type": "custom-html",
+      "disabled": true,
+      "settings": {
+        "custom_html": "<div data-rid=\"154a365b-14a1-4430-88a9-5ec0baf0c913\" data-replo-repeated-index=\".0.0\" style=\"display:flex;min-width:var(--rmw, auto);min-height:var(--rmh, auto);width:100%;max-width:900px;align-self:center;align-items:center;padding-top:30px;flex-direction:column;justify-content:center;flex-shrink:0;flex-basis:auto;gap:16px;position:relative;--rmw:auto;--rmh:auto\" class=\"rmq-b865e05e rmq-dab6845b rmq-542ba880 rmq-5a4e781d\" data-radium=\"true\">\n<div data-rid=\"191b917f-d386-44db-b6ea-452351a07ea5\" data-replo-repeated-index=\".0.0.0\" class=\"rmq-7bdb861c rmq-5c727098 rmq-73e28289 rmq-98eef734 alchemy-rte\" style=\"color:#000000FF;font-size:30px;align-self:stretch;text-align:center;font-family:Futura, sans-serif;font-weight:700;line-height:50px;padding-top:20px;padding-left:50px;padding-right:50px;background-color:#FFFFFF;text-align-last:center;flex-shrink:0;flex-basis:auto;overflow-wrap:break-word\" data-radium=\"true\"><span contenteditable=\"false\" data-testid=\"editable-content\" style=\"width:100%\" data-radium=\"true\"><h2>Free Scrub Cap FAQs<\/h2><\/span><\/div>\n<div data-rid=\"5af9db28-3faf-45c9-81a0-4766e7633f97\" data-replo-repeated-index=\".0.0.0\" style=\"display:flex;align-self:stretch;flex-direction:column;border-top-color:#090F341A;border-top-style:solid;border-top-width:1px;border-left-color:#090F341A;border-left-style:solid;border-left-width:1px;border-right-color:#090F341A;border-right-style:solid;border-right-width:1px;border-bottom-color:#090F341A;border-bottom-style:solid;border-bottom-width:1px;border-top-left-radius:10px;border-top-right-radius:10px;border-bottom-left-radius:10px;border-bottom-right-radius:10px;overflow:hidden;flex-shrink:0;flex-basis:auto;position:relative\" data-replo-collapsible=\"true\" class=\"rmq-279724f8 rmq-b0d77a5a rmq-8b4bc3af rmq-d634bf52\" data-radium=\"true\" data-state=\"closed\">\n<div data-rid=\"1540f907-317c-4f4b-8639-24e0ef9eb58f\" aria-expanded=\"false\" aria-controls=\"5af9db28-3faf-45c9-81a0-4766e7633f97\" data-replo-repeated-index=\".0.0.0.0\" tabindex=\"0\" role=\"button\" style=\"display:flex;min-width:var(--rmw, auto);min-height:var(--rmh, auto);align-items:center;padding-top:15px;padding-left:26px;padding-right:26px;padding-bottom:15px;justify-content:space-between;flex-shrink:0;flex-basis:auto;gap:15px;position:relative;cursor:pointer;--rmw:auto;--rmh:auto\" class=\"rmq-de950720 rmq-c08c6c56 rmq-b9a5a823 rmq-b989695e\" data-radium=\"true\">\n<div data-rid=\"a6c3cf7c-7079-467b-a747-dbadaad0a7ab\" data-replo-repeated-index=\".0.0.0.0.0\" class=\"rmq-a6e3fcb4 rmq-c498128d rmq-2ccff18 rmq-9c73a985 alchemy-rte\" style=\"flex-grow:1;font-size:20px;text-align:left;font-family:Futura BdCn BT;font-weight:400;line-height:22px;letter-spacing:0px;text-align-last:left;flex-shrink:0;flex-basis:auto;overflow-wrap:break-word\" data-radium=\"true\"><span contenteditable=\"false\" data-testid=\"editable-content\" style=\"width:100%\" data-radium=\"true\"><p>HOW DO I CLAIM MY FREE CAPS?<\/p><\/span><\/div>\n<div data-rid=\"b0da45a3-653e-4d68-ab46-870f559d4a96\" data-replo-repeated-index=\".0.0.0.0.0\" style=\"width:24px;height:24px;flex-shrink:0;flex-basis:auto;--replo-svg-width:100%;line-height:100%\" data-testid=\"icon-plus\" class=\"rmq-9eb2a102 rmq-b4e52560 rmq-1cc17555 rmq-c8dcd3e8\" data-radium=\"true\"><svg xmlns=\"http:\/\/www.w3.org\/2000\/svg\" viewbox=\"0 0 16 16\" width=\"1em\" height=\"1em\" fill=\"currentColor\" style=\"height:100%;width:var(--replo-svg-width, 100%)\"><path d=\"M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z\"><\/path><\/svg><\/div>\n<\/div>\n<div data-state=\"closed\" id=\"radix-:Ra77:\" hidden=\"\" class=\"replo-animated\" style=\"\"><\/div>\n<\/div>\n<div data-rid=\"9940f35f-aa13-4771-b51d-632a78291148\" data-replo-repeated-index=\".0.0.0\" style=\"display:flex;align-self:stretch;flex-direction:column;border-top-color:#090F341A;border-top-style:solid;border-top-width:1px;border-left-color:#090F341A;border-left-style:solid;border-left-width:1px;border-right-color:#090F341A;border-right-style:solid;border-right-width:1px;border-bottom-color:#090F341A;border-bottom-style:solid;border-bottom-width:1px;border-top-left-radius:10px;border-top-right-radius:10px;border-bottom-left-radius:10px;border-bottom-right-radius:10px;overflow:hidden;flex-shrink:0;flex-basis:auto;position:relative\" data-replo-collapsible=\"true\" class=\"rmq-279724f8 rmq-b0d77a5a rmq-8b4bc3af rmq-d634bf52\" data-radium=\"true\" data-state=\"closed\">\n<div data-rid=\"a1f540ef-0137-4382-b6b7-37a924664e82\" aria-expanded=\"false\" aria-controls=\"9940f35f-aa13-4771-b51d-632a78291148\" data-replo-repeated-index=\".0.0.0.0\" tabindex=\"0\" role=\"button\" style=\"display:flex;min-width:var(--rmw, auto);min-height:var(--rmh, auto);align-items:center;padding-top:15px;padding-left:26px;padding-right:26px;padding-bottom:15px;justify-content:space-between;flex-shrink:0;flex-basis:auto;gap:15px;position:relative;cursor:pointer;--rmw:auto;--rmh:auto\" class=\"rmq-de950720 rmq-c08c6c56 rmq-b9a5a823 rmq-b989695e\" data-radium=\"true\">\n<div data-rid=\"89060f70-d74f-4014-bbf4-3990f56859f0\" data-replo-repeated-index=\".0.0.0.0.0\" class=\"rmq-a6e3fcb4 rmq-c498128d rmq-2ccff18 rmq-9c73a985 alchemy-rte\" style=\"flex-grow:1;font-size:20px;text-align:left;font-family:Futura BdCn BT;font-weight:400;line-height:22px;letter-spacing:0px;text-align-last:left;flex-shrink:0;flex-basis:auto;overflow-wrap:break-word\" data-radium=\"true\"><span contenteditable=\"false\" data-testid=\"editable-content\" style=\"width:100%\" data-radium=\"true\"><p>DO I HAVE TO LEAVE A 5-STAR REVIEW?<\/p><\/span><\/div>\n<div data-rid=\"cd970fd0-c31f-4b05-b2bb-56604a23ae4f\" data-replo-repeated-index=\".0.0.0.0.0\" style=\"width:24px;height:24px;flex-shrink:0;flex-basis:auto;--replo-svg-width:100%;line-height:100%\" data-testid=\"icon-plus\" class=\"rmq-9eb2a102 rmq-b4e52560 rmq-1cc17555 rmq-c8dcd3e8\" data-radium=\"true\"><svg xmlns=\"http:\/\/www.w3.org\/2000\/svg\" viewbox=\"0 0 16 16\" width=\"1em\" height=\"1em\" fill=\"currentColor\" style=\"height:100%;width:var(--replo-svg-width, 100%)\"><path d=\"M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z\"><\/path><\/svg><\/div>\n<\/div>\n<div data-state=\"closed\" id=\"radix-:Re77:\" hidden=\"\" class=\"replo-animated\" style=\"\"><\/div>\n<\/div>\n<div data-rid=\"84fd0579-cb76-4bbb-adfe-92230ac6c60a\" data-replo-repeated-index=\".0.0.0\" style=\"display:flex;align-self:stretch;flex-direction:column;border-top-color:#090F341A;border-top-style:solid;border-top-width:1px;border-left-color:#090F341A;border-left-style:solid;border-left-width:1px;border-right-color:#090F341A;border-right-style:solid;border-right-width:1px;border-bottom-color:#090F341A;border-bottom-style:solid;border-bottom-width:1px;border-top-left-radius:10px;border-top-right-radius:10px;border-bottom-left-radius:10px;border-bottom-right-radius:10px;overflow:hidden;flex-shrink:0;flex-basis:auto;position:relative\" data-replo-collapsible=\"true\" class=\"rmq-279724f8 rmq-b0d77a5a rmq-8b4bc3af rmq-d634bf52\" data-radium=\"true\" data-state=\"closed\">\n<div data-rid=\"b55c8fa1-08ae-4f7d-b5e7-3b7ff4d28362\" aria-expanded=\"false\" aria-controls=\"84fd0579-cb76-4bbb-adfe-92230ac6c60a\" data-replo-repeated-index=\".0.0.0.0\" tabindex=\"0\" role=\"button\" style=\"display:flex;min-width:var(--rmw, auto);min-height:var(--rmh, auto);align-items:center;padding-top:15px;padding-left:26px;padding-right:26px;padding-bottom:15px;justify-content:space-between;flex-shrink:0;flex-basis:auto;gap:15px;position:relative;cursor:pointer;--rmw:auto;--rmh:auto\" class=\"rmq-de950720 rmq-c08c6c56 rmq-b9a5a823 rmq-b989695e\" data-radium=\"true\">\n<div data-rid=\"787dd030-435f-4afe-b139-94ab03d4743e\" data-replo-repeated-index=\".0.0.0.0.0\" style=\"display:flex;min-width:var(--rmw, auto);min-height:var(--rmh, auto);max-width:100%;align-self:stretch;align-items:center;justify-content:space-between;flex-shrink:0;flex-basis:auto;gap:15px;position:relative;--rmw:auto;--rmh:auto\" class=\"rmq-93680474 rmq-c08c6c56 rmq-b9a5a823 rmq-b989695e\" data-radium=\"true\"><div data-rid=\"3e46849a-3602-4610-b610-a5221659596e\" data-replo-repeated-index=\".0.0.0.0.0.0\" class=\"rmq-a6e3fcb4 rmq-c498128d rmq-2ccff18 rmq-9c73a985 alchemy-rte\" style=\"flex-grow:1;font-size:20px;text-align:left;font-family:Futura BdCn BT;font-weight:400;line-height:22px;letter-spacing:0px;text-align-last:left;flex-shrink:0;flex-basis:auto;overflow-wrap:break-word\" data-radium=\"true\"><span contenteditable=\"false\" data-testid=\"editable-content\" style=\"width:100%\" data-radium=\"true\"><p>CAN I PICK MY CAPS?<\/p><\/span><\/div><\/div>\n<div data-rid=\"8db9e888-469f-4e93-a8ed-98e5abc69ade\" data-replo-repeated-index=\".0.0.0.0.0\" style=\"width:24px;height:24px;flex-shrink:0;flex-basis:auto;--replo-svg-width:100%;line-height:100%\" data-testid=\"icon-plus\" class=\"rmq-9eb2a102 rmq-b4e52560 rmq-1cc17555 rmq-c8dcd3e8\" data-radium=\"true\"><svg xmlns=\"http:\/\/www.w3.org\/2000\/svg\" viewbox=\"0 0 16 16\" width=\"1em\" height=\"1em\" fill=\"currentColor\" style=\"height:100%;width:var(--replo-svg-width, 100%)\"><path d=\"M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z\"><\/path><\/svg><\/div>\n<\/div>\n<div data-state=\"closed\" id=\"radix-:Ri77:\" hidden=\"\" class=\"replo-animated\" style=\"\"><\/div>\n<\/div>\n<\/div>"
+      }
+    },
+    "accordion_section_Ek7UHH": {
+      "type": "accordion-section",
+      "blocks": {
+        "accordion_qneQnx": {
+          "type": "accordion",
+          "settings": {
+            "question": "CAN I SPLIT A BUNDLE BETWEEN FRIENDS?",
+            "answer": "<p>Yes. As long as the order is posted to one address we don't mind how many people it's for.<\/p>"
+          }
+        },
+        "accordion_BXWyTH": {
+          "type": "accordion",
+          "settings": {
+            "question": "CAN MY BUNDLE INCLUDE MEN'S AND WOMEN'S SCRUBS?",
+            "answer": "<p>Yes. But you'll need to create it manually.<br\/><br\/><strong>What does that mean?<br\/><\/strong>At the moment, due to some technical challenges, our product pages don't let you mix men's and women's styles. You can still get a mixed men's\/women's bundle though. It just takes a few more steps.<br\/><br\/><strong>How do I make a mixed men's\/women's FREESET wardrobe bundle?<br\/><\/strong>Go to our store and add any three scrub tops and three scrub pants to cart. And that's it. Our system will notice you have four sets in your cart and apply the FREESET discount automatically at checkout.<\/p>"
+          }
+        },
+        "accordion_wkzEVG": {
+          "type": "accordion",
+          "settings": {
+            "question": "WHAT COUPON CODE SHOULD I USE?",
+            "answer": "<p>The wardrobe bundle code is FREESET. But there is no need to remember it. It will apply automatically at checkout.<\/p>"
+          }
+        }
+      },
+      "block_order": [
+        "accordion_qneQnx",
+        "accordion_BXWyTH",
+        "accordion_wkzEVG"
+      ],
+      "settings": {
+        "accordion_title": "Bundle FAQs"
+      }
+    },
+    "accordion_section_qMkDqQ": {
+      "type": "accordion-section",
+      "blocks": {
+        "accordion_MHGYMh": {
+          "type": "accordion",
+          "settings": {
+            "question": "ARE SCRUBS REALLY TAX DEDUCTABLE?",
+            "answer": "<p>Since the team at Dr Woof are not tax experts, we’ll let the Aussie government explain it to you:<\/p><p>\"You can claim the cost of buying, hiring, repairing or cleaning clothing … that has protective features and functions which you wear to protect you from specific risks of injury or illness at work. For example, non-slip nursing shoes or scrubs. \"<\/p><p>Source: <a href=\"https:\/\/www.ato.gov.au\/api\/public\/content\/1a87901a-bd4d-4e9e-9745-ca1753e036b8_TaxTimeToolkit_Nurseormidwife_pdf\" target=\"_blank\" title=\"https:\/\/www.ato.gov.au\/api\/public\/content\/1a87901a-bd4d-4e9e-9745-ca1753e036b8_TaxTimeToolkit_Nurseormidwife_pdf\"><span style=\"text-decoration:underline\">ATO Handout: If you’re a nurse or midwife it pays to learn what you can claim<\/span><\/a><\/p><p>For more info, visit the <a href=\"https:\/\/www.ato.gov.au\/individuals-and-families\/income-deductions-offsets-and-records\/in-detail\/occupation-and-industry-specific-guides\/l-q\/nurses-and-midwives-income-and-work-related-deductions\/deductions-for-work-expenses\" target=\"_blank\" title=\"https:\/\/www.ato.gov.au\/individuals-and-families\/income-deductions-offsets-and-records\/in-detail\/occupation-and-industry-specific-guides\/l-q\/nurses-and-midwives-income-and-work-related-deductions\/deductions-for-work-expenses\">ATO website<\/a> or talk to your accountant. <\/p>"
+          }
+        },
+        "accordion_HRhLFD": {
+          "type": "accordion",
+          "settings": {
+            "question": "HOW DID YOUR TEAM MEMBER ESTIMATE THEIR DEDUCTION?",
+            "answer": "<p>1. They entered their taxable income in the <a href=\"https:\/\/www.ato.gov.au\/individuals-and-families\/income-deductions-offsets-and-records\/in-detail\/occupation-and-industry-specific-guides\/l-q\/nurses-and-midwives-income-and-work-related-deductions\/deductions-for-work-expenses\" target=\"_blank\" title=\"https:\/\/www.ato.gov.au\/individuals-and-families\/income-deductions-offsets-and-records\/in-detail\/occupation-and-industry-specific-guides\/l-q\/nurses-and-midwives-income-and-work-related-deductions\/deductions-for-work-expenses\">ATO<\/a> simple tax calculator. <br\/><br\/>2. They reduced their taxable income by the cost of a Dr. Woof FREESET deal ($281.60) and entered it again. <br\/><br\/>3. They looked at the difference in their tax bill - which was $84.48. (30% of the purchase price.)<br\/>(If you'd like to check our maths, our team member is in the $40-120k tax bracket and is resident in Australia.)<br\/><br\/>IMPORTANT NOTE:  Your tax entitlements may not be the same as our team member's. You can estimate your tax bill and find out more about the method for estimating that they used, over at the <a href=\"https:\/\/www.ato.gov.au\/individuals-and-families\/income-deductions-offsets-and-records\/in-detail\/occupation-and-industry-specific-guides\/l-q\/nurses-and-midwives-income-and-work-related-deductions\/deductions-for-work-expenses\" target=\"_blank\" title=\"https:\/\/www.ato.gov.au\/individuals-and-families\/income-deductions-offsets-and-records\/in-detail\/occupation-and-industry-specific-guides\/l-q\/nurses-and-midwives-income-and-work-related-deductions\/deductions-for-work-expenses\">ATO<\/a>.<\/p>"
+          }
+        },
+        "accordion_JJAY83": {
+          "type": "accordion",
+          "settings": {
+            "question": "WHAT DEDUCTION WOULD I GET?",
+            "answer": "<p>That we can't answer. Your tax entitlements depend heavily on your circumstances. For advice on what you can claim and how much it will reduce your tax liability, talk to your accountant or the <a href=\"https:\/\/www.ato.gov.au\/individuals-and-families\/income-deductions-offsets-and-records\/in-detail\/occupation-and-industry-specific-guides\/l-q\/nurses-and-midwives-income-and-work-related-deductions\/deductions-for-work-expenses\" target=\"_blank\" title=\"https:\/\/www.ato.gov.au\/individuals-and-families\/income-deductions-offsets-and-records\/in-detail\/occupation-and-industry-specific-guides\/l-q\/nurses-and-midwives-income-and-work-related-deductions\/deductions-for-work-expenses\">ATO<\/a> directly.<\/p>"
+          }
+        }
+      },
+      "block_order": [
+        "accordion_MHGYMh",
+        "accordion_HRhLFD",
+        "accordion_JJAY83"
+      ],
+      "settings": {
+        "accordion_title": "*Tax FAQs"
+      }
+    },
+    "accordion_section_aAWtPx": {
+      "type": "accordion-section",
+      "blocks": {
+        "accordion_d4F9Vg": {
+          "type": "accordion",
+          "settings": {
+            "question": "HOW DO I CLAIM MY FREE DISCOUNT CODE\/FREE COMPRESSION SOCKS?",
+            "answer": "<p>Free $40 discount code is a free gift that comes when you spend over $350.<\/p><p>Free Compression Socks is a thank-you gift for leaving a review. <\/p><p>1. Wait until your order arrives<\/p><p>2. We will send you an email offering a free compression socks if you leave a photo review<\/p><p>3. Follow the instructions in the email to claim your compression socks<\/p><p>A couple notes: <\/p><p>These offers do have some terms. Check out our Discounts & Deals page for more info.<\/p><p>If your compression socks email does not arrive, contact us and we will sort it out for you. <\/p>"
+          }
+        },
+        "accordion_Yzn7Kq": {
+          "type": "accordion",
+          "settings": {
+            "question": "DO I HAVE TO LEAVE A 5-STAR REVIEW?",
+            "answer": "<p>No! The thank-you gift is for leaving an honest photo review. We would never ask you to rate our products based on anything other than your real, honest impression of them. <\/p>"
+          }
+        },
+        "accordion_VxXVqR": {
+          "type": "accordion",
+          "settings": {
+            "question": "CAN I PICK MY COMPRESSION SOCKS?",
+            "answer": "<p>Yes. The compression socks you get as a thank you for leaving a photo review is your choice. We'll give you a code for a free compression socks (excl shipping) and then you're welcome to go to our store and pick.<\/p>"
+          }
+        }
+      },
+      "block_order": [
+        "accordion_d4F9Vg",
+        "accordion_Yzn7Kq",
+        "accordion_VxXVqR"
+      ],
+      "settings": {
+        "accordion_title": "Free Gifts FAQs"
+      }
+    },
+    "custom_html_U3DXKA": {
+      "type": "custom-html",
+      "settings": {
+        "custom_html": "<img data-swift-lazy=\"1\" loading=\"lazy\" class=\"\" src=\"\/\/www.drwoofapparel.com.au\/cdn\/shop\/files\/Horizontal_logo_transparent_background_blue_2_7dc8a8de-20c6-4155-8747-0810a5b4b5e0_210x.png?v=1704080588\" srcset=\"\/\/www.drwoofapparel.com.au\/cdn\/shop\/files\/Horizontal_logo_transparent_background_blue_2_7dc8a8de-20c6-4155-8747-0810a5b4b5e0_210x.png?v=1704080588 1x, \/\/www.drwoofapparel.com.au\/cdn\/shop\/files\/Horizontal_logo_transparent_background_blue_2_7dc8a8de-20c6-4155-8747-0810a5b4b5e0_210x@2x.png?v=1704080588 2x\" alt=\"Dr. Woof Apparel AU\" style=\"display:block;margin:30px auto 30px;\">"
+      }
+    }
+  },
+  "order": [
+    "custom",
+    "headerv3",
+    "advanced_content_6HdUMF",
+    "featured_content_9e7dLU",
+    "text_and_image_tdDqFJ",
+    "text_and_image_KEKPXU",
+    "text_and_image_fwU4rG",
+    "text_and_image_ELyX8q",
+    "text_and_image_LXWzL6",
+    "text_and_image_aGgXXD",
+    "adsection_zyrYhE",
+    "custom_html_ymnmNW",
+    "custom_html_8gcTVC",
+    "custom_html_i8eWm7",
+    "accordion_section_Ek7UHH",
+    "accordion_section_qMkDqQ",
+    "accordion_section_aAWtPx",
+    "custom_html_U3DXKA"
+  ]
+}

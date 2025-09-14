@@ -1,0 +1,1663 @@
+<!-- snippets/product-form-preorder.liquid -->
+<style>
+  {% if section.settings.newpdptop %}
+    .image-wrap.loaded{
+      background:#fff;
+    }
+    .product__thumb-item img,
+    .product-image-main img{
+      /* border-radius:8px; */
+    } 
+  {% endif %}
+    .tprice,
+  .tleft{
+    font-size:18px;
+  }
+  {% if section.settings.newpdptop %}
+    .afterpay-logo-new{
+      width:160px;
+      margin-left:auto;
+      margin-right:auto;
+      margin-top:20px;
+      margin-bottom:17px;
+    }
+    .dv{
+      display:block;
+    }
+    .mv{
+      display:none;
+    }
+    .payment-buttons{
+              
+                background:#fff;
+              }
+              .bts_container{
+      background:#fff !important;
+    }
+  {% endif %}
+
+  @media only screen and (max-width:480px){
+    {% if section.settings.newpdptop %}
+      .dv{
+        display:none;
+      }
+      .mv{
+        display:block;
+      }
+          .payment-buttons{
+                  padding:0 12px;
+                  background:#fff;
+                }
+
+    {% endif %}
+    .dollarsign,
+    .tprice{
+      position:relative;
+      top:-4px;
+    }
+  }
+
+  #embroiderycheckbox{
+    display:none;
+  }
+  .hoverclicker{
+    // border-top:1px solid #e8e8e8;
+    position:relative; 
+  }
+  .hidden-custom-bundle, select.options-select[data-name='Color'] {
+    //display:block !important;
+  }
+  .hidden-custom-bundle, select.options-select[data-name='Color'] {
+    //display:block !important;
+  }
+  .mobile-atc .add-to-cart{
+  font-size: 12px;
+  }
+
+    .mobile-atc {
+  	transition: bottom 0.3s!important;
+  }
+  .mobile-atc {
+  display: none;
+  }
+  @media screen and (max-width: 480px) {
+  .mobile-atc {
+      position: fixed;
+      bottom: 0;
+      z-index: 2;
+      left: 0;
+      max-width: 100%;
+      width: 100%;
+      box-sizing:border-box;
+      padding: 15px 20px;
+      background: #fff;
+      border: 1px solid #dedede;
+      box-shadow: 0 0 5px rgba(0,0,0,0.15);
+      display:block;
+  }
+  .custom-button {
+    width: 80%;
+  }
+
+}
+
+</style>
+
+{% unless template contains 'custom_builder' %}
+<div class="inventoryWrapper" style="display:none;">
+  {% if current_variant.inventory_management == 'shopify' %}
+    <p>Stock: <span id="quantitytoh">{{ current_variant.inventory_quantity }}</span></p>
+  {% endif %}
+</div>
+{%- capture cl -%}
+{%- for c in product.collections -%}{{ c.title | downcase }}{%- endfor -%}
+{%- endcapture -%}
+{% capture form_id %}AddToCartForm-{{ section_id }}{% endcapture %}
+{% form 'product', product, id: form_id, class: 'product-single__form small--text-center' %}
+
+<input type="hidden" name="data-product-id" value="{{ product.id }}">
+<input type="hidden" name="data-product-variant-id" value="{{ product.selected_or_first_available_variant.id }}">
+<input id="addon" class="resetmarker" type="hidden" name="properties[ADD ON]">
+<input id="namePlacement" class="resetmarker" type="hidden" name="properties[Name Position]">
+<input id="nameFirstline" class="resetmarker" type="hidden" name="properties[Name First Line]">
+<input id="nameSecondline" class="resetmarker" type="hidden" name="properties[Name Second Line]">
+<input id="nameColor" class="resetmarker" type="hidden" name="properties[Name Colour]">
+<input id="logoPlacement" class="resetmarker" type="hidden" name="properties[Logo Placement]">
+<input id="logoName" class="resetmarker" type="hidden" name="properties[My Sleeve Mate]">
+<input id="initials" class="resetmarker" type="hidden" name="properties[Initials]">
+<input id="initialsColor" class="resetmarker" type="hidden" name="properties[Initials Colour]">
+
+  
+<!-- combined two product id Metafield Data -->
+{% assign sf_product_combined = all_products[product.metafields.sf_product_combined.product_handle] %}
+{% assign sf_product_third = all_products[product.metafields.sf_product_combined.third_product] %}
+{% assign sf_product_fourth = all_products[product.metafields.sf_product_combined.fourth_product] %}
+{% assign sf_product_fifth = all_products[product.metafields.sf_product_combined.fifth_product] %}
+
+
+<script>
+let currentVariant = "{{ product.selected_or_first_available_variant.title }}";
+
+function getSecondPart(str) {
+    return str.split(' / ')[1];
+}
+
+function getfirstPart(str) {
+  return str.substring(0, str.indexOf(' '));
+}
+
+current = getSecondPart(currentVariant);
+let newcounter = 0;
+let x 
+let fvar
+let svar
+let availability
+jsons = "";
+counter = 0;
+{% for variant in product.variants %}
+  svar = getSecondPart("{{variant.title}}")
+  if(current == svar){
+    counter++;
+  }
+{% endfor %}
+<!-- 08 -->
+{% for variant in product.variants %}
+
+   x = "{{ variant.title }}";
+   fvar = getfirstPart(x)
+   svar = getSecondPart(x)
+   if(current == svar){
+      if(newcounter == 0){
+          jsons =  jsons + '[';
+      }
+      availability = {{variant.available}}
+      jsons = jsons + '{"firstVariant":"' + fvar + '","secondVariant":"' + svar + '","available":"' + availability + '"}';
+      newcounter++;
+      if(newcounter < counter){
+          jsons =  jsons + ',';
+      }else{
+          jsons =  jsons + ']';
+      }
+   }
+
+{% endfor %}
+  
+   jsons = JSON.parse(jsons);
+
+ 
+</script>
+<!-- 09 -->
+{% unless product.has_only_default_variant %}
+<div class="flexreorder">
+  {% for option in product.options_with_values %}
+    <!-- 09 -->
+
+    {% if variant_type == 'button' %} 
+    <!-- 10 -->
+    {% if product.type == "Men Scrub Pants" or product.type == "Women Scrub Pants" or product.type == 'Nurse Bag' %}
+      {% include 'variant-button-v2', section_id: section_id, option_drop: option %}
+      {% else %}
+      {% include 'variant-button', section_id: section_id, option_drop: option %}
+    {% endif %}
+    
+    {% else %}
+    <!-- 11 -->
+    {% include 'variant-dropdown', section_id: section_id %}
+    {% endif %}
+  <!-- 12 -->
+
+  {% endfor %}
+</div>
+{% endunless %}
+<!-- 14 -->
+{% comment %}Start Please dont delete it{% endcomment %} 
+{% assign totalVariants = product.variants.size %}
+{% assign SectotalVariants = sf_product_combined.variants.size %}
+<!-- 01 -->
+<div data-totaljson="{{ totalVariants | plus: SectotalVariants }}" style="display:none;" class="all-options secondproducthandle_for_JS" data-secondproducthandle="{{ sf_product_combined.handle }}">
+  {% unless sf_product_combined.empty? %}
+  {%- assign product_combined_index = forloop.index -%}
+  {% for product_combined in sf_product_combined.options_with_values %}
+  <!-- 02 -->
+  {% if product_combined.position  == 1 %}
+  <!-- 03 -->
+ <p class="sec_prod_first_option" data-index="1">{% for combined_value in product_combined.values %}{{ combined_value }}{% if forloop.last == true %}{% else %},{% endif %}{% endfor %}</p>
+  {% endif %}
+    {% if product_combined.position  == 2 %}
+    <!-- 04 -->
+ <p class="sec_prod_sec_option" data-index="2"> {% for combined_value in product_combined.values %}{{ combined_value }}{% if forloop.last == true %}{% else %},{% endif %}{% endfor %}</p>
+  {% endif %}
+    {% if product_combined.position  == 3 %}
+    <!-- 05 -->
+ <p class="sec_prod_third_option" data-index="3"> {% for combined_value in product_combined.values %}{{ combined_value }}{% if forloop.last == true %}{% else %},{% endif %}{% endfor %}</p>
+  {% endif %}
+  {% endfor %}
+  {% endunless %}
+</div>
+
+
+{% assign SectotalVariants2 = sf_product_third.variants.size %}
+<div data-totaljson="{{ totalVariants | plus: SectotalVariants2 }}" style="display:none;" class="all-options thirdproducthandle_for_JS" data-secondproducthandle2="{{ sf_product_third.handle }}">
+  {% unless sf_product_third.empty? %}
+  {%- assign product_combined_index = forloop.index -%}
+  {% for product_combined in sf_product_third.options_with_values %}
+  <!-- 02 -->
+  {% if product_combined.position  == 1 %}
+  <!-- 03 -->
+ <p class="sec_prod_first_option" data-index="1">{% for combined_value in product_combined.values %}{{ combined_value }}{% if forloop.last == true %}{% else %},{% endif %}{% endfor %}</p>
+  {% endif %}
+    {% if product_combined.position  == 2 %}
+    <!-- 04 -->
+ <p class="sec_prod_sec_option" data-index="2"> {% for combined_value in product_combined.values %}{{ combined_value }}{% if forloop.last == true %}{% else %},{% endif %}{% endfor %}</p>
+  {% endif %}
+    {% if product_combined.position  == 3 %}
+    <!-- 05 -->
+ <p class="sec_prod_third_option" data-index="3"> {% for combined_value in product_combined.values %}{{ combined_value }}{% if forloop.last == true %}{% else %},{% endif %}{% endfor %}</p>
+  {% endif %}
+  {% endfor %}
+  {% endunless %}
+</div>
+
+{% assign SectotalVariants3 = sf_product_fourth.variants.size %}
+<div data-totaljson="{{ totalVariants | plus: SectotalVariants3 }}" style="display:none;" class="all-options fourthproducthandle_for_JS" data-secondproducthandle3="{{ sf_product_fourth.handle }}">
+  {% unless sf_product_fourth.empty? %}
+  {%- assign product_combined_index = forloop.index -%}
+  {% for product_combined in sf_product_fourth.options_with_values %}
+  <!-- 02 -->
+  {% if product_combined.position  == 1 %}
+  <!-- 03 -->
+ <p class="sec_prod_first_option" data-index="1">{% for combined_value in product_combined.values %}{{ combined_value }}{% if forloop.last == true %}{% else %},{% endif %}{% endfor %}</p>
+  {% endif %}
+    {% if product_combined.position  == 2 %}
+    <!-- 04 -->
+ <p class="sec_prod_sec_option" data-index="2"> {% for combined_value in product_combined.values %}{{ combined_value }}{% if forloop.last == true %}{% else %},{% endif %}{% endfor %}</p>
+  {% endif %}
+    {% if product_combined.position  == 3 %}
+    <!-- 05 -->
+ <p class="sec_prod_third_option" data-index="3"> {% for combined_value in product_combined.values %}{{ combined_value }}{% if forloop.last == true %}{% else %},{% endif %}{% endfor %}</p>
+  {% endif %}
+  {% endfor %}
+  {% endunless %}
+</div>
+
+{% assign SectotalVariants5 = sf_product_fifth.variants.size %}
+<div data-totaljson="{{ totalVariants | plus: SectotalVariants5 }}" style="display:none;" class="all-options fifthproducthandle_for_JS" data-secondproducthandle3="{{ sf_product_fifth.handle }}">
+  {% unless sf_product_fifth.empty? %}
+  {%- assign product_combined_index = forloop.index -%}
+  {% for product_combined in sf_product_fifth.options_with_values %}
+  <!-- 02 -->
+  {% if product_combined.position  == 1 %}
+  <!-- 03 -->
+ <p class="sec_prod_first_option" data-index="1">{% for combined_value in product_combined.values %}{{ combined_value }}{% if forloop.last == true %}{% else %},{% endif %}{% endfor %}</p>
+  {% endif %}
+    {% if product_combined.position  == 2 %}
+    <!-- 04 -->
+ <p class="sec_prod_sec_option" data-index="2"> {% for combined_value in product_combined.values %}{{ combined_value }}{% if forloop.last == true %}{% else %},{% endif %}{% endfor %}</p>
+  {% endif %}
+    {% if product_combined.position  == 3 %}
+    <!-- 05 -->
+ <p class="sec_prod_third_option" data-index="3"> {% for combined_value in product_combined.values %}{{ combined_value }}{% if forloop.last == true %}{% else %},{% endif %}{% endfor %}</p>
+  {% endif %}
+  {% endfor %}
+  {% endunless %}
+</div>
+
+{% comment %} End Please dont delete it{% endcomment %} 
+<!-- 06 -->
+<select name="id" id="ProductSelect-{{ section_id }}" class="product-single__variants no-js" data-product-select>
+  {% for variant in product.variants %}
+  {% if variant.available %}
+  <option data-id="{{variant.id}}" data-inqua="{{ variant.inventory_quantity}}" varname="{{variant.title}}" data-avail="{% if variant.available %}available{%else %}unavailable{% endif %}" {% if variant == product.selected_or_first_available_variant %}
+          selected="selected" {% endif %}
+          value="{{ variant.id }}">
+    {{ variant.title }} 
+  </option>
+  {% else %}
+  <option data-id="{{variant.id}}" data-inqua="{{ variant.inventory_quantity}}" varname="{{variant.title}}" data-avail="{% if variant.available %}available{%else %}unavailable{% endif %}" disabled="disabled">
+    {{ variant.title }}
+  </option>
+  {% endif %}
+  {% endfor %}
+
+  {% unless sf_product_combined.empty? %}
+  {% for product_combined in sf_product_combined.variants %}
+  {% if product_combined.available %}
+  <option data-inqua="{{ product_combined.inventory_quantity}}" varname="{{product_combined.title}}" data-avail="{% if product_combined.available %}available{%else %}unavailable{% endif %}" {% if product_combined == product.selected_or_first_available_variant %}
+          selected="selected" {% endif %}
+          value="{{ product_combined.id }}">
+    {{ product_combined.title }} 
+  </option>
+  {% else %}
+  <option data-inqua="{{ product_combined.inventory_quantity}}" varname="{{product_combined.title}}" data-avail="{% if product_combined.available %}available{%else %}unavailable{% endif %}" disabled="disabled">
+    {{ product_combined.title }}
+  </option>
+  {% endif %}
+  {% endfor %}
+  {% endunless %}
+
+
+
+  {% unless sf_product_third.empty? %}
+  {% for product_combined in sf_product_third.variants %}
+  {% if product_combined.available %}
+  <option data-inqua="{{ product_combined.inventory_quantity}}" varname="{{product_combined.title}}" data-avail="{% if product_combined.available %}available{%else %}unavailable{% endif %}" {% if product_combined == product.selected_or_first_available_variant %}
+          selected="selected" {% endif %}
+          value="{{ product_combined.id }}">
+    {{ product_combined.title }} 
+  </option>
+  {% else %}
+  <option data-inqua="{{ product_combined.inventory_quantity}}" varname="{{product_combined.title}}" data-avail="{% if product_combined.available %}available{%else %}unavailable{% endif %}" disabled="disabled">
+    {{ product_combined.title }}
+  </option>
+  {% endif %}
+  {% endfor %}
+  {% endunless %}
+
+  {% unless sf_product_fourth.empty? %}
+    {% for product_combined in sf_product_fourth.variants %}
+    {% if product_combined.available %}
+    <option data-inqua="{{ product_combined.inventory_quantity}}" varname="{{product_combined.title}}" data-avail="{% if product_combined.available %}available{%else %}unavailable{% endif %}" {% if product_combined == product.selected_or_first_available_variant %}
+            selected="selected" {% endif %}
+            value="{{ product_combined.id }}">
+      {{ product_combined.title }} 
+    </option>
+    {% else %}
+    <option data-inqua="{{ product_combined.inventory_quantity}}" varname="{{product_combined.title}}" data-avail="{% if product_combined.available %}available{%else %}unavailable{% endif %}" disabled="disabled">
+      {{ product_combined.title }}
+    </option>
+    {% endif %}
+    {% endfor %}
+    {% endunless %}
+  
+    {% unless sf_product_fifth.empty? %}
+      {% for product_combined in sf_product_fifth.variants %}
+      {% if product_combined.available %}
+      <option data-inqua="{{ product_combined.inventory_quantity}}" varname="{{product_combined.title}}" data-avail="{% if product_combined.available %}available{%else %}unavailable{% endif %}" {% if product_combined == product.selected_or_first_available_variant %}
+              selected="selected" {% endif %}
+              value="{{ product_combined.id }}">
+        {{ product_combined.title }} 
+      </option>
+      {% else %}
+      <option data-inqua="{{ product_combined.inventory_quantity}}" varname="{{product_combined.title}}" data-avail="{% if product_combined.available %}available{%else %}unavailable{% endif %}" disabled="disabled">
+        {{ product_combined.title }}
+      </option>
+      {% endif %}
+      {% endfor %}
+      {% endunless %}
+
+</select>
+  
+  <select class="custom-product-single__variants no-js hidden" data-product-select>
+  {% for variant in product.variants %}
+  <option {% if variant == product.selected_or_first_available_variant %}
+          selected="selected" {% endif %}
+          value="{{ variant.id }}">
+  </option>
+  {% endfor %}
+{% unless sf_product_combined.empty? %}
+  {% for product_combined in sf_product_combined.variants %}
+  {% if product_combined.available %}
+  <option data-inqua="{{ product_combined.inventory_quantity}}" varname="{{product_combined.title}}" data-avail="{% if product_combined.available %}available{%else %}unavailable{% endif %}" {% if product_combined == product.selected_or_first_available_variant %}
+          selected="selected" {% endif %}
+          value="{{ product_combined.id }}">
+  </option>
+  {% else %}
+  <option data-inqua="{{ product_combined.inventory_quantity}}" varname="{{product_combined.title}}" data-avail="{% if product_combined.available %}available{%else %}unavailable{% endif %}" disabled="disabled">
+  </option>
+  {% endif %}
+  {% endfor %}
+  {% endunless %}
+
+  {% unless sf_product_third.empty? %}
+  {% for product_combined in sf_product_third.variants %}
+  {% if product_combined.available %}
+  <option data-inqua="{{ product_combined.inventory_quantity}}" varname="{{product_combined.title}}" data-avail="{% if product_combined.available %}available{%else %}unavailable{% endif %}" {% if product_combined == product.selected_or_first_available_variant %}
+          selected="selected" {% endif %}
+          value="{{ product_combined.id }}">
+  </option>
+  {% else %}
+  <option data-inqua="{{ product_combined.inventory_quantity}}" varname="{{product_combined.title}}" data-avail="{% if product_combined.available %}available{%else %}unavailable{% endif %}" disabled="disabled">
+  </option>
+  {% endif %}
+  {% endfor %}
+  {% endunless %}
+
+  {% unless sf_product_fourth.empty? %}
+    {% for product_combined in sf_product_fourth.variants %}
+    {% if product_combined.available %}
+    <option data-inqua="{{ product_combined.inventory_quantity}}" varname="{{product_combined.title}}" data-avail="{% if product_combined.available %}available{%else %}unavailable{% endif %}" {% if product_combined == product.selected_or_first_available_variant %}
+            selected="selected" {% endif %}
+            value="{{ product_combined.id }}">
+    </option>
+    {% else %}
+    <option data-inqua="{{ product_combined.inventory_quantity}}" varname="{{product_combined.title}}" data-avail="{% if product_combined.available %}available{%else %}unavailable{% endif %}" disabled="disabled">
+    </option>
+    {% endif %}
+    {% endfor %}
+    {% endunless %}
+
+    {% unless sf_product_fifth.empty? %}
+      {% for product_combined in sf_product_fifth.variants %}
+      {% if product_combined.available %}
+      <option data-inqua="{{ product_combined.inventory_quantity}}" varname="{{product_combined.title}}" data-avail="{% if product_combined.available %}available{%else %}unavailable{% endif %}" {% if product_combined == product.selected_or_first_available_variant %}
+              selected="selected" {% endif %}
+              value="{{ product_combined.id }}">
+      </option>
+      {% else %}
+      <option data-inqua="{{ product_combined.inventory_quantity}}" varname="{{product_combined.title}}" data-avail="{% if product_combined.available %}available{%else %}unavailable{% endif %}" disabled="disabled">
+      </option>
+      {% endif %}
+      {% endfor %}
+      {% endunless %}
+      
+</select>
+{% if quantity_enable %}
+<div class="product__quantity product__quantity--{{ variant_type }}">
+  <label for="Quantity-{{ section_id }}" class="variant__label">{{ 'products.product.quantity' | t }}</label>
+  <div class="input-group">
+  <input type="button" value="-" class="button-minus" data-field="quantity">
+  <input type="number" step="1" min="1" max="" value="1" name="quantity" class="quantity-field">
+  <input type="button" value="+" class="button-plus" data-field="quantity">
+</div>
+</div>
+{% endif %}
+
+
+    {% if product.type == "Women Scrub Tops" or product.type == "Men Scrub Tops" or product.type == 'OS2 test product' %}
+
+    <input type="hidden" class="embroidery-products" value="">
+    {% unless section.settings.newpdptop2 %}
+        <span class="hoverclicker"><label class="variant__label tleft"><input type="checkbox" id="embroiderycheckbox">Add Embroidery <span class="icon"><img src="{{ 'gificon.gif' | asset_url }}" class="gificon" alt="gificon" /></span> </label>  <span class="thirder"><span class="dollarsign">+$</span><span class="tprice">18 to $30</span> 
+
+                <div class="dynadelete">
+                <span>Removed embroidery {% render 'remove-icon2'  %}</span>
+                </div>
+              </span>        
+        <span class="signalarrow"><svg aria-hidden="true" focusable="false" role="presentation" class="icon icon--wide icon-chevron-down" viewBox="0 0 28 16"><path d="M1.57 1.59l12.76 12.77L27.1 1.59" stroke-width="2" stroke="#000" fill="none" fill-rule="evenodd"></path></svg></span>
+      </span>
+    {% endunless %}
+    {% if section.settings.newpdptop2 %}
+      <span class="hoverclicker" style="font-weight:900;text-align:center;display:inline-block !important;width:100%;margin-top:24px;margin-bottom:24px;"><div class="tleft" style="text-align:center;"><label class="variant__label">Add Embroidery  </label>  - <span class="thirder"><span class="dollarsign">$</span> <span class="">18 to $30</span></span></div></span>  
+    {% endif %}
+
+      <style>
+        {% if section.settings.newpdptop2 %}
+          .collapsible-content__inner ul{
+          list-style-type: none !important;
+          margin-left:0 !important;
+        }
+        .thirder{
+          display:inline;
+        }
+        .thirder:hover,
+        .variant__label:hover,
+        .hoverclicker:hover{
+          cursor:pointer;
+        }
+        {% else %}
+        
+        .thirder{
+          float:right;
+        
+        }
+        {% endif %}
+
+        .cart__remove {
+    font-size: 18px;
+    display: inline-block;
+    position: relative;
+    top: 4px;
+    left: 9px;
+}
+          .dollarsign{font-size:18px;}
+          .gificon{width:40px;}
+          .tleft{text-align:left;}
+          .tprice{text-align:right;}
+          .dynadelete{display:inline-block;display:none;}
+          .tleft:hover{
+            cursor:pointer;
+          }
+          
+          .hoverclicker{
+              border-top: 1px solid #e8e8e8 !important;
+              padding: 15px 0px;
+              width: 90%;
+          }
+
+
+        {% if section.settings.newpdptop2 %}
+          .thirder{
+            font-family: 'futurapt';
+                font-size:16px !important; 
+          }
+          .product-section .payment-buttons .btn--tertiary{
+            padding:17px 13.7px !important;
+          }
+          .collapsible-trigger-btn{
+              font-family: 'futurapt';
+                font-size:16px !important;
+          }
+          .collapsible-content--all .collapsible-content__inner{
+            font-family: Oxygen, sans-serif;
+            font-size:16px;
+          }
+          
+            .hoverclicker .variant__label{
+                margin-bottom: 0 !important;
+                font-weight:800;
+                display:inline;
+                font-family: 'futurapt';
+                font-size:16px !important;
+                          }
+            .hoverclicker{
+              text-decoration: underline !important;
+            }
+        {% else %}
+        
+
+        .variant__label.midler .icon,
+          .hoverclicker .icon{
+            width:40px !important;
+            height:auto !important;
+            margin-left: 19px;
+            box-sizing: border-box;
+        }
+          
+          .hoverclicker .variant__label{
+              margin-bottom: 0 !important;
+              
+          }
+        {% endif %}
+
+          .dynadelete:hover{
+            cursor:pointer;
+          }
+
+       </style>
+
+
+
+      <!-- <p class="cart-embroidery">Plus Embroidery - Details below</p> -->
+
+
+       <div class="cart-product addmyname phantom">
+         
+         <div class="flexer">
+           <div class="embroi-image">
+            <div class="concan">
+              <div class="flyingname"></div>
+              <div class="flyingsub"></div>
+              <img src="" class="full-image">
+             </div>
+           </div>
+           <div class="embroi-details">
+             <p><strong>Title</strong> <!-- - $<span class="add-on-price">18</span> --></p>
+             <p class="details-fline">1st Line: <span></span></p>
+             <p class="details-sline">2nd Line: <span></span></p>
+             <p class="details-color">Text Color: <span></span></p>
+             <p class="details-placement">Text Placement: <span></span></p>
+             {% comment %}
+             <div class="remove-icon">
+               {% render 'remove-icon'  %}
+             </div>
+             {% endcomment %}
+           </div>
+         </div>
+       </div> 
+      
+
+
+
+       <div class="cart-product addicon phantom">
+         <div class="flexer">
+           <div class="embroi-image">
+           <div class="superpos-flying">
+            <div class="flyingicon"></div>
+            
+            <!-- <img src="" class="full-image"> -->
+            <div class="flyingini"></div>
+             </div>
+           </div>
+           <div class="embroi-details">
+             <p><strong>Logo</strong> <!-- - $<span class="add-on-price">20</span> --><p>
+             <p class="details-icon">Logo: <span></span></p>
+             <p class="details-initial">Initals: <span></span></p>
+             <p class="details-ini-color">Color: <span></span></p>
+             <p class="placement">Logo Placement:</p> 
+             {% comment %}
+             <div class="remove-icon">
+               {% render 'remove-icon'  %}
+             </div>
+             {% endcomment %}
+           </div>
+         </div>
+       </div>
+
+       <style>
+       .embroi-details{
+       position:relative;
+       }
+       .remove-icon{
+       position:absolute;
+       top:14px;
+       right:0px;
+       }
+       .remove-icon:hover{
+         cursor:pointer;
+       }
+       .full-image{
+         width:100%;
+         display:block;
+       }
+       .embroi-details p{
+           margin-bottom:0;
+           line-height:1.8em;
+       }
+       .embroi-details p:first-child{
+         margin-bottom:12px;
+       }
+       .cart-product{
+         margin-bottom:12px;
+       }
+        .cart-product.addmyname{
+
+        }
+         .embroi-image{
+            flex:0 0 36%;
+         }
+         .embroi-details{
+             flex:0 0  58%;
+         }
+       
+      .cart-product{
+      
+       }
+              .hoverclicker{
+           margin-top: 16px;
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 16px;
+            align-items:center;
+            flex-wrap: wrap;
+          }
+       </style>
+{% endif %} 
+
+
+<!-- this -->
+
+  <!-- this2 -->
+  {% unless section.settings.newpdptop2 %}
+    <div class="abtesting2" style="width:100%;margin-bottom:10px">
+
+      {% unless section.settings.abtesting3image %}
+          <!-- this1 -->
+           {% comment %}
+      <img src="{{ 'freeset.png' | asset_url }}" style="width:100%;height:auto;"/>
+      {% endcomment %}
+      {% else %}
+        <!-- this4 -->
+      <img src="{{ section.settings.abtesting3image | img_url: 'master' }}" style="width:100%;height:auto;" class="dv" />
+      <img src="{{ section.settings.abtesting3imagemob | img_url: 'master' }}" style="width:100%;height:auto;" class="mv" />
+      {% endunless %}
+      <!--
+      <h3>STANDARD SHIPPING FROM $11.90</h4>
+      <h2>BUNDLE & SAVE</h2>
+      <hr/>
+      <div class="flexer">
+        <div class="trio">
+          <h4>The Scrub Cap Mega 8 Pack</h4>
+          <p>Add any 8 caps to cart and <u>get 2 caps FREE</u></p>
+        </div>
+        <div class="trio">
+        <p class="liner">or</p>
+        <hr>
+        </div>
+        <div class="trio">
+          <h4>The Awesome Foursome Scrub Cap Pack</h4>
+          <p>Add any 4 caps to cart for <u>15% off</u></p>
+        </div>
+      </div>
+      -->
+    </div>
+    {% endunless %}
+    {% comment %}
+  <div class="abtesting2" style="width:100%;margin-bottom:10px">
+    {% unless section.settings.abtesting3image %}
+        <!-- this2 -->
+    <img src="{{ 'freeset.png' | asset_url }}" style="width:100%;height:auto;"/> 
+    {% else %}
+      <!-- this4 -->
+    <img src="{{ section.settings.abtesting3image | img_url: 'master' }}" style="width:100%;height:auto;" class="dv" /> 
+    <img src="{{ section.settings.abtesting3imagemob | img_url: 'master' }}" style="width:100%;height:auto;" class="mv" /> 
+    {% endunless %}
+    <!-- 
+    <h3>STANDARD SHIPPING FROM $11.90</h4>
+    <h2>BUNDLE & SAVE</h2>
+    <hr/>
+    <div class="flexer">
+      <div class="trio">
+        <h4>The Scrub Cap Mega 8 Pack</h4>
+        <p>Add any 8 caps to cart and <u>get 2 caps FREE</u></p>
+      </div>
+      <div class="trio">
+      <p class="liner">or</p>
+      <hr>
+      </div>
+      <div class="trio">
+        <h4>The Awesome Foursome Scrub Cap Pack</h4>
+        <p>Add any 4 caps to cart for <u>15% off</u></p>
+      </div>
+
+    </div>
+    -->
+  </div>
+
+  {% endcomment %}
+
+  {% if section.settings.abtestnoicons %}
+    {% if section.settings.txt_ != blank %}
+    <div class="mentext" style="padding:0 0px 5px;">
+      <hr class="backdown">
+      <p class="hrin">{{section.settings.txt_}}</p>
+    </div>
+     {% endif %}
+     <style>
+      .hrin{
+        text-align:center;
+        display:inline-block;
+        background:#fff;
+        padding-left:12px;
+        padding-right:12px;
+        position:relative;
+        text-transform: uppercase;
+      }
+      .backdown{
+        position: relative;
+        top: 21px;
+        display: block;
+        left: 0;
+        border-top: 1px solid #e8e8e8 !important;
+      }
+      .mentext{
+        position:relative;
+        top: -7px;
+        text-align:center;
+      
+      }
+     </style>
+  {% endif %}
+
+
+
+
+<div class="mobile-atc">
+{%- assign enable_dynamic_buttons = false -%}
+{% if enable_payment_button and template != 'product.preorder' and  product.id != 8891402027266 and product.id != 8005417533698 and  product.id != 6701376274616 and product.id != 6701376078008 and product.id != 7461809127682 and product.id != 7819011490050 and product.id != 8000060850434 and product.id != 6751404523704 and product.id != 7473530503426 and product.id != 6701375455416 and product.id != 7473526767874  and product.id != 7815271776514 and product.id != 7815268663554 and product.id != 6751389483192 and product.id != 7461809258754 %} 
+{%- assign enable_dynamic_buttons = true -%}
+{% endif %}
+<ul class="sticky-size-list">
+{% for option in product.options_with_values %}
+{% for value in option.values %}
+    {%- assign product_available = true -%}
+    {%- assign product_available = product.variants[forloop.index0].available -%}
+    {% if option.name == 'size' or option.name == 'Size' %}
+    <li>{{ value }}</li>
+    {% endif %}
+{% endfor %}
+{% endfor %}
+</ul>
+{% for collection in product.collections %}
+    {% if collection.title == "Scrub Caps" %}
+    <input type="hidden" value="{{ collection.title }}" class="collection-title">
+    {% endif %}
+{% endfor %}
+<ul class="sticky-color-list">
+{% for option in product.options_with_values %}
+{% for value in option.values %}
+    {%- assign product_available = true -%}
+    {%- assign product_available = product.variants[forloop.index0].available -%}
+    {% if option.name == 'color' or option.name == 'Color' %}
+    <li>{{ value }}</li>
+    {% endif %}
+{% endfor %}
+{% endfor %}
+</ul>
+<p>
+<div class="flexerx">
+<span class="sticky-size"><span class="sizer"></span>   </span> <span class="sticky-color"><span class="swatch-circle"></span></span><span class="sticky-type"></span><span class="sticky-price"><span class="pricer"></span></span></p>
+</div>
+
+  
+{% if enable_dynamic_buttons %}
+<div class="payment-buttons">
+  {% endif %}
+
+  {% unless enable_dynamic_buttons %}
+  <div class="payment-buttons">
+     {% endunless%}
+  <button
+          {% if product.empty? %}type="button"{% else %}type="submit"{% endif %}
+          name="add"
+          data-add-to-cart
+          class="{% unless enable_dynamic_buttons %} btn btn--tertiary {% endunless%} {% if enable_dynamic_buttons %}btn btn--tertiary{% else %}btn{% endif %} btn--full add-to-cart"
+          {% unless current_variant.available %} disabled="disabled"{% endunless %}>
+    <span data-add-to-cart-text>
+      {% if current_variant.available %}
+      {% if template == 'product.preorder' or  product.id == 8005417533698 or  product.id == 6701376274616 or product.id == 8891402027266 or product.id == 6701376078008  or product.id == 7461809127682  or product.id == 7819011490050 or product.id == 8000060850434 or product.id == 6751404523704 or product.id == 7473530503426 or product.id == 6701375455416 or product.id == 7473526767874 or product.id == 7815271776514 or product.id == 7815268663554  or product.id == 6751389483192 or product.id == 7461809258754 %} 
+          ADD TO BAG
+      {% else %}
+      {% render 'alt-atc', cl:cl %}
+      {% endif %}
+      {% else %}
+      ADD TO BAG
+      {% endif %}
+    </span>
+  </button>
+
+  {% if section.settings.newpdptop2 %}
+    {% comment %}
+  <img src="https://cdn.shopify.com/s/files/1/0573/7250/8344/files/image_10_7b2e26cb-b357-4544-90d5-6e28be46e12c.png?v=1712982042" class="afterpay-logo-new dv">
+  <img src="https://cdn.shopify.com/s/files/1/0573/7250/8344/files/image_10_7b2e26cb-b357-4544-90d5-6e28be46e12c.png?v=1712982042" class="afterpay-logo-new mv">
+  
+  <img src="https://cdn.shopify.com/s/files/1/0573/7250/8344/files/Frame_1214135678_1_836e9404-6180-4c95-b403-46312f9789e2.jpg?v=1712899011" class="afterpay-logo-new dv">
+  <img src="https://cdn.shopify.com/s/files/1/0573/7250/8344/files/Frame_1214135678_1_836e9404-6180-4c95-b403-46312f9789e2.jpg?v=1712899011" class="afterpay-logo-new mv">
+      {% endcomment %}
+    {% endif %}
+
+  {% unless enable_dynamic_buttons %}
+</div>
+
+     {% endunless%}
+  
+  {% if enable_dynamic_buttons %}
+  {{ form | payment_button }}
+  {% endif %}
+
+  {% if enable_dynamic_buttons %}
+</div>
+{% endif %}
+</div>
+
+
+
+
+
+
+
+{%- assign enable_dynamic_buttons = false -%}
+{% if enable_payment_button and template != 'product.preorder' and  product.id != 8005417533698 and  product.id != 6701376274616 and product.id != 6701376078008 and product.id != 7461809127682 and product.id != 8891402027266 and product.id != 7819011490050 and product.id != 8000060850434 and product.id != 6751404523704 and product.id != 7473530503426 and product.id != 6701375455416 and product.id != 7473526767874 and product.id != 7815271776514 and product.id != 7815268663554 and product.id != 6751389483192 and product.id != 7461809258754 and product.type != 'OS2 test product' %} 
+{%- assign enable_dynamic_buttons = true -%}
+{% endif %}
+<div class="main_contnt2">
+<div class="main-cont">
+<div class="main-cont2">
+{% if enable_dynamic_buttons %}
+<div class="payment-buttons">
+  {% endif %}
+
+  {% unless enable_dynamic_buttons %}
+  <div class="payment-buttons">
+     {% endunless%}
+  <button
+          {% if product.empty? %}type="button"{% else %}type="submit"{% endif %}
+          name="add"
+          data-add-to-cart
+          class="{% if product.type == "Nurse Bag" %}markF{% endif %} {% unless enable_dynamic_buttons %} btn btn--tertiary {% endunless%} {% if enable_dynamic_buttons %}btn btn--tertiary{% else %}btn{% endif %} btn--full add-to-cart"
+          {% unless current_variant.available %} disabled="disabled"{% endunless %}>
+    <span data-add-to-cart-text>
+      {% if current_variant.available %}
+        {% if template == 'product.preorder' or  product.id == 8005417533698 or  product.id == 6701376274616 or product.id == 8891402027266 or product.id == 6701376078008  or product.id == 7461809127682  or product.id == 7819011490050 or product.id == 8000060850434  and product.id == 6751404523704  and product.id == 7473530503426  and product.id == 6701375455416 and product.id == 7473526767874 or product.id == 7815271776514 or product.id == 7815268663554  or product.id == 6751389483192 or product.id == 7461809258754 %}
+            ADD TO BAG
+        {% else %}
+        {% render 'alt-atc', cl:cl %}
+        {% endif %}
+      {% else %}
+        SOLD OUT
+      {% endif %}
+    </span>
+  </button>
+  {% unless enable_dynamic_buttons %}
+</div>
+     {% endunless%}
+  
+  {% if enable_dynamic_buttons %}
+  {{ form | payment_button }}
+  {% endif %}
+
+  {% if enable_dynamic_buttons %}
+</div>
+{% endif %}
+
+
+
+
+{% assign xmy_value = product.metafields.sf_product_bundle.preorder_date %}
+
+{% if product.type == "Women Scrub Tops" or product.type == "Women Scrub Pants" or product.type == 'OS2 test product' %}
+<a href="https://www.drwoofapparel.com.au" class="bundlelink">(Or <span>buy 3 sets and get 1 set FREE. Save $122.8</span>)</a>
+{% endif %}
+
+{% if product.type == "Men Scrub Tops" or product.type == "Men Scrub Pants" or product.type == 'OS2 test product' %}
+<a href="https://www.drwoofapparel.com.au" class="bundlelink">(Or <span>buy 3 sets and get 1 set FREE. Save $122.8</span>)</a>
+{% endif %}
+
+{% if section.settings.newpdptop2 %}
+  <!-- k01 -->
+  <div class="preorder-text" style="padding:20px 20px 12px 20px;margin-bottom:12px;background:#fff !important;">
+    <p>Pre-order now to secure your preferred size and colour. Your entire order will ship once this item becomes available.</p>
+    <p style="margin-top:10px;color:red;margin-bottom:0 !important;">Expected dispatch date: <span class="{% if template.suffix == "os2template-scrubs"  or template.suffix == "sl-C6022FA6" %}preorderdate{% endif %}" style="font-weight:900">May 7</span>. Thanks for your patience!</p> 
+    </div>
+  <div class="addliner">
+    <hr class="hrliner">
+    <img src="https://cdn.shopify.com/s/files/1/0573/7250/8344/files/image_10_7b2e26cb-b357-4544-90d5-6e28be46e12c.png?v=1712982042" class="afterpay-logo-new dv">
+    <img src="https://cdn.shopify.com/s/files/1/0573/7250/8344/files/image_10_7b2e26cb-b357-4544-90d5-6e28be46e12c.png?v=1712982042" class="afterpay-logo-new mv">
+    {% comment %}
+    <img src="https://cdn.shopify.com/s/files/1/0573/7250/8344/files/Frame_1214135678_1_836e9404-6180-4c95-b403-46312f9789e2.jpg?v=1712899011" class="afterpay-logo-new dv">
+    <img src="https://cdn.shopify.com/s/files/1/0573/7250/8344/files/Frame_1214135678_1_836e9404-6180-4c95-b403-46312f9789e2.jpg?v=1712899011" class="afterpay-logo-new mv">
+        {% endcomment %}
+  </div>
+<style>
+  .hrliner{
+    border: 0;
+    border-top: 2px solid #ddd;
+    width: 84%;
+    margin-top: 30px;
+    margin-bottom: 30px;
+  }
+  .addliner{
+      position:relative;
+  }
+
+  .afterpay-logo-new{
+      position:absolute;
+      top: -13px;
+      margin-top:0 !important;
+      left: 25%;
+      right: 25%;
+  }
+</style>
+    {% endif %}
+    {% unless product.title contains "Planet Friendly" %}
+    <div id="deliveryDiv" class="delivery-box"></div>
+    {% endunless %}
+
+{% if section.settings.newpdptop %}
+<div class="abtesting2" style="width:100%;margin-bottom:0px;padding-left:12px;padding-right:12px;">
+  {% unless section.settings.abtesting3image %}
+      <!-- this6 -->
+       {% comment %}
+  <img src="{{ 'freeset.png' | asset_url }}" style="width:100%;height:auto;"/>
+  {% endcomment %}
+  {% else %}
+    <!-- this5 -->
+     
+      {% if section.settings.newpdptop2 %}
+        <img src="{{ section.settings.abtesting3image | img_url: 'master' }}" style="width:100%;height:auto;border-radius:8px;margin-top:0px" class="dv" />
+        <img src="{{ section.settings.abtesting3imagemob | img_url: 'master' }}" style="width:100%;height:auto;border-radius:8px;margin-top:0px" class="mv" />
+      {% endif %}
+    
+  {% endunless %}
+  <!--
+  <h3>STANDARD SHIPPING FROM $11.90</h4>
+  <h2>BUNDLE & SAVE</h2>
+  <hr/>
+  <div class="flexer">
+    <div class="trio">
+      <h4>The Scrub Cap Mega 8 Pack</h4>
+      <p>Add any 8 caps to cart and <u>get 2 caps FREE</u></p>
+    </div>
+    <div class="trio">
+    <p class="liner">or</p>
+    <hr>
+    </div>
+    <div class="trio">
+      <h4>The Awesome Foursome Scrub Cap Pack</h4>
+      <p>Add any 4 caps to cart for <u>15% off</u></p>
+    </div>
+  </div>
+  -->
+</div>
+{% endif %}
+
+
+
+
+
+{% unless product.empty? %}
+<textarea class="hide" aria-hidden="true" data-variant-json>
+  {{ product.variants | json }}
+</textarea>
+{% if product.options.size > 1 %}
+<textarea class="hide" aria-hidden="true" data-current-variant-json>
+  {{ current_variant | json }}
+</textarea>
+{% endif %}
+{% endunless %}
+
+{% endform %}
+
+{% endunless %}
+  </div>
+
+</div>
+</div>
+
+
+{% assign my_date = variant.metafields.sf_variantsglobal.preorder_date %}
+
+
+<div class="main-icon-cont" style="padding:5px 0px 5px;{% if section.settings.newpdptop %}display:none;{% endif %}">
+  <div class="preorder-text" style="padding:0 20px 0px 20px;margin-bottom:20px;background:#e0ede9 !important;">
+    <p>Pre-order now to secure your preferred size and colour. Your entire order will ship once this item becomes available.</p>
+<p style="margin-top:10px;color:red;">Expected dispatch date: <span class="{% if template.suffix == "os2template-scrubs" or template.suffix == "sl-C6022FA6" or template.suffix == "os2headband" %}preorderdate{% endif %}" style="font-weight:900;">{% if product.type == 'Headbands' %}July 21{% else %}September 10{% endif %}</span>. Thanks for your patience!</p> 
+    </div>
+    {% if section.settings.abtestdavideo %}
+          {% unless product.type == "Nurse Bag" %}
+          <div class="ugs_container">
+            <div class="video-gallery">
+              <div class="video-container zero1">
+                  <video class="video" src="https://cdn.shopify.com/videos/c/o/v/3c13f6af71424a2cb2ca2a3626de3392.mp4" autoplay muted loop playsinline preload="metadata"></video>
+                  <span>Scrubs You Can Wear & Wear</span>
+              </div>
+              <div class="video-container zero2">
+                  <video class="video" src="https://cdn.shopify.com/videos/c/o/v/b72c5c0cb4fb4eaea3fa8d7e3a781544.mp4" autoplay muted loop playsinline preload="metadata"></video>
+                  <span>The Most Joyful Aussie Scrubs Brand</span>
+              </div>
+              <div class="video-container zero3">
+                  <video class="video" src="https://cdn.shopify.com/videos/c/o/v/23ae219f351d4904b908311813f8f54d.mp4" autoplay muted loop playsinline preload="metadata"></video>
+                  <span>3 Reasons Nurses Love Dr. Woof</span>
+              </div>
+              <!-- 
+              <div class="video-container zero4">
+                  <video class="video" src="https://cdn.shopify.com/videos/c/o/v/c5fb46949ef64a199884f1995b514bfc.mp4" autoplay muted loop playsinline preload="metadata"></video>
+              </div>
+              -->
+            </div>
+          </div>
+          <style>
+          .ugs_container{
+            padding-left: 12px;
+              padding-right: 12px;
+              margin-top: -6px;
+              margin-bottom:20px;
+          }
+          {% if section.settings.abtestnoicons %}
+            .ugs_container{
+                margin-top: -2px;
+            }
+          {% endif %}
+          
+          .ugs_container span{
+            font-size: 11px;
+            font-weight: 800;
+          }
+          
+          .ugs_container .video-gallery {
+              display: flex;
+              gap: 10px;
+          }
+          
+          .ugs_container .video-container {
+              flex: 1;
+              overflow: hidden;
+              position: relative;
+          }
+          
+          .ugs_container .video {
+              width: 100%;
+              height: auto;
+              transition: transform 0.3s ease-in-out;
+              object-fit: cover;
+          }
+          
+          .ugs_container .video-container:hover {
+              transform: scale(1.05);
+              cursor:pointer;
+          }
+          </style>
+          {% endunless %}
+      {% endif %}
+  {% unless section.settings.abtestnoicons %}
+  <div class="sub-icon-cont">
+    {%if section.settings.img1 != blank %}
+    <div class="sub-icon-cont1">
+<img src="{{section.settings.img1|img_url : '90x75'}}" alt="{{ section.settings.img1.alt | escape }}" style="max-width:80px;">
+  </div>
+    {%endif%}
+    {% if section.settings.txt != blank%}
+<div class="sub-icon-cont2">
+  <p style="font-size:0.77em;">{{section.settings.txt}}</p>
+  </div>
+    {%endif%}
+
+  </div>
+
+  
+  <div class="sub-icon-cont">
+    {%if section.settings.img2 != blank%}
+    <div class="sub-icon-cont1">
+<img src="{{section.settings.img2|img_url : '90x75'}}" alt="{{ section.settings.img2.alt | escape }}" style="max-width:80px;">
+  </div>
+    {%endif%}
+    {% if section.settings.txt1 != blank%}
+   <div class="sub-icon-cont2">
+     <p style="font-size:0.77em;">{{section.settings.txt1}}</p>
+  </div>
+ {%endif%}
+  </div>
+
+   
+  <div class="sub-icon-cont">
+   {%if section.settings.img3 != blank %}
+    <div class="sub-icon-cont1">
+<img src="{{section.settings.img3|img_url : '90x75'}}" alt="{{ section.settings.img3.alt | escape }}" style="max-width:80px;">
+  </div>
+   {%endif%}
+ {% if section.settings.txt2 != blank %}
+<div class="sub-icon-cont2">
+  <p style="font-size:0.77em;">{{section.settings.txt2}}</p>
+  </div>
+ {%endif%}
+  </div>
+{% endunless %}
+</div>
+
+{% unless section.settings.abtestnoicons %}
+{% if section.settings.txt_ != blank %}
+<div class="main-text" style="padding:20px 0px 5px;">
+  <p>{{section.settings.txt_}}</p>
+  </div>
+ {% endif %}
+{% endunless %}
+
+<div class="custom-klarna-new">
+  <div class="klarna-new-div"></div>
+</div>
+{% if template contains 'custom_builder' %}
+
+{% if product.tags contains "Men" %}
+{% assign genre = "Men" %}
+{% elsif product.tags contains "Women" %}
+{% assign genre = "Women" %}
+{% endif %}
+
+
+{% for tag in product.tags%}
+{% assign da_tag = tag %}
+{% endfor %}
+
+{% assign input = "a," %}
+
+
+<div class="master_box_top" data-id="cap">
+  <button class="master_box_top_label">
+    {{ settings.option_one }}
+  </button>  
+  <div class="builder_card" data-type="cap">  
+    <div class="builder_top_slide">
+      <div class="column_box_top">
+        <div class="builder_top_slide_img">
+          <img class="builder_card_image" src="">
+        </div>
+      </div>    
+      <div class="column_box_top">
+        <div class="builder_top_slide_title">    
+          <p class="builder_card_title"><b id="title_builder_box"></b></p>
+        </div>  
+        <div class="loox-rating" style="display:none" title="">
+          <i class="loox-icon loox-star"></i>
+          <i class="loox-icon loox-star"></i>
+          <i class="loox-icon loox-star"></i>
+          <i class="loox-icon loox-star"></i>
+          <i class="loox-icon loox-star"></i>&nbsp;
+          <span></span></div>
+      </div>
+    </div>   
+    <div class="custom_builder_option">  
+      <label class="custom_builder_label" style="
+                                                 order: 3;
+                                                 ">
+        Size
+      </label>
+      <select class="master_sizes options-select" data-name="Size">
+        <option data-status="true" selected="" style="color:gray">Select an option</option>    
+
+      </select>  
+      <label class="custom_builder_label" style="
+                                                 order: 1;
+                                                 ">
+        Design
+      </label>   
+      <select class="master_designs options-select" data-name="Design">
+        <option data-status="true" selected="" style="color:gray">Select an option</option>               
+      </select>
+    </div>   
+  </div>  
+</div>
+
+<div class="master_box_top" data-id="top">
+  <button class="master_box_top_label">
+    {{ settings.option_two }}
+  </button>
+</div>
+<div class="master_box_top" data-id="under">
+  <button class="master_box_top_label">
+    {{ settings.option_three }}
+  </button>  
+  <div class="builder_card" data-type="under">  
+    <div class="builder_top_slide">
+      <div class="column_box_top">
+        <div class="builder_top_slide_img">
+          <img class="builder_card_image" src="">
+        </div>
+      </div>    
+      <div class="column_box_top">
+        <div class="builder_top_slide_title">    
+          <p class="builder_card_title"><b id="title_builder_box"></b></p>
+        </div>     
+        <div class="loox-rating" style="display:none" title="">
+          <i class="loox-icon loox-star"></i>
+          <i class="loox-icon loox-star"></i>
+          <i class="loox-icon loox-star"></i>
+          <i class="loox-icon loox-star"></i>
+          <i class="loox-icon loox-star"></i>&nbsp;
+          <span></span></div>
+      </div>
+    </div>   
+    <div class="custom_builder_option">  
+      <label style="order:3" class="custom_builder_label" style="order:3">
+        Size
+      </label>  
+
+
+
+      <select class="master_sizes options-select" data-name="Size">
+        <option data-status="true" selected="" style="color:gray">Select an option</option>    
+
+      </select>  
+      <label class="custom_builder_label" style="order:1">
+        Design
+      </label>   
+      <select class="master_designs options-select" data-name="Design">
+        <option data-status="true" selected="" style="color:gray">Select an option</option>               
+      </select>
+    </div>   
+  </div>  
+</div>
+<div class="master_box_top" data-id="pant">
+  <button class="master_box_top_label">
+    {{ settings.option_four }}
+  </button>
+</div>
+<div class="master_box_top" data-id="bundled">
+  <button class="master_box_top_label">
+    {{ settings.option_five }}
+  </button>
+</div>
+{%- for collection in collections -%}
+
+
+
+{% for product0 in collection.products %}
+
+
+
+{% unless product.id == product0.id %}
+
+{% if collection.title == "Bundled" or product0.type contains "Scrub Cap" or product0.title contains "Underscrub" or product0.title contains "Jogger" or product0.title contains "Scrub Top"  or product.type == 'Headbands' %}
+
+{% if product0.type contains "Scrub Cap" or product0.title contains "Underscrub"  or product.type == 'Headbands' %}
+{% unless input contains product0.id %}
+{% assign input = input | append: product0.id %}
+{% assign input = input | append: "," %}
+{% assign avoid_it = "0" %}
+{% if product0.type contains "Underscrub" %}
+{% if product0.tags contains genre %}
+
+{% else %}
+{% assign avoid_it = "1" %}
+{% endif %}
+
+{% endif %}
+{% unless avoid_it == "1" %}
+<input type="hidden" class="scrub_caps_hidden" data-title="{{ product0.title }}" data-img="{{ product0.featured_image | img_url: "medium" }}" data-source="{{ product0.id }}" data-type="{{ product0.type }}" data-reviews="{{ product0.metafields.loox.avg_rating }}" data-numi="{{ product0.metafields.loox.num_reviews }}">
+<select class="pre-hidden-custom-bundle" name="id" style="display:none" data-source="{{ product0.id }}" data-type="{{ product0.type }}">
+  <option>0</option>
+  {% for variant0 in product0.variants %}
+
+  {% for option in variant0.options_with_values %}
+  - {{ option.name }}
+  {% endfor %}
+
+
+  <option class="{% if variant0.available %}{% else %}disabled_box{% endif %}" data-option1="{{ variant0.option1 }}" data-option2="{{ variant0.option2 }}" data-id="{{ variant0.id }}" value="{{ variant0.id }}">{{ variant0.title }}</option>
+  {% endfor %}
+</select>
+{% endunless %}
+{% endunless %}
+
+{% endif %}
+
+{% if product0.tags contains da_tag %}
+
+{% if collection.title == "Bundled" %}
+{% assign card_handle = "bundled" %}
+{% elsif product0.type contains "Scrub Cap" %}
+{% assign card_handle = "cap" %}
+{% elsif product0.title contains "Underscrub" %}
+{% assign card_handle = "under" %}
+{% elsif product0.title contains "Jogger" %} 
+{% assign card_handle = "pant" %}
+{% elsif product0.title contains "Scrub Top" %}
+{% assign card_handle = "top" %}
+{% endif %}
+
+{% assign dumpy = input | split: "," %}
+
+{% unless input contains product0.id %}
+{% assign input = input | append: product0.id %}
+{% assign input = input | append: "," %}
+
+{% comment %}
+
+{% if product0.type contains "Scrub Cap" or product0.title contains "Underscrub" %}
+
+<input type="hidden" class="scrub_caps_hidden" data-title="{{ product0.title }}" data-img="{{ product0.featured_image | img_url: "medium" }}" data-source="{{ product0.id }}" data-type="{{ product0.type }}" data-reviews="{{ product0.metafields.loox.avg_rating }}" data-numi="{{ product0.metafields.loox.num_reviews }}">
+<select class="pre-hidden-custom-bundle" name="id" style="display:none" data-source="{{ product0.id }}" data-type="{{ product0.type }}">
+  <option>0</option>
+  {% for variant0 in product0.variants %}
+
+  {% for option in variant0.options_with_values %}
+  - {{ option.name }}
+  {% endfor %}
+
+
+  <option class="{% if variant0.available %}{% else %}disabled_box{% endif %}" data-option1="{{ variant0.option1 }}" data-option2="{{ variant0.option2 }}" data-id="{{ variant0.id }}" value="{{ variant0.id }}">{{ variant0.title }}</option>
+  {% endfor %}
+</select>
+
+
+{% endif %}
+
+{% endcomment %}
+
+{% unless product0.type contains "Scrub Cap" or product0.title contains "Underscrub"  or product.type == 'Headbands' %}
+
+<div class="builder_card" data-type="{{ card_handle }}">
+
+  <!-- Hidden select for flow control  -->
+  <select class="hidden-custom-bundle" name="id" style="display:none">
+    <option>0</option>
+    {% for variant0 in product0.variants %}
+
+    {% for option in variant0.options_with_values %}
+    - {{ option.name }}
+    {% endfor %}
+
+
+    <option class="{% if variant0.available %}{% else %}disabled_box{% endif %}" data-option1="{{ variant0.option1 }}" data-option2="{{ variant0.option2 }}" data-id="{{ variant0.id }}" value="{{ variant0.id }}">{{ variant0.title }}</option>
+    {% endfor %}
+  </select>
+  <!-- Hidden select for flow control  -->
+
+  <div class="builder_top_slide">
+    <div class="column_box_top">
+      <div class="builder_top_slide_img">
+
+        <img class="builder_card_image" src="{{ product0.featured_image | img_url: "medium" }}">
+      </div>
+    </div>
+
+    <div class="column_box_top">
+      <div class="builder_top_slide_title">
+
+
+        <p class="builder_card_title"><b id="title_builder_box">{{ product0.title }}</b></p>
+      </div>
+
+      <div class="loox-rating" title="{{ product0.metafields.loox.avg_rating }} rating ({{ product0.metafields.loox.num_reviews }} votes)">
+        <i class="loox-icon loox-star"></i>
+        <i class="loox-icon loox-star"></i>
+        <i class="loox-icon loox-star"></i>
+        <i class="loox-icon loox-star"></i>
+        <i class="loox-icon loox-star"></i>&nbsp;<span>{{ product0.metafields.loox.num_reviews }}</span></div>
+    </div>
+  </div>
+
+
+  <div class="custom_builder_option" data-id="{{ product0.id }}">
+    {% for product_option in product0.options_with_values %}
+
+
+
+    <label class="custom_builder_label" {% if product_option.name == "Size" %}style="order:3"{% endif %}>
+      {{ product_option.name }}
+    </label> 
+
+    {% assign option = product_option %}
+
+    {% comment %}
+    {% include 'variant-button', section_id: '5110115827771', option_drop: option %}
+    {% endcomment %}
+
+
+
+
+
+    {% if product_option.name == "Color" %}  
+    <div class="color_swatch_box_wrapper">
+      {% for value in product_option.values %}
+      <button class="color_swatch_box_btn">
+        <div class="color_swatch_box" data-color="{{ value | escape }}">
+
+        </div>
+      </button>
+      {% endfor %}
+    </div>
+
+    <select class="options-select" data-name="{{ product_option.name }}">
+      <option data-status="true" selected style="color:gray">Select an option</option>
+      {% for value in product_option.values %}
+
+      {% for variant in product0.variants %}
+      {% if variant.title contains value %}
+
+      {% assign individual_imgs= variant.image | img_url:"medium" %}
+
+      {% endif %}
+      {% endfor %}
+
+      <option data-name="{{ product_option.name }}" data-value="{{ value }}" data-img="{{ individual_imgs }}">
+        {{ value }} 
+      </option>
+      {% endfor %}
+    </select>
+
+
+    {% else %}
+
+    <select class="options-select" data-name="{{ product_option.name }}" style="order:4">
+      <option data-status="true" selected style="color:gray">Select an option</option>
+      {% for value in product_option.values %}
+      <option data-name="{{ product_option.name }}" data-value="{{ value }}">
+        {{ value }} 
+      </option>
+      {% endfor %}
+    </select>
+
+    {% endif %}
+
+    {% endfor %}
+  </div>
+
+
+  {% comment %}
+  <div style="    justify-content: center;display: flex;margin-top: 6em;">
+    <button type="button" class="btn btn--tertiary overflow-scroller__arrow overflow-scroller__arrow--right btn-box btn-box-r" style="position: relative;">
+      <svg aria-hidden="true" focusable="false" role="presentation" class="icon icon-chevron-right" viewBox="0 0 284.49 498.98"><path d="M35 498.98a35 35 0 0 1-24.75-59.75l189.74-189.74L10.25 59.75a35.002 35.002 0 0 1 49.5-49.5l214.49 214.49a35 35 0 0 1 0 49.5L59.75 488.73A34.89 34.89 0 0 1 35 498.98z"></path></svg>
+    </button>
+
+
+    <button type="button" class="btn btn--tertiary overflow-scroller__arrow overflow-scroller__arrow--left btn-box btn-box-l" style="position: relative;">
+      <svg aria-hidden="true" focusable="false" role="presentation" class="icon icon-chevron-left" viewBox="0 0 284.49 498.98"><path d="M249.49 0a35 35 0 0 1 24.75 59.75L84.49 249.49l189.75 189.74a35.002 35.002 0 1 1-49.5 49.5L10.25 274.24a35 35 0 0 1 0-49.5L224.74 10.25A34.89 34.89 0 0 1 249.49 0z"></path></svg>
+    </button>
+  </div>
+  {% endcomment %}
+
+</div>
+{% endunless %}
+{% endunless %}
+{% endif %}
+{% endif %}
+{% endunless %}
+{% endfor %}
+
+{% endfor %}
+{% comment %}
+{% assign underscrubs = "" %}
+
+{% assign caps = "" %}
+
+{% assign di_control = "0" %}
+{% assign de_control = "0" %}
+
+
+{% for product1 in collections.all.products %}
+
+{% if product1.type == "Underscrubs" %}
+{% if di_control == "1" %}
+{% assign handle = product1.title | prepend: "," %}
+
+{% else %}
+{% assign handle = product1.title %}
+{% assign di_control = "1" %}
+{% endif %}
+
+{% assign underscrubs = underscrubs | append: handle %}
+
+
+
+{% elsif product1.type contains "Scrub Cap" %}
+
+{% if de_control == "1" %}
+{% assign handle = product1.title | prepend: "," %}
+
+{% else %}
+{% assign handle = product1.title %}
+{% assign de_control = "1" %}
+{% endif %}
+
+
+{% assign caps = caps | append: handle %}
+{% endif %}
+
+
+
+{% endfor %}
+
+{% assign underscrubs = underscrubs | split: "," %}
+{% assign caps = caps | split: "," %}
+
+<div class="master-design">
+  <label>Underscrubs</label>
+  <select>
+    {% for scrub in underscrubs %}
+    <option data-id="{{ scrub }}">{{ scrub }}</option>
+    {% endfor %}
+  </select>
+</div>
+<div class="master-design">
+  <label>Scrub Caps</label>
+  <select>
+    {% for cap in caps %}
+    <option data-id="{{ cap }}">{{ cap }}</option>
+    {% endfor %}
+  </select>
+</div>
+
+
+<div class="alert_builder_box">
+  <p class="general_builder_box_text_wrapper"><span class="1st_alert_box"></span> of <span class="2nd_alert_box"></span> steps</p>
+</div>
+{% endcomment %}
+<button type="submit" name="add" id="add_to_cart_box" data-add-to-cart="" class="markery btn btn--tertiary btn--full add-to-cart">
+  <span data-add-to-cart-text="">
+
+    ADD TO BAG
+
+  </span>
+</button>
+
+
+{% endif %}
+
+<style>
+  .flexreorder{
+    display:flex;
+    flex-wrap:wrap;
+  }
+
+  {% if section.settings.newpdptop2 %}
+  .main-text{
+    display:none !important;
+  }
+{% endif %} 
+
+ .variant-wrapper{
+  width:100%;
+ }
+  .variant-wrapper--button{
+    order:1;
+  }
+  .variant-change-color{
+    order:0;
+  }
+
+  {% if section.settings.newpdptop %}
+    .main-cont
+      {
+        background-color:transparent;
+        padding:0 !important;
+        
+      }
+      .payment-buttons button.btn.btn--tertiary.btn.btn--full.add-to-cart{
+        border-radius:8px !important;
+      }
+  {% else %}
+  .main-cont
+  {
+    background-color:{{section.settings.color_link}};
+    padding: 25px 10px 1px;
+  }
+  {% endif %}
+
+
+{% if product.selected_or_first_available_variant.available %}
+  .preorder-text{
+    display:none;
+    margin-top: 0px;
+}
+{% else %}
+.preorder-text{
+    display:block;
+    margin-top:0px;
+}
+{% endif %}
+  .preorder-text span{
+    font-weight:800;
+  }
+{% assign my_value = product.metafields.sf_product_bundle.preorder_color %}
+{% if my_value %}
+.preorder-text .colorit{
+  color: {{ my_value }} !important;
+}
+{% endif %}
+.dv{display:block;}
+              .mv{display:none;}
+              @media only screen and (max-width:480px){
+                #logo-link{display:none !important;}
+                .dv{display:none;}
+                .mv{display:block;}
+                }
+</style>

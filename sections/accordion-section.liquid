@@ -1,0 +1,131 @@
+<section class="accordion-{{ section.id }}">
+    <div class="page-width">
+        <h4>{{ section.settings.accordion_title }}</h4>
+        <div class="accordion">
+            {% for block in section.blocks %}
+            <div class="accordion-item">
+                <div class="accordion-title">
+                    <h3>{{ block.settings.question }}</h3>
+                    <span class="toggle-icon">+</span>
+                </div>
+                <div class="accordion-content">
+                    {{ block.settings.answer }}
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+
+<style>
+.accordion-{{ section.id }}{
+    padding:40px;
+}
+.accordion-{{ section.id }} h4{
+    text-align:center;
+    font-weight:400;
+    font-size:24px;
+    margin-bottom:30px;
+}
+.accordion {
+    width: 80%;
+    margin: 20px auto;
+}
+
+.accordion-item {
+    border-bottom: 1px solid #ddd;
+    border-radius:8px;
+    margin-bottom:12px;
+}
+
+.accordion-item:last-child {
+    border-bottom: none;
+}
+
+.accordion-title {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px;
+    cursor: pointer;
+    background-color: #f7f7f7;
+}
+
+.accordion-title h3 {
+    margin: 0;
+    font-size: 18px;
+}
+
+.accordion-content {
+    display: none;
+    padding: 15px;
+    background-color: #fff;
+    border: 1px solid #ddd;
+}
+
+.toggle-icon {
+    font-size: 18px;
+    transition: transform 0.3s ease;
+}
+
+.accordion-title.active .toggle-icon {
+    /* transform: rotate(45deg); */
+}
+</style>
+<script>
+$(document).ready(function() {
+    $('.accordion-{{ section.id }} .accordion-title').click(function() {
+        // Close any open items
+        $('.accordion-{{ section.id }} .accordion-content').slideUp();
+        $('.accordion-{{ section.id }} .accordion-title').not(this).removeClass('active');
+        $('.accordion-{{ section.id }} .toggle-icon').text('+');
+
+        // Toggle the clicked item
+        if ($(this).next('.accordion-content').is(':visible')) {
+            $(this).next('.accordion-content').slideUp();
+            $(this).find('.toggle-icon').text('+');
+        } else {
+            $(this).next('.accordion-content').slideDown();
+            $(this).addClass('active');
+            $(this).find('.toggle-icon').text('-');
+        }
+    });
+});
+</script>
+
+{% schema %}
+    {
+      "name": "Accordion Faq",
+      "settings": [
+        {
+          "type": "text",
+          "label": "Accordion Title",
+          "id": "accordion_title",
+          "default": "Add Title Here"
+        }
+      ],
+      "blocks": [
+            {
+              "type": "accordion",
+              "name": "Accordion Item",
+              "settings": [
+                {
+                  "type": "text",
+                  "label": "Question",
+                  "id": "question"
+                },
+                {
+                  "type": "richtext",
+                  "label": "Answer",
+                  "id": "answer"
+                }
+              ]
+            }
+       ],
+      "presets": [{
+        "name": "Accordion Faq",
+        "category": "Sliders"
+      }]
+    }
+    {% endschema %}
+

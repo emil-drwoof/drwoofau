@@ -1,0 +1,68 @@
+<script type="text/worker" id="sweworker">onmessage=function(e){var t=new Request("https://swift-api.perfectapps.io/api/expert/optimize-script",{redirect:"follow"});fetch(t).then(e=>e.text()).then(e=>{postMessage(e)})};</script>
+<script type="text/javascript">
+    var swex = new Worker("data:text/javascript;base64," + btoa(document.getElementById("sweworker").textContent));
+    swex.onmessage = function(t) {
+        var e = document.createElement("script");
+        e.type = "text/javascript", e.textContent = t.data, document.head.appendChild(e)
+    }, swex.postMessage("init");
+</script>
+<script type="text/javascript" data-swe="1">
+    const observer = new MutationObserver(mutations => {
+        mutations.forEach(({
+            addedNodes
+        }) => {
+            addedNodes.forEach(node => {
+                if (node.tagName === 'SCRIPT' && node.className == 'analytics') {
+                    node.type = 'text/swescript'
+                }
+                if (node.tagName === 'SCRIPT' && node.innerHTML.includes('asyncLoad')) {
+                    node.type = 'text/swescript'
+                }
+                if (node.nodeType === 1 && node.tagName === 'SCRIPT' && node.innerHTML.includes('hotjar')) {
+                    node.type = 'text/swescript'
+                }
+                if (node.nodeType === 1 && node.tagName === 'SCRIPT' && node.innerHTML.includes('gtag')) {
+                    node.type = 'text/swescript'
+                }
+                if (node.nodeType === 1 && node.tagName === 'SCRIPT' && node.innerHTML.includes('tagmanager')) {
+                    node.type = 'text/swescript'
+                }
+                if (node.nodeType === 1 && node.tagName === 'SCRIPT' && node.innerHTML.includes('gtm')) {
+                    node.type = 'text/swescript'
+                }
+                if (node.nodeType === 1 && node.tagName === 'SCRIPT' && node.src.includes('googlet')) {
+                    node.type = 'text/swescript'
+                }
+
+
+                // other apps
+                if (node.nodeType === 1 && node.tagName === 'SCRIPT' && node.innerHTML.includes('storefront/bars')) {
+                    node.type = 'text/swescript'
+                }
+                if (node.nodeType === 1 && node.tagName === 'SCRIPT' && node.src.includes('storefront/bars')) {
+                    node.type = 'text/swescript'
+                }
+                if (node.nodeType === 1 && node.tagName === 'SCRIPT' && node.innerHTML.includes('spurit')) {
+                    node.type = 'text/swescript'
+                }
+                if (node.nodeType === 1 && node.tagName === 'SCRIPT' && node.src.includes('spurit')) {
+                    node.type = 'text/swescript'
+                }
+                if (node.nodeType === 1 && node.tagName === 'SCRIPT' && node.innerHTML.includes('herokuapp')) {
+                    node.type = 'text/swescript'
+                }
+                if (node.nodeType === 1 && node.tagName === 'SCRIPT' && node.src.includes('herokuapp')) {
+                    node.type = 'text/swescript'
+                }
+            })
+        })
+    })
+
+    var ua = navigator.userAgent.toLowerCase();
+    if (ua.indexOf('chrome') > -1) {
+        observer.observe(document.documentElement, {
+            childList: true,
+            subtree: true
+        })
+    }
+</script>

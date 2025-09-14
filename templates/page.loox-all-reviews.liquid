@@ -1,0 +1,44 @@
+{% if shop.metafields.loox["global_stats"] %}
+{% assign looxstats = shop.metafields.loox["global_stats"] | split: "," %}
+<div itemscope itemtype="https://schema.org/Product">
+<meta itemprop="name" content="{{ shop.name | escape }}"/>
+<div itemprop="aggregateRating" itemscope itemtype="https://schema.org/AggregateRating">
+<meta itemprop="ratingValue" content="{{ looxstats[0] }}"/>
+<meta itemprop="ratingCount" content="{{ looxstats[1] }}"/>
+</div>
+</div>
+{% endif %}
+
+
+
+      <header class="section-header">
+        <h1 class="section-header__title">
+          {{ page.title }}
+        </h1>
+      </header>
+
+      <div class="rte" style="margin-top:40px">
+        {{ page.content }}
+<!-- Start of Judge.me code --> 
+<div id='judgeme_all_reviews_page' class="page clearfix jdgm-all-reviews-page"> 
+    <div class="jdgm-all-reviews-page__wrapper">     
+        <article class='jdgm-widget jdgm-all-reviews-widget'> 
+            <style class='jdgm-temp-hiding-style'>.jdgm-all-reviews-widget{ display: none }</style> 
+            {{ shop.metafields.judgeme.all_reviews_header }} 
+            <div class='jdgm-all-reviews__body'> 
+                {% assign prefix = 'all_reviews_' %} 
+                {% for count in (0..65535) %} 
+                {% assign metafield_key = prefix | append: count %} 
+                {% assign current_metafield = shop.metafields.judgeme[metafield_key] %} 
+                {% unless current_metafield %} {% break %} {% endunless %} 
+                {{ current_metafield }} 
+                {% endfor %} 
+            </div> 
+        </article> 
+    </div> 
+</div> 
+<!-- End of Judge.me code -->
+      </div>
+
+    </div>
+

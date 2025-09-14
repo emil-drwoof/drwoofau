@@ -1,0 +1,398 @@
+<!-- section/main-page.liquid -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+<div class="headerv2">
+  {% if section.settings.added_date %}
+    {% if section.settings.colored_header %}
+      <span class="colored_header">{{ section.settings.colored_header }}</span>
+    {% endif %}
+    {% if section.settings.main_header %}
+      <h1 class="main_header">{{ section.settings.main_header }}</h1>
+    {% endif %}
+  
+  <p style="text-align:center;font-size:14px;margin-bottom:40px;padding:0 12px;opacity: 0.6"><i class="fa-regular fa-clock"></i> 3 minute read. Published <span class="tdate"></span></p>
+{% endif %}
+    <div class="headerv2-wrapper">
+        <div class="duo">
+          {% unless section.settings.added_date %}
+              {% if section.settings.colored_header %}
+                  <span class="colored_header">{{ section.settings.colored_header }}</span>
+              {% endif %}
+              {% if section.settings.main_header %}
+                  <h1 class="main_header">{{ section.settings.main_header }}</h1>
+              {% endif %}
+            {% endunless %}
+            {% if section.settings.content %}
+                <p class="content">{{ section.settings.content }}</h1>
+            {% endif %}
+            <ul class="header-list">
+                {% for block in section.blocks %}  
+                    <li>   
+                      <img src="{% if block. settings.icon_image %}{{ block.settings.icon_image | img_url: 'master' }}{% else %}{{ 'badge1.png' | asset_url }}{% endif %}" class="smallbadge">{{ block.settings.text_list }}
+                    </li>                
+                {% endfor %}
+            </ul>
+            <div class="button-wrapper">
+              {% unless section.settings.button_text_1 == blank  %}
+                <a href="{% if section.settings.button_1_url %}{{ section.settings.button_1_url }}{% else %}#{% endif %}"><button class="header-button">{{ section.settings.button_text_1 }}</button></a>
+                {% endunless %}
+              {% unless section.settings.button_text_2  == blank %}
+                <a href="{% if section.settings.button_2_url %}{{ section.settings.button_2_url }}{% else %}#{% endif %}"><button class="header-button">{{ section.settings.button_text_2 }}</button></a>
+                {% endunless %}
+            </div>
+            
+        </div>
+        <div class="duo">
+            <img src="{{ section.settings.header_image | img_url: 'master' }}" class="headerimage">
+            <img src="{{ section.settings.mobile_image | img_url: 'master' }}" class="mobileimage">
+        </div>
+    </div>    
+</div>
+    
+<style>
+@font-face {
+  font-family: futura2;
+  src: url({{ 'futura.otf' | asset_url }});
+}
+.headerimage{
+   width:100%;
+   height:auto;
+   display:block;
+}
+.mobileimage{
+  width:100%;
+   height:auto;
+  display:none;
+  {% if section.settings.added_date %}
+    margin-bottom:20px;
+  {% endif %}
+
+}
+.button-wrapper{
+   display:flex;
+   flex-wrap:wrap;
+   justify-content: space-between;   
+}
+{% unless page.handle contains "6-reasons-why-nurses-are-choosing-dr-woof-compression-socks" %}
+.button-wrapper a {
+    flex: 0 0 48%;
+}
+{% endunless %}
+
+.header-button{
+    background: #000;
+    padding: 12px 0px;
+    color:#fff;
+    margin-right:12px;
+    width:100%;
+    {% if section.settings.light_theme %}
+      background: #fff;
+      color:#000;
+      border:2px solid #000;
+    {% endif %}
+}
+.headerv2{
+  width:100%;
+  padding:80px 0px;
+  background-color: {{ section.settings.bg_color }};
+  max-width:1300px;
+  margin-left:auto;
+  margin-right:auto;
+}
+.smallbadge{
+  display:inline-block;
+  width:28px;
+  height:28px;
+  margin-right:12px;
+}
+.header-list{
+  padding:0;
+  margin:0 !important;
+  margin-left:0;
+  margin-bottom:32px !important;
+  {% if section.settings.light_theme %}
+      color:#fff;
+  {% endif %}
+}
+.header-list li {
+  list-style: none;
+  display: flex;
+  align-items: center;
+  font-weight:800;
+  margin-bottom:8px;
+  {% if section.settings.light_theme %}
+      color:#fff;
+  {% endif %}
+  
+}
+
+.headerv2-wrapper{
+  display:flex;
+  justify-content: space-between;
+  flex-wrap:wrap;
+  align-items: center;
+  padding:0 92px;
+  max-width:1300px;
+  margin-left:auto;
+  margin-right:auto;
+}
+.headerv2-wrapper .duo{
+  flex:0 0 46%;
+}
+.headerv2-wrapper .duo:nth-child(2){
+    display: flex;
+    justify-content: flex-end;
+    flex-wrap:wrap;
+}
+
+.headerv2 .colored_header{
+    font-size: 16px;
+    color: {{ section.settings.header_color }};
+    font-weight:600;
+    font-family: 'Oxygen', sans-serif;
+    display: inline-block;
+    margin-bottom: 20px;
+    
+}
+
+.headerv2 .main_header{
+    font-family: futura2;
+    font-weight: 400;
+    font-size: 64px;
+    line-height: 72px;
+    margin-bottom: 20px;
+    {% if section.settings.light_theme %}
+      color:#fff;
+  {% endif %}
+}
+{% if section.settings.added_date %}
+.main_header{
+  text-align:center;
+  font-size:42px;
+}
+@media only screen and (max-width:480px){
+  .main-content{
+    padding-left:0px;
+    padding-right:0px;
+  }
+  .main_header{
+    text-align:center;
+    font-size:34px;
+    padding-left:8px;
+    padding-right:8px;
+  }
+}
+{% endif %}
+.headerv2 .content{
+  font-family: 'Oxygen', sans-serif;
+  font-size:18px;
+  margin-bottom:32px; 
+  {% if section.settings.light_theme %}
+      color:#fff;
+  {% endif %}
+}
+
+.headerv2{
+  margin-top: {{ section.settings.margin-top }}px;
+  margin-bottom: {{ section.settings.margin-bottom }}px;
+}
+.headerimage{
+  border-radius: 8px;
+}
+@media only screen and (max-width:1400px){
+  .headerv2{
+    padding: 30px 0;
+  }
+  .headerv2-wrapper{
+    width:100%;
+    padding-left:12px;
+    padding-right:12px;
+  }
+}
+@media only screen and (max-width:480px){
+  
+  .headerimage{
+    display:none;
+  }
+  .mobileimage{
+    display:block;
+  }
+  .header-list{
+    margin-bottom:20px;
+  }
+  .button-wrapper{
+    margin-bottom:12px;
+  }
+  .headerv2{
+    padding:32px 6px;
+  }
+  .headerv2-wrapper .duo{
+    width:100%;
+    flex: 0 0 100%;
+  }
+  .headerv2 .colored_header{
+    margin-bottom:8px;
+  }
+  .headerv2 .main_header{
+    font-size:48px;
+    line-height:1.2em;
+    margin-bottom:16px;
+  }
+  .headerv2 .content{
+    font-family: 'Oxygen', sans-serif;
+    font-size:16px;
+    margin-bottom:24px; 
+  }
+}
+</style>
+{% if section.settings.added_date %}
+  <script>
+    function getCurrentTime() {
+      var date = new Date();
+      var hours = date.getHours();
+      var minutes = date.getMinutes();
+      var ampm = hours >= 12 ? 'PM' : 'AM';
+      hours = hours % 12;
+      hours = hours ? hours : 12; // Handle midnight
+      minutes = minutes < 10 ? '0' + minutes : minutes; // Add leading zero to minutes if needed
+      var currentTime = hours + ':' + minutes + ' ' + ampm;
+      return currentTime;
+  }
+  function formatDate(dateString) {
+      var date = new Date(dateString);
+      var options = { weekday: 'short', month: 'long', day: 'numeric', year: 'numeric' };
+      var formattedDate = date.toLocaleDateString('en-US', options);
+      return formattedDate;
+  }
+  function getTwoDaysAgoDate() {
+      var currentDate = new Date();
+      var twoDaysAgoDate = new Date(currentDate);
+      twoDaysAgoDate.setDate(currentDate.getDate() - 2); // Subtract 2 days
+      return twoDaysAgoDate;
+  }
+  var twoDaysAgo = getTwoDaysAgoDate();
+  console.log(formatDate(twoDaysAgo));
+  $time = getCurrentTime();
+  $date = formatDate(twoDaysAgo);
+  $(document).ready(function(){
+    $(".ttime").html($time)
+    $(".tdate").html($date)
+  })
+  </script>
+{% endif %}
+{% schema %}
+    {
+      "name": "Main page",
+      "settings": [
+        {
+          "type": "text",
+          "label": "Colored Header",
+          "id": "colored_header",
+          "default": "TRUSTED BY 40,000+ HEALTH PROFESSIONALS"
+        },
+        {
+            "type": "color",
+            "id": "header_color",
+            "label": "Header Color",
+            "default": "#B53728"
+        },
+        {
+          "type": "checkbox",
+          "id": "added_date",
+          "label": "Added date ab testing.."
+        }, 
+        {
+          "type": "checkbox",
+          "id": "light_theme",
+          "label": "Turn on light theme"
+        }, 
+        {
+          "type": "text",
+          "label": "Main Header",
+          "id": "main_header",
+          "default": "Black Friday Mode is On!"
+        },
+        {
+          "type": "text",
+          "label": "Content",
+          "id": "content",
+          "default": "Comfortable designer scrubs and medical apparel that's 100% joypul. Dr. Woof Apparel | Premium Scrubs & Accessories"
+        },
+        {
+          "type": "text",
+          "label": "Button 1 text",
+          "id": "button_text_1"          
+        },
+        {
+          "type": "url",
+          "label": "Button 1 Url",
+          "id": "button_1_url"          
+        },
+        {
+          "type": "text",
+          "label": "Button 2 text",
+          "id": "button_text_2"
+        },
+        {
+          "type": "url",
+          "label": "Button 2 Url",
+          "id": "button_2_url"          
+        },
+        {
+            "type": "image_picker",
+            "id": "header_image",
+            "label": "Image"
+        },
+        {
+            "type": "color",
+            "id": "bg_color",
+            "label": "Color",
+            "default": "#FFD7D2"
+        },
+        {
+          "type": "range",
+          "id": "margin-top",
+          "label": "Space above",
+          "default": 0,
+          "min": 0,
+          "max": 100,
+          "step": 2,
+          "unit": "px"
+        },
+        {
+          "type": "range",
+          "id": "margin-bottom",
+          "label": "Space below",
+          "default": 20,
+          "min": 0,
+          "max": 100,
+          "step": 2,
+          "unit": "px"
+        }
+      ],
+      "blocks": [
+        {
+            "name": "List",
+            "type": "list",
+            "settings": [
+                {
+                    "type": "text",
+                    "label": "List",
+                    "id": "text_list"
+                },
+                {
+                    "type": "image_picker",
+                    "id": "icon_image",
+                    "label": "Icon Image"
+                }
+            ]
+        }
+      ],
+      "presets": [
+        {
+          "category": "V2",
+          "name": "Main page"
+        }
+      ]
+    }
+    {% endschema %}
+    

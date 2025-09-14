@@ -1,0 +1,55 @@
+<div class="custom-banner">
+  {% if section.settings.image_mobile %}
+    <img
+      src="{{ section.settings.image_mobile | image_url: width: 480 }}"
+      alt="Mobile Banner"
+      class="banner-img mobile-only"
+    />
+  {% endif %}
+
+  {% if section.settings.image_desktop %}
+    <img
+      src="{{ section.settings.image_desktop | image_url: width: 1200 }}"
+      alt="Desktop Banner"
+      class="banner-img desktop-only"
+    />
+  {% endif %}
+</div>
+
+<style>
+  .custom-banner .mobile-only {
+    display: none;
+  }
+
+  .custom-banner .desktop-only {
+    display: block;
+  }
+
+  @media (max-width: 480px) {
+    .custom-banner .mobile-only {
+      display: block;
+    }
+
+    .custom-banner .desktop-only {
+      display: none;
+    }
+  }
+</style>
+
+{% schema %}
+{
+  "name": "Responsive Banner",
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "image_desktop",
+      "label": "Desktop Banner Image"
+    },
+    {
+      "type": "image_picker",
+      "id": "image_mobile",
+      "label": "Mobile Banner Image"
+    }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,12 @@
+{% for media in product.media %}
+    {% case media.media_type %}
+    {% when 'image' %}
+    // All images
+    {% when 'video' %}
+    // How to get only first video?
+    {% when 'external_video' %}
+    // ...
+    {% when 'model' %}
+    // ...
+    {% endcase %}
+    {% endfor %}

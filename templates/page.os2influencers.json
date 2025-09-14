@@ -1,0 +1,44 @@
+{
+  "wrapper": "div#div_id.div_class[attribute-one=value]",
+  "sections": {
+    "headerv3": {
+      "type": "headerv3",
+      "disabled": true,
+      "settings": {
+        "boxhero": "shopify:\/\/shop_images\/Untitled_design_1_9e8b5e95-1380-42d7-bd76-e3a27a40b3cc.jpg"
+      }
+    },
+    "featured_content_aXk9Qd": {
+      "type": "featured-content",
+      "name": "Rich text",
+      "settings": {
+        "title": "<b>Become a Dr. Woof Affiliate<\/b>",
+        "text": "<p>Whether you’re a joyful healthcare hero, a loyal customer, or a content creator with a passion for fun scrubs — we’d love to have you on board!<br\/> Fill out the form below to join our affiliate program and start earning with every referral.<\/p><p><em>Influencers, please include your social media links. Note: Only public profiles can be considered.<\/em><br\/><br\/><\/p>",
+        "align_text": "left",
+        "narrow_column": false,
+        "enlarge_text": false,
+        "alt": false
+      }
+    },
+    "1754902369cab2b039": {
+      "type": "apps",
+      "blocks": {
+        "snowball_affiliate_marketing_affiliate_sign_up_DK9RNw": {
+          "type": "shopify:\/\/apps\/snowball-affiliate-marketing\/blocks\/affiliate-sign-up\/6e5feda3-ec24-4171-ae41-64028b660bc7",
+          "settings": {
+            "form_id": "3d6f9a1a-9071-418f-951a-62e1b33872b8"
+          }
+        }
+      },
+      "block_order": [
+        "snowball_affiliate_marketing_affiliate_sign_up_DK9RNw"
+      ],
+      "settings": {}
+    }
+  },
+  "order": [
+    "headerv3",
+    "featured_content_aXk9Qd",
+    "1754902369cab2b039"
+  ]
+}

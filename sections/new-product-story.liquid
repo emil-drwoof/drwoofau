@@ -1,0 +1,158 @@
+<div class="product-story">
+        <div class="ps-wrapper">
+<h2 class="sectit">{% unless section.settings.section_title == blank or section.settings.section_title == "" %}{{ section.settings.section_title }}{% endunless %}</h2>
+            <div class="flexer">
+                <div class="quad">
+                    <img src="{% unless section.settings.product_story_img_1 == blank or section.settings.product_story_img_1 == "" %}{{ section.settings.product_story_img_1 | img_url: 'master' }}{% endunless %}" alt="{% unless section.settings.product_story_title_1 == blank or section.settings.product_story_title_1 == "" %}{{ section.settings.product_story_title_1 }}{% endunless %}" class="product-story-image">
+                    <h3 class="product-story-title">{% unless section.settings.product_story_title_1 == blank or section.settings.product_story_title_1 == "" %}{{ section.settings.product_story_title_1 }}{% endunless %}</h3>
+                </div>
+                <div class="quad">
+                    <img src="{% unless section.settings.product_story_img_2 == blank or section.settings.product_story_img_2 == "" %}{{ section.settings.product_story_img_2 | img_url: 'master' }}{% endunless %}" alt="{% unless section.settings.product_story_title_2 == blank or section.settings.product_story_title_2 == "" %}{{ section.settings.product_story_title_2 }}{% endunless %}" class="product-story-image">
+                    <h3 class="product-story-title">{% unless section.settings.product_story_title_2 == blank or section.settings.product_story_title_2 == "" %}{{ section.settings.product_story_title_2 }}{% endunless %}</h3>
+                </div>
+                <div class="quad">
+                    <img src="{% unless section.settings.product_story_img_3 == blank or section.settings.product_story_img_3 == "" %}{{ section.settings.product_story_img_3 | img_url: 'master' }}{% endunless %}" alt="{% unless section.settings.product_story_title_3 == blank or section.settings.product_story_title_3 == "" %}{{ section.settings.product_story_title_3 }}{% endunless %}" class="product-story-image">
+                    <h3 class="product-story-title">{% unless section.settings.product_story_title_3 == blank or section.settings.product_story_title_3 == "" %}{{ section.settings.product_story_title_3 }}{% endunless %}</h3>
+                </div>
+                <div class="quad">
+                    <img src="{% unless section.settings.product_story_img_4 == blank or section.settings.product_story_img_4 == "" %}{{ section.settings.product_story_img_4 | img_url: 'master' }}{% endunless %}" alt="{% unless section.settings.product_story_title_4 == blank or section.settings.product_story_title_4 == "" %}{{ section.settings.product_story_title_4 }}{% endunless %}" class="product-story-image">
+                    <h3 class="product-story-title">{% unless section.settings.product_story_title_4 == blank or section.settings.product_story_title_4 == "" %}{{ section.settings.product_story_title_4 }}{% endunless %}</h3>
+                </div>
+            </div>
+        </div>
+</div>
+
+          <style>
+            .product-story{
+                width:100%;
+                background:#0B0D32;
+                padding-top:80px;
+                padding-bottom:80px;
+                margin-top:40px;
+                margin-bottom:80px;
+            }
+            .ps-wrapper {
+              max-width:1300px;
+              margin-left:auto;
+              margin-right:auto;
+              width:100%;
+            }
+            .product-story .prices{
+              font-family: Oxygen;
+              font-size:18px;
+  
+            }
+            .product-story .sectit{
+              font-family: 'Futurapt';
+              font-size:40px;
+              margin-bottom:24px;
+              color:#fff;
+            }
+            .product-story .flexer{
+              display:flex;
+              justify-content:space-between;
+              flex-wrap:wrap;
+            }
+            .product-story .quad{
+              flex:-0 0 24%;
+            }
+            .product-story .quad img{
+              
+            }
+            .product-story .product-story-title{
+              font-size:18px;
+              margin-bottom:10px;
+              font-weight:500;
+              color:#fff !important;
+            }
+            .product-story .quad .fullimage{
+              width:50%;
+              margin-bottom:10px;
+            }
+            .product-story-image{
+              border-radius:8px;
+              width:100%;
+              margin-bottom:10px;
+            }
+            .product-story .price{
+              font-size:18px;
+              font-family: oxygen;
+            }
+            
+            @media only screen and (max-width:480px){
+              
+                .product-story .quad{
+                  flex:-0 0 100%;
+                  margin-bottom:32px;
+                }
+                .product-story .sectit{
+                  font-size:32px;
+                }
+                .product-story{
+                  padding-left:16px;
+                  padding-right:16px;
+                  padding-top:40px;
+                  padding-bottom:40px;
+                  margin-bottom:20px;
+                }
+            }
+          </style>
+      {% schema %}
+          {
+            "name": "New Product Stories",
+            "settings": [
+                {
+                    "type": "text",
+                    "id": "section_title",
+                    "label": "Section title",
+                    "default": "Why you'll love our scrubs"
+                },
+                {
+                    "type": "image_picker",
+                    "id": "product_story_img_1",
+                    "label": "Product story image 1"
+                },
+                {
+                    "type": "text",
+                    "id": "product_story_title_1",
+                    "label": "Product story title 1"
+                },
+                {
+                    "type": "image_picker",
+                    "id": "product_story_img_2",
+                    "label": "Product story image 2"
+                },
+                {
+                    "type": "text",
+                    "id": "product_story_title_2",
+                    "label": "Product story title 2"
+                },
+                {
+                    "type": "image_picker",
+                    "id": "product_story_img_3",
+                    "label": "Product story image 3"
+                },
+                {
+                    "type": "text",
+                    "id": "product_story_title_3",
+                    "label": "Product story title 3"
+                },
+                {
+                    "type": "image_picker",
+                    "id": "product_story_img_4",
+                    "label": "Product story image 4"
+                },
+                {
+                    "type": "text",
+                    "id": "product_story_title_4",
+                    "label": "Product story title 4"
+                }
+            ],
+            "presets": [
+              {
+                "name": "New Product Stories",
+                "category": "Lister"
+              }
+            ]
+          }
+          {% endschema %}

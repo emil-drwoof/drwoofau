@@ -1,0 +1,34 @@
+<!-- sizeguider.liquid -->
+{% if template contains 'product' %}
+    {% unless  product.title contains "Socks" %}
+        
+        
+        {% if  product.title contains "Cap" %}
+          {% include 'sizeguidecaps' %}
+        {% else %}
+          {% render 'sizeguide', texter: section.settings.dwomen-size-guide-text %}
+        {% endif %}
+  
+    {% else %}
+      {% include 'sizeguidesocks' %}
+    {% endunless %}
+  {% endif %}
+
+{% schema %}
+    {
+      "name": "Sizeguider",
+      "settings": [
+        {
+            "type": "checkbox",
+            "id": "dwomen-size-guide-text",
+            "label": "Women size guide text"
+        }
+      ],
+      "presets": [
+        {
+          "name": "Sizeguider"
+        }
+      ]
+    }
+    {% endschema %}
+   

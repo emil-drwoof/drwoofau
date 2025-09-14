@@ -1,0 +1,204 @@
+<!-- section/main-page.liquid -->
+<div class="twocolv2">
+    {% for block in section.blocks %}  
+        <div class="listwrapper">
+            <div class="imagecol">
+            <h4 class="mv">{% if block.settings.list_title %}{{ block.settings.list_title }}{% endif %}</h4>
+                <img src="{% if block.settings.list_image %}{{ block.settings.list_image | img_url: 'master' }}{% endif %}" />
+            </div>
+            <div class="textcol">
+                <h4 class="dv">{% if block.settings.list_title %}{{ block.settings.list_title }}{% endif %}</h4>
+                <p>{% if block.settings.list_text %}{{ block.settings.list_text }}{% endif %}</p>
+                {% unless block.settings.button_text  == blank %}
+                    <a href="{% if block.settings.button_url %}{{ block.settings.button_url }}{% else %}#{% endif %}"><button class="header-button">{{ block.settings.button_text }}</button></a>
+                {% endunless %}
+            </div>
+        </div>              
+    {% endfor %}
+</div>
+    
+<style>
+@font-face {
+  font-family: futura2;
+  src: url({{ 'futura.otf' | asset_url }});
+}
+.twocolv2{
+    max-width:1300px;
+    margin-left:auto;
+    margin-right:auto;
+    margin-top: {{ section.settings.deskmartop }}px;
+    margin-bottom: {{ section.settings.deskmarbot }}px;
+}
+.listwrapper{
+    margin-top:40px;
+    margin-top:40px;
+    display:flex;
+    justify-content:space-between;
+    flex-wrap:wrap;
+    align-items:center;
+    width:100%;
+    margin-top:40px;
+    margin-bottom:40px;
+}
+.listwrapper .imagecol{
+    flex:0 0 32%;
+}
+.imagecol img{
+    width:100%;
+}
+.listwrapper .textcol h4{font-size:32px}
+.listwrapper .textcol p{    
+    font-size: 18px;
+    letter-spacing: 3px;
+    line-height: 1.6;
+}
+
+.listwrapper .textcol{
+    flex:0 0 66%;
+    padding-left:12px;
+    padding-right:12px;
+}
+.listwrapper .textcol img{
+        width:100%;
+        height:auto;
+    }
+    
+    .dv{
+  display:block;
+}
+.mv{
+  display:none;
+}
+.twocolv2 .header-button{
+    background: #fff;
+    padding: 12px 50px;
+    color: #000;
+    margin-right: 12px;
+    width: auto;
+    background: #000;
+    color: #fff;
+    border: 2px solid #000;
+    margin-top: 13px;
+    display: inline-block;
+}
+
+@media only screen and (max-width:480px){
+    .twocolv2 .header-button{
+        display: block;
+        width:100%;
+    }
+    .main-content{
+    padding-left:20px;
+    padding-right:20px;
+  }
+    .imagecol h4{
+        font-size:32px;
+        margin-bottom:12px;
+    }
+  .dv{
+  display:none;
+}
+.mv{
+  display:block;
+}
+    .twocolv2{
+        max-width:1300px;
+        margin-left:auto;
+        margin-right:auto;
+        margin-top: {{ section.settings.mobmartop }}px;
+        margin-bottom: {{ section.settings.mobmarbot }}px;
+    }
+    .listwrapper .imagecol{
+    flex:0 0 100%;
+    }
+    
+    .listwrapper .textcol{
+        flex:0 0 100%;
+    }
+
+}
+</style>
+
+{% schema %}
+    {
+      "name": "Two column list",
+      "settings": [
+        {
+        "type": "range",
+        "id": "deskmartop",
+        "label": "Desktop top margijn",
+        "default": 20,
+        "min": 0,
+        "max": 100,
+        "step": 10
+        },
+        {
+            "type": "range",
+            "id": "deskmarbot",
+            "label": "Desktop bottom margin",
+            "default": 20,
+        "min": 0,
+        "max": 100,
+        "step": 10
+        },
+        {
+        "type": "range",
+        "id": "mobmartop",
+        "label": "Mobile top margin",
+        "default": 20,
+        "min": 0,
+        "max": 100,
+        "step": 10
+        },
+        {
+            "type": "range",
+            "id": "mobmarbot",
+            "label": "Mobile bottom margin",
+            "default": 20,
+            "min": 0,
+            "max": 100,
+            "step": 10
+        }
+      ],
+      "blocks": [
+        {
+            "name": "List",
+            "type": "list",
+            "settings": [
+                {
+                    "type": "image_picker",
+                    "id": "list_image",
+                    "label": "List Image"
+                },
+                {
+                    "type": "text",
+                    "label": "list title",
+                    "id": "list_title"
+                },
+                {
+                    "type": "textarea",
+                    "label": "List text",
+                    "id": "list_text"
+                },       
+                {
+                    "type": "text",
+                    "label": "Button text",
+                    "id": "button_text"
+                },
+                {
+                    "type": "url",
+                    "label": "Button 1 Url",
+                    "id": "button_url"          
+                }
+            ]
+        }
+      ],
+      "presets": [
+        {
+          "category": "V2",
+          "name": "Two column list"
+        }
+      ]
+    }
+    {% endschema %}
+    

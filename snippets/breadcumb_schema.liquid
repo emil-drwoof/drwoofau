@@ -1,0 +1,143 @@
+<!-- copyright AVADA edited by Moi : Breadcrumb Structured Data  -->
+<script type="application/ld+json">{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [{
+    "@type": "ListItem",
+    "position": 1,
+    "name": "Home",
+    "item": "{{ shop.url }}"
+  }
+  {%- if request.page_type == 'product' -%}, {
+    "@type": "ListItem",
+    "position": 2,
+    "name": "{{ product.title | strip_html | strip_newlines | strip | escape }}",
+    "item": "{{ shop.url }}{{ product.url }}"
+  }
+  {%- endif -%}
+  {%- if request.page_type == 'collection' -%}, {
+    "@type": "ListItem",
+    "position": 2,
+    "name": "{{ collection.title | strip_html | strip_newlines | strip | escape }}",
+    "item": "{{ shop.url }}{{ collection.url }}"
+  }
+  {%- endif -%}
+  {%- if request.page_type == 'blog' -%}, {
+    "@type": "ListItem",
+    "position": 2,
+    "name": "{{ blog.title | strip_html | strip_newlines | strip | escape }}",
+    "item": "{{ shop.url }}{{ blog.url }}"
+  }
+  {%- endif -%}
+  {%- if request.page_type == 'article' -%}, {
+    "@type": "ListItem",
+    "position": 2,
+    "name": "{{ blog.title | strip_html | strip_newlines | strip | escape }}",
+    "item": "{{ shop.url }}{{ blog.url }}"
+  }, {
+    "@type": "ListItem",
+    "position": 3,
+    "name": "{{ article.title | strip_html | strip_newlines | strip | escape }}",
+    "item": "{{ shop.url }}{{ article.url }}"
+  }
+  {%- endif -%}
+  ]
+}
+</script>
+
+{% comment %}
+Schema Organization
+{% endcomment %}
+<script type="application/ld+json"> {
+"@context": "https://schema.org",
+"@type": "Organization",
+"name": "Buy Medical Scrubs & Access Australia | Dr. Woof Apparel",
+"url": "https://www.drwoofapparel.com.au/",
+"logo": "https://www.drwoofapparel.com.au/cdn/shop/files/Untitled-2_8e4e0372-7496-4014-bef7-2f26f5748b39_200x.jpg?v=1661621388",
+"contactPoint": {
+"@type": "ContactPoint",
+"telephone": "95646195593",
+"contactType": "Customer service"},
+"sameAs": [
+"https://www.instagram.com/drwoofapparel/",
+"https://www.facebook.com/drwoofapparel",
+"https://www.tiktok.com/@drwoofapparel",
+"https://www.youtube.com/@drwoofapparel"]}
+</script>
+
+{% comment %}
+Schema Website - Sitelink
+{% endcomment %}
+<script type="application/ld+json">
+{
+"@context": "https://schema.org/",
+"@type": "WebSite",
+"name": "Buy Medical Scrubs & Access Australia | Dr. Woof Apparel",
+"url": "https://www.drwoofapparel.com.au/",
+"potentialAction": {
+"@type": "SearchAction",
+"target": "https://www.drwoofapparel.com.au/search?type={search_term_string}",
+"query-input": "required name=search_term_string"}}
+</script>
+
+
+
+
+{% comment %}
+Schema Local Business
+{% endcomment %}
+
+<script type="application/ld+json">{
+"@context": "https://schema.org",
+"@type": "LocalBusiness",
+"name":"Buy Medical Scrubs & Access Australia | Dr. Woof Apparel",
+"image":"https://www.drwoofapparel.com.au/cdn/shop/files/Untitled-2_8e4e0372-7496-4014-bef7-2f26f5748b39_200x.jpg?v=1661621388",
+"@id": "https://www.drwoofapparel.com.au/",
+"url":"https://www.drwoofapparel.com.au/",
+"telephone": "95646195593",
+"email": "hello@drwoofapparel.com.au",
+"description": "Shop Dr. Woof for comfortable designer scrubs and medical apparel that's 100% joyful. Get ready to love your scrub uniforms, scrub caps, underscrubs & more",
+"numberOfEmployees": "50",
+"hasMap": "https://www.google.com/maps/place/2%2F1+Secombe+Pl,+Moorebank+NSW+2170,+Australia/@-33.9430309,150.9259923,18z/data=!3m1!4b1!4m6!3m5!1s0x6b12950ba4f9b791:0x38d663164b360ee1!8m2!3d-33.9430331!4d150.9272798!16s%2Fg%2F11c0v3z5tj?entry=tts&shorturl=1",
+"founder": {
+"@type": "Person",
+"name": "Wayfinders",
+"URL": "https://www.instagram.com/drwoofapparel/",
+"Address": "https://www.google.com/maps/place/2%2F1+Secombe+Pl,+Moorebank+NSW+2170,+Australia/@-33.9430309,150.9259923,18z/data=!3m1!4b1!4m6!3m5!1s0x6b12950ba4f9b791:0x38d663164b360ee1!8m2!3d-33.9430331!4d150.9272798!16s%2Fg%2F11c0v3z5tj?entry=tts&shorturl=1"},
+"geo": {
+"@type": "GeoCoordinates",
+"latitude": "",
+"longitude": ""},
+"openingHoursSpecification": {
+"@type": "OpeningHoursSpecification",
+"dayOfWeek": [
+"Monday",
+"Tuesday",
+"Wednesday",
+"Thursday",
+"Friday"],
+"opens": "08:00",
+"closes": "17:00"},
+"areaServed": {
+"@type": "Country",
+"url": "https://www.wikidata.org/wiki/Q408",
+"name": "Australia"},
+"department": {
+"@type": "LocalBusiness",
+"name": "Buy Medical Scrubs & Access Australia | Dr. Woof Apparel",
+"image": "https://www.drwoofapparel.com.au/cdn/shop/files/Untitled-2_8e4e0372-7496-4014-bef7-2f26f5748b39_200x.jpg?v=1661621388",
+"telephone": "95646195593"}
+}
+</script>
+
+
+
+
+
+
+
+
+
+
+
+

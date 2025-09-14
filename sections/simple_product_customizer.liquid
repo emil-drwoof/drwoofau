@@ -1,0 +1,303 @@
+<section>
+   <noscript>You must enable javascript for this app.</noscript>
+   <meta name="format-detection" content="telephone=no">
+   {% for image in product.images %}
+   <link rel="preload" href="{{ image | image_url }}" as="image" />
+   {% endfor %}
+   <div hidden id="pc-content">
+      <div data-id="shop">{{ shop.permanent_domain | json }}</div>
+      /
+      <div data-id="id">{{ section.id | json }}</div>
+      <div data-id="settings">{{ section.settings | json }}</div>
+      <div data-id="product">{{ product | json }}</div>
+      /
+      <div data-id="hasOnlyDefaultVariant">{{ product.has_only_default_variant | json }}</div>
+      /
+      <div data-id="options">{{ product.options_with_values | json }}</div>
+      /
+      <div data-id="selected">{{ product.selected_or_first_available_variant | json }}</div>
+      /
+      <div data-id="paymentButton">"{{ form | payment_button }}"</div>
+      <div data-arr="true" data-id="blocks">
+         {%- for block in section.blocks -%} {% if block.type != '@app'%}
+         <div {{ block.shopify_attributes }}>
+            <div data-id="settings">{{ block.settings | json }}</div>
+            <div data-id="type">{{ block.type | json }}</div>
+         </div>
+         {% endif %} {%- endfor -%}
+      </div>
+      <div data-arr="true" data-id="prices">
+         {%- for variant in product.variants -%}
+         <div>
+            <div data-id="id">{{ variant.id | json }}</div>
+            <div data-id="price">{{ variant.price | money | json }}</div>
+         </div>
+         {%- endfor -%}
+      </div>
+   </div>
+   <div hidden id="pc-colors">
+      {% assign p = section.settings.pc-primary-color %} {% assign b = section.settings.pc-background %} {% assign t =
+      section.settings.pc-text %} {% assign a = section.settings.pc-accent %} {% assign bt =
+      section.settings.pc-button-text %}
+      <div data-id="pc-primary-color">{{ p.red }}, {{ p.green }}, {{ p.blue }}</div>
+      <div data-id="pc-background">{{ b.red }}, {{ b.green }}, {{ b.blue }}</div>
+      <div data-id="pc-text">{{ t.red }}, {{ t.green }}, {{ t.blue }}</div>
+      <div data-id="pc-accent">{{ a.red }}, {{ a.green }}, {{ a.blue }}</div>
+      <div data-id="pc-button-text">{{ bt.red }}, {{ bt.green }}, {{ bt.blue }}</div>
+   </div>
+   <div id="pc-root"></div>
+
+   <script>
+      function pcAggregate() {
+         const wrap = document.getElementById('pc-root');
+         document.querySelectorAll('#pc-colors > div').forEach(col => {
+            wrap.style.setProperty('--' + col.dataset.id, col.innerHTML, 'important');
+         });
+
+         const result = {};
+         const content = document.querySelectorAll('#pc-content > *');
+
+         content.forEach(node => {
+            if (!node.dataset.arr) {
+               const reg = /.webp?.*?a>"/gm;
+               const inner = node.innerHTML?.replaceAll(reg, '.webp?v=1234"');
+
+               try {
+                  result[node.dataset.id] = JSON.parse(inner);
+               } catch (err) {
+                  result[node.dataset.id] = null;
+               }
+               return;
+            }
+            const nodeItems = node.children;
+            result[node.dataset.id] = Array.from(nodeItems).map(item => {
+               const obj = {};
+               item.querySelectorAll('div').forEach(key => {
+                  var strippedString = '';
+                  if (key.innerHTML.startsWith('<')) {
+                     strippedString = JSON.stringify(key.innerHTML.replace(/(<([^>]+)>)/gi, ''));
+                  } else strippedString = key.innerHTML;
+
+                  obj[key.dataset.id] = JSON.parse(strippedString);
+               });
+               return obj;
+            });
+         });
+
+         wrap.style.setProperty('--pc-border-radius', result.settings.border_radius + 'px');
+         wrap.style.setProperty('--pc-element-sizing', result.settings.element_sizing + 'px');
+         wrap.style.setProperty('--pc-element-sizing-mobile', result.settings.element_sizing_mobile + 'px');
+         window._pc_section = result;
+      }
+      pcAggregate();
+
+      document.addEventListener('shopify:section:load', function () {
+         pcAggregate();
+         var head = document.getElementsByTagName('head')[0];
+         var script = document.createElement('script');
+         script.src = '/apps/pc/api/storefront/dist.js';
+         head.appendChild(script);
+      });
+   </script>
+
+   <script id="pc-src" src="/apps/pc/api/storefront/dist.js"></script>
+</section>
+
+{% schema %} 
+
+
+{
+  "name": "Product Customizer",
+  "blocks": [
+    {
+      "type": "text",
+      "name": "Text",
+      "settings": [
+        {
+          "type": "text",
+          "id": "text",
+          "default": "Text Block Content",
+          "label": "Text Block"
+        },
+        {
+          "type": "select",
+          "id": "text_style",
+          "options": [
+            { "value": "body", "label": "Body" },
+            { "value": "subtitle", "label": "Subtitle" },
+            { "value": "uppercase", "label": "Uppercase" }
+          ],
+          "default": "body",
+          "label": "Stye"
+        }
+      ]
+    },
+    { "type": "title", "name": "Title", "limit": 1 },
+    {
+      "type": "price",
+      "name": "Price",
+      "limit": 1
+    },
+    { "type": "quantity_selector", "name": "Quantity", "limit": 1 },
+    {
+      "type": "options",
+      "name": "Custom Options",
+      "limit": 1
+    },
+    {
+      "type": "variant_picker",
+      "name": "Variant Picker",
+      "limit": 1,
+      "settings": [
+        {
+          "type": "select",
+          "id": "picker_type",
+          "options": [
+            { "value": "dropdown", "label": "Dropdown" },
+            { "value": "button", "label": "Button" }
+          ],
+          "default": "button",
+          "label": "Select Type"
+        }
+      ]
+    },
+    { "type": "buy_buttons", "name": "Buy Buttons", "limit": 1 },
+    { "type": "description", "name": "Description", "limit": 1 },
+    {
+      "type": "custom_liquid",
+      "name": "Custom liquid",
+      "settings": [
+        {
+          "type": "liquid",
+          "id": "custom_liquid",
+          "label": "Custom liquid",
+          "info": "Add app snippets or other Liquid code to create advanced customizations."
+        }
+      ]
+    },
+    {
+      "type": "collapsible_tab",
+      "name": "Collapsible tab",
+      "settings": [
+        {
+          "type": "text",
+          "id": "heading",
+          "default": "Collapsible tab",
+          "info": "Include a heading that explains the content.",
+          "label": "Heading"
+        },
+        { "type": "richtext", "id": "content", "label": "Tab content" },
+        {
+          "type": "select",
+          "id": "icon",
+          "options": [
+            { "value": "none", "label": "None" },
+            { "value": "box", "label": "Box" },
+            { "value": "chat_bubble", "label": "Chat Bubble" },
+            { "value": "check_mark", "label": "Check Mark" },
+            { "value": "dryer", "label": "Dryer" },
+            { "value": "eye", "label": "Eye" },
+            { "value": "heart", "label": "Heart" },
+            { "value": "iron", "label": "Iron" },
+            { "value": "leaf", "label": "Leaf" },
+            { "value": "leather", "label": "Leather" },
+            { "value": "lock", "label": "Lock" },
+            { "value": "map_pin", "label": "Map Pin" },
+            { "value": "pants", "label": "Pants" },
+            { "value": "plane", "label": "Plane" },
+            { "value": "price_tag", "label": "Price Tag" },
+            {
+              "value": "question_mark",
+              "label": "Question Mark"
+            },
+            { "value": "return", "label": "Return" },
+            { "value": "ruler", "label": "Ruler" },
+            { "value": "shirt", "label": "Shirt" },
+            { "value": "shoe", "label": "Shoe" },
+            { "value": "silhouette", "label": "Silhouette" },
+            { "value": "star", "label": "Star" },
+            { "value": "truck", "label": "Truck" },
+            {
+              "value": "washing",
+              "label": "Washing"
+            }
+          ],
+          "default": "check_mark",
+          "label": "Icon"
+        }
+      ]
+    }
+  ],
+  "settings": [
+    {
+      "type": "color",
+      "id": "pc-primary-color",
+      "label": "Primary Color",
+      "default": "#075b76"
+    },
+    {
+      "type": "color",
+      "id": "pc-accent",
+      "label": "Accent Color",
+      "default": "#585858"
+    },
+    {
+      "type": "color",
+      "id": "pc-button-text",
+      "label": "Button Text Color",
+      "default": "#fff4e1"
+    },
+    {
+      "type": "color",
+      "id": "pc-background",
+      "label": "Background Color",
+      "default": "#f2f2f2"
+    },
+    {
+      "type": "color",
+      "id": "pc-text",
+      "label": "Text Color",
+      "default": "#2b2b2b"
+    },
+    {
+      "type": "header",
+      "content": "Element Sizing",
+      "info": "Sizing for text and other elements"
+    },
+    {
+      "type": "range",
+      "id": "border_radius",
+      "min": 0,
+      "max": 20,
+      "step": 1,
+      "unit": "%",
+      "label": "Border Radius",
+      "default": 11
+    },
+    {
+      "type": "range",
+      "id": "element_sizing",
+      "min": 5,
+      "max": 25,
+      "step": 1,
+      "unit": "px",
+      "label": "Desktop",
+      "default": 14
+    },
+    {
+      "type": "range",
+      "id": "element_sizing_mobile",
+      "min": 5,
+      "max": 25,
+      "step": 1,
+      "unit": "px",
+      "label": "Mobile",
+      "default": 14
+    }
+  ]
+}
+
+
+
+
+{% endschema %}

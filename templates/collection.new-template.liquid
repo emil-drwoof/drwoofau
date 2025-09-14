@@ -1,0 +1,105 @@
+<style>
+ .flexer{
+     display:flex;
+     flex-wrap:wrap;
+     justify-content:space-between;
+}
+.__container.mobile-only{
+   
+}
+ .collection-filter__wrapper > .page-width{
+     display:none;
+}
+ .collection-title{
+    flex:0 0 64%;
+ }
+ 
+ .collection-dropdowns{
+     flex:0 0 35%;
+}
+ .collection-dropdowns__item{
+     flex:0 0 100% !important;
+}
+ .collection-filters{
+     display:flex;
+     flex-wrap:wrap;
+     justify-content:space-between;
+}
+ .section-header__title{
+     font-size:20px;
+}
+ .collection-dropdowns select{
+     padding-top:0;
+}
+ select{
+     padding-right:11px !important;
+     background-position: right 0px center !important;
+}
+ .collection-filter__wrapper{
+     padding-bottom:12px;
+}
+ .collection-dropdowns__item{
+     margin:0 20px 0 0 !important;
+}
+ .collection-filter__wrapper+.collection-dropdowns{
+     margin-top:0 !important;
+}
+ .collection-dropdowns{
+     padding:0 0px 0 0;
+}
+.collection-filter__scrollable{
+    overflow-x:hidden !important;
+}
+ @media only screen and (max-width:768px){
+    .main-content{
+        padding-top:0 !important;
+    }
+    .slick-track{
+        margin:0 auto !important;
+    }
+     .slick-prev{
+         left:-39px !important;
+    }
+     .slick-next{
+         right:-38px !important;
+    }
+    .site-header-sticky{
+        height:auto !important;
+    }
+     .slick-prev, .slick-next{
+         top:11% !important;
+    }
+     .collection-dropdowns select{
+         font-size:13px !important;
+    }
+     .collection-title h1{
+         font-size:16px;
+         line-height:2em;
+    }
+     .collection-dropdowns{
+         padding:0 12px;
+    }
+     .collection-dropdowns__item{
+         margin:0 12px !important;
+    }
+     header.site-header.small--hide{
+         border-bottom: 12px;
+    }
+     .main-content{
+         padding-top:12px;
+    }
+     header.site-header.small--hide, #shopify-section-collection-new-filters .page-width:first-child{
+         border-bottom:1px solid #e8e8e8 !important;
+    }
+     .collection-filters{
+         margin:0 0px 12px !important;
+    }
+}
+
+</style>
+
+{% section 'dr-woof-hero-new' %}
+
+{% section 'collection-new-filters' %}
+{% section 'collection-template' %}
+

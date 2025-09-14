@@ -1,0 +1,1855 @@
+{% if section.settings.newpdptop2 %}
+                {% comment %}
+          <section class="splide" aria-label="Basic Structure Example">
+          <div class="splide__track">
+          <div class="splide__list">
+
+
+          {% for media in product.media %}
+          {% case media.media_type %}
+          {% when 'image' %}
+          <div class="product-image">
+          <div class="splide__slide">
+          <img src="{{ media | img_url: '100x100'}}" alt="{{ media.alt }}">
+          </li>
+          </div>
+          {% when 'external_video' %}
+          <div class="splide__slide">
+          <div class="product-single__media">
+          {{ media | external_video_tag }}
+          </div>
+          </li>
+          {% when 'video' %}
+          <div class="splide__slide">
+          <div class="product-single__video">
+          {{ media | video_tag: controls: true }}
+          </div>
+          </li>
+
+          {% when 'model' %}
+          <div class="splide__slide">
+          <div class="product-single__media">
+          {{ media | model_viewer_tag }}
+          </div>
+          </li>
+          {% else %}
+          <div class="splide__slide">
+          <div class="product-single__media">
+          {{ media | media_tag }}
+          </div>
+          </li>
+          {% endcase %}
+          {% endfor %}
+
+          </div>
+          </div>
+          </section>
+
+          <script src="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/js/splide.min.js"></script>
+          <link href="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/css/splide.min.css" rel="stylesheet">
+          {% endcomment %}
+          <div class="completoseto">
+            <label class="variant__label xxdd" style="margin-top:20px;margin-bottom:8px;">
+
+              {% assign xxmy_value = product.metafields.sf_product_bundle.complete_the_set_title %}
+              {% if xxmy_value %}
+                {{ xxmy_value }}
+              {% else %}
+                {% if xxmy_value == "" %}
+                  {% else %}
+                    Complete the set:
+                {% endif %}
+
+              {% endif %}
+
+            </label>
+            {% assign cts_product_1_a = product.metafields.sf_product_bundle.cts_product_1_a %}
+
+            {% assign cts_product_1_b = product.metafields.sf_product_bundle.cts_product_1_b %}
+
+            {% assign cts_product_1_c = product.metafields.sf_product_bundle.cts_product_1_c %}
+
+            
+            {% comment %} 
+            {% assign cts_product_2_a = product.metafields.sf_product_bundle.cts_product_2_a %}
+            {% endcomment %}
+            {% assign cts_product_2_a = "bamboo-black-compression-socks" %}
+
+            {% assign cts_product_2_b = product.metafields.sf_product_bundle.cts_product_2_b %}
+
+            {% assign cts_product_2_c = product.metafields.sf_product_bundle.cts_product_2_c %}
+
+            {% unless product.has_only_default_variant %}
+              <div class="simple_variants">
+                <div class="datavariant done">
+                  {% for product in collections['complete-the-set'].products %}
+                    {% unless cts_product_1_a == blank %}
+                      {% if product.handle == cts_product_1_a %}
+                        {% for variant in product.variants %}
+                          <div class="parentvar">
+                            {% if variant.available %}
+                              <input
+                                value="{{ variant.featured_image | img_url: 'master' }}"
+                                type="hidden"
+                                class="datavarimage">
+                              <input
+                                value="{{ variant.id }}"
+                                type="hidden"
+                                class="datavarid">
+                              <input
+                                value="{{ variant.title }}"
+                                type="hidden"
+                                class="datatitle">
+                              <input
+                                value="available"
+                                type="hidden"
+                                class="dataavail">
+                              <input
+                                value="{{ variant.price | money_with_currency }}"
+                                type="hidden"
+                                class="dataprice">
+                            {% else %}
+                              <input
+                                value="{{ variant.featured_image | img_url: 'master' }}"
+                                type="hidden"
+                                class="datavarimage">
+                              <input
+                                value="{{ variant.id }}"
+                                type="hidden"
+                                class="datavarid">
+                              <input
+                                value="{{ variant.title }}"
+                                type="hidden"
+                                class="datatitle">
+                              <input
+                                value="soldout"
+                                type="hidden"
+                                class="dataavail">
+                                <input
+                                value="{{ variant.price | money_with_currency }}"
+                                type="hidden"
+                                class="dataprice">
+                            {% endif %}
+                          </div>
+                        {% endfor %}
+                      {% endif %}
+                    {% endunless %}
+                    {% unless cts_product_1_b == blank %}
+                      {% if product.handle == cts_product_1_b %}
+                        {% for variant in product.variants %}
+                          <div class="parentvar">
+                            {% if variant.available %}
+                              <input
+                                value="{{ variant.featured_image | img_url: 'master' }}"
+                                type="hidden"
+                                class="datavarimage">
+                              <input
+                                value="{{ variant.id }}"
+                                type="hidden"
+                                class="datavarid">
+                              <input
+                                value="{{ variant.title }}"
+                                type="hidden"
+                                class="datatitle">
+                              <input
+                                value="available"
+                                type="hidden"
+                                class="dataavail">
+                                <input
+                                value="{{ variant.price | money_with_currency }}"
+                                type="hidden"
+                                class="dataprice">
+                            {% else %}
+                              <input
+                                value="{{ variant.featured_image | img_url: 'master' }}"
+                                type="hidden"
+                                class="datavarimage">
+                              <input
+                                value="{{ variant.id }}"
+                                type="hidden"
+                                class="datavarid">
+                              <input
+                                value="{{ variant.title }}"
+                                type="hidden"
+                                class="datatitle">
+                              <input
+                                value="soldout"
+                                type="hidden"
+                                class="dataavail">
+                                <input
+                                value="{{ variant.price | money_with_currency }}"
+                                type="hidden"
+                                class="dataprice">
+                            {% endif %}
+                          </div>
+                        {% endfor %}
+                      {% endif %}
+                    {% endunless %}
+                    {% unless cts_product_1_c == blank %}
+                      {% if product.handle == cts_product_1_c %}
+                        {% for variant in product.variants %}
+                          <div class="parentvar">
+                            {% if variant.available %}
+                              <input
+                                value="{{ variant.featured_image | img_url: 'master' }}"
+                                type="hidden"
+                                class="datavarimage">
+                              <input
+                                value="{{ variant.id }}"
+                                type="hidden"
+                                class="datavarid">
+                              <input
+                                value="{{ variant.title }}"
+                                type="hidden"
+                                class="datatitle">
+                              <input
+                                value="available"
+                                type="hidden"
+                                class="dataavail">
+                                <input
+                                value="{{ variant.price | money_with_currency }}"
+                                type="hidden"
+                                class="dataprice">
+                            {% else %}
+                              <input
+                                value="{{ variant.featured_image | img_url: 'master' }}"
+                                type="hidden"
+                                class="datavarimage">
+                              <input
+                                value="{{ variant.id }}"
+                                type="hidden"
+                                class="datavarid">
+                              <input
+                                value="{{ variant.title }}"
+                                type="hidden"
+                                class="datatitle">
+                              <input
+                                value="soldout"
+                                type="hidden"
+                                class="dataavail">
+                                <input
+                                value="{{ variant.price | money_with_currency }}"
+                                type="hidden"
+                                class="dataprice">
+                            {% endif %}
+                          </div>
+                        {% endfor %}
+                      {% endif %}
+                    {% endunless %}
+                  {% endfor %}
+                </div>
+
+                <div class="datavariant dtwo">
+                  {% for product in collections['complete-the-set'].products %}
+                    {% unless cts_product_2_a == blank %}
+                      {% if product.handle == cts_product_2_a %}
+                        {% assign colorcounter = 0 %}
+                        {% for variant in product.variants %}
+                          <div class="parentvar">
+                            {% if variant.available %}
+                              {% if colorcounter == 0 %}
+                                {% assign colorgetter = variant.title | split: " / " %}
+                                {% assign defaultcolor = colorgetter[1] %}
+                                {% if defaultcolor %}
+                                  {% assign colorcounter = colorcounter | plus: 1 %}
+                                  <input
+                                    type="hidden"
+                                    value="{{ defaultcolor }}"
+                                    class="defaultcolor">
+                                {% endif %}
+                              {% endif %}
+                              <input
+                                value="{{ variant.featured_image | img_url: 'master' }}"
+                                type="hidden"
+                                class="datavarimage">
+                              <input
+                                value="{{ variant.id }}"
+                                type="hidden"
+                                class="datavarid">
+                              <input
+                                value="{{ variant.title }}"
+                                type="hidden"
+                                class="datatitle">
+                              <input
+                                value="available"
+                                type="hidden"
+                                class="dataavail">
+                                <input
+                                value="{{ variant.price | money_with_currency }}"
+                                type="hidden"
+                                class="dataprice">
+                            {% else %}
+                              <input
+                                value="{{ variant.featured_image | img_url: 'master' }}"
+                                type="hidden"
+                                class="datavarimage">
+                              <input
+                                value="{{ variant.id }}"
+                                type="hidden"
+                                class="datavarid">
+                              <input
+                                value="{{ variant.title }}"
+                                type="hidden"
+                                class="datatitle">
+                              <input
+                                value="soldout"
+                                type="hidden"
+                                class="dataavail">
+                                <input
+                                value="{{ variant.price | money_with_currency }}"
+                                type="hidden"
+                                class="dataprice">                                
+                            {% endif %}
+                          </div>
+                        {% endfor %}
+                      {% endif %}
+                    {% endunless %}
+                    {% unless cts_product_2_b == blank %}
+                      {% if product.handle == cts_product_2_b %}
+                        {% for variant in product.variants %}
+                          <div class="parentvar">
+                            {% if variant.available %}
+                              <input
+                                value="{{ variant.featured_image | img_url: 'master' }}"
+                                type="hidden"
+                                class="datavarimage">
+                              <input
+                                value="{{ variant.id }}"
+                                type="hidden"
+                                class="datavarid">
+                              <input
+                                value="{{ variant.title }}"
+                                type="hidden"
+                                class="datatitle">
+                              <input
+                                value="available"
+                                type="hidden"
+                                class="dataavail">
+                                <input
+                                value="{{ variant.price | money_with_currency }}"
+                                type="hidden"
+                                class="dataprice">
+                            {% else %}
+                              <input
+                                value="{{ variant.featured_image | img_url: 'master' }}"
+                                type="hidden"
+                                class="datavarimage">
+                              <input
+                                value="{{ variant.id }}"
+                                type="hidden"
+                                class="datavarid">
+                              <input
+                                value="{{ variant.title }}"
+                                type="hidden"
+                                class="datatitle">
+                              <input
+                                value="soldout"
+                                type="hidden"
+                                class="dataavail">
+                                <input
+                                value="{{ variant.price | money_with_currency }}"
+                                type="hidden"
+                                class="dataprice">
+                            {% endif %}
+                          </div>
+                        {% endfor %}
+                      {% endif %}
+                    {% endunless %}
+                    {% unless cts_product_2_c == blank %}
+                      {% if product.handle == cts_product_2_c %}
+                        {% for variant in product.variants %}
+                          <div class="parentvar">
+                            {% if variant.available %}
+                              <input
+                                value="{{ variant.featured_image | img_url: 'master' }}"
+                                type="hidden"
+                                class="datavarimage">
+                              <input
+                                value="{{ variant.id }}"
+                                type="hidden"
+                                class="datavarid">
+                              <input
+                                value="{{ variant.title }}"
+                                type="hidden"
+                                class="datatitle">
+                              <input
+                                value="available"
+                                type="hidden"
+                                class="dataavail">
+                                <input
+                                value="{{ variant.price | money_with_currency }}"
+                                type="hidden"
+                                class="dataprice">
+                            {% else %}
+                              <input
+                                value="{{ variant.featured_image | img_url: 'master' }}"
+                                type="hidden"
+                                class="datavarimage">
+                              <input
+                                value="{{ variant.id }}"
+                                type="hidden"
+                                class="datavarid">
+                              <input
+                                value="{{ variant.title }}"
+                                type="hidden"
+                                class="datatitle">
+                              <input
+                                value="soldout"
+                                type="hidden"
+                                class="dataavail">
+                                <input
+                                value="{{ variant.price | money_with_currency }}"
+                                type="hidden"
+                                class="dataprice">
+                            {% endif %}
+                          </div>
+                        {% endfor %}
+                      {% endif %}
+                    {% endunless %}
+                  {% endfor %}
+                </div>
+
+
+              </div>
+            {% endunless %}
+
+            <div class="fullwidth">
+              <div class="cts-flexer cone">
+
+                <div class="cts-slider-part">
+                  {% unless cts_product_1_a == blank %}
+                    {% for product in collections['complete-the-set'].products %}
+                      {% unless cts_product_1_a == blank %}
+                        {% if product.handle == cts_product_1_a %}
+                          {% assign bitswif = product.url %}
+                        {% endif %}
+                      {% endunless %}
+                    {% endfor %}
+                  {% endunless %}
+                  <a href="{{ bitswif }}">
+                    <img src="#" class="imagepart">
+                  </a>
+                </div>
+
+                {% for product in collections['complete-the-set'].products %}
+                  {% unless cts_product_1_a == blank %}
+                    {% if product.handle == cts_product_1_a %}
+                      <div class="cts-details">
+                        <div class="cts-top-header">
+
+                          
+
+
+          {% comment %}
+                          <script id="looxSchemaJson1" type="application/ld+json">
+                            {
+                            "@context": "http://schema.org",
+                            "@type": "Product",
+                            "@id": {{ canonical_url | json }},
+                            "aggregateRating": {
+                            "@type": "AggregateRating",
+                            "ratingValue": "{{ product.metafields.loox.avg_rating }}",
+                            "reviewCount": "{{ product.metafields.loox.num_reviews }}"
+                            },
+                            "name": {{ product.title | json }}
+                            }
+                          </script>
+
+          {% endcomment %}
+
+                          <div
+                            class="loox-rating"
+                            data-id="{{ product.id }}"
+                            data-rating="{{ product.metafields.loox.avg_rating }}"
+                            data-raters="{{ product.metafields.loox.num_reviews }}"
+                            data-pattern="{% if settings.aveRate %}[rating]/5{% endif %} {% if settings.aveRate and settings.revCount %},{% endif %} {% if settings.revCount %}[count]{% endif %}{% if settings.revWord != "" %} {{settings.revWord}}{% endif %}"></div>
+                          {% comment %} belowyellow.com {% endcomment %}
+
+                          <label>{{ product.title }}</label>
+
+                          <span class="price">
+                            {% if product.available %}
+                              {% if product.price_varies and template == 'collection' %}
+                                <p>From {{ product.price_min | money_with_currency }} to {{ product.price_max | money_with_currency }}</p>
+                              {% else %}
+                              <p>{{ product.selected_or_first_available_variant.price | money_with_currency }}</p>
+                              {% endif %}
+                            {% else %}
+                              <p>Sold out</p>
+                            {% endif %}
+                          </span>
+
+                          <p style="display:none">
+                            <span class="prod-color"></span>
+                            <span class="size-chart"></span>
+                          </p>
+                        {% endif %}
+                      {% endunless %}
+                    {% endfor %}
+
+                    {% for product in collections['complete-the-set'].products %}
+                      {% unless cts_product_1_a == blank %}
+                        {% if product.handle == cts_product_1_a %}
+
+                          <input
+                            type="hidden"
+                            name="data-product-id"
+                            value="{{ product.id }}">
+
+                          <input
+                            type="hidden"
+                            name="id"
+                            value="{{ product.selected_or_first_available_variant.id }}" />
+                        {% endif %}
+                      {% endunless %}
+                    {% endfor %}
+                    <div class="flexerselect">
+                      {% for product in collections['complete-the-set'].products %}
+                        {% unless cts_product_1_a == blank %}
+                          {% if product.handle == cts_product_1_a %}
+                            {%- for option in product.options_with_values -%}
+                              {% if forloop.index == 1 %}
+                                <select
+                                  id="ProductSelect-{{ forloop.index0 }}"
+                                  data-index="xoption{{ forloop.index }}"
+                                  class="duo">
+                                  <option value="Select">
+                                    Size
+                                  </option>
+                                  {%- for value in option.values -%}
+                                    <option value="{{ value | escape }}"{% if option.selected_value == value %}selected="selected"{% endif %}>
+                                      {{ value | escape }}
+                                    </option>
+                                  {%- endfor -%}
+                                </select>
+                              {% endif %}
+
+
+                            {%- endfor -%}
+                          {% endif %}
+                        {% endunless %}
+                      {%- endfor -%}
+
+                      <select
+                        id="ProductSelect-2"
+                        data-index="xoption2"
+                        class="duo">
+                        {% for product in collections['complete-the-set'].products %}
+                          {% unless cts_product_1_a == blank %}
+                            {% if product.handle == cts_product_1_a %}
+                              {%- for option in product.options_with_values -%}
+                                {% if forloop.index == 2 %}
+
+
+                                  {%- for value in option.values -%}
+                                    <option value="{{ value | escape }}"{% if option.selected_value == value %}selected="selected"{% endif %}>
+                                      {{ value | escape }}
+                                    </option>
+                                  {%- endfor -%}
+
+                                {% endif %}
+                              {%- endfor -%}
+                            {% endif %}
+                          {% endunless %}
+                        {%- endfor -%}
+                        {% for product in collections['complete-the-set'].products %}
+                          {% unless cts_product_1_b == blank %}
+                            {% if product.handle == cts_product_1_b %}
+                              {%- for option in product.options_with_values -%}
+                                {% if forloop.index == 2 %}
+
+
+                                  {%- for value in option.values -%}
+                                    <option value="{{ value | escape }}"{% if option.selected_value == value %}selected="selected"{% endif %}>
+                                      {{ value | escape }}
+                                    </option>
+                                  {%- endfor -%}
+
+                                {% endif %}
+
+                              {%- endfor -%}
+                            {% endif %}
+                          {% endunless %}
+                        {% endfor %}
+                        {% for product in collections['complete-the-set'].products %}
+                          {% unless cts_product_1_c == blank %}
+                            {% if product.handle == cts_product_1_c %}
+                              {%- for option in product.options_with_values -%}
+                                {% if forloop.index == 2 %}
+
+
+                                  {%- for value in option.values -%}
+                                    <option value="{{ value | escape }}"{% if option.selected_value == value %}selected="selected"{% endif %}>
+                                      {{ value | escape }}
+                                    </option>
+                                  {%- endfor -%}
+
+                                {% endif %}
+
+                              {%- endfor -%}
+                            {% endif %}
+                          {% endunless %}
+                        {% endfor %}
+                      </select>
+
+
+
+                      {% for product in collections['complete-the-set'].products %}
+                        {% unless cts_product_1_a == blank %}
+                          {% if product.handle == cts_product_1_a %}
+                            {%- for option in product.options_with_values -%}
+                              {% if forloop.index == 3 %}
+                                <select
+                                  id="ProductSelect-{{ forloop.index }}"
+                                  data-index="xoption{{ forloop.index }}"
+                                  class="duo">
+
+                                  {%- for value in option.values -%}
+                                    <option value="{{ value | escape }}"{% if option.selected_value == value %}selected="selected"{% endif %}>
+                                      {{ value | escape }}
+                                    </option>
+                                  {%- endfor -%}
+                                </select>
+                              {% endif %}
+
+
+                            {%- endfor -%}
+                          {% endif %}
+                        {% endunless %}
+                      {%- endfor -%}
+
+
+
+                    </div>
+                    {% unless cts_product_1_a == blank %}
+                      <button
+                        id="cts-prod1"
+                        class="btn btn--tertiary btn--full xxxs"
+                        style="margin-top:12px;">
+
+                        ADD TO BAG
+
+                      </button>
+                    {% endunless %}
+                    <div class="error_message1" style="display: none;">Oh no! It looks like you missed something. Please review your choices.</div>
+                  </div>
+
+
+                </div>
+              </div>
+
+
+              {% unless cts_product_2_a == blank %}
+                <div class="cts-flexer ctwo">
+                  {% unless cts_product_2_a == blank %}
+                    <div class="cts-slider-part">
+                      {% for product in collections['complete-the-set'].products %}
+                        {% unless cts_product_2_a == blank %}
+                          {% if product.handle == cts_product_2_a %}
+                            <a href="{{ product.url }}">
+                              <img src="#" class="imagepart">
+                            </a>
+                          {% endif %}
+                        {% endunless %}
+                      {% endfor %}
+                    </div>
+                  {% endunless %}
+                  {% for product in collections['complete-the-set'].products %}
+                    {% unless cts_product_2_a == blank %}
+                      {% if product.handle == cts_product_2_a %}
+                        <div class="cts-details">
+                          <div class="cts-top-header">
+
+          {% comment %}
+                            <script id="looxSchemaJson2" type="application/ld+json">
+                              {
+                              "@context": "http://schema.org",
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                "@type": "Product",
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                "@id": {{ canonical_url | json }},
+                              "aggregateRating": {
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  "@type": "AggregateRating",
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  "ratingValue": "{{ product.metafields.loox.avg_rating }}",
+                              "reviewCount": "{{ product.metafields.loox.num_reviews }}"
+                              },
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                "name": {{ product.title | json }}
+                              }
+                            </script>
+          {% endcomment %}
+                            <div
+                              class="loox-rating"
+                              data-id="{{ product.id }}"
+                              data-rating="{{ product.metafields.loox.avg_rating }}"
+                              data-raters="{{ product.metafields.loox.num_reviews }}"
+                              data-pattern="{% if settings.aveRate %}[rating]/5{% endif %} {% if settings.aveRate and settings.revCount %},{% endif %} {% if settings.revCount %}[count]{% endif %}{% if settings.revWord != "" %} {{settings.revWord}}{% endif %}"></div>
+                            {% comment %} belowyellow.com {% endcomment %}
+
+                            <a href="{{ product.url }}">
+                              <label>{{ product.title }}</label>
+                            </a>
+
+                            <span class="price">
+                              {% if product.available %}
+                                {% if product.price_varies and template == 'collection' %}
+                                  <p>From {{ product.price_min | money_with_currency }} to {{ product.price_max | money_with_currency }}</p>
+                                {% else %}
+                                <p>{{ product.selected_or_first_available_variant.price | money_with_currency }}</p>
+                                {% endif %}
+                              {% else %}
+                                <p>Sold out</p>
+                              {% endif %}
+                            </span>
+
+                            <p style="display:none">
+                              <span class="prod-color"></span>
+                              <span class="size-chart"></span>
+                            </p>
+                          {% endif %}
+                        {% endunless %}
+                      {% endfor %}
+
+                      {% for product in collections['complete-the-set'].products %}
+                        {% unless cts_product_2_a == blank %}
+                          {% if product.handle == cts_product_2_a %}
+
+                            <input
+                              type="hidden"
+                              name="data-product-id"
+                              value="{{ product.id }}">
+
+                            <input
+                              type="hidden"
+                              name="id"
+                              value="{{ product.selected_or_first_available_variant.id }}" />
+                          {% endif %}
+                        {% endunless %}
+                      {% endfor %}
+                      <div class="flexerselect">
+                        {% for product in collections['complete-the-set'].products %}
+                          {% unless cts_product_2_a == blank %}
+                            {% if product.handle == cts_product_2_a %}
+                              {%- for option in product.options_with_values -%}
+                                {% if forloop.index == 1 %}
+                                  <select
+                                    id="ProductSelect-{{ forloop.index0 }}"
+                                    data-index="xoption{{ forloop.index }}"
+                                    class="duo">
+                                    <option value="Select">
+                                    Size
+                                    </option>
+                                    {% comment %}
+                                    {%- for value in option.values -%}
+                                    <option value="{{ value | escape }}"{% if option.selected_value == value %}selected="selected"{% endif %}>
+                                    {{ value | escape }}
+                                    </option>
+                                    {%- endfor -%}
+                                    {% endcomment %}
+                                    {%- for value in option.values -%}
+                                      <option value="{{ value | escape }}"{% if option.selected_value == value %}selected="selected"{% endif %}>
+                                        {{ value | escape }}
+                                      </option>
+                                    {%- endfor -%}
+                                  </select>
+                                {% endif %}
+
+
+                              {%- endfor -%}
+                            {% endif %}
+                          {% endunless %}
+                        {%- endfor -%}
+
+                        <select
+                          id="ProductSelect-2"
+                          data-index="xoption2"
+                          class="duo">
+                          {% for product in collections['complete-the-set'].products %}
+                            {% unless cts_product_2_a == blank %}
+                              {% if product.handle == cts_product_2_a %}
+                                {%- for option in product.options_with_values -%}
+                                  {% if forloop.index == 2 %}
+
+
+                                    {%- for value in option.values -%}
+                                      <option value="{{ value | escape }}"{% if option.selected_value == value %}selected="selected"{% endif %}>
+                                        {{ value | escape }}
+                                      </option>
+                                    {%- endfor -%}
+
+                                  {% endif %}
+                                {%- endfor -%}
+                              {% endif %}
+                            {% endunless %}
+                          {%- endfor -%}
+                          {% for product in collections['complete-the-set'].products %}
+                            {% unless cts_product_2_b == blank %}
+                              {% if product.handle == cts_product_2_b %}
+                                {%- for option in product.options_with_values -%}
+                                  {% if forloop.index == 2 %}
+
+
+                                    {%- for value in option.values -%}
+                                      <option value="{{ value | escape }}"{% if option.selected_value == value %}selected="selected"{% endif %}>
+                                        {{ value | escape }}
+                                      </option>
+                                    {%- endfor -%}
+
+                                  {% endif %}
+
+                                {%- endfor -%}
+                              {% endif %}
+                            {% endunless %}
+                          {% endfor %}
+                        </select>
+
+                        {% for product in collections['complete-the-set'].products %}
+                          {% unless cts_product_2_a == blank %}
+                            {% if product.handle == cts_product_2_a %}
+                              {%- for option in product.options_with_values -%}
+                                {% if forloop.index == 3 %}
+                                  <select
+                                    id="ProductSelect-{{ forloop.index }}"
+                                    data-index="xoption{{ forloop.index }}"
+                                    class="duo">
+
+                                    {%- for value in option.values -%}
+                                      <option value="{{ value | escape }}"{% if option.selected_value == value %}selected="selected"{% endif %}>
+                                        {{ value | escape }}
+                                      </option>
+                                    {%- endfor -%}
+                                  </select>
+                                {% endif %}
+
+
+                              {%- endfor -%}
+                            {% endif %}
+                          {% endunless %}
+                        {%- endfor -%}
+
+
+                      </div>
+                      {% unless cts_product_2_a == blank %}
+                        <button
+                          id="cts-prod2"
+                          class="btn btn--tertiary btn--full xxxs"
+                          style="margin-top:12px;">
+
+                          ADD TO BAG
+
+                        </button>
+                      {% endunless %}
+                      <div class="error_message2" style="display: none;">Oh no! It looks like you missed something. Please review your choices.</div>
+                    </div>
+
+                  </div>
+
+                </div>
+              {% endunless %}
+            </div>
+
+
+
+          </div>
+
+
+
+          <style>
+            .xxdd{
+              font-family: 'futurapt';
+              font-size:24px; 
+              margin-top:32px;
+              margin-bottom:24px;
+              font-weight:500;
+            }
+
+            .flexerselect .duo{
+              flex:0 0 47%;
+            }
+            .flexerselect select{
+              font-weight:500;
+            }
+            button.btn.btn--tertiary.btn--full.xxxs{
+              margin-left:0 !important;
+              width:100%;
+            }
+            {% if template.suffix == "joggerlandingpage" %}
+              .xxdd {
+                display: none !important;
+              }
+
+              /*
+              .variant-input {
+                display: none !important;
+              }
+              .variant-input[data-value='Black'],
+              .variant-input[data-value='Navy'],
+              .variant-input[data-value='Cool Gray'],
+              .variant-input[data-value='Fern Green'] {
+
+                display: inline-block !important;
+              }
+              */
+              .ctwo {
+                display: none !important;
+              }
+              @media only screen and (max-width:420px) {
+
+
+                .ddoo {
+                  margin-top: -32px !important;
+                }
+              }
+            {% endif %}
+            .error_message1,
+            .error_message2 {
+              margin-top: 12px;
+              color: red;
+              font-weight: bold;
+            }
+          .imagepart{
+            border-radius: 8px;
+          }
+            #cts-prod1,
+            #cts-prod2 {
+              padding: 14px 7px !important;
+              background-color: #555;
+              font-size: 10px;
+              margin-bottom:16px;
+            }
+            .fullwidth .adisabled,
+            .fullwidth .bdisabled {
+
+              background-color: #000 !important;
+
+            }
+
+            .cts-flexer {
+              display: flex;
+              width: 100%;
+              padding: 12px 0;
+              flex-wrap: wrap;
+              justify-content: space-between;
+              border-top: 1px solid #e8e8e8 !important;
+              padding:16px;
+              border:1px solid #ECEDED;
+              border-radius:8px;
+              margin-bottom:16px;
+            }
+            .cts-slider-part {
+              width: 25%;
+              flex: 0 0 25%;
+            }
+            .cts-details {
+              width: 72%;
+              flex: 0 0 72%;
+            }
+            .loox-rating, .product-single__header .loox-rating{
+              margin-bottom:4px !important;
+            }
+            .price{
+              font-family: 'Oxygen';
+            }
+            #cts-prod1, #cts-prod2{
+              font-family: 'Oxygen';
+              font-size:14px;
+            }
+            .cts-top-header label{
+              font-family: 'futurapt';
+              font-weight:500;
+              margin-bottom:6px;
+
+            }
+            .cts-top-header h4,
+            .cts-top-header p {
+              margin-bottom: 10px;
+            }
+            .cts-top-header a:hover {
+              cursor: pointer;
+            }
+            @media only screen and (max-width:480px){
+              .xxdd{
+                font-size:24px !important; 
+                margin-top:32px;
+                margin-bottom:24px;
+                font-weight:500;
+              }
+              .cts-slider-part,
+              .cts-details{
+
+              }
+              .imagepart{
+                margin-bottom:12px;
+              }
+            }
+          </style>  
+{% else %}
+            <div class="completoseto">
+              <label class="variant__label xxdd" style="margin-top:20px;margin-bottom:8px;">
+
+                {% assign xxmy_value = product.metafields.sf_product_bundle.complete_the_set_title %}
+                {% if xxmy_value %}
+                  {{ xxmy_value }}
+                {% else %}
+                  {% if xxmy_value == "" %}
+                    {% else %}
+                      Complete the set
+                  {% endif %}
+
+                {% endif %}
+
+              </label>
+              {% assign cts_product_1_a = product.metafields.sf_product_bundle.cts_product_1_a %}
+
+              {% assign cts_product_1_b = product.metafields.sf_product_bundle.cts_product_1_b %}
+
+              {% assign cts_product_1_c = product.metafields.sf_product_bundle.cts_product_1_c %}
+{% comment %}
+              {% assign cts_product_2_a = product.metafields.sf_product_bundle.cts_product_2_a %}
+{% endcomment %}
+              {% assign cts_product_2_a = "bamboo-black-compression-socks" %}
+
+              {% assign cts_product_2_b = product.metafields.sf_product_bundle.cts_product_2_b %}
+
+              {% assign cts_product_2_c = product.metafields.sf_product_bundle.cts_product_2_c %}
+
+              {% unless product.has_only_default_variant %}
+                <div class="simple_variants">
+                  <div class="datavariant done">
+                    {% for product in collections['complete-the-set'].products %}
+                      {% unless cts_product_1_a == blank %}
+                        {% if product.handle == cts_product_1_a %}
+                          {% for variant in product.variants %}
+                            <div class="parentvar">
+                              {% if variant.available %}
+                                <input
+                                  value="{{ variant.featured_image | img_url: 'master' }}"
+                                  type="hidden"
+                                  class="datavarimage">
+                                <input
+                                  value="{{ variant.id }}"
+                                  type="hidden"
+                                  class="datavarid">
+                                <input
+                                  value="{{ variant.title }}"
+                                  type="hidden"
+                                  class="datatitle">
+                                <input
+                                  value="available"
+                                  type="hidden"
+                                  class="dataavail">
+                                  <input
+                                  value="{{ variant.price | money_with_currency }}"
+                                  type="hidden"
+                                  class="dataprice">
+                              {% else %}
+                                <input
+                                  value="{{ variant.featured_image | img_url: 'master' }}"
+                                  type="hidden"
+                                  class="datavarimage">
+                                <input
+                                  value="{{ variant.id }}"
+                                  type="hidden"
+                                  class="datavarid">
+                                <input
+                                  value="{{ variant.title }}"
+                                  type="hidden"
+                                  class="datatitle">
+                                <input
+                                  value="soldout"
+                                  type="hidden"
+                                  class="dataavail">
+                                  <input
+                                  value="{{ variant.price | money_with_currency }}"
+                                  type="hidden"
+                                  class="dataprice">
+                              {% endif %}
+                            </div>
+                          {% endfor %}
+                        {% endif %}
+                      {% endunless %}
+                      {% unless cts_product_1_b == blank %}
+                        {% if product.handle == cts_product_1_b %}
+                          {% for variant in product.variants %}
+                            <div class="parentvar">
+                              {% if variant.available %}
+                                <input
+                                  value="{{ variant.featured_image | img_url: 'master' }}"
+                                  type="hidden"
+                                  class="datavarimage">
+                                <input
+                                  value="{{ variant.id }}"
+                                  type="hidden"
+                                  class="datavarid">
+                                <input
+                                  value="{{ variant.title }}"
+                                  type="hidden"
+                                  class="datatitle">
+                                <input
+                                  value="available"
+                                  type="hidden"
+                                  class="dataavail">
+                                  <input
+                                  value="{{ variant.price | money_with_currency }}"
+                                  type="hidden"
+                                  class="dataprice">
+                              {% else %}
+                                <input
+                                  value="{{ variant.featured_image | img_url: 'master' }}"
+                                  type="hidden"
+                                  class="datavarimage">
+                                <input
+                                  value="{{ variant.id }}"
+                                  type="hidden"
+                                  class="datavarid">
+                                <input
+                                  value="{{ variant.title }}"
+                                  type="hidden"
+                                  class="datatitle">
+                                <input
+                                  value="soldout"
+                                  type="hidden"
+                                  class="dataavail">
+                                  <input
+                                  value="{{ variant.price | money_with_currency }}"
+                                  type="hidden"
+                                  class="dataprice">
+                              {% endif %}
+                            </div>
+                          {% endfor %}
+                        {% endif %}
+                      {% endunless %}
+                      {% unless cts_product_1_c == blank %}
+                        {% if product.handle == cts_product_1_c %}
+                          {% for variant in product.variants %}
+                            <div class="parentvar">
+                              {% if variant.available %}
+                                <input
+                                  value="{{ variant.featured_image | img_url: 'master' }}"
+                                  type="hidden"
+                                  class="datavarimage">
+                                <input
+                                  value="{{ variant.id }}"
+                                  type="hidden"
+                                  class="datavarid">
+                                <input
+                                  value="{{ variant.title }}"
+                                  type="hidden"
+                                  class="datatitle">
+                                <input
+                                  value="available"
+                                  type="hidden"
+                                  class="dataavail">
+                                  <input
+                                  value="{{ variant.price | money_with_currency }}"
+                                  type="hidden"
+                                  class="dataprice">
+                              {% else %}
+                                <input
+                                  value="{{ variant.featured_image | img_url: 'master' }}"
+                                  type="hidden"
+                                  class="datavarimage">
+                                <input
+                                  value="{{ variant.id }}"
+                                  type="hidden"
+                                  class="datavarid">
+                                <input
+                                  value="{{ variant.title }}"
+                                  type="hidden"
+                                  class="datatitle">
+                                <input
+                                  value="soldout"
+                                  type="hidden"
+                                  class="dataavail">
+                                  <input
+                                  value="{{ variant.price | money_with_currency }}"
+                                  type="hidden"
+                                  class="dataprice">
+                              {% endif %}
+                            </div>
+                          {% endfor %}
+                        {% endif %}
+                      {% endunless %}
+                    {% endfor %}
+                  </div>
+
+                  <div class="datavariant dtwo">
+                    {% for product in collections['complete-the-set'].products %}
+                      {% unless cts_product_2_a == blank %}
+                        {% if product.handle == cts_product_2_a %}
+                          {% assign colorcounter = 0 %}
+                          {% for variant in product.variants %}
+                            <div class="parentvar">
+                              {% if variant.available %}
+                                {% if colorcounter == 0 %}
+                                  {% assign colorgetter = variant.title | split: " / " %}
+                                  {% assign defaultcolor = colorgetter[1] %}
+                                  {% if defaultcolor %}
+                                    {% assign colorcounter = colorcounter | plus: 1 %}
+                                    <input
+                                      type="hidden"
+                                      value="{{ defaultcolor }}"
+                                      class="defaultcolor">
+                                  {% endif %}
+                                {% endif %}
+                                <input
+                                  value="{{ variant.featured_image | img_url: 'master' }}"
+                                  type="hidden"
+                                  class="datavarimage">
+                                <input
+                                  value="{{ variant.id }}"
+                                  type="hidden"
+                                  class="datavarid">
+                                <input
+                                  value="{{ variant.title }}"
+                                  type="hidden"
+                                  class="datatitle">
+                                <input
+                                  value="available"
+                                  type="hidden"
+                                  class="dataavail">
+                                  <input
+                                  value="{{ variant.price | money_with_currency }}"
+                                  type="hidden"
+                                  class="dataprice">
+                              {% else %}
+                                <input
+                                  value="{{ variant.featured_image | img_url: 'master' }}"
+                                  type="hidden"
+                                  class="datavarimage">
+                                <input
+                                  value="{{ variant.id }}"
+                                  type="hidden"
+                                  class="datavarid">
+                                <input
+                                  value="{{ variant.title }}"
+                                  type="hidden"
+                                  class="datatitle">
+                                <input
+                                  value="soldout"
+                                  type="hidden"
+                                  class="dataavail">
+                                  <input
+                                  value="{{ variant.price | money_with_currency }}"
+                                  type="hidden"
+                                  class="dataprice">
+                              {% endif %}
+                            </div>
+                          {% endfor %}
+                        {% endif %}
+                      {% endunless %}
+                      {% unless cts_product_2_b == blank %}
+                        {% if product.handle == cts_product_2_b %}
+                          {% for variant in product.variants %}
+                            <div class="parentvar">
+                              {% if variant.available %}
+                                <input
+                                  value="{{ variant.featured_image | img_url: 'master' }}"
+                                  type="hidden"
+                                  class="datavarimage">
+                                <input
+                                  value="{{ variant.id }}"
+                                  type="hidden"
+                                  class="datavarid">
+                                <input
+                                  value="{{ variant.title }}"
+                                  type="hidden"
+                                  class="datatitle">
+                                <input
+                                  value="available"
+                                  type="hidden"
+                                  class="dataavail">
+                                  <input
+                                  value="{{ variant.price | money_with_currency }}"
+                                  type="hidden"
+                                  class="dataprice">
+                              {% else %}
+                                <input
+                                  value="{{ variant.featured_image | img_url: 'master' }}"
+                                  type="hidden"
+                                  class="datavarimage">
+                                <input
+                                  value="{{ variant.id }}"
+                                  type="hidden"
+                                  class="datavarid">
+                                <input
+                                  value="{{ variant.title }}"
+                                  type="hidden"
+                                  class="datatitle">
+                                <input
+                                  value="soldout"
+                                  type="hidden"
+                                  class="dataavail">
+                                  <input
+                                  value="{{ variant.price | money_with_currency }}"
+                                  type="hidden"
+                                  class="dataprice">
+                              {% endif %}
+                            </div>
+                          {% endfor %}
+                        {% endif %}
+                      {% endunless %}
+                      {% unless cts_product_2_c == blank %}
+                        {% if product.handle == cts_product_2_c %}
+                          {% for variant in product.variants %}
+                            <div class="parentvar">
+                              {% if variant.available %}
+                                <input
+                                  value="{{ variant.featured_image | img_url: 'master' }}"
+                                  type="hidden"
+                                  class="datavarimage">
+                                <input
+                                  value="{{ variant.id }}"
+                                  type="hidden"
+                                  class="datavarid">
+                                <input
+                                  value="{{ variant.title }}"
+                                  type="hidden"
+                                  class="datatitle">
+                                <input
+                                  value="available"
+                                  type="hidden"
+                                  class="dataavail">
+                                  <input
+                                  value="{{ variant.price | money_with_currency }}"
+                                  type="hidden"
+                                  class="dataprice">
+                              {% else %}
+                                <input
+                                  value="{{ variant.featured_image | img_url: 'master' }}"
+                                  type="hidden"
+                                  class="datavarimage">
+                                <input
+                                  value="{{ variant.id }}"
+                                  type="hidden"
+                                  class="datavarid">
+                                <input
+                                  value="{{ variant.title }}"
+                                  type="hidden"
+                                  class="datatitle">
+                                <input
+                                  value="soldout"
+                                  type="hidden"
+                                  class="dataavail">
+                                  <input
+                                  value="{{ variant.price | money_with_currency }}"
+                                  type="hidden"
+                                  class="dataprice">
+                              {% endif %}
+                            </div>
+                          {% endfor %}
+                        {% endif %}
+                      {% endunless %}
+                    {% endfor %}
+                  </div>
+
+
+                </div>
+              {% endunless %}
+
+              <div class="fullwidth">
+                <div class="cts-flexer cone">
+
+                  <div class="cts-slider-part">
+                    {% unless cts_product_1_a == blank %}
+                      {% for product in collections['complete-the-set'].products %}
+                        {% unless cts_product_1_a == blank %}
+                          {% if product.handle == cts_product_1_a %}
+                            {% assign bitswif = product.url %}
+                          {% endif %}
+                        {% endunless %}
+                      {% endfor %}
+                    {% endunless %}
+                    <a href="{{ bitswif }}">
+                      <img src="#" class="imagepart">
+                    </a>
+                  </div>
+
+                  {% for product in collections['complete-the-set'].products %}
+                    {% unless cts_product_1_a == blank %}
+                      {% if product.handle == cts_product_1_a %}
+                        <div class="cts-details">
+                          <div class="cts-top-header">
+
+                            <label>{{ product.title }}</label>
+
+
+            {% comment %}
+                            <script id="looxSchemaJson1" type="application/ld+json">
+                              {
+                              "@context": "http://schema.org",
+                              "@type": "Product",
+                              "@id": {{ canonical_url | json }},
+                              "aggregateRating": {
+                              "@type": "AggregateRating",
+                              "ratingValue": "{{ product.metafields.loox.avg_rating }}",
+                              "reviewCount": "{{ product.metafields.loox.num_reviews }}"
+                              },
+                              "name": {{ product.title | json }}
+                              }
+                            </script>
+
+            {% endcomment %}
+
+                            <div
+                              class="loox-rating"
+                              data-id="{{ product.id }}"
+                              data-rating="{{ product.metafields.loox.avg_rating }}"
+                              data-raters="{{ product.metafields.loox.num_reviews }}"
+                              data-pattern="{% if settings.aveRate %}[rating]/5{% endif %} {% if settings.aveRate and settings.revCount %},{% endif %} {% if settings.revCount %}[count]{% endif %}{% if settings.revWord != "" %} {{settings.revWord}}{% endif %}"></div>
+                            {% comment %} belowyellow.com {% endcomment %}
+
+
+
+                            <span class="price">
+                              {% if product.available %}
+                                {% if product.price_varies and template == 'collection' %}
+                                  <p>From {{ product.price_min | money_with_currency }} to {{ product.price_max | money_with_currency }}</p>
+                                {% else %}
+                                <p>{{ product.selected_or_first_available_variant.price | money_with_currency }}</p>
+                                {% endif %}
+                              {% else %}
+                                <p>Sold out</p>
+                              {% endif %}
+                            </span>
+
+                            <p style="display:none">
+                              <span class="prod-color"></span>
+                              <span class="size-chart"></span>
+                            </p>
+                          {% endif %}
+                        {% endunless %}
+                      {% endfor %}
+
+                      {% for product in collections['complete-the-set'].products %}
+                        {% unless cts_product_1_a == blank %}
+                          {% if product.handle == cts_product_1_a %}
+
+                            <input
+                              type="hidden"
+                              name="data-product-id"
+                              value="{{ product.id }}">
+
+                            <input
+                              type="hidden"
+                              name="id"
+                              value="{{ product.selected_or_first_available_variant.id }}" />
+                          {% endif %}
+                        {% endunless %}
+                      {% endfor %}
+                      <div class="flexerselect">
+                        {% for product in collections['complete-the-set'].products %}
+                          {% unless cts_product_1_a == blank %}
+                            {% if product.handle == cts_product_1_a %}
+                              {%- for option in product.options_with_values -%}
+                                {% if forloop.index == 1 %}
+                                  <select
+                                    id="ProductSelect-{{ forloop.index0 }}"
+                                    data-index="xoption{{ forloop.index }}"
+                                    class="trio">
+                                    <option value="Select">
+                                      Select
+                                    </option>
+                                    {%- for value in option.values -%}
+                                      <option value="{{ value | escape }}"{% if option.selected_value == value %}selected="selected"{% endif %}>
+                                        {{ value | escape }}
+                                      </option>
+                                    {%- endfor -%}
+                                  </select>
+                                {% endif %}
+
+
+                              {%- endfor -%}
+                            {% endif %}
+                          {% endunless %}
+                        {%- endfor -%}
+
+                        <select
+                          id="ProductSelect-2"
+                          data-index="xoption2"
+                          class="trio"
+                          class="trio">
+                          {% for product in collections['complete-the-set'].products %}
+                            {% unless cts_product_1_a == blank %}
+                              {% if product.handle == cts_product_1_a %}
+                                {%- for option in product.options_with_values -%}
+                                  {% if forloop.index == 2 %}
+
+
+                                    {%- for value in option.values -%}
+                                      <option value="{{ value | escape }}"{% if option.selected_value == value %}selected="selected"{% endif %}>
+                                        {{ value | escape }}
+                                      </option>
+                                    {%- endfor -%}
+
+                                  {% endif %}
+                                {%- endfor -%}
+                              {% endif %}
+                            {% endunless %}
+                          {%- endfor -%}
+                          {% for product in collections['complete-the-set'].products %}
+                            {% unless cts_product_1_b == blank %}
+                              {% if product.handle == cts_product_1_b %}
+                                {%- for option in product.options_with_values -%}
+                                  {% if forloop.index == 2 %}
+
+
+                                    {%- for value in option.values -%}
+                                      <option value="{{ value | escape }}"{% if option.selected_value == value %}selected="selected"{% endif %}>
+                                        {{ value | escape }}
+                                      </option>
+                                    {%- endfor -%}
+
+                                  {% endif %}
+
+                                {%- endfor -%}
+                              {% endif %}
+                            {% endunless %}
+                          {% endfor %}
+                          {% for product in collections['complete-the-set'].products %}
+                            {% unless cts_product_1_c == blank %}
+                              {% if product.handle == cts_product_1_c %}
+                                {%- for option in product.options_with_values -%}
+                                  {% if forloop.index == 2 %}
+
+
+                                    {%- for value in option.values -%}
+                                      <option value="{{ value | escape }}"{% if option.selected_value == value %}selected="selected"{% endif %}>
+                                        {{ value | escape }}
+                                      </option>
+                                    {%- endfor -%}
+
+                                  {% endif %}
+
+                                {%- endfor -%}
+                              {% endif %}
+                            {% endunless %}
+                          {% endfor %}
+                        </select>
+
+
+
+                        {% for product in collections['complete-the-set'].products %}
+                          {% unless cts_product_1_a == blank %}
+                            {% if product.handle == cts_product_1_a %}
+                              {%- for option in product.options_with_values -%}
+                                {% if forloop.index == 3 %}
+                                  <select
+                                    id="ProductSelect-{{ forloop.index }}"
+                                    data-index="xoption{{ forloop.index }}"
+                                    class="trio">
+
+                                    {%- for value in option.values -%}
+                                      <option value="{{ value | escape }}"{% if option.selected_value == value %}selected="selected"{% endif %}>
+                                        {{ value | escape }}
+                                      </option>
+                                    {%- endfor -%}
+                                  </select>
+                                {% endif %}
+
+
+                              {%- endfor -%}
+                            {% endif %}
+                          {% endunless %}
+                        {%- endfor -%}
+
+
+                        {% unless cts_product_1_a == blank %}
+                          <button
+                            id="cts-prod1"
+                            class="btn btn--tertiary btn--full xxxs"
+                            style="margin-top:12px;">
+
+                            ADD
+
+                          </button>
+                        {% endunless %}
+                      </div>
+                      <div class="error_message1" style="display: none;">Oh no! It looks like you missed something. Please review your choices.</div>
+                    </div>
+
+
+                  </div>
+                </div>
+
+
+                {% unless cts_product_2_a == blank %}
+                  <div class="cts-flexer ctwo">
+                    {% unless cts_product_2_a == blank %}
+                      <div class="cts-slider-part">
+                        {% for product in collections['complete-the-set'].products %}
+                          {% unless cts_product_2_a == blank %}
+                            {% if product.handle == cts_product_2_a %}
+                              <a href="{{ product.url }}">
+                                <img src="#" class="imagepart">
+                              </a>
+                            {% endif %}
+                          {% endunless %}
+                        {% endfor %}
+                      </div>
+                    {% endunless %}
+                    {% for product in collections['complete-the-set'].products %}
+                      {% unless cts_product_2_a == blank %}
+                        {% if product.handle == cts_product_2_a %}
+                          <div class="cts-details">
+                            <div class="cts-top-header">
+                              <a href="{{ product.url }}">
+                                <label>{{ product.title }}</label>
+                              </a>
+            {% comment %}
+                              <script id="looxSchemaJson2" type="application/ld+json">
+                                {
+                                "@context": "http://schema.org",
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  "@type": "Product",
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  "@id": {{ canonical_url | json }},
+                                "aggregateRating": {
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    "@type": "AggregateRating",
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    "ratingValue": "{{ product.metafields.loox.avg_rating }}",
+                                "reviewCount": "{{ product.metafields.loox.num_reviews }}"
+                                },
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  "name": {{ product.title | json }}
+                                }
+                              </script>
+            {% endcomment %}
+                              <div
+                                class="loox-rating"
+                                data-id="{{ product.id }}"
+                                data-rating="{{ product.metafields.loox.avg_rating }}"
+                                data-raters="{{ product.metafields.loox.num_reviews }}"
+                                data-pattern="{% if settings.aveRate %}[rating]/5{% endif %} {% if settings.aveRate and settings.revCount %},{% endif %} {% if settings.revCount %}[count]{% endif %}{% if settings.revWord != "" %} {{settings.revWord}}{% endif %}"></div>
+                              {% comment %} belowyellow.com {% endcomment %}
+
+
+
+                              <span class="price">
+                                {% if product.available %}
+                                  {% if product.price_varies and template == 'collection' %}
+                                    <p>From {{ product.price_min | money_with_currency }} to {{ product.price_max | money_with_currency }}</p>
+                                  {% else %}
+                                  <p>{{ product.selected_or_first_available_variant.price | money_with_currency }}</p>
+                                  {% endif %}
+                                {% else %}
+                                  <p>Sold out</p>
+                                {% endif %}
+                              </span>
+
+                              <p style="display:none">
+                                <span class="prod-color"></span>
+                                <span class="size-chart"></span>
+                              </p>
+                            {% endif %}
+                          {% endunless %}
+                        {% endfor %}
+
+                        {% for product in collections['complete-the-set'].products %}
+                          {% unless cts_product_2_a == blank %}
+                            {% if product.handle == cts_product_2_a %}
+
+                              <input
+                                type="hidden"
+                                name="data-product-id"
+                                value="{{ product.id }}">
+
+                              <input
+                                type="hidden"
+                                name="id"
+                                value="{{ product.selected_or_first_available_variant.id }}" />
+                            {% endif %}
+                          {% endunless %}
+                        {% endfor %}
+                        <div class="flexerselect">
+                          {% for product in collections['complete-the-set'].products %}
+                            {% unless cts_product_2_a == blank %}
+                              {% if product.handle == cts_product_2_a %}
+                                {%- for option in product.options_with_values -%}
+                                  {% if forloop.index == 1 %}
+                                    <select
+                                      id="ProductSelect-{{ forloop.index0 }}"
+                                      data-index="xoption{{ forloop.index }}"
+                                      class="trio">
+                                      <option value="Select">
+                                        Select
+                                      </option>
+                                      {% comment %}
+                                      {%- for value in option.values -%}
+                                      <option value="{{ value | escape }}"{% if option.selected_value == value %}selected="selected"{% endif %}>
+                                      {{ value | escape }}
+                                      </option>
+                                      {%- endfor -%}
+                                      {% endcomment %}
+                                      {%- for value in option.values -%}
+                                        <option value="{{ value | escape }}"{% if option.selected_value == value %}selected="selected"{% endif %}>
+                                          {{ value | escape }}
+                                        </option>
+                                      {%- endfor -%}
+                                    </select>
+                                  {% endif %}
+
+
+                                {%- endfor -%}
+                              {% endif %}
+                            {% endunless %}
+                          {%- endfor -%}
+
+                          <select
+                            id="ProductSelect-2"
+                            data-index="xoption2"
+                            class="trio">
+                            {% for product in collections['complete-the-set'].products %}
+                              {% unless cts_product_2_a == blank %}
+                                {% if product.handle == cts_product_2_a %}
+                                  {%- for option in product.options_with_values -%}
+                                    {% if forloop.index == 2 %}
+
+
+                                      {%- for value in option.values -%}
+                                        <option value="{{ value | escape }}"{% if option.selected_value == value %}selected="selected"{% endif %}>
+                                          {{ value | escape }}
+                                        </option>
+                                      {%- endfor -%}
+
+                                    {% endif %}
+                                  {%- endfor -%}
+                                {% endif %}
+                              {% endunless %}
+                            {%- endfor -%}
+                            {% for product in collections['complete-the-set'].products %}
+                              {% unless cts_product_2_b == blank %}
+                                {% if product.handle == cts_product_2_b %}
+                                  {%- for option in product.options_with_values -%}
+                                    {% if forloop.index == 2 %}
+
+
+                                      {%- for value in option.values -%}
+                                        <option value="{{ value | escape }}"{% if option.selected_value == value %}selected="selected"{% endif %}>
+                                          {{ value | escape }}
+                                        </option>
+                                      {%- endfor -%}
+
+                                    {% endif %}
+
+                                  {%- endfor -%}
+                                {% endif %}
+                              {% endunless %}
+                            {% endfor %}
+                          </select>
+
+                          {% for product in collections['complete-the-set'].products %}
+                            {% unless cts_product_2_a == blank %}
+                              {% if product.handle == cts_product_2_a %}
+                                {%- for option in product.options_with_values -%}
+                                  {% if forloop.index == 3 %}
+                                    <select
+                                      id="ProductSelect-{{ forloop.index }}"
+                                      data-index="xoption{{ forloop.index }}"
+                                      class="trio">
+
+                                      {%- for value in option.values -%}
+                                        <option value="{{ value | escape }}"{% if option.selected_value == value %}selected="selected"{% endif %}>
+                                          {{ value | escape }}
+                                        </option>
+                                      {%- endfor -%}
+                                    </select>
+                                  {% endif %}
+
+
+                                {%- endfor -%}
+                              {% endif %}
+                            {% endunless %}
+                          {%- endfor -%}
+
+                          {% unless cts_product_2_a == blank %}
+                            <button
+                              id="cts-prod2"
+                              class="btn btn--tertiary btn--full xxxs"
+                              style="margin-top:12px;">
+
+                              ADD
+
+                            </button>
+                          {% endunless %}
+                        </div>
+                        <div class="error_message2" style="display: none;">Oh no! It looks like you missed something. Please review your choices.</div>
+                      </div>
+
+                    </div>
+
+                  </div>
+                {% endunless %}
+              </div>
+
+
+
+            </div>
+
+
+
+            <style>
+              {% if template.suffix == "joggerlandingpage" %}
+                .xxdd {
+                  display: none !important;
+                }
+
+                /*
+                .variant-input {
+                  display: none !important;
+                }
+                .variant-input[data-value='Black'],
+                .variant-input[data-value='Navy'],
+                .variant-input[data-value='Cool Gray'],
+                .variant-input[data-value='Fern Green'] {
+
+                  display: inline-block !important;
+                }
+                */
+                .ctwo {
+                  display: none !important;
+                }
+                @media only screen and (max-width:420px) {
+                  .ddoo {
+                    margin-top: -32px !important;
+                  }
+                }
+              {% endif %}
+              .error_message1,
+              .error_message2 {
+                margin-top: 12px;
+                color: red;
+                font-weight: bold;
+              }
+
+              #cts-prod1,
+              #cts-prod2 {
+                padding: 14px 7px !important;
+                background-color: #555;
+                font-size: 10px;
+              }
+              .fullwidth .adisabled,
+              .fullwidth .bdisabled {
+
+                background-color: #000 !important;
+
+              }
+
+              .cts-flexer {
+                display: flex;
+                width: 100%;
+                padding: 12px 0;
+                flex-wrap: wrap;
+                justify-content: space-between;
+                border-top: 1px solid #e8e8e8 !important;
+              }
+              .cts-slider-part {
+                width: 25%;
+                flex: 0 0 25%;
+              }
+              .cts-details {
+                width: 73%;
+                flex: 0 0 73%;
+              }
+              .cts-top-header h4,
+              .cts-top-header p {
+                margin-bottom: 6px;
+              }
+              .cts-top-header a:hover {
+                cursor: pointer;
+              }
+            </style>
+{% endif %}

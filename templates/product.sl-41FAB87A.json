@@ -1,0 +1,66 @@
+{
+  "sections": {
+    "product-template": {
+      "type": "product-template-nlp-os2",
+      "settings": {
+        "enable_abtesting": true,
+        "product_image_size": "large",
+        "product_image_type": "stacked",
+        "product_zoom_enable": true,
+        "enable_video_looping": true,
+        "product_video_style": "muted",
+        "enable_payment_button": true,
+        "product_shipping_callout": "",
+        "variant_type": "button",
+        "variant_labels_enable": true,
+        "sku_enable": false,
+        "inventory_enable": false,
+        "inventory_threshold": 10,
+        "inventory_transfers_enable": false,
+        "quantity_enable": false,
+        "social_enable": true,
+        "txt": "",
+        "txt_": "",
+        "color_link": "#2980b9",
+        "txt1": "",
+        "txt2": "",
+        "txt3": "",
+        "txt4": "",
+        "txt5": "",
+        "txt6": "",
+        "txt7": "",
+        "txt8": "",
+        "txt9": "",
+        "txt10": "",
+        "txt11": ""
+      }
+    },
+    "stories": {
+      "type": "product-sections-bundle-os2",
+      "settings": {}
+    },
+    "reviews": {
+      "type": "looxreviews",
+      "settings": {}
+    },
+    "recommendations": {
+      "type": "product-recommendations",
+      "settings": {
+        "show_product_recommendations": true,
+        "product_recommendations_heading": "You may also like",
+        "per_row": "small"
+      }
+    },
+    "sudofooter": {
+      "type": "product-nlp-sudofooter-os2",
+      "settings": {}
+    }
+  },
+  "order": [
+    "product-template",
+    "stories",
+    "reviews",
+    "recommendations",
+    "sudofooter"
+  ]
+}

@@ -1,0 +1,634 @@
+<!-- section/header.liquid -->
+{%- assign main_menu = linklists[section.settings.main_menu_link_list] -%}
+
+{% comment %}
+menu_alignment options:
+- left
+- left-center
+- center-left
+- center-split
+- center
+- right
+{% endcomment %}
+
+{%- assign menu_alignment = section.settings.main_menu_alignment -%}
+{%- assign logo_alignment = 'left' -%}
+{%- if menu_alignment == 'center-left'
+   or menu_alignment == 'center-split'
+or menu_alignment == 'center' -%}
+{%- assign logo_alignment = 'center' -%}
+{%- endif -%}
+{%- if menu_alignment == 'right' -%}
+{%- assign logo_alignment = 'left-right' -%}
+{%- endif -%}
+
+{%- if main_menu == blank -%}
+{%- assign logo_alignment = 'center' -%}
+{%- endif -%}
+
+{% comment %}
+mobile_menu_style options:
+- top (not fully implemented yet)
+- thumb
+{% endcomment %}
+{%- assign mobile_menu_style = 'thumb' -%}
+
+{% include 'slide-nav' %}
+{% if settings.cart_type == 'sticky' %}
+{% include 'sticky-cart' %}
+{% endif %}
+
+{%- assign template_name = template | replace: '.', ' ' | truncatewords: 2, '' | handle -%}
+
+{%- assign overlay_header = false -%}
+{% if template_name == 'index' and section.settings.sticky_index %}
+{%- assign overlay_header = true -%}
+{% endif %}
+{% if template_name == 'collection' and collection.image and section.settings.sticky_collection %}
+{%- assign overlay_header = true -%}
+{% endif %}
+
+{% style %}
+.slide-nav,
+.slide-nav button {
+font-size: {{ settings.type_navigation_size }}px;
+}
+
+{% if mobile_menu_style == 'thumb' %}
+body {
+{% comment %}
+Thumb menu button height + padding + 40
+{% endcomment %}
+padding-bottom: 148px;
+}
+{% endif %}
+
+{% if mobile_menu_style == 'top' %}
+body.screen-layer-open {
+{% comment %}
+Space for the close modal button
+{% endcomment %}
+padding-bottom: 40px;
+}
+{% endif %}
+
+{% if overlay_header %}
+@media only screen and (min-width: 769px) {
+.collection-hero__content .section-header--hero {
+margin-top: 40px;
+}
+}
+{% endif %}
+{% endstyle %}
+
+<div data-section-id="{{ section.id }}" data-section-type="header-section">
+  <div
+       data-header-style="{{ section.settings.header_style }}"
+       class="header-wrapper{% if overlay_header %} header-wrapper--overlay is-light{% endif %}">
+
+    {% if section.settings.show_announcement %}
+    {% if section.settings.show_announcement_home_only %}
+    {% if template == 'index' %}
+    {% include 'announcement-bar' %}
+    {% endif %}
+    {% else %}
+    {% include 'announcement-bar' %}
+    {% endif %}
+    {% endif %}
+
+    {% comment %}
+    Logo is used as a between-screen loader, so we only
+    show the mobile logo on the home page (setting to override)
+    {% endcomment %}
+
+    {%- assign mobile_logo_only = true -%}
+
+    <header
+            class="site-header{% if section.settings.logo_hide_mobile %}{% unless template_name == 'index' %} small--hide{% endunless %}{% endif %}"
+            data-overlay="{{ overlay_header }}">
+      <div class="page-width">
+        <div
+             class="header-layout header-layout--{{ menu_alignment }}{% if mobile_logo_only %} header-layout--mobile-logo-only{% endif %}"
+             data-logo-align="{{ logo_alignment }}">
+
+          {% if logo_alignment == 'left' or logo_alignment == 'left-right' %}
+          
+          <div class="toggle_header">
+            <div class="site-nav__thumb-menu site-nav__thumb-menu--inactive">
+              <button
+                      type="button"
+                      class="btn site-nav__thumb-button">
+                <svg aria-hidden="true" focusable="false" role="presentation" class="icon icon-hamburger" viewBox="0 0 64 64"><path d="M7 15h51M7 32h43M7 49h51"/></svg>
+                <span class="icon-menu-label">{{ 'general.drawers.navigation' | t }}</span>
+              </button>
+
+
+            </div>
+
+
+
+          </div>  
+          <div class="header-item header-item--logo">
+            {% include 'header-logo-block' %}
+          </div>
+          {% endif %}
+
+          {% if logo_alignment == 'left' %}
+          <div role="navigation" aria-label="Primary"
+               class="header-item header-item--navigation{% if menu_alignment == 'left-center' %} text-center{% endif %} small--hide">
+            {% include 'header-desktop-nav' %}
+          </div>
+          {% endif %}
+
+          {% if logo_alignment == 'center' %}
+          <div class="header-item header-item--left header-item--navigation small--hide" role="navigation" aria-label="Primary">
+            {% if menu_alignment == 'center' or menu_alignment == 'center-split' %}
+            {% if section.settings.header_search_enable %}
+            <div class="site-nav">
+              <a href="{{ routes.search_url }}" class="site-nav__link site-nav__link--icon js-modal-open-search-modal js-no-transition">
+                <svg aria-hidden="true" focusable="false" role="presentation" class="icon icon-search" viewBox="0 0 64 64"><path d="M47.16 28.58A18.58 18.58 0 1 1 28.58 10a18.58 18.58 0 0 1 18.58 18.58zM54 54L41.94 42"/></svg>
+                <span class="icon__fallback-text">{{ 'general.search.title' | t }}</span>
+              </a>
+            </div>
+            {% endif %}
+            {% endif %}
+
+            {% if menu_alignment == 'center-left' %}
+            {% include 'header-desktop-nav' %}
+            {% endif %}
+          </div>
+
+          {% if menu_alignment == 'center-split' %}
+          {% include 'header-split-nav' %}
+          {% endif %}
+
+          {% if menu_alignment != 'center-split' %}
+          <div class="header-item header-item--logo">
+            {% include 'header-logo-block' %}
+          </div>
+          {% endif %}
+          {% endif %}
+
+          {% if logo_alignment == 'left-right' %}
+          <div
+               role="navigation" aria-label="Primary"
+               class="header-item header-item--navigation text-right small--hide">
+            {% include 'header-desktop-nav' %}
+          </div>
+          {% endif %}
+
+          {% comment %}
+          Center mobile logo if icons are not visible
+          {% endcomment %}
+          <div class="header-item header-item--icons{% if mobile_logo_only %} small--hide{% endif %}">
+
+            {% include 'header-icons' %}
+          </div>
+        </div>
+
+        {% if menu_alignment == 'center' %}
+        <div role="navigation" aria-label="Primary" class="text-center">
+          {% include 'header-desktop-nav' %}
+        </div>
+        {% endif %}
+      </div>
+    </header>
+  </div>
+
+  {% if mobile_menu_style == 'thumb' %}
+  {%- if main_menu != blank -%}
+
+  {%- endif -%}
+  {% endif %}
+</div>
+
+{% if section.settings.header_search_enable %}
+{% include 'search-modal' %}
+{% endif %}
+
+{% if section.settings.megmenu %}
+   {% render 'newslidingmenu2' %}
+{% else %}
+   {% render 'newslidingmenu' %}
+{% endif %}
+
+{% schema %}
+{
+   "name": "Header",
+   "settings": [
+      {
+         "type": "header",
+         "content": "Layout"
+      },
+      {
+         "type": "select",
+         "id": "header_style",
+         "label": "Desktop style",
+         "default": "button",
+         "options": [
+            {
+               "value": "button",
+               "label": "Sticky button"
+            },
+            {
+               "value": "bar",
+               "label": "Sticky bar"
+            },
+            {
+               "value": "top",
+               "label": "Top only"
+            }
+         ]
+      },
+      {
+        "type": "checkbox",
+        "id": "megmenu",
+        "label": "Show light type mobile menu"
+      },
+      {
+         "type": "select",
+         "id": "main_menu_alignment",
+         "label": "Header layout",
+         "default": "right",
+         "options": [
+            {
+               "value": "right",
+               "label": "Logo left, menu right"
+            },
+            {
+               "value": "left-center",
+               "label": "Logo left, menu center"
+            },
+            {
+               "value": "center-left",
+               "label": "Logo center, menu left"
+            },
+            {
+               "value": "center-split",
+               "label": "Logo center, menu split"
+            },
+            {
+               "value": "center",
+               "label": "Logo center, menu below"
+            }
+         ]
+      },
+      {
+         "type": "checkbox",
+         "id": "sticky_index",
+         "label": "Overlay header over home page"
+      },
+      {
+         "type": "checkbox",
+         "id": "sticky_collection",
+         "label": "Overlay header over collection",
+         "info": "(if collection image is enabled)"
+      },
+      {
+         "type": "checkbox",
+         "id": "header_search_enable",
+         "label": "Enable search"
+      },
+      {
+         "type": "header",
+         "content": "Logo"
+      },
+      {
+         "type": "image_picker",
+         "id": "logo",
+         "label": "Logo"
+      },
+      {
+         "type": "image_picker",
+         "id": "logo-inverted",
+         "label": "White logo",
+         "info": "Used when on top of an image"
+      },
+      {
+         "type": "range",
+         "id": "desktop_logo_width",
+         "label": "Desktop logo width",
+         "default": 200,
+         "min": 80,
+         "max": 400,
+         "step": 10,
+         "unit": "px"
+      },
+      {
+         "type": "range",
+         "id": "mobile_logo_width",
+         "label": "Mobile logo width",
+         "default": 140,
+         "min": 50,
+         "max": 200,
+         "step": 10,
+         "unit": "px",
+         "info": "Set as a max-width, may appear smaller"
+      },
+      {
+         "type": "checkbox",
+         "id": "logo_hide_mobile",
+         "label": "Hide logo on mobile pages",
+         "default": true,
+         "info": "Maximizes screen space for your content. Add your logo under Animations to show your logo as the page loads instead. Logo always shows on home page."
+      },
+      {
+         "type": "header",
+         "content": "Navigation"
+      },
+      {
+         "type": "link_list",
+         "id": "main_menu_link_list",
+         "label": "Menu",
+         "default": "main-menu"
+      },
+      {
+         "type": "header",
+         "content": "Announcement bar"
+      },
+      {
+         "type": "checkbox",
+         "id": "show_announcement",
+         "label": "Show an announcement"
+      },
+      {
+         "type": "checkbox",
+         "id": "show_announcement_home_only",
+         "label": "Home page only"
+      },
+      {
+         "type": "text",
+         "id": "announcement_text",
+         "label": "Announcement text",
+         "default": "Free shipping and returns"
+      },
+      {
+         "type": "url",
+         "id": "announcement_link",
+         "label": "Announcement link"
+      },
+      {
+         "type": "header",
+         "content": "Megamenu settings"
+      },
+      {
+         "type": "image_picker",
+         "id": "right_image_1",
+         "label": "Right image 1"
+      },
+      {
+         "type": "url",
+         "id": "right_link_1",
+         "label": "Right image 1 link"
+      },
+      {
+         "type": "image_picker",
+         "id": "right_image_2",
+         "label": "Right image 2"
+      },
+      {
+         "type": "url",
+         "id": "right_link_2",
+         "label": "Right image 2 link"
+      },
+      {
+         "type": "header",
+         "content": "Mobile Menu - Trending Section"
+      },
+      {
+         "type": "text",
+         "id": "trending_title",
+         "label": "Trending Section Title",
+         "default": "Trending"
+      },
+      {
+         "type": "color",
+         "id": "clearance_text_color",
+         "label": "Clearance Text Color",
+         "default": "#e63946"
+      }
+   ],
+   "max_blocks": 50,
+   "blocks": [
+      {
+         "type": "trending_item",
+         "name": "Trending Menu Item",
+         "settings": [
+            {
+               "type": "text",
+               "id": "text",
+               "label": "Link Text",
+               "default": "Menu Item"
+            },
+            {
+               "type": "url",
+               "id": "link",
+               "label": "Link URL"
+            },
+            {
+               "type": "select",
+               "id": "gender",
+               "label": "Show for Gender",
+               "options": [
+                  { "value": "women", "label": "Women" },
+                  { "value": "men", "label": "Men" }
+               ],
+               "default": "women"
+            },
+            {
+               "type": "text",
+               "id": "badge_text",
+               "label": "Badge Text (optional)",
+               "info": "Leave empty for no badge"
+            },
+            {
+               "type": "color",
+               "id": "badge_bg_color",
+               "label": "Badge Background Color",
+               "default": "#f1f1f1"
+            },
+            {
+               "type": "color",
+               "id": "badge_text_color",
+               "label": "Badge Text Color",
+               "default": "#555555"
+            },
+            {
+               "type": "checkbox",
+               "id": "is_clearance",
+               "label": "Is Clearance Item",
+               "default": false,
+               "info": "This will apply special clearance styling"
+            }
+         ]
+      },
+      {
+         "type": "text",
+         "name": "Collection Entry",
+         "settings": [
+            {
+               "type": "text",
+               "id": "col-title",
+               "label": "Collection title"
+            },
+            {
+               "type": "image_picker",
+               "id": "col-img",
+               "label": "Collection Image"
+            },
+            {
+               "type": "url",
+               "id": "col-link",
+               "label": "Collection link"
+            }
+         ]
+      },
+      {
+         "type": "image",
+         "name": "Menu Entry",
+         "settings": [
+            {
+               "type": "text",
+               "id": "menu-title",
+               "label": "Menu title"
+            },
+            {
+               "type": "select",
+               "id": "menu-icon",
+               "label": "Menu Icon",
+               "options": [
+                  {
+                     "value": "fa-globe",
+                     "label": "Globe"
+                  },
+                  {
+                     "value": "fa-address-card-o",
+                     "label": "Address Card"
+                  },
+                  {
+                     "value": "fa-user-o",
+                     "label": "User"
+                  },
+                  {
+                     "value": "fa-comment-o",
+                     "label": "Dialog"
+                  },
+                  {
+                     "value": "fa-lightbulb-o",
+                     "label": "Lightbulb"
+                  },   
+                  {
+                     "value": "fa-envelope-open-o",
+                     "label": "Envelope"
+                  }, 
+                  {
+                     "value": "fa-anchor",
+                     "label": "Anchor"
+                  }, 
+                  {
+                     "value": "fa-calendar",
+                     "label": "Calendar"
+                  },
+                  {
+                     "value": "fa-download",
+                     "label": "Download"
+                  },                 
+                  {
+                     "value": "fa-heart-o",
+                     "label": "Heart"
+                  },
+                  {
+                     "value": "fa-phone",
+                     "label": "Phone"
+                  },  
+                  {
+                     "value": "fa-shopping-cart",
+                     "label": "Cart"
+                  },           
+                  {
+                     "value": "fa-life-ring",
+                     "label": "Ring"
+                  }
+                  
+               ],
+               "default": "fa-globe"
+            },
+            {
+               "type": "image_picker",
+               "id": "menu-icon-image",
+               "label": "Menu icon Image"
+            },
+            {
+               "type": "url",
+               "id": "menu-link",
+               "label": "Menu link"
+            },
+            {
+               "type": "link_list",
+               "id": "dropdown-link",
+               "label": "Menu Dropdown"
+            },
+            {
+            "type": "radio",
+            "id": "gender",
+            "label": "Gender",
+            "options": [
+               {
+                  "value": "women",
+                  "label": "Women"
+               }, 
+               {
+                  "value": "men",
+                  "label": "Men"
+               },
+               {
+                  "value": "unisex",
+                  "label": "Unisex"
+               }
+            ],
+               "default": "women"
+            }
+         ]
+      }
+   ]
+}
+{% endschema %}
+<script>
+  $(document).ready(function(){  
+
+    $(".close_button").click(function(){
+
+      $(this).closest('.slide-nav__overflow').removeClass('js-menu--is-open');
+
+
+    }); 
+
+    var lastScrollTop = 0, delta = 0;
+	 $(window).scroll(function(){
+      if ($(this).scrollTop() == 0 ) {
+         $(".header-wrapper").removeClass("fix_header")
+      }else{
+         var nowScrollTop = $(this).scrollTop();
+         if(Math.abs(lastScrollTop - nowScrollTop) >= delta){
+            if (nowScrollTop > lastScrollTop){
+               // ACTION ON
+               // SCROLLING DOWN 
+                  $(".header-wrapper").removeClass("fix_header")
+            } else {
+                  $(".header-wrapper").addClass("fix_header")
+            }
+         lastScrollTop = nowScrollTop;
+         }
+      }
+
+	 });
+    
+  });
+
+</script>  
+
+<style>
+#shopify-section-header{
+   min-height:101px;
+}
+</style>

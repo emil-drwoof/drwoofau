@@ -1,0 +1,41 @@
+<script>
+  function autolink() {
+    var autolink = "{{shop.metaobjects.autolink.autolink-iguzt4ml.text_link | newline_to_br | strip_newlines }}";
+    var limit = "{{shop.metaobjects.autolink.autolink-iguzt4ml.limit}}";
+    var autolink_split = autolink.split("<br />");
+    var result = document.querySelector('{{ cssselector }}').innerHTML;
+    var check = 0;
+
+    if (!limit) {
+      limit = 8;
+    } else {
+      limit = parseInt(limit);
+    }
+
+    for (var j = 0; j < autolink_split.length; j++) {
+      var texts = autolink_split[j].split(" | ")[0].split(",");
+      var link = autolink_split[j].split(" | ")[1];
+      if (check >= limit) {
+        break;
+      }
+
+      for (var i = 0; i < texts.length; i++) {
+        var regExp = new RegExp(`(?!<h\\d>.*|alt=".*|<a.*>)${texts[i]}(?!<\/a>|.*"|.*<\/h\\d>)`);
+        var anchor = '&nbsp;<a target="blank" href="' + link + '">' + texts[i] + '</a>';
+
+        var replaced = result.replace(regExp, anchor);
+       
+        if (replaced !== result) {
+          console.log(texts[i],link);
+          check++;
+          result = replaced;
+          break;
+        }
+      }
+    }
+    
+    return result;
+  }
+
+  document.querySelector('{{ cssselector }}').innerHTML = autolink();
+</script>

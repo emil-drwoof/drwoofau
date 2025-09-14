@@ -1,0 +1,101 @@
+{
+  "sections": {
+    "collection-header": {
+      "type": "dr-woof-hero-scrubs2",
+      "settings": {
+        "pad": "30px",
+        "desktop_positioning": 0,
+        "height": 90,
+        "mobile_height": 50,
+        "image_webp_pc": "",
+        "image_webp_mobile": ""
+      }
+    },
+    "collection-filter": {
+      "type": "collection-thumbnail-filter",
+      "blocks": {
+        "8b6eade4-7fde-4735-ac3d-d084e56c163f": {
+          "type": "Image",
+          "settings": {
+            "image_thumbnail": "shopify:\/\/shop_images\/1_103b2069-76e3-4f23-9e40-812aadc954e9.png",
+            "collection_title": "Scrub Top",
+            "linkurl": "https:\/\/www.drwoofapparel.com.au\/collections\/women\/scrub-tops"
+          }
+        },
+        "ef5857bc-3847-4320-b036-5e467f3f2f40": {
+          "type": "Image",
+          "settings": {
+            "image_thumbnail": "shopify:\/\/shop_images\/2_3035fd36-f9a0-4831-a1dd-e0d289bd2cff.png",
+            "collection_title": "Scrub Pants",
+            "linkurl": "https:\/\/www.drwoofapparel.com.au\/collections\/women\/scrub-pants"
+          }
+        },
+        "81f9e4dc-bda6-417e-86dd-f086a10ae1c0": {
+          "type": "Image",
+          "settings": {
+            "image_thumbnail": "shopify:\/\/shop_images\/3_f62c910d-5acb-41d0-bf5e-a05d71391332.png",
+            "collection_title": "Jogger Scrub Pants",
+            "linkurl": "https:\/\/www.drwoofapparel.com.au\/collections\/women\/jogger-scrub-pants"
+          }
+        },
+        "4a61a39d-af84-43d3-b558-ef80be541dc4": {
+          "type": "Image",
+          "settings": {
+            "image_thumbnail": "shopify:\/\/shop_images\/4_332730f2-7427-4103-b9b3-c9086ac8d3f0.png",
+            "collection_title": "Underscrubs",
+            "linkurl": "https:\/\/www.drwoofapparel.com.au\/collections\/women\/underscrubs"
+          }
+        },
+        "4a92b103-f561-4ab7-8f85-c0dd3e470d20": {
+          "type": "Image",
+          "settings": {
+            "image_thumbnail": "shopify:\/\/shop_images\/5_d67f548f-3d52-4e9b-84f5-38a26e0bf4fc.png",
+            "collection_title": "Outerwears",
+            "linkurl": "https:\/\/www.drwoofapparel.com.au\/collections\/women\/outerwear"
+          }
+        },
+        "30692bbd-95e8-44ee-830f-07e45a297b44": {
+          "type": "Image",
+          "settings": {
+            "image_thumbnail": "shopify:\/\/shop_images\/10_82d6bc1b-3f8b-4720-80a3-c44db31b0f6b.png",
+            "collection_title": "Bundle Deals",
+            "linkurl": "https:\/\/www.drwoofapparel.com.au\/collections\/deals"
+          }
+        }
+      },
+      "block_order": [
+        "8b6eade4-7fde-4735-ac3d-d084e56c163f",
+        "ef5857bc-3847-4320-b036-5e467f3f2f40",
+        "81f9e4dc-bda6-417e-86dd-f086a10ae1c0",
+        "4a61a39d-af84-43d3-b558-ef80be541dc4",
+        "4a92b103-f561-4ab7-8f85-c0dd3e470d20",
+        "30692bbd-95e8-44ee-830f-07e45a297b44"
+      ],
+      "settings": {}
+    },
+    "collection-filters": {
+      "type": "collection-filters-def",
+      "settings": {
+        "filter_type": "groups",
+        "tags_combine": false,
+        "collection_title_enable": false,
+        "collection_filter_enable": false,
+        "collection_sort_enable": true
+      }
+    },
+    "main-collection": {
+      "type": "collection-template-scrubs",
+      "settings": {
+        "per_row_desktop": 3,
+        "per_row_mobile": "1",
+        "description_bottom": false
+      }
+    }
+  },
+  "order": [
+    "collection-header",
+    "collection-filter",
+    "collection-filters",
+    "main-collection"
+  ]
+}

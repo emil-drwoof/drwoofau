@@ -1,0 +1,279 @@
+   <div class="outer-menu">
+      <div class="newmenu">
+         <div class="top-navmenu">
+
+         <button type="button" class="close-x">
+            <svg aria-hidden="true" focusable="false" role="presentation" class="icon icon-close" viewBox="0 0 64 64">
+               <path d="M19 17.61l27.12 27.13m0-27.12L19 44.74"></path>
+            </svg>
+            <span class="icon__fallback-text">Close (esc)</span>
+         </button>
+            
+         </div>
+
+         {% for block in section.blocks %}
+            {% if block.type == "text" %} 
+               {% if block.settings.col-title != blank %}
+               <a href="{{ block.settings.col-link }}">
+                  <div class="collection-entry">
+                           <img src="{{ block.settings.col-img | img_url: '100x' }}" alt="{{ block.settings.col-img.alt | escape }}">
+                           <div class="col-info">
+                           <span>{{ block.settings.col-title }}</span>
+                           </div>
+                     
+                  </div>
+               </a>
+               {% endif %}
+            {% endif %}
+         {% endfor %}
+
+
+
+
+
+
+         {% for block in section.blocks %}
+            {% if block.type == "image" %} 
+               <div class="slink-entry dropdower">
+                  <a href="{% if block.settings.menu-link %}{{block.settings.menu-link}}{% else %}#{% endif %}" class="link-entry">
+                     {% if block.settings.menu-icon-image %}
+                        <img src="{{ block.settings.menu-icon-image | img_url: '100x100' }}" alt="{{ block.settings.menu-icon-image.alt | escape }}" class="menu-icon-image">
+                     {% else %}
+                        <i class="fa {{ block.settings.menu-icon }} iconily" aria-hidden="true"></i>
+                     {% endif %}
+                     <div class="link-info">
+                           <span>{{ block.settings.menu-title }}</span>
+                     </div>
+                     {% if block.settings.dropdown-link.links.size > 0 %}
+                        <i class="fa fa-angle-right righter" aria-hidden="true"></i>
+                        <i class="fa fa-angle-down righter" aria-hidden="true"></i>
+                     {% endif %}
+                  </a>
+                
+                  {% if block.settings.dropdown-link.links.size > 0 %}
+                  <ul class="linker dropdown-child">
+                     {% for link in linklists[block.settings.dropdown-link].links %}
+                        <li class="menu-link">
+                        <a href="{{ link.url }}">{{ link.title }}</a>
+                        {% comment %}
+                        {% if link.links.size > 0 %}
+                           <ul class="menu dropdown-grandchild">
+                              {% for grandlink in link.links %}
+                              <li class="menu-link">
+                                 <a href="{{ grandlink.url }}">{{ grandlink.title }}</a>
+                              </li>
+                              {% endfor %}
+                           </ul>
+                        {% endif %}
+                        {% endcomment %}
+                        </li>
+                     {% endfor %}
+                  </ul>
+                {% endif %}
+               </div>
+            {% endif %}
+         {% endfor %}
+
+<hr>
+
+  
+
+  {% for link in linklists.slider-simple-3.links %}
+	<a href="{{ link.url }}" class="newmenulink">{{ link.title }}</a>
+  {% endfor %}
+
+
+      </div>
+   </div>
+  <style>
+  .outer-menu{
+    display:none;
+  }
+@media only screen and (max-width:480px){
+   .iconily
+   img.menu-icon-image{
+      width: 43px;
+      margin: 0 9px 0 8px;
+      padding-right: 0px !important;
+   }
+   .righter{
+      position: absolute;
+      right: 17px;
+      font-size: 28px;
+      top: 19px;
+   }
+   .iconily{
+      display: inline-block;
+      font-size: 34px;
+      width: 60px;
+      text-align: center;
+      display:none !important;
+   }
+   .slink-entry{
+      position:relative;
+   }
+   .slink-entry .fa-angle-right{
+      display:none;
+   }
+
+    .linker{
+        list-style-type: none;
+    }
+    .linker li{
+        margin-bottom:18px;
+    }
+    .outer-menu{
+        display: block;
+    }
+    .dropdown-child{
+        display:none;
+    }
+   .newmenulink{
+      padding:12px 12px 1px;
+      width:100%;
+      display:inline-block;
+   }
+   .newmenu hr{
+      border-top: 1px solid #fff !important; 
+   }
+   
+   .outer-menu{
+      width:100%;
+      background:rgba(0,0,0,0.4);
+   }
+   .top-navmenu{
+      width: 100%;
+      position: relative;
+      background: #fff;
+      height: 42px;
+      position: relative;
+      display: flex;
+      text-align: center;
+      align-items: center;
+      justify-content: flex-end;
+   }
+   .active{
+      color:gold;
+   }
+   .close-x{
+      position:static;
+      right:12px;
+      top:4px;
+      border-radius:50%;
+      height:30px;
+      width:30px;
+      // border:2px solid #0B0D32;
+      color:#0B0D32;
+      display:flex;
+      justify-content:center;
+      align-items:center;
+      flex-wrap:wrap;
+      font-weight:800;
+      background:transparent;     
+   }
+  .newmenu{
+	 width:80%;
+    position: relative;
+    top: 0;
+    background: #0B0D32;
+    color:#fff;
+    left: 0;
+    z-index:999999;
+    height:100vh;
+    overflow-y:scroll;
+    padding-bottom:30px;
+   }
+
+   .collection-entry{
+      display:flex;
+      flex-wrap:wrap;
+      justify-content:space-between;
+      border-bottom:1px solid #fff;
+   }
+
+   .collection-entry img{
+      flex: 0 0 30%;
+      height:auto;
+      width:30%;
+   }
+
+   .collection-entry .col-info{
+      flex: 0 0 70%;
+      display:flex;
+      flex-wrap:wrap;
+      justify-content:space-between;
+      align-items:center;
+      padding-left:12px;
+   }
+   .link-entry{
+    padding: 12px 20px 12px 0;
+    width: 100%;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+   }
+   .link-entry img,
+   .link-entry link-info{
+      display:inline-block;
+   }
+   .link-entry img{
+      padding-right:20px;
+   }
+   .outer-menu{
+      position: fixed;
+      z-index: 99999;
+      width: 100%;
+      /* position: relative; */
+      /* left: -100%; */
+      background: rgba(0,0,0,0.6);
+      width: 100%;
+      left: -100%;
+      display: block;
+      top: 0;
+   }
+}
+
+
+
+  </style>
+
+  <script>
+  $(document).ready(function(){
+
+    $('body').on("click",".dropdower",function(){
+      $(".dropdown-child").hide()
+        $(this).find(".dropdown-child").toggle()
+        $(".slink-entry").removeClass("active")
+        $(".slink-entry").addClass("dropdower")
+        $(this).addClass("active")
+         $(this).removeClass("dropdower")
+
+         
+       
+        $(this).find(".righter").toggle()
+    })
+    $('body').on("click",".active",function(){
+         $(".dropdown-child").hide()
+
+
+        $(".slink-entry").removeClass("active")
+        $(".slink-entry").addClass("dropdower")
+
+
+
+         $(this).find(".righter").toggle()
+         
+    })
+   $(".close-x").on("click",function(){
+      $(".outer-menu").animate({
+      "left": '-=100%'
+    }, 500);
+   })
+
+   $(".site-nav__thumb-menu").on("click",function(){
+      $(".outer-menu").animate({
+      "left": '0'
+    }, 500);
+  })
+   })
+  </script>

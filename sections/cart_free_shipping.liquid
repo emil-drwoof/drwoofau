@@ -1,0 +1,1027 @@
+{% assign spendmsg = '' %}
+         {% if cart.currency.iso_code == 'SGD' %}
+            {% assign total_cart = cart.total_price | plus: 1000 | divided_by: 100 | format: "%.2f" %}
+          {% elsif cart.currency.iso_code == 'NZD' %}
+            {% assign total_cart = cart.total_price | plus: 1990 | divided_by: 100 | format: "%.2f" %}
+          {% elsif request.host contains 'hk.' %}
+            {% assign total_cart = cart.total_price | plus: 2597 | divided_by: 100 | format: "%.2f" %}
+          {% else %}
+            {% assign total_cart = cart.total_price | plus: 1190 | divided_by: 100 | format: "%.2f" %}
+          {% endif %}
+    
+<input type="hidden" class="set_cart" value="{{ total_cart }}" /> 
+
+{%- for block in section.blocks -%}
+  {% assign cartamount =  cart.original_total_price | divided_by: 100 %}
+  {% assign ruleamount = block.settings.spendamount | times: 1 %}
+  {% if cartamount < ruleamount %}
+    {% assign spendmsg = ruleamount | minus : cartamount %}
+    {% assign spendrulmsg = block.settings.spendamountmsg %} 
+    {% assign previndex = forloop.index | minus:1 %} 
+    {% break %}
+  {% endif %}
+{%- endfor -%}
+
+{%- for block in section.blocks -%}
+
+  {% if forloop.first == true %}
+    {% assign firstindex = block.settings.spendamount | times: 1 %}
+    {% if cart.currency.iso_code == 'SGD' %}
+      {% assign firstindex = 126 %}
+    {% elsif cart.currency.iso_code == 'NZD' %}
+      {% assign firstindex = 156  %}
+    {% elsif request.host contains 'hk.' %}
+      {% assign firstindex = 753 %}
+    {% endif %}
+
+    {% assign firstmsg = block.settings.spendamountmsg %}
+    <!-- emil spendamount first -->
+  {% endif %}
+  {% if forloop.last == true %}
+    {% assign lastindex = block.settings.spendamount | times: 1.0 %}
+    {% if cart.currency.iso_code == 'SGD' %}
+      {% assign lastindex = block.settings.spendamount | times: 1.0 | times: 0.858876 | round %}      
+    {% elsif cart.currency.iso_code == 'NZD' %}
+      {% assign lastindex = block.settings.spendamount | times: 1.0 | times: 1.09421 | round %}      
+    {% elsif request.host contains 'hk.' %}
+      {% assign lastindex = block.settings.spendamount | times: 1.0 | times: 5.1949824 | round %}      
+    {% endif %}
+
+    {% assign lastmsg = block.settings.spendamountmsg %}
+    <!-- emil spendamount 2nd -->
+  {% endif %}
+{% endfor %}
+
+
+{%- for block in section.blocks -%}
+  {% if forloop.last == true %}
+    {% comment %}
+      {% assign lastindex = block.settings.spendamount | times: 1.0 %}
+    {% endcomment %}
+    {% assign lastindexnozero = block.settings.spendamount %}
+    {% if cart.currency.iso_code == 'SGD' %}
+      {% assign lastindexnozero = block.settings.spendamount | times: 0.858876 | round %}      
+    {% elsif cart.currency.iso_code == 'NZD' %}
+      {% assign lastindexnozero = block.settings.spendamount | times: 1.09421 | round %}      
+    {% elsif request.host contains 'hk.' %}
+      {% assign lastindexnozero = block.settings.spendamount | times: 5.1949824 | round %}      
+    {% endif %}
+<!-- emil spendamount second -->
+    {% assign lastindexof  = forloop.index   %}  
+  {% endif %}
+{% endfor %}
+
+{% assign xxxs = firstindex | times: 100.0 %}
+{% assign firstpos = xxxs | divided_by: lastindex %}
+
+{% assign perc = cartamount | divided_by: lastindex | times: 100 %}
+{% assign cartamount =  cart.original_total_price | divided_by: 100 %}
+{% if cartamount > lastindex %}
+  {% assign perc = '102.5' %}
+  <!-- emil spendamount adjustment -->
+  {% assign previndex = lastindexof %} 
+{% endif %}
+
+
+
+  <div class="off1 progress-container">
+    <div class="offer">General Offer</div>
+    <div class="progress-bar">
+      <div class="milestone top-mon milone">
+        {% if request.host contains 'hk.' %}HK${% else %}${% endif %}{{ firstindex }}
+      </div>
+      <div class="milestone top-mon miltwo">
+        {% if request.host contains 'hk.' %}HK${% else %}${% endif %}{{ lastindexnozero }}
+      </div>
+      <div class="linertop milestone milone">|</div>
+      <div class="linertop milestone miltwo">|</div>
+        <div class="progress"></div>
+        <div class="progress-circle"></div>
+        <div class="linerbot milestone milone">|</div>
+        <div class="linerbot milestone miltwo">|</div>
+        <div class="milestone bot-mon milone">{{ firstmsg }}</div>
+        <div class="milestone bot-mon miltwo">{{ lastmsg }}</div>
+    </div>
+    <div class="progress-text">
+        <span class="notif-inc">Add <strong>{% if request.host contains 'hk.' %}HK${% else %}${% endif %}<span class="amount-needed"></span></strong> more to cart to get <b>{{ firstmsg }}</b> </span>
+        <span class="notif-com1">Congratulations! You get FREE <b>Standard Shipping</b> and <b>FREE 
+        {% if request.host contains 'hk.' %}HK$208{% else %}$40{% endif %} <!-- emil spendamount adjustment -->Gift Card</b> </span>
+    </div>
+  </div>
+  
+  {% comment %}
+    <li><p>{{block.settings.spendamount | times: 100 | money_without_trailing_zeros}}</p><p>{{block.settings.spendamountmsg }}</p></li>  
+  {% endcomment %}
+  
+
+
+  <div class="off2 progress-container" style="display:none">
+    {% assign women_scrub_tops = 0 %}
+    {% assign women_scrub_pants = 0 %}
+    {% assign men_scrub_tops = 0 %}
+    {% assign men_scrub_pants = 0 %}
+    
+    {% for item in cart.items %}
+      {% if item.product.type == "Women Scrub Tops" %}
+        {% assign women_scrub_tops = women_scrub_tops | plus: item.quantity %}
+      {% elsif item.product.type == "Women Scrub Pants" %}
+        {% assign women_scrub_pants = women_scrub_pants | plus: item.quantity %}
+      {% elsif item.product.type == "Men Scrub Tops" %}
+        {% assign men_scrub_tops = men_scrub_tops | plus: item.quantity %}
+      {% elsif item.product.type == "Men Scrub Pants" %}
+        {% assign men_scrub_pants = men_scrub_pants | plus: item.quantity %}
+      {% endif %}
+    {% endfor %}
+    
+    {% assign women_sets = women_scrub_tops | minus: women_scrub_pants %}
+    {% if women_sets > 0 %}
+      {% assign women_sets = women_scrub_pants %}
+    {% else %}
+      {% assign women_sets = women_scrub_tops %}
+    {% endif %}
+    
+    {% assign men_sets = men_scrub_tops | minus: men_scrub_pants %}
+    {% if men_sets > 0 %}
+      {% assign men_sets = men_scrub_pants %}
+    {% else %}
+      {% assign men_sets = men_scrub_tops %}
+    {% endif %}
+    
+    {% assign total_sets = women_sets | plus: men_sets %}
+    
+    <input type="hidden" class="set_count" value="{{ total_sets }}" /> 
+    <div class="offer">Scrubs Offer</div>
+    <div class="progress-bar">
+
+      <div class="milestone top-mon miltwo">2 Sets of Scrubs</div>
+      
+       <div class="linertop milestone miltwo">|</div>
+      
+        <div class="progress"></div>
+        <div class="progress-circle"></div>
+        <div class="linerbot milestone milone">|</div> 
+        <div class="linerbot milestone miltwo">|</div> 
+        <div class="milestone bot-mon miltwo">FREE pair</div>
+    </div>
+    <div class="progress-text">
+      <span class="notif-inc">Add <strong><span class="amount-needed"></span></strong> more set to get a<span class="another">another</span> <b class="promo">FREE SET</b> </span>
+      <span class="notif-com1">Congratulations! You get a <b>FREE SET</b> </span>      
+    </div>
+  </div>
+
+
+
+  <div class="off3 progress-container" style="display:none">
+    <div class="offer">Compression Socks Offer</div>
+    <div class="progress-bar">
+      <div class="milestone top-mon milone">4 Socks</div>
+      <div class="milestone top-mon miltwo">6 Socks</div>
+      <div class="linertop milestone milone">|</div>
+      <div class="linertop milestone miltwo">|</div>
+        <div class="progress"></div>
+        <div class="progress-circle"></div>
+        <div class="linerbot milestone milone">|</div>
+        <div class="linerbot milestone miltwo">|</div>
+        <div class="milestone bot-mon milone">FREE Pair</div>
+        <div class="milestone bot-mon miltwo">30% OFF</div>
+    </div>
+    <div class="progress-text">
+      <span class="notif-com1">Congratulations! You get <b>30% OFF</b> on your Compression Socks order </span>
+      <span class="notif-inc">Add <strong><span class="amount-needed"></span></strong> more Compression Socks to get <span class="another">another</span> <b class="get2">30% Off. </b> </span>
+      
+    </div>
+  </div>
+
+  <div class="off4 progress-container" style="display:none">
+    <div class="offer">Printed Scrub Tops Offer</div>
+    <div class="progress-bar">
+      <div class="milestone top-mon milone">Buy 2</div>
+      <div class="milestone top-mon miltwo">Buy 3</div>
+      <div class="linertop milestone milone">|</div>
+      <div class="linertop milestone miltwo">|</div>
+        <div class="progress"></div>
+        <div class="progress-circle"></div>
+        <div class="linerbot milestone milone">|</div>
+        <div class="linerbot milestone miltwo">|</div>
+        <div class="milestone bot-mon milone">10% OFF</div>
+        <div class="milestone bot-mon miltwo">15% OFF</div>
+    </div>
+    <div class="progress-text">
+      <span class="notif-com1"> </span>
+      <span class="notif-inc">Add <strong><span class="amount-needed"></span></strong> more to get <span class="another"></span><b class="get2"> 15% OFF</b> </span>
+    </div>
+  </div>
+
+  
+
+
+
+
+  <div class="off5 progress-container" style="display:none">
+    <div class="offer">Scrub Caps</div>
+    <div class="progress-bar">
+      
+      <div class="milestone top-mon milone">Add 4 Scrub Caps</div>
+      <div class="linertop milestone milone">|</div>
+      
+        <div class="progress"></div>
+        <div class="progress-circle"></div>
+        <div class="linerbot milestone milone">|</div>
+        
+        <div class="milestone bot-mon milone">15% OFF</div>
+    </div>
+    <div class="progress-text">
+      <span class="notif-com1">Congratulations! You get one <b>15%OFF</b> on your order </span>
+      <span class="notif-inc"></span>
+      
+    </div>
+  </div>
+
+
+
+  <script>
+$(document).ready(function() {
+
+
+$(".another").hide()
+
+
+    var totalcart = $(".totalin").html()
+    
+    var totalfk = $(".totalin_hidden").html()
+    totalcart  = parseFloat(totalcart.replace(/[^0-9.]/g, ''));
+    totalfk = Number(totalfk.replace('$',''));
+    var progress = 0; // Percentage value to change the progress
+        progress = totalcart - 10;
+        
+    // Update the progress bar width and the position of the circle
+    progressPercentage1 = ( progress / {{ lastindex }} ) * 100;
+    
+    
+      {% if cart.currency.iso_code == 'SGD' %}
+        $tempval = 350 * 0.858876;
+        if(totalcart >= $tempval){        
+      {% elsif cart.currency.iso_code == 'NZD' %}
+        $tempval = 350 * 1.09421;
+        if(totalcart >= $tempval){                
+      {% elsif request.host contains 'hk.' %}
+        $tempval = 350 * 5.1949824;
+        if(totalcart >= $tempval){                
+      {% else %}
+        if(totalcart >= 350){
+      {% endif %}
+
+      $('.off1 .notif-inc').hide()
+      $('.off1 .notif-com1').show()
+      $('.off1 .progress').css('width', 100 + '%');
+      $('.off1 .progress-circle').css('left', 100 + '%');
+      
+    }else{
+
+
+      
+        // emil adjustment
+        // bad
+        {% if request.host contains 'hk.' %}
+          if(totalcart < 753){
+        {% else %}
+          {% if cart.currency.iso_code == 'SGD' %}
+            $tempval = 145 * 0.858876;
+            if(totalcart < 126){        
+          {% elsif cart.currency.iso_code == 'NZD' %}
+            $tempval = 145 * 156;
+            if(totalcart < $tempval){                
+          {% elsif request.host contains 'hk.' %}
+            if(totalcart < 753){
+          {% else %}
+            if(totalcart < 145){
+          {% endif %}
+        {% endif %}
+
+
+         if(totalfk  == 0){
+            $('.off1 .notif-inc').hide()
+          }else{
+            $('.off1 .notif-inc').show()
+          }
+          $('.off1 .notif-com1').hide()
+          $('.off1 .progress').css('width', progressPercentage1 + '%');
+          $('.off1 .progress-circle').css('left', progressPercentage1 + '%');
+          // Calculate the remaining amount for FREE shipping
+          
+          var amountNeeded = {{ firstindex }} - totalcart;
+          $('.off1 .amount-needed').html(amountNeeded.toFixed(2));
+
+        console.log("eto na this {{ firstindex  }} - " + totalfk )
+      }else{
+        // good
+
+
+          $('.off1 .notif-inc').show()
+          $('.off1 .notif-com1').hide()
+          $('.off1 .progress').css('width', progressPercentage1 + '%');
+          $('.off1 .progress-circle').css('left', progressPercentage1 + '%');
+          // Calculate the remaining amount for FREE shipping
+          var amountNeeded = {{ lastindex }} - totalcart;
+          {% if request.host contains 'hk.' %}
+            $('.off1 .notif-inc b').html("FREE HK$208 Gift Card")
+          {% else %}
+            $('.off1 .notif-inc b').html("FREE $40 Gift Card")
+          {% endif %}
+          // emil adjustment
+          $('.off1 .amount-needed').html(amountNeeded.toFixed(2));
+        
+      }
+    }
+
+  $sockcount = 0;
+  $scrubcount = 0;
+  $capscount = 0;
+  $scrunchiescount = 0;
+  var carttype;
+
+  $('.cart__item').each(function() {
+      $proqty = $(this).find(".Custom_cart__quantity").val()
+      carttype = $(this).find(".protype").val();
+
+      /*
+      if ((carttype == "Women Scrub Pants") || (carttype == "Women Scrub Tops") || (carttype == "Men Scrub Pants") || (carttype == "Men Scrub Tops")) {
+          $scrubcount = $scrubcount + parseInt($proqty);
+      }
+      */
+     
+      $setCount = $(".set_count").val()
+      if (carttype == "Compression Socks") {
+        $sockcount = $sockcount + parseInt($proqty);
+      }
+
+      if (carttype == "Printed Pattern Scrub Tops") {
+        $capscount = $capscount + parseInt($proqty);
+      }
+      
+      if (carttype == "Surgical Scrub Cap") {
+        $scrunchiescount = $scrunchiescount + parseInt($proqty);
+      }
+  });
+
+  
+if ($setCount > 0) {
+  $(".off2").show()
+
+  const progress = $('.off2 .progress');
+  const progressCircle = $('.off2 .progress-circle');
+  const notifInc = $('.off2 .notif-inc');
+  const notifCom1 = $('.off2 .notif-com1');
+  const notifCom2 = $('.off2 .notif-com2');
+  const amountNeeded = $('.off2 .amount-needed');
+
+  // Default: hide all notifs first
+  notifInc.hide();
+  notifCom1.hide();
+  notifCom2.hide();
+
+  // Special cases based on sock and set count
+  if ($setCount == 1) {
+    progress.css('width', '50%');
+    progressCircle.css('left', '50%');
+    notifCom1.html("Add 1 more set to get 1 compression socks for FREE").show();
+    
+  } else{
+
+    progress.css('width', '100%');
+    progressCircle.css('left', '100%');
+    if($sockcount == 0){
+      notifCom1.html("<span style='color:red'><br/>Don't forget to add the FREE compression socks to your cart!</span>").show();
+      notifCom1.show();
+    }else{
+      notifCom1.hide();
+    }
+    
+    notifInc.html("Congratulations! You get a FREE pair of compression socks").show();
+    
+  } 
+
+
+} else {
+  $(".off2").hide();
+}
+
+
+if($sockcount > 0){
+  
+  $(".off3").show()
+  $sockcountpercent = ( $sockcount / 6 ) * 100;
+  $sockcountfull = 6 - $sockcount;
+  if( $sockcount >= 6 ){
+      $('.off3 .notif-inc').hide()
+      $('.off3 .notif-com1').show()
+      $('.off3 .progress').css('width', 100 + '%');
+      $('.off3 .progress-circle').css('left', 100 + '%');
+      $('.off3 .notif-com1').html("Congratulations! You get <b>30% OFF</b> on your Compression Socks order")
+      
+    }else{
+      $('.off3 .progress').css('width', $sockcountpercent + '%');
+      $('.off3 .progress-circle').css('left', $sockcountpercent + '%');
+      if($sockcount < 4){
+        $(".off3 .another").hide()
+        $('.off3 .notif-inc').show()
+        $('.off3 .notif-com1').hide()
+        $('.off3 .notif-com2').hide()
+        var amountNeeded = 4 - $sockcount;
+        $('.off3 .amount-needed').html(amountNeeded);
+        $('.off3 .get2').html("FREE pair of Compression Socks")
+        
+      }else{
+        
+        if($sockcount < 6){
+          
+          $(".off3 .another").hide()
+          $('.off3 .notif-inc').show()
+          $('.off3 .notif-com1').show()
+          $('.off3 .notif-com1').html("Congratulations! You get a <b>FREE pair</b> of Compression Socks.<br/>")
+          $('.off3 .get2').html("30% OFF")
+          var amountNeeded = 6 - $sockcount;
+          $('.off3 .amount-needed').html(amountNeeded);
+        }else{
+          $('.off3 .notif-inc').hide()
+          $('.off3 .notif-com2').hide()
+          $('.off3 .notif-com2').hide()
+          var amountNeeded = 6 - $sockcount;
+          $('.off3 .amount-needed').html(amountNeeded);
+        }
+      }
+    }
+}else{
+  $(".off3").hide()
+}
+
+
+
+
+if($capscount > 0){
+  $(".off4").show()
+  $capscountpercent = ( $capscount / 3 ) * 100;
+  $capscountfull = 3 - $capscount;
+  if( $capscount >= 3 ){
+      $('.off4 .notif-inc').hide()
+      $('.off4 .notif-com1').show()
+      $('.off4 .progress').css('width', 100 + '%');
+      $('.off4 .progress-circle').css('left', 100 + '%');
+      $('.off4 .notif-com1').html("You get <b>15%</b> OFF for Printed Scrub Tops")
+    }else{
+      $('.off4 .progress').css('width', $capscountpercent + '%');
+      $('.off4 .progress-circle').css('left', $capscountpercent + '%');
+      if($capscount < 2){
+        $(".off4 .another").hide()
+        $('.off4 .notif-inc').show()
+        $('.off4 .notif-com1').hide()
+        $('.off4 .notif-com2').hide()
+        var amountNeeded = 2 - $capscount;
+        $('.off4 .amount-needed').html(amountNeeded);
+        $('.off4 .get2').html("10% OFF for Printed Scrub Tops.")
+      }else{
+        if($capscount < 3){
+          $(".off4 .another").hide()
+          $('.off4 .notif-inc').show()
+          $('.off4 .notif-com1').show()
+          $('.off4 .notif-com1').html("Congratulations! You get <b>15% OFF</b> Printed Scrub Tops.<br/>")
+          $('.off4 .get2').html("")
+          var amountNeeded = 3 - $capscount;
+          $('.off4 .amount-needed').html(amountNeeded);
+        }else{
+          $('.off4 .notif-inc').hide()
+          $('.off4 .notif-com2').hide()
+          $('.off4 .notif-com2').hide()
+          var amountNeeded = 3 - $capscount;
+          $('.off4 .amount-needed').html(amountNeeded);
+        }
+      }
+    }
+}else{
+  $(".off4").hide()
+}
+
+
+
+
+
+
+if($scrunchiescount > 0){
+  $(".off5").show()
+  $scrunchiespercent = ( $scrunchiescount / 4 ) * 100;
+  $scrunchiescountfull = 4 - $scrunchiescount;
+  if( $scrunchiescount >= 4 ){
+      $('.off5 .notif-inc').hide()
+      $('.off5 .notif-com1').show()
+      $('.off5 .progress').css('width', 100 + '%');
+      $('.off5 .progress-circle').css('left', 100 + '%');
+      
+    }else{
+      $('.off5 .progress').css('width', $scrunchiespercent + '%');
+      $('.off5 .progress-circle').css('left', $scrunchiespercent + '%');
+        
+          $('.off5 .notif-inc').show()
+          $('.off5 .notif-com1').hide()
+          $('.off5 .notif-com2').hide() 
+          var amountNeeded = 4 - $scrunchiescount;
+          $('.off5 .amount-needed').html(amountNeeded);     
+    }
+}else{
+  $(".off5").hide()
+}
+
+
+
+
+});
+</script>
+
+
+
+
+
+
+
+<!-- 
+<div class="off2 progress-container">
+  
+  <div class="offer">Offer #2</div>
+
+  <div class="progress-bar">
+      <div class="milestone top-mon secret-gift">$350</div>
+      <div class="progress"></div>
+      <div class="progress-circle"></div>
+      <div class="milestone bot-mon secret-gift">Secret Gift</div>
+  </div>
+
+  <div class="progress-text">
+      <span>Add items for <strong>$<span id="amount-needed">89</span></strong> more  to get <b>Secret Gift</b></span>
+  </div>
+</div>
+-->
+
+<style>
+  .top-mon{
+    font-size:10px;
+    top: -25px;
+  }
+ .bot-mon{
+    font-size:10px;
+    font-weight:700;
+    top: 20px;
+ }
+.progress-container {
+    width: 100%;
+    padding: 20px 20px 22px;
+    text-align: center;
+    border-bottom:1px solid #EBEBEB;
+}
+
+  .off2 .progress-container {
+    width: 100%;
+    padding: 20px 20px 17px;
+  }
+@media only and (max-width:480px){
+  .bot-mon{
+    font-size:11px;
+ }
+  .progress-container {
+    padding:20px 20px 24px;
+  }
+}
+.offer {
+    margin-bottom: 10px;
+    text-align:left;
+    font-family: "futurapt";
+    font-size:12px;
+    color:#A8A8A8;
+}
+
+.off1 .milone{
+  left:{{ firstpos }}%;
+  text-align:center;
+}
+
+.off1 .miltwo{
+  left:95%;
+  text-align:center;
+}
+.off1 .linertop.miltwo,
+.off1 .linerbot.miltwo{
+  left:98%;
+  text-align:center;
+}
+.off2 .milone{
+  left:50%;
+  text-align:center;
+}
+
+.off2 .miltwo{
+  left:95%;
+  text-align:center;
+}
+.off2 .linertop.miltwo,
+.off2 .linerbot.miltwo{
+  left:98%;
+}
+.off4 .milone,
+.off3 .milone{
+  left:66%;
+  text-align:center;
+}
+.off4 .miltwo,
+.off3 .miltwo{
+  left:95%;
+  text-align:center;
+}
+.off4 .linertop.miltwo,
+.off4 .linerbot.miltwo,
+.off3 .linertop.miltwo,
+.off3 .linerbot.miltwo{
+  left:98%;
+  text-align:center;
+}
+
+.off5 .milone{
+  left:95%;
+  text-align:center;
+}
+.off5 .linertop.milone,
+.off5 .linerbot.milone{
+  left:98%;
+  text-align:center;
+}
+.linertop{
+  font-size: 6px;
+  top: -7px;
+  color:#E3E3E3;
+}
+.linerbot{
+  font-size: 6px;
+  top: 7px;
+  color:#E3E3E3;
+}
+
+.progress-bar {
+    position: relative;
+    width: 100%;
+    height: 10px;
+    background:#fff;
+    border:2px solid #E3E3E3;
+    border-radius: 5px;
+    margin-bottom: 10px;
+}
+
+.progress {
+    position: absolute;
+    height: 100%;
+    background-color: #000;
+    border-radius: 5px;
+    width: 0;
+    position: absolute;
+    height: 100%;
+    background-image: url(https://cdn.shopify.com/s/files/1/0573/7250/8344/files/Animation_1715636956235_1.gif?v=1717087149);
+    background-repeat: no-repeat; background-position: left; background-blend-mode: screen;background-size:cover;
+}
+
+.progress-circle {
+    position: absolute;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: 20px;
+    height: 20px;
+    background-color: #ff0;
+    border-radius: 50%;
+    border: 2px solid #000;
+}
+
+.milestone {
+    position: absolute;
+    font-family: "futurapt";
+    transform: translateX(-50%);
+    white-space: nowrap;
+}
+
+.free-shipping {
+    right: 20px;
+    transform: translateX(50%);
+}
+
+.secret-gift {
+    right: 20px;
+    transform: translateX(50%);
+}
+
+.progress-text {
+    margin-top: 10px;
+    text-align: left;
+    width: 100%;
+    font-size:10px;
+    position: relative;
+    top: 16px;
+}
+
+.off2 .progress-text{
+  top: 0px;
+}
+
+
+  @media only screen and (max-width:480px){
+    .progress-text {
+      position:relative;
+      top:18px;
+      font-size:11px;
+    }
+    .off1 .bot-mon.miltwo{
+      left:90%;
+    }
+  }
+
+
+
+/* from old design */
+.outer-spent{
+    padding : 0px 30px;
+    margin-top: -15px;
+
+  }
+  .outer-spent .unlock-msg{
+    display:none;
+  }  
+  .unlockmsg{
+    position: absolute;
+    margin: 0 auto;
+    bottom: 0;
+    left: 22px;
+  }
+
+  .unlockmsg  .outer-spent .unlock-msg{
+    display:block !important;
+  }
+  .unlockmsg  .next-spend-msg ,.unlockmsg  .spend-progress-main {
+    display:none;
+  }
+  .unlock-msg div:last-child {
+    padding: 10px;
+    font-size: 14px;
+    display: flex;
+    align-items: center;
+  }
+
+  .drawer__inner .outer-spent {
+    padding: 0px;
+    margin-top: 10px;
+  }
+
+ 
+  #tick-mark {
+    position: relative;
+    display: inline-block;
+    width: 15px;
+    height: 15px;
+    margin: 0px 10px 0 0;
+    top: -2px;
+  }
+  .slick-slide .vactive{
+    border-radius:8px;
+  }
+  #tick-mark::before {
+    position: absolute;
+    left: 0;
+    top: 50%;
+    height: 50%;
+    width: 2px;
+    background-color: #000;
+    content: "";
+    transform: translateX(9px) rotate(-45deg);
+    transform-origin: left bottom;
+  }
+
+  #tick-mark::after {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    height: 2px;
+    width: 100%;
+    background-color: #000;
+    content: "";
+    transform: translateX(10px) rotate(-45deg);
+    transform-origin: left bottom;
+  }  
+  .unlock-msg {
+     margin-top: -14px;
+  }
+  .cart_drawer_custom .drawer__header{
+    height:auto !important;
+    padding-top:0px;
+    margin-bottom:20px;
+    padding-left:20px !important;
+    padding-right:20px !important;
+    border-bottom:1px solid #ebebeb;
+  }
+  .cart__product-name{
+    font-family: Oxygen;
+    font-size:16px !important;
+    font-weight:900;
+  }
+  .cart__item-price{
+    font-size:14px;
+    font-weight:900;
+  }
+  .spend-progress-main ul li{
+    font-weight:800;
+  }
+  .next-spend-msg{
+    
+  }
+  .header-main-cart{
+    position:relative;
+    border-radius:8px;
+  }
+  .drawer__inner .qty-remove{
+    display:block !important;
+  }
+  .cart-meta{
+    width:72% !important;
+  }
+  .quant{
+    width:27% !important;
+  }
+  .drawer__inner .custom_plus_minus{
+    border: 2px solid #010101 !important;
+    border-radius:4px;
+    margin-bottom:20px;
+  }
+  .drawer__inner .custom_plus_minus .qty-icons-main{
+    width:30% !important;
+  }
+  .drawer__inner .custom_plus_minus input.Custom_cart__quantity{
+    width:40% !important;
+  }
+  .drawer__inner .custom_plus_minus input.Custom_cart__quantity,
+  .drawer__inner .custom_plus_minus .qty-icons-main{
+    height:26px !important;
+  }
+  .cart_drawer_custom .drawer__footer{
+    /* border-top: 1px solid #EBEBEB !important; */
+    border-top: none !important;
+  }
+  .cart__details{
+    margin-bottom:20px;
+    align-items:flex-start;
+  }
+  .cart-all-products{
+    background:#f7f7f7 !important;
+    border-radius:8px;
+    /* overflow: hidden; */
+  }
+  .qty-remove .cart__item-price p{
+    font-size:14px !important;
+    color:gray !important;
+    display:flex;
+    font-weight:400;
+    display: flex;
+    flex-wrap: wrap;
+    font-weight: 400;
+    align-items: flex-start;
+    position: relative;
+    top: -12px;
+    
+  }
+  .desktop-view, .qty-remove .cart__item-price p svg{
+    margin-right:5px;
+  }
+  .cart__row-product .cart__product-image-wrap{
+    border-radius: 8px;
+    overflow: hidden;
+  }
+  select{
+    background-position: right 6px center !important;
+      }
+      .red-block{
+        position:relative;
+      }
+      .red-block::before {
+      content: '';
+      position: absolute;
+      top: 50%;
+      right: 100%;
+      margin-top: -5px; /* Half of the arrow height */
+      border-width: 5px;
+      border-style: solid;
+      border-color: transparent #B53728 transparent transparent; /* Adjust the color as needed */
+    }
+    .cart-all-products .slick-track{
+      padding-top:0px;
+      padding-bottom:0px;
+    }   
+    
+    .cart__details.flexer-start{
+      display:flex;
+      justify-content:space-between
+    }
+    .cart__details.flexer-start .red-block{
+        margin-bottom:7px;
+    }
+
+    span.br-clean{
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: flex-start;
+      width:80%;
+    }
+  @media (max-width:480px){
+    span.br-clean{
+      width:100%;
+    }
+    .cart__details.flexer-start{
+      display:flex;
+      justify-content:space-between
+    }
+    .cart__details.flexer-start .red-block{
+        display:block;
+    }
+    .ajaxcart__product{
+      margin-bottom:20px;
+    }
+    .qty-remove .cart__item-price p{
+      width:80px;
+      top:-9px;
+    }
+    .cart__item .cart__item-subtitle{
+      font-size:14px !important;
+    }
+    .drawer__inner .qty-remove{
+      padding-left:0 !important;
+    }
+    .cart__details{
+      margin-bottom:9px !important;
+    }
+    .drawer__close-button{
+      top: -7px;
+      position: absolute !important;
+      right: 9px !important;
+    }
+    .cart_drawer_custom .cart__item .cart__row-product{
+      margin-bottom:0 !important;
+    }
+    .cart_drawer_custom{
+      padding:21px 15px !important;
+    }
+    .drawer__footer{
+      margin-top:0 !important;
+    }
+    .outer-spent{
+      padding:0px 15px;
+    }
+    .cart__row-product{
+      align-items:flex-start !important;
+
+    }
+    .cart-meta{
+      width:68% !important;
+    }
+    .cart__row-product .cart__product-image-wrap{
+      min-width: 59px !important;
+      width: 57px !important;
+    }
+  }
+</style>
+
+
+
+{% schema %}
+{
+"max_blocks":4,
+"settings": [
+{
+"id": "bgcolor_bar",
+"type": "color",
+"label": "Bar and Text Color"
+}
+],
+"blocks": [
+{
+"type": "cart-spend-section",
+"name": "Cart Spend Section",
+"settings": [
+{
+"id": "spendamount",
+"type": "text",
+"label": "Spend amount"
+},
+{
+"id": "spendamountmsg",
+"type": "text",
+"label": "Spend Shipping Message"
+}
+
+]
+}
+]
+}
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+

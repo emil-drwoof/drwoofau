@@ -1,0 +1,146 @@
+{
+  "sections": {
+    "82a2ed36-21e9-4d4a-a788-775df4566b7b": {
+      "type": "dr-woof-hero-scrubs3",
+      "blocks": {
+        "81efc0c2-d21e-47ff-9c7e-b32a6154c627": {
+          "type": "text",
+          "settings": {
+            "text_content": "",
+            "shadow_enable": true,
+            "shadow_color": "#000000",
+            "text_color": "#f1f1f1",
+            "text_color2": "#f1f1f1",
+            "font_size": 26,
+            "font_size_m": 20
+          }
+        }
+      },
+      "block_order": [
+        "81efc0c2-d21e-47ff-9c7e-b32a6154c627"
+      ],
+      "settings": {
+        "pad": "30px",
+        "desktop_positioning": 0,
+        "height": 90,
+        "mobile_height": 50,
+        "image_webp_pc": "",
+        "image_webp_mobile": ""
+      }
+    },
+    "collection-header": {
+      "type": "dr-woof-hero-scrubs2",
+      "settings": {
+        "pad": "30px",
+        "desktop_positioning": 0,
+        "height": 21,
+        "mobile_height": 11,
+        "image_lib_pc": "shopify:\/\/shop_images\/Collection_Banner_-_Desktop-_2800_x_350px.png",
+        "image_webp_pc": "",
+        "image_lib_mobile": "shopify:\/\/shop_images\/Collection_Banner_-_Desktop-_2800_x_350px.png",
+        "image_webp_mobile": ""
+      }
+    },
+    "collection-filter": {
+      "type": "collection-thumbnail-filter",
+      "blocks": {
+        "432e0f87-a9fc-49b2-bd0e-6337b591885c": {
+          "type": "Image",
+          "settings": {
+            "image_thumbnail": "shopify:\/\/shop_images\/1_103b2069-76e3-4f23-9e40-812aadc954e9.png",
+            "collection_title": "Scrub Tops",
+            "linkurl": "https:\/\/www.drwoofapparel.com.au\/collections\/women\/scrub-tops?view=sl-2A3BAD2D&slScreenshot=true"
+          }
+        },
+        "d7023919-703f-47f6-b600-2c81fed1a084": {
+          "type": "Image",
+          "settings": {
+            "image_thumbnail": "shopify:\/\/shop_images\/2_c7dfd3b2-222a-4ff5-9bd3-61f16f057111.png",
+            "collection_title": "Scrub Pants",
+            "linkurl": "https:\/\/www.drwoofapparel.com.au\/collections\/women\/scrub-pants?view=sl-2A3BAD2D&slScreenshot=true"
+          }
+        },
+        "3e2d3306-f744-40c3-8d20-d0fc63f273fe": {
+          "type": "Image",
+          "settings": {
+            "image_thumbnail": "shopify:\/\/shop_images\/3_f62c910d-5acb-41d0-bf5e-a05d71391332.png",
+            "collection_title": "Jogger Scrub Pants",
+            "linkurl": "https:\/\/www.drwoofapparel.com.au\/collections\/women\/jogger-scrub-pants?view=sl-2A3BAD2D&slScreenshot=true"
+          }
+        },
+        "d813360a-d627-41bd-81f4-0cd2c92a4023": {
+          "type": "Image",
+          "settings": {
+            "image_thumbnail": "shopify:\/\/shop_images\/4_332730f2-7427-4103-b9b3-c9086ac8d3f0.png",
+            "collection_title": "Underscrubs",
+            "linkurl": "https:\/\/www.drwoofapparel.com.au\/collections\/women\/underscrubs?view=sl-2A3BAD2D&slScreenshot=true"
+          }
+        },
+        "b10eefc5-41da-4426-9cef-2c1626b5db98": {
+          "type": "Image",
+          "settings": {
+            "image_thumbnail": "shopify:\/\/shop_images\/5_d67f548f-3d52-4e9b-84f5-38a26e0bf4fc.png",
+            "collection_title": "Outerwears",
+            "linkurl": "https:\/\/www.drwoofapparel.com.au\/collections\/women\/outerwear?view=sl-2A3BAD2D&slScreenshot=true"
+          }
+        },
+        "b0582f8b-3e39-4ad8-ba8b-f8b8bd2cf780": {
+          "type": "Image",
+          "settings": {
+            "image_thumbnail": "shopify:\/\/shop_images\/10_82d6bc1b-3f8b-4720-80a3-c44db31b0f6b.png",
+            "collection_title": "Bundle Deals",
+            "linkurl": "https:\/\/www.drwoofapparel.com.au\/collections\/deals-1?view=sl-2A3BAD2D&slScreenshot=true"
+          }
+        }
+      },
+      "block_order": [
+        "432e0f87-a9fc-49b2-bd0e-6337b591885c",
+        "d7023919-703f-47f6-b600-2c81fed1a084",
+        "3e2d3306-f744-40c3-8d20-d0fc63f273fe",
+        "d813360a-d627-41bd-81f4-0cd2c92a4023",
+        "b10eefc5-41da-4426-9cef-2c1626b5db98",
+        "b0582f8b-3e39-4ad8-ba8b-f8b8bd2cf780"
+      ],
+      "settings": {
+        "title_enable": true
+      }
+    },
+    "collection-filters": {
+      "type": "collection-filters-def",
+      "blocks": {
+        "bd7a6b14-1186-4afd-9347-5850ec2708b2": {
+          "type": "color_group",
+          "settings": {
+            "title": "",
+            "tag_list": "Burgundy \nHeather grey \nGreen"
+          }
+        }
+      },
+      "block_order": [
+        "bd7a6b14-1186-4afd-9347-5850ec2708b2"
+      ],
+      "settings": {
+        "filter_type": "groups",
+        "tags_combine": false,
+        "collection_title_enable": false,
+        "collection_filter_enable": false,
+        "collection_sort_enable": true
+      }
+    },
+    "main-collection": {
+      "type": "collection-template-scrubs",
+      "settings": {
+        "per_row_desktop": 3,
+        "per_row_mobile": "2",
+        "description_bottom": false
+      }
+    }
+  },
+  "order": [
+    "82a2ed36-21e9-4d4a-a788-775df4566b7b",
+    "collection-header",
+    "collection-filter",
+    "collection-filters",
+    "main-collection"
+  ]
+}

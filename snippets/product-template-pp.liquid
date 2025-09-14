@@ -1,0 +1,1697 @@
+<!-- snippets/product-template-pt.liquid -->
+<script
+  src="https://code.jquery.com/jquery-3.6.0.min.js"
+  integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
+  crossorigin="anonymous"></script>
+  <style>
+
+    @font-face {
+        font-family: futuraptbold;
+        font-weight: bold;
+        src: url("https://cdn.shopify.com/s/files/1/0573/7250/8344/files/FuturaPTBold.otf?v=1682068317") format("opentype");
+    }
+    @font-face {
+        font-family: futurapt;
+        font-weight: normal;
+        src: url("https://cdn.shopify.com/s/files/1/0573/7250/8344/files/FuturaPTMedium.otf?v=1682068317") format("opentype");
+    }
+    .wider{
+      DISPLAY: flex;
+      width: 100%;
+      justify-content: flex-end;
+      position: relative;
+    }
+    .trigger-pop-up.btn{
+      padding: 11px 15px !important;
+      background: #fff !important;
+      color: #050507 !important;
+      border: 1px solid #050507;
+      position: absolute !important;
+      font-size: 14px;
+      font-weight: 400;
+      text-decoration: none;
+      top: -67px !important;
+      /* right: 0; */
+      line-height: 1em;
+      left: inherit;
+    }
+      .trigger-pop-up.btn{
+        top: -44px !important;
+      }
+    @media only screen and (max-width:480px){
+      .trigger-pop-up.btn{
+        top: -52px !important;
+      }
+    }
+</style>
+<div id="sliderchecker" class="{% if section.settings.threeway %}threeway{% endif %}"></div>
+<script>
+  var comprice = {}
+  var normprice = {}
+  {% for variant in product.variants %}
+    var x = "{{ variant.compare_at_price }}"
+    var y = "{{ variant.price }}"
+    var a = "{{ variant.title }}"
+    a = a.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/-$/, '').replace(/^-/, '');
+    comprice[a] = x
+    normprice[a] = y
+  {% endfor %}
+  </script> 
+  
+<div  
+  id="ProductSection-{{ section_id }}"
+  class="product-section gohere"
+  data-section-id="{{ section_id }}"
+  data-section-type="product-template"
+  {% if isModal %}
+  data-subsection
+  {% endif %}
+  data-variant-type="{{ variant_type }}"
+  {% if inventory_enable %}
+  data-inventory="true"
+  data-inventory-threshold="{{ inventory_threshold }}"
+  {% endif %}
+  {% if inventory_transfers_enable %}
+  data-incoming-inventory="true"
+  {% endif %}
+  {% if product_image_type == 'stacked' %}
+  data-images-stacked="true"
+  {% endif %}
+  data-video-style="{{ video_style }}"
+  {% unless isModal %}
+  data-enable-history-state="true"
+  {% endunless %}>
+
+  {% include 'product-template-variables' %}
+
+  <div class="page-content">
+    <div class="page-width">
+
+<div class="predate" style="display:none">
+  
+{% assign prenavy = all_products.women-classic-6-pocket-joggers.metafields.sf_product_bundle.preorder_navy %}
+<span class="prenavy">{{ prenavy }}</span>
+
+{% assign pregray = all_products.women-classic-6-pocket-joggers.metafields.sf_product_bundle.preorder_cool_gray %}
+<span class="pregray">{{ pregray }}</span>
+
+
+{% assign preblack = all_products.women-classic-6-pocket-joggers.metafields.sf_product_bundle.preorder_black %}
+<span class="preblack">{{ preblack }}</span>
+
+{% assign pregreen = all_products.women-classic-6-pocket-joggers.metafields.sf_product_bundle.preorder_fern_green %}
+<span class="pregreen">{{ pregreen }}</span>
+
+{% assign preroyalblue = all_products.women-classic-6-pocket-joggers.metafields.sf_product_bundle.preorder_royal_blue %}
+<span class="preblue">{{ preroyalblue }}</span>
+
+
+
+{% assign preboldmagenta = all_products.women-classic-6-pocket-joggers.metafields.sf_product_bundle.preorder_bold_magenta %}
+<span class="preboldmagenta">{{ preboldmagenta }}</span>
+
+
+{% assign prebabypink = all_products.women-classic-6-pocket-joggers.metafields.sf_product_bundle.preorder_baby_pink %}
+<span class="prebabypink">{{ prebabypink }}</span>
+
+
+{% assign preshadowgray = all_products.women-classic-6-pocket-joggers.metafields.sf_product_bundle.preorder_shadow_gray %}
+<span class="preshadowgray">{{ preshadowgray }}</span>
+
+
+
+{% assign preburgundy = all_products.women-classic-6-pocket-joggers.metafields.sf_product_bundle.preorder_burgundy %}
+<span class="preburgundy">{{ preburgundy }}</span>
+
+
+{% assign preceilblue = all_products.women-classic-6-pocket-joggers.metafields.sf_product_bundle.preorder_ceil_blue %}
+<span class="preceilblue">{{ preceilblue }}</span>
+
+
+{% assign pretwilightblue = all_products.women-classic-6-pocket-joggers.metafields.sf_product_bundle.preorder_twilight_blue %}
+<span class="pretwilightblue">{{ pretwilightblue }}</span>
+
+
+{% assign premint = all_products.women-classic-6-pocket-joggers.metafields.sf_product_bundle.preorder_mint %}
+<span class="premint">{{ premint }}</span>
+
+
+{% assign prewhite = all_products.women-classic-6-pocket-joggers.metafields.sf_product_bundle.preorder_white %}
+<span class="prewhite">{{ prewhite }}</span>
+
+
+{% assign precblue = all_products.women-classic-6-pocket-joggers.metafields.sf_product_bundle.preorder_caribbean_blue %}
+<span class="precblue">{{ precblue }}</span>
+
+
+{% assign preaunatives = all_products.women-classic-6-pocket-joggers.metafields.sf_product_bundle.preorder_aussie_natives %}
+<span class="preaunatives">{{ preaunatives }}</span>
+
+{% assign premistyblue = all_products.women-classic-6-pocket-joggers.metafields.sf_product_bundle.preorder_misty_blue %}
+<span class="premistyblue">{{ premistyblue }}</span>
+</div>
+
+      {% if template contains "new-bundle-template" %}
+        <style>
+          .desktop-view {
+            display: block;
+          }
+          .mobile-view {
+            display: none;
+          }
+          
+          @media only screen and (max-width:768px) {
+            .desktop-view {
+              display: none !important;
+            }
+            .mobile-view {
+              display: block !important;
+            }
+          }
+        </style>
+        <div class="product-single__header mobile-view" style="margin-bottom:35px">
+          {% if settings.vendor_enable %}
+            <div class="product-single__vendor">
+              {{ product.vendor }}
+            </div>
+          {% endif %}
+          {% if sku_enable %}
+            <p class="product-single__sku" data-sku>
+              {% if current_variant.sku %}
+                {{ current_variant.sku }}
+              {% endif %}
+            </p>
+          {% endif %}
+          {% if isModal %}
+            <p class="h1 product-single__title">
+              {{ product.title }}
+            </p>
+          {% else %}
+            <p class="h1 product-single__title">
+              {{ product.title }}
+            </p>
+          {% endif %}
+          {% if settings.enable_product_reviews %}
+            {% if isModal %}
+              {%- assign review_link = product.url | within: collection | append: '#Reviews-' | append: product.id -%}
+            {% else %}
+              {%- assign review_link = '#Reviews-' | append: product.id -%}
+            {% endif %}
+            <a href="{{ review_link }}" class="product-single__review-link">
+              <span class="shopify-product-reviews-badge" data-id="{{ product.id }}"></span>
+            </a>
+          {% endif %}
+          {% if settings.enable_product_loox_reviews %}
+            {% comment %} this block was created by belowyellow.com {% endcomment %}
+            <a href="#looxReviews" class="product-single__review-link">{% render 'loox_reviews' %}</a>
+          {% endif %}
+
+                      <!-- Start of Judge.me code --> 
+                        <div class='jdgm-widget jdgm-preview-badge' data-id='{{ product.id }}'> 
+                          {{ product.metafields.judgeme.badge }} 
+                        </div> 
+                      <!-- End of Judge.me code -->
+          <div class="product-single__prices{% unless template contains 'Bundle_Metafield' or template contains 'new-bundle-template' or template contains 'compression_sock'  or template contains 'LTV-Bulk-scrubs-offer' or product.type == 'Printed Pattern Scrub Pants' %} not_bundle{% endunless %}{% if template contains 'Bundle_Metafield' or template contains 'new-bundle-template' or template contains 'compression_sock' or template contains 'LTV-Bulk-scrubs-offer'  or product.type == 'Printed Pattern Scrub Pants' %} bundle_template grid-product__price{% endif %}">
+            {% if product.compare_at_price_max > product.price %}
+              {%- assign hide_sale_price = true -%}
+              {% if current_variant.compare_at_price %}
+                {%- assign hide_sale_price = false -%}
+              {% endif %}
+            {% endif %}
+            {% if template contains 'Bundle_Metafield' or template contains 'new-bundle-template' or template contains 'compression_sock' or template contains 'LTV-Bulk-scrubs-offer'  or product.type == 'Printed Pattern Scrub Pants' %}
+              <style>
+                p.afterpay-paragraph {
+                  display: block;
+                }
+                p.afterpay-paragraph .afterpay-text2 {
+                  display: none;
+                }
+              </style>
+              {% assign normal_price = product.metafields.sf_product_bundle.normal_price %}
+              {% assign sf_product_bundlecompare_price = product.metafields.sf_product_bundle.compare_price %}
+              {% assign disc = product.metafields.sf_product_bundle.discount_code %}
+              {% assign intro = product.metafields.sf_product_bundle.intro_text %}
+              {% assign intro2 = product.metafields.sf_product_bundle.intro_text2 %}
+              {% assign intro3 = product.metafields.sf_product_bundle.intro_text_3 %}
+              {% assign disc_additional = product.metafields.sf_product_bundle.discount_code_additional_text %}
+              {% if sf_product_bundlecompare_price != blank or normal_price != blank %}
+                <span class="{% if hide_sale_price %} hide{% endif %}{% if normal_price != blank %} normal_price{% endif %}" data-price-wrapper>
+                  <span
+                    class="1 product__price product__price--compare"
+                    data-product-price-compare
+                    data-price="${{ sf_product_bundlecompare_price }}">
+                    ${{ sf_product_bundlecompare_price }}
+                  </span>
+                </span>
+                {% if normal_price != blank %}
+                  <span
+                    data-price="${{ normal_price }}"
+                    class="2 normalPrice product__price{% if current_variant.compare_at_price > current_variant.price %} sale-price{% endif %}"
+                    data-product-price>
+                    <!-- 0 -->
+                    ${{ normal_price }}
+                    <span style="margin-bottom:12px;color:black; font-size: medium;display:inline-block"></span>
+                  </span>
+                  <p>
+                    <span>
+                      {% if disc or disc != blank %}<!-- 1 -->(using code {{ disc }} at checkout.
+                        {% if disc_additional or disc_additional != blank %}
+                          {{ disc_additional }}{% endif %}){% endif %}
+                    </span>
+                  </p>
+                {% endif %}
+              {% else %}
+                <span
+                  data-price=" {{ current_variant.compare_at_price | money_with_currency }}"
+                  class="{% if hide_sale_price %} hide{% endif %}"
+                  data-price-wrapper>
+                  <span class="8 aa product__price product__price--compare" data-product-price-compare>
+                    {% if current_variant.compare_at_price > current_variant.price %}
+                      {{ current_variant.compare_at_price | money_with_currency }}
+                    {% endif %}
+                  </span>
+                </span>
+                <span class="3 visually-hidden" data-price-a11y>{{ 'products.general.regular_price' | t }}</span>
+                <span
+                  data-price=" {{ current_variant.price | money_with_currency }}"
+                  class="9 normalPrice product__price{% if current_variant.compare_at_price > current_variant.price %} sale-price{% endif %}"
+                  data-product-price>
+                  {{ current_variant.price | money_with_currency }}
+                </span>
+              {% endif %}
+            {% endif %}
+            {% unless template contains 'Bundle_Metafield' or template contains 'new-bundle-template' or template contains 'compression_sock' or template contains 'LTV-Bulk-scrubs-offer'  or product.type == 'Printed Pattern Scrub Pants' %}
+              <div class="grid-product__price">
+                {% if current_variant.compare_at_price > current_variant.price %}
+                  <del data-price=" {{ current_variant.price | money_with_currency }}" class="5s normalPrice product__price grid-product__price--original ">
+                    {{ current_variant.compare_at_price | money_with_currency }}
+                  </del>
+                  <div class="sale-price">
+                    {{ current_variant.price | money_with_currency }}
+                  </div>
+                {% else %}
+                  <span
+                    data-price=" {{ current_variant.price | money_with_currency }}"
+                    class="5s normalPrice product__price grid-product__price--original"
+                    data-product-price>
+                    {{ current_variant.price | money_with_currency }}
+                    <!-- j -->
+                  </span>
+                {% endif %}
+              </div>
+            {% endunless %}
+            {% comment %}
+            THIS SECTION WAS UPDATED BY CASEY - TO SHOW PRODUCT DESCRIPTION INSTEAD OF PRODUCT CALLOUT
+            {% endcomment %}
+
+            {% comment %} 
+            <span class="product__note">
+            <p>&nbsp;</p>
+            {{ product.description }} 
+            <p>&nbsp;</p>
+            </span>
+            {% endcomment %}
+          </div>
+        </div>
+      {% endif %}
+
+
+
+      <div class="grid">
+        <div class="product-image-left grid__item {{ product_image_width }}">
+          {% if template contains 'custom_builderaaaa' %}
+
+            {% include 'product-images-builder'
+             , section_id: section_id,
+             isModal: isModal,
+             video_looping: video_looping,
+             video_style: video_style %}
+
+          {% else %}
+            {% include 'product-images'
+             , section_id: section_id,
+             isModal: isModal,
+             video_looping: video_looping,
+             video_style: video_style %}
+
+          {% endif %}
+          
+          <div class="fullimage ddoo" style="margin-top:0x; margin-bottom:0px">
+            {% if product.metafields.sf_product_bundle.cts_desktop_image_1 %}
+              <img src="{{ product.metafields.sf_product_bundle.cts_desktop_image_1 }}" class="desktopshow" alt="use code scrup">
+            {% endif %}
+            {% if product.metafields.sf_product_bundle.cts_mobile_image_1 %}
+              <img src="{{ product.metafields.sf_product_bundle.cts_mobile_image_1 }}" class="mobileshow" alt="use code scrup">
+            {% endif %}
+          </div>
+
+        </div>
+
+        <div class="product-content-right grid__item {{ product_description_width }}{% if product_image_type == 'stacked' %} product-single__sticky{% endif %} {{ product.title | truncate: 3, "" }}" data-title="">
+          <div class="product-single__meta">
+
+            {% if product.type == 'Printed Pattern Scrub Pants' %}
+              <p class="main-textamonials">{{ section.settings.txt3 }}</p>
+            {% endif %}
+            {% if product.type == 'Women Performance Underscrubs' %}
+              <p class="main-textamonials">{{ section.settings.txt4 }}</p>
+            {% endif %}
+            {% if product.type == 'Men’s Underscrubs' %}
+              <p class="main-textamonials">{{ section.settings.txt5 }}</p>
+            {% endif %}
+            {% if product.type == 'Compression Socks' %}
+              <p class="main-textamonials">{{ section.settings.txt6 }}</p>
+            {% endif %}
+            {% if product.type == 'Stethoscope Charms' %}
+              <p class="main-textamonials">{{ section.settings.txt7 }}</p>
+            {% endif %}
+            {% if product.type == 'Women Scrub Tops' %}
+              <p class="main-textamonials">{{ section.settings.txt8 }}</p>
+            {% endif %}
+            {% if product.type == 'Women Scrub Pants' %}
+              <p class="main-textamonials">{{ section.settings.txt9 }}</p>
+            {% endif %}
+            {% if product.type == 'Men Scrub Tops' %}
+              <p class="main-textamonials">{{ section.settings.txt10 }}</p>
+            {% endif %}
+            {% if product.type == 'Men Scrub Pants' %}
+              <p class="main-textamonials">{{ section.settings.txt11 }}</p>
+            {% endif %}
+            <div class="product-single__header desktop-view">
+              {% if settings.vendor_enable %}
+                <div class="product-single__vendor">
+                  {{ product.vendor }}
+                </div>
+              {% endif %}
+
+              {% if sku_enable %}
+                <p class="product-single__sku" data-sku>
+                  {% if current_variant.sku %}
+                    {{ current_variant.sku }}
+                  {% endif %}
+                </p>
+              {% endif %}
+
+              {% if isModal %}
+                <p class="h1 product-single__title">
+                  {{ product.title }}
+                </p>
+              {% else %}
+                <h1 class="h1 product-single__title">
+                  {{ product.title }}
+                </h1>
+              {% endif %}
+
+              {% if settings.enable_product_reviews %}
+                {% if isModal %}
+                  {%- assign review_link = product.url | within: collection | append: '#Reviews-' | append: product.id -%}
+                {% else %}
+                  {%- assign review_link = '#Reviews-' | append: product.id -%}
+                {% endif %}
+                <a href="{{ review_link }}" class="product-single__review-link">
+                  <span class="shopify-product-reviews-badge" data-id="{{ product.id }}"></span>
+                </a>
+              {% endif %}
+
+              {% if settings.enable_product_loox_reviews %}
+                {% comment %} this block was created by belowyellow.com {% endcomment %}
+                <a href="#looxReviews" class="product-single__review-link">{% render 'loox_reviews' %}</a>
+              {% endif %}
+                      <!-- Start of Judge.me code --> 
+                        <div class='jdgm-widget jdgm-preview-badge' data-id='{{ product.id }}'> 
+                          {{ product.metafields.judgeme.badge }} 
+                        </div> 
+                      <!-- End of Judge.me code -->
+              <a name="top"></a>
+              {% comment %}
+              {% if product.id == 7815295336706 or product.id == 7815303627010 or product.id == 7815283802370 or product.id == 7815290028290 or product.id == 7815271776514 or product.id == 7815268663554 or product.id == 7815312441602 %}
+                <div class="warning-text">FINAL SALE</div>
+              {% endif %}
+            {% endcomment %}
+              <div class="product-single__prices{% unless template contains 'Bundle_Metafield' or template contains 'new-bundle-template' or template contains 'compression_sock' or template contains 'LTV-Bulk-scrubs-offer' or product.type == 'Printed Pattern Scrub Pants' %} not_bundle{% endunless %}{% if template contains 'Bundle_Metafield' or template contains 'new-bundle-template' or template contains 'compression_sock'  or template contains 'LTV-Bulk-scrubs-offer' or product.type == 'Printed Pattern Scrub Pants' %} bundle_template grid-product__price{% endif %}">
+
+                {% if product.compare_at_price_max > product.price %}
+                  {%- assign hide_sale_price = true -%}
+                  {% if current_variant.compare_at_price %}
+                    {%- assign hide_sale_price = false -%}
+                  {% endif %}
+                {% endif %}
+
+                {% if template contains 'Bundle_Metafield' or template contains 'new-bundle-template' or template contains 'compression_sock' or template contains 'LTV-Bulk-scrubs-offer' or product.type == 'Printed Pattern Scrub Pants' %}
+                  <style>
+                    p.afterpay-paragraph {
+                      display: block;
+                    }
+                    p.afterpay-paragraph .afterpay-text2 {
+                      display: none;
+                    }
+                  </style>
+                  {% assign normal_price = product.metafields.sf_product_bundle.normal_price %}
+                  {% assign sf_product_bundlecompare_price = product.metafields.sf_product_bundle.compare_price %}
+                  {% assign disc = product.metafields.sf_product_bundle.discount_code %}
+                  {% assign intro = product.metafields.sf_product_bundle.intro_text %}
+                  {% assign intro2 = product.metafields.sf_product_bundle.intro_text2 %}
+                  {% assign intro3 = product.metafields.sf_product_bundle.intro_text_3 %}
+                  {% assign disc_additional = product.metafields.sf_product_bundle.discount_code_additional_text %}
+
+                  {% if sf_product_bundlecompare_price != blank or normal_price != blank %}
+                    <span class="{% if hide_sale_price %} hide{% endif %}{% if normal_price != blank %} normal_price{% endif %}" data-price-wrapper>
+                      <span
+                        class="1 product__price product__price--compare"
+                        data-product-price-compare
+                        data-price="${{ sf_product_bundlecompare_price }}">
+                        ${{ sf_product_bundlecompare_price }}
+                      </span>
+                    </span>
+                    {% if normal_price != blank %}
+                      <span
+                        data-price="${{ normal_price }}"
+                        class="2 normalPrice product__price{% if current_variant.compare_at_price > current_variant.price %} sale-price{% endif %}"
+                        data-product-price><!-- 0 -->${{ normal_price }}
+                        <span style="margin-bottom:12px;color:black; font-size: medium;display:inline-block"></span>
+                      </span>
+                      <p>
+                        <span>
+                          {% if disc or disc != blank %}<!-- 1 -->(using code {{ disc }} at checkout.
+                            {% if disc_additional or disc_additional != blank %}
+                              {{ disc_additional }}{% endif %}){% endif %}
+                        </span>
+                      </p>
+                    {% endif %}
+
+                  {% else %}
+                  {% if current_variant.compare_at_price > current_variant.price %}
+                    <span
+                      data-price=" {{ current_variant.compare_at_price | money_with_currency }}"
+                      class="{% if hide_sale_price %} hide{% endif %}"
+                      data-price-wrapper>
+                      <span class="8 product__price product__price--compare" data-product-price-compare>
+                        
+                          {{ current_variant.compare_at_price | money_with_currency }}
+                        
+                      </span>
+                    </span>
+                  {% endif %}
+                    <span class="3 visually-hidden" data-price-a11y>{{ 'products.general.regular_price' | t }}</span>
+                    <span
+                      data-price=" {{ current_variant.price | money_with_currency }}"
+                      class="9 normalPrice product__price{% if current_variant.compare_at_price > current_variant.price %} sale-price{% endif %}"
+                      data-product-price>
+                      {{ current_variant.price | money_with_currency }}
+                      <!-- k -->
+                    </span>
+                  {% endif %}
+                {% endif %}
+
+
+                {% unless template contains 'Bundle_Metafield' or template contains 'new-bundle-template' or template contains 'compression_sock' or template contains 'LTV-Bulk-scrubs-offer' or product.type == 'Printed Pattern Scrub Pants' %}
+
+                  <div class="grid-product__price">
+
+                    {% if current_variant.compare_at_price > current_variant.price %}
+                      <del data-price=" {{ current_variant.price | money_with_currency }}" class="5s normalPrice product__price grid-product__price--original ">
+                        {{ current_variant.compare_at_price | money_with_currency }}
+                      </del>
+                      <div class="sale-price">
+                        {{ current_variant.price | money_with_currency }}
+                        <!-- q -->
+                      </div>
+
+
+                    {% else %}
+                      <span
+                        data-price=" {{ current_variant.price | money_with_currency }}"
+                        class="5s normalPrice product__price grid-product__price--original"
+                        data-product-price>
+                        {{ current_variant.price | money_with_currency }}
+                        <!-- o -->
+                      </span>
+                    {% endif %}
+                  </div>
+                {% endunless %}
+                {% comment %}
+                THIS SECTION WAS UPDATED BY CASEY - TO SHOW PRODUCT DESCRIPTION INSTEAD OF PRODUCT CALLOUT
+                {% endcomment %}
+
+                <a id="mytoper"></a>
+
+                {% comment %} <span class="product__note">
+                <p>&nbsp;</p>  {{ product.description }} <p>&nbsp;</p> 
+                </span>   {% endcomment %}
+
+              </div>
+              {% if product.type == 'Printed Pattern Scrub Pants' or product.type == 'Compression Socks' %}
+                {% if section.settings.enable_ab %}  
+              <p class="mobileshow afterpay-paragraph"><span class="afterpay-main-text">or 4 interest-free payments of <strong>$6.50</strong> with </span><span class="afterpay-logo-link"><button class="afterpay-logo brand-afterpay compact-badge type-badge black-on-mint" aria-label="Afterpay logo - Opens a dialog" title="Afterpay logo - Opens a dialog">
+                          <svg xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid meet" width="98" height="36" class="compact-badge-logo" viewBox="0 0 100 21">
+                            <path class="afterpay-logo-badge-background" fill="#b2fce4" d="M89.85 20.92h-78.9a10.42 10.42 0 110-20.82h78.89a10.42 10.42 0 010 20.83v-.01z"></path>
+                            <g class="afterpay-logo-badge-lockup">
+                              <path d="M85.05 6.37L82.88 5.1l-2.2-1.27a2.2 2.2 0 00-3.3 1.9v.29c0 .16.08.3.22.38l1.03.58c.28.16.63-.04.63-.37v-.67c0-.34.36-.54.65-.38l2.02 1.16 2 1.15c.3.16.3.58 0 .75l-2 1.15-2.02 1.16a.43.43 0 01-.65-.38v-.33a2.2 2.2 0 00-3.28-1.9l-2.2 1.26-2.19 1.25a2.2 2.2 0 000 3.8l2.18 1.25 2.2 1.27a2.2 2.2 0 003.3-1.9v-.3c0-.15-.09-.3-.23-.37L78.02 14a.43.43 0 00-.64.37v.67c0 .34-.36.54-.65.38l-2-1.16-2-1.15a.43.43 0 010-.75l2-1.15 2-1.16c.3-.16.65.05.65.38v.33a2.2 2.2 0 003.3 1.9l2.2-1.26 2.17-1.25a2.2 2.2 0 000-3.8z"></path>
+                              <path d="M70.77 6.78l-5.1 10.53h-2.12l1.91-3.93-3-6.6h2.17l1.93 4.42 2.1-4.42h2.11z"></path>
+                              <path d="M19.8 10.5c0-1.24-.92-2.12-2.04-2.12s-2.03.9-2.03 2.14c0 1.23.91 2.14 2.03 2.14s2.03-.88 2.03-2.14m.02 3.74v-.97a3 3 0 01-2.36 1.09c-2.05 0-3.6-1.65-3.6-3.86 0-2.2 1.61-3.87 3.65-3.87.95 0 1.76.42 2.31 1.08v-.95h1.84v7.48h-1.84z"></path>
+                              <path d="M30.6 12.6c-.65 0-.84-.24-.84-.87V8.4h1.2V6.78h-1.2V4.96h-1.88v1.82h-2.43v-.74c0-.63.24-.87.9-.87h.42V3.72h-.9c-1.56 0-2.3.5-2.3 2.07v1h-1.04V8.4h1.04v5.85h1.88V8.4h2.43v3.66c0 1.53.6 2.19 2.11 2.19h.97V12.6h-.37z"></path>
+                              <path d="M37.35 9.85c-.13-.97-.93-1.56-1.86-1.56-.92 0-1.7.57-1.88 1.56h3.74zM33.6 11c.13 1.1.93 1.74 1.93 1.74.8 0 1.4-.37 1.76-.97h1.94c-.45 1.58-1.87 2.6-3.74 2.6a3.68 3.68 0 01-3.85-3.85 3.78 3.78 0 013.9-3.9 3.74 3.74 0 013.8 4.38H33.6z"></path>
+                              <path d="M51.35 10.5c0-1.2-.9-2.12-2.03-2.12-1.12 0-2.03.9-2.03 2.14 0 1.23.9 2.14 2.03 2.14 1.12 0 2.03-.93 2.03-2.14m-5.92 6.79V6.78h1.84v.97a2.97 2.97 0 012.36-1.1c2.02 0 3.6 1.65 3.6 3.85s-1.6 3.87-3.65 3.87a2.9 2.9 0 01-2.26-1v3.93h-1.9.01z"></path>
+                              <path d="M59.86 10.5c0-1.24-.9-2.12-2.03-2.12-1.12 0-2.04.9-2.04 2.14 0 1.23.92 2.14 2.04 2.14s2.03-.88 2.03-2.14m.02 3.74v-.97a3 3 0 01-2.36 1.09c-2.05 0-3.6-1.65-3.6-3.86 0-2.2 1.61-3.87 3.64-3.87.96 0 1.76.42 2.32 1.08v-.95h1.84v7.48h-1.84z"></path>
+                              <path d="M42.11 7.5s.47-.86 1.62-.86c.5 0 .8.17.8.17v1.9s-.69-.42-1.32-.33c-.64.09-1.04.67-1.04 1.45v4.42h-1.9V6.78h1.84v.73z"></path>
+                            </g>
+                          </svg></button> <button id="logo-link" class="afterpay-link" tabindex="0" aria-label="Learn More about Afterpay - Opens a dialog" title="Learn More about Afterpay - Opens a dialog"><template style="text-decoration: none; display: inline-block;"></template></button></span></p>
+                {% endif %}        
+              {% endif %}        
+
+              {% if product.id == 7815295336706 or product.id == 7815303627010 or product.id == 7815283802370 or product.id == 7815290028290 or product.id == 7815271776514 or product.id == 7815268663554 or product.id == 7815312441602 %}
+                <div class="warning-text">
+                  <p>This product cannot be returned or exchanged unless faulty.</p>
+                  <p>NOTE: The sizing is DIFFERENT to our normal range, we recommend going up a size up for a better fit. If you're unsure, feel free to speak with sizing expert at hello@drwoofapparel.com.au</p>
+                </div>
+              {% endif %}
+              <div data-product-unit-wrapper class="product__unit-price {% unless current_variant.unit_price_measurement %} hide{% endunless %}">
+                {%- capture unit_price_base_unit -%}
+                  {%- if current_variant.unit_price_measurement -%}
+                    {%- if current_variant.unit_price_measurement.reference_value != 1 -%}
+                      {{ current_variant.unit_price_measurement.reference_value }}
+                    {%- endif -%}
+                    {{ current_variant.unit_price_measurement.reference_unit }}
+                  {%- endif -%}
+                {%- endcapture -%}
+
+                {{ current_variant.unit_price | money_with_currency }}/{{ unit_price_base_unit }}
+              </div>
+
+              {% comment %} {%- if shop.taxes_included or shop.shipping_policy.body != blank -%}
+              <div class="product__policies rte">
+              <small>
+              {%- if shop.taxes_included -%}
+              {{ 'products.product.include_taxes' | t }}
+              {%- endif -%}
+              {%- if shop.shipping_policy.body != blank -%}
+              {{ 'products.product.shipping_policy_html' | t: link: shop.shipping_policy.url }}
+              {%- endif -%}
+              </small>
+              </div>
+              {%- endif -%}{% endcomment %}
+
+
+              {% for tag in product.tags %}
+                {% assign product_tag = tag | strip %}
+                <div class="pop-up-modal">
+                  <div class="pop-up-content">
+                    <button type="button" class="btn btn--circle btn--large close-button">
+                      <svg aria-hidden="true" focusable="false" role="presentation" class="icon icon-close" viewBox="0 0 64 64">
+                        <path d="M19 17.61l27.12 27.13m0-27.12L19 44.74"></path>
+                      </svg>
+                      <span class="icon__fallback-text">Close (esc)</span>
+                    </button>
+                    {% if product.tags contains 'men' or product.tags contains 'Men' or product.tags contains 'MEN' %}
+                      <span class="size-chart-content men-chart">
+                        {{ pages[settings.product_content].content }}
+                      </span>
+                    {% elsif product.tags contains 'women' or product.tags contains 'Women' or product.tags contains 'WOMEN' %}
+                      <span class="size-chart-content women-chart">
+                        {{ pages[settings.product_content_women].content }}
+                      </span>
+                    {% endif %}
+                  </div>
+                </div>
+              {% endfor %}
+
+
+              {%- if inventory_enable or inventory_transfers_enable -%}
+                {%- assign variants_with_inventory_tracking = product.variants | where: 'inventory_management', 'shopify' -%}
+
+                <script>
+                  // Store inventory quantities in JS because they're no longer
+// available directly in JS when a variant changes.
+// Have an object that holds all potential products so it works
+// with quick view or with multiple featured products.
+                  window.inventories = window.inventories || {};
+                  window.inventories['{{section_id}}'] = {};{% for variant in variants_with_inventory_tracking %}window.inventories['{{section_id}}'][{{variant.id}}] = {
+                      'quantity': {{ variant.inventory_quantity | default: 0 }},
+                      'incoming': {{ variant.incoming | default: false | json }},
+                      'next_incoming_date': {{ variant.next_incoming_date | date: format: 'date' | json }}
+                    };{% endfor %}
+                </script>
+
+                {%- assign inventory_visible = false -%}
+                {% if inventory_enable and current_variant.inventory_management == 'shopify' %}
+                  {%- if current_variant.inventory_quantity <= inventory_threshold and current_variant.inventory_quantity >= 0 -%}
+                    {%- assign inventory_visible = true -%}
+                  {%- endif -%}
+                {% endif %}
+                {% if current_variant.inventory_quantity == 0 %}
+                  {%- assign inventory_visible = false -%}
+                {% endif %}
+
+                {%- unless template.suffix == 'Bundle_Metafield' or template.suffix == 'new-bundle-template' or template contains 'compression_sock' or template contains 'LTV-Bulk-scrubs-offer'  or product.type == 'Printed Pattern Scrub Pants' %}
+
+
+
+                  {%- if inventory_enable -%}
+                    <p data-product-inventory class="product__inventory {% unless inventory_visible %}hide{% endunless %}">
+                      {% if current_variant.available %}
+                        {{ 'products.product.stock_label' | t: count: current_variant.inventory_quantity }}
+                      {% endif %}
+                    </p>
+                  {%- endif -%}
+
+                  {%- if inventory_transfers_enable -%}
+                    <div data-product-incoming-inventory class="product__inventory{% if inventory_visible %} hide{% endif %}">
+                      {%- if current_variant.incoming and inventory_visible == false -%}
+                        {%- if current_variant.next_incoming_date -%}
+                          {% assign date = current_variant.next_incoming_date | date: format: 'date' %}
+                          {%- if current_variant.available -%}
+                            {{ 'products.product.will_not_ship_until' | t: date: date }}
+                          {%- else -%}
+                            {{ 'products.product.will_be_in_stock_after' | t: date: date }}
+                          {%- endif -%}
+                        {%- else -%}
+                          {{ 'products.product.waiting_for_stock' | t }}
+                        {%- endif -%}
+                      {%- endif -%}
+                    </div>
+                  {%- endif -%}
+                {%- endunless -%}
+              {% endif %}
+            </div>
+
+
+            {% unless isModal %}
+
+              {% comment %}
+              Shopify's product form attaches a number of tracking
+              scripts that cause slower load times and false statistics.
+              Quick view modals request these on-demand.
+              {% endcomment %}
+
+                    {% if product.type == 'Printed Pattern Scrub Pants' or product.type == 'Compression Socks' %}
+                      
+
+                        {% if section.settings.enable_ab %}  
+                        <style>
+                          .butttonsoldout:after{
+                            position: absolute;
+                            content: "";
+                            left: 0;
+                            right: 0;
+                            top: 0;
+                            bottom: 0;
+                            background: #353535;
+                            transform: rotate(45deg);
+                            height: 100%;
+                            width: 1px;
+                            margin: auto;
+                          }
+                          .butttonsoldout:hover{
+                         
+                          }
+                          .soldoutx{
+                            pointer-events: none;
+                          }
+                          {% unless template.suffix == 'os2printedtopsbundle' %}
+                          .product__slide{
+                            padding-left:6px;
+                            padding-right:6px;
+                          }
+                          {% endunless %}
+                          .image-overlay{
+                            z-index: 1;
+                            display: block;
+                            background-size: 100% !important;
+                            flex: 0 0 100px;
+                            height: 100px;
+                            position: relative;
+                            margin-right: 12px;
+                            border-radius: 8px;
+                            margin-bottom: 12px;
+                            overflow: hidden;
+                            box-shadow: 1px 3px 15px rgba(0,0,0,0.2);
+                          }
+                          .scrubs-products{
+                            display: flex;
+                            justify-content: flex-start;
+                            align-items: flex-start;
+                            flex-wrap: wrap;
+                          }
+                          .scrubs-products:hover{
+                            cursor:pointer;
+                          }
+                          .image-overlay:after{
+                            content: "";
+                            display: block;
+                            padding-bottom: 100%; 
+                          }
+                          .activer{
+                            border:2px solid #f5be15;
+                          }
+                          .activer::after {
+                              content: "";
+                              display: block;
+                              padding-bottom: 100%;
+                              
+                              background:rgba(0, 0, 0, 0.5);
+                              top:0;
+                              left:0;
+                            }
+                        </style>
+                        <input type="hidden" class="sockvarid" value=""/>
+                        <input type="hidden" class="capstandardid" value=""/>
+                        <input type="hidden" class="capxlid" value=""/>
+                        <div class="scrubcaps-wrapper">
+                          <div class="scrubs-products">
+                            {% paginate collections['womens-printed-cargo-scrub-pants'].products by 200 %}
+                              {% for productb in collections['womens-printed-cargo-scrub-pants'].products limit:100 %}
+                                {% if productb.available %}
+                                  {% assign overlayimagex = "" %}
+                                    {% for media in productb.media %}
+                                      {% if media.alt contains "Close up" %}
+                                      {% assign overlayimage = media %}
+                                      {% assign overlayimagex = overlayimage | img_url: '500x500' %}
+                                      {% endif %}
+                                    {% endfor %}
+                                    <div class="image-overlay activer" data-id="{{ productb.id }}" data-title="{{ productb.title }}" data-image="{{ productb.images.first | product_img_url: 'medium' }}" data-url="{{ productb.url }}" data-handle="{{ productb.handle }}" data-price="{{ productb.price | money_with_currency }}" data-compare="{{ productb.compare_at_price | money_with_currency }}" 
+
+                                    style="background: url({{ overlayimagex }}) left top;" >
+                                    {% for variant in productb.variants %}
+                                      <input type="hidden" name="{{ variant.title }}" data-socqty="{{ variant.inventory_quantity }}" data-socavail="{{ variant.available }}" data-socvarid="{{ variant.id }}"  data-socprice="{{ variant.price | money_with_currency }}">
+                                  {% endfor %}
+                                    
+                                    </div>
+
+                                    {% comment %}
+                                      <li>
+                                        <a href="{{ productb.url }}">
+                                          <img src="{{ productb.featured_image | img_url: 'medium' }}" alt="{{ productb.title }}">
+                                          <p>{{ productb.title }}</p>
+                                        </a>
+                                      </li>
+                                    {% endcomment %}
+                                    
+                                  
+                                {% endif %}
+                              {% endfor %}
+                            {% endpaginate %}
+                          </div>
+                        </div>
+
+<div class="scrubs-cart">
+  <!-- Size Selection -->
+  <div class="variant-group">
+    <label style="margin-bottom:8px">Size: <span class="size-desc">S</span></label> 
+    <div class="size-buttons">
+      <!-- Size buttons will be dynamically generated -->
+    </div>
+  </div>
+
+  <!-- Inseam Selection -->
+  <div class="variant-group">
+    <label style="margin-bottom:8px; margin-top:15px; display:block">Inseam:</label> 
+    <div class="inseam-buttons">
+      <!-- Inseam buttons will be dynamically generated -->
+    </div>
+  </div>
+</div>
+
+                      <div class="wider">
+                        <a class="trigger-pop-up btn">Size Guide</a>
+                      </div>
+
+
+                      <style>
+                        p.afterpay-paragraph{
+                          margin-top:0 !important;
+                        }
+                        .loox-rating{
+                          margin-bottom:0 !important;
+                        }
+                        .main-textamonials{display:none;}
+                        .scrubcaps-wrapper{
+                          width:100%;
+                          overflow-x:auto;
+                          margin-bottom:12px;
+                        }
+                        .scrubcaps-wrapper::-webkit-scrollbar {
+                          width: 14px;
+                        }
+                        .scrubcaps-wrapper::-webkit-scrollbar-track {
+                          border-radius: 8px;
+                          background-color: #e7e7e7;
+                          
+                        }
+                        .product__main-photos .slick-dots{
+                          height:0;
+                        }
+                        .product-content-right.grid__item.medium-up--two-fifths{
+                          margin-top:0 !important;
+                        }
+                        .scrubcaps-wrapper::-webkit-scrollbar-thumb {
+                          border-radius: 8px;
+                          border: 3px solid #f5be15;
+                          background-clip: content-box;
+                          background-color: #f5be15;
+                        }
+                        .scrubs-products{
+                          /* width: 217%; */
+                          width: 100%;
+                          height: auto;
+                        }
+                        .btn-primer {
+                          display:inline-block;
+                          text-align: center;
+                          position:relative;
+                          padding: 0 15px;
+                          line-height: 30px;
+                          font-weight: 500;
+                          margin-right:12px;
+                          border-radius: 100px;
+                        }
+                        .btn-primer:hover{
+                          cursor:pointer;
+                        }
+                        .btn-primer.atv {
+                          box-shadow: 0 0 0 1px #000;
+                        }
+
+
+
+                        /* New variant selection styles */
+.variant-group {
+  margin-bottom: 0px;
+}
+
+.variant-group label {
+  font-weight: 500;
+  font-size: 14px;
+  color: #333;
+}
+
+.size-buttons,
+.inseam-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 8px;
+}
+
+.btn-size,
+.btn-inseam {
+  display: inline-block;
+  text-align: center;
+  position: relative;
+  padding: 0 15px;
+  line-height: 32px;
+  font-weight: 500;
+  border-radius: 4px;
+  border: 1px solid #ddd;
+  background: #fff;
+  color: #333;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  min-width: 50px;
+}
+
+.btn-size:hover,
+.btn-inseam:hover {
+  border-color: #000;
+  background: #f8f8f8;
+}
+
+.btn-size.atv,
+.btn-inseam.atv {
+  background: #000;
+  color: #fff;
+  border-color: #000;
+}
+
+.btn-size.butttonsoldout,
+.btn-inseam.butttonsoldout {
+  background: #f5f5f5;
+  color: #999;
+  cursor: not-allowed;
+  position: relative;
+}
+
+.btn-size.butttonsoldout:after,
+.btn-inseam.butttonsoldout:after {
+  position: absolute;
+  content: "";
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  background: #999;
+  transform: rotate(45deg);
+  height: 100%;
+  width: 1px;
+  margin: auto;
+}
+
+@media only screen and (max-width: 480px) {
+  .size-buttons,
+  .inseam-buttons {
+    gap: 6px;
+  }
+  
+  .btn-size,
+  .btn-inseam {
+    padding: 0 12px;
+    line-height: 30px;
+    font-size: 14px;
+    min-width: 45px;
+  }
+  
+  .variant-group {
+    margin-bottom: 15px;
+  }
+}
+                        .capsbundleatc{
+                          width: 100%;
+                          color: #fff;
+                          background: #000;
+                          padding: 12px 0px;
+                          margin-top: 17px;
+                          margin-bottom: 20px;
+                        }
+                        .add-to-cart{
+                          display:none !important;
+                        }
+                        p.afterpay-paragraph,
+                        .mobileshow{
+                          display:none !important
+                        }
+                          svg.compact-badge-logo{
+                            margin-bottom:-12px !important;
+                          }
+                        @media only screen and (max-width:480px){
+                          .main-text,
+                          .main-icon-cont{
+                            margin-left:0 !important;
+                            margin-right:0 !important;
+                          }
+                          .scrubcaps-wrapper{
+                            width: 453px;
+                            overflow-x: scroll;
+                            /* height: 300px; */
+                            overflow-y: hidden;
+                            margin-bottom: 12px;
+                          }
+                          .scrubs-products{
+                            flex-wrap:wrap;
+                            width: 100%;
+                            height: auto;
+                          }
+                          
+                          .image-overlay{
+                            flex:0 0 100px;
+                            height:100px;
+                          }
+                          p.afterpay-paragraph,
+                          .mobileshow{
+                            display:block !important
+                          }
+                          .afterpay-logo-link {
+                              white-space: nowrap;
+                              display: initial;
+                          }
+                          square-placement{
+                            display:none !important;
+                          }
+                          .afterpay-paragraph{
+                            margin: 0px;
+                            line-height: 1.5;
+                            line-height: var(--messaging-line-height, 1.8);
+                            font-size:12px !important;
+                          }
+                          .afterpay-logo.compact-badge svg, .afterpay-logo.compact-badge {
+                              height: calc(0.19*var(--logo-badge-width,92px) + 10px);
+                          }
+
+                          .afterpay-logo.type-badge svg, .afterpay-logo.type-badge {
+                              height: calc(32/96*var(--logo-badge-width,96px));
+                          }
+
+                          .afterpay-logo.compact-badge, .afterpay-logo.compact-badge svg {
+                              margin: initial;
+                              margin-left: 0px;
+                              width: var(--logo-badge-width, 92px);
+                          }
+
+                          .afterpay-logo.compact-badge {
+                              padding-bottom: 2px;
+                          }
+
+                          .afterpay-logo.type-badge {
+                              margin: 1px 0;
+                          }
+
+                          .afterpay-logo.brand-afterpay, .afterpay-logo.brand-afterpay svg {
+                              width: 96px;
+                              width: var(--logo-badge-width, 96px);
+                              min-width: 50px;
+                              min-height: 20px;
+                          }
+                          p.afterpay-paragraph {
+                              margin: 10px 0!important;
+                              margin-top: -6px !important;
+                          }
+
+                        }
+                      </style>
+                      
+                      {% unless section.settings.freesetcap %}
+                        <img src="{{ 'capblue.png' | asset_url }}" style="width:100%;display:block;margin-top:12px;" />
+                      {% else %}
+                      <img src="{{  section.settings.freesetcap | img_url: 'master' }}" style="width:100%;display:block;margin-top:12px;" />
+                      {% endunless %}
+                      
+                      <div class="greenmark">
+                        <button class="capsbundleatc">Add to cart</button>
+                      </div>
+                      <div class="main-icon-cont" style="margin-top:-19px;padding:5px 0px 5px;" actualheight="118.453px" actualwidth="462px" actualmaxheight="none" actualmaxwidth="none" actualminheight="0px" actualminwidth="0px" windowheight="611">
+                        <div class="preorder-text" style="padding: 0px 20px 12px; margin-bottom: 12px; display: none;" actualheight="auto" actualwidth="auto" actualmaxheight="none" actualmaxwidth="none" actualminheight="0px" actualminwidth="0px" windowheight="611">
+                           <p>Pre-order now to secure your preferred design. Your entire order will ship once this item becomes available.</p>
+                           <p style="margin-top:10px;color:red;">Expected dispatch date: <span class="preorderdate" style="font-weight:800">
+                            {% if product.handle contains "aussie-natives" or product.handle contains "border-collies" or product.handle contains "bushland-butterflies" %}
+                              August 13
+                            {% else %}
+                            {% if product.handle contains "breast" %}
+                              October 25
+                            {% else %}
+                              August 13
+                            {% endif %}
+                              
+                            {% endif %}
+                            
+                            
+                            </span>. Thanks for your patience!</p>
+                        </div>
+
+                        {% if section.settings.abtestdavideo %}
+                          {% comment %}
+                          <div class="ugs_container">
+                            <div class="video-gallery">
+                              <div class="video-container zero1">
+                                <video class="video" src="https://cdn.shopify.com/videos/c/o/v/426dd23a96054652afdecde5e3690f50.mp4" autoplay muted loop playsinline preload="metadata"></video>
+                                  <span>3 Reasons Nurses Love Dr. Woof Printed Scrub Tops</span>
+                              </div>
+                              <div class="video-container zero2">
+                                  <video class="video" src="https://cdn.shopify.com/videos/c/o/v/4a3547a353b54eadabbea15e00c1be6b.mp4" autoplay muted loop playsinline preload="metadata"></video>
+                                  <span>How to bring joy to your shift</span>
+                              </div>
+                              <div class="video-container zero3">
+                                <video class="video" src="https://cdn.shopify.com/videos/c/o/v/5475950c13c14c8b8b21e58d8e296cdf.mp4" autoplay muted loop playsinline preload="metadata"></video>
+                                  
+                                  <span>Show off your style with ease</span>
+                              </div>
+                              <!-- 
+                              <div class="video-container zero4">
+                                  <video class="video" src="https://cdn.shopify.com/videos/c/o/v/c5fb46949ef64a199884f1995b514bfc.mp4" autoplay muted loop playsinline preload="metadata"></video>
+                              </div>
+                              -->
+                            </div>
+                          </div>
+                          {% endcomment %}
+                          <style>
+                          .ugs_container{
+                            padding-left: 12px;
+                              padding-right: 12px;
+                              margin-top: 20px;
+                              margin-bottom:20px;
+                          }
+                          {% if section.settings.abtestnoicons %}
+                            .ugs_container{
+                                margin-top: -2px;
+                            }
+                          {% endif %}
+                          
+                          .ugs_container span{
+                            font-size: 11px;
+                            font-weight: 800;
+                          }
+                          
+                          .ugs_container .video-gallery {
+                              display: flex;
+                              gap: 10px;
+                          }
+                          
+                          .ugs_container .video-container {
+                              flex: 1;
+                              overflow: hidden;
+                              position: relative;
+                          }
+                          
+                          .ugs_container .video {
+                              width: 100%;
+                              height: auto;
+                              transition: transform 0.3s ease-in-out;
+                              object-fit: cover;
+                          }
+                          
+                          .ugs_container .video-container:hover {
+                              transform: scale(1.05);
+                              cursor:pointer;
+                          }
+                          </style>
+                          {% endif %}
+                          
+                          {% unless section.settings.abtestnoicons %}                            
+                        <div class="sub-icon-cont" actualheight="108.453px" actualwidth="153.984px" actualmaxheight="none" actualmaxwidth="none" actualminheight="auto" actualminwidth="auto" windowheight="611">
+                           <div class="sub-icon-cont1" actualheight="71.4531px" actualwidth="90px" actualmaxheight="none" actualmaxwidth="90px" actualminheight="0px" actualminwidth="0px" windowheight="611">
+                            {% if section.settings.img1 %}
+                              <img src="{{ section.settings.img1 | img_url: 'master' }}" alt="Untitled_design_2" style="max-width:80px;" actualheight="66.6562px" actualwidth="80px" actualmaxheight="none" actualmaxwidth="80px" actualminheight="0px" actualminwidth="0px" windowheight="611">
+                              {% else %}
+                              <img src="//www.drwoofapparel.com.au/cdn/shop/files/Untitled_design_2_a0e5c991-5d95-460f-9590-276a5fd6565b_90x75.png?v=1641224575" alt="Untitled_design_2" style="max-width:80px;" actualheight="66.6562px" actualwidth="80px" actualmaxheight="none" actualmaxwidth="80px" actualminheight="0px" actualminwidth="0px" windowheight="611">
+                            {% endif %}
+                              
+                           </div>
+                           <div class="sub-icon-cont2" actualheight="32px" actualwidth="133.984px" actualmaxheight="none" actualmaxwidth="none" actualminheight="0px" actualminwidth="0px" windowheight="611">
+                              <p style="font-size:0.77em;">
+                              {% if section.settings.txt %}
+                                {{ section.settings.txt }}
+                                {% else %}
+                                Free shipping over $100 🇦🇺
+                              {% endif %}
+                                </p>
+                           </div>
+                        </div>
+                        <div class="sub-icon-cont" actualheight="108.453px" actualwidth="153.984px" actualmaxheight="none" actualmaxwidth="none" actualminheight="auto" actualminwidth="auto" windowheight="611">
+                           <div class="sub-icon-cont1" actualheight="71.4531px" actualwidth="90px" actualmaxheight="none" actualmaxwidth="90px" actualminheight="0px" actualminwidth="0px" windowheight="611">                            
+                            {% if section.settings.img2 %}
+                            <img src="{{ section.settings.img2 | img_url: 'master' }}" alt="Untitled_design_2" style="max-width:80px;" actualheight="66.6562px" actualwidth="80px" actualmaxheight="none" actualmaxwidth="80px" actualminheight="0px" actualminwidth="0px" windowheight="611">
+                            {% else %}
+                            <img src="//www.drwoofapparel.com.au/cdn/shop/files/Untitled_design_3_fe7d88e9-de18-4dbc-8a2b-5388f6c269e9_90x75.png?v=1673564143" alt="Ships from Sydney, AU" style="max-width:80px;" actualheight="66.6562px" actualwidth="80px" actualmaxheight="none" actualmaxwidth="80px" actualminheight="0px" actualminwidth="0px" windowheight="611">
+                          {% endif %}
+                              
+                           </div>
+                           <div class="sub-icon-cont2" actualheight="16px" actualwidth="133.984px" actualmaxheight="none" actualmaxwidth="none" actualminheight="0px" actualminwidth="0px" windowheight="611">
+                              <p style="font-size:0.77em;">
+                              {% if section.settings.txt_ %}
+                                {{ section.settings.txt_ }}
+                                {% else %}
+                                Ships from Sydney, AU
+                              {% endif %}</p>
+                           </div>
+                        </div>
+                        <div class="sub-icon-cont" actualheight="108.453px" actualwidth="153.984px" actualmaxheight="none" actualmaxwidth="none" actualminheight="auto" actualminwidth="auto" windowheight="611">
+                           <div class="sub-icon-cont1" actualheight="71.4531px" actualwidth="90px" actualmaxheight="none" actualmaxwidth="90px" actualminheight="0px" actualminwidth="0px" windowheight="611">
+                            {% if section.settings.img3 %}
+                              <img src="{{ section.settings.img3 | img_url: 'master' }}" alt="Untitled_design_2" style="max-width:80px;" actualheight="66.6562px" actualwidth="80px" actualmaxheight="none" actualmaxwidth="80px" actualminheight="0px" actualminwidth="0px" windowheight="611">
+                              {% else %}
+                              <img src="//www.drwoofapparel.com.au/cdn/shop/files/Untitled_design_1_a36d0b5e-4591-400b-b7c9-9897261f312c_90x75.png?v=1673564168" alt="60-day hassle-free returns" style="max-width:80px;" actualheight="66.6562px" actualwidth="80px" actualmaxheight="none" actualmaxwidth="80px" actualminheight="0px" actualminwidth="0px" windowheight="611">
+                            {% endif %}
+                              
+                           </div>
+                           <div class="sub-icon-cont2" actualheight="32px" actualwidth="133.984px" actualmaxheight="none" actualmaxwidth="none" actualminheight="0px" actualminwidth="0px" windowheight="611">
+                              <p style="font-size:0.77em;">
+                                {% if section.settings.txt1 %}
+                                  {{ section.settings.txt1 }}
+                                  {% else %}
+                                60-day hassle-free returns                                
+                              {% endif %}
+                              </p>
+                           </div>
+                        </div>
+                        {% endunless %}
+                     </div>
+                     <div class="main-text" style="padding:20px 0px 5px;" actualheight="63.1875px" actualwidth="462px" actualmaxheight="none" actualmaxwidth="none" actualminheight="0px" actualminwidth="0px" windowheight="611">
+                            <p>{% unless section.settings.txt2 == '' or section.settings.txt2 == nil or section.settings.txt2 == blank %}{{ section.settings.txt2 }}{% else %}Free & Fast shipping over $100{% endunless %}</p>
+                     </div>
+                      {% else %}
+                          {% include 'product-form'
+                          , section_id: section_id,
+                          variant_type: variant_type,
+                          variant_labels_enable: variant_labels_enable,
+                          quantity_enable: quantity_enable,
+                          enable_payment_button: enable_payment_button %}                  
+                      {% endif %}
+
+
+                  
+                  {% else %}
+
+                      {% if template contains 'Bundle_Metafield' or template contains 'new-bundle-template' or template contains 'LTV-Bulk-scrubs-offer' %}
+                            {% if product.id == 6775596187832 %}
+                              {% include 'Bundle_product-form-mega'
+                              , section_id: section_id,
+                              variant_type: variant_type,
+                              variant_labels_enable: variant_labels_enable,
+                              quantity_enable: quantity_enable,
+                              enable_payment_button: enable_payment_button %}
+                            {% else %}
+                              {% include 'Bundle_product-form'
+                              , section_id: section_id,
+                              variant_type: variant_type,
+                              variant_labels_enable: variant_labels_enable,
+                              quantity_enable: quantity_enable,
+                              enable_payment_button: enable_payment_button %}
+                            {% endif %}
+                      {% else %}
+
+                            {% if template contains 'compression_sock' %}
+                              {% include 'Bundle_product-form-normal'
+                              , section_id: section_id,
+                              variant_type: variant_type,
+                              variant_labels_enable: variant_labels_enable,
+                              quantity_enable: quantity_enable,
+                              enable_payment_button: enable_payment_button %}
+                            {% else %}
+                                  {% if product.id == 8005417533698 or  product.id == 6701376274616 or product.id == 6701376078008  or product.id == 7461809127682  or product.id == 7819011490050   or product.id == 8000060850434  or product.id == 7461809160450  or product.id == 6751392006328 or product.id == 7461809258754 or product.id == 6751389483192  or product.id == 8005449679106 or product.id == 6751404523704 or product.id == 7473530503426  or product.id == 6701375455416 or product.id == 7473526767874  or product.id == 7815271776514 or product.id == 7815268663554  or product.id == 6751389483192 or product.id == 7461809258754 %} 
+                                    {% include 'product-form-preorder'
+                                    , section_id: section_id,
+                                    variant_type: variant_type,
+                                    variant_labels_enable: variant_labels_enable,
+                                    quantity_enable: quantity_enable,
+                                    enable_payment_button: enable_payment_button %}
+                                  {% else %}
+                                    {% include 'product-form'
+                                    , section_id: section_id,
+                                    variant_type: variant_type,
+                                    variant_labels_enable: variant_labels_enable,
+                                    quantity_enable: quantity_enable,
+                                    enable_payment_button: enable_payment_button %}
+                                  {% endif %}
+                            {% endif %}
+                      {% endif %}
+                {% endif %}
+
+            {% else %}
+                  
+                  <div
+                    id="ProductFormPlaceholder-{{ section_id }}"
+                    data-url="{{ product.url | within: collection }}"
+                    data-template="{{ product.template_suffix }}"
+                    class="product-form-holder">
+                    {% if product.options.size > 0 %}
+                      {% for i in (1..product.options.size) %}
+                        <div class="placeholder-content" style="min-height: 86px; max-width: 66%;"></div>
+                      {% endfor %}
+                    {% endif %}
+                    <div class="placeholder-content" style="min-height: 86px;"></div>
+                  </div>
+
+            {% endunless %}
+
+            <span id="ShopifyKlarnaOnSiteMessagingAppElement"></span>
+            {%- if settings.trust_image != blank -%}
+              <div class="aos-animate trust-image" style="max-width: {{ settings.trust_image.width }}px;">
+                <div class="image-wrap " style="height: 0; padding-bottom: {{ 100 | divided_by: settings.trust_image.aspect_ratio }}%;">
+                  {%- assign img_url = settings.trust_image | img_url: '1x1' | replace: '_1x1.', '_{width}x.' -%}
+                  <img
+                    data-swift-lazy="1"
+                    loading="lazy"
+                    class="lazyload"
+                    data-src="{{ img_url }}"
+                    data-widths="[360, 540]"
+                    data-aspectratio="{{ settings.trust_image.aspect_ratio }}"
+                    data-sizes="auto"
+                    alt="{{ settings.trust_image.alt }}">
+                  <noscript>
+                    <img
+                      data-swift-lazy="1"
+                      loading="lazy"
+                      class="lazyloaded"
+                      src="{{ settings.trust_image | img_url: '540x' }}"
+                      alt="{{ settings.trust_image.alt }}">
+                  </noscript>
+                </div>
+              </div>
+            {%- endif -%}
+
+            <div class="fullimage" style="margin-top:16px; margin-bottom:3px">
+              {% if product.metafields.sf_product_bundle.cts_desktop_image %}
+                <img src="{{ product.metafields.sf_product_bundle.cts_desktop_image }}" class="desktopshow" alt="USE CODE SCRUBUP">
+              {% endif %}
+              {% if product.metafields.sf_product_bundle.cts_mobile_image %}
+                <img src="{{ product.metafields.sf_product_bundle.cts_mobile_image }}" class="mobileshow" alt="USE CODE SCRUBUP">
+              {% endif %}
+            </div>
+
+            <style>
+              .greenmark{
+                margin-top:20px;
+                padding: 0px 10px 10px;
+                background:#e0ede9;
+              }
+              
+              .fullimage img{
+                display:block;
+                width:100%;
+                height:auto;
+              }
+              .desktopshow{
+                display:block !important;
+              }
+              .mobileshow{
+                display:none !important;
+              }
+              @media only screen and (max-width:480px){
+                .fullimage img{
+                  display: block;
+                  width: 108%;
+                  max-width: 1000%;
+                  height: auto;
+                  margin-left: -15px;
+                  margin-right: -15px;
+                }
+                .desktopshow{
+                  display:none !important;
+                }
+                .mobileshow{
+                  display:block !important;
+                }             
+              }
+            </style>
+
+            {% unless product.type == "Printed Pattern Scrub Pants" %}
+              {% assign cts_product_1_a = product.metafields.sf_product_bundle.cts_product_1_a %}
+              {% unless cts_product_1_a == blank %}
+                {% render 'completetheset' %}
+              {% endunless %}
+            {% endunless %}
+
+
+
+            {% comment %}
+            THIS SECTION WAS UPDATED BY CASEY - TO SHOW THE NESSECARY DISCOUNT CODE NEAR THE BUY NOW BUTTON
+            {% endcomment %}
+            {% if disc or disc != blank %}
+              <!-- <p><br/>💡 Get {{ product.title }} for only ${{ normal_price }} using code <strong>{{ disc }}</strong> at checkout</p><p>&nbsp;</p> -->
+            {% endif %}
+            {% if settings.additional_content_style == 'expandable' %}
+
+              {% include 'product-additional-content', section_id: section_id %}
+
+            {% else %}
+              {% include '', section_id: section_id %}
+            {% endif %}
+            <div
+              class="th_pb_section"
+              id="th_product_bundle"
+              data-id="{{ product.id }}"></div>
+            <div
+              id="th_pb_qty_bundle"
+              class="th_pb_qty_bundle_cls"
+              data-pid="{{ product.id }}"></div>
+
+            {% if social_enable %}
+              {% include 'social-sharing', share_title: product.title, share_permalink: product.url, share_image: product %}
+            {% endif %}
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<style>
+  .warning-text {
+    color: red;
+    font-size: 14px;
+    font-weight: bold;
+    position: relative;
+    top: -8px;
+  }
+  .pop-up-modal {
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    opacity: 0;
+    display: none;
+    transform: scale(1.1);
+    transition: visibility 0s linear 0.25s, opacity 0.25s 0s, transform 0.25s;
+  }
+
+  .pop-up-content {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: white;
+    padding: 1rem 1.5rem;
+    width: auto;
+    border-radius: 0.5rem;
+    height: 70vh;
+    overflow: auto;
+  }
+  .pop-up-content table {
+    table-layout: auto;
+  }
+  .close-button {
+    float: right;
+    width: 1.5rem;
+    line-height: 1.5rem;
+    text-align: center;
+    cursor: pointer;
+    border-radius: 0.25rem;
+    background-color: lightgray;
+  }
+  .close-button:hover {
+    background-color: darkgray;
+  }
+  .show-pop-up {
+    z-index: 12;
+    opacity: 1;
+    display: block;
+    transform: scale(1.0);
+    transition: visibility 0s linear 0s, opacity 0.25s 0s, transform 0.25s;
+  }
+  .trigger-pop-up {
+    margin: 10px 0;
+    width: 100%;
+  }
+  
+  @media only screen and (max-width: 749px) {
+    .threeway .product__main-photos--slider .product__slide {
+      margin-left: 0 !important;
+      margin-right: 12px;
+    }
+    .threeway .slick-slide {
+      height: 45vh !important;
+
+    }
+
+    .threeway .slick-slide img {
+      height: 45vh !important;
+    }
+    .product-single__prices > *,
+    .main-textamonials,
+    .afterpay-placement {
+      margin-bottom: 0 !important;
+
+    }
+    .product__main-photos {
+      padding-bottom: 0 !important;
+    }
+    .pop-up-content,
+    .size-chart-content table {
+      width: 100%;
+    }
+    .size-chart-content th,
+    .size-chart-content td {
+      padding: 10px;
+    }
+  }
+
+  @media only screen and (max-width:490px) {
+    .threeway .slick-slide {
+      width: 236px;
+    }
+    .threeway .product__photos img {
+      height: auto !important;
+    }
+    .slick-dots {
+
+      bottom: 32px;
+      position: relative !important;
+    }
+
+
+    .product__main-photos .slick-dots {
+      z-index: 9 !important;
+      {% if template contains "template-scrub-caps" %}
+        bottom: 36px;
+      {% else %}
+        bottom: 56px;
+      {% endif %}
+    }
+
+    {% if section.settings.threeway %}
+      .product__thumbs--beside .product__thumb-item{
+      padding-left:8px;
+      padding-right:8px;
+    }
+    .product__thumbs--beside .product__thumb-item,
+    .image-wrap{
+      margin-bottom:0 !important;
+    }
+    .product__main-photos .slick-dots {
+      z-index: 9 !important;
+      {% if template contains "template-scrub-caps" %}
+        bottom: 36px;
+      {% else %}
+        bottom: 56px;
+      {% endif %}
+    }
+    .product__photos--beside{
+      display:block !important; 
+    }
+    .product__thumbs img{
+      overflow:hidden;
+      border-radius:8px !important;
+      border:1px solid #000;
+    }
+    .slick-slide,
+    .product__thumb-item{
+ 
+
+    }
+    .product__thumbs .product__thumb-item{
+      overflow:hidden;
+      border-radius:8px !important;
+    }
+    .Main--ProductPhotos .slick-slide{
+      padding-left:8px;
+      padding-right:8px;
+    }
+    .product__thumbs{
+      z-index: 99;
+      position: absolute;
+      display: flex;
+      bottom: 10px;
+      width: 100%;
+      margin-top:-15px;
+      justify-content: center;
+    }
+    {% endif %}
+  }
+</style>
+<script>
+  const modal = document.querySelector(".pop-up-modal");
+  const trigger = document.querySelector(".trigger-pop-up");
+  const closeButton = document.querySelector(".close-button");
+
+  function toggleModal() {
+    // modal.classList.toggle("show-pop-up");
+  }
+
+  function windowOnClick(event) {
+    if (event.target === modal) {
+      toggleModal();
+    }
+  }
+  trigger.addEventListener("click", toggleModal);
+  closeButton.addEventListener("click", toggleModal);
+  window.addEventListener("click", windowOnClick);
+</script>
+
+<script>
+  const myInterval = setInterval(afterpay, 1000);
+
+  function afterpay() {
+    var data_price = $(".product-single__prices.bundle_template.grid-product__price span.normalPrice").attr("data-price");
+    var data_price_1 = data_price.replace("$", "")
+    var data_price_2 = parseFloat(data_price_1 / 4);
+    var data_price_3 = data_price_2.toFixed(2);
+    $("strong.afterpay-instalments").text("$" + data_price_3 + " AUD");
+  }
+
+  function myStopFunction() {
+    clearInterval(myInterval);
+  }
+
+
+  $(function() {
+    $bgs = $(".quener").val()
+
+
+
+    $collectionname = $(".collection-title").val()
+    if ($collectionname == "Scrub Caps") {
+
+      $stickysize = $(".varin:checked").attr("op_val")
+      var stickycolor = $(".variant-change-color .variant__label-info  span").html()
+      $stickyprice = $(".normalPrice").html()
+      $(".sticky-size .sizer").html($stickysize)
+
+
+      $(".sticky-price .pricer").html($stickyprice)
+    } else {
+      $stickysize = $(".custom-option-value").attr("data-matched")
+      $stickytype = $(".varin[option_index='3']:checked").attr("op_val")
+      var stickycolor = $(".variant-change-color .variant__label-info  span").html()
+      $stickyprice = $(".normalPrice").html()
+      $(".sticky-size .sizer").html($stickysize)
+      $(".sticky-type").html($stickytype)
+      stickycolor = stickycolor.trim();
+      var stickycolor = stickycolor.replace('Baby ', '');
+      $(".swatch-circle").css({
+        "background-image": "url(" + $bgs + ")",
+        "background-color": stickycolor
+      });
+      $(".sticky-price .pricer").html($stickyprice)
+    }
+
+/*
+  $.fn.isInViewport = function() {
+    var elementTop = $(this).offset().top;
+    var elementBottom = elementTop + $(this).outerHeight();
+    var viewportTop = $(window).scrollTop();
+    var viewportBottom = viewportTop + $(window).height();
+    return elementBottom > viewportTop && elementTop < viewportBottom;
+  };
+  
+  $(window).bind("load", function() {
+  if ($('.main-cont2').isInViewport()) {
+         $('.mobile-atc').css({"bottom": "-100px"});
+    } else {
+         $('.mobile-atc').css({"bottom": "0"});
+    }
+  });
+  
+  $(window).on('resize scroll', function(e) {
+  if ($('.main-cont2').isInViewport()) {
+         $('.mobile-atc').css({"bottom": "-100px"});
+    } else {
+         $('.mobile-atc').css({"bottom": "0"});
+    }
+    e.preventDefault();
+  });
+*/
+
+    $(".mobile-atc").css({"bottom": "-100px"})
+    $(window).scroll(function() {
+      $(window).scrollTop() >= 800
+        ? $(".mobile-atc").css({"bottom": "0"})
+        : $(".mobile-atc").css({"bottom": "-100px"});
+    });
+
+
+
+    var intervalId2 = window.setInterval(function(){
+      for (let i = 0; i < 3; i++) {
+        $("html, body").animate({ scrollTop: 0 });
+        clearInterval(intervalId2) 
+      }
+    }, 500);
+
+
+
+
+  });
+
+
+
+  </script>
+<style>
+.grid-product__price{
+  display:flex;
+}
+.scrubcaps-wrapper{
+  margin-bottom:14px !important;
+}
+
+</style>
+

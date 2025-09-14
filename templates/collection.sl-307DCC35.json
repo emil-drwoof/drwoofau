@@ -1,0 +1,71 @@
+{
+  "sections": {
+    "collection-header": {
+      "type": "dr-woof-hero-scrubs3",
+      "settings": {
+        "pad": "30px",
+        "enable_auto": true,
+        "desktop_positioning": 0,
+        "height": 90,
+        "mobile_height": 50,
+        "image_lib_pc": "shopify:\/\/shop_images\/COLLECTION_BANNER_TEMPLATE_PC_2400_x_900_px_8.png",
+        "image_webp_pc": "",
+        "image_lib_mobile": "shopify:\/\/shop_images\/COLLECTION_BANNER_TEMPLATE_MOBILE_1600_x_900_px_12.jpg",
+        "image_webp_mobile": ""
+      }
+    },
+    "collection-filter": {
+      "type": "collection-thumbnail-filter",
+      "blocks": {
+        "4f39ffe7-458b-4b7d-84c0-4756efa3f4d1": {
+          "type": "Image",
+          "settings": {
+            "image_thumbnail": "shopify:\/\/shop_images\/1_ff941baf-4b9b-4a95-9617-a82d86b167ac.png",
+            "collection_title": "Women's Bundle Only",
+            "linkurl": "https:\/\/www.drwoofapparel.com.au\/collections\/deals\/womens-bundle"
+          }
+        },
+        "8245923a-2d0d-472a-a8f4-7c1c1396157b": {
+          "type": "Image",
+          "settings": {
+            "image_thumbnail": "shopify:\/\/shop_images\/6_0de63b41-c88d-4bf1-bc81-ab1027a5a3b6.png",
+            "collection_title": "Men's Bundle Only",
+            "linkurl": "https:\/\/www.drwoofapparel.com.au\/collections\/deals\/mens-bundle"
+          }
+        }
+      },
+      "block_order": [
+        "4f39ffe7-458b-4b7d-84c0-4756efa3f4d1",
+        "8245923a-2d0d-472a-a8f4-7c1c1396157b"
+      ],
+      "settings": {
+        "title_enable": false
+      }
+    },
+    "collection-filters": {
+      "type": "collection-filters-def",
+      "disabled": true,
+      "settings": {
+        "filter_type": "groups",
+        "tags_combine": false,
+        "collection_title_enable": true,
+        "collection_filter_enable": true,
+        "collection_sort_enable": true
+      }
+    },
+    "main-collection": {
+      "type": "collection-template-scrubs",
+      "settings": {
+        "per_row_desktop": 3,
+        "per_row_mobile": "2",
+        "description_bottom": false
+      }
+    }
+  },
+  "order": [
+    "collection-header",
+    "collection-filter",
+    "collection-filters",
+    "main-collection"
+  ]
+}

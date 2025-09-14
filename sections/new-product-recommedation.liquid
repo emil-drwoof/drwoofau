@@ -1,0 +1,182 @@
+
+    
+    <div class="related-products">
+        <h2 class="sectit">{{ section.settings.section_title }}</h2>
+        <div class="flexer">
+          {% for product in section.settings.related_products.products limit:4 %}
+            <div class="quad">
+              <a href="{{ product.url }}" class="related-product-link">
+                <img src="{{ product.featured_image.src | img_url: 'master' }}" alt="{{ product.title }}" class="related-product-image">
+                {% render 'loox_reviews', product: product %}
+                <h3 class="related-product-title">{{ product.title }}</h3>
+                <!-- 
+                <img src="https://cdn.shopify.com/s/files/1/0573/7250/8344/files/jog.svg?v=1707275864" class="dv fullimage"/>
+                <img src="https://cdn.shopify.com/s/files/1/0573/7250/8344/files/jog.svg?v=1707275864" style="" class="mv fullimage"/>
+                -->
+                <div class="prices">
+                  {% assign normal_price = product.metafields.sf_product_bundle.normal_price %}
+                  {% assign sf_product_bundlecompare_price = product.metafields.sf_product_bundle.compare_price %}
+  
+                  {% if normal_price != blank and sf_product_bundlecompare_price != blank %}
+                    <span class="visually-hidden">{{ 'products.general.regular_price' | t }}</span>
+                    <del class="grid-product__price--original">${{ sf_product_bundlecompare_price }}</del>
+                    <span class="visually-hidden">{{ 'products.general.sale_price' | t }}</span>
+  
+                    <span {% if on_sale %}class="sale-price"{% endif %}>
+                      ${{ normal_price }}
+                    </span>
+  
+                  {% else %}
+                    {% if normal_price != blank %}
+                      <span {% if on_sale %}class="sale-price"{% endif %}>
+                        ${{ normal_price }}
+                      </span>
+                    {% endif %}
+  
+                  {% endif %}
+  
+                  {% unless normal_price != blank and sf_product_bundlecompare_price != blank %}
+  
+                    {% if variant.compare_at_price > variant.price %}
+                      <span class="visually-hidden">{{ 'products.general.regular_price' | t }}</span>
+                      <del class="grid-product__price--original">{{ product.compare_at_price | money_with_currency }}</del>
+                      <span class="visually-hidden">{{ 'products.general.sale_price' | t }}</span>
+                    {% endif %}
+                    {% if product.price_varies %}
+                      <!--{% assign price = product.price_min | money %}
+                      <span {% if on_sale %}class="sale-price"{% endif %}>
+                      {{ 'products.general.from_text_html' | t: price: price }}
+                      </span>-->
+                      <!-- commented by mlveda -->
+                        <span {% if variant.compare_at_price > variant.price %}class="classa" style="color:red"{% endif %}> {{ variant.price | money_with_currency }}
+                      </span>
+                    {% else %}
+  
+                      <span {% if variant.compare_at_price > variant.price %}class="classb sale-price"{% endif %}>
+                        {{ product.price | money_with_currency }}
+                      </span>
+                    {% endif %}
+                  {% endunless %}
+                </div>
+                
+              </a>
+            </div>
+          {% endfor %}
+        </div>
+      </div>
+          <style>
+            #Reviews-8005417533698{
+              display:none;
+            }
+            .page-content{
+              padding-bottom:0 !important;
+  
+            }
+            .related-products {
+              border-top:1px solid #ECEDED;
+              padding-top:50px;
+              max-width:1300px;
+              margin-left:auto;
+              margin-right:auto;
+              width:100%;
+            }
+            .related-products .prices{
+              font-family: Oxygen;
+              font-size:18px;
+              color:#010101;
+            }
+            .sectit{
+              font-family: 'Futurapt';
+              font-size:40px;
+              margin-bottom:24px;
+            }
+            .related-products .flexer{
+              display:flex;
+              justify-content:space-between;
+              flex-wrap:wrap;
+            }
+            .related-products .quad{
+              flex:-0 0 24%;
+            }
+            .related-products .quad img{
+              
+            }
+            .related-products .related-product-title{
+              font-size:18px;
+              margin-bottom:10px;
+              font-weight:500;
+              color:#010101;
+            }
+            .related-products .quad .fullimage{
+              width:50%;
+              margin-bottom:10px;
+            }
+            .related-product-image{
+              border-radius:8px;
+              width:100%;
+              margin-bottom:10px;
+            }
+            .related-products .price{
+              font-size:18px;
+              font-family: oxygen;
+            }
+            .dv{
+              display:block;
+            }
+            .mv{
+              display:none;
+            }
+            @media only screen and (max-width:480px){
+              .dv{
+                display:block;
+              }
+            .mv{
+                display:none;
+              }
+              .related-products .sectit{
+                font-size:32px;
+              }
+            .related-products{
+              padding-top:20px;
+              padding-left:16px;
+              padding-right:16px;
+            }
+                .related-products .quad{
+                  flex:-0 0 48%;
+                  margin-bottom:16px;
+                }
+              .related-products .related-product-title{
+                font-size:14px;
+                color:#010101;
+              }
+              .related-products .prices{
+                font-family: Oxygen;
+                font-size:16px;
+              }
+            }
+          </style>
+      {% schema %}
+          {
+            "name": "New Related Products",
+            "settings": [
+              {
+                    "type": "text",
+                    "id": "section_title",
+                    "label": "Section title",
+                    "default": "Other products you may like"
+              },
+              {
+                "type": "collection",
+                "id": "related_products",
+                "label": "Related Products",
+                "info": "Select the related products to display on this product page."
+              }
+            ],
+            "presets": [
+              {
+                  "name": "New Related Products",
+                  "category": "List Products"
+              }
+            ]
+          }
+          {% endschema %}

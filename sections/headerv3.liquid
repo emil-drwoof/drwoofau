@@ -1,0 +1,30 @@
+<!-- section/headerv3.liquid -->
+<sections class="headerv3">
+    <div class="page-width">
+        <img src="{{ section.settings.boxhero |  img_url: 'master'  }}" class="fullwidth-image" style="margin-top:40px;"/>
+    </div>
+</sections>
+<style>
+    .headerv3, 
+    .fullwidth-image{
+        width:100%;
+    }
+
+    @media only screen and (max-width:480px){
+
+    }
+</style>
+{% schema %}
+    {
+      "name": "headerv3",
+      "tag": "section",
+      "class": "slideshow",
+      "settings": [
+        {
+               "type": "image_picker",
+               "id": "boxhero",
+               "label": "Hero image"
+        }
+      ]
+    }
+    {% endschema %}

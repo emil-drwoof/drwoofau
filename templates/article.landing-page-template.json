@@ -1,0 +1,19 @@
+{
+  "sections": {
+    "main": {
+      "type": "article-template-option-title",
+      "settings": {
+        "blog_show_image": true,
+        "blog_show_title": false,
+        "blog_show_tags": true,
+        "blog_show_date": false,
+        "blog_show_comments": true,
+        "blog_show_author": false,
+        "social_sharing_blog": true
+      }
+    }
+  },
+  "order": [
+    "main"
+  ]
+}

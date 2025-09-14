@@ -1,0 +1,161 @@
+<!-- section/main-page.liquid -->
+<div class="adsection">
+    <h2>{{ section.settings.bigtext }}</h2>
+    <a href="{{ section.settings.buttonlink }}"><button class="btn-prime">{{ section.settings.textbut }}</button></a>
+    {% if section.settings.reviewstars_text != blank or section.settings.reviewstars_text != '' %}
+    <p><img src="{{ 'stars.png' | asset_url }}" class="reviewstars" /> {{ section.settings.reviewstars_text }}</p>
+    {% endif %}
+</div>
+    
+<style>
+@font-face {
+  font-family: futura2;
+  src: url({{ 'futura.otf' | asset_url }});
+}
+
+.adsection{
+    width:100%;
+    margin-left:auto;
+    margin-right:auto;
+    margin-top: {{ section.settings.deskmartop }}px;
+    margin-bottom: {{ section.settings.deskmarbot }}px;
+    background: {{ section.settings.bgcolor }};
+    padding:80px 0;
+}
+.reviewstars{
+    display:inline;
+}
+body{
+    padding-top:30px;
+}
+#shopify-section-header,
+footer{
+    display:none !important;
+}
+.adsection h2{
+    {% if section.settings.darktheme %}
+        color:#fff;
+    {% else %}
+        color:#050507;
+    {% endif %}
+    font-weight:900;
+    line-height:1em;
+    text-align:center;
+    font-size:{{ section.settings.bigtextsize }}px;
+}
+.adsection p{
+    {% if section.settings.darktheme %}
+        color:#fff;
+    {% else %}
+        color:#050507;
+    {% endif %}
+    text-align:center;
+}
+.adsection .btn-prime{
+    padding:15px 80px;
+    color:#fff;
+    text-align:center;
+    margin:0 auto 20px;
+    background:#EDC045;
+    display:block;
+    
+}
+@media only screen and (max-width:480px){
+    .adsection{
+        margin-top: {{ section.settings.mobmartop }}px;
+        margin-bottom: {{ section.settings.mobmarbot }}px;
+        padding:30px 0;
+    }
+}
+</style>
+
+{% schema %}
+    {
+      "name": "Adsection",
+      "settings": [
+        {
+        "type": "checkbox",
+        "id": "darktheme",
+        "label": "Enable dark theme"
+      },
+        {
+        "type": "range",
+        "id": "deskmartop",
+        "label": "Desktop top margijn",
+        "default": 20,
+        "min": 0,
+        "max": 100,
+        "step": 10
+        },
+        {
+            "type": "range",
+            "id": "deskmarbot",
+            "label": "Desktop bottom margin",
+            "default": 20,
+            "min": 0,
+            "max": 100,
+            "step": 10
+        },
+        {
+        "type": "range",
+        "id": "mobmartop",
+        "label": "Mobile top margin",
+        "default": 20,
+        "min": 0,
+        "max": 100,
+        "step": 10
+        },
+        {
+            "type": "range",
+            "id": "mobmarbot",
+            "label": "Mobile bottom margin",
+            "default": 20,
+            "min": 0,
+            "max": 100,
+            "step": 10
+        },
+        {
+            "type": "text",
+            "id": "bigtext",
+            "label": "Big Text"
+        },
+        {
+            "type": "text",
+            "id": "reviewstars_text",
+            "label": "Reviewstars text"
+        },
+        {
+        "type": "range",
+        "id": "bigtextsize",
+        "label": "Big text size",
+        "default": 20,
+        "min": 0,
+        "max": 100,
+        "step": 2
+        },
+        {
+            "type": "text",
+            "id": "textbut",
+            "label": "Text on button"
+        },
+        {
+            "type": "url",
+            "id": "buttonlink",
+            "label": "Link on button"
+        },
+        {
+            "type": "color",
+            "id": "bgcolor",
+            "label": "Background color"
+        }
+        
+      ],
+      "presets": [
+        {
+          "category": "V2",
+          "name": "Adsection"
+        }
+      ]
+    }
+    {% endschema %}
+    

@@ -1,0 +1,377 @@
+<!-- Section: Product Detail with Image and Info -->
+<section class="product-detail-section">
+  <div class="page-width">
+    <div class="container">
+      <div class="product-content">
+    
+        <!-- Left Column: Product Image with Thumbnails -->
+        <div class="product-image">
+          <img id="main-image" src="{{ section.settings.main_image | img_url: 'master' }}" alt="Main product image">
+          <div class="thumbnail-selector">
+            {% for block in section.blocks %}
+              {% if block.type == 'thumbnail' %}
+                <img src="{{ block.settings.thumbnail_image | img_url: 'thumb' }}" alt="Product thumbnail" class="thumbnail" data-full-image="{{ block.settings.thumbnail_image | img_url: 'master' }}">
+              {% endif %}
+            {% endfor %}
+          </div>
+        </div>
+    
+        <!-- Right Column: Product Details -->
+        <div class="product-details">
+          <h2>{{ section.settings.product_title }}</h2>
+          <p class="subheadline">{{ section.settings.product_subheadline }}</p>
+    
+          <!-- Product Price and Discount -->
+          <div class="pricing">
+            <span class="old-price">${{ section.settings.old_price }}</span>
+            <span class="new-price">${{ section.settings.new_price }}</span>
+          </div>
+    
+          <!-- Customer Quote -->
+          <p class="customer-quote">{{ section.settings.customer_quote }}</p>
+    
+          <!-- Single Image in place of Quantity/Size/Flavor Options -->
+          <div class="single-option-image">
+            <img src="{{ section.settings.single_option_image | img_url: 'large' }}" alt="Single Option Image">
+          </div>
+    
+          <!-- Review Stars -->
+          <div class="reviews">
+            <span class="stars">
+              {% for i in (1..section.settings.review_stars) %}
+                ★
+              {% endfor %}
+            </span>
+            <span class="review-text">{{ section.settings.review_text }}</span>
+          </div>
+    
+          <!-- Add to Cart Button -->
+          <a href="#" class="add-to-cart">
+            Add to Cart - ${{ section.settings.new_price }}
+          </a>
+    
+          <!-- Value Propositions -->
+          <div class="value-propositions">
+            {% for block in section.blocks %}
+              {% if block.type == 'value_proposition' %}
+                <span class="value-proposition">{{ block.settings.proposition_text }}</span>
+              {% endif %}
+            {% endfor %}
+          </div>
+    
+          <!-- Accordion for Additional Info -->
+          <div class="accordion">
+            {% for block in section.blocks %}
+              {% if block.type == 'accordion' %}
+                <div class="accordion-item">
+                  <button class="accordion-header">{{ block.settings.accordion_title }} <span class="arrow">▼</span></button>
+                  <div class="accordion-body">{{ block.settings.accordion_body }}</div>
+                </div>
+              {% endif %}
+            {% endfor %}
+          </div>
+        </div>
+    
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .product-detail-section {
+    padding: 40px 0;
+  }
+
+  .product-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+  }
+
+  /* Left Column: Product Image with Thumbnails */
+  .product-image {
+    flex: 1;
+    padding-right: 40px;
+  }
+
+  .product-image img#main-image {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+    border-radius: 8px;
+  }
+
+  .thumbnail-selector {
+    display: flex;
+    margin-top: 10px;
+  }
+
+  .thumbnail {
+    width: 50px;
+    height: 50px;
+    margin-right: 10px;
+    object-fit: cover;
+    border: 1px solid #ddd;
+    cursor: pointer;
+    border-radius: 4px;
+  }
+
+  /* Right Column: Product Details */
+  .product-details {
+    flex: 1;
+  }
+
+  .product-details h2 {
+    font-size: 24px;
+    font-weight: 600;
+    margin-bottom: 10px;
+  }
+
+  .subheadline {
+    color: #999;
+    margin-bottom: 15px;
+  }
+
+  .pricing {
+    font-size: 20px;
+    margin-bottom: 15px;
+  }
+
+  .old-price {
+    text-decoration: line-through;
+    color: #888;
+    margin-right: 10px;
+  }
+
+  .new-price {
+    color: #e60023;
+  }
+
+  .customer-quote {
+    margin-bottom: 20px;
+    font-style: italic;
+  }
+
+  .single-option-image {
+    margin-bottom: 20px;
+    text-align: center;
+  }
+
+  .single-option-image img {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+    object-fit: cover;
+  }
+
+  .reviews {
+    margin-bottom: 20px;
+    font-size: 16px;
+  }
+
+  .stars {
+    color: gold;
+  }
+
+  .add-to-cart {
+    display: block;
+    width: 100%;
+    padding: 15px;
+    background-color: #000;
+    color: #fff;
+    font-size: 18px;
+    text-align: center;
+    border: none;
+    cursor: pointer;
+    margin-bottom: 20px;
+    text-decoration: none;
+  }
+
+  .value-propositions {
+    margin-bottom: 20px;
+  }
+
+  .value-proposition {
+    display: inline-block;
+    margin-right: 15px;
+    font-size: 14px;
+    color: #666;
+  }
+
+  /* Accordion */
+  .accordion .accordion-item {
+    margin-bottom: 10px;
+    border-bottom: 1px solid #ddd;
+  }
+
+  .accordion-header {
+    width: 100%;
+    text-align: left;
+    padding: 15px;
+    background-color: #f7f7f7;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: bold;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .accordion-header .arrow {
+    transition: transform 0.3s ease;
+  }
+
+  .accordion-header.active .arrow {
+    transform: rotate(180deg);
+  }
+
+  .accordion-body {
+    display: none;
+    padding: 10px;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-top: none;
+  }
+
+  .accordion-header.active + .accordion-body {
+    display: block;
+  }
+
+  @media (max-width: 768px) {
+    .product-content {
+      flex-direction: column;
+    }
+
+    .product-image {
+      margin-bottom: 20px;
+      padding-right: 0;
+    }
+  }
+</style>
+
+<script>
+  // Thumbnail click functionality to update the main image
+  document.querySelectorAll('.thumbnail').forEach((thumbnail) => {
+    thumbnail.addEventListener('click', (event) => {
+      const fullImageSrc = event.target.getAttribute('data-full-image');
+      document.getElementById('main-image').setAttribute('src', fullImageSrc);
+    });
+  });
+
+  // Accordion functionality
+  document.querySelectorAll('.accordion-header').forEach((header) => {
+    header.addEventListener('click', () => {
+      header.classList.toggle('active');
+      const body = header.nextElementSibling;
+      if (header.classList.contains('active')) {
+        body.style.display = 'block';
+      } else {
+        body.style.display = 'none';
+      }
+    });
+  });
+</script>
+
+{% schema %}
+{
+  "name": "Product Detail Section",
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "main_image",
+      "label": "Main Product Image"
+    },
+    {
+      "type": "text",
+      "id": "product_title",
+      "label": "Product Title",
+      "default": "Product Title"
+    },
+    {
+      "type": "text",
+      "id": "product_subheadline",
+      "label": "Product Subheadline"
+    },
+    {
+      "type": "text",
+      "id": "old_price",
+      "label": "Old Price",
+      "default": "99.99"
+    },
+    {
+      "type": "text",
+      "id": "new_price",
+      "label": "New Price",
+      "default": "89.99"
+    },
+    {
+      "type": "text",
+      "id": "customer_quote",
+      "label": "Customer Quote"
+    },
+    {
+      "type": "image_picker",
+      "id": "single_option_image",
+      "label": "Single Option Image"
+    },
+    {
+      "type": "number",
+      "id": "review_stars",
+      "label": "Review Stars",
+      "default": 5
+    },
+    {
+      "type": "text",
+      "id": "review_text",
+      "label": "Review Text"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "thumbnail",
+      "name": "Thumbnail Image",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "thumbnail_image",
+          "label": "Thumbnail Image"
+        }
+      ]
+    },
+    {
+      "type": "value_proposition",
+      "name": "Value Proposition",
+      "settings": [
+        {
+          "type": "text",
+          "id": "proposition_text",
+          "label": "Value Proposition Text"
+        }
+      ]
+    },
+    {
+      "type": "accordion",
+      "name": "Accordion",
+      "settings": [
+        {
+          "type": "text",
+          "id": "accordion_title",
+          "label": "Accordion Title"
+        },
+        {
+          "type": "textarea",
+          "id": "accordion_body",
+          "label": "Accordion Body"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Product Detail Section",
+      "category": "Product"
+    }
+  ]
+}
+{% endschema %}

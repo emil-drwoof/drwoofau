@@ -1,0 +1,219 @@
+{
+  "wrapper": "div#div_id.div_class[attribute-one=value]",
+  "sections": {
+    "custom": {
+      "type": "custom-html",
+      "settings": {
+        "custom_html": "<img data-swift-lazy=\"1\" loading=\"lazy\" class=\"\" src=\"\/\/www.drwoofapparel.com.au\/cdn\/shop\/files\/Horizontal_logo_transparent_background_blue_2_7dc8a8de-20c6-4155-8747-0810a5b4b5e0_210x.png?v=1704080588\" srcset=\"\/\/www.drwoofapparel.com.au\/cdn\/shop\/files\/Horizontal_logo_transparent_background_blue_2_7dc8a8de-20c6-4155-8747-0810a5b4b5e0_210x.png?v=1704080588 1x, \/\/www.drwoofapparel.com.au\/cdn\/shop\/files\/Horizontal_logo_transparent_background_blue_2_7dc8a8de-20c6-4155-8747-0810a5b4b5e0_210x@2x.png?v=1704080588 2x\" alt=\"Dr. Woof Apparel AU\" style=\"display:block;margin:30px auto 0;\">"
+      }
+    },
+    "headerv3": {
+      "type": "headerv3",
+      "disabled": true,
+      "settings": {
+        "boxhero": "shopify:\/\/shop_images\/HERO_BANNER_USE_-_LANDSCAPE_FINAL_ODDIT_COMPATIBLE_1440_x_900_px_1800_x_900px.jpg"
+      }
+    },
+    "dr_woof_hero_fDbUFB": {
+      "type": "dr-woof-hero",
+      "blocks": {
+        "button_Gi9prL": {
+          "type": "button",
+          "settings": {
+            "text_content": "Shop Tops",
+            "text_content_mobile": "Shop Tops",
+            "color_button_desktop": "#0b0d32",
+            "color_button_mobile": "#0b0d32",
+            "color_text_button_desktop": "#ffffff",
+            "color_text_button_mobile": "#ffffff",
+            "link": "https:\/\/www.drwoofapparel.com.au\/collections\/women\/scrub-tops",
+            "float": "left"
+          }
+        },
+        "button_axUBfT": {
+          "type": "button",
+          "settings": {
+            "text_content": "Shop Pants",
+            "text_content_mobile": "Shop Pants",
+            "color_button_desktop": "#0b0d32",
+            "color_button_mobile": "#0b0d32",
+            "color_text_button_desktop": "",
+            "color_text_button_mobile": "",
+            "link": "https:\/\/www.drwoofapparel.com.au\/collections\/women\/scrub-pants",
+            "float": "right"
+          }
+        }
+      },
+      "block_order": [
+        "button_Gi9prL",
+        "button_axUBfT"
+      ],
+      "settings": {
+        "pad": "40px",
+        "desktop_positioning": 100,
+        "desktop_disable": false,
+        "border_disable": false,
+        "height": 87,
+        "mobile_height": 45,
+        "image_lib_pc": "shopify:\/\/shop_images\/HERO_BANNER_USE_-_LANDSCAPE_FINAL_ODDIT_COMPATIBLE_1440_x_900_px_1800_x_900px_7505d6e7-b231-49cd-b27b-58fc23390d78.png",
+        "image_webp_pc": "",
+        "image_lib_mobile": "shopify:\/\/shop_images\/HERO_BANNER_-_MOBILE_1250_x_1250px_1_9b6abbdf-8f2c-486d-b831-550c58781d1d.jpg",
+        "image_webp_mobile": ""
+      }
+    },
+    "featured_content_ghXVpC": {
+      "type": "featured-content",
+      "settings": {
+        "title": "",
+        "text": "<p><strong>Your day in Dr. Woof Scrubs<\/strong><\/p>",
+        "align_text": "left",
+        "narrow_column": false,
+        "enlarge_text": true,
+        "alt": false
+      }
+    },
+    "adneon": {
+      "type": "adneon",
+      "disabled": true,
+      "settings": {
+        "adtitle": "Your day in Dr. Woof Scrubs",
+        "adbutton": "",
+        "bollink": "https:\/\/www.drwoofapparel.com.au\/products\/dr-woof-scrub-set"
+      }
+    },
+    "dr_woof_hero_scrubs_JX3hd8": {
+      "type": "dr-woof-hero-scrubs",
+      "settings": {
+        "pad": "30px",
+        "desktop_positioning": 0,
+        "height": 90,
+        "mobile_height": 50,
+        "image_webp_pc": "",
+        "image_webp_mobile": ""
+      }
+    },
+    "dualanimated": {
+      "type": "dualanimated",
+      "settings": {
+        "image_left": false,
+        "imagebig": "shopify:\/\/shop_images\/IMG_1262.jpg",
+        "contenttime": "7:00 AM",
+        "contenttitle": "Hit snooze 8 times.Get ready in 2.5 mins flat. Still look good.",
+        "contenttext1": "Wrinkle-resistant fabric because ironing sucks.",
+        "contenttext2": "Subtle tailoring so you look polished even if you don’t feel it.",
+        "contenttext3": ""
+      }
+    },
+    "dualanimated_YpCgTR": {
+      "type": "dualanimated",
+      "settings": {
+        "image_left": true,
+        "imagebig": "shopify:\/\/shop_images\/IMG_0059_75c5ef17-5971-45c6-a8eb-39c94315d53e.jpg",
+        "contenttime": "8:00 AM",
+        "contenttitle": "Be the star of your coffee shop. Make the suit and heels crowd jealous.",
+        "contenttext1": "Give off main-character energy with a colour and fit that fires your confidence.",
+        "contenttext2": "Always look fresh – your personality doesn’t fade in the wash, so neither do our scrubs.",
+        "contenttext3": ""
+      }
+    },
+    "dualanimated_gVc9TY": {
+      "type": "dualanimated",
+      "settings": {
+        "image_left": false,
+        "imagebig": "shopify:\/\/shop_images\/IMG_0242.jpg",
+        "contenttime": "10:10 AM",
+        "contenttitle": "Chest compressions for 7 minutes straight, and not a sweat patch in sight",
+        "contenttext1": "Sweat-wicking technology for the driest pits in the ICU.",
+        "contenttext2": "Move with ease thanks to 4-way stretch fabric. ",
+        "contenttext3": ""
+      }
+    },
+    "dualanimated_TpMkn6": {
+      "type": "dualanimated",
+      "settings": {
+        "image_left": true,
+        "imagebig": "shopify:\/\/shop_images\/IMG_9908.jpg",
+        "contenttime": "12:00 PM",
+        "contenttitle": "A quick nap. When your scrubs feel like pyjamas, why not?",
+        "contenttext1": "Experience fabric so silky soft our customers won’t stop raving about.",
+        "contenttext2": "Wake up looking fresher than ever – wrinkle resistance saves the day again.",
+        "contenttext3": ""
+      }
+    },
+    "dualanimated_HmWTbE": {
+      "type": "dualanimated",
+      "settings": {
+        "image_left": false,
+        "imagebig": "shopify:\/\/shop_images\/IMG_0150_1345484d-b7ec-4587-9d28-ad1fa310251d.jpg",
+        "contenttime": "3:00 PM",
+        "contenttitle": "Drop your key card. Keep your dignity.",
+        "contenttext1": "Keep your crack under wraps in pants designed for bending and stretching. ",
+        "contenttext2": "Find the perfect pants to cover your 🍑with sizes XXS to 3XL in a range of styles and inseams. ",
+        "contenttext3": ""
+      }
+    },
+    "dualanimated_F3zW6f": {
+      "type": "dualanimated",
+      "settings": {
+        "image_left": true,
+        "imagebig": "shopify:\/\/shop_images\/IMG_1547.jpg",
+        "contenttime": "5:00 PM",
+        "contenttitle": "See your boss looking for people to stay late. Distract her with pens and snacks.",
+        "contenttext1": "Up to 12 pockets so you can be more prepared than a boy scout.",
+        "contenttext2": "Big, deep, functional pocket designs that easily hold phones, keys, snacks and more.",
+        "contenttext3": ""
+      }
+    },
+    "dualanimated_yKW3wx": {
+      "type": "dualanimated",
+      "settings": {
+        "image_left": false,
+        "imagebig": "shopify:\/\/shop_images\/IMG_1489.jpg",
+        "contenttime": "8:00 PM",
+        "contenttitle": "Arrive home looking as fresh as when you left. Hate your pyjamas for not being as comfy as your scrubs.",
+        "contenttext1": "",
+        "contenttext2": "",
+        "contenttext3": ""
+      }
+    },
+    "adsection_zyrYhE": {
+      "type": "adsection",
+      "settings": {
+        "darktheme": true,
+        "deskmartop": 20,
+        "deskmarbot": 20,
+        "mobmartop": 0,
+        "mobmarbot": 30,
+        "bigtext": "BUNDLE DEALS as low as $93.87",
+        "reviewstars_text": "",
+        "bigtextsize": 38,
+        "textbut": "SHOP NOW",
+        "buttonlink": "shopify:\/\/collections\/women",
+        "bgcolor": "#0b0d32"
+      }
+    },
+    "custom_html_U3DXKA": {
+      "type": "custom-html",
+      "settings": {
+        "custom_html": "<img data-swift-lazy=\"1\" loading=\"lazy\" class=\"\" src=\"\/\/www.drwoofapparel.com.au\/cdn\/shop\/files\/Horizontal_logo_transparent_background_blue_2_7dc8a8de-20c6-4155-8747-0810a5b4b5e0_210x.png?v=1704080588\" srcset=\"\/\/www.drwoofapparel.com.au\/cdn\/shop\/files\/Horizontal_logo_transparent_background_blue_2_7dc8a8de-20c6-4155-8747-0810a5b4b5e0_210x.png?v=1704080588 1x, \/\/www.drwoofapparel.com.au\/cdn\/shop\/files\/Horizontal_logo_transparent_background_blue_2_7dc8a8de-20c6-4155-8747-0810a5b4b5e0_210x@2x.png?v=1704080588 2x\" alt=\"Dr. Woof Apparel AU\" style=\"display:block;margin:30px auto 30px;\">"
+      }
+    }
+  },
+  "order": [
+    "custom",
+    "headerv3",
+    "dr_woof_hero_fDbUFB",
+    "featured_content_ghXVpC",
+    "adneon",
+    "dr_woof_hero_scrubs_JX3hd8",
+    "dualanimated",
+    "dualanimated_YpCgTR",
+    "dualanimated_gVc9TY",
+    "dualanimated_TpMkn6",
+    "dualanimated_HmWTbE",
+    "dualanimated_F3zW6f",
+    "dualanimated_yKW3wx",
+    "adsection_zyrYhE",
+    "custom_html_U3DXKA"
+  ]
+}
