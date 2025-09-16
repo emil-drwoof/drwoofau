@@ -3580,7 +3580,7 @@ $(".image-overlay").removeClass("activer");
 
 
 
-{% if product.type == 'Printed Pattern Scrub Pants' %}
+{% if product.type == 'Printed Pattern Scrub Pants' or product.type == 'Men Printed Pattern Scrub Pants' %}
 // Add these missing functions that are referenced in your size/inseam click handlers
 function updateInseamAvailability(selectedSize) {
   $(".btn-inseam").removeClass("butttonsoldout");
@@ -4016,7 +4016,7 @@ $(".capsbundleatc").click(function () {
 
 
 
-{% if product.type == 'Printed Pattern Scrub Tops' %}
+{% if product.type == 'Printed Pattern Scrub Tops' or product.type == 'Men Printed Pattern Scrub Tops'  %}
 
   $(document).ready(function(){
             

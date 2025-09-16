@@ -211,14 +211,14 @@
                           {{ product.metafields.judgeme.badge }} 
                         </div> 
                       <!-- End of Judge.me code -->
-          <div class="product-single__prices{% unless template contains 'Bundle_Metafield' or template contains 'new-bundle-template' or template contains 'compression_sock'  or template contains 'LTV-Bulk-scrubs-offer' or product.type == 'Printed Pattern Scrub Pants' %} not_bundle{% endunless %}{% if template contains 'Bundle_Metafield' or template contains 'new-bundle-template' or template contains 'compression_sock' or template contains 'LTV-Bulk-scrubs-offer'  or product.type == 'Printed Pattern Scrub Pants' %} bundle_template grid-product__price{% endif %}">
+          <div class="product-single__prices{% unless template contains 'Bundle_Metafield' or template contains 'new-bundle-template' or template contains 'compression_sock'  or template contains 'LTV-Bulk-scrubs-offer' or product.type == 'Men Printed Pattern Scrub Pants' %} not_bundle{% endunless %}{% if template contains 'Bundle_Metafield' or template contains 'new-bundle-template' or template contains 'compression_sock' or template contains 'LTV-Bulk-scrubs-offer'  or product.type == 'Men Printed Pattern Scrub Pants' %} bundle_template grid-product__price{% endif %}">
             {% if product.compare_at_price_max > product.price %}
               {%- assign hide_sale_price = true -%}
               {% if current_variant.compare_at_price %}
                 {%- assign hide_sale_price = false -%}
               {% endif %}
             {% endif %}
-            {% if template contains 'Bundle_Metafield' or template contains 'new-bundle-template' or template contains 'compression_sock' or template contains 'LTV-Bulk-scrubs-offer'  or product.type == 'Printed Pattern Scrub Pants' %}
+            {% if template contains 'Bundle_Metafield' or template contains 'new-bundle-template' or template contains 'compression_sock' or template contains 'LTV-Bulk-scrubs-offer'  or product.type == 'Men Printed Pattern Scrub Pants' %}
               <style>
                 p.afterpay-paragraph {
                   display: block;
@@ -280,7 +280,7 @@
                 </span>
               {% endif %}
             {% endif %}
-            {% unless template contains 'Bundle_Metafield' or template contains 'new-bundle-template' or template contains 'compression_sock' or template contains 'LTV-Bulk-scrubs-offer'  or product.type == 'Printed Pattern Scrub Pants' %}
+            {% unless template contains 'Bundle_Metafield' or template contains 'new-bundle-template' or template contains 'compression_sock' or template contains 'LTV-Bulk-scrubs-offer'  or product.type == 'Men Printed Pattern Scrub Pants' %}
               <div class="grid-product__price">
                 {% if current_variant.compare_at_price > current_variant.price %}
                   <del data-price=" {{ current_variant.price | money_with_currency }}" class="5s normalPrice product__price grid-product__price--original ">
@@ -350,7 +350,7 @@
         <div class="product-content-right grid__item {{ product_description_width }}{% if product_image_type == 'stacked' %} product-single__sticky{% endif %} {{ product.title | truncate: 3, "" }}" data-title="">
           <div class="product-single__meta">
 
-            {% if product.type == 'Printed Pattern Scrub Pants' %}
+            {% if product.type == 'Men Printed Pattern Scrub Pants' %}
               <p class="main-textamonials">{{ section.settings.txt3 }}</p>
             {% endif %}
             {% if product.type == 'Women Performance Underscrubs' %}
@@ -428,7 +428,7 @@
                 <div class="warning-text">FINAL SALE</div>
               {% endif %}
             {% endcomment %}
-              <div class="product-single__prices{% unless template contains 'Bundle_Metafield' or template contains 'new-bundle-template' or template contains 'compression_sock' or template contains 'LTV-Bulk-scrubs-offer' or product.type == 'Printed Pattern Scrub Pants' %} not_bundle{% endunless %}{% if template contains 'Bundle_Metafield' or template contains 'new-bundle-template' or template contains 'compression_sock'  or template contains 'LTV-Bulk-scrubs-offer' or product.type == 'Printed Pattern Scrub Pants' %} bundle_template grid-product__price{% endif %}">
+              <div class="product-single__prices{% unless template contains 'Bundle_Metafield' or template contains 'new-bundle-template' or template contains 'compression_sock' or template contains 'LTV-Bulk-scrubs-offer' or product.type == 'Men Printed Pattern Scrub Pants' %} not_bundle{% endunless %}{% if template contains 'Bundle_Metafield' or template contains 'new-bundle-template' or template contains 'compression_sock'  or template contains 'LTV-Bulk-scrubs-offer' or product.type == 'Men Printed Pattern Scrub Pants' %} bundle_template grid-product__price{% endif %}">
 
                 {% if product.compare_at_price_max > product.price %}
                   {%- assign hide_sale_price = true -%}
@@ -437,7 +437,7 @@
                   {% endif %}
                 {% endif %}
 
-                {% if template contains 'Bundle_Metafield' or template contains 'new-bundle-template' or template contains 'compression_sock' or template contains 'LTV-Bulk-scrubs-offer' or product.type == 'Printed Pattern Scrub Pants' %}
+                {% if template contains 'Bundle_Metafield' or template contains 'new-bundle-template' or template contains 'compression_sock' or template contains 'LTV-Bulk-scrubs-offer' or product.type == 'Men Printed Pattern Scrub Pants' %}
                   <style>
                     p.afterpay-paragraph {
                       display: block;
@@ -504,7 +504,7 @@
                 {% endif %}
 
 
-                {% unless template contains 'Bundle_Metafield' or template contains 'new-bundle-template' or template contains 'compression_sock' or template contains 'LTV-Bulk-scrubs-offer' or product.type == 'Printed Pattern Scrub Pants' %}
+                {% unless template contains 'Bundle_Metafield' or template contains 'new-bundle-template' or template contains 'compression_sock' or template contains 'LTV-Bulk-scrubs-offer' or product.type == 'Men Printed Pattern Scrub Pants' %}
 
                   <div class="grid-product__price">
 
@@ -540,7 +540,7 @@
                 </span>   {% endcomment %}
 
               </div>
-              {% if product.type == 'Printed Pattern Scrub Pants' or product.type == 'Compression Socks' %}
+              {% if product.type == 'Men Printed Pattern Scrub Pants' or product.type == 'Compression Socks' %}
                 {% if section.settings.enable_ab %}  
               <p class="mobileshow afterpay-paragraph"><span class="afterpay-main-text">or 4 interest-free payments of <strong>$6.50</strong> with </span><span class="afterpay-logo-link"><button class="afterpay-logo brand-afterpay compact-badge type-badge black-on-mint" aria-label="Afterpay logo - Opens a dialog" title="Afterpay logo - Opens a dialog">
                           <svg xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid meet" width="98" height="36" class="compact-badge-logo" viewBox="0 0 100 21">
@@ -642,7 +642,7 @@
                   {%- assign inventory_visible = false -%}
                 {% endif %}
 
-                {%- unless template.suffix == 'Bundle_Metafield' or template.suffix == 'new-bundle-template' or template contains 'compression_sock' or template contains 'LTV-Bulk-scrubs-offer'  or product.type == 'Printed Pattern Scrub Pants' %}
+                {%- unless template.suffix == 'Bundle_Metafield' or template.suffix == 'new-bundle-template' or template contains 'compression_sock' or template contains 'LTV-Bulk-scrubs-offer'  or product.type == 'Men Printed Pattern Scrub Pants' %}
 
 
 
@@ -683,7 +683,7 @@
               Quick view modals request these on-demand.
               {% endcomment %}
 
-                    {% if product.type == 'Printed Pattern Scrub Pants' or product.type == 'Compression Socks' %}
+                    {% if product.type == 'Men Printed Pattern Scrub Pants' or product.type == 'Compression Socks' %}
                       
 
                         {% if section.settings.enable_ab %}  
@@ -763,7 +763,7 @@
                                 {% if productb.available %}
                                   {% assign overlayimagex = "" %}
                                     {% for media in productb.media %}
-                                      {% if media.alt contains "Close up" %}
+                                      {% if media.alt contains "Closeup" or media.alt contains "Close up" %}
                                       {% assign overlayimage = media %}
                                       {% assign overlayimagex = overlayimage | img_url: '500x500' %}
                                       {% endif %}
@@ -1361,7 +1361,7 @@
               }
             </style>
 
-            {% unless product.type == "Printed Pattern Scrub Pants" %}
+            {% unless product.type == "Men Printed Pattern Scrub Pants" %}
               {% assign cts_product_1_a = product.metafields.sf_product_bundle.cts_product_1_a %}
               {% unless cts_product_1_a == blank %}
                 {% render 'completetheset' %}

@@ -9,7 +9,7 @@
         "enable_ab": true,
         "abtesting1": false,
         "abtesting2": false,
-        "freesetcap": "shopify:\/\/shop_images\/2025_-_Socks_Upsell_Banner_e9635405-ee92-49ce-958a-03adbcfa48c0.png",
+        "freesetcap": "shopify:\/\/shop_images\/2025_-_Socks_Upsell_Banner_219b9b9b-0b27-41a9-8c7e-f8f479a9f120.webp",
         "dark_theme": false,
         "product_image_size": "large",
         "product_image_type": "slider",
@@ -156,7 +156,10 @@
       "blocks": {
         "judge_me_reviews_review_widget_MryzaA": {
           "type": "shopify:\/\/apps\/judge-me-reviews\/blocks\/review_widget\/61ccd3b1-a9f2-4160-9fe9-4fec8413e5d8",
-          "settings": {}
+          "settings": {
+            "review_data": "sample_data",
+            "max_width": 1200
+          }
         }
       },
       "block_order": [
