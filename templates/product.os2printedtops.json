@@ -3,6 +3,7 @@
     "product-template": {
       "type": "product-template",
       "settings": {
+        "abtestdavideo": false,
         "product_image_size": "large",
         "product_image_type": "slider",
         "product_zoom_enable": true,
@@ -37,11 +38,23 @@
         "txt11": ""
       }
     },
+    "duallayout_hi3w63": {
+      "type": "duallayout",
+      "name": "Dual Section",
+      "settings": {
+        "image_left": true,
+        "background_color": "#d6e6ff",
+        "imagebig": "shopify:\/\/shop_images\/LANDING_PAGE_PDP_4.png",
+        "contenttitle": "Smile in Every Stitch – Our Founders’ Printed Scrub Tops",
+        "contenttext1": "We understand that long shifts call not only for performance but also for a touch of joy. That’s why our Printed Scrub Tops are crafted from recycled materials with a four-way stretch, wrinkle resistance, and exceptional softness—ensuring you’re comfortable all day. But more importantly, our exclusive, joyful designs are meant to brighten the medical world, bringing smiles to both colleagues and patients. Every top is our way of adding a spark of happiness to your day, making every shift a little lighter and a lot more vibrant."
+      }
+    },
     "stories": {
       "type": "product-section-scrunchies",
       "blocks": {
         "text_columns_bYUNdt": {
           "type": "text-columns",
+          "disabled": true,
           "settings": {
             "title": "Why you'll love our scrubs",
             "align_text": "center",
@@ -101,6 +114,7 @@
         "text_columns_bYUNdt",
         "text_columns_jPTgnL"
       ],
+      "disabled": true,
       "settings": {}
     },
     "reviews": {
@@ -118,6 +132,7 @@
   },
   "order": [
     "product-template",
+    "duallayout_hi3w63",
     "stories",
     "reviews",
     "recommendations"

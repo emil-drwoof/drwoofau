@@ -522,7 +522,7 @@
           {% elsif cart.currency.iso_code == 'NZD' %}
           {{ cart.total_price | plus: 1990 | round: 2 | money_with_currency }}
           {% elsif request.host contains 'hk.' %}
-          {{ cart.total_price | plus: 19900 | round: 2 | money_with_currency }}
+          {{ cart.total_price | plus: 2597 | round: 2 | money_with_currency }}
           {% else %}
           {{ cart.total_price | plus: 1190 | round: 2 | money_with_currency }}
           {% endif %}          
@@ -758,7 +758,7 @@ window.setInterval(function () {
         a += t;
     });
 
-    let $totalin = parseInt($(".set_cart").val());
+    let $totalin = parseInt($(".set_range").val());
 
           {% if cart.currency.iso_code == 'SGD' %}
     if ($totalin >= 124) {
@@ -816,8 +816,7 @@ $(".cart__item").each(function () {
     t = parseInt(t.replace("$", ""));
     a += t;
 });
-
-let $totalin = parseInt($(".set_cart").val());
+let $totalin = parseInt($(".set_range").val());
           {% if cart.currency.iso_code == 'SGD' %}
     if ($totalin >= 124) {
         $("#cartshipping")

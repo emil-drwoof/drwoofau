@@ -100,7 +100,7 @@ var intervalId = window.setInterval(function(){
         cartitem = parseInt(cartitem)
         carttotal = carttotal + cartitem
     });
-    $totalin = $(".set_cart").val()
+    $totalin = $(".set_range").val()
     $totalin = parseInt($totalin)
     if($totalin >= 150){
         $("#cartshipping").html("Free")
@@ -115,7 +115,7 @@ $('.cart__item').each(function(i, obj) {
     cartitem = parseInt(cartitem)
     carttotal = carttotal + cartitem
 });
-$totalin = $(".set_cart").val()
+$totalin = $(".set_range").val()
 $totalin = parseInt($totalin)
 if($totalin >= 150){
     $("#cartshipping").html("Free")
