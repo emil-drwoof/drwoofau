@@ -215,15 +215,13 @@ font-size: 18px;
 
 .scrubcaps-wrapper{
       width: 100%;
-      height: 460px;
-      overflow-x: scroll;
+      height: auto;      
       overflow-y: hidden;
 }
 
 .scrubs-products{
-    width: auto;
-    height: 322px;
-    flex-direction: column;
+    width: 100%;
+    height: auto;    
     display: flex;
     justify-content: flex-start;
     flex-wrap: wrap;
@@ -801,9 +799,7 @@ font-size: 18px;
     margin-top:30px;
   }
   .scrubcaps-wrapper{
-       width: 100%;
-        height: 325px;
-        overflow-x: scroll;
+       width: 100%;        
         overflow-y: hidden;
         margin-bottom:20px;        
         padding-bottom:12px;
@@ -819,6 +815,7 @@ font-size: 18px;
 }
 
 .scroll-indicator {
+  opacity: 0;
   width: 100%;
   height: 6px;
   background: #DBDBDB;
@@ -836,16 +833,14 @@ font-size: 18px;
 }
 @media only screen and (min-width:481px){
    .scrubcaps-wrapper{
-    height:460px !important;
+    
    }
   .scroll-indicator {
     margin-top: -28px;
   }
   .scrubs-products{
-    width:auto;
-    height:460px !important;
-    
-    flex-direction: column;
+    width:100%;
+    height:auto;    
   }
 }
 
@@ -870,8 +865,8 @@ font-size: 18px;
   }
 }
   .scrubs-products{
-        width: auto;
-        height: 325px;
+        width: 100%;
+        height: auto;
         display: flex;
         justify-content: flex-start;
         flex-wrap: wrap;
@@ -1432,7 +1427,7 @@ font-size: 18px;
     </div>
 
     <!-- Style Categories -->
-    <div class="style-categories">
+    <div class="style-categories" style="display:none;">
       <button class="category-btn jactive" data-category="all">All <span class="sudo-style-count">61</span></button>
       <button class="category-btn" data-category="animals" style="display:none;"> Animals</button>
       <button class="category-btn" data-category="nature" style="display:none;"> Nature</button>   
@@ -3338,7 +3333,7 @@ scrollThumb.style.cursor = 'grab';
       }
       
         .scrubs-products{
-          width: auto;
+          width: 100%;
           height: auto;
           display: flex;
           justify-content: flex-start;
@@ -3547,7 +3542,7 @@ function initMobileStickySlider() {
   function handleScroll() {
     if (!ticking) {
       requestAnimationFrame(() => {
-        checkScroll();
+        // checkScroll();
         ticking = false;
       });
       ticking = true;
@@ -3558,7 +3553,7 @@ function initMobileStickySlider() {
   window.addEventListener('scroll', handleScroll);
   
   // Check on load
-  checkScroll();
+  // checkScroll();
   
   // Re-check on window resize (in case user rotates device)
   window.addEventListener('resize', () => {
@@ -3582,7 +3577,7 @@ function initMobileStickySlider() {
     }
     
     // Reinitialize if mobile
-    setTimeout(checkScroll, 100);
+    // setTimeout(checkScroll, 100);
   });
 }
 {%  comment  %}
