@@ -3,6 +3,7 @@
     "product-template": {
       "type": "product-template-headband",
       "settings": {
+        "abtestdavideo": false,
         "product_image_size": "large",
         "product_image_type": "slider",
         "product_zoom_enable": true,
@@ -23,7 +24,7 @@
         "txt_": "Dispatch from Melbourne within 24 hours",
         "color_link": "#2980b9",
         "img2": "shopify:\/\/shop_images\/Untitled_design_2_4043dd2d-b061-4ce9-a771-22be6e7d9d6e.png",
-        "txt1": "60-day hassle-free return & exchange",
+        "txt1": "99-day hassle-free return & exchange",
         "img3": "shopify:\/\/shop_images\/Untitled_design_1_aa1e3d9a-8e5d-4738-9e79-4536b6a0d70e.png",
         "txt2": "Free & Fast shipping over $145",
         "txt3": "",
@@ -312,7 +313,10 @@
       "blocks": {
         "judge_me_reviews_review_widget_9CXbLW": {
           "type": "shopify:\/\/apps\/judge-me-reviews\/blocks\/review_widget\/61ccd3b1-a9f2-4160-9fe9-4fec8413e5d8",
-          "settings": {}
+          "settings": {
+            "review_data": "sample_data",
+            "max_width": 1200
+          }
         }
       },
       "block_order": [
