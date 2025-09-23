@@ -1,491 +1,491 @@
 {
-  "wrapper": "div#div_id.div_class[attribute-one=value]",
-  "sections": {
-    "annoucement_rCp3cb": {
-      "type": "annoucement",
-      "settings": {
-        "a_text1": "WINTER BUNDLE",
-        "a_text2": "BUY 2 SETS GET 3RD SET FREE"
-      }
-    },
-    "custom": {
-      "type": "custom-html",
-      "settings": {
-        "custom_html": "<img data-swift-lazy=\"1\" loading=\"lazy\" class=\"\" src=\"\/\/www.drwoofapparel.com.au\/cdn\/shop\/files\/Horizontal_logo_transparent_background_blue_2_7dc8a8de-20c6-4155-8747-0810a5b4b5e0_210x.png?v=1704080588\" srcset=\"\/\/www.drwoofapparel.com.au\/cdn\/shop\/files\/Horizontal_logo_transparent_background_blue_2_7dc8a8de-20c6-4155-8747-0810a5b4b5e0_210x.png?v=1704080588 1x, \/\/www.drwoofapparel.com.au\/cdn\/shop\/files\/Horizontal_logo_transparent_background_blue_2_7dc8a8de-20c6-4155-8747-0810a5b4b5e0_210x@2x.png?v=1704080588 2x\" alt=\"Dr. Woof Apparel AU\" style=\"display:block;margin:30px auto 0;\">"
-      }
-    },
-    "hero_tfyeQT": {
-      "type": "hero",
-      "settings": {
-        "big_header_text": "Your day in Dr. Woof Scrubs",
-        "subtitle_text": "TRUSTED BY 40,000+ COMFY AUSSIE NURSES & DOCTORS",
-        "button_text": "Shop Now",
-        "button_link": "",
-        "background_color": "#ffffff",
-        "desktop_padding_top": 50,
-        "desktop_padding_bottom": 50,
-        "mobile_padding_top": 30,
-        "mobile_padding_bottom": 30,
-        "main_heading_font_size": 48,
-        "subheading_font_size": 18,
-        "main_heading_color": "#000000",
-        "subheading_color": "#000000",
-        "mobile_main_heading_font_size": 36,
-        "mobile_subheading_font_size": 16
-      }
-    },
-    "headerv4_L7PQ6g": {
-      "type": "headerv4",
-      "settings": {
-        "boxhero": "shopify:\/\/shop_images\/Untitled_design_1_9e8b5e95-1380-42d7-bd76-e3a27a40b3cc.jpg"
-      }
-    },
-    "headerv3": {
-      "type": "headerv3",
-      "disabled": true,
-      "settings": {
-        "boxhero": "shopify:\/\/shop_images\/Untitled_design_1_9e8b5e95-1380-42d7-bd76-e3a27a40b3cc.jpg"
-      }
-    },
-    "dualanimated": {
-      "type": "dualanimated",
-      "settings": {
-        "image_left": true,
-        "imagebig": "shopify:\/\/shop_images\/IMG_1262.jpg",
-        "contenttime": "7:00 AM",
-        "contenttitle": "Hit snooze 8 times.Get ready in 2.5 mins flat. Still look good.",
-        "contenttext1": "Wrinkle-resistant fabric because ironing sucks.",
-        "contenttext2": "Subtle tailoring so you look polished even if you don’t feel it.",
-        "contenttext3": ""
-      }
-    },
-    "dualanimated_YpCgTR": {
-      "type": "dualanimated",
-      "settings": {
-        "image_left": false,
-        "imagebig": "shopify:\/\/shop_images\/IMG_0059_75c5ef17-5971-45c6-a8eb-39c94315d53e.jpg",
-        "contenttime": "8:00 AM",
-        "contenttitle": "Be the star of your coffee shop. Make the suit and heels crowd jealous.",
-        "contenttext1": "Give off main-character energy with a colour and fit that fires your confidence.",
-        "contenttext2": "Always look fresh – your personality doesn’t fade in the wash, so neither do our scrubs.",
-        "contenttext3": ""
-      }
-    },
-    "dualanimated_gVc9TY": {
-      "type": "dualanimated",
-      "settings": {
-        "image_left": true,
-        "imagebig": "shopify:\/\/shop_images\/IMG_0242.jpg",
-        "contenttime": "10:10 AM",
-        "contenttitle": "Chest compressions for 7 minutes straight, and not a sweat patch in sight",
-        "contenttext1": "Sweat-wicking technology for the driest pits in the ICU.",
-        "contenttext2": "Move with ease thanks to 4-way stretch fabric. ",
-        "contenttext3": ""
-      }
-    },
-    "dualanimated_TpMkn6": {
-      "type": "dualanimated",
-      "disabled": true,
-      "settings": {
-        "image_left": true,
-        "imagebig": "shopify:\/\/shop_images\/IMG_9908.jpg",
-        "contenttime": "12:00 PM",
-        "contenttitle": "A quick nap. When your scrubs feel like pyjamas, why not?",
-        "contenttext1": "Experience fabric so silky soft our customers won’t stop raving about.",
-        "contenttext2": "Wake up looking fresher than ever – wrinkle resistance saves the day again.",
-        "contenttext3": ""
-      }
-    },
-    "dualanimated_HmWTbE": {
-      "type": "dualanimated",
-      "disabled": true,
-      "settings": {
-        "image_left": false,
-        "imagebig": "shopify:\/\/shop_images\/IMG_0150_1345484d-b7ec-4587-9d28-ad1fa310251d.jpg",
-        "contenttime": "3:00 PM",
-        "contenttitle": "Drop your key card. Keep your dignity.",
-        "contenttext1": "Keep your crack under wraps in pants designed for bending and stretching. ",
-        "contenttext2": "Find the perfect pants to cover your 🍑with sizes XXS to 3XL in a range of styles and inseams. ",
-        "contenttext3": ""
-      }
-    },
-    "dualanimated_F3zW6f": {
-      "type": "dualanimated",
-      "disabled": true,
-      "settings": {
-        "image_left": true,
-        "imagebig": "shopify:\/\/shop_images\/IMG_1547.jpg",
-        "contenttime": "5:00 PM",
-        "contenttitle": "See your boss looking for people to stay late. Distract her with pens and snacks.",
-        "contenttext1": "Up to 12 pockets so you can be more prepared than a boy scout.",
-        "contenttext2": "Big, deep, functional pocket designs that easily hold phones, keys, snacks and more.",
-        "contenttext3": ""
-      }
-    },
-    "dualanimated_yKW3wx": {
-      "type": "dualanimated",
-      "disabled": true,
-      "settings": {
-        "image_left": false,
-        "imagebig": "shopify:\/\/shop_images\/IMG_1489.jpg",
-        "contenttime": "8:00 PM",
-        "contenttitle": "Arrive home looking as fresh as when you left. Hate your pyjamas for not being as comfy as your scrubs.",
-        "contenttext1": "",
-        "contenttext2": "",
-        "contenttext3": ""
-      }
-    },
-    "hero_DygxnN": {
-      "type": "hero",
-      "settings": {
-        "big_header_text": "Guarantee",
-        "subtitle_text": "Lorem Ipsum Dolor Sit Amet",
-        "button_text": "Shop Now",
-        "button_link": "",
-        "background_color": "#ffffff",
-        "desktop_padding_top": 50,
-        "desktop_padding_bottom": 50,
-        "mobile_padding_top": 30,
-        "mobile_padding_bottom": 30,
-        "main_heading_font_size": 48,
-        "subheading_font_size": 18,
-        "main_heading_color": "#000000",
-        "subheading_color": "#000000",
-        "mobile_main_heading_font_size": 36,
-        "mobile_subheading_font_size": 16
-      }
-    },
-    "text_and_image_7bhhrw": {
-      "type": "text-and-image",
-      "settings": {
-        "image": "shopify:\/\/shop_images\/WHY_YOU_LL_LOVE_OUR_SCRUBS_3.gif",
-        "image_width": 480,
-        "subtitle": "",
-        "title": "Call to Action",
-        "text": "<p>Pair large text with an image to tell a story, explain a detail about your product, or describe a new promotion.<\/p>",
-        "button_label": "SHOP NOW",
-        "button_link": "",
-        "button_style": "primary",
-        "layout": "left",
-        "alt": false
-      }
-    },
-    "text_columns_m4DD9U": {
-      "type": "text-columns",
-      "blocks": {
-        "text_block_YUaeXQ": {
-          "type": "text_block",
-          "settings": {
-            "enable_image": true,
-            "image_width": 500,
-            "title": "Example title",
-            "text": "<p>Use this section to explain a set of product features, to link to a series of pages, or to answer common questions about your products. Add images for emphasis.<\/p>",
-            "button_label": "",
-            "button_link": ""
-          }
+    "wrapper": "div#div_id.div_class[attribute-one=value]",
+    "sections": {
+        "annoucement_rCp3cb": {
+            "type": "annoucement",
+            "settings": {
+                "a_text1": "WINTER BUNDLE",
+                "a_text2": "BUY 2 SETS GET 3RD SET FREE"
+            }
         },
-        "text_block_XT3whU": {
-          "type": "text_block",
-          "settings": {
-            "enable_image": true,
-            "image_width": 500,
-            "title": "Example title",
-            "text": "<p>Use this section to explain a set of product features, to link to a series of pages, or to answer common questions about your products. Add images for emphasis.<\/p>",
-            "button_label": "",
-            "button_link": ""
-          }
+        "custom": {
+            "type": "custom-html",
+            "settings": {
+                "custom_html": "<img data-swift-lazy=\"1\" loading=\"lazy\" class=\"\" src=\"\/\/www.drwoofapparel.com.au\/cdn\/shop\/files\/Horizontal_logo_transparent_background_blue_2_7dc8a8de-20c6-4155-8747-0810a5b4b5e0_210x.png?v=1704080588\" srcset=\"\/\/www.drwoofapparel.com.au\/cdn\/shop\/files\/Horizontal_logo_transparent_background_blue_2_7dc8a8de-20c6-4155-8747-0810a5b4b5e0_210x.png?v=1704080588 1x, \/\/www.drwoofapparel.com.au\/cdn\/shop\/files\/Horizontal_logo_transparent_background_blue_2_7dc8a8de-20c6-4155-8747-0810a5b4b5e0_210x@2x.png?v=1704080588 2x\" alt=\"Dr. Woof Apparel AU\" style=\"display:block;margin:30px auto 0;\">"
+            }
         },
-        "text_block_mFA6CV": {
-          "type": "text_block",
-          "settings": {
-            "enable_image": true,
-            "image_width": 500,
-            "title": "Example title",
-            "text": "<p>Use this section to explain a set of product features, to link to a series of pages, or to answer common questions about your products. Add images for emphasis.<\/p>",
-            "button_label": "",
-            "button_link": ""
-          }
+        "hero_tfyeQT": {
+            "type": "hero",
+            "settings": {
+                "big_header_text": "Your day in Dr. Woof Scrubs",
+                "subtitle_text": "TRUSTED BY 40,000+ COMFY AUSSIE NURSES & DOCTORS",
+                "button_text": "Shop Now",
+                "button_link": "",
+                "background_color": "#ffffff",
+                "desktop_padding_top": 50,
+                "desktop_padding_bottom": 50,
+                "mobile_padding_top": 30,
+                "mobile_padding_bottom": 30,
+                "main_heading_font_size": 48,
+                "subheading_font_size": 18,
+                "main_heading_color": "#000000",
+                "subheading_color": "#000000",
+                "mobile_main_heading_font_size": 36,
+                "mobile_subheading_font_size": 16
+            }
+        },
+        "headerv4_L7PQ6g": {
+            "type": "headerv4",
+            "settings": {
+                "boxhero": "shopify:\/\/shop_images\/Untitled_design_1_9e8b5e95-1380-42d7-bd76-e3a27a40b3cc.jpg"
+            }
+        },
+        "headerv3": {
+            "type": "headerv3",
+            "disabled": true,
+            "settings": {
+                "boxhero": "shopify:\/\/shop_images\/Untitled_design_1_9e8b5e95-1380-42d7-bd76-e3a27a40b3cc.jpg"
+            }
+        },
+        "dualanimated": {
+            "type": "dualanimated",
+            "settings": {
+                "image_left": true,
+                "imagebig": "shopify:\/\/shop_images\/IMG_1262.jpg",
+                "contenttime": "7:00 AM",
+                "contenttitle": "Hit snooze 8 times.Get ready in 2.5 mins flat. Still look good.",
+                "contenttext1": "Wrinkle-resistant fabric because ironing sucks.",
+                "contenttext2": "Subtle tailoring so you look polished even if you don’t feel it.",
+                "contenttext3": ""
+            }
+        },
+        "dualanimated_YpCgTR": {
+            "type": "dualanimated",
+            "settings": {
+                "image_left": false,
+                "imagebig": "shopify:\/\/shop_images\/IMG_0059_75c5ef17-5971-45c6-a8eb-39c94315d53e.jpg",
+                "contenttime": "8:00 AM",
+                "contenttitle": "Be the star of your coffee shop. Make the suit and heels crowd jealous.",
+                "contenttext1": "Give off main-character energy with a colour and fit that fires your confidence.",
+                "contenttext2": "Always look fresh – your personality doesn’t fade in the wash, so neither do our scrubs.",
+                "contenttext3": ""
+            }
+        },
+        "dualanimated_gVc9TY": {
+            "type": "dualanimated",
+            "settings": {
+                "image_left": true,
+                "imagebig": "shopify:\/\/shop_images\/IMG_0242.jpg",
+                "contenttime": "10:10 AM",
+                "contenttitle": "Chest compressions for 7 minutes straight, and not a sweat patch in sight",
+                "contenttext1": "Sweat-wicking technology for the driest pits in the ICU.",
+                "contenttext2": "Move with ease thanks to 4-way stretch fabric. ",
+                "contenttext3": ""
+            }
+        },
+        "dualanimated_TpMkn6": {
+            "type": "dualanimated",
+            "disabled": true,
+            "settings": {
+                "image_left": true,
+                "imagebig": "shopify:\/\/shop_images\/IMG_9908.jpg",
+                "contenttime": "12:00 PM",
+                "contenttitle": "A quick nap. When your scrubs feel like pyjamas, why not?",
+                "contenttext1": "Experience fabric so silky soft our customers won’t stop raving about.",
+                "contenttext2": "Wake up looking fresher than ever – wrinkle resistance saves the day again.",
+                "contenttext3": ""
+            }
+        },
+        "dualanimated_HmWTbE": {
+            "type": "dualanimated",
+            "disabled": true,
+            "settings": {
+                "image_left": false,
+                "imagebig": "shopify:\/\/shop_images\/IMG_0150_1345484d-b7ec-4587-9d28-ad1fa310251d.jpg",
+                "contenttime": "3:00 PM",
+                "contenttitle": "Drop your key card. Keep your dignity.",
+                "contenttext1": "Keep your crack under wraps in pants designed for bending and stretching. ",
+                "contenttext2": "Find the perfect pants to cover your 🍑with sizes XXS to 3XL in a range of styles and inseams. ",
+                "contenttext3": ""
+            }
+        },
+        "dualanimated_F3zW6f": {
+            "type": "dualanimated",
+            "disabled": true,
+            "settings": {
+                "image_left": true,
+                "imagebig": "shopify:\/\/shop_images\/IMG_1547.jpg",
+                "contenttime": "5:00 PM",
+                "contenttitle": "See your boss looking for people to stay late. Distract her with pens and snacks.",
+                "contenttext1": "Up to 12 pockets so you can be more prepared than a boy scout.",
+                "contenttext2": "Big, deep, functional pocket designs that easily hold phones, keys, snacks and more.",
+                "contenttext3": ""
+            }
+        },
+        "dualanimated_yKW3wx": {
+            "type": "dualanimated",
+            "disabled": true,
+            "settings": {
+                "image_left": false,
+                "imagebig": "shopify:\/\/shop_images\/IMG_1489.jpg",
+                "contenttime": "8:00 PM",
+                "contenttitle": "Arrive home looking as fresh as when you left. Hate your pyjamas for not being as comfy as your scrubs.",
+                "contenttext1": "",
+                "contenttext2": "",
+                "contenttext3": ""
+            }
+        },
+        "hero_DygxnN": {
+            "type": "hero",
+            "settings": {
+                "big_header_text": "Guarantee",
+                "subtitle_text": "Lorem Ipsum Dolor Sit Amet",
+                "button_text": "Shop Now",
+                "button_link": "",
+                "background_color": "#ffffff",
+                "desktop_padding_top": 50,
+                "desktop_padding_bottom": 50,
+                "mobile_padding_top": 30,
+                "mobile_padding_bottom": 30,
+                "main_heading_font_size": 48,
+                "subheading_font_size": 18,
+                "main_heading_color": "#000000",
+                "subheading_color": "#000000",
+                "mobile_main_heading_font_size": 36,
+                "mobile_subheading_font_size": 16
+            }
+        },
+        "text_and_image_7bhhrw": {
+            "type": "text-and-image",
+            "settings": {
+                "image": "shopify:\/\/shop_images\/WHY_YOU_LL_LOVE_OUR_SCRUBS_3.gif",
+                "image_width": 480,
+                "subtitle": "",
+                "title": "Call to Action",
+                "text": "<p>Pair large text with an image to tell a story, explain a detail about your product, or describe a new promotion.<\/p>",
+                "button_label": "SHOP NOW",
+                "button_link": "",
+                "button_style": "primary",
+                "layout": "left",
+                "alt": false
+            }
+        },
+        "text_columns_m4DD9U": {
+            "type": "text-columns",
+            "blocks": {
+                "text_block_YUaeXQ": {
+                    "type": "text_block",
+                    "settings": {
+                        "enable_image": true,
+                        "image_width": 500,
+                        "title": "Example title",
+                        "text": "<p>Use this section to explain a set of product features, to link to a series of pages, or to answer common questions about your products. Add images for emphasis.<\/p>",
+                        "button_label": "",
+                        "button_link": ""
+                    }
+                },
+                "text_block_XT3whU": {
+                    "type": "text_block",
+                    "settings": {
+                        "enable_image": true,
+                        "image_width": 500,
+                        "title": "Example title",
+                        "text": "<p>Use this section to explain a set of product features, to link to a series of pages, or to answer common questions about your products. Add images for emphasis.<\/p>",
+                        "button_label": "",
+                        "button_link": ""
+                    }
+                },
+                "text_block_mFA6CV": {
+                    "type": "text_block",
+                    "settings": {
+                        "enable_image": true,
+                        "image_width": 500,
+                        "title": "Example title",
+                        "text": "<p>Use this section to explain a set of product features, to link to a series of pages, or to answer common questions about your products. Add images for emphasis.<\/p>",
+                        "button_label": "",
+                        "button_link": ""
+                    }
+                }
+            },
+            "block_order": [
+                "text_block_YUaeXQ",
+                "text_block_XT3whU",
+                "text_block_mFA6CV"
+            ],
+            "settings": {
+                "title": "How it works",
+                "align_text": "center",
+                "alt": false
+            }
+        },
+        "faq_section_gCbraG": {
+            "type": "faq-section",
+            "blocks": {
+                "rich_text_VBtnNY": {
+                    "type": "rich-text",
+                    "settings": {
+                        "title": "",
+                        "text": "<h1>Frequently Asked Questions<\/h1>",
+                        "align_text": "left"
+                    }
+                },
+                "question_7DHUJj": {
+                    "type": "question",
+                    "settings": {
+                        "title": "Are your scrubs true to size?",
+                        "text": "<p><em>Yes! Most of our customers find the fit perfect. To ensure the best fit, simply compare your measurements with our detailed sizing chart. Plus, we offer easy exchanges if it’s not the right size.<\/em><\/p>"
+                    }
+                },
+                "question_y6kprc": {
+                    "type": "question",
+                    "settings": {
+                        "title": "What size am I?",
+                        "text": "<p><em>Finding your perfect size is simple. Just check our sizing chart to match your measurements. We provide separate charts for <\/em><a href=\"https:\/\/www.drwoofapparel.com.au\/pages\/womens-sizes\" target=\"_blank\" title=\"https:\/\/www.drwoofapparel.com.au\/pages\/womens-sizes\"><em>women<\/em><\/a><em> and <\/em><a href=\"https:\/\/www.drwoofapparel.com.au\/pages\/mens-sizing-chart\" target=\"_blank\" title=\"https:\/\/www.drwoofapparel.com.au\/pages\/mens-sizing-chart\"><em>men<\/em><\/a><em> for easy reference.<\/em><\/p>"
+                    }
+                },
+                "question_eynn84": {
+                    "type": "question",
+                    "settings": {
+                        "title": "Do you offer petite and tall sizes?",
+                        "text": "<p><em>Yes! Our core colors are available in regular, petite, and tall sizes. For limited edition releases, availability may vary based on demand, but we’re always expanding our options.<\/em><\/p>"
+                    }
+                },
+                "question_Qw7Dk4": {
+                    "type": "question",
+                    "settings": {
+                        "title": "How do I care for my Dr. Woof scrubs?",
+                        "text": "<p><em>Keep them looking great with a cold machine wash inside-out and tumble dry on low. It’s that easy—our scrubs are built to last with minimal care.<\/em><\/p>"
+                    }
+                },
+                "question_LzYUjK": {
+                    "type": "question",
+                    "settings": {
+                        "title": "Will you be offering more sizes and colors soon?",
+                        "text": "<p>Absolutely! We’re constantly adding new sizes and colors. Sign up for our mailing list at the bottom of the page to stay updated on all our latest releases.<\/p>"
+                    }
+                },
+                "question_73qm6Y": {
+                    "type": "question",
+                    "settings": {
+                        "title": "Frequently asked question",
+                        "text": "<p>Use this text to answer questions in as much detail as possible for your customers. [MxHGyqobsbI]<\/p>"
+                    }
+                },
+                "question_nhpbJg": {
+                    "type": "question",
+                    "settings": {
+                        "title": "Any plans for larger sizes?",
+                        "text": "<p>Yes! We introduced 3XL in late 2023 and are committed to expanding our size range to ensure everyone can find the perfect fit.<\/p>"
+                    }
+                },
+                "question_RpR9bR": {
+                    "type": "question",
+                    "settings": {
+                        "title": "What is your return policy?",
+                        "text": "<p>We offer a 99-day return policy for clean, unworn items in their original packaging. Returns are easy, and we’re here to help make the process seamless.<\/p>"
+                    }
+                },
+                "question_4YpEwQ": {
+                    "type": "question",
+                    "settings": {
+                        "title": "How do I initiate a return?",
+                        "text": "<p>Just send us an email, and we’ll guide you through the simple steps to return your item. We’re here to make it hassle-free.<\/p>"
+                    }
+                },
+                "question_BJGJje": {
+                    "type": "question",
+                    "settings": {
+                        "title": "How long does it take to receive my refund?",
+                        "text": "<p>Once we receive and inspect your return, refunds are processed within 5 business days. Depending on your payment method, it may take a little longer to appear in your account.<\/p>"
+                    }
+                }
+            },
+            "block_order": [
+                "rich_text_VBtnNY",
+                "question_7DHUJj",
+                "question_y6kprc",
+                "question_eynn84",
+                "question_Qw7Dk4",
+                "question_LzYUjK",
+                "question_73qm6Y",
+                "question_nhpbJg",
+                "question_RpR9bR",
+                "question_4YpEwQ",
+                "question_BJGJje"
+            ],
+            "settings": {
+                "page_title_enable": false,
+                "page_content_enable": false
+            }
+        },
+        "adsection_zyrYhE": {
+            "type": "adsection",
+            "settings": {
+                "darktheme": true,
+                "deskmartop": 20,
+                "deskmarbot": 20,
+                "mobmartop": 0,
+                "mobmarbot": 30,
+                "bigtext": "BUNDLE DEALS: BUY 2 SETS GET 1 SET FREE",
+                "reviewstars_text": "",
+                "bigtextsize": 36,
+                "textbut": "SHOP NOW",
+                "buttonlink": "shopify:\/\/collections\/women",
+                "bgcolor": "#0b0d32"
+            }
+        },
+        "custom_html_U3DXKA": {
+            "type": "custom-html",
+            "settings": {
+                "custom_html": "<img data-swift-lazy=\"1\" loading=\"lazy\" class=\"\" src=\"\/\/www.drwoofapparel.com.au\/cdn\/shop\/files\/Horizontal_logo_transparent_background_blue_2_7dc8a8de-20c6-4155-8747-0810a5b4b5e0_210x.png?v=1704080588\" srcset=\"\/\/www.drwoofapparel.com.au\/cdn\/shop\/files\/Horizontal_logo_transparent_background_blue_2_7dc8a8de-20c6-4155-8747-0810a5b4b5e0_210x.png?v=1704080588 1x, \/\/www.drwoofapparel.com.au\/cdn\/shop\/files\/Horizontal_logo_transparent_background_blue_2_7dc8a8de-20c6-4155-8747-0810a5b4b5e0_210x@2x.png?v=1704080588 2x\" alt=\"Dr. Woof Apparel AU\" style=\"display:block;margin:30px auto 30px;\">"
+            }
+        },
+        "dual_with_icons_BHHCR9": {
+            "type": "dual-with-icons",
+            "blocks": {
+                "brand_value_tA7Xbr": {
+                    "type": "brand_value",
+                    "settings": {
+                        "icon": "shopify:\/\/shop_images\/3898370_time_clock_icon_8a50c56e-4508-493d-ba9a-b4c5b8f5efd1.png",
+                        "title": "Brand value proposition",
+                        "subtitle": "Subheadline supports the value proposition headline. Try to keep this MAX two lines."
+                    }
+                },
+                "brand_value_YjmxFH": {
+                    "type": "brand_value",
+                    "settings": {
+                        "icon": "shopify:\/\/shop_images\/3898370_time_clock_icon_8a50c56e-4508-493d-ba9a-b4c5b8f5efd1.png",
+                        "title": "Brand value proposition",
+                        "subtitle": "Subheadline supports the value proposition headline. Try to keep this MAX two lines."
+                    }
+                },
+                "brand_value_THdj9R": {
+                    "type": "brand_value",
+                    "settings": {
+                        "icon": "shopify:\/\/shop_images\/3898370_time_clock_icon_8a50c56e-4508-493d-ba9a-b4c5b8f5efd1.png",
+                        "title": "Brand value proposition",
+                        "subtitle": "Subheadline supports the value proposition headline. Try to keep this MAX two lines."
+                    }
+                },
+                "brand_value_MtQq7n": {
+                    "type": "brand_value",
+                    "settings": {
+                        "icon": "shopify:\/\/shop_images\/3898370_time_clock_icon_8a50c56e-4508-493d-ba9a-b4c5b8f5efd1.png",
+                        "title": "Brand value proposition",
+                        "subtitle": "Subheadline supports the value proposition headline. Try to keep this MAX two lines."
+                    }
+                }
+            },
+            "block_order": [
+                "brand_value_tA7Xbr",
+                "brand_value_YjmxFH",
+                "brand_value_THdj9R",
+                "brand_value_MtQq7n"
+            ],
+            "disabled": true,
+            "settings": {
+                "image": "shopify:\/\/shop_images\/WHY_YOU_LL_LOVE_OUR_SCRUBS_a01ba144-1696-4e1e-a934-34df7bc14d9d.jpg"
+            }
+        },
+        "product_section_N4M96g": {
+            "type": "product-section",
+            "blocks": {
+                "thumbnail_NnqRbg": {
+                    "type": "thumbnail",
+                    "settings": {
+                        "thumbnail_image": "shopify:\/\/shop_images\/DrWoof_Nov22_Ecomm_WebRes_22_750x_750x_0d88aa6f-5a94-4b07-ba9d-7a52f58ce4b3.webp"
+                    }
+                },
+                "thumbnail_G6YNcK": {
+                    "type": "thumbnail",
+                    "settings": {
+                        "thumbnail_image": "shopify:\/\/shop_images\/DrWoof_Nov22_Ecomm_WebRes_23_750x_750x_b1dec63e-a115-41f6-b67b-7abe5457c5b0.webp"
+                    }
+                },
+                "thumbnail_wGEFdq": {
+                    "type": "thumbnail",
+                    "settings": {
+                        "thumbnail_image": "shopify:\/\/shop_images\/DrWoof_Nov22_Ecomm_WebRes_21_750x_750x_03fbee08-6d7f-483f-a235-c1533e980d01.webp"
+                    }
+                },
+                "thumbnail_bRBggn": {
+                    "type": "thumbnail",
+                    "settings": {
+                        "thumbnail_image": "shopify:\/\/shop_images\/Dr_Woof_Sept_24_114_ef84b4e7-1d9b-4e0b-ab46-448064a8ca2c.jpg"
+                    }
+                },
+                "value_proposition_8ej8dK": {
+                    "type": "value_proposition",
+                    "settings": {
+                        "proposition_text": "test"
+                    }
+                },
+                "accordion_jzAY9n": {
+                    "type": "accordion",
+                    "settings": {
+                        "accordion_title": "test",
+                        "accordion_body": "tsetasdfsadf"
+                    }
+                },
+                "accordion_g7QPPN": {
+                    "type": "accordion",
+                    "settings": {
+                        "accordion_title": "test2",
+                        "accordion_body": "sdgafsdgsdfg"
+                    }
+                },
+                "accordion_fKfgee": {
+                    "type": "accordion",
+                    "settings": {
+                        "accordion_title": "test3",
+                        "accordion_body": "sdfsdfsdf"
+                    }
+                }
+            },
+            "block_order": [
+                "thumbnail_NnqRbg",
+                "thumbnail_G6YNcK",
+                "thumbnail_wGEFdq",
+                "thumbnail_bRBggn",
+                "value_proposition_8ej8dK",
+                "accordion_jzAY9n",
+                "accordion_g7QPPN",
+                "accordion_fKfgee"
+            ],
+            "disabled": true,
+            "settings": {
+                "main_image": "shopify:\/\/shop_images\/DrWoof_Nov22_Ecomm_WebRes_21_750x_750x_03fbee08-6d7f-483f-a235-c1533e980d01.webp",
+                "product_title": "Product Title",
+                "product_subheadline": "test",
+                "old_price": "99.99",
+                "new_price": "89.99",
+                "customer_quote": "sdfsdf",
+                "single_option_image": "shopify:\/\/shop_images\/mastering-the-art-of-how-to-put-compression-socks-on_750x_5ce6e188-69e0-4187-958a-bc1e1e2a9671.webp",
+                "review_stars": 5,
+                "review_text": "test"
+            }
         }
-      },
-      "block_order": [
-        "text_block_YUaeXQ",
-        "text_block_XT3whU",
-        "text_block_mFA6CV"
-      ],
-      "settings": {
-        "title": "How it works",
-        "align_text": "center",
-        "alt": false
-      }
     },
-    "faq_section_gCbraG": {
-      "type": "faq-section",
-      "blocks": {
-        "rich_text_VBtnNY": {
-          "type": "rich-text",
-          "settings": {
-            "title": "",
-            "text": "<h1>Frequently Asked Questions<\/h1>",
-            "align_text": "left"
-          }
-        },
-        "question_7DHUJj": {
-          "type": "question",
-          "settings": {
-            "title": "Are your scrubs true to size?",
-            "text": "<p><em>Yes! Most of our customers find the fit perfect. To ensure the best fit, simply compare your measurements with our detailed sizing chart. Plus, we offer easy exchanges if it’s not the right size.<\/em><\/p>"
-          }
-        },
-        "question_y6kprc": {
-          "type": "question",
-          "settings": {
-            "title": "What size am I?",
-            "text": "<p><em>Finding your perfect size is simple. Just check our sizing chart to match your measurements. We provide separate charts for <\/em><a href=\"https:\/\/www.drwoofapparel.com.au\/pages\/womens-sizes\" target=\"_blank\" title=\"https:\/\/www.drwoofapparel.com.au\/pages\/womens-sizes\"><em>women<\/em><\/a><em> and <\/em><a href=\"https:\/\/www.drwoofapparel.com.au\/pages\/mens-sizing-chart\" target=\"_blank\" title=\"https:\/\/www.drwoofapparel.com.au\/pages\/mens-sizing-chart\"><em>men<\/em><\/a><em> for easy reference.<\/em><\/p>"
-          }
-        },
-        "question_eynn84": {
-          "type": "question",
-          "settings": {
-            "title": "Do you offer petite and tall sizes?",
-            "text": "<p><em>Yes! Our core colors are available in regular, petite, and tall sizes. For limited edition releases, availability may vary based on demand, but we’re always expanding our options.<\/em><\/p>"
-          }
-        },
-        "question_Qw7Dk4": {
-          "type": "question",
-          "settings": {
-            "title": "How do I care for my Dr. Woof scrubs?",
-            "text": "<p><em>Keep them looking great with a cold machine wash inside-out and tumble dry on low. It’s that easy—our scrubs are built to last with minimal care.<\/em><\/p>"
-          }
-        },
-        "question_LzYUjK": {
-          "type": "question",
-          "settings": {
-            "title": "Will you be offering more sizes and colors soon?",
-            "text": "<p>Absolutely! We’re constantly adding new sizes and colors. Sign up for our mailing list at the bottom of the page to stay updated on all our latest releases.<\/p>"
-          }
-        },
-        "question_73qm6Y": {
-          "type": "question",
-          "settings": {
-            "title": "Frequently asked question",
-            "text": "<p>Use this text to answer questions in as much detail as possible for your customers. [MxHGyqobsbI]<\/p>"
-          }
-        },
-        "question_nhpbJg": {
-          "type": "question",
-          "settings": {
-            "title": "Any plans for larger sizes?",
-            "text": "<p>Yes! We introduced 3XL in late 2023 and are committed to expanding our size range to ensure everyone can find the perfect fit.<\/p>"
-          }
-        },
-        "question_RpR9bR": {
-          "type": "question",
-          "settings": {
-            "title": "What is your return policy?",
-            "text": "<p>We offer a 99-day return policy for clean, unworn items in their original packaging. Returns are easy, and we’re here to help make the process seamless.<\/p>"
-          }
-        },
-        "question_4YpEwQ": {
-          "type": "question",
-          "settings": {
-            "title": "How do I initiate a return?",
-            "text": "<p>Just send us an email, and we’ll guide you through the simple steps to return your item. We’re here to make it hassle-free.<\/p>"
-          }
-        },
-        "question_BJGJje": {
-          "type": "question",
-          "settings": {
-            "title": "How long does it take to receive my refund?",
-            "text": "<p>Once we receive and inspect your return, refunds are processed within 5 business days. Depending on your payment method, it may take a little longer to appear in your account.<\/p>"
-          }
-        }
-      },
-      "block_order": [
-        "rich_text_VBtnNY",
-        "question_7DHUJj",
-        "question_y6kprc",
-        "question_eynn84",
-        "question_Qw7Dk4",
-        "question_LzYUjK",
-        "question_73qm6Y",
-        "question_nhpbJg",
-        "question_RpR9bR",
-        "question_4YpEwQ",
-        "question_BJGJje"
-      ],
-      "settings": {
-        "page_title_enable": false,
-        "page_content_enable": false
-      }
-    },
-    "adsection_zyrYhE": {
-      "type": "adsection",
-      "settings": {
-        "darktheme": true,
-        "deskmartop": 20,
-        "deskmarbot": 20,
-        "mobmartop": 0,
-        "mobmarbot": 30,
-        "bigtext": "BUNDLE DEALS: BUY 2 SETS GET 1 SET FREE",
-        "reviewstars_text": "",
-        "bigtextsize": 36,
-        "textbut": "SHOP NOW",
-        "buttonlink": "shopify:\/\/collections\/women",
-        "bgcolor": "#0b0d32"
-      }
-    },
-    "custom_html_U3DXKA": {
-      "type": "custom-html",
-      "settings": {
-        "custom_html": "<img data-swift-lazy=\"1\" loading=\"lazy\" class=\"\" src=\"\/\/www.drwoofapparel.com.au\/cdn\/shop\/files\/Horizontal_logo_transparent_background_blue_2_7dc8a8de-20c6-4155-8747-0810a5b4b5e0_210x.png?v=1704080588\" srcset=\"\/\/www.drwoofapparel.com.au\/cdn\/shop\/files\/Horizontal_logo_transparent_background_blue_2_7dc8a8de-20c6-4155-8747-0810a5b4b5e0_210x.png?v=1704080588 1x, \/\/www.drwoofapparel.com.au\/cdn\/shop\/files\/Horizontal_logo_transparent_background_blue_2_7dc8a8de-20c6-4155-8747-0810a5b4b5e0_210x@2x.png?v=1704080588 2x\" alt=\"Dr. Woof Apparel AU\" style=\"display:block;margin:30px auto 30px;\">"
-      }
-    },
-    "dual_with_icons_BHHCR9": {
-      "type": "dual-with-icons",
-      "blocks": {
-        "brand_value_tA7Xbr": {
-          "type": "brand_value",
-          "settings": {
-            "icon": "shopify:\/\/shop_images\/3898370_time_clock_icon_8a50c56e-4508-493d-ba9a-b4c5b8f5efd1.png",
-            "title": "Brand value proposition",
-            "subtitle": "Subheadline supports the value proposition headline. Try to keep this MAX two lines."
-          }
-        },
-        "brand_value_YjmxFH": {
-          "type": "brand_value",
-          "settings": {
-            "icon": "shopify:\/\/shop_images\/3898370_time_clock_icon_8a50c56e-4508-493d-ba9a-b4c5b8f5efd1.png",
-            "title": "Brand value proposition",
-            "subtitle": "Subheadline supports the value proposition headline. Try to keep this MAX two lines."
-          }
-        },
-        "brand_value_THdj9R": {
-          "type": "brand_value",
-          "settings": {
-            "icon": "shopify:\/\/shop_images\/3898370_time_clock_icon_8a50c56e-4508-493d-ba9a-b4c5b8f5efd1.png",
-            "title": "Brand value proposition",
-            "subtitle": "Subheadline supports the value proposition headline. Try to keep this MAX two lines."
-          }
-        },
-        "brand_value_MtQq7n": {
-          "type": "brand_value",
-          "settings": {
-            "icon": "shopify:\/\/shop_images\/3898370_time_clock_icon_8a50c56e-4508-493d-ba9a-b4c5b8f5efd1.png",
-            "title": "Brand value proposition",
-            "subtitle": "Subheadline supports the value proposition headline. Try to keep this MAX two lines."
-          }
-        }
-      },
-      "block_order": [
-        "brand_value_tA7Xbr",
-        "brand_value_YjmxFH",
-        "brand_value_THdj9R",
-        "brand_value_MtQq7n"
-      ],
-      "disabled": true,
-      "settings": {
-        "image": "shopify:\/\/shop_images\/WHY_YOU_LL_LOVE_OUR_SCRUBS_a01ba144-1696-4e1e-a934-34df7bc14d9d.jpg"
-      }
-    },
-    "product_section_N4M96g": {
-      "type": "product-section",
-      "blocks": {
-        "thumbnail_NnqRbg": {
-          "type": "thumbnail",
-          "settings": {
-            "thumbnail_image": "shopify:\/\/shop_images\/DrWoof_Nov22_Ecomm_WebRes_22_750x_750x_0d88aa6f-5a94-4b07-ba9d-7a52f58ce4b3.webp"
-          }
-        },
-        "thumbnail_G6YNcK": {
-          "type": "thumbnail",
-          "settings": {
-            "thumbnail_image": "shopify:\/\/shop_images\/DrWoof_Nov22_Ecomm_WebRes_23_750x_750x_b1dec63e-a115-41f6-b67b-7abe5457c5b0.webp"
-          }
-        },
-        "thumbnail_wGEFdq": {
-          "type": "thumbnail",
-          "settings": {
-            "thumbnail_image": "shopify:\/\/shop_images\/DrWoof_Nov22_Ecomm_WebRes_21_750x_750x_03fbee08-6d7f-483f-a235-c1533e980d01.webp"
-          }
-        },
-        "thumbnail_bRBggn": {
-          "type": "thumbnail",
-          "settings": {
-            "thumbnail_image": "shopify:\/\/shop_images\/Dr_Woof_Sept_24_114_ef84b4e7-1d9b-4e0b-ab46-448064a8ca2c.jpg"
-          }
-        },
-        "value_proposition_8ej8dK": {
-          "type": "value_proposition",
-          "settings": {
-            "proposition_text": "test"
-          }
-        },
-        "accordion_jzAY9n": {
-          "type": "accordion",
-          "settings": {
-            "accordion_title": "test",
-            "accordion_body": "tsetasdfsadf"
-          }
-        },
-        "accordion_g7QPPN": {
-          "type": "accordion",
-          "settings": {
-            "accordion_title": "test2",
-            "accordion_body": "sdgafsdgsdfg"
-          }
-        },
-        "accordion_fKfgee": {
-          "type": "accordion",
-          "settings": {
-            "accordion_title": "test3",
-            "accordion_body": "sdfsdfsdf"
-          }
-        }
-      },
-      "block_order": [
-        "thumbnail_NnqRbg",
-        "thumbnail_G6YNcK",
-        "thumbnail_wGEFdq",
-        "thumbnail_bRBggn",
-        "value_proposition_8ej8dK",
-        "accordion_jzAY9n",
-        "accordion_g7QPPN",
-        "accordion_fKfgee"
-      ],
-      "disabled": true,
-      "settings": {
-        "main_image": "shopify:\/\/shop_images\/DrWoof_Nov22_Ecomm_WebRes_21_750x_750x_03fbee08-6d7f-483f-a235-c1533e980d01.webp",
-        "product_title": "Product Title",
-        "product_subheadline": "test",
-        "old_price": "99.99",
-        "new_price": "89.99",
-        "customer_quote": "sdfsdf",
-        "single_option_image": "shopify:\/\/shop_images\/mastering-the-art-of-how-to-put-compression-socks-on_750x_5ce6e188-69e0-4187-958a-bc1e1e2a9671.webp",
-        "review_stars": 5,
-        "review_text": "test"
-      }
-    }
-  },
-  "order": [
-    "annoucement_rCp3cb",
-    "custom",
-    "hero_tfyeQT",
-    "headerv4_L7PQ6g",
-    "headerv3",
-    "dualanimated",
-    "dualanimated_YpCgTR",
-    "dualanimated_gVc9TY",
-    "dualanimated_TpMkn6",
-    "dualanimated_HmWTbE",
-    "dualanimated_F3zW6f",
-    "dualanimated_yKW3wx",
-    "hero_DygxnN",
-    "text_and_image_7bhhrw",
-    "text_columns_m4DD9U",
-    "faq_section_gCbraG",
-    "adsection_zyrYhE",
-    "custom_html_U3DXKA",
-    "dual_with_icons_BHHCR9",
-    "product_section_N4M96g"
-  ]
+    "order": [
+        "annoucement_rCp3cb",
+        "custom",
+        "hero_tfyeQT",
+        "headerv4_L7PQ6g",
+        "headerv3",
+        "dualanimated",
+        "dualanimated_YpCgTR",
+        "dualanimated_gVc9TY",
+        "dualanimated_TpMkn6",
+        "dualanimated_HmWTbE",
+        "dualanimated_F3zW6f",
+        "dualanimated_yKW3wx",
+        "hero_DygxnN",
+        "text_and_image_7bhhrw",
+        "text_columns_m4DD9U",
+        "faq_section_gCbraG",
+        "adsection_zyrYhE",
+        "custom_html_U3DXKA",
+        "dual_with_icons_BHHCR9",
+        "product_section_N4M96g"
+    ]
 }

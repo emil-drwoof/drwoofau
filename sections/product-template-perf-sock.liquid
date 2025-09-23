@@ -144,7 +144,7 @@
 
   $(".image-overlay").on("click", function() {
     
-   
+        
       $(".capsbundleatd").removeClass("soldoutx")
       $(".btn-primer").show()
 
@@ -366,7 +366,7 @@
                   $(".woof-accordion-content:first-of-type").html(j),
                   // $(".main-content .shopify-section:nth-child(2)").html('<div class="page-width feature-row-wrapper custom-image-with-richtext">' + k + '</div>'),
                   // $(".main-content .shopify-section:nth-child(2)").html(l),
-{% if template.suffix == 'os2printedtopsbundle' or template.suffix == 'sl-36C42638' %}
+{% if template.suffix == 'os2printedtopsbundle' or template.suffix == 'sl-36C42638' or product.type == "Performance Compression Socks" %}
                                                   $(".oneway .product__thumbs").slick({ slidesToShow: 6, slidesToScroll: 1, arrows: !1, fade: !1, vertical: !0 }),
                                 768 >= $(window).width() && $(".oneway .Main--ProductPhotos").slick({                                             
                                             asNavFor: '', 

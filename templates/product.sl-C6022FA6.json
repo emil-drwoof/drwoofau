@@ -1,161 +1,161 @@
 {
-  "sections": {
-    "product-template": {
-      "type": "product-template-os2",
-      "settings": {
-        "abtestnoicons": true,
-        "abtestdavideo": true,
-        "threeway": true,
-        "newpdptop": true,
-        "newpdptop2": false,
-        "abtesting3": true,
-        "abtesting3image": "shopify:\/\/shop_images\/SCRUBS_AU.jpg",
-        "abtesting3imagemob": "shopify:\/\/shop_images\/SCRUBS_AU.jpg",
-        "product_image_size": "large",
-        "product_image_type": "slider",
-        "product_zoom_enable": false,
-        "enable_video_looping": false,
-        "product_video_style": "muted",
-        "enable_payment_button": false,
-        "product_shipping_callout": "",
-        "variant_type": "button",
-        "variant_labels_enable": true,
-        "sku_enable": false,
-        "inventory_enable": false,
-        "inventory_threshold": 4,
-        "inventory_transfers_enable": false,
-        "quantity_enable": false,
-        "social_enable": false,
-        "img1": "shopify:\/\/shop_images\/4_2c9aee3f-aec7-4015-a798-7c27f3a591f0.png",
-        "txt": "93% satisfaction rate from 40,000+ customers",
-        "txt_": "Free & Fast shipping over $150",
-        "color_link": "#e0ede9",
-        "img2": "shopify:\/\/shop_images\/Untitled_design_2_4043dd2d-b061-4ce9-a771-22be6e7d9d6e.png",
-        "txt1": "Dispatch from Melbourne within 24 hours",
-        "img3": "shopify:\/\/shop_images\/Untitled_design_1_a36d0b5e-4591-400b-b7c9-9897261f312c.png",
-        "txt2": "99-day hassle-free return & exchange",
-        "txt3": "\"I love the scrub cap so much! It's so cute and so well made!\" — Nadine M.",
-        "txt4": "\"So Comfortable - I’ve ordered more\" — Tess E.",
-        "txt5": "\"Excellent quality. Excellent fabric. Creating an excellent fit\" — Mike P.",
-        "txt6": "\"I find that since wearing the compression socks I don't get sore feet like I used to!\" Heidy D.",
-        "txt7": "\"Love my little stethoscope charm! Everyone asks about it\" — Emma C.",
-        "txt8": "\"The comfiest 4-way stretch scrubs I’ve ever worn!\"  Sehrish K.",
-        "txt9": "\"Love the quality and fit. Best scrubs I have ever had.\" — Rosa Natalia",
-        "txt10": "\"Best pair of scrubs I have owned. Comfortable and stylish.\" — Zaffer Malik M.",
-        "txt11": "\"LOVE LOVE LOVE these scrubs. Super comfy and so many compliments when im at work.\" — Troy P"
-      }
-    },
-    "new_product_story_LCPtyq": {
-      "type": "new-product-story",
-      "settings": {
-        "section_title": "Why you'll love our scrubs",
-        "product_story_img_1": "shopify:\/\/shop_images\/1_8efde0c3-476d-49fb-a987-80ce031d30ef.jpg",
-        "product_story_title_1": "20% Rayon (aka vegan silk) for a feel so soft you'll want a second pair for bedtime.",
-        "product_story_img_2": "shopify:\/\/shop_images\/2_e5f06e2a-2c3f-452a-ae00-bdc51f9221c7.jpg",
-        "product_story_title_2": "Move, bend, stretch & crouch (without showing your bum crack.)",
-        "product_story_img_3": "shopify:\/\/shop_images\/3_96f600c5-ddc7-494e-bec7-4813d3639bcf.jpg",
-        "product_story_title_3": "Bye bye sweaty, too-big hospital scrubs. Hello superior comfort all shift long.",
-        "product_story_img_4": "shopify:\/\/shop_images\/4_38c7ba74-74b2-44bc-a34c-a0296a08ca11.jpg",
-        "product_story_title_4": "From seam yanking to wash testing — our custom 17-step QA process ensures top quality every time."
-      }
-    },
-    "stories": {
-      "type": "Product-section-template-scrubs-os2",
-      "blocks": {
-        "cebdefb5-34a5-4646-84a6-5b410256612f": {
-          "type": "text-columns",
-          "settings": {
-            "title": "Why you'll love our scrubs",
-            "align_text": "center",
-            "alt": false,
-            "enable_image_1": true,
-            "image_1": "shopify:\/\/shop_images\/Softer_than_Pajamas_540x_4b2756a2-e757-4fc7-8d81-0006c9a7cc3b.webp",
-            "image_width_1": 500,
-            "title_1": "20% Rayon (aka vegan silk) for a feel so soft you'll want a second pair for bedtime.",
-            "text_1": "",
-            "button_label_1": "",
-            "button_link_1": "",
-            "enable_image_2": true,
-            "image_2": "shopify:\/\/shop_images\/Breathable_Sweat_Wicking_4_Way_Stretch_540x_1.jpg",
-            "image_width_2": 500,
-            "title_2": "Move, bend, stretch & crouch (without showing your bum crack.)",
-            "text_2": "",
-            "button_label_2": "",
-            "button_link_2": "",
-            "enable_image_3": false,
-            "image_width_3": 650,
-            "title_3": "",
-            "text_3": "",
-            "button_label_3": "",
-            "button_link_3": ""
-          }
+    "sections": {
+        "product-template": {
+            "type": "product-template-os2",
+            "settings": {
+                "abtestnoicons": true,
+                "abtestdavideo": true,
+                "threeway": true,
+                "newpdptop": true,
+                "newpdptop2": false,
+                "abtesting3": true,
+                "abtesting3image": "shopify:\/\/shop_images\/SCRUBS_AU.jpg",
+                "abtesting3imagemob": "shopify:\/\/shop_images\/SCRUBS_AU.jpg",
+                "product_image_size": "large",
+                "product_image_type": "slider",
+                "product_zoom_enable": false,
+                "enable_video_looping": false,
+                "product_video_style": "muted",
+                "enable_payment_button": false,
+                "product_shipping_callout": "",
+                "variant_type": "button",
+                "variant_labels_enable": true,
+                "sku_enable": false,
+                "inventory_enable": false,
+                "inventory_threshold": 4,
+                "inventory_transfers_enable": false,
+                "quantity_enable": false,
+                "social_enable": false,
+                "img1": "shopify:\/\/shop_images\/4_2c9aee3f-aec7-4015-a798-7c27f3a591f0.png",
+                "txt": "93% satisfaction rate from 40,000+ customers",
+                "txt_": "Free & Fast shipping over $150",
+                "color_link": "#e0ede9",
+                "img2": "shopify:\/\/shop_images\/Untitled_design_2_4043dd2d-b061-4ce9-a771-22be6e7d9d6e.png",
+                "txt1": "Dispatch from Melbourne within 24 hours",
+                "img3": "shopify:\/\/shop_images\/Untitled_design_1_a36d0b5e-4591-400b-b7c9-9897261f312c.png",
+                "txt2": "99-day hassle-free return & exchange",
+                "txt3": "\"I love the scrub cap so much! It's so cute and so well made!\" — Nadine M.",
+                "txt4": "\"So Comfortable - I’ve ordered more\" — Tess E.",
+                "txt5": "\"Excellent quality. Excellent fabric. Creating an excellent fit\" — Mike P.",
+                "txt6": "\"I find that since wearing the compression socks I don't get sore feet like I used to!\" Heidy D.",
+                "txt7": "\"Love my little stethoscope charm! Everyone asks about it\" — Emma C.",
+                "txt8": "\"The comfiest 4-way stretch scrubs I’ve ever worn!\"  Sehrish K.",
+                "txt9": "\"Love the quality and fit. Best scrubs I have ever had.\" — Rosa Natalia",
+                "txt10": "\"Best pair of scrubs I have owned. Comfortable and stylish.\" — Zaffer Malik M.",
+                "txt11": "\"LOVE LOVE LOVE these scrubs. Super comfy and so many compliments when im at work.\" — Troy P"
+            }
         },
-        "a12e0795-fe3c-4658-84d1-f37cd9abd485": {
-          "type": "text-columns",
-          "settings": {
-            "title": "",
-            "align_text": "center",
-            "alt": false,
-            "enable_image_1": true,
-            "image_1": "shopify:\/\/shop_images\/PDP_-_Story_Section_Images_540x_1.webp",
-            "image_width_1": 500,
-            "title_1": "Bye bye sweaty, too-big hospital scrubs. Hello superior comfort all shift long.",
-            "text_1": "",
-            "button_label_1": "",
-            "button_link_1": "",
-            "enable_image_2": true,
-            "image_2": "shopify:\/\/shop_images\/Made_to_last_540x_1.webp",
-            "image_width_2": 500,
-            "title_2": "From seam yanking to wash testing — our custom 17-step QA process ensures top quality every time.",
-            "text_2": "",
-            "button_label_2": "",
-            "button_link_2": "",
-            "enable_image_3": false,
-            "image_width_3": 650,
-            "title_3": "",
-            "text_3": "",
-            "button_label_3": "",
-            "button_link_3": ""
-          }
+        "new_product_story_LCPtyq": {
+            "type": "new-product-story",
+            "settings": {
+                "section_title": "Why you'll love our scrubs",
+                "product_story_img_1": "shopify:\/\/shop_images\/1_8efde0c3-476d-49fb-a987-80ce031d30ef.jpg",
+                "product_story_title_1": "20% Rayon (aka vegan silk) for a feel so soft you'll want a second pair for bedtime.",
+                "product_story_img_2": "shopify:\/\/shop_images\/2_e5f06e2a-2c3f-452a-ae00-bdc51f9221c7.jpg",
+                "product_story_title_2": "Move, bend, stretch & crouch (without showing your bum crack.)",
+                "product_story_img_3": "shopify:\/\/shop_images\/3_96f600c5-ddc7-494e-bec7-4813d3639bcf.jpg",
+                "product_story_title_3": "Bye bye sweaty, too-big hospital scrubs. Hello superior comfort all shift long.",
+                "product_story_img_4": "shopify:\/\/shop_images\/4_38c7ba74-74b2-44bc-a34c-a0296a08ca11.jpg",
+                "product_story_title_4": "From seam yanking to wash testing — our custom 17-step QA process ensures top quality every time."
+            }
+        },
+        "stories": {
+            "type": "Product-section-template-scrubs-os2",
+            "blocks": {
+                "cebdefb5-34a5-4646-84a6-5b410256612f": {
+                    "type": "text-columns",
+                    "settings": {
+                        "title": "Why you'll love our scrubs",
+                        "align_text": "center",
+                        "alt": false,
+                        "enable_image_1": true,
+                        "image_1": "shopify:\/\/shop_images\/Softer_than_Pajamas_540x_4b2756a2-e757-4fc7-8d81-0006c9a7cc3b.webp",
+                        "image_width_1": 500,
+                        "title_1": "20% Rayon (aka vegan silk) for a feel so soft you'll want a second pair for bedtime.",
+                        "text_1": "",
+                        "button_label_1": "",
+                        "button_link_1": "",
+                        "enable_image_2": true,
+                        "image_2": "shopify:\/\/shop_images\/Breathable_Sweat_Wicking_4_Way_Stretch_540x_1.jpg",
+                        "image_width_2": 500,
+                        "title_2": "Move, bend, stretch & crouch (without showing your bum crack.)",
+                        "text_2": "",
+                        "button_label_2": "",
+                        "button_link_2": "",
+                        "enable_image_3": false,
+                        "image_width_3": 650,
+                        "title_3": "",
+                        "text_3": "",
+                        "button_label_3": "",
+                        "button_link_3": ""
+                    }
+                },
+                "a12e0795-fe3c-4658-84d1-f37cd9abd485": {
+                    "type": "text-columns",
+                    "settings": {
+                        "title": "",
+                        "align_text": "center",
+                        "alt": false,
+                        "enable_image_1": true,
+                        "image_1": "shopify:\/\/shop_images\/PDP_-_Story_Section_Images_540x_1.webp",
+                        "image_width_1": 500,
+                        "title_1": "Bye bye sweaty, too-big hospital scrubs. Hello superior comfort all shift long.",
+                        "text_1": "",
+                        "button_label_1": "",
+                        "button_link_1": "",
+                        "enable_image_2": true,
+                        "image_2": "shopify:\/\/shop_images\/Made_to_last_540x_1.webp",
+                        "image_width_2": 500,
+                        "title_2": "From seam yanking to wash testing — our custom 17-step QA process ensures top quality every time.",
+                        "text_2": "",
+                        "button_label_2": "",
+                        "button_link_2": "",
+                        "enable_image_3": false,
+                        "image_width_3": 650,
+                        "title_3": "",
+                        "text_3": "",
+                        "button_label_3": "",
+                        "button_link_3": ""
+                    }
+                }
+            },
+            "block_order": [
+                "cebdefb5-34a5-4646-84a6-5b410256612f",
+                "a12e0795-fe3c-4658-84d1-f37cd9abd485"
+            ],
+            "disabled": true,
+            "settings": {}
+        },
+        "reviews": {
+            "type": "looxreviews",
+            "settings": {}
+        },
+        "recommendations": {
+            "type": "product-recommendations",
+            "settings": {
+                "show_product_recommendations": true,
+                "product_recommendations_heading": "You may also like",
+                "per_row": "small"
+            }
+        },
+        "sudofooter": {
+            "type": "product-sudofooter-os2",
+            "settings": {}
+        },
+        "sizeguider_DB3KEn": {
+            "type": "sizeguider",
+            "settings": {
+                "dwomen-size-guide-text": false
+            }
         }
-      },
-      "block_order": [
-        "cebdefb5-34a5-4646-84a6-5b410256612f",
-        "a12e0795-fe3c-4658-84d1-f37cd9abd485"
-      ],
-      "disabled": true,
-      "settings": {}
     },
-    "reviews": {
-      "type": "looxreviews",
-      "settings": {}
-    },
-    "recommendations": {
-      "type": "product-recommendations",
-      "settings": {
-        "show_product_recommendations": true,
-        "product_recommendations_heading": "You may also like",
-        "per_row": "small"
-      }
-    },
-    "sudofooter": {
-      "type": "product-sudofooter-os2",
-      "settings": {}
-    },
-    "sizeguider_DB3KEn": {
-      "type": "sizeguider",
-      "settings": {
-        "dwomen-size-guide-text": false
-      }
-    }
-  },
-  "order": [
-    "product-template",
-    "new_product_story_LCPtyq",
-    "stories",
-    "reviews",
-    "recommendations",
-    "sudofooter",
-    "sizeguider_DB3KEn"
-  ]
+    "order": [
+        "product-template",
+        "new_product_story_LCPtyq",
+        "stories",
+        "reviews",
+        "recommendations",
+        "sudofooter",
+        "sizeguider_DB3KEn"
+    ]
 }
