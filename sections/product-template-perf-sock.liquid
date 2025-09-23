@@ -344,6 +344,7 @@
       $(".capstandardid").val($capstandardid)
       $(".capxlid").val($capxlid)
       $(".product-single__title").html($captitle)
+   
       $.ajax({
           type: "GET",
           url: $capurl,
@@ -362,11 +363,12 @@
               
               // var k = $(t).find(".main-content .shopify-section:nth-child(2) .custom-image-with-richtext").html();
               var l = $(t).find(".main-content .shopify-section:nth-child(2) .sections-wrapper.page-blocks").html();
+              
               $(".oneway.product__photos").html(i),
                   $(".woof-accordion-content:first-of-type").html(j),
                   // $(".main-content .shopify-section:nth-child(2)").html('<div class="page-width feature-row-wrapper custom-image-with-richtext">' + k + '</div>'),
                   // $(".main-content .shopify-section:nth-child(2)").html(l),
-{% if template.suffix == 'os2printedtopsbundle' or template.suffix == 'sl-36C42638' or product.type == "Performance Compression Socks" %}
+{% if template.suffix == 'os2printedtopsbundle' or template.suffix == 'sl-36C42638' %}
                                                   $(".oneway .product__thumbs").slick({ slidesToShow: 6, slidesToScroll: 1, arrows: !1, fade: !1, vertical: !0 }),
                                 768 >= $(window).width() && $(".oneway .Main--ProductPhotos").slick({                                             
                                             asNavFor: '', 

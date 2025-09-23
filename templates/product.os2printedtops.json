@@ -1,140 +1,140 @@
 {
-    "sections": {
-        "product-template": {
-            "type": "product-template",
-            "settings": {
-                "abtestdavideo": false,
-                "product_image_size": "large",
-                "product_image_type": "slider",
-                "product_zoom_enable": true,
-                "enable_video_looping": true,
-                "product_video_style": "muted",
-                "enable_payment_button": false,
-                "product_shipping_callout": "",
-                "variant_type": "button",
-                "variant_labels_enable": true,
-                "sku_enable": false,
-                "inventory_enable": false,
-                "inventory_threshold": 10,
-                "inventory_transfers_enable": false,
-                "quantity_enable": false,
-                "social_enable": true,
-                "img1": "shopify:\/\/shop_images\/93_satisfaction_90x75_195257b9-1199-4732-bdf8-05e6061d7597.webp",
-                "txt": "93% satisfaction rate from 40,000+ customers",
-                "txt_": "FREE & FAST SHIPPING OVER $150",
-                "color_link": "#2980b9",
-                "img2": "shopify:\/\/shop_images\/Untitled_design_2_4043dd2d-b061-4ce9-a771-22be6e7d9d6e.webp",
-                "txt1": "Dispatch from Melbourne within 24 hours",
-                "img3": "shopify:\/\/shop_images\/Untitled_design_1_aa1e3d9a-8e5d-4738-9e79-4536b6a0d70e.webp",
-                "txt2": "99-day hassle-free return & exchange",
-                "txt3": "",
-                "txt4": "",
-                "txt5": "",
-                "txt6": "",
-                "txt7": "",
-                "txt8": "",
-                "txt9": "",
-                "txt10": "",
-                "txt11": ""
-            }
-        },
-        "duallayout_hi3w63": {
-            "type": "duallayout",
-            "name": "Dual Section",
-            "settings": {
-                "image_left": true,
-                "background_color": "#d6e6ff",
-                "imagebig": "shopify:\/\/shop_images\/LANDING_PAGE_PDP_4.png",
-                "contenttitle": "Smile in Every Stitch – Our Founders’ Printed Scrub Tops",
-                "contenttext1": "We understand that long shifts call not only for performance but also for a touch of joy. That’s why our Printed Scrub Tops are crafted from recycled materials with a four-way stretch, wrinkle resistance, and exceptional softness—ensuring you’re comfortable all day. But more importantly, our exclusive, joyful designs are meant to brighten the medical world, bringing smiles to both colleagues and patients. Every top is our way of adding a spark of happiness to your day, making every shift a little lighter and a lot more vibrant."
-            }
-        },
-        "stories": {
-            "type": "product-section-scrunchies",
-            "blocks": {
-                "text_columns_bYUNdt": {
-                    "type": "text-columns",
-                    "disabled": true,
-                    "settings": {
-                        "title": "Why you'll love our scrubs",
-                        "align_text": "center",
-                        "alt": false,
-                        "enable_image_1": true,
-                        "image_1": "shopify:\/\/shop_images\/69_1a88561c-b2bc-454f-ad8c-172a2d00f9fc.jpg",
-                        "image_width_1": 500,
-                        "title_1": "Made from 92% recycled materials.",
-                        "text_1": "",
-                        "button_label_1": "",
-                        "button_link_1": "",
-                        "enable_image_2": true,
-                        "image_2": "shopify:\/\/shop_images\/70_5ecfeef9-664b-43e1-82ca-7da45e3dafec.jpg",
-                        "image_width_2": 500,
-                        "title_2": "Move, bend, stretch & crouch (without showing your bum crack.)",
-                        "text_2": "",
-                        "button_label_2": "",
-                        "button_link_2": "",
-                        "enable_image_3": false,
-                        "image_width_3": 650,
-                        "title_3": "",
-                        "text_3": "",
-                        "button_label_3": "",
-                        "button_link_3": ""
-                    }
-                },
-                "text_columns_jPTgnL": {
-                    "type": "text-columns",
-                    "settings": {
-                        "title": "",
-                        "align_text": "center",
-                        "alt": false,
-                        "enable_image_1": true,
-                        "image_1": "shopify:\/\/shop_images\/71_c3d9a91c-6850-4d15-97ec-a6c45e728ad0.jpg",
-                        "image_width_1": 500,
-                        "title_1": "Bye-bye sweaty, too-big hospital scrubs. Hello, superior comfort all shift long.",
-                        "text_1": "",
-                        "button_label_1": "",
-                        "button_link_1": "",
-                        "enable_image_2": true,
-                        "image_2": "shopify:\/\/shop_images\/72_f641cc00-bf1d-4634-b2ca-38b1c3854908.jpg",
-                        "image_width_2": 500,
-                        "title_2": "Every item is a joy to look at and a joy to wear.",
-                        "text_2": "",
-                        "button_label_2": "",
-                        "button_link_2": "",
-                        "enable_image_3": false,
-                        "image_width_3": 650,
-                        "title_3": "",
-                        "text_3": "",
-                        "button_label_3": "",
-                        "button_link_3": ""
-                    }
-                }
-            },
-            "block_order": [
-                "text_columns_bYUNdt",
-                "text_columns_jPTgnL"
-            ],
-            "disabled": true,
-            "settings": {}
-        },
-        "reviews": {
-            "type": "looxreviews",
-            "settings": {}
-        },
-        "recommendations": {
-            "type": "product-recommendations",
-            "settings": {
-                "show_product_recommendations": true,
-                "product_recommendations_heading": "You may also like",
-                "per_row": "small"
-            }
-        }
+  "sections": {
+    "product-template": {
+      "type": "product-template",
+      "settings": {
+        "abtestdavideo": false,
+        "product_image_size": "large",
+        "product_image_type": "slider",
+        "product_zoom_enable": true,
+        "enable_video_looping": true,
+        "product_video_style": "muted",
+        "enable_payment_button": false,
+        "product_shipping_callout": "",
+        "variant_type": "button",
+        "variant_labels_enable": true,
+        "sku_enable": false,
+        "inventory_enable": false,
+        "inventory_threshold": 10,
+        "inventory_transfers_enable": false,
+        "quantity_enable": false,
+        "social_enable": true,
+        "img1": "shopify:\/\/shop_images\/93_satisfaction_90x75_195257b9-1199-4732-bdf8-05e6061d7597.webp",
+        "txt": "93% satisfaction rate from 40,000+ customers",
+        "txt_": "FREE & FAST SHIPPING OVER $150",
+        "color_link": "#2980b9",
+        "img2": "shopify:\/\/shop_images\/Untitled_design_2_4043dd2d-b061-4ce9-a771-22be6e7d9d6e.webp",
+        "txt1": "Dispatch from Melbourne within 24 hours",
+        "img3": "shopify:\/\/shop_images\/Untitled_design_1_aa1e3d9a-8e5d-4738-9e79-4536b6a0d70e.webp",
+        "txt2": "99-day hassle-free return & exchange",
+        "txt3": "",
+        "txt4": "",
+        "txt5": "",
+        "txt6": "",
+        "txt7": "",
+        "txt8": "",
+        "txt9": "",
+        "txt10": "",
+        "txt11": ""
+      }
     },
-    "order": [
-        "product-template",
-        "duallayout_hi3w63",
-        "stories",
-        "reviews",
-        "recommendations"
-    ]
+    "duallayout_hi3w63": {
+      "type": "duallayout",
+      "name": "Dual Section",
+      "settings": {
+        "image_left": true,
+        "background_color": "#d6e6ff",
+        "imagebig": "shopify:\/\/shop_images\/LANDING_PAGE_PDP_4.png",
+        "contenttitle": "Smile in Every Stitch – Our Founders’ Printed Scrub Tops",
+        "contenttext1": "We understand that long shifts call not only for performance but also for a touch of joy. That’s why our Printed Scrub Tops are crafted from recycled materials with a four-way stretch, wrinkle resistance, and exceptional softness—ensuring you’re comfortable all day. But more importantly, our exclusive, joyful designs are meant to brighten the medical world, bringing smiles to both colleagues and patients. Every top is our way of adding a spark of happiness to your day, making every shift a little lighter and a lot more vibrant."
+      }
+    },
+    "stories": {
+      "type": "product-section-scrunchies",
+      "blocks": {
+        "text_columns_bYUNdt": {
+          "type": "text-columns",
+          "disabled": true,
+          "settings": {
+            "title": "Why you'll love our scrubs",
+            "align_text": "center",
+            "alt": false,
+            "enable_image_1": true,
+            "image_1": "shopify:\/\/shop_images\/69_1a88561c-b2bc-454f-ad8c-172a2d00f9fc.jpg",
+            "image_width_1": 500,
+            "title_1": "Made from 92% recycled materials.",
+            "text_1": "",
+            "button_label_1": "",
+            "button_link_1": "",
+            "enable_image_2": true,
+            "image_2": "shopify:\/\/shop_images\/70_5ecfeef9-664b-43e1-82ca-7da45e3dafec.jpg",
+            "image_width_2": 500,
+            "title_2": "Move, bend, stretch & crouch (without showing your bum crack.)",
+            "text_2": "",
+            "button_label_2": "",
+            "button_link_2": "",
+            "enable_image_3": false,
+            "image_width_3": 650,
+            "title_3": "",
+            "text_3": "",
+            "button_label_3": "",
+            "button_link_3": ""
+          }
+        },
+        "text_columns_jPTgnL": {
+          "type": "text-columns",
+          "settings": {
+            "title": "",
+            "align_text": "center",
+            "alt": false,
+            "enable_image_1": true,
+            "image_1": "shopify:\/\/shop_images\/71_c3d9a91c-6850-4d15-97ec-a6c45e728ad0.jpg",
+            "image_width_1": 500,
+            "title_1": "Bye-bye sweaty, too-big hospital scrubs. Hello, superior comfort all shift long.",
+            "text_1": "",
+            "button_label_1": "",
+            "button_link_1": "",
+            "enable_image_2": true,
+            "image_2": "shopify:\/\/shop_images\/72_f641cc00-bf1d-4634-b2ca-38b1c3854908.jpg",
+            "image_width_2": 500,
+            "title_2": "Every item is a joy to look at and a joy to wear.",
+            "text_2": "",
+            "button_label_2": "",
+            "button_link_2": "",
+            "enable_image_3": false,
+            "image_width_3": 650,
+            "title_3": "",
+            "text_3": "",
+            "button_label_3": "",
+            "button_link_3": ""
+          }
+        }
+      },
+      "block_order": [
+        "text_columns_bYUNdt",
+        "text_columns_jPTgnL"
+      ],
+      "disabled": true,
+      "settings": {}
+    },
+    "reviews": {
+      "type": "looxreviews",
+      "settings": {}
+    },
+    "recommendations": {
+      "type": "product-recommendations",
+      "settings": {
+        "show_product_recommendations": true,
+        "product_recommendations_heading": "You may also like",
+        "per_row": "small"
+      }
+    }
+  },
+  "order": [
+    "product-template",
+    "duallayout_hi3w63",
+    "stories",
+    "reviews",
+    "recommendations"
+  ]
 }

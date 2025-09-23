@@ -3003,6 +3003,186 @@ $(document).ready(function() {
 
 
 
+{% if product.type == 'Performance Compression Socks' %}
+  
+  var variantStock = {};
+
+{% assign wide_collection = collections['performance-compression-socks'] %}
+{% for product in wide_collection.products %}
+  {% for variant in product.variants %}
+    variantStock[{{ variant.id }}] = {{ variant.inventory_quantity }};
+    variantAvail[{{ variant.id }}] = {{ variant.available }};
+  {% endfor %}
+{% endfor %}
+
+  var productsData = {};
+  {% assign wideCollection = collections['performance-compression-socks'] %}
+{% paginate wideCollection.products by 1000 %}
+  {% for product in wideCollection.products %}
+    productsData["{{ product.handle }}"] = {
+      id: "{{ product.id }}",
+      variants: [
+        {% for variant in product.variants %}
+          {
+            id: "{{ variant.id }}",
+            option1: "{{ variant.option1 }}", // This could be product type (e.g., regular or wide)
+            option2: "{{ variant.option2 }}", // This could be size (e.g., S or M)
+            inventory_quantity: {{ variant.inventory_quantity }},
+            available: {{ variant.available | json }}
+          }{% unless forloop.last %},{% endunless %}
+        {% endfor %}
+      ]
+    };
+  {% endfor %}
+{% endpaginate %}
+
+
+  {% assign wideCollection = collections['performance-compression-socks'] %}
+  {% for product in wideCollection.products %}
+    productsData["{{ product.handle }}"] = {
+      id: "{{ product.id }}",
+      variants: [
+        {% for variant in product.variants %}
+          {
+            id: "{{ variant.id }}",
+            option1: "{{ variant.option1 }}", // This could be product type (e.g., regular or wide)
+            option2: "{{ variant.option2 }}", // This could be size (e.g., S or M)
+            inventory_quantity: {{ variant.inventory_quantity }},
+            available: {{ variant.available | json }}
+          }{% unless forloop.last %},{% endunless %}
+        {% endfor %}
+      ]
+    };
+  {% endfor %}
+
+
+
+
+
+
+$(document).ready(function() {
+
+ 
+  $(".btn-primer").click(function(){
+
+  })
+/*
+    $(document).on("click",".btn-sock.regular",function(){
+      $(".btn-sock").removeClass("actives")
+      $(".image-overlay[data-id='8296912421122']").trigger("click")
+      $(this).addClass("actives")
+    })
+
+    $(document).on("click",".btn-sock.bamboo",function(){
+      $(".image-overlay[data-id='8702953718018']").trigger("click")
+      $(".btn-sock").removeClass("actives")
+      $(this).addClass("actives")
+    })
+*/
+
+  $('body').on("click",".btn-primer",function(){
+    $(".btn-primer").removeClass("atv")
+      $(this).addClass("atv")
+      $capid = $(".activer").attr("data-id")
+      $capqty = $(this).attr("data-socvarid")
+      $capavl = $(this).attr("data-socavail")
+     
+      
+      
+      
+      $capqty = parseFloat($(this).attr("data-socqty"))
+      
+      if($capavl == "false"){
+              $(".preorder-text").hide()
+              $(".capsbundleatc").html("SOLD OUT")
+            }else{
+              if($capqty <= 0){
+                $(".capsbundleatc").html("PRE-ORDER")
+                $(".preorder-text").show()
+              }else{
+                $(".preorder-text").hide()
+                $(".capsbundleatc").html("ADD TO CART")
+              }
+            }
+
+  })
+
+    var interval = setInterval(function() {
+      if ($(".scrubs-products .image-overlay[data-handle={{ product.handle }}]").length) {
+          $(".scrubs-products .image-overlay[data-handle={{ product.handle }}]").trigger("click")
+          clearInterval(interval); // Stop the interval when the div is fully loaded
+      } else {
+          $(".capsbundleatc").html("SOLD OUT")
+          $(".capsbundleatc").addClass("soldoutx")
+          $(".btn-primer").hide()
+          clearInterval(interval); // Stop the interval when the div is fully loaded
+      }
+  }, 1000); // 1000 milliseconds = 1 second
+
+  $(".image-overlay").on("click",function(){
+            $(".image-overlay").removeClass("activer")
+            $(this).addClass("activer")
+  })
+  $(".capsbundleatc").click(function() {
+      $(this).html("Preparing..")
+      $socvarid = $(".atv").attr("data-socvarid")
+      $socavail = $(".atv").attr("data-socavail")
+
+      if($socavail){
+        dataxc = {
+              "id": $socvarid,
+              "quantity": 1
+          }
+
+
+          jQuery.ajax({
+              type: 'POST',
+              url: '/cart/add.js',
+              data: dataxc,
+              dataType: 'json',
+              success: function() {
+                  $(".capsbundleatc").html("ADDED TO BAG")
+                  cart_update();
+              }
+          })
+      }else{
+        alert("not avail")
+      }
+
+  });
+
+
+
+  // Function to add products to the cart
+  function addToCart(productsJson) {
+      $.ajax({
+          type: 'POST',
+          url: '/cart/add.js', // Shopify's cart endpoint
+          data: {
+              items: products
+          },
+          dataType: 'json',
+          success: function() {
+              alert("Products added to the cart.");
+              cart_update();
+              // You can optionally update the cart contents or show a success message here
+          },
+          error: function(jqXHR, textStatus, errorThrown) {
+              console.log(jqXHR);
+              cart_update();
+              // Handle errors or display an error message if needed
+          }
+      });
+  }
+
+
+
+
+})
+{% endif %}
+
+
+
 
 
 
@@ -4020,7 +4200,7 @@ $(".capsbundleatc").click(function () {
 
 
 
-{% if product.type == 'Printed Pattern Scrub Tops' or product.type == 'Men Printed Pattern Scrub Tops'  %}
+{% if product.type == 'Printed Pattern Scrub Tops' or product.type == 'Men Printed Pattern Scrub Tops' %}
 
   $(document).ready(function(){
             
@@ -5463,7 +5643,7 @@ $(document).ready(function(){
 .preorder-text{display:none !important;}
 </style>
 {% endif %}
-{% if product.type == 'Compression Socks' %}
+{% if product.type == 'Compression Socks' or product.type == 'Performance Compression Socks' %}
   {% include 'sizeguidesocks' %}
 {% endif %}
     </body>

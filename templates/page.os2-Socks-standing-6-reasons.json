@@ -1,605 +1,605 @@
 {
-    "sections": {
-        "annoucement_iRq3kh": {
-            "type": "annoucement",
-            "settings": {
-                "a_text1": "OVER 50, 000 COMFY DOCS AND NURSES",
-                "a_text2": ""
-            }
-        },
-        "custom_html_y8fDJx": {
-            "type": "custom-html",
-            "settings": {
-                "custom_html": "<img data-swift-lazy=\"1\" loading=\"lazy\" class=\"\" src=\"\/\/www.drwoofapparel.com.au\/cdn\/shop\/files\/Horizontal_logo_transparent_background_blue_2_7dc8a8de-20c6-4155-8747-0810a5b4b5e0_210x.png?v=1704080588\" srcset=\"\/\/www.drwoofapparel.com.au\/cdn\/shop\/files\/Horizontal_logo_transparent_background_blue_2_7dc8a8de-20c6-4155-8747-0810a5b4b5e0_210x.png?v=1704080588 1x, \/\/www.drwoofapparel.com.au\/cdn\/shop\/files\/Horizontal_logo_transparent_background_blue_2_7dc8a8de-20c6-4155-8747-0810a5b4b5e0_210x@2x.png?v=1704080588 2x\" alt=\"Dr. Woof Apparel AU\" style=\"display:block;margin:30px auto 0;\">"
-            }
-        },
-        "linehr_KaqfzV": {
-            "type": "linehr",
-            "settings": {
-                "padding_top_desktop": 0,
-                "padding_bottom_desktop": 0,
-                "padding_top_mobile": 0,
-                "padding_bottom_mobile": 0,
-                "margin_top_desktop": 0,
-                "margin_bottom_desktop": 6,
-                "margin_top_mobile": 0,
-                "margin_bottom_mobile": 6,
-                "border_top_color": "#ffffff"
-            }
-        },
-        "headerv2_RAQDLX": {
-            "type": "headerv2",
-            "blocks": {
-                "list_MNzaTP": {
-                    "type": "list",
-                    "settings": {
-                        "text_list": "Fatigue-busting graduated compression"
-                    }
-                },
-                "list_ArYWX7": {
-                    "type": "list",
-                    "settings": {
-                        "text_list": "Varicose veins prevention"
-                    }
-                },
-                "list_TwpRmi": {
-                    "type": "list",
-                    "settings": {
-                        "text_list": "Proudly designed in Australia"
-                    }
-                }
-            },
-            "block_order": [
-                "list_MNzaTP",
-                "list_ArYWX7",
-                "list_TwpRmi"
-            ],
-            "settings": {
-                "colored_header": "TRUSTED BY 40,000+ HEALTH PROFESSIONALS",
-                "colored_header_size": 16,
-                "colored_header_size_mobile": 18,
-                "header_color": "#050507",
-                "added_bigger_button_hero": false,
-                "added_date": false,
-                "enable_men": false,
-                "hide_review_stars": false,
-                "top_mode": false,
-                "light_theme": false,
-                "main_header": "Stand Longer Without Pain",
-                "main_header_size": 78,
-                "main_header_size_mobile": 44,
-                "main_header_space": 32,
-                "content": "15-20 mmHg compression that’s tougher than a Monday morning and comfier than your Uggs.",
-                "textaroundtop": "",
-                "textaroundbottom": "",
-                "button_text_1": "BUY 6 PAIRS GET 35% OFF | SHOP NOW",
-                "button_1_url": "shopify:\/\/collections\/compression-socks",
-                "button_text_2": "",
-                "button_2_url": "",
-                "header_image": "shopify:\/\/shop_images\/DESKTOP_NEW_BANNER_THUMBNAIL_1_2d363452-5f1d-4c68-9b87-e645847971b0.png",
-                "mobile_image": "shopify:\/\/shop_images\/MOBILE_NEW_BANNER_THUMBNAIL_1_d4950d77-5558-4da0-9af0-5e2cf5d8ccd0.jpg",
-                "bg_color": "#ffd7d2",
-                "desktop_bgimage": "shopify:\/\/shop_images\/HERO_BANNER_-_LANDSCAPE_FINAL_ODDIT_COMPATIBLE_1440_x_900_px_6a52a8cb-64e8-4c09-9e49-d2bf7565e841.png",
-                "mobile_bgimage": "shopify:\/\/shop_images\/Untitled_design_269be36c-97d4-4087-8d04-be8c7735417a.jpg",
-                "margin-top": 0,
-                "margin-bottom": 20
-            }
-        },
-        "logo_list_eHc4an": {
-            "type": "logo-list",
-            "blocks": {
-                "logo_image_3NaUmL": {
-                    "type": "logo_image",
-                    "settings": {
-                        "image": "shopify:\/\/shop_images\/16_34d94e59-4c1b-413d-88e2-4623b7f2d66b.png",
-                        "image_mobile": "shopify:\/\/shop_images\/16_34d94e59-4c1b-413d-88e2-4623b7f2d66b.png",
-                        "link": "",
-                        "logotitle": "",
-                        "logotext": ""
-                    }
-                },
-                "logo_image_UPbGbN": {
-                    "type": "logo_image",
-                    "settings": {
-                        "image": "shopify:\/\/shop_images\/5_3fe9f91b-4930-4556-bd95-ad75e6011855.png",
-                        "image_mobile": "shopify:\/\/shop_images\/5_3fe9f91b-4930-4556-bd95-ad75e6011855.png",
-                        "link": "",
-                        "logotitle": "",
-                        "logotext": ""
-                    }
-                },
-                "logo_image_RECj8B": {
-                    "type": "logo_image",
-                    "settings": {
-                        "image": "shopify:\/\/shop_images\/7_c356a721-dac5-4b68-addd-2e87f397de0e.png",
-                        "image_mobile": "shopify:\/\/shop_images\/7_c356a721-dac5-4b68-addd-2e87f397de0e.png",
-                        "link": "",
-                        "logotitle": "",
-                        "logotext": ""
-                    }
-                },
-                "logo_image_3RtDgy": {
-                    "type": "logo_image",
-                    "settings": {
-                        "image": "shopify:\/\/shop_images\/6_3be1044b-e113-47e5-8702-a61288c059c2.png",
-                        "image_mobile": "shopify:\/\/shop_images\/6_3be1044b-e113-47e5-8702-a61288c059c2.png",
-                        "link": "",
-                        "logotitle": "",
-                        "logotext": ""
-                    }
-                },
-                "logo_image_9acy6W": {
-                    "type": "logo_image",
-                    "settings": {
-                        "image": "shopify:\/\/shop_images\/13_2af6a184-b184-45dc-bbb1-a0e1b38c3303.png",
-                        "image_mobile": "shopify:\/\/shop_images\/13_2af6a184-b184-45dc-bbb1-a0e1b38c3303.png",
-                        "link": "",
-                        "logotitle": "",
-                        "logotext": ""
-                    }
-                },
-                "logo_image_Cx4Acq": {
-                    "type": "logo_image",
-                    "settings": {
-                        "image": "shopify:\/\/shop_images\/14_dad1d655-7f47-4218-90c4-c80b53ad922c.png",
-                        "image_mobile": "shopify:\/\/shop_images\/14_dad1d655-7f47-4218-90c4-c80b53ad922c.png",
-                        "link": "",
-                        "logotitle": "",
-                        "logotext": ""
-                    }
-                },
-                "logo_image_mWjRi6": {
-                    "type": "logo_image",
-                    "settings": {
-                        "image": "shopify:\/\/shop_images\/18_17432400-33e7-4f37-b9b9-a90e081f3595.png",
-                        "image_mobile": "shopify:\/\/shop_images\/18_17432400-33e7-4f37-b9b9-a90e081f3595.png",
-                        "link": "",
-                        "logotitle": "",
-                        "logotext": ""
-                    }
-                },
-                "logo_image_WPAFhj": {
-                    "type": "logo_image",
-                    "settings": {
-                        "image": "shopify:\/\/shop_images\/17_50a72747-e5d5-43a0-91a3-7e80892aac67.png",
-                        "image_mobile": "shopify:\/\/shop_images\/17_50a72747-e5d5-43a0-91a3-7e80892aac67.png",
-                        "link": "",
-                        "logotitle": "",
-                        "logotext": ""
-                    }
-                }
-            },
-            "block_order": [
-                "logo_image_3NaUmL",
-                "logo_image_UPbGbN",
-                "logo_image_RECj8B",
-                "logo_image_3RtDgy",
-                "logo_image_9acy6W",
-                "logo_image_Cx4Acq",
-                "logo_image_mWjRi6",
-                "logo_image_WPAFhj"
-            ],
-            "settings": {
-                "leftscroll": true,
-                "title": "Proudly Serving",
-                "logo_opacity": 100,
-                "alt": false
-            }
-        },
-        "featured_collection_slider_c96KwL": {
-            "type": "featured-collection-slider",
-            "settings": {
-                "title": "Our Best Sellers",
-                "description": "",
-                "home_featured_products": "compression-socks",
-                "per_row": "five",
-                "alt": false
-            }
-        },
-        "linehr_eMMVgV": {
-            "type": "linehr",
-            "settings": {
-                "padding_top_desktop": 0,
-                "padding_bottom_desktop": 0,
-                "padding_top_mobile": 0,
-                "padding_bottom_mobile": 0,
-                "margin_top_desktop": 20,
-                "margin_bottom_desktop": 20,
-                "margin_top_mobile": 10,
-                "margin_bottom_mobile": 10,
-                "border_top_color": "#ebebeb"
-            }
-        },
-        "text_and_image_cAJTgW": {
-            "type": "text-and-image",
-            "settings": {
-                "image": "shopify:\/\/shop_images\/Compression_Socks_Listicle_-_6_Reasons_Why_4.webp",
-                "image_width": 400,
-                "subtitle": "",
-                "title": "Graduated Compression: Keep Your Legs Fired Up, All Day Long",
-                "text": "<p>Been on your feet so long they’re practically screaming? Our 15-20 mmHg compression socks are here to help. They’ll keep your blood pumping, reduce swelling, and make your legs feel like they’re ready to go again—even if you’ve been standing since the crack of dawn.<\/p>",
-                "button_label": "",
-                "button_link": "",
-                "button_style": "primary",
-                "layout": "left",
-                "alt": false
-            }
-        },
-        "text_and_image_m3L9d4": {
-            "type": "text-and-image",
-            "settings": {
-                "image": "shopify:\/\/shop_images\/Compression_Socks_Listicle_-_6_Reasons_Why_1.webp",
-                "image_width": 400,
-                "subtitle": "",
-                "title": "Varicose Vein Prevention: No More Worrying About Those Pesky Blue Lines",
-                "text": "<p>You’re on your feet all day, and varicose veins are no joke. But don’t stress—our socks have got you covered. They help boost circulation and keep those veins in check, so you can focus on getting through the day without worrying about your legs.<\/p>",
-                "button_label": "",
-                "button_link": "",
-                "button_style": "primary",
-                "layout": "left",
-                "alt": false
-            }
-        },
-        "hero_DyEJzn": {
-            "type": "hero",
-            "settings": {
-                "big_header_text": "Aussie-Designed: Built Tough for Your Tough Days",
-                "subtitle_text": "Designed right here in Oz, these socks are made to handle whatever your day throws at you. Long shifts, constant standing—no worries, mate. They’re built to last and keep you comfortable while you power through.",
-                "button_text": "SHOP NOW",
-                "button_link": "shopify:\/\/collections\/compression-socks",
-                "background_color": "#f5be15",
-                "desktop_padding_top": 50,
-                "desktop_padding_bottom": 50,
-                "mobile_padding_top": 30,
-                "mobile_padding_bottom": 30,
-                "main_heading_font_size": 48,
-                "subheading_font_size": 18,
-                "main_heading_color": "#000000",
-                "subheading_color": "#000000",
-                "mobile_main_heading_font_size": 36,
-                "mobile_subheading_font_size": 16
-            }
-        },
-        "text_and_image_8HRiy4": {
-            "type": "text-and-image",
-            "settings": {
-                "image": "shopify:\/\/shop_images\/Compression_Socks_Listicle_-_6_Reasons_Why_7.webp",
-                "image_width": 400,
-                "subtitle": "",
-                "title": "Cushioned Luxury: Comfier Than a Kangaroo’s Pouch",
-                "text": "<p>We know standing all day can be rough, but our bamboo-blend socks are here to cushion the blow. With soft, breathable fabric and extra padding, your feet will feel like they’re walking on clouds—without the jetlag.<\/p>",
-                "button_label": "",
-                "button_link": "",
-                "button_style": "primary",
-                "layout": "right",
-                "alt": false
-            }
-        },
-        "text_and_image_6diDnz": {
-            "type": "text-and-image",
-            "settings": {
-                "image": "shopify:\/\/shop_images\/Compression_Socks_Listicle_-_6_Reasons_Why_5.webp",
-                "image_width": 400,
-                "subtitle": "",
-                "title": "Stylish & Trendy: Keep Your Feet Feeling Good and Looking Better",
-                "text": "<p>Forget boring socks—ours come in cute, trendy designs that’ll make your feet the star of the break room. Plus, they’re as functional as they are fashionable, so you can look good while staying comfy all day long.<\/p>",
-                "button_label": "",
-                "button_link": "",
-                "button_style": "primary",
-                "layout": "right",
-                "alt": false
-            }
-        },
-        "hero_LLMXUy": {
-            "type": "hero",
-            "settings": {
-                "big_header_text": "99-day Guarantee: We’ve Got Your Back (And Your Feet)",
-                "subtitle_text": "We’re so sure you’ll love our socks that we’re giving you 99 days to try them out, risk-free. If they don’t make your legs feel brand new, we’ll give you your money back—no questions asked. Easy as, mate.",
-                "button_text": "SHOP NOW",
-                "button_link": "shopify:\/\/collections\/compression-socks",
-                "background_color": "#f5be15",
-                "desktop_padding_top": 50,
-                "desktop_padding_bottom": 50,
-                "mobile_padding_top": 30,
-                "mobile_padding_bottom": 30,
-                "main_heading_font_size": 48,
-                "subheading_font_size": 18,
-                "main_heading_color": "#000000",
-                "subheading_color": "#000000",
-                "mobile_main_heading_font_size": 36,
-                "mobile_subheading_font_size": 16
-            }
-        },
-        "68681b12-95a9-4f19-8144-7b29406c141b": {
-            "type": "twocollist",
-            "blocks": {
-                "9e75c267-5f40-4a7f-b782-ee506ff29a05": {
-                    "type": "list",
-                    "settings": {
-                        "list_image": "shopify:\/\/shop_images\/Compression_Socks_Listicle_-_6_Reasons_Why_4.jpg",
-                        "list_title": "1. Goodbye Tired Feet: Nurse's Shift Comfort Secret",
-                        "list_text": "Long nursing shifts demand more than light relief. Dr. Woof’s Graduated Compression Socks provide 15-20mmHg medium compression based on our feet's anatomy for demanding nursing shifts. Perfectly balancing comfort with support, the “PPE shields” against fatigue and energize your day.",
-                        "button_text": "",
-                        "button_url": ""
-                    }
-                },
-                "38994c72-bee0-4291-9231-8d197500fad9": {
-                    "type": "list",
-                    "settings": {
-                        "list_image": "shopify:\/\/shop_images\/Compression_Socks_Listicle_-_6_Reasons_Why_1.jpg",
-                        "list_title": "2. Healthy Legs, Happy Shifts: Vein Care Essentials",
-                        "list_text": "23% of Australian adults face the risk of varicose veins, a surprisingly common condition. For nurses the risk is 3.4 times higher! Dr. Woof’s Graduated Compression Socks are a proactive measure against this. They help prevent the blood pooling that leads to varicose veins, keeping legs healthy even through the longest shifts. It's more than just comfort; it's about safeguarding your health as you care for others.",
-                        "button_text": "",
-                        "button_url": ""
-                    }
-                },
-                "list_6pBr9c": {
-                    "type": "list",
-                    "settings": {
-                        "list_image": "shopify:\/\/shop_images\/RonSOCKs_-_Made_with_Clipchamp.gif",
-                        "list_title": "3. Aussie owned: Uncompromising quality",
-                        "list_text": "In a market flooded with subpar products, Dr. Woof’s Graduated Compression Socks stand out for their unwavering quality. Founded by a family of 3 Aussie doctors, our commitment to high standards is personal. We ensure each pair is robust, maintaining stretch and comfort even after extensive use – a reliable choice for nurses who deserve the best",
-                        "button_text": "",
-                        "button_url": ""
-                    }
-                },
-                "list_T6RnyN": {
-                    "type": "list",
-                    "settings": {
-                        "list_image": "shopify:\/\/shop_images\/Compression_Socks_Listicle_-_6_Reasons_Why_7.jpg",
-                        "list_title": "4. Padded Perfection: Step with Comfort",
-                        "list_text": "Imagine a sock that feels like a soft embrace for your feet. That's Dr. Woof’s Graduated Compression Socks. Designed specifically for nurses, they feature extra-thick padding and ultra-soft material, ensuring your comfort on even the longest shifts. It’s the comfort you need to keep going, step after step.",
-                        "button_text": "",
-                        "button_url": ""
-                    }
-                },
-                "list_kFJEBz": {
-                    "type": "list",
-                    "settings": {
-                        "list_image": "shopify:\/\/shop_images\/Compression_Socks_Listicle_-_6_Reasons_Why_5.jpg",
-                        "list_title": "5. Chic and Comfy: Fashion Meets Function",
-                        "list_text": "Gone are the days of bland, beige compression socks. Dr. Woof’s brings a splash of style to nursing with trendy, nurse-themed designs. Our socks feature symbols and themes that resonate with your profession, offering a personal touch to your uniform. They're a celebration of your role, adding a bit of fun to every shift.",
-                        "button_text": "",
-                        "button_url": ""
-                    }
-                },
-                "list_nDFFEC": {
-                    "type": "list",
-                    "settings": {
-                        "list_image": "shopify:\/\/shop_images\/Compression_Socks_Listicle_-_6_Reasons_Why_6.jpg",
-                        "list_title": "6. Try, Love, or Return: 99-day Promise",
-                        "list_text": "At Dr. Woof, we understand the hesitation of buying online without feeling the product first. That's why we offer a 99-day Money Back Guarantee. With a 96% satisfaction rate across all our products, we're confident in our socks, but if they don't meet your expectations, we honor returns with ease. It's risk-free comfort, tailored for nurses.",
-                        "button_text": "",
-                        "button_url": ""
-                    }
-                }
-            },
-            "block_order": [
-                "9e75c267-5f40-4a7f-b782-ee506ff29a05",
-                "38994c72-bee0-4291-9231-8d197500fad9",
-                "list_6pBr9c",
-                "list_T6RnyN",
-                "list_kFJEBz",
-                "list_nDFFEC"
-            ],
-            "disabled": true,
-            "settings": {
-                "deskmartop": 40,
-                "deskmarbot": 40,
-                "mobmartop": 20,
-                "mobmarbot": 20
-            }
-        },
-        "advanced_content_7w4nzG": {
-            "type": "advanced-content",
-            "blocks": {
-                "image_xVigmp": {
-                    "type": "image",
-                    "settings": {
-                        "image": "shopify:\/\/shop_images\/1_c8801da3-8a8a-4735-ac42-1c99acb6920a.png",
-                        "link": "",
-                        "width": "33%",
-                        "alignment": "top-middle"
-                    }
-                },
-                "image_bxfKbz": {
-                    "type": "image",
-                    "settings": {
-                        "image": "shopify:\/\/shop_images\/2_7304abf1-2053-4102-a59d-7f87a51bd467.png",
-                        "link": "",
-                        "width": "33%",
-                        "alignment": "top-middle"
-                    }
-                },
-                "image_cpHEyi": {
-                    "type": "image",
-                    "settings": {
-                        "image": "shopify:\/\/shop_images\/4_df93db99-6634-47a7-a901-ac870b57d2fa.png",
-                        "link": "",
-                        "width": "33%",
-                        "alignment": "top-middle"
-                    }
-                }
-            },
-            "block_order": [
-                "image_xVigmp",
-                "image_bxfKbz",
-                "image_cpHEyi"
-            ],
-            "settings": {
-                "full_width": false,
-                "space_around": true,
-                "alt": false
-            }
-        },
-        "advanced_content_nbifMV": {
-            "type": "advanced-content",
-            "blocks": {
-                "image_XDYUFj": {
-                    "type": "image",
-                    "settings": {
-                        "image": "shopify:\/\/shop_images\/3_6260f536-f165-487e-8455-96e776ceb057.png",
-                        "link": "",
-                        "width": "33%",
-                        "alignment": "top-middle"
-                    }
-                },
-                "image_W6hGEQ": {
-                    "type": "image",
-                    "settings": {
-                        "image": "shopify:\/\/shop_images\/5_594e861b-d3f7-4bc7-b845-fcae65857b37.png",
-                        "link": "",
-                        "width": "33%",
-                        "alignment": "top-middle"
-                    }
-                },
-                "image_dWJBkN": {
-                    "type": "image",
-                    "settings": {
-                        "image": "shopify:\/\/shop_images\/6_701377d4-4bef-4cc7-a4b8-c80bd3dbdeaf.png",
-                        "link": "",
-                        "width": "33%",
-                        "alignment": "top-middle"
-                    }
-                }
-            },
-            "block_order": [
-                "image_XDYUFj",
-                "image_W6hGEQ",
-                "image_dWJBkN"
-            ],
-            "settings": {
-                "full_width": false,
-                "space_around": true,
-                "alt": false
-            }
-        },
-        "faq_section_8tHVAi": {
-            "type": "faq-section",
-            "blocks": {
-                "rich_text_FAxymP": {
-                    "type": "rich-text",
-                    "settings": {
-                        "title": "FREQUENTLY ASKED QUESTIONS",
-                        "text": "",
-                        "align_text": "left"
-                    }
-                },
-                "question_grgxrb": {
-                    "type": "question",
-                    "settings": {
-                        "title": "What’s the compression level of Dr Woof Graduated Compression Socks?",
-                        "text": "<p><em>Kick back and relax; our Graduated Compression Socks offer a snug, not too tight compression level of 15-20 mmHg. Perfect for those days when your feet need a little extra love and support.<\/em><\/p>"
-                    }
-                },
-                "question_7LYDQE": {
-                    "type": "question",
-                    "settings": {
-                        "title": "What sets Dr Woof Graduated Compression Socks apart?",
-                        "text": "<p><em>Our socks come with a whole suite of features to keep your feet happy! They offer 360° seamless compression for comfort, a medium compression level to ease your day, super stretchy fabric that hugs your feet just right, moisture-wicking technology to keep you dry, and extra cushioning in the heel and toe for that cloud-nine feeling.<\/em><\/p>"
-                    }
-                },
-                "question_dLeBT9": {
-                    "type": "question",
-                    "settings": {
-                        "title": "What are Dr Woof Graduated Compression Socks made of?",
-                        "text": "<p><em>Crafted with care, our socks are made from 46% Bamboo fibre<br\/>46% Poly, and 8% Elastane. Blending durability and flexibility for the ultimate fit and comfort.<\/em><\/p>"
-                    }
-                },
-                "question_xpN3QP": {
-                    "type": "question",
-                    "settings": {
-                        "title": "How should I care for my Dr Woof Graduated Compression Socks?",
-                        "text": "<p><em>Keep your socks in prime condition by washing them with like colors at a cool temperature under 30°C, and letting them air dry. Steer clear of bleach, ironing, and tumble drying to keep them perfect.<\/em><\/p>"
-                    }
-                },
-                "question_FiD6RU": {
-                    "type": "question",
-                    "settings": {
-                        "title": "What sizes do Dr Woof Graduated Compression Socks come in?",
-                        "text": "<p><em>Currently, we offer sizes Small and Medium. Check out our sizing guide to find your perfect match and step into comfort.<\/em><\/p>"
-                    }
-                },
-                "question_ghmkdz": {
-                    "type": "question",
-                    "settings": {
-                        "title": "Will the fabric of Dr Woof Graduated Compression Socks lose its stretch over time?",
-                        "text": "<p><em>No worries here! Our socks are designed with super stretchy fabric that maintains its elasticity, ensuring you get a consistent fit and comfort, wear after wear.<\/em><\/p>"
-                    }
-                },
-                "question_NDLHni": {
-                    "type": "question",
-                    "settings": {
-                        "title": "Can Dr Woof Graduated Compression Socks help keep my feet dry?",
-                        "text": "<p><em>Yes, indeed! Our socks are equipped with moisture-wicking technology that pulls sweat away from your skin, keeping your feet dry and comfortable all day long.<\/em><\/p>"
-                    }
-                },
-                "question_xtxKHJ": {
-                    "type": "question",
-                    "settings": {
-                        "title": "Do Dr Woof Graduated Compression Socks offer extra protection for my feet?",
-                        "text": "<p><em>Absolutely! With extra thick cushioning in the heel and toe areas, our socks provide enhanced comfort and protection against blisters, so you can move through your day with ease.<\/em><\/p>"
-                    }
-                }
-            },
-            "block_order": [
-                "rich_text_FAxymP",
-                "question_grgxrb",
-                "question_7LYDQE",
-                "question_dLeBT9",
-                "question_xpN3QP",
-                "question_FiD6RU",
-                "question_ghmkdz",
-                "question_NDLHni",
-                "question_xtxKHJ"
-            ],
-            "settings": {
-                "page_title_enable": false,
-                "page_content_enable": false
-            }
-        },
-        "adsection_DFck6h": {
-            "type": "adsection",
-            "settings": {
-                "darktheme": true,
-                "deskmartop": 20,
-                "deskmarbot": 20,
-                "mobmartop": 0,
-                "mobmarbot": 30,
-                "bigtext": "BUILD YOUR PACK: BUY 3 PAIRS GET 1 PAIR FREE",
-                "reviewstars_text": "",
-                "bigtextsize": 36,
-                "textbut": "SHOP NOW",
-                "buttonlink": "shopify:\/\/collections\/compression-socks",
-                "bgcolor": "#0b0d32"
-            }
-        },
-        "custom_html_3Jq8JP": {
-            "type": "custom-html",
-            "settings": {
-                "custom_html": "<img data-swift-lazy=\"1\" loading=\"lazy\" class=\"\" src=\"\/\/www.drwoofapparel.com.au\/cdn\/shop\/files\/Horizontal_logo_transparent_background_blue_2_7dc8a8de-20c6-4155-8747-0810a5b4b5e0_210x.png?v=1704080588\" srcset=\"\/\/www.drwoofapparel.com.au\/cdn\/shop\/files\/Horizontal_logo_transparent_background_blue_2_7dc8a8de-20c6-4155-8747-0810a5b4b5e0_210x.png?v=1704080588 1x, \/\/www.drwoofapparel.com.au\/cdn\/shop\/files\/Horizontal_logo_transparent_background_blue_2_7dc8a8de-20c6-4155-8747-0810a5b4b5e0_210x@2x.png?v=1704080588 2x\" alt=\"Dr. Woof Apparel AU\" style=\"display:block;margin:0 auto;\">"
-            }
-        }
+  "sections": {
+    "annoucement_iRq3kh": {
+      "type": "annoucement",
+      "settings": {
+        "a_text1": "OVER 50, 000 COMFY DOCS AND NURSES",
+        "a_text2": ""
+      }
     },
-    "order": [
-        "annoucement_iRq3kh",
-        "custom_html_y8fDJx",
-        "linehr_KaqfzV",
-        "headerv2_RAQDLX",
-        "logo_list_eHc4an",
-        "featured_collection_slider_c96KwL",
-        "linehr_eMMVgV",
-        "text_and_image_cAJTgW",
-        "text_and_image_m3L9d4",
-        "hero_DyEJzn",
-        "text_and_image_8HRiy4",
-        "text_and_image_6diDnz",
-        "hero_LLMXUy",
-        "68681b12-95a9-4f19-8144-7b29406c141b",
-        "advanced_content_7w4nzG",
-        "advanced_content_nbifMV",
-        "faq_section_8tHVAi",
-        "adsection_DFck6h",
-        "custom_html_3Jq8JP"
-    ]
+    "custom_html_y8fDJx": {
+      "type": "custom-html",
+      "settings": {
+        "custom_html": "<img data-swift-lazy=\"1\" loading=\"lazy\" class=\"\" src=\"\/\/www.drwoofapparel.com.au\/cdn\/shop\/files\/Horizontal_logo_transparent_background_blue_2_7dc8a8de-20c6-4155-8747-0810a5b4b5e0_210x.png?v=1704080588\" srcset=\"\/\/www.drwoofapparel.com.au\/cdn\/shop\/files\/Horizontal_logo_transparent_background_blue_2_7dc8a8de-20c6-4155-8747-0810a5b4b5e0_210x.png?v=1704080588 1x, \/\/www.drwoofapparel.com.au\/cdn\/shop\/files\/Horizontal_logo_transparent_background_blue_2_7dc8a8de-20c6-4155-8747-0810a5b4b5e0_210x@2x.png?v=1704080588 2x\" alt=\"Dr. Woof Apparel AU\" style=\"display:block;margin:30px auto 0;\">"
+      }
+    },
+    "linehr_KaqfzV": {
+      "type": "linehr",
+      "settings": {
+        "padding_top_desktop": 0,
+        "padding_bottom_desktop": 0,
+        "padding_top_mobile": 0,
+        "padding_bottom_mobile": 0,
+        "margin_top_desktop": 0,
+        "margin_bottom_desktop": 6,
+        "margin_top_mobile": 0,
+        "margin_bottom_mobile": 6,
+        "border_top_color": "#ffffff"
+      }
+    },
+    "headerv2_RAQDLX": {
+      "type": "headerv2",
+      "blocks": {
+        "list_MNzaTP": {
+          "type": "list",
+          "settings": {
+            "text_list": "Fatigue-busting graduated compression"
+          }
+        },
+        "list_ArYWX7": {
+          "type": "list",
+          "settings": {
+            "text_list": "Varicose veins prevention"
+          }
+        },
+        "list_TwpRmi": {
+          "type": "list",
+          "settings": {
+            "text_list": "Proudly designed in Australia"
+          }
+        }
+      },
+      "block_order": [
+        "list_MNzaTP",
+        "list_ArYWX7",
+        "list_TwpRmi"
+      ],
+      "settings": {
+        "colored_header": "TRUSTED BY 40,000+ HEALTH PROFESSIONALS",
+        "colored_header_size": 16,
+        "colored_header_size_mobile": 18,
+        "header_color": "#050507",
+        "added_bigger_button_hero": false,
+        "added_date": false,
+        "enable_men": false,
+        "hide_review_stars": false,
+        "top_mode": false,
+        "light_theme": false,
+        "main_header": "Stand Longer Without Pain",
+        "main_header_size": 78,
+        "main_header_size_mobile": 44,
+        "main_header_space": 32,
+        "content": "15-20 mmHg compression that’s tougher than a Monday morning and comfier than your Uggs.",
+        "textaroundtop": "",
+        "textaroundbottom": "",
+        "button_text_1": "BUY 6 PAIRS GET 35% OFF | SHOP NOW",
+        "button_1_url": "shopify:\/\/collections\/compression-socks",
+        "button_text_2": "",
+        "button_2_url": "",
+        "header_image": "shopify:\/\/shop_images\/DESKTOP_NEW_BANNER_THUMBNAIL_1_2d363452-5f1d-4c68-9b87-e645847971b0.png",
+        "mobile_image": "shopify:\/\/shop_images\/MOBILE_NEW_BANNER_THUMBNAIL_1_d4950d77-5558-4da0-9af0-5e2cf5d8ccd0.jpg",
+        "bg_color": "#ffd7d2",
+        "desktop_bgimage": "shopify:\/\/shop_images\/HERO_BANNER_-_LANDSCAPE_FINAL_ODDIT_COMPATIBLE_1440_x_900_px_6a52a8cb-64e8-4c09-9e49-d2bf7565e841.png",
+        "mobile_bgimage": "shopify:\/\/shop_images\/Untitled_design_269be36c-97d4-4087-8d04-be8c7735417a.jpg",
+        "margin-top": 0,
+        "margin-bottom": 20
+      }
+    },
+    "logo_list_eHc4an": {
+      "type": "logo-list",
+      "blocks": {
+        "logo_image_3NaUmL": {
+          "type": "logo_image",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/16_34d94e59-4c1b-413d-88e2-4623b7f2d66b.png",
+            "image_mobile": "shopify:\/\/shop_images\/16_34d94e59-4c1b-413d-88e2-4623b7f2d66b.png",
+            "link": "",
+            "logotitle": "",
+            "logotext": ""
+          }
+        },
+        "logo_image_UPbGbN": {
+          "type": "logo_image",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/5_3fe9f91b-4930-4556-bd95-ad75e6011855.png",
+            "image_mobile": "shopify:\/\/shop_images\/5_3fe9f91b-4930-4556-bd95-ad75e6011855.png",
+            "link": "",
+            "logotitle": "",
+            "logotext": ""
+          }
+        },
+        "logo_image_RECj8B": {
+          "type": "logo_image",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/7_c356a721-dac5-4b68-addd-2e87f397de0e.png",
+            "image_mobile": "shopify:\/\/shop_images\/7_c356a721-dac5-4b68-addd-2e87f397de0e.png",
+            "link": "",
+            "logotitle": "",
+            "logotext": ""
+          }
+        },
+        "logo_image_3RtDgy": {
+          "type": "logo_image",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/6_3be1044b-e113-47e5-8702-a61288c059c2.png",
+            "image_mobile": "shopify:\/\/shop_images\/6_3be1044b-e113-47e5-8702-a61288c059c2.png",
+            "link": "",
+            "logotitle": "",
+            "logotext": ""
+          }
+        },
+        "logo_image_9acy6W": {
+          "type": "logo_image",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/13_2af6a184-b184-45dc-bbb1-a0e1b38c3303.png",
+            "image_mobile": "shopify:\/\/shop_images\/13_2af6a184-b184-45dc-bbb1-a0e1b38c3303.png",
+            "link": "",
+            "logotitle": "",
+            "logotext": ""
+          }
+        },
+        "logo_image_Cx4Acq": {
+          "type": "logo_image",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/14_dad1d655-7f47-4218-90c4-c80b53ad922c.png",
+            "image_mobile": "shopify:\/\/shop_images\/14_dad1d655-7f47-4218-90c4-c80b53ad922c.png",
+            "link": "",
+            "logotitle": "",
+            "logotext": ""
+          }
+        },
+        "logo_image_mWjRi6": {
+          "type": "logo_image",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/18_17432400-33e7-4f37-b9b9-a90e081f3595.png",
+            "image_mobile": "shopify:\/\/shop_images\/18_17432400-33e7-4f37-b9b9-a90e081f3595.png",
+            "link": "",
+            "logotitle": "",
+            "logotext": ""
+          }
+        },
+        "logo_image_WPAFhj": {
+          "type": "logo_image",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/17_50a72747-e5d5-43a0-91a3-7e80892aac67.png",
+            "image_mobile": "shopify:\/\/shop_images\/17_50a72747-e5d5-43a0-91a3-7e80892aac67.png",
+            "link": "",
+            "logotitle": "",
+            "logotext": ""
+          }
+        }
+      },
+      "block_order": [
+        "logo_image_3NaUmL",
+        "logo_image_UPbGbN",
+        "logo_image_RECj8B",
+        "logo_image_3RtDgy",
+        "logo_image_9acy6W",
+        "logo_image_Cx4Acq",
+        "logo_image_mWjRi6",
+        "logo_image_WPAFhj"
+      ],
+      "settings": {
+        "leftscroll": true,
+        "title": "Proudly Serving",
+        "logo_opacity": 100,
+        "alt": false
+      }
+    },
+    "featured_collection_slider_c96KwL": {
+      "type": "featured-collection-slider",
+      "settings": {
+        "title": "Our Best Sellers",
+        "description": "",
+        "home_featured_products": "compression-socks",
+        "per_row": "five",
+        "alt": false
+      }
+    },
+    "linehr_eMMVgV": {
+      "type": "linehr",
+      "settings": {
+        "padding_top_desktop": 0,
+        "padding_bottom_desktop": 0,
+        "padding_top_mobile": 0,
+        "padding_bottom_mobile": 0,
+        "margin_top_desktop": 20,
+        "margin_bottom_desktop": 20,
+        "margin_top_mobile": 10,
+        "margin_bottom_mobile": 10,
+        "border_top_color": "#ebebeb"
+      }
+    },
+    "text_and_image_cAJTgW": {
+      "type": "text-and-image",
+      "settings": {
+        "image": "shopify:\/\/shop_images\/Compression_Socks_Listicle_-_6_Reasons_Why_4.webp",
+        "image_width": 400,
+        "subtitle": "",
+        "title": "Graduated Compression: Keep Your Legs Fired Up, All Day Long",
+        "text": "<p>Been on your feet so long they’re practically screaming? Our 15-20 mmHg compression socks are here to help. They’ll keep your blood pumping, reduce swelling, and make your legs feel like they’re ready to go again—even if you’ve been standing since the crack of dawn.<\/p>",
+        "button_label": "",
+        "button_link": "",
+        "button_style": "primary",
+        "layout": "left",
+        "alt": false
+      }
+    },
+    "text_and_image_m3L9d4": {
+      "type": "text-and-image",
+      "settings": {
+        "image": "shopify:\/\/shop_images\/Compression_Socks_Listicle_-_6_Reasons_Why_1.webp",
+        "image_width": 400,
+        "subtitle": "",
+        "title": "Varicose Vein Prevention: No More Worrying About Those Pesky Blue Lines",
+        "text": "<p>You’re on your feet all day, and varicose veins are no joke. But don’t stress—our socks have got you covered. They help boost circulation and keep those veins in check, so you can focus on getting through the day without worrying about your legs.<\/p>",
+        "button_label": "",
+        "button_link": "",
+        "button_style": "primary",
+        "layout": "left",
+        "alt": false
+      }
+    },
+    "hero_DyEJzn": {
+      "type": "hero",
+      "settings": {
+        "big_header_text": "Aussie-Designed: Built Tough for Your Tough Days",
+        "subtitle_text": "Designed right here in Oz, these socks are made to handle whatever your day throws at you. Long shifts, constant standing—no worries, mate. They’re built to last and keep you comfortable while you power through.",
+        "button_text": "SHOP NOW",
+        "button_link": "shopify:\/\/collections\/compression-socks",
+        "background_color": "#f5be15",
+        "desktop_padding_top": 50,
+        "desktop_padding_bottom": 50,
+        "mobile_padding_top": 30,
+        "mobile_padding_bottom": 30,
+        "main_heading_font_size": 48,
+        "subheading_font_size": 18,
+        "main_heading_color": "#000000",
+        "subheading_color": "#000000",
+        "mobile_main_heading_font_size": 36,
+        "mobile_subheading_font_size": 16
+      }
+    },
+    "text_and_image_8HRiy4": {
+      "type": "text-and-image",
+      "settings": {
+        "image": "shopify:\/\/shop_images\/Compression_Socks_Listicle_-_6_Reasons_Why_7.webp",
+        "image_width": 400,
+        "subtitle": "",
+        "title": "Cushioned Luxury: Comfier Than a Kangaroo’s Pouch",
+        "text": "<p>We know standing all day can be rough, but our bamboo-blend socks are here to cushion the blow. With soft, breathable fabric and extra padding, your feet will feel like they’re walking on clouds—without the jetlag.<\/p>",
+        "button_label": "",
+        "button_link": "",
+        "button_style": "primary",
+        "layout": "right",
+        "alt": false
+      }
+    },
+    "text_and_image_6diDnz": {
+      "type": "text-and-image",
+      "settings": {
+        "image": "shopify:\/\/shop_images\/Compression_Socks_Listicle_-_6_Reasons_Why_5.webp",
+        "image_width": 400,
+        "subtitle": "",
+        "title": "Stylish & Trendy: Keep Your Feet Feeling Good and Looking Better",
+        "text": "<p>Forget boring socks—ours come in cute, trendy designs that’ll make your feet the star of the break room. Plus, they’re as functional as they are fashionable, so you can look good while staying comfy all day long.<\/p>",
+        "button_label": "",
+        "button_link": "",
+        "button_style": "primary",
+        "layout": "right",
+        "alt": false
+      }
+    },
+    "hero_LLMXUy": {
+      "type": "hero",
+      "settings": {
+        "big_header_text": "99-day Guarantee: We’ve Got Your Back (And Your Feet)",
+        "subtitle_text": "We’re so sure you’ll love our socks that we’re giving you 99 days to try them out, risk-free. If they don’t make your legs feel brand new, we’ll give you your money back—no questions asked. Easy as, mate.",
+        "button_text": "SHOP NOW",
+        "button_link": "shopify:\/\/collections\/compression-socks",
+        "background_color": "#f5be15",
+        "desktop_padding_top": 50,
+        "desktop_padding_bottom": 50,
+        "mobile_padding_top": 30,
+        "mobile_padding_bottom": 30,
+        "main_heading_font_size": 48,
+        "subheading_font_size": 18,
+        "main_heading_color": "#000000",
+        "subheading_color": "#000000",
+        "mobile_main_heading_font_size": 36,
+        "mobile_subheading_font_size": 16
+      }
+    },
+    "68681b12-95a9-4f19-8144-7b29406c141b": {
+      "type": "twocollist",
+      "blocks": {
+        "9e75c267-5f40-4a7f-b782-ee506ff29a05": {
+          "type": "list",
+          "settings": {
+            "list_image": "shopify:\/\/shop_images\/Compression_Socks_Listicle_-_6_Reasons_Why_4.jpg",
+            "list_title": "1. Goodbye Tired Feet: Nurse's Shift Comfort Secret",
+            "list_text": "Long nursing shifts demand more than light relief. Dr. Woof’s Graduated Compression Socks provide 15-20mmHg medium compression based on our feet's anatomy for demanding nursing shifts. Perfectly balancing comfort with support, the “PPE shields” against fatigue and energize your day.",
+            "button_text": "",
+            "button_url": ""
+          }
+        },
+        "38994c72-bee0-4291-9231-8d197500fad9": {
+          "type": "list",
+          "settings": {
+            "list_image": "shopify:\/\/shop_images\/Compression_Socks_Listicle_-_6_Reasons_Why_1.jpg",
+            "list_title": "2. Healthy Legs, Happy Shifts: Vein Care Essentials",
+            "list_text": "23% of Australian adults face the risk of varicose veins, a surprisingly common condition. For nurses the risk is 3.4 times higher! Dr. Woof’s Graduated Compression Socks are a proactive measure against this. They help prevent the blood pooling that leads to varicose veins, keeping legs healthy even through the longest shifts. It's more than just comfort; it's about safeguarding your health as you care for others.",
+            "button_text": "",
+            "button_url": ""
+          }
+        },
+        "list_6pBr9c": {
+          "type": "list",
+          "settings": {
+            "list_image": "shopify:\/\/shop_images\/RonSOCKs_-_Made_with_Clipchamp.gif",
+            "list_title": "3. Aussie owned: Uncompromising quality",
+            "list_text": "In a market flooded with subpar products, Dr. Woof’s Graduated Compression Socks stand out for their unwavering quality. Founded by a family of 3 Aussie doctors, our commitment to high standards is personal. We ensure each pair is robust, maintaining stretch and comfort even after extensive use – a reliable choice for nurses who deserve the best",
+            "button_text": "",
+            "button_url": ""
+          }
+        },
+        "list_T6RnyN": {
+          "type": "list",
+          "settings": {
+            "list_image": "shopify:\/\/shop_images\/Compression_Socks_Listicle_-_6_Reasons_Why_7.jpg",
+            "list_title": "4. Padded Perfection: Step with Comfort",
+            "list_text": "Imagine a sock that feels like a soft embrace for your feet. That's Dr. Woof’s Graduated Compression Socks. Designed specifically for nurses, they feature extra-thick padding and ultra-soft material, ensuring your comfort on even the longest shifts. It’s the comfort you need to keep going, step after step.",
+            "button_text": "",
+            "button_url": ""
+          }
+        },
+        "list_kFJEBz": {
+          "type": "list",
+          "settings": {
+            "list_image": "shopify:\/\/shop_images\/Compression_Socks_Listicle_-_6_Reasons_Why_5.jpg",
+            "list_title": "5. Chic and Comfy: Fashion Meets Function",
+            "list_text": "Gone are the days of bland, beige compression socks. Dr. Woof’s brings a splash of style to nursing with trendy, nurse-themed designs. Our socks feature symbols and themes that resonate with your profession, offering a personal touch to your uniform. They're a celebration of your role, adding a bit of fun to every shift.",
+            "button_text": "",
+            "button_url": ""
+          }
+        },
+        "list_nDFFEC": {
+          "type": "list",
+          "settings": {
+            "list_image": "shopify:\/\/shop_images\/Compression_Socks_Listicle_-_6_Reasons_Why_6.jpg",
+            "list_title": "6. Try, Love, or Return: 99-day Promise",
+            "list_text": "At Dr. Woof, we understand the hesitation of buying online without feeling the product first. That's why we offer a 99-day Money Back Guarantee. With a 96% satisfaction rate across all our products, we're confident in our socks, but if they don't meet your expectations, we honor returns with ease. It's risk-free comfort, tailored for nurses.",
+            "button_text": "",
+            "button_url": ""
+          }
+        }
+      },
+      "block_order": [
+        "9e75c267-5f40-4a7f-b782-ee506ff29a05",
+        "38994c72-bee0-4291-9231-8d197500fad9",
+        "list_6pBr9c",
+        "list_T6RnyN",
+        "list_kFJEBz",
+        "list_nDFFEC"
+      ],
+      "disabled": true,
+      "settings": {
+        "deskmartop": 40,
+        "deskmarbot": 40,
+        "mobmartop": 20,
+        "mobmarbot": 20
+      }
+    },
+    "advanced_content_7w4nzG": {
+      "type": "advanced-content",
+      "blocks": {
+        "image_xVigmp": {
+          "type": "image",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/1_c8801da3-8a8a-4735-ac42-1c99acb6920a.png",
+            "link": "",
+            "width": "33%",
+            "alignment": "top-middle"
+          }
+        },
+        "image_bxfKbz": {
+          "type": "image",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/2_7304abf1-2053-4102-a59d-7f87a51bd467.png",
+            "link": "",
+            "width": "33%",
+            "alignment": "top-middle"
+          }
+        },
+        "image_cpHEyi": {
+          "type": "image",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/4_df93db99-6634-47a7-a901-ac870b57d2fa.png",
+            "link": "",
+            "width": "33%",
+            "alignment": "top-middle"
+          }
+        }
+      },
+      "block_order": [
+        "image_xVigmp",
+        "image_bxfKbz",
+        "image_cpHEyi"
+      ],
+      "settings": {
+        "full_width": false,
+        "space_around": true,
+        "alt": false
+      }
+    },
+    "advanced_content_nbifMV": {
+      "type": "advanced-content",
+      "blocks": {
+        "image_XDYUFj": {
+          "type": "image",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/3_6260f536-f165-487e-8455-96e776ceb057.png",
+            "link": "",
+            "width": "33%",
+            "alignment": "top-middle"
+          }
+        },
+        "image_W6hGEQ": {
+          "type": "image",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/5_594e861b-d3f7-4bc7-b845-fcae65857b37.png",
+            "link": "",
+            "width": "33%",
+            "alignment": "top-middle"
+          }
+        },
+        "image_dWJBkN": {
+          "type": "image",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/6_701377d4-4bef-4cc7-a4b8-c80bd3dbdeaf.png",
+            "link": "",
+            "width": "33%",
+            "alignment": "top-middle"
+          }
+        }
+      },
+      "block_order": [
+        "image_XDYUFj",
+        "image_W6hGEQ",
+        "image_dWJBkN"
+      ],
+      "settings": {
+        "full_width": false,
+        "space_around": true,
+        "alt": false
+      }
+    },
+    "faq_section_8tHVAi": {
+      "type": "faq-section",
+      "blocks": {
+        "rich_text_FAxymP": {
+          "type": "rich-text",
+          "settings": {
+            "title": "FREQUENTLY ASKED QUESTIONS",
+            "text": "",
+            "align_text": "left"
+          }
+        },
+        "question_grgxrb": {
+          "type": "question",
+          "settings": {
+            "title": "What’s the compression level of Dr Woof Graduated Compression Socks?",
+            "text": "<p><em>Kick back and relax; our Graduated Compression Socks offer a snug, not too tight compression level of 15-20 mmHg. Perfect for those days when your feet need a little extra love and support.<\/em><\/p>"
+          }
+        },
+        "question_7LYDQE": {
+          "type": "question",
+          "settings": {
+            "title": "What sets Dr Woof Graduated Compression Socks apart?",
+            "text": "<p><em>Our socks come with a whole suite of features to keep your feet happy! They offer 360° seamless compression for comfort, a medium compression level to ease your day, super stretchy fabric that hugs your feet just right, moisture-wicking technology to keep you dry, and extra cushioning in the heel and toe for that cloud-nine feeling.<\/em><\/p>"
+          }
+        },
+        "question_dLeBT9": {
+          "type": "question",
+          "settings": {
+            "title": "What are Dr Woof Graduated Compression Socks made of?",
+            "text": "<p><em>Crafted with care, our socks are made from 46% Bamboo fibre<br\/>46% Poly, and 8% Elastane. Blending durability and flexibility for the ultimate fit and comfort.<\/em><\/p>"
+          }
+        },
+        "question_xpN3QP": {
+          "type": "question",
+          "settings": {
+            "title": "How should I care for my Dr Woof Graduated Compression Socks?",
+            "text": "<p><em>Keep your socks in prime condition by washing them with like colors at a cool temperature under 30°C, and letting them air dry. Steer clear of bleach, ironing, and tumble drying to keep them perfect.<\/em><\/p>"
+          }
+        },
+        "question_FiD6RU": {
+          "type": "question",
+          "settings": {
+            "title": "What sizes do Dr Woof Graduated Compression Socks come in?",
+            "text": "<p><em>Currently, we offer sizes Small and Medium. Check out our sizing guide to find your perfect match and step into comfort.<\/em><\/p>"
+          }
+        },
+        "question_ghmkdz": {
+          "type": "question",
+          "settings": {
+            "title": "Will the fabric of Dr Woof Graduated Compression Socks lose its stretch over time?",
+            "text": "<p><em>No worries here! Our socks are designed with super stretchy fabric that maintains its elasticity, ensuring you get a consistent fit and comfort, wear after wear.<\/em><\/p>"
+          }
+        },
+        "question_NDLHni": {
+          "type": "question",
+          "settings": {
+            "title": "Can Dr Woof Graduated Compression Socks help keep my feet dry?",
+            "text": "<p><em>Yes, indeed! Our socks are equipped with moisture-wicking technology that pulls sweat away from your skin, keeping your feet dry and comfortable all day long.<\/em><\/p>"
+          }
+        },
+        "question_xtxKHJ": {
+          "type": "question",
+          "settings": {
+            "title": "Do Dr Woof Graduated Compression Socks offer extra protection for my feet?",
+            "text": "<p><em>Absolutely! With extra thick cushioning in the heel and toe areas, our socks provide enhanced comfort and protection against blisters, so you can move through your day with ease.<\/em><\/p>"
+          }
+        }
+      },
+      "block_order": [
+        "rich_text_FAxymP",
+        "question_grgxrb",
+        "question_7LYDQE",
+        "question_dLeBT9",
+        "question_xpN3QP",
+        "question_FiD6RU",
+        "question_ghmkdz",
+        "question_NDLHni",
+        "question_xtxKHJ"
+      ],
+      "settings": {
+        "page_title_enable": false,
+        "page_content_enable": false
+      }
+    },
+    "adsection_DFck6h": {
+      "type": "adsection",
+      "settings": {
+        "darktheme": true,
+        "deskmartop": 20,
+        "deskmarbot": 20,
+        "mobmartop": 0,
+        "mobmarbot": 30,
+        "bigtext": "BUILD YOUR PACK: BUY 3 PAIRS GET 1 PAIR FREE",
+        "reviewstars_text": "",
+        "bigtextsize": 36,
+        "textbut": "SHOP NOW",
+        "buttonlink": "shopify:\/\/collections\/compression-socks",
+        "bgcolor": "#0b0d32"
+      }
+    },
+    "custom_html_3Jq8JP": {
+      "type": "custom-html",
+      "settings": {
+        "custom_html": "<img data-swift-lazy=\"1\" loading=\"lazy\" class=\"\" src=\"\/\/www.drwoofapparel.com.au\/cdn\/shop\/files\/Horizontal_logo_transparent_background_blue_2_7dc8a8de-20c6-4155-8747-0810a5b4b5e0_210x.png?v=1704080588\" srcset=\"\/\/www.drwoofapparel.com.au\/cdn\/shop\/files\/Horizontal_logo_transparent_background_blue_2_7dc8a8de-20c6-4155-8747-0810a5b4b5e0_210x.png?v=1704080588 1x, \/\/www.drwoofapparel.com.au\/cdn\/shop\/files\/Horizontal_logo_transparent_background_blue_2_7dc8a8de-20c6-4155-8747-0810a5b4b5e0_210x@2x.png?v=1704080588 2x\" alt=\"Dr. Woof Apparel AU\" style=\"display:block;margin:0 auto;\">"
+      }
+    }
+  },
+  "order": [
+    "annoucement_iRq3kh",
+    "custom_html_y8fDJx",
+    "linehr_KaqfzV",
+    "headerv2_RAQDLX",
+    "logo_list_eHc4an",
+    "featured_collection_slider_c96KwL",
+    "linehr_eMMVgV",
+    "text_and_image_cAJTgW",
+    "text_and_image_m3L9d4",
+    "hero_DyEJzn",
+    "text_and_image_8HRiy4",
+    "text_and_image_6diDnz",
+    "hero_LLMXUy",
+    "68681b12-95a9-4f19-8144-7b29406c141b",
+    "advanced_content_7w4nzG",
+    "advanced_content_nbifMV",
+    "faq_section_8tHVAi",
+    "adsection_DFck6h",
+    "custom_html_3Jq8JP"
+  ]
 }
