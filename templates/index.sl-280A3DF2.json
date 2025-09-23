@@ -9,7 +9,7 @@
         "replo_text_d572b02e-ccb0-4011-858b-9c5b2df8e063": "<p>SHOP SCRUBS<\/p>",
         "replo_url_a1956502-dca1-43d1-bce3-117da0853e72": "",
         "replo_text_d1cdb154-7d8b-44a6-8ca6-f20a940c5203": "<p>SHOP COMPRESSION SOCKS<\/p>",
-        "replo_text_9482aefc-d769-4fc6-ad8f-1e3f3bbbf03d": "<p>60-day money back guarantee<\/p>"
+        "replo_text_9482aefc-d769-4fc6-ad8f-1e3f3bbbf03d": "<p>99-day money back guarantee<\/p>"
       }
     },
     "1c64d667-b672-4f7b-b9be-2310692e99f1": {
@@ -325,7 +325,7 @@
           "settings": {
             "image": "shopify:\/\/shop_images\/Award_750x_9dd04e23-79e7-40e3-933a-670ba3458258.png",
             "link": "",
-            "logotitle": "60-day guarantee",
+            "logotitle": "99-day guarantee",
             "logotext": "Love it or your money back"
           }
         }

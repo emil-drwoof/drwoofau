@@ -52,7 +52,7 @@
           "type": "list",
           "disabled": true,
           "settings": {
-            "text_list": "60-Day money back guarantee"
+            "text_list": "99-day money back guarantee"
           }
         }
       },
@@ -322,7 +322,7 @@
       "settings": {
         "replo_text_d2339081-2aac-40df-931c-5c07ef32b084": "",
         "replo_text_35ec7589-2470-4d8f-bcfd-c874e67bfb08": "<p>Say Goodbye to Fatigue in 30 Days—Or It’s Free!<br\/><br\/><\/p>",
-        "replo_text_a22d138f-60a4-4bfd-96ed-20ea923e6381": "<p>We’re so confident you’ll love them, we’re offering a 60-Day Money-Back Guarantee. Not satisfied? We’ll give you a full refund—no questions asked.<\/p>",
+        "replo_text_a22d138f-60a4-4bfd-96ed-20ea923e6381": "<p>We’re so confident you’ll love them, we’re offering a 99-day Money-Back Guarantee. Not satisfied? We’ll give you a full refund—no questions asked.<\/p>",
         "replo_url_a6be2aa5-eb93-44f3-a993-ae2aa2816ea1": "shopify:\/\/collections\/compression-socks",
         "replo_text_3c32c631-d5f6-4308-923c-195d96de1982": "<p>SHOP NOW<\/p>",
         "replo_style_image_e27af923-d3a0-4fc3-940b-8e3217b8c347": "shopify:\/\/shop_images\/LANDING_PAGE_PDP.png"
@@ -350,8 +350,8 @@
       "type": "hero",
       "disabled": true,
       "settings": {
-        "big_header_text": "6. Feel Confident with Our 60-Day Guarantee",
-        "subtitle_text": "We know trying something new can feel like a leap of faith, but with our 60-day guarantee, there’s no need to worry. Give our bamboo compression socks a try, and if they’re not the perfect fit, we’ll take them back—no hassle, no stress. You’ve got nothing to lose, except those tired legs.",
+        "big_header_text": "6. Feel Confident with Our 99-day Guarantee",
+        "subtitle_text": "We know trying something new can feel like a leap of faith, but with our 99-day guarantee, there’s no need to worry. Give our bamboo compression socks a try, and if they’re not the perfect fit, we’ll take them back—no hassle, no stress. You’ve got nothing to lose, except those tired legs.",
         "button_text": "SHOP NOW",
         "button_link": "shopify:\/\/collections\/compression-socks",
         "background_color": "#f5be15",

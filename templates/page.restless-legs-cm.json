@@ -52,7 +52,7 @@
           "type": "list",
           "disabled": true,
           "settings": {
-            "text_list": "60-Day money back guarantee"
+            "text_list": "99-day money back guarantee"
           }
         }
       },
@@ -350,8 +350,8 @@
       "type": "hero",
       "disabled": true,
       "settings": {
-        "big_header_text": "6. Feel Confident with Our 60-Day Guarantee",
-        "subtitle_text": "We know trying something new can feel like a leap of faith, but with our 60-day guarantee, there’s no need to worry. Give our bamboo compression socks a try, and if they’re not the perfect fit, we’ll take them back—no hassle, no stress. You’ve got nothing to lose, except those tired legs.",
+        "big_header_text": "6. Feel Confident with Our 99-day Guarantee",
+        "subtitle_text": "We know trying something new can feel like a leap of faith, but with our 99-day guarantee, there’s no need to worry. Give our bamboo compression socks a try, and if they’re not the perfect fit, we’ll take them back—no hassle, no stress. You’ve got nothing to lose, except those tired legs.",
         "button_text": "SHOP NOW",
         "button_link": "shopify:\/\/collections\/compression-socks",
         "background_color": "#f5be15",
