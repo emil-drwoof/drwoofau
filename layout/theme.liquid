@@ -1175,11 +1175,15 @@ document.addEventListener("DOMContentLoaded", function () {
           <script src="{{ 'theme.js' | asset_url }}" defer></script>
         {% else %}
           {% if template.suffix == 'os2template-scrubs' or template.suffix == 'os2printedtopsbundle' or template.suffix == 'sl-36C42638' or product.type == "Vet Scrubs" or product.type == "Nurse Bag" %}
+            {% if product.tags contains 'merged' %}
+              <script src="{{ 'theme-dual-merged.js' | asset_url }}" defer></script>
+            {% else %}
               <script src="{{ 'theme-dual.js' | asset_url }}" defer></script>
+            {% endif %}
           {% else %}
 
             {% if product.id == 8891402027266 or product.id == 8056106189058 or product.id == 8320636780802 or product.id == 8207921185026 or product.id == 8177226187010 or product.id == 8005417533698 or product.id == 6701376274616  or product.id == 6701376078008 or product.id == 8224581288194 or product.id == 7461809127682  or product.id == 7819011490050 or product.id == 8000060850434 or product.id == 7461809160450  or product.id == 6751392006328 or product.id == 7461809258754 or product.id == 6751389483192 or product.id == 8005449679106 or product.id == 6751404523704  or product.id == 7473530503426 or product.id == 6701375455416  or product.id == 7473526767874 or product.id == 7815271776514 or product.id == 7815268663554 or product.id == 6751389483192 or product.id == 7461809258754 or product.id == 8296907473154 or product.type == "Men Scrub Tops" or product.type contains "Clearance" or product.type contains "Women Fleece Jacket" of product.type contains "Women's Featherlight 50 Down Vest" or product.type contains "Women Scrub Tops" or template contains 'product' or product.type == 'Nurse Bag' %}
-              {% if product.type == "Free Gift" or product.type == 'Gift Cards' %}
+              {% if product.type == "Free Gift" or product.type == 'Gift Cards' or product.type == 'Printed Pattern Scrub Jumpsuit' %}
                   <script src="{{ 'theme.js' | asset_url }}" defer></script>
               {% else %}
                   <script src="{{ 'theme-preorder.js' | asset_url }}" defer></script>

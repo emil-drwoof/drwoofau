@@ -1,0 +1,939 @@
+<!-- sections/product-template-new-sock -->
+{% include 'product-template-perf-sock',
+  section_id: product.id,
+
+  product_shipping_callout: section.settings.product_shipping_callout,
+  product_image_size: section.settings.product_image_size,
+  product_image_type: section.settings.product_image_type,
+  product_zoom_enable: section.settings.product_zoom_enable,
+  variant_type: section.settings.variant_type,
+  variant_labels_enable: section.settings.variant_labels_enable,
+  sku_enable: section.settings.sku_enable,
+  quantity_enable: section.settings.quantity_enable,
+  inventory_enable: section.settings.inventory_enable,
+  inventory_threshold: section.settings.inventory_threshold,
+  inventory_transfers_enable: section.settings.inventory_transfers_enable,
+  enable_payment_button: section.settings.enable_payment_button,
+  social_enable: section.settings.social_enable,
+  video_looping: section.settings.enable_video_looping,
+  video_style: section.settings.product_video_style
+%}
+
+<style>
+  .main-textamonials{
+    margin-bottom:0 !important;
+  }
+  span.size-desc {
+    font-size: 16px;
+}
+</style>
+<script>
+    function findVariantId(productHandle, productType, productSize) {
+    var product = productsData[productHandle];
+    
+    if (product) {
+      var variants = product.variants;
+      for (var i = 0; i < variants.length; i++) {
+        var variant = variants[i];
+        if (variant.option1 === productType && variant.option2 === productSize) {
+          return variant.id; // Return the variant ID that matches both options
+        }
+      }
+    }
+     
+    return null; // Return null if no matching variant is found
+  }
+  function findVariant(productHandle, productType, productSize) {
+    var product = productsData[productHandle];
+    
+    if (product) {
+      var variants = product.variants;
+      for (var i = 0; i < variants.length; i++) {
+        var variant = variants[i];
+        if (variant.option1 === productType && variant.option2 === productSize) {
+          return variant; // Return the entire variant object
+        }
+      }
+    }
+    
+    return null; // Return null if no matching variant is found
+  }
+
+  // Function to check if a variant is available
+  function isVariantAvailable(productHandle, productType, productSize) {
+    var variant = findVariant(productHandle, productType, productSize);
+    
+    if (variant) {
+      return variant.available; // Returns true or false based on availability
+    }
+
+    return false; // Return false if the variant is not found
+  }
+
+  // Function to get the stock quantity of the variant
+  function getVariantStock(productHandle, productType, productSize) {
+    var variant = findVariant(productHandle, productType, productSize);
+    
+    if (variant) {
+      return variant.inventory_quantity; // Returns the stock quantity
+    }
+
+    return 0; // Return 0 if the variant is not found
+  }
+
+  // Example usage of the functions:
+  $(document).ready(function(){
+  // Function to find the variant ID
+
+  $(".btn-sock").on("click",function(){    
+    $(".btn-sock").removeClass("actives")
+    $(this).addClass("actives")
+    $selectedProductHandle = $(".activer").attr('data-handle')
+      $selectedProductType = $(".actives").attr('data-type')
+      $selectedProductSize = $(".atv").attr('data-size')
+      
+      $socvarid = findVariantId($selectedProductHandle, $selectedProductType, $selectedProductSize)
+      $socavail = isVariantAvailable($selectedProductHandle, $selectedProductType, $selectedProductSize);
+      $socqty = getVariantStock($selectedProductHandle, $selectedProductType, $selectedProductSize);
+      
+      
+      
+      if(($socavail) && ($socqty <= 0)){
+        $(".capsbundleatd").html("PREORDER")
+        $(".preorder-text").show()
+        $(".capsbundleatd").prop('disabled', false);
+      }else{
+        if(($socavail) && ($socqty > 0)){
+        $(".capsbundleatd").html("ADD TO CART")
+        $(".preorder-text").hide()
+        $(".capsbundleatd").prop('disabled', false);
+        }else{
+          $(".capsbundleatd").html("SOLD OUT")
+          $(".capsbundleatd").prop('disabled', true);
+          $(".preorder-text").hide()
+        }
+      }
+
+
+      $socavailS = isVariantAvailable($selectedProductHandle, $selectedProductType, "S");
+      $socavailM = isVariantAvailable($selectedProductHandle, $selectedProductType, "M");
+      $socavailL = isVariantAvailable($selectedProductHandle, $selectedProductType, "L");
+
+      if(!$socavailS){
+        $(".btn-primer.S").addClass("supdis")
+      }else{
+        $(".btn-primer.S").removeClass("supdis")
+      }
+      if(!$socavailM){
+        $(".btn-primer.M").addClass("supdis")
+      }else{
+        $(".btn-primer.M").removeClass("supdis")
+      }
+      if(!$socavailL){
+        $(".btn-primer.L").addClass("supdis")
+        $(".btn-primer.L").hide()
+        
+      }else{
+        $(".btn-primer.L").removeClass("supdis")
+        $(".btn-primer.L").show()
+      }
+
+
+
+  })
+
+  $(".image-overlay").on("click", function() {
+    
+   
+      $(".capsbundleatd").removeClass("soldoutx")
+      $(".btn-primer").show()
+
+      $(".btn-sock").removeClass("actives")  
+      $(".btn-sock.regular").addClass("actives")
+      $(".btn-primer").removeClass("atv")  
+      $(".btn-primer.S").addClass("atv")
+
+      $(".image-overlay").removeClass("activer");
+      $(this).addClass("activer");
+      $caphandle = $(this).attr("data-handle")
+      $captitle = $(this).attr("data-title")
+      $capid = $(this).attr("data-id")
+      $capimage = $(this).attr("data-image")
+      $capurl = $(this).attr("data-url")
+      $capxlid = $(this).attr("data-xl+")
+      $capxlavail = $(this).attr("data-xl+-avail")
+      $capstandardid = $(this).attr("data-standard")
+      $capstandardavail = $(this).attr("data-standard-avail")
+      $capsprice = $(this).attr("data-price")
+      $capscompare = $(this).attr("data-compare")
+
+      console.log("xoooo" + $capid)
+              switch($capid) {
+    case "8742079267074":
+        $(".preorderdate").html("September 10");
+        break;
+    case "8702953947394":
+        $(".preorderdate").html("September 10");
+        break;
+    case "8742080872706":
+        $(".preorderdate").html("September 10");
+        break;
+    case "8742083002626":
+        $(".preorderdate").html("September 10");
+        break;
+    case "8320634192130":
+        $(".preorderdate").html("September 10");
+        break;
+    case "8742084247810":
+        $(".preorderdate").html("September 10");
+        break;
+    case "8702954799362":
+        $(".preorderdate").html("September 10");
+        break;
+    case "8702953062658":
+        $(".preorderdate").html("September 10");
+        break;
+    case "8742079267074":
+        $(".preorderdate").html("September 10");
+        break;
+    case "8702949916930":
+        $(".preorderdate").html("September 10");
+        break;
+    case "8702953718018":
+        $(".preorderdate").html("September 10");
+        break;
+    case "8702953947394":
+        $(".preorderdate").html("September 10");
+        break;
+    case "87029547993624":
+        $(".preorderdate").html("September 10");
+        break;
+    case "8702954963202":
+        $(".preorderdate").html("September 10");
+        break;
+    case "8702955356418":
+        $(".preorderdate").html("September 10");
+        break;
+    
+    // New product IDs
+    case "8810379739394":
+    $(".preorderdate").html("September 10");
+    break;
+    case "8810379444482":
+    $(".preorderdate").html("September 10");
+    break;
+    case "8810379116802":
+    $(".preorderdate").html("September 10");
+    break;
+    case "8810378658050":
+    $(".preorderdate").html("September 10");
+    break;
+    case "8810378297602":
+    $(".preorderdate").html("September 10");
+    break;
+    case "8810377347330":
+    $(".preorderdate").html("September 10");
+    break;
+    case "8810376167682":
+    $(".preorderdate").html("September 10");
+    break;
+    case "8810375086338":
+    $(".preorderdate").html("September 10");
+    break;
+    case "8810373382402":
+    $(".preorderdate").html("September 10");
+    break;
+    case "8810373185794":
+    $(".preorderdate").html("September 10");
+    break;
+    case "8810372858114":
+        $(".preorderdate").html("September 10");
+        break;
+
+    default:
+        $(".preorderdate").html("September 10");
+}
+      $selectedProductHandle = $(".activer").attr('data-handle')
+      $selectedProductType = $(".actives").attr('data-type')
+      $selectedProductSize = $(".atv").attr('data-size')
+      
+      $socvarid = findVariantId($selectedProductHandle, $selectedProductType, $selectedProductSize)
+      $socavail = isVariantAvailable($selectedProductHandle, $selectedProductType, $selectedProductSize);
+      $socqty = getVariantStock($selectedProductHandle, $selectedProductType, $selectedProductSize);
+      
+      
+      if(($socavail) && ($socqty <= 0)){
+        $(".capsbundleatd").html("PREORDER")
+        $(".preorder-text").show()
+        $(".capsbundleatd").prop('disabled', false);
+      }else{
+        if(($socavail) && ($socqty > 0)){
+        $(".capsbundleatd").html("ADD TO CART")
+        $(".preorder-text").hide()
+        $(".capsbundleatd").prop('disabled', false);
+        }else{
+          $(".capsbundleatd").html("SOLD OUT")
+          $(".capsbundleatd").prop('disabled', true);
+          $(".preorder-text").hide()
+        }
+      }
+
+      $(this).find("input").each(function(i, obj) {
+        $socname = $(this).attr("name")
+        $socavail = $(this).attr("data-socavail")
+        $socvarid = $(this).attr("data-socvarid")
+        $xsocqty = $(this).attr("data-socqty")
+
+        if ( i === 0) {
+          $(".righthere").html("")
+          if($socavail == 'true'){
+            
+            $(".righthere").append("<span class='btn-primer " + $socname + " atv' data-socvarid='" + $socvarid + "' data-socname='" + $socname + "' data-socqty='" + $xsocqty + "' data-socavail='" + $socavail + "'>" + $socname + "</span>")
+            if($xsocqty <= 0 ){
+              $(".capsbundleatd").html("PRE-ORDER")
+              $(".preorder-text").show()
+
+            }else{
+              $(".capsbundleatd").html("ADD TO CART")
+              $(".preorder-text").hide()           
+            }
+
+          }else{
+            $(".righthere").append("<span class='btn-primer " + $socname + " butttonsoldout' data-socvarid='" + $socvarid + "' data-socavail='" + $socavail + "' data-socname='" + $socname + "' data-socqty='" + $xsocqty + "' >" + $socname + "</span>")
+              $(".capsbundleatd").html("SOLD OUT")
+              $(".preorder-text").hide()
+          }
+        }else{
+          if($socavail == 'true'){
+            
+            $(".righthere").append("<span class='btn-primer " + $socname + "' data-socvarid='" + $socvarid + "' data-socavail='" + $socavail + "' data-socname='" + $socname + "' data-socqty='" + $xsocqty + "' >" + $socname + "</span>")
+          }else{
+            
+            $(".righthere").append("<span class='btn-primer  " + $socname + " butttonsoldout' data-socvarid='" + $socvarid + "' data-socavail='" + $socavail + "' data-socname='" + $socname + "' data-socqty='" + $xsocqty + "' >" + $socname + "</span>")
+          }
+        }
+      
+      
+      });
+      
+      
+
+
+      if ($capstandardavail == 'true') {
+          $(".standard").removeClass("butttonsoldout")
+          $(".standard").addClass("atv")
+          $(".XL").removeClass("atv")
+      } else {
+          $(".standard").addClass("butttonsoldout")
+          $(".standard").removeClass("atv")
+          $(".XL").addClass("atv")
+      }
+      if ($capxlavail == 'true') {
+          $(".XL").removeClass("butttonsoldout")
+      } else {
+          $(".XL").addClass("butttonsoldout")
+      }
+
+      if (typeof $capscompare === 'undefined' || $capscompare == '$0.00' || $capscompare == '') {
+          $(".product-single__prices").html('<span data-price="" class="9 normalPrice product__price" data-product-price="">' + $capsprice + '</span>')
+      } else {
+          $(".product-single__prices").html('<span class=" normal_price" data-price-wrapper=""><span class="1 product__price product__price--compare" data-product-price-compare="">' + $capscompare + '</span></span>    <span data-price="" class="2 normalPrice product__price sale-price" data-product-price="">' + $capsprice + '<span style="margin-bottom:12px;color:black; font-size: medium;display:inline-block"></span></span>')
+      }
+
+
+      $(".capstandardid").val($capstandardid)
+      $(".capxlid").val($capxlid)
+      $(".product-single__title").html($captitle)
+      $.ajax({
+          type: "GET",
+          url: $capurl,
+          datatype: "HTML",
+          beforeSend: function() {},
+          complete: function() {
+              setTimeout(function() {
+                  $(".product__photos").css("opacity", 1);
+              }, 1);
+          },
+          success: function(t) {
+              t = disableJavaScript(t)
+              
+              var i = $(t).find(".oneway.product__photos").html();
+              var j = $(t).find(".woof-accordion-content").html();
+              
+              // var k = $(t).find(".main-content .shopify-section:nth-child(2) .custom-image-with-richtext").html();
+              var l = $(t).find(".main-content .shopify-section:nth-child(2) .sections-wrapper.page-blocks").html();
+              $(".oneway.product__photos").html(i),
+                  $(".woof-accordion-content:first-of-type").html(j),
+                  // $(".main-content .shopify-section:nth-child(2)").html('<div class="page-width feature-row-wrapper custom-image-with-richtext">' + k + '</div>'),
+                  // $(".main-content .shopify-section:nth-child(2)").html(l),
+{% if template.suffix == 'os2printedtopsbundle' or template.suffix == 'sl-36C42638' %}
+                                                  $(".oneway .product__thumbs").slick({ slidesToShow: 6, slidesToScroll: 1, arrows: !1, fade: !1, vertical: !0 }),
+                                768 >= $(window).width() && $(".oneway .Main--ProductPhotos").slick({                                             
+                                            asNavFor: '', 
+                                            arrows: true,
+                                            dots: false,
+                                            initialSlide: 0,
+                                            centerMode: false,
+                                            centerPadding: '0px',
+                                            slidesToScroll: 2,
+                                            slidesToShow: 2,
+                                            infinite: true }),   
+                                $(".Main--ProductPhotos video").trigger("play"),        
+{% else %}
+
+                  $(".oneway .product__thumbs").slick({
+                      slidesToShow: 6,
+                      slidesToScroll: 1,
+                      arrows: !1,
+                      fade: !1,
+                      vertical: !0
+                  }),
+                  768 >= $(window).width() && $(".oneway .Main--ProductPhotos").slick({
+                      slidesToShow: 1,
+                      centerMode: true,
+                      slidesToScroll: 1,
+                      arrows: !1,
+                      centerPadding: '70px',
+                      dots: !0
+                  }),
+{% endif %}
+                  $(".product__photos").css("opacity", 1);
+          },
+      });
+     
+
+
+
+
+
+      {% comment %}
+      switch ($capid) {
+        case "8296911995138":
+            if($socqty <= 0){
+              $(".capsbundleatd").html("PRE-ORDER")
+              $(".preorder-text").show()
+            }else{
+              $(".capsbundleatd").html("ADD TO CART")
+              $(".preorder-text").hide()
+            }
+            break;
+          case "8296912421122":
+          if($socqty <= 0){
+              $(".capsbundleatd").html("PRE-ORDER")
+              $(".preorder-text").show()
+            }else{
+              $(".capsbundleatd").html("ADD TO CART")
+              $(".preorder-text").hide()
+            }
+            break;
+          case "8320635240706":
+          if($socqty <= 0){
+              $(".capsbundleatd").html("PRE-ORDER")
+              $(".preorder-text").show()
+            }else{
+              $(".capsbundleatd").html("ADD TO CART")
+              $(".preorder-text").hide()
+            }
+            break;
+          case "8320635633922":
+          if($socqty <= 0){
+              $(".capsbundleatd").html("PRE-ORDER")
+              $(".preorder-text").show()
+            }else{
+              $(".capsbundleatd").html("ADD TO CART")
+              $(".preorder-text").hide()
+            }
+            break;
+        case 5:
+          $(".capsbundleatd").html("PRE-ORDER")
+          $(".preorder-text").show()
+          break;
+        default:
+        $(".capsbundleatd").html("ADD TO CART")
+        $(".preorder-text").hide()
+      }
+      {% endcomment %}
+
+      {% if section.settings.enable_ab_size %}
+          $dron = ""
+          $dron = $(".atv").html()
+          switch ($dron) {
+          case "S":
+          $(".size-desc").html("Small (Women 5.5-8 | Men 4.5-7)")
+            break;
+          case "M":
+          $(".size-desc").html("Medium (Women 9-11 | Men 7.5-9.5)")
+            break;
+            case "L":
+          $(".size-desc").html("Large (Women 12-15 | Men 10-13)")
+            break;
+          default:
+            $(".size-desc").html("Small (Women 5.5-8 | Men 4.5-7)")
+        }
+      {% endif %}
+
+
+
+      $socavailS = isVariantAvailable($selectedProductHandle, "Regular", "S");
+      $socavailM = isVariantAvailable($selectedProductHandle, "Regular", "M");
+      $socavailL = isVariantAvailable($selectedProductHandle, "Regular", "L");
+
+      if(!$socavailS){
+        $(".btn-primer.S").addClass("supdis")
+      }else{
+        $(".btn-primer.S").removeClass("supdis")
+      }
+      if(!$socavailM){
+        $(".btn-primer.M").addClass("supdis")
+      }else{
+        $(".btn-primer.M").removeClass("supdis")
+      }
+      if(!$socavailL){
+        $(".btn-primer.L").addClass("supdis")
+        $(".btn-primer.L").hide()
+      }else{
+        $(".btn-primer.L").removeClass("supdis")
+        $(".btn-primer.L").show()
+      }
+
+      $socavailWS = isVariantAvailable($selectedProductHandle, "Wide", "S");
+      $socavailWM = isVariantAvailable($selectedProductHandle, "Wide", "M");
+      $socavailWL = isVariantAvailable($selectedProductHandle, "Wide", "L");
+
+      if((!$socavailWS) && (!$socavailWM) && (!$socavailWL)){
+        $(".btn-sock.wide").addClass("supdis").css('pointer-events', 'none');
+      }else{
+        $(".btn-sock.wide").removeClass("supdis").css('pointer-events', 'auto');
+      }
+      
+  })
+  /* end of image-overlay click */
+
+
+  
+
+
+  
+  $(".capsbundleatd").click(function() {
+      $(this).html("Preparing..")
+
+
+  $selectedProductHandle = $(".activer").attr('data-handle')
+  $selectedProductType = $(".actives").attr('data-type')
+  $selectedProductSize = $(".atv").attr('data-size')
+  
+  $socvarid = findVariantId($selectedProductHandle, $selectedProductType, $selectedProductSize)
+  $socavail = isVariantAvailable($selectedProductHandle, $selectedProductType, $selectedProductSize);
+  $socqty = getVariantStock($selectedProductHandle, $selectedProductType, $selectedProductSize);
+  
+
+
+      if($socavail){
+        dataxc = {
+              "id": $socvarid,
+              "quantity": 1
+          }
+
+
+          jQuery.ajax({
+              type: 'POST',
+              url: '/cart/add.js',
+              data: dataxc,
+              dataType: 'json',
+              success: function() {
+                  $(".capsbundleatd").html("ADDED TO BAG")
+                  cart_update();
+              }
+          })
+      }else{
+        alert("not available")
+      }
+
+  });
+  
+    {% if section.settings.enable_ab_size %}
+
+
+  var interval = setInterval(function() {
+      if ($(".atv").length) {
+          $dron = $(".atv").html()
+          switch ($dron) {
+          case "S":
+          $(".size-desc").html("Small (Women 5.5-8 | Men 4.5-7)")
+            break;
+          case "M":
+          $(".size-desc").html("Medium (Women 9-11 | Men 7.5-9.5)")
+            break;
+            case "L":
+          $(".size-desc").html("Large (Women 12-15 | Men 10-13)")
+            break;
+          default:
+            
+        }
+          clearInterval(interval); // Stop the interval when the div is fully loaded
+      } 
+    }, 1000); 
+{% endif %}
+    $(document).on("click",".btn-primer",function(){
+      
+    {% if section.settings.enable_ab_size %}
+
+        $size = $(this).html()
+
+        switch ($size) {
+          case "S":
+          $(".size-desc").html("Small (Women 5.5-8 | Men 4.5-7)")
+            break;
+          case "M":
+          $(".size-desc").html("Medium (Women 9-11 | Men 7.5-9.5)")
+            break;
+            case "L":
+          $(".size-desc").html("Large (Women 12-15 | Men 10-13)")
+            break;
+          default:
+            
+        }
+
+
+    {% endif %}
+
+    $selectedProductHandle = $(".activer").attr('data-handle')
+      $selectedProductType = $(".actives").attr('data-type')
+      $selectedProductSize = $(".atv").attr('data-size')
+      
+      $socvarid = findVariantId($selectedProductHandle, $selectedProductType, $selectedProductSize)
+      $socavail = isVariantAvailable($selectedProductHandle, $selectedProductType, $selectedProductSize);
+      $socqty = getVariantStock($selectedProductHandle, $selectedProductType, $selectedProductSize);
+      
+      
+      if(($socavail) && ($socqty <= 0)){
+        $(".capsbundleatd").html("PREORDER")
+        $(".preorder-text").show()
+        $(".capsbundleatd").prop('disabled', false);
+      }else{
+        if(($socavail) && ($socqty > 0)){
+        $(".capsbundleatd").html("ADD TO CART")
+        $(".preorder-text").hide()
+        $(".capsbundleatd").prop('disabled', false);
+        }else{
+          if($(this).hasClass("S") && $(".actives").hasClass("wide")){
+            $(".capsbundleatd").html("Unavailable")
+          }else{
+            $(".capsbundleatd").html("SOLD OUT")
+          }          
+          $(".capsbundleatd").prop('disabled', true);
+          $(".preorder-text").hide()
+        }
+      }
+
+
+    })
+  })
+</script>
+{% schema %}
+  {
+    "name": "Product pages",
+    "settings": [
+      {
+      "type":"text",
+        "id":"sockpreorderdate",
+        "label":"Sock preorder date"
+      },
+      {
+        "type": "header",
+        "content": "Caps A/B testing"
+      }, 
+      {
+        "type": "checkbox",
+        "id": "abtestnoicons",
+        "label": "Enable AB test no icons",
+        "default": false
+      },
+      {
+        "type": "checkbox",
+        "id": "abtestdavideo",
+        "label": "Enable video below atc",
+        "default": false
+      },
+      {
+        "type": "checkbox",
+        "id": "enable_ab_size",
+        "label": "Enable caps A/B testing for sizing",
+        "default": false
+      },
+      {
+        "type": "checkbox",
+        "id": "abtesting1",
+        "label": "Enable ab testing 1",
+        "default": false
+      },
+      {
+        "type": "checkbox",
+        "id": "abtesting2",
+        "label": "Enable Freeset Offer",
+        "default": false
+      },
+      {
+        "type": "image_picker",
+        "id": "freesetcap",
+        "label": "Freeset caps image"
+      },
+      {
+        "type": "checkbox",
+        "id": "dark_theme",
+        "label": "Dark Theme"
+      },
+      {
+        "type": "header",
+        "content": "Media"
+      },
+      {
+        "type": "select",
+        "id": "product_image_size",
+        "label": "Image size",
+        "default": "large",
+        "options": [
+          {
+            "value": "small",
+            "label": "Small"
+          },
+          {
+            "value": "medium",
+            "label": "Medium"
+          },
+          {
+            "value": "large",
+            "label": "Large (Women 12-15 | Men 10-13) "
+          }
+        ]
+      },
+      {
+        "type": "select",
+        "id": "product_image_type",
+        "label": "Image style",
+        "default": "stacked",
+        "options": [
+          {
+            "value": "stacked",
+            "label": "Stacked"
+          },
+          {
+            "value": "slider",
+            "label": "Fade"
+          }
+        ]
+      },
+      {
+        "type": "checkbox",
+        "id": "product_zoom_enable",
+        "label": "Enable image zoom",
+        "default": true
+      },
+      {
+        "type": "checkbox",
+        "id": "enable_video_looping",
+        "label": "Enable video looping",
+        "default": true
+      },
+      {
+        "type": "select",
+        "id": "product_video_style",
+        "label": "Video style",
+        "default": "muted",
+        "options": [
+          {
+            "value": "muted",
+            "label": "Video without sound"
+          },
+          {
+            "value": "unmuted",
+            "label": "Video with sound"
+          }
+        ],
+        "info": "Video with sound will not autoplay"
+      },
+      {
+        "type": "header",
+        "content": "Product settings"
+      },
+      {
+        "type": "checkbox",
+        "id": "enable_payment_button",
+        "label": "Show dynamic checkout button",
+        "info": "Lets customers check out directly using a familiar payment method. [Learn more](https://help.shopify.com/manual/using-themes/change-the-layout/dynamic-checkout)",
+        "default": true
+      },
+      {
+        "type": "text",
+        "id": "product_shipping_callout",
+        "label": "Callout text",
+        "info": "E.g. Free shipping + returns"
+      },
+      {
+        "type": "select",
+        "id": "variant_type",
+        "label": "Variant picker style",
+        "default": "button",
+        "options": [
+          {
+            "value": "button",
+            "label": "Buttons"
+          },
+          {
+            "value": "dropdown",
+            "label": "Dropdown"
+          }
+        ]
+      },
+      {
+        "type": "checkbox",
+        "id": "variant_labels_enable",
+        "label": "Show variant labels",
+        "default": true
+      },
+      {
+        "type": "checkbox",
+        "id": "sku_enable",
+        "label": "Show SKU"
+      },
+      {
+        "type": "checkbox",
+        "id": "inventory_enable",
+        "label": "Show inventory notice"
+      },
+      {
+        "type": "range",
+        "id": "inventory_threshold",
+        "label": "Inventory threshold",
+        "default": 10,
+        "min": 0,
+        "max": 20,
+        "step": 2
+      },
+      {
+        "type": "checkbox",
+        "id": "inventory_transfers_enable",
+        "label": "Show inventory transfer notice",
+        "info": "Learn how to create inventory transfers [here](https://help.shopify.com/en/manual/products/inventory/transfers/create-transfer)"
+      },
+      {
+        "type": "checkbox",
+        "id": "quantity_enable",
+        "label": "Show quantity field"
+      },
+      {
+        "type": "checkbox",
+        "id": "social_enable",
+        "label": "Enable social sharing",
+        "default": true
+      },
+      {
+      "type": "color",
+       "id": "color_link",
+      "label": "Background-color",
+       "default": "#2980b9"
+   },
+    {
+     "type":"image_picker",
+     "id":"img1",
+     "label":"Add_Icons"
+  },
+  {
+   "type":"text",
+     "id":"txt",
+     "label":"Add_text"
+  },
+
+
+  {
+     "type":"image_picker",
+     "id":"img2",
+     "label":"Add_Icons"
+  },
+  {
+   "type":"text",
+     "id":"txt_",
+     "label":"Add_text"
+  },
+
+  
+  
+    {
+     "type":"image_picker",
+     "id":"img3",
+     "label":"Add_Icons"
+  },
+  {
+   "type":"text",
+     "id":"txt1",
+     "label":"Add_text"
+  },
+  {
+   "type":"text",
+     "id":"txt2",
+     "label":"Standard Shipping"
+  },
+  {
+   "type":"text",
+     "id":"txt3",
+     "label":"Scrub Caps"
+  },
+  {
+   "type":"text",
+     "id":"txt4",
+     "label":"Women’s Underscrubs"
+  },{
+   "type":"text",
+     "id":"txt5",
+     "label":"Men’s Underscrubs "
+  },{
+   "type":"text",
+     "id":"txt6",
+     "label":"Socks"
+  },{
+   "type":"text",
+     "id":"txt7",
+     "label":"Charms"
+  },{
+   "type":"text",
+     "id":"txt8",
+     "label":"Women’s Scrub Tops"
+  },{
+   "type":"text",
+     "id":"txt9",
+     "label":"Women’s Scrub Pants "
+  },{
+   "type":"text",
+     "id":"txt10",
+     "label":"Men’s Scrub Tops"
+  },{
+   "type":"text",
+     "id":"txt11",
+     "label":"Men’s Scrub pants"
+  }
+  
+]
+
+    
+  }
+{% endschema %}
+{% comment %}
+{% if product.metafields.loox.num_reviews %}
+  
+<script id="looxSchemaJson" type="application/ld+json">
+{
+	"@context": "http://schema.org",
+	"@type": "Product",
+	"@id": {{ canonical_url | json }},
+	"aggregateRating": {
+		"@type": "AggregateRating",
+		"ratingValue": "{{ product.metafields.loox.avg_rating }}",
+		"reviewCount": "{{ product.metafields.loox.num_reviews }}"
+	},
+	"name": {{ product.title | json }}
+}
+</script>
+{% endif %}
+{% endcomment %}
+
+	 {% comment %} <div id="looxReviews" data-product-id="{{product.id}}" class="loox-reviews-default">{{ product.metafields.loox.reviews }}</div> {% endcomment %}
