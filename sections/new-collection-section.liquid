@@ -1,0 +1,738 @@
+<!-- Shop by Category Section -->
+<style>
+  .shop-category-{{ section.id }} {
+    padding-top: {{ section.settings.padding_top_desktop | default: '60' }}px;
+    padding-bottom: {{ section.settings.padding_bottom_desktop | default: '60' }}px;
+    margin-bottom: {{ section.settings.margin_bottom_desktop | default: '0' }}px;
+    background: #f8f8f8;
+    position: relative;
+  }
+
+  .shop-category-container-{{ section.id }} {
+    max-width: 1300px;
+    margin: 0 auto;
+    padding: 0 20px;
+    position: relative;
+  }
+
+  .shop-category-header-{{ section.id }} {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 18px;
+  }
+
+  .shop-category-title-{{ section.id }} {
+    font-size: 32px;
+    font-weight: 600;
+    color: #333;
+    margin: 0;
+  }
+
+  .shop-category-tabs-{{ section.id }} {
+    display: flex;
+    gap: 30px;
+  }
+
+  .shop-category-tab-{{ section.id }} {
+    font-size: 16px;
+    color: #666;
+    text-decoration: none;
+    padding: 8px 0;
+    border-bottom: 2px solid transparent;
+    transition: all 0.3s ease;
+    font-weight:600;
+    cursor: pointer;
+  }
+
+  .shop-category-tab-{{ section.id }}.active {
+    color: #333;
+    border-bottom-color: #FFD700;
+  }
+
+  .shop-category-slider-wrapper-{{ section.id }} {
+    position: relative;
+    overflow: hidden;
+  }
+
+  .shop-category-slider-{{ section.id }} {
+    display: flex;
+    transition: transform 0.3s ease;
+    gap: 20px;
+  }
+
+  .shop-category-item-{{ section.id }} {
+    flex: 0 0 auto;
+    text-align: {{ section.settings.title_alignment | default: 'center' }};
+    text-decoration: none;
+    color: inherit;
+  }
+
+  .shop-category-item-{{ section.id }}:hover .shop-category-item-title-{{ section.id }} {
+    /* color: #007bff; */
+  }
+
+  .shop-category-item-image-{{ section.id }} {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+    border-radius: 8px;
+    margin-bottom: 15px;
+    transition: transform 0.3s ease;
+  }
+
+  .shop-category-item-{{ section.id }}:hover .shop-category-item-image-{{ section.id }} {
+    transform: scale(1.05);
+  }
+
+  .shop-category-item-title-{{ section.id }} {
+    font-size: {{ section.settings.title_font_size_desktop | default: '16' }}px;
+    font-weight: 800;
+    color: #333;
+    transition: color 0.3s ease;
+    display: flex;
+    align-items: center;
+    {% if section.settings.title_alignment == 'center' %}
+    justify-content: center;
+    {% elsif section.settings.title_alignment == 'left' %}
+    justify-content: flex-start;
+    {% endif %}
+    gap: 8px;
+  }
+
+  .shop-category-item-dot-{{ section.id }} {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    flex-shrink: 0;
+  }
+
+  .shop-category-arrows-{{ section.id }} {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 28px;
+    height: 40px;
+    background: #FFD700;
+    border: none;
+    border-radius: 0;
+    display: block !important;
+    padding-top:0;
+    cursor: pointer;
+    line-height:0;
+    font-size: 40px;
+    color: #333;
+    font-weight:100;
+    transition: all 0.3s ease;
+    z-index: 10;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  }
+  
+  .shop-category-arrows-{{ section.id }} span{
+    position:relative;
+    top:-2px;
+  }
+  
+  .shop-category-arrows-{{ section.id }}:hover {
+    background: #FFC000;
+    color: #333;
+  }
+
+  .shop-category-arrow-prev-{{ section.id }} {
+    left: 14px;
+  }
+
+  .shop-category-arrow-next-{{ section.id }} {
+    right: 14px;
+  }
+
+  .shop-category-arrows-{{ section.id }}.disabled {
+    opacity: 0.3;
+    cursor: not-allowed;
+  }
+
+  .shop-category-arrows-{{ section.id }}.disabled:hover {
+    background: #FFD700;
+    color: #333;
+  }
+
+  /* Mobile Styles */
+  @media (max-width: 768px) {
+    .shop-category-{{ section.id }} {
+      padding-top: {{ section.settings.padding_top_mobile | default: '40' }}px;
+      padding-bottom: {{ section.settings.padding_bottom_mobile | default: '40' }}px;
+      margin-bottom: {{ section.settings.margin_bottom_mobile | default: '0' }}px;
+    }
+
+    .shop-category-container-{{ section.id }} {
+      padding: 0 15px;
+    }
+
+    .shop-category-header-{{ section.id }} {
+      flex-direction: column;
+      gap: 20px;
+      margin-bottom: 16px;
+    }
+
+    .shop-category-title-{{ section.id }} {
+      font-size: 24px;
+    }
+
+    .shop-category-tabs-{{ section.id }} {
+      gap: 20px;
+    }
+
+    .shop-category-tab-{{ section.id }} {
+      font-size: 14px;
+    }
+
+    .shop-category-item-image-{{ section.id }} {
+      height: auto;
+    }
+
+    .shop-category-item-title-{{ section.id }} {
+      font-size: {{ section.settings.title_font_size_mobile | default: '14' }}px;
+    }
+
+    .shop-category-arrows-{{ section.id }} {
+      width: 35px;
+      height: 35px;
+      font-size: 16px;
+    }
+
+    .shop-category-arrow-prev-{{ section.id }} {
+      left: 8px;
+    }
+
+    .shop-category-arrow-next-{{ section.id }} {
+      right: 8px;
+    }
+  }
+</style>
+
+<div class="shop-category-{{ section.id }}">
+  <div class="shop-category-container-{{ section.id }}">
+    <div class="shop-category-header-{{ section.id }}">
+      <h2 class="shop-category-title-{{ section.id }}">
+        {{ section.settings.section_title | default: 'Shop by Category' }}
+      </h2>
+      <div class="shop-category-tabs-{{ section.id }}">
+        {% assign first_tab = true %}
+        {% if section.settings.enable_all %}
+          <span class="shop-category-tab-{{ section.id }}{% if first_tab %} active{% endif %}" data-filter="all">
+            {{ section.settings.all_filter_text | default: 'ALL' | upcase }}
+          </span>
+          {% assign first_tab = false %}
+        {% endif %}
+        {% if section.settings.enable_women %}
+          <span class="shop-category-tab-{{ section.id }}{% if first_tab %} active{% endif %}" data-filter="women">WOMEN</span>
+          {% assign first_tab = false %}
+        {% endif %}
+        {% if section.settings.enable_men %}
+          <span class="shop-category-tab-{{ section.id }}{% if first_tab %} active{% endif %}" data-filter="men">MEN</span>
+        {% endif %}
+      </div>
+    </div>
+
+    <div class="shop-category-slider-wrapper-{{ section.id }}">
+      <div class="shop-category-slider-{{ section.id }}" id="slider-{{ section.id }}">
+        {% for block in section.blocks %}
+          <a href="{{ block.settings.link | default: '#' }}" 
+             class="shop-category-item-{{ section.id }}" 
+             data-category="{{ block.settings.category | default: 'women' }}"
+             style="width: calc((100% - {{ section.settings.items_desktop | minus: 1 | times: 20 }}px) / {{ section.settings.items_desktop | default: 4 }});">
+            {% if block.settings.image != blank %}
+              <img src="{{ block.settings.image | image_url: width: 300 }}" 
+                   alt="{{ block.settings.title | default: 'Category Image' }}"
+                   class="shop-category-item-image-{{ section.id }}"
+                   loading="lazy">
+            {% else %}
+              <div class="shop-category-item-image-{{ section.id }}" style="background: #ddd; display: flex; align-items: center; justify-content: center; color: #666;">
+                No Image
+              </div>
+            {% endif %}
+            <div class="shop-category-item-title-{{ section.id }}">
+              {% if block.settings.show_dot and block.settings.dot_color != blank %}
+                <span class="shop-category-item-dot-{{ section.id }}" style="background-color: {{ block.settings.dot_color }};"></span>
+              {% endif %}
+              <span>{{ block.settings.title | default: 'Category Name' }}</span>
+            </div>
+          </a>
+        {% endfor %}
+      </div>
+
+      <button class="shop-category-arrows-{{ section.id }} shop-category-arrow-prev-{{ section.id }}" 
+              id="prevBtn-{{ section.id }}">
+              <span>&#8249;</span>
+      </button>
+      <button class="shop-category-arrows-{{ section.id }} shop-category-arrow-next-{{ section.id }}" 
+              id="nextBtn-{{ section.id }}">
+        <span>&#8250;</span>
+      </button>
+    </div>
+  </div>
+</div>
+
+<script>
+(function() {
+  const sectionId = '{{ section.id }}';
+  const sliderId = 'slider-' + sectionId;
+  const prevBtnId = 'prevBtn-' + sectionId;
+  const nextBtnId = 'nextBtn-' + sectionId;
+  
+  // Get enabled filters from settings
+  const enableAll = {{ section.settings.enable_all | default: false }};
+  const enableWomen = {{ section.settings.enable_women | default: true }};
+  const enableMen = {{ section.settings.enable_men | default: true }};
+  
+  let currentSlide = 0;
+  let filteredItems = [];
+  let allItems = [];
+  let defaultFilter = 'women'; // fallback default
+  
+  // Determine the default filter based on enabled options
+  if (enableAll) {
+    defaultFilter = 'all';
+  } else if (enableWomen) {
+    defaultFilter = 'women';
+  } else if (enableMen) {
+    defaultFilter = 'men';
+  }
+  
+  function initSlider() {
+    const slider = document.getElementById(sliderId);
+    if (!slider) {
+      console.log('Slider not found');
+      return;
+    }
+    
+    const items = slider.querySelectorAll('.shop-category-item-' + sectionId);
+    console.log('Found items:', items.length);
+    
+    allItems = Array.from(items);
+    
+    // Set initial filter to the first enabled option
+    filterItems(defaultFilter);
+    
+    // Set initial item widths
+    updateItemWidths();
+    updateSlider();
+    
+    // Add event listeners for tabs
+    const tabs = document.querySelectorAll('.shop-category-tab-' + sectionId);
+    tabs.forEach(tab => {
+      tab.addEventListener('click', function() {
+        // Remove active class from all tabs
+        tabs.forEach(t => t.classList.remove('active'));
+        // Add active class to clicked tab
+        this.classList.add('active');
+        
+        // Filter items
+        const filter = this.getAttribute('data-filter');
+        filterItems(filter);
+      });
+    });
+    
+    // Add resize listener
+    window.addEventListener('resize', function() {
+      updateItemWidths();
+      updateSlider();
+    });
+  }
+  
+  function updateItemWidths() {
+    const slider = document.getElementById(sliderId);
+    if (!slider) return;
+    
+    const items = slider.querySelectorAll('.shop-category-item-' + sectionId);
+    const isMobile = window.innerWidth <= 768;
+    const itemsToShow = isMobile ? {{ section.settings.items_mobile | default: 2 }} : {{ section.settings.items_desktop | default: 4 }};
+    const gap = 20;
+    const itemWidth = `calc((100% - ${(itemsToShow - 1) * gap}px) / ${itemsToShow})`;
+    
+    items.forEach(item => {
+      item.style.width = itemWidth;
+      item.style.flexShrink = '0';
+    });
+  }
+  
+  function getSlideDistance() {
+    const slider = document.getElementById(sliderId);
+    if (!slider) return 0;
+    
+    const sliderWidth = slider.offsetWidth;
+    const isMobile = window.innerWidth <= 768;
+    const itemsToShow = isMobile ? {{ section.settings.items_mobile | default: 2 }} : {{ section.settings.items_desktop | default: 4 }};
+    const gap = 20;
+    
+    // Calculate the actual width of one item including gap
+    const itemWidth = (sliderWidth - (gap * (itemsToShow - 1))) / itemsToShow;
+    const slideDistance = itemWidth + gap;
+    
+    return slideDistance;
+  }
+  
+  function filterItems(category) {
+    const slider = document.getElementById(sliderId);
+    if (!slider) return;
+    
+    currentSlide = 0;
+    
+    // Clear the slider first
+    slider.innerHTML = '';
+    
+    if (category === 'all') {
+      filteredItems = [...allItems];
+    } else {
+      // Filter items based on category
+      filteredItems = allItems.filter(item => 
+        item.getAttribute('data-category') === category
+      );
+    }
+    
+    // Add filtered items to slider
+    filteredItems.forEach(item => {
+      slider.appendChild(item.cloneNode(true));
+    });
+    
+    // Update item widths and slider
+    updateItemWidths();
+    updateSlider();
+  }
+  
+  function updateSlider() {
+    const slider = document.getElementById(sliderId);
+    if (!slider) return;
+    
+    const currentItems = slider.querySelectorAll('.shop-category-item-' + sectionId);
+    const isMobile = window.innerWidth <= 768;
+    const itemsToShow = isMobile ? {{ section.settings.items_mobile | default: 2 }} : {{ section.settings.items_desktop | default: 4 }};
+    const totalItems = currentItems.length;
+    const maxSlides = Math.max(0, totalItems - itemsToShow);
+    
+    // Ensure currentSlide is within bounds
+    currentSlide = Math.min(currentSlide, maxSlides);
+    currentSlide = Math.max(currentSlide, 0);
+    
+    // Calculate exact pixel distance to translate
+    const slideDistance = getSlideDistance();
+    const translateX = -(currentSlide * slideDistance);
+    
+    slider.style.transform = `translateX(${translateX}px)`;
+    
+    // Update arrow states
+    const prevBtn = document.getElementById(prevBtnId);
+    const nextBtn = document.getElementById(nextBtnId);
+    
+    if (prevBtn && nextBtn) {
+      prevBtn.classList.toggle('disabled', currentSlide <= 0);
+      nextBtn.classList.toggle('disabled', currentSlide >= maxSlides);
+      
+      // Show/hide arrows based on content
+      const showArrows = totalItems > itemsToShow;
+      prevBtn.style.display = showArrows ? 'flex' : 'none';
+      nextBtn.style.display = showArrows ? 'flex' : 'none';
+    }
+    
+    console.log('Slider updated:', {
+      currentSlide,
+      totalItems,
+      itemsToShow,
+      maxSlides,
+      slideDistance,
+      translateX,
+      showArrows: totalItems > itemsToShow
+    });
+  }
+  
+  // Create global function for slider navigation
+  const functionName = 'slideCategory' + sectionId.replace(/[^a-zA-Z0-9]/g, '_');
+  window[functionName] = function(direction) {
+    const slider = document.getElementById(sliderId);
+    if (!slider) return;
+    
+    const currentItems = slider.querySelectorAll('.shop-category-item-' + sectionId);
+    const isMobile = window.innerWidth <= 768;
+    const itemsToShow = isMobile ? {{ section.settings.items_mobile | default: 2 }} : {{ section.settings.items_desktop | default: 4 }};
+    const totalItems = currentItems.length;
+    const maxSlides = Math.max(0, totalItems - itemsToShow);
+    
+    if (direction === 'prev' && currentSlide > 0) {
+      currentSlide--;
+    } else if (direction === 'next' && currentSlide < maxSlides) {
+      currentSlide++;
+    }
+    
+    updateSlider();
+  };
+  
+  // Add click listeners to buttons
+  function setupButtons() {
+    const prevBtn = document.getElementById(prevBtnId);
+    const nextBtn = document.getElementById(nextBtnId);
+    
+    if (prevBtn) {
+      prevBtn.addEventListener('click', function() {
+        window[functionName]('prev');
+      });
+    }
+    
+    if (nextBtn) {
+      nextBtn.addEventListener('click', function() {
+        window[functionName]('next');
+      });
+    }
+  }
+  
+  // Initialize when DOM is ready
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', function() {
+      initSlider();
+      setupButtons();
+    });
+  } else {
+    initSlider();
+    setupButtons();
+  }
+})();
+</script>
+
+{% schema %}
+{
+  "name": "Shop by Category",
+  "tag": "section",
+  "class": "shop-category-section",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Section Settings"
+    },
+    {
+      "type": "text",
+      "id": "section_title",
+      "label": "Section Title",
+      "default": "Shop by Category"
+    },
+    {
+      "type": "header",
+      "content": "Title Settings"
+    },
+    {
+      "type": "radio",
+      "id": "title_alignment",
+      "label": "Title Alignment",
+      "options": [
+        {
+          "value": "center",
+          "label": "Center"
+        },
+        {
+          "value": "left",
+          "label": "Left"
+        }
+      ],
+      "default": "center"
+    },
+    {
+      "type": "range",
+      "id": "title_font_size_desktop",
+      "label": "Title Font Size (Desktop)",
+      "min": 12,
+      "max": 24,
+      "step": 1,
+      "default": 16,
+      "unit": "px"
+    },
+    {
+      "type": "range",
+      "id": "title_font_size_mobile",
+      "label": "Title Font Size (Mobile)",
+      "min": 10,
+      "max": 20,
+      "step": 1,
+      "default": 14,
+      "unit": "px"
+    },
+    {
+      "type": "header",
+      "content": "Filter Settings"
+    },
+    {
+      "type": "checkbox",
+      "id": "enable_all",
+      "label": "Enable All Filter",
+      "default": false
+    },
+    {
+      "type": "text",
+      "id": "all_filter_text",
+      "label": "All Filter Text",
+      "default": "All",
+      "info": "Custom text for the All filter tab"
+    },
+    {
+      "type": "checkbox",
+      "id": "enable_women",
+      "label": "Enable Women Filter",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "enable_men",
+      "label": "Enable Men Filter",
+      "default": true
+    },
+    {
+      "type": "header",
+      "content": "Spacing - Desktop"
+    },
+    {
+      "type": "range",
+      "id": "padding_top_desktop",
+      "label": "Padding Top (Desktop)",
+      "min": 0,
+      "max": 200,
+      "step": 10,
+      "default": 60,
+      "unit": "px"
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom_desktop",
+      "label": "Padding Bottom (Desktop)",
+      "min": 0,
+      "max": 200,
+      "step": 10,
+      "default": 60,
+      "unit": "px"
+    },
+    {
+      "type": "range",
+      "id": "margin_bottom_desktop",
+      "label": "Margin Bottom (Desktop)",
+      "min": 0,
+      "max": 200,
+      "step": 10,
+      "default": 0,
+      "unit": "px"
+    },
+    {
+      "type": "header",
+      "content": "Spacing - Mobile"
+    },
+    {
+      "type": "range",
+      "id": "padding_top_mobile",
+      "label": "Padding Top (Mobile)",
+      "min": 0,
+      "max": 150,
+      "step": 10,
+      "default": 40,
+      "unit": "px"
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom_mobile",
+      "label": "Padding Bottom (Mobile)",
+      "min": 0,
+      "max": 150,
+      "step": 10,
+      "default": 40,
+      "unit": "px"
+    },
+    {
+      "type": "range",
+      "id": "margin_bottom_mobile",
+      "label": "Margin Bottom (Mobile)",
+      "min": 0,
+      "max": 150,
+      "step": 10,
+      "default": 0,
+      "unit": "px"
+    },
+    {
+      "type": "header",
+      "content": "Slider Settings"
+    },
+    {
+      "type": "range",
+      "id": "items_desktop",
+      "label": "Items to Show (Desktop)",
+      "min": 2,
+      "max": 8,
+      "step": 1,
+      "default": 4
+    },
+    {
+      "type": "range",
+      "id": "items_mobile",
+      "label": "Items to Show (Mobile)",
+      "min": 1,
+      "max": 4,
+      "step": 1,
+      "default": 2
+    }
+  ],
+  "blocks": [
+    {
+      "type": "category_item",
+      "name": "Category Item",
+      "settings": [
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Title",
+          "default": "Category Name"
+        },
+        {
+          "type": "url",
+          "id": "link",
+          "label": "Link"
+        },
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Image"
+        },
+        {
+          "type": "radio",
+          "id": "category",
+          "label": "Category",
+          "options": [
+            {
+              "value": "women",
+              "label": "Women"
+            },
+            {
+              "value": "men",
+              "label": "Men"
+            }
+          ],
+          "default": "women"
+        },
+        {
+          "type": "header",
+          "content": "Colored Dot Settings"
+        },
+        {
+          "type": "checkbox",
+          "id": "show_dot",
+          "label": "Show Colored Dot",
+          "default": false
+        },
+        {
+          "type": "color",
+          "id": "dot_color",
+          "label": "Dot Color",
+          "default": "#007bff"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Shop by Category"
+    }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,758 @@
+<!-- Medical Scrubs Hero Section -->
+<style>
+  .main-content img{
+    border-radius:0 !important;
+  }
+  .medical-hero-{{ section.id }} {
+    background: {{ section.settings.background_color | default: '#1a237e' }};
+    padding: 0;    
+    display: flex;
+    align-items: flex-start;
+    position: relative;
+    overflow: hidden;
+    padding-bottom: {{ section.settings.padding_bottom_desktop | default: '60' }}px;
+  }
+
+  .inliner{
+    display:flex;
+    justify-content: center;    
+    text-align: center;
+  }
+  .medical-hero-container-{{ section.id }} {
+    width:100%;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    gap: 0;
+    position: relative;
+    z-index: 2;
+  }
+
+  .medical-hero-content-{{ section.id }} {
+    flex: 1;
+    color: white;
+    padding:40px;
+  }
+
+  .medical-hero-rating-{{ section.id }} {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: {{ section.settings.rating_margin_bottom_desktop | default: '24' }}px;
+    font-size: {{ section.settings.rating_size_desktop | default: '14' }}px;
+    opacity: 0.9;
+    {% if section.settings.rating_font_family != blank %}
+      font-family: {{ section.settings.rating_font_family }};
+    {% endif %}
+    color: {{ section.settings.rating_color_desktop | default: '#ffffff' }};
+  }
+
+  .medical-hero-stars-{{ section.id }} {
+    color: #ffd700;
+    font-size: 16px;
+  }
+
+  .medical-hero-title-{{ section.id }} {
+    font-size: {{ section.settings.title_size_desktop | default: '48' }}px;
+    font-weight: 700;
+    line-height: 1.2;
+    margin-bottom: 4px;
+    {% if section.settings.title_font_family != blank %}
+      font-family: {{ section.settings.title_font_family }};
+    {% endif %}
+    color: {{ section.settings.title_color_desktop | default: '#ffffff' }};
+  }
+
+  .medical-hero-subtitle-{{ section.id }} {
+    font-size: {{ section.settings.subtitle_size_desktop | default: '18' }}px;
+    line-height: 1.5;
+    margin-bottom: 32px;
+    opacity: 0.9;
+    {% if section.settings.subtitle_font_family != blank %}
+      font-family: {{ section.settings.subtitle_font_family }};
+    {% endif %}
+    color: {{ section.settings.subtitle_color_desktop | default: '#ffffff' }};
+  }
+
+  .medical-hero-buttons-{{ section.id }} {
+    display: flex;
+    gap: 16px;
+    margin-bottom: 32px;
+    align-items:center;
+    justify-content:space-between;
+    flex-wrap: wrap;
+  }
+     .movier{
+      width:86%;  
+      }
+  @media only screen and (min-width:1399px){
+      .movier{
+      width:70%;  
+      }
+  }
+  .medical-hero-btn-{{ section.id }} {
+    padding: 8px;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: 600;
+    flex:1;
+    text-align: center;
+    font-size: 14px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    transition: all 0.3s ease;
+    display: inline-block;
+    white-space: nowrap;
+    overflow: visible;
+  }
+
+  .medical-hero-btn-primary-{{ section.id }} {
+    background: white;
+    color: #1a237e;
+  }
+
+  .medical-hero-btn-primary-{{ section.id }}:hover {
+    background: #f5f5f5;
+    color: #1a237e;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(0,0,0,0.2);
+  }
+
+  .medical-hero-btn-secondary-{{ section.id }} {
+    background: #f5f5f5;    
+    color: #1a237e;
+  }
+
+  .medical-hero-btn-secondary-{{ section.id }}:hover {
+    background: white;
+    color: #1a237e;
+    transform: translateY(-2px);
+  }
+
+  .medical-hero-guarantee-{{ section.id }} {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 14px;
+    opacity: 0.9;
+  }
+    @media only screen and (min-width:480px){
+        .medical-hero-guarantee-{{ section.id }} {
+            
+        }
+    }
+  .medical-hero-guarantee-icon-{{ section.id }} {
+    width: 20px;
+    height: 20px;
+    background: #4caf50;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 12px;
+  }
+
+  .medical-hero-image-{{ section.id }} {
+    flex: 1;
+    text-align: center;
+  }
+
+  .medical-hero-image-{{ section.id }} img {
+    max-width: 100%;
+    display: block;
+    height: 100%;
+    filter: drop-shadow(0 20px 40px rgba(0, 0, 0, 0.2));
+    width: 100%;
+  }
+
+  @media (min-width: 1400px) {
+    .medical-hero-{{ section.id }} {
+      padding-bottom: {{ section.settings.padding_bottom_widescreen | default: '80' }}px;
+    }
+
+    .medical-hero-rating-{{ section.id }} {
+      font-size: {{ section.settings.rating_size_widescreen | default: '16' }}px;
+      margin-bottom: {{ section.settings.rating_margin_bottom_widescreen | default: '32' }}px;
+      color: {{ section.settings.rating_color_widescreen | default: '#ffffff' }};
+    }
+
+    .medical-hero-title-{{ section.id }} {
+      font-size: {{ section.settings.title_size_widescreen | default: '64' }}px;
+      color: {{ section.settings.title_color_widescreen | default: '#ffffff' }};
+    }
+
+    .medical-hero-subtitle-{{ section.id }} {
+      font-size: {{ section.settings.subtitle_size_widescreen | default: '22' }}px;
+      color: {{ section.settings.subtitle_color_widescreen | default: '#ffffff' }};
+    }
+
+    .medical-hero-stars-{{ section.id }} {
+      font-size: 20px;
+    }
+
+    .medical-hero-content-{{ section.id }} {
+      padding: 60px;
+    }
+
+    .medical-hero-btn-{{ section.id }} {
+      padding: 12px 16px;
+    }
+
+    .medical-hero-guarantee-{{ section.id }} {
+      font-size: 16px;
+    }
+  }
+  @media (max-width: 970px) {
+    .medical-hero-title-{{ section.id }} {
+      font-size:28px;
+      margin-bottom: 4px;
+    }
+    .medical-hero-subtitle-{{ section.id }} {
+      font-size: 14px;
+    }
+    .medical-hero-rating-{{ section.id }}{
+      font-size:9px;
+
+    }
+        .medical-hero-guarantee-{{ section.id }} {
+          
+        }
+  }
+  @media (max-width: 800px) {
+    .medical-hero-{{ section.id }} {
+      padding: 0;
+      padding-bottom: 0;
+      min-height: 400px;
+    }
+    .movier{
+      margin-left:auto;
+      margin-right:auto;
+    }
+    .medical-hero-container-{{ section.id }} {
+      flex-direction: column;      
+      text-align: center;
+    }
+
+    .medical-hero-rating-{{ section.id }} {
+      font-size: {{ section.settings.rating_size_mobile | default: '11' }}px;
+      margin-bottom: {{ section.settings.rating_margin_bottom_mobile | default: '20' }}px;
+      color: {{ section.settings.rating_color_mobile | default: '#ffffff' }};
+    }
+
+    .medical-hero-title-{{ section.id }} {
+      font-size: {{ section.settings.title_size_mobile | default: '32' }}px;
+      color: {{ section.settings.title_color_mobile | default: '#ffffff' }};
+    }
+
+    .medical-hero-subtitle-{{ section.id }} {
+      font-size: {{ section.settings.subtitle_size_mobile | default: '16' }}px;
+      color: {{ section.settings.subtitle_color_mobile | default: '#ffffff' }};
+    }
+
+    .medical-hero-buttons-{{ section.id }} {
+      justify-content: center;
+    }
+
+    .medical-hero-btn-{{ section.id }} {
+      padding: 12px 24px;
+    }
+
+    .medical-hero-rating-{{ section.id }},
+    .medical-hero-guarantee-{{ section.id }} {
+      justify-content: center;
+    }
+    .medical-hero-content-{{ section.id }} {
+        order:2;
+      }
+      .medical-hero-image-{{ section.id }} {
+        order:1;
+        width:100%;
+      }
+  }
+
+  @media (max-width: 1000px) {
+    .medical-hero-btn-{{ section.id }} {
+      width:50%;
+    }
+  }
+  @media (max-width: 480px) {
+    .medical-hero-buttons-{{ section.id }} {
+      flex-direction: column;
+      align-items: center;
+    }
+    .medical-hero-{{ section.id }} {
+      padding:0 0 30px 0 !important; 
+    }
+    .medical-hero-btn-{{ section.id }} {
+      width: 100%;
+      max-width: 280px;
+      text-align: center;
+    }
+    .medical-hero-content-{{ section.id }} {
+      order:2;
+      padding-left:12px;
+      padding-right:12px;
+    }
+    .medical-hero-image-{{ section.id }} {
+      order:1;
+      width:100%;
+    }
+  }
+  
+</style>
+
+<div class="medical-hero-{{ section.id }}">
+  <div class="medical-hero-container-{{ section.id }}">
+    <div class="medical-hero-content-{{ section.id }}">
+      <div class="medical-hero-rating-{{ section.id }}">
+        <span class="medical-hero-stars-{{ section.id }}">★★★★★</span>
+        <span>{{ section.settings.rating_text | default: 'TRUSTED BY 50,000+ NURSES AND DOCTORS' }}</span>
+      </div>
+      
+      <h1 class="medical-hero-title-{{ section.id }}">
+        {{ section.settings.title | default: 'Because Frontline Deserves Better' }}
+      </h1>
+      
+      <p class="medical-hero-subtitle-{{ section.id }}">
+        {{ section.settings.subtitle | default: 'Designed by a family of doctors who know what it takes to survive demanding shifts' }}
+      </p>
+      <div class="movier">
+        <div class="medical-hero-buttons-{{ section.id }}">
+          <a href="{{ section.settings.primary_button_url | default: '#' }}" class="medical-hero-btn-{{ section.id }} medical-hero-btn-primary-{{ section.id }}">
+            {{ section.settings.primary_button_text | default: 'SHOP SCRUBS' }}
+          </a>
+          <a href="{{ section.settings.secondary_button_url | default: '#' }}" class="medical-hero-btn-{{ section.id }} medical-hero-btn-secondary-{{ section.id }}">
+            {{ section.settings.secondary_button_text | default: 'SHOP COMPRESSION SOCKS' }}
+          </a>
+        </div>
+        <div class="inliner">        
+          <div class="medical-hero-guarantee-{{ section.id }}">
+            <span class="medical-hero-guarantee-icon-{{ section.id }}">✓</span>
+            <span>{{ section.settings.guarantee_text | default: '60 DAY MONEY BACK GUARANTEE' }}</span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+    
+    <div class="medical-hero-image-{{ section.id }}">
+      {% if section.settings.hero_image != blank %}
+        <img src="{{ section.settings.hero_image | image_url: width: 600 }}" 
+             alt="{{ section.settings.hero_image.alt | default: 'Medical professionals in scrubs' }}"
+             loading="lazy">
+      {% else %}
+        <div style="background: rgba(255,255,255,0.1); padding: 100px 50px; border-radius: 10px; color: white;">
+          <p>Upload hero image</p>
+        </div>
+      {% endif %}
+    </div>
+  </div>
+</div>
+
+<script>
+(function() {
+  'use strict';
+  
+  function calculateOptimalFontSize(button, minSize = 6, maxSize = 16) {
+    if (!button || !button.offsetWidth) return maxSize;
+    
+    const text = button.textContent.trim();
+    if (!text) return maxSize;
+    
+    const temp = document.createElement('span');
+    temp.style.cssText = `
+      visibility: hidden;
+      position: absolute;
+      white-space: nowrap;
+      font-family: ${getComputedStyle(button).fontFamily};
+      font-weight: ${getComputedStyle(button).fontWeight};
+      letter-spacing: ${getComputedStyle(button).letterSpacing};
+      text-transform: ${getComputedStyle(button).textTransform};
+    `;
+    temp.textContent = text;
+    document.body.appendChild(temp);
+    
+    const buttonStyle = getComputedStyle(button);
+    const paddingLeft = parseFloat(buttonStyle.paddingLeft) || 0;
+    const paddingRight = parseFloat(buttonStyle.paddingRight) || 0;
+    const availableWidth = button.offsetWidth - paddingLeft - paddingRight - 4;
+    
+    let fontSize = maxSize;
+    temp.style.fontSize = fontSize + 'px';
+    
+    while (temp.offsetWidth > availableWidth && fontSize > minSize) {
+      fontSize -= 0.25;
+      temp.style.fontSize = fontSize + 'px';
+    }
+    
+    document.body.removeChild(temp);
+    return fontSize;
+  }
+  
+  function initAutoShrink() {
+    const buttons = document.querySelectorAll('.medical-hero-btn-{{ section.id }}');
+    
+    if (buttons.length === 0) return;
+    
+    // Calculate optimal font size for each button
+    const fontSizes = [];
+    buttons.forEach(button => {
+      button.style.overflow = 'visible';
+      button.style.textOverflow = 'unset';
+      const optimalSize = calculateOptimalFontSize(button, 6, 16);
+      fontSizes.push(optimalSize);
+    });
+    
+    // Use the smallest font size for all buttons to ensure they match
+    const uniformFontSize = Math.min(...fontSizes);
+    
+    // Apply the uniform font size to all buttons
+    buttons.forEach(button => {
+      button.style.fontSize = uniformFontSize + 'px';
+    });
+  }
+  
+  function debounce(func, wait) {
+    let timeout;
+    return function(...args) {
+      clearTimeout(timeout);
+      timeout = setTimeout(() => func.apply(this, args), wait);
+    };
+  }
+  
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initAutoShrink);
+  } else {
+    initAutoShrink();
+  }
+  
+  window.addEventListener('resize', debounce(initAutoShrink, 100));
+  window.addEventListener('load', initAutoShrink);
+  
+})();
+</script>
+
+{% schema %}
+{
+  "name": "Medical Scrubs Hero",
+  "tag": "section",
+  "class": "medical-scrubs-hero-section",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Content Settings"
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Main Title",
+      "default": "Because Frontline Deserves Better"
+    },
+    {
+      "type": "textarea",
+      "id": "subtitle",
+      "label": "Subtitle",
+      "default": "Designed by a family of doctors who know what it takes to survive demanding shifts"
+    },
+    {
+      "type": "image_picker",
+      "id": "hero_image",
+      "label": "Hero Image"
+    },
+    {
+      "type": "text",
+      "id": "guarantee_text",
+      "label": "Guarantee Text",
+      "default": "60 DAY MONEY BACK GUARANTEE",
+      "info": "Text displayed in the guarantee section"
+    },
+    {
+      "type": "header",
+      "content": "Rating Section Settings"
+    },
+    {
+      "type": "text",
+      "id": "rating_text",
+      "label": "Rating Text",
+      "default": "TRUSTED BY 50,000+ NURSES AND DOCTORS",
+      "info": "Text displayed next to the stars"
+    },
+    {
+      "type": "text",
+      "id": "rating_font_family",
+      "label": "Rating Font Family (optional)",
+      "info": "Leave empty to use theme default"
+    },
+    {
+      "type": "range",
+      "id": "rating_size_desktop",
+      "label": "Rating Font Size (Desktop)",
+      "min": 10,
+      "max": 24,
+      "step": 1,
+      "default": 14,
+      "unit": "px"
+    },
+    {
+      "type": "color",
+      "id": "rating_color_desktop",
+      "label": "Rating Text Color (Desktop)",
+      "default": "#ffffff"
+    },
+    {
+      "type": "range",
+      "id": "rating_margin_bottom_desktop",
+      "label": "Rating Margin Bottom (Desktop)",
+      "min": 0,
+      "max": 60,
+      "step": 2,
+      "default": 24,
+      "unit": "px"
+    },
+    {
+      "type": "range",
+      "id": "rating_size_mobile",
+      "label": "Rating Font Size (Mobile)",
+      "min": 8,
+      "max": 20,
+      "step": 1,
+      "default": 11,
+      "unit": "px"
+    },
+    {
+      "type": "color",
+      "id": "rating_color_mobile",
+      "label": "Rating Text Color (Mobile)",
+      "default": "#ffffff"
+    },
+    {
+      "type": "range",
+      "id": "rating_margin_bottom_mobile",
+      "label": "Rating Margin Bottom (Mobile)",
+      "min": 0,
+      "max": 40,
+      "step": 2,
+      "default": 20,
+      "unit": "px"
+    },
+    {
+      "type": "range",
+      "id": "rating_size_widescreen",
+      "label": "Rating Font Size (Wide Screen 1400px+)",
+      "min": 12,
+      "max": 28,
+      "step": 1,
+      "default": 16,
+      "unit": "px"
+    },
+    {
+      "type": "color",
+      "id": "rating_color_widescreen",
+      "label": "Rating Text Color (Wide Screen 1400px+)",
+      "default": "#ffffff"
+    },
+    {
+      "type": "range",
+      "id": "rating_margin_bottom_widescreen",
+      "label": "Rating Margin Bottom (Wide Screen 1400px+)",
+      "min": 0,
+      "max": 80,
+      "step": 2,
+      "default": 32,
+      "unit": "px"
+    },
+    {
+      "type": "header",
+      "content": "Button Settings"
+    },
+    {
+      "type": "text",
+      "id": "primary_button_text",
+      "label": "Primary Button Text",
+      "default": "SHOP SCRUBS"
+    },
+    {
+      "type": "url",
+      "id": "primary_button_url",
+      "label": "Primary Button URL"
+    },
+    {
+      "type": "text",
+      "id": "secondary_button_text",
+      "label": "Secondary Button Text",
+      "default": "SHOP COMPRESSION SOCKS"
+    },
+    {
+      "type": "url",
+      "id": "secondary_button_url",
+      "label": "Secondary Button URL"
+    },
+    {
+      "type": "header",
+      "content": "Typography - Desktop"
+    },
+    {
+      "type": "text",
+      "id": "title_font_family",
+      "label": "Title Font Family (optional)",
+      "info": "Leave empty to use theme default"
+    },
+    {
+      "type": "range",
+      "id": "title_size_desktop",
+      "label": "Title Font Size (Desktop)",
+      "min": 24,
+      "max": 72,
+      "step": 2,
+      "default": 48,
+      "unit": "px"
+    },
+    {
+      "type": "color",
+      "id": "title_color_desktop",
+      "label": "Title Color (Desktop)",
+      "default": "#ffffff"
+    },
+    {
+      "type": "text",
+      "id": "subtitle_font_family",
+      "label": "Subtitle Font Family (optional)",
+      "info": "Leave empty to use theme default"
+    },
+    {
+      "type": "range",
+      "id": "subtitle_size_desktop",
+      "label": "Subtitle Font Size (Desktop)",
+      "min": 14,
+      "max": 32,
+      "step": 1,
+      "default": 18,
+      "unit": "px"
+    },
+    {
+      "type": "color",
+      "id": "subtitle_color_desktop",
+      "label": "Subtitle Color (Desktop)",
+      "default": "#ffffff"
+    },
+    {
+      "type": "header",
+      "content": "Typography - Wide Screen (1400px+)"
+    },
+    {
+      "type": "range",
+      "id": "title_size_widescreen",
+      "label": "Title Font Size (Wide Screen 1400px+)",
+      "min": 32,
+      "max": 96,
+      "step": 2,
+      "default": 64,
+      "unit": "px"
+    },
+    {
+      "type": "color",
+      "id": "title_color_widescreen",
+      "label": "Title Color (Wide Screen 1400px+)",
+      "default": "#ffffff"
+    },
+    {
+      "type": "range",
+      "id": "subtitle_size_widescreen",
+      "label": "Subtitle Font Size (Wide Screen 1400px+)",
+      "min": 16,
+      "max": 40,
+      "step": 1,
+      "default": 22,
+      "unit": "px"
+    },
+    {
+      "type": "color",
+      "id": "subtitle_color_widescreen",
+      "label": "Subtitle Color (Wide Screen 1400px+)",
+      "default": "#ffffff"
+    },
+    {
+      "type": "header",
+      "content": "Typography - Mobile"
+    },
+    {
+      "type": "range",
+      "id": "title_size_mobile",
+      "label": "Title Font Size (Mobile)",
+      "min": 20,
+      "max": 48,
+      "step": 2,
+      "default": 32,
+      "unit": "px"
+    },
+    {
+      "type": "color",
+      "id": "title_color_mobile",
+      "label": "Title Color (Mobile)",
+      "default": "#ffffff"
+    },
+    {
+      "type": "range",
+      "id": "subtitle_size_mobile",
+      "label": "Subtitle Font Size (Mobile)",
+      "min": 12,
+      "max": 24,
+      "step": 1,
+      "default": 16,
+      "unit": "px"
+    },
+    {
+      "type": "color",
+      "id": "subtitle_color_mobile",
+      "label": "Subtitle Color (Mobile)",
+      "default": "#ffffff"
+    },
+    {
+      "type": "header",
+      "content": "Layout Settings"
+    },
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "Background Color",
+      "default": "#1a237e"
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom_desktop",
+      "label": "Padding Bottom (Desktop)",
+      "min": 0,
+      "max": 200,
+      "step": 10,
+      "default": 60,
+      "unit": "px"
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom_widescreen",
+      "label": "Padding Bottom (Wide Screen 1400px+)",
+      "min": 0,
+      "max": 300,
+      "step": 10,
+      "default": 80,
+      "unit": "px"
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom_mobile",
+      "label": "Padding Bottom (Mobile)",
+      "min": 0,
+      "max": 150,
+      "step": 10,
+      "default": 40,
+      "unit": "px"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Medical Scrubs Hero"
+    }
+  ]
+}
+{% endschema %}

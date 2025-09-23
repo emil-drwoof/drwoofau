@@ -1,0 +1,179 @@
+{% comment %}
+Trust Badges Section
+{% endcomment %}
+
+<section id="{{ section.id }}" class="trust-badges-section" style="background-color: {{ section.settings.background_color }}; padding-top: {{ section.settings.padding_top }}px; padding-bottom: {{ section.settings.padding_bottom }}px;">
+  <div class="page-width">
+    <div class="trust-badges-container">
+      {% for block in section.blocks %}
+        {% if block.settings.desktop_logo != blank or block.settings.mobile_logo != blank %}
+          <div class="trust-badge-item" {{ block.shopify_attributes }}>
+            {% if block.settings.desktop_logo != blank %}
+              <img src="{{ block.settings.desktop_logo | image_url }}" 
+                   alt="{{ block.settings.desktop_logo.alt | default: 'Trust badge' }}"
+                   class="trust-badge-desktop"
+                   loading="lazy">
+            {% endif %}
+            
+            {% if block.settings.mobile_logo != blank %}
+              <img src="{{ block.settings.mobile_logo | image_url }}" 
+                   alt="{{ block.settings.mobile_logo.alt | default: 'Trust badge' }}"
+                   class="trust-badge-mobile"
+                   loading="lazy">
+            {% endif %}
+          </div>
+        {% endif %}
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+<style>
+  .trust-badges-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 20px;
+  }
+
+  .trust-badge-item {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-width: 150px;
+  }
+
+  .trust-badge-item img {
+    max-width: 100%;
+    height: auto;
+    max-height: 80px;
+  }
+
+  .trust-badge-mobile {
+    display: none;
+  }
+
+  .trust-badge-desktop {
+    display: block;
+  }
+
+  /* Mobile Styles */
+  @media screen and (max-width: 768px) {
+    .trust-badges-container {
+      justify-content: center;
+      gap: 15px;
+    }
+
+    .trust-badge-item {
+      flex: 1 1 calc(50% - 10px);
+      min-width: 120px;
+    }
+
+    .trust-badge-item img {
+      max-height: 60px;
+    }
+
+    .trust-badge-mobile {
+      display: block;
+    }
+
+    .trust-badge-desktop {
+      display: none;
+    }
+
+    /* Show desktop image if mobile image is not provided */
+    .trust-badge-item:not(:has(.trust-badge-mobile)) .trust-badge-desktop {
+      display: block;
+    }
+  }
+
+  @media screen and (max-width: 480px) {
+    .trust-badges-container {
+      gap: 10px;
+    }
+
+    .trust-badge-item {
+      flex: 1 1 100%;
+      min-width: 100px;
+    }
+
+    .trust-badge-item img {
+      max-height: 50px;
+    }
+  }
+</style>
+
+{% schema %}
+{
+  "name": "Trust Badges",
+  "tag": "section",
+  "class": "trust-badges-section",
+  "max_blocks": 6,
+  "settings": [
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "Background Color",
+      "default": "#F5C842"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "label": "Padding Top",
+      "min": 0,
+      "max": 100,
+      "step": 5,
+      "unit": "px",
+      "default": 30
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "label": "Padding Bottom",
+      "min": 0,
+      "max": 100,
+      "step": 5,
+      "unit": "px",
+      "default": 30
+    }
+  ],
+  "blocks": [
+    {
+      "type": "trust_badge",
+      "name": "Trust Badge",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "desktop_logo",
+          "label": "Desktop Logo",
+          "info": "Logo to display on desktop devices"
+        },
+        {
+          "type": "image_picker",
+          "id": "mobile_logo",
+          "label": "Mobile Logo",
+          "info": "Logo to display on mobile devices (optional - will use desktop logo if not provided)"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Trust Badges",
+      "blocks": [
+        {
+          "type": "trust_badge"
+        },
+        {
+          "type": "trust_badge"
+        },
+        {
+          "type": "trust_badge"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}
