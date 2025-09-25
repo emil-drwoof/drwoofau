@@ -33,7 +33,7 @@
           "disabled": true,
           "settings": {
             "image": "shopify:\/\/shop_images\/DSC9616-web.jpg",
-            "link": "shopify:\/\/collections\/chistmas-scrubs",
+            "link": "shopify:\/\/collections\/christmas-scrubs",
             "title": "",
             "sub_title": ""
           }
@@ -490,7 +490,7 @@
           "settings": {
             "col-title": "Christmas Collection",
             "col-img": "shopify:\/\/shop_images\/christmas1.webp",
-            "col-link": "shopify:\/\/collections\/chistmas-scrubs"
+            "col-link": "shopify:\/\/collections\/christmas-scrubs"
           }
         },
         "71f0ca15-e3ac-4a0a-8fe0-ad7a975750fe": {
