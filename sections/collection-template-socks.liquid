@@ -4,12 +4,20 @@
   integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
   crossorigin="anonymous"></script>
 <style>
+  {% if template.suffix == 'performancesocks' %}
+  .grid__image-ratio--portrait:before{
+    padding-bottom:100% !important;
+  }
+  {% endif %}
   .grid-product__colors {
     display: none !important;
   }
   .hidden{
     display:none !important;
   }
+  .product__title_color_variants[var-name="S"],
+  .product__title_color_variants[var-name="M"],
+  .product__title_color_variants[var-name="L"],
   .product__title_color_variants[var-name="s"],
   .product__title_color_variants[var-name="m"],
   .product__title_color_variants[var-name="l"]{

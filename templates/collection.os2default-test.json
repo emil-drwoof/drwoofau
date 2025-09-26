@@ -1,7 +1,75 @@
 {
   "sections": {
+    "collection_hero_b_hPgYAM": {
+      "type": "collection-hero-b",
+      "blocks": {
+        "button_U8qKAi": {
+          "type": "button",
+          "settings": {
+            "title": "Scrub Tops",
+            "collection": "https:\/\/www.drwoofapparel.com.au\/collections\/women\/scrub-tops"
+          }
+        },
+        "button_ALKwrC": {
+          "type": "button",
+          "settings": {
+            "title": "Printed Tops",
+            "collection": "https:\/\/www.drwoofapparel.com.au\/collections\/women\/printed-scrub-tops"
+          }
+        },
+        "button_4AxzyJ": {
+          "type": "button",
+          "settings": {
+            "title": "Scrub Pants",
+            "collection": "https:\/\/www.drwoofapparel.com.au\/collections\/women\/scrub-pants"
+          }
+        },
+        "button_xqXhXi": {
+          "type": "button",
+          "settings": {
+            "title": "Jogger Scrub Pants",
+            "collection": "https:\/\/www.drwoofapparel.com.au\/collections\/women\/jogger-scrub-pants"
+          }
+        },
+        "button_8WbXGy": {
+          "type": "button",
+          "settings": {
+            "title": "Underscrubs",
+            "collection": "https:\/\/www.drwoofapparel.com.au\/collections\/women\/underscrubs"
+          }
+        },
+        "button_btkeDj": {
+          "type": "button",
+          "settings": {
+            "title": "Outerwear",
+            "collection": "https:\/\/www.drwoofapparel.com.au\/collections\/women\/outerwear"
+          }
+        }
+      },
+      "block_order": [
+        "button_U8qKAi",
+        "button_ALKwrC",
+        "button_4AxzyJ",
+        "button_xqXhXi",
+        "button_8WbXGy",
+        "button_btkeDj"
+      ],
+      "name": "Collection Hero B",
+      "settings": {
+        "space_top": 0,
+        "space_bottom": 0,
+        "bg_clr": "#0b0e30",
+        "rating": 4.8,
+        "rating_text": "$99 Sets + 99-Day Guarantee",
+        "title": "{{ collection.title }}",
+        "subtitle": "Premium quality scrubs at a fair price. As good as the big brands—without the $160 markup. Only $99 per set, backed by our 99-day guarantee."
+      }
+    },
     "collection-header": {
       "type": "dr-woof-hero-scrubs3",
+      "custom_css": [
+        ".fullwidth,.mobilever {display: none;}"
+      ],
       "settings": {
         "pad": "30px",
         "enable_auto": true,
@@ -16,6 +84,7 @@
     },
     "replo_replo_text_below_banner_4QFrCK": {
       "type": "replo-replo-text-below-banner",
+      "disabled": true,
       "settings": {
         "replo_text_e352686d-11b3-4326-ad82-8260998ffdde": "<p>Women Scrubs<\/p>",
         "replo_text_ffb59253-7bb2-43f4-99c4-ed60813402d8": "<p>Crafted by a family of three Australian healthcare workers, our premium scrubs are designed with movement, comfort, and style in mind. Made from high-quality fabric, they’re built to keep up with your demanding day—because quality isn’t just a priority, it’s our promise.<\/p>"
@@ -101,6 +170,7 @@
         "4b66583c-5f94-4582-b8f7-c35129b628f9",
         "ef196b56-d539-41ad-a16d-1c9b83ab5223"
       ],
+      "disabled": true,
       "settings": {
         "title_enable": false
       }
@@ -119,6 +189,7 @@
       "block_order": [
         "3b7770eb-48a5-4611-bb97-b431bf4800c4"
       ],
+      "disabled": true,
       "settings": {
         "filter_type": "groups",
         "tags_combine": false,
@@ -144,6 +215,7 @@
     }
   },
   "order": [
+    "collection_hero_b_hPgYAM",
     "collection-header",
     "replo_replo_text_below_banner_4QFrCK",
     "collection-filter",

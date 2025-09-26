@@ -1,7 +1,51 @@
 {
   "sections": {
+    "collection_hero_b_BRqJKg": {
+      "type": "collection-hero-b",
+      "blocks": {
+        "button_7EBaR7": {
+          "type": "button",
+          "settings": {
+            "title": "Scrub Tops",
+            "collection": "https:\/\/www.drwoofapparel.com.au\/collections\/men\/scrub-tops"
+          }
+        },
+        "button_JkcKNV": {
+          "type": "button",
+          "settings": {
+            "title": "Scrub Pants",
+            "collection": "https:\/\/www.drwoofapparel.com.au\/collections\/men\/scrub-pants"
+          }
+        },
+        "button_KVjJhh": {
+          "type": "button",
+          "settings": {
+            "title": "Underscrubs",
+            "collection": "https:\/\/www.drwoofapparel.com.au\/collections\/men\/underscrubs"
+          }
+        }
+      },
+      "block_order": [
+        "button_7EBaR7",
+        "button_JkcKNV",
+        "button_KVjJhh"
+      ],
+      "name": "Collection Hero B",
+      "settings": {
+        "space_top": 0,
+        "space_bottom": 0,
+        "bg_clr": "#0b0e30",
+        "rating": 4.8,
+        "rating_text": "$99 Sets + 99-Day Guarantee",
+        "title": "{{ collection.title }}",
+        "subtitle": "Premium quality scrubs at a fair price. As good as the big brands—without the $160 markup. Only $99 per set, backed by our 99-day guarantee."
+      }
+    },
     "collection-header": {
       "type": "dr-woof-hero-scrubs3",
+      "custom_css": [
+        ".fullwidth,.mobilever {display: none;}"
+      ],
       "settings": {
         "pad": "30px",
         "enable_auto": true,
@@ -16,6 +60,7 @@
     },
     "replo_replo_text_below_banner_FDX7eU": {
       "type": "replo-replo-text-below-banner",
+      "disabled": true,
       "settings": {
         "replo_text_e352686d-11b3-4326-ad82-8260998ffdde": "<p>Men Scrubs<\/p>",
         "replo_text_ffb59253-7bb2-43f4-99c4-ed60813402d8": "<p>Crafted by a family of Australian healthcare workers, our premium men’s scrubs are all about freedom of movement, everyday comfort, and a modern fit. Made from high-quality, breathable fabric, they’re built to handle demanding days without sacrificing style—because when you’re caring for others, you deserve scrubs that take care of you.<\/p>"
@@ -74,6 +119,7 @@
         "f5cae287-2f9c-48bc-a266-fba70afce910",
         "79585222-b8ae-4bd2-b466-001a89979fba"
       ],
+      "disabled": true,
       "settings": {
         "title_enable": false
       }
@@ -92,6 +138,7 @@
       "block_order": [
         "c504fff0-bdd4-49c9-931f-f75dea9a4b90"
       ],
+      "disabled": true,
       "settings": {
         "filter_type": "groups",
         "tags_combine": false,
@@ -117,6 +164,7 @@
     }
   },
   "order": [
+    "collection_hero_b_BRqJKg",
     "collection-header",
     "replo_replo_text_below_banner_FDX7eU",
     "collection-filter",
