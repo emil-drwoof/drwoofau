@@ -2,6 +2,9 @@
   "markets": {
     "hong-kong": {
       "parent": "@default"
+    },
+    "sg": {
+      "parent": "@default"
     }
   }
 }

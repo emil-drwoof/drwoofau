@@ -1,0 +1,153 @@
+{
+  "sections": {
+    "annoucement_34Kk7C": {
+      "type": "annoucement",
+      "disabled": true,
+      "settings": {
+        "a_text1": "OVER 90, 000 COMFY DOCS AND NURSES",
+        "a_text2": ""
+      }
+    },
+    "featured_content_EKnF4A": {
+      "type": "featured-content",
+      "name": "Rich text",
+      "settings": {
+        "title": "Healthcare’s Favorite Compression Socks — Now at Your Store",
+        "text": "<p> Stock premium bamboo compression socks designed for all-day comfort and bold style.<br\/><br\/><\/p>",
+        "align_text": "center",
+        "narrow_column": false,
+        "enlarge_text": false,
+        "alt": false
+      }
+    },
+    "17591072634e00f0ba": {
+      "type": "_blocks",
+      "blocks": {
+        "ai_gen_block_3b8ca6e_fQCmtk": {
+          "type": "ai_gen_block_3b8ca6e",
+          "settings": {
+            "button_text": "Email Us to Become a Stockist",
+            "button_link": "shopify:\/\/pages\/contact",
+            "button_color": "#0b0d32",
+            "button_text_color": "#ffffff",
+            "button_border_color": "#b8d2bc",
+            "button_hover_color": "#ffffff",
+            "button_hover_text_color": "#0b0d32",
+            "button_hover_border_color": "#0b0d32",
+            "font_size": 16,
+            "font_weight": "600",
+            "text_uppercase": true,
+            "letter_spacing": 1,
+            "border_radius": 24,
+            "button_padding_vertical": 14,
+            "button_padding_horizontal": 32,
+            "min_width": 160,
+            "alignment": "center",
+            "section_padding": 20
+          },
+          "blocks": {}
+        }
+      },
+      "block_order": [
+        "ai_gen_block_3b8ca6e_fQCmtk"
+      ],
+      "settings": {}
+    },
+    "duallayout_CG47nF": {
+      "type": "duallayout",
+      "name": "Dual Section",
+      "settings": {
+        "image_left": false,
+        "background_color": "#ffffff",
+        "imagebig": "shopify:\/\/shop_images\/LANDING_PAGE_PDP_4.png",
+        "contenttitle": "Why Stock Dr. Woof Compression Socks",
+        "contenttext1": "<b>1. Born in Healthcare: <\/b>Our socks first became a must-have for nurses, doctors, and frontline workers who needed comfort through 12-hour shifts.\n\n<br><br>\n<b>2. Viral Beyond the Hospital: <\/b>Today, they’re worn by athletes, travelers, festival-goers, and everyday Australians looking for style + support.\n<br><br>\n\n<b>3. Premium Build:<\/b> 15–20 mmHg graduated compression, bamboo yarn softness, and bold designs that are designed locally in Melbourne."
+      }
+    },
+    "duallayout_fz77Tn": {
+      "type": "duallayout",
+      "name": "Dual Section",
+      "settings": {
+        "image_left": true,
+        "background_color": "#ffffff",
+        "imagebig": "shopify:\/\/shop_images\/LANDING_PAGE_PDP_4.png",
+        "contenttitle": "Best-Selling Styles",
+        "contenttext1": "<i>Our socks don’t sit on shelves — they walk out the door.<\/i>\n<br>\n<br>\n<b>1. Bold Prints:<\/b> Fun, medical-inspired designs healthcare workers love.\n<br>\n<br>\n<b>2. Classic Staples:<\/b> Core colors and timeless looks.\n<br>\n<br>\n<b>3. All Sizes:<\/b> Standard, wide-calf, and men’s fits to cover every customer."
+      }
+    },
+    "duallayout_ghQckD": {
+      "type": "duallayout",
+      "name": "Dual Section",
+      "settings": {
+        "image_left": false,
+        "background_color": "#ffffff",
+        "imagebig": "shopify:\/\/shop_images\/LANDING_PAGE_PDP_4.png",
+        "contenttitle": "",
+        "contenttext1": "<b>1. Born in Healthcare: <\/b>Our socks first became a must-have for nurses, doctors, and frontline workers who needed comfort through 12-hour shifts.\n\n<br><br>\n<b>2. Viral Beyond the Hospital: <\/b>Today, they’re worn by athletes, travelers, festival-goers, and everyday Australians looking for style + support.\n<br><br>\n\n<b>3. Premium Build:<\/b> 15–20 mmHg graduated compression, bamboo yarn softness, and bold designs that are designed locally in Melbourne."
+      }
+    },
+    "advanced_content_6Wbn6B": {
+      "type": "advanced-content",
+      "blocks": {
+        "image_wcT9Ep": {
+          "type": "image",
+          "settings": {
+            "link": "",
+            "width": "50%",
+            "alignment": "top-middle"
+          }
+        },
+        "image_BqemPa": {
+          "type": "image",
+          "settings": {
+            "link": "",
+            "width": "50%",
+            "alignment": "top-middle"
+          }
+        }
+      },
+      "block_order": [
+        "image_wcT9Ep",
+        "image_BqemPa"
+      ],
+      "name": "Custom content",
+      "settings": {
+        "full_width": false,
+        "space_around": true,
+        "alt": false
+      }
+    },
+    "featured_content_79cpma": {
+      "type": "featured-content",
+      "name": "Rich text",
+      "settings": {
+        "title": "How It Works",
+        "text": "<p>1. Apply: Send us an email to start.<\/p><p>2. Stock: Choose our best-sellers and sizes that fit your customer base.<\/p><p>3. Sell: Watch your shelves clear faster than ever.<br\/><br\/><\/p>",
+        "align_text": "center",
+        "narrow_column": false,
+        "enlarge_text": false,
+        "alt": false
+      }
+    },
+    "contact_form_NpWq86": {
+      "type": "contact-form",
+      "name": "Contact form",
+      "settings": {
+        "title": "Contact us",
+        "show_phone": false,
+        "narrow_column": true
+      }
+    }
+  },
+  "order": [
+    "annoucement_34Kk7C",
+    "featured_content_EKnF4A",
+    "17591072634e00f0ba",
+    "duallayout_CG47nF",
+    "duallayout_fz77Tn",
+    "duallayout_ghQckD",
+    "advanced_content_6Wbn6B",
+    "featured_content_79cpma",
+    "contact_form_NpWq86"
+  ]
+}

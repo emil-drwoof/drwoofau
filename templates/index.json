@@ -2,6 +2,7 @@
   "sections": {
     "replo_replo_hero_banner_FJyVaW": {
       "type": "replo-replo-hero-banner",
+      "disabled": true,
       "settings": {
         "replo_text_c76ec930-dacf-4ebc-8187-f217c670730e": "<p><strong>Because Frontline Deserves Better<\/strong><\/p>",
         "replo_text_a2bc9b43-4344-4e51-b5a3-577493f76d9a": "<p>Designed by a family of doctors who know what it takes to survive demanding shifts.<\/p>",
@@ -10,6 +11,49 @@
         "replo_url_a1956502-dca1-43d1-bce3-117da0853e72": "",
         "replo_text_d1cdb154-7d8b-44a6-8ca6-f20a940c5203": "<p>SHOP COMPRESSION SOCKS<\/p>",
         "replo_text_9482aefc-d769-4fc6-ad8f-1e3f3bbbf03d": "<p>99-day money back guarantee<\/p>"
+      }
+    },
+    "headerv5_yCPF3w": {
+      "type": "headerv5",
+      "name": "Medical Scrubs Hero",
+      "settings": {
+        "title": "Because Frontline Deserves Better",
+        "subtitle": "Designed by a family of doctors who know what it takes to survive demanding shifts",
+        "hero_image": "shopify:\/\/shop_images\/LANDING_PAGE_PDP_da4f17f2-f9fe-42e7-886e-7bf7006efb41.gif",
+        "guarantee_text": "99 DAY MONEY BACK GUARANTEE",
+        "rating_text": "TRUSTED BY 100,000+ NURSES AND DOCTORS",
+        "rating_font_family": "",
+        "rating_size_desktop": 14,
+        "rating_color_desktop": "#ffffff",
+        "rating_margin_bottom_desktop": 24,
+        "rating_size_mobile": 11,
+        "rating_color_mobile": "#ffffff",
+        "rating_margin_bottom_mobile": 20,
+        "rating_size_widescreen": 16,
+        "rating_color_widescreen": "#ffffff",
+        "rating_margin_bottom_widescreen": 32,
+        "primary_button_text": "SHOP SCRUBS",
+        "primary_button_url": "",
+        "secondary_button_text": "SHOP COMPRESSION SOCKS",
+        "secondary_button_url": "",
+        "title_font_family": "futura2",
+        "title_size_desktop": 48,
+        "title_color_desktop": "#ffffff",
+        "subtitle_font_family": "",
+        "subtitle_size_desktop": 18,
+        "subtitle_color_desktop": "#ffffff",
+        "title_size_widescreen": 66,
+        "title_color_widescreen": "#ffffff",
+        "subtitle_size_widescreen": 22,
+        "subtitle_color_widescreen": "#ffffff",
+        "title_size_mobile": 32,
+        "title_color_mobile": "#ffffff",
+        "subtitle_size_mobile": 16,
+        "subtitle_color_mobile": "#ffffff",
+        "background_color": "#0b0d32",
+        "padding_bottom_desktop": 0,
+        "padding_bottom_widescreen": 0,
+        "padding_bottom_mobile": 40
       }
     },
     "1c64d667-b672-4f7b-b9be-2310692e99f1": {
@@ -901,6 +945,51 @@
     "ba72dc37-5808-48c1-b3cb-3ec8be06d8fe": {
       "type": "collection-slider",
       "blocks": {
+        "list_P9Vhk6": {
+          "type": "list",
+          "settings": {
+            "reviewstarsnumber": "",
+            "col_image": "shopify:\/\/shop_images\/Homepage_-_Thumbnails_New_Releases_bba548e0-ac30-4d47-a1b7-4d1c4469af8c.png",
+            "mobcol_image": "shopify:\/\/shop_images\/Homepage_-_Thumbnails_New_Releases_bba548e0-ac30-4d47-a1b7-4d1c4469af8c.png",
+            "block_title": true,
+            "col_text": "Performance Compression Socks",
+            "blackprice": "$44.90",
+            "slashprice": "",
+            "redprice": "",
+            "col_name": "",
+            "col_url": "shopify:\/\/collections\/performance-compression-socks"
+          }
+        },
+        "list_FYgPTh": {
+          "type": "list",
+          "settings": {
+            "reviewstarsnumber": "",
+            "col_image": "shopify:\/\/shop_images\/Homepage_-_Thumbnails_New_Releases_1_5e1a3305-f7b3-4d47-9afd-960c961e251e.png",
+            "mobcol_image": "shopify:\/\/shop_images\/Homepage_-_Thumbnails_New_Releases_1_5e1a3305-f7b3-4d47-9afd-960c961e251e.png",
+            "block_title": true,
+            "col_text": "Christmas Tails Women’s 8-Pocket Scrub Jumpsuit",
+            "blackprice": "$128.80",
+            "slashprice": "",
+            "redprice": "",
+            "col_name": "",
+            "col_url": "shopify:\/\/collections\/christmas-scrubs"
+          }
+        },
+        "list_jYnkaz": {
+          "type": "list",
+          "settings": {
+            "reviewstarsnumber": "",
+            "col_image": "shopify:\/\/shop_images\/Homepage_-_Thumbnails_New_Releases_2.png",
+            "mobcol_image": "shopify:\/\/shop_images\/Homepage_-_Thumbnails_New_Releases_2.png",
+            "block_title": true,
+            "col_text": "Men's Printed Scrubs",
+            "blackprice": "$49.90",
+            "slashprice": "",
+            "redprice": "",
+            "col_name": "",
+            "col_url": "shopify:\/\/collections\/mens-printed-scrubs"
+          }
+        },
         "list_iUzLHd": {
           "type": "list",
           "settings": {
@@ -1008,6 +1097,7 @@
         },
         "list_b8Xf7L": {
           "type": "list",
+          "disabled": true,
           "settings": {
             "reviewstarsnumber": "",
             "col_image": "shopify:\/\/shop_images\/5_b738c4d1-51db-4419-999f-f843487e5a6f.jpg",
@@ -1023,6 +1113,9 @@
         }
       },
       "block_order": [
+        "list_P9Vhk6",
+        "list_FYgPTh",
+        "list_jYnkaz",
         "list_iUzLHd",
         "list_GRLgxk",
         "list_QQJrbP",
@@ -1131,6 +1224,7 @@
   },
   "order": [
     "replo_replo_hero_banner_FJyVaW",
+    "headerv5_yCPF3w",
     "1c64d667-b672-4f7b-b9be-2310692e99f1",
     "logolistaani_YJptaJ",
     "logo_list_gcipMb",

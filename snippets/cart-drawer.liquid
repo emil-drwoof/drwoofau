@@ -159,7 +159,7 @@
           {% if HANDLElast == item.product.handle %}
                             <div class="cart__item-price th_item_price plus_minus_status {{ firstvalue }} {{ Show_Price }}">
                               <span class='hulkapps-cart-item-price' data-key='{{item.key}}'>
-                                <div class="qb-price-item" data-id="{{ item.key }}">
+                                <div class="qb-price-item xxa" data-id="{{ item.key }}">
                                   {{ NormalPrice }}
                                 </div>
                               </span>
@@ -167,7 +167,7 @@
                             {% else %}
                             <div class="cart__item-price th_item_price plus_minus_status {{ firstvalue }} {{ Show_Price }}">
                               <span class='hulkapps-cart-item-price' data-key='{{item.key}}'>
-                                <div class="qb-price-item" data-id="{{ item.key }}">
+                                <div class="qb-price-item xxb" data-id="{{ item.key }}">
                                   {% if item.original_price > item.final_price %}
                                     <span style="text-decoration: line-through;color:#B53728 !important;">{{ item.original_price | money_with_currency }}</span> - {{ item.final_price| money_with_currency }}                                 
                                   {% else %}
@@ -867,5 +867,21 @@ let $totalin = parseInt($(".set_range").val());
 })
 
 
+document.addEventListener("DOMContentLoaded", function() {
+  document.querySelectorAll(".xxb").forEach(el => {
+    let text = el.innerHTML.trim();
+
+    // Match everything before the first dash (the first price)
+    let updated = text.replace(
+      /^([^–-]+?)(\s*[-–])/, 
+      '<span style="text-decoration: line-through;color:#B53728 !important;">$1</span>$2'
+    );
+
+    el.innerHTML = updated;
+  });
+});
+
 
 </script>
+
+

@@ -340,7 +340,7 @@
       {% if section.settings.hero_image != blank %}
         <img src="{{ section.settings.hero_image | image_url: width: 600 }}" 
              alt="{{ section.settings.hero_image.alt | default: 'Medical professionals in scrubs' }}"
-             loading="lazy">
+             fetchpriority="high">
       {% else %}
         <div style="background: rgba(255,255,255,0.1); padding: 100px 50px; border-radius: 10px; color: white;">
           <p>Upload hero image</p>
