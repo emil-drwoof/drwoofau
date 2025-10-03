@@ -3,7 +3,7 @@
             {% assign total_cart = cart.total_price | plus: 1000 | divided_by: 100 | format: "%.2f" %}
           {% elsif cart.currency.iso_code == 'NZD' %}
             {% assign total_cart = cart.total_price | plus: 1990 | divided_by: 100 | format: "%.2f" %}
-          {% elsif request.host contains 'hk.' %}
+          {% elsif cart.currency.iso_code == 'HKD'%}
             {% assign total_cart = cart.total_price | plus: 2597 | divided_by: 100 | format: "%.2f" %}
           {% else %}
             {% assign total_cart = cart.total_price | plus: 1190 | divided_by: 100 | format: "%.2f" %}
@@ -12,7 +12,7 @@
             {% assign totalrange = cart.total_price | divided_by: 100 | format: "%.2f" %}
           {% elsif cart.currency.iso_code == 'NZD' %}
             {% assign totalrange = cart.total_price | divided_by: 100 | format: "%.2f" %}
-          {% elsif request.host contains 'hk.' %}
+          {% elsif cart.currency.iso_code == 'HKD'%}
             {% assign totalrange = cart.total_price | divided_by: 100 | format: "%.2f" %}
           {% else %}
             {% assign totalrange = cart.total_price | divided_by: 100 | format: "%.2f" %}
@@ -40,7 +40,7 @@
       {% assign firstindex = 126 %}
     {% elsif cart.currency.iso_code == 'NZD' %}
       {% assign firstindex = 156  %}
-    {% elsif request.host contains 'hk.' %}
+    {% elsif cart.currency.iso_code == 'HKD'%}
       {% assign firstindex = 753 %}
     {% endif %}
 
@@ -53,7 +53,7 @@
       {% assign lastindex = block.settings.spendamount | times: 1.0 | times: 0.858876 | round %}      
     {% elsif cart.currency.iso_code == 'NZD' %}
       {% assign lastindex = block.settings.spendamount | times: 1.0 | times: 1.09421 | round %}      
-    {% elsif request.host contains 'hk.' %}
+    {% elsif cart.currency.iso_code == 'HKD'%}
       {% assign lastindex = block.settings.spendamount | times: 1.0 | times: 5.1949824 | round %}      
     {% endif %}
 
@@ -73,7 +73,7 @@
       {% assign lastindexnozero = block.settings.spendamount | times: 0.858876 | round %}      
     {% elsif cart.currency.iso_code == 'NZD' %}
       {% assign lastindexnozero = block.settings.spendamount | times: 1.09421 | round %}      
-    {% elsif request.host contains 'hk.' %}
+    {% elsif cart.currency.iso_code == 'HKD'%}
       {% assign lastindexnozero = block.settings.spendamount | times: 5.1949824 | round %}      
     {% endif %}
 <!-- emil spendamount second -->
@@ -98,10 +98,10 @@
     <div class="offer">General Offer</div>
     <div class="progress-bar">
       <div class="milestone top-mon milone">
-        {% if request.host contains 'hk.' %}HK${% else %}${% endif %}{{ firstindex }}
+        {% if cart.currency.iso_code == 'HKD'%}HK${% else %}${% endif %}{{ firstindex }}
       </div>
       <div class="milestone top-mon miltwo">
-        {% if request.host contains 'hk.' %}HK${% else %}${% endif %}{{ lastindexnozero }}
+        {% if cart.currency.iso_code == 'HKD'%}HK${% else %}${% endif %}{{ lastindexnozero }}
       </div>
       <div class="linertop milestone milone">|</div>
       <div class="linertop milestone miltwo">|</div>
@@ -113,9 +113,9 @@
         <div class="milestone bot-mon miltwo">{{ lastmsg }}</div>
     </div>
     <div class="progress-text">
-        <span class="notif-inc">Add <strong>{% if request.host contains 'hk.' %}HK${% else %}${% endif %}<span class="amount-needed"></span></strong> more to cart to get <b>{{ firstmsg }}</b> </span>
+        <span class="notif-inc">Add <strong>{% if cart.currency.iso_code == 'HKD'%}HK${% else %}${% endif %}<span class="amount-needed"></span></strong> more to cart to get <b>{{ firstmsg }}</b> </span>
         <span class="notif-com1">Congratulations! You get FREE <b>Standard Shipping</b> and <b>FREE 
-        {% if request.host contains 'hk.' %}HK$208{% else %}$40{% endif %} <!-- emil spendamount adjustment -->Gift Card</b> </span>
+        {% if cart.currency.iso_code == 'HKD'%}HK$208{% else %}$40{% endif %} <!-- emil spendamount adjustment -->Gift Card</b> </span>
     </div>
   </div>
   
@@ -274,7 +274,7 @@ $(".another").hide()
       {% elsif cart.currency.iso_code == 'NZD' %}
         $tempval = 350 * 1.09421;
         if(totalcart >= $tempval){                
-      {% elsif request.host contains 'hk.' %}
+      {% elsif cart.currency.iso_code == 'HKD'%}
         $tempval = 350 * 5.1949824;
         if(totalcart >= $tempval){                
       {% else %}
@@ -292,7 +292,7 @@ $(".another").hide()
       
         // emil adjustment
         // bad
-        {% if request.host contains 'hk.' %}
+        {% if cart.currency.iso_code == 'HKD'%}
           if(totalcart < 753){
         {% else %}
           {% if cart.currency.iso_code == 'SGD' %}
@@ -301,7 +301,7 @@ $(".another").hide()
           {% elsif cart.currency.iso_code == 'NZD' %}
             $tempval = 145 * 156;
             if(totalcart < $tempval){                
-          {% elsif request.host contains 'hk.' %}
+          {% elsif cart.currency.iso_code == 'HKD'%}
             if(totalcart < 753){
           {% else %}
             if(totalcart < 145){
@@ -333,7 +333,7 @@ $(".another").hide()
           $('.off1 .progress-circle').css('left', progressPercentage1 + '%');
           // Calculate the remaining amount for FREE shipping
           var amountNeeded = {{ lastindex }} - totalcart;
-          {% if request.host contains 'hk.' %}
+          {% if cart.currency.iso_code == 'HKD'%}
             $('.off1 .notif-inc b').html("FREE HK$208 Gift Card")
           {% else %}
             $('.off1 .notif-inc b').html("FREE $40 Gift Card")
@@ -938,7 +938,7 @@ if($scrunchiescount > 0){
       display: flex;
       flex-wrap: wrap;
       justify-content: flex-start;
-      width:80%;
+      width:66%;
     }
   @media (max-width:480px){
     span.br-clean{

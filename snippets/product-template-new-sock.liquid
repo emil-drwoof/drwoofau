@@ -653,6 +653,7 @@ font-size: 18px;
 
   .price-info {
     display: flex;
+    display: none; /* Start hidden */
     gap: 8px;
     justify-content: center;
     align-items: center;
@@ -661,7 +662,9 @@ font-size: 18px;
     background:#333;
     padding:0 12px;
   }
-
+  .price-info.visible {
+    display: flex; /* Show when ready */
+  }
 .original-price {
   text-decoration: line-through;
   color: #ccc;
@@ -1262,6 +1265,7 @@ font-size: 18px;
 
   .price-info {
     display: flex;
+    display: none; /* Start hidden */
     gap: 8px;
     align-items: center;
     margin-left: 4px;
@@ -1313,6 +1317,50 @@ font-size: 18px;
 
 <!-- Create variant lookup object -->
 <script>
+window.shopCurrency = '{{ shop.currency }}';
+
+// Try to detect the actual displayed currency
+window.displayCurrency = 'AUD'; // default
+window.currencySymbol = '$'; // default
+
+// Check if there's a currency converter setting the currency
+if (typeof Currency !== 'undefined' && Currency.currentCurrency) {
+  window.displayCurrency = Currency.currentCurrency;
+} else if (window.Shopify && window.Shopify.currency && window.Shopify.currency.active) {
+  window.displayCurrency = window.Shopify.currency.active;
+}
+
+// Set currency symbol based on detected currency
+switch(window.displayCurrency) {
+  case 'HKD':
+    window.currencySymbol = 'HK$';
+    break;
+  case 'NZD':
+    window.currencySymbol = 'NZ$';
+    break;
+  case 'SGD':
+    window.currencySymbol = 'SG$';
+    break;
+  default:
+    window.currencySymbol = '$';
+}
+
+// Debug log
+console.log('=== CURRENCY DETECTION ===');
+console.log('Shop base currency:', window.shopCurrency);
+console.log('Detected display currency:', window.displayCurrency);
+console.log('Currency symbol:', window.currencySymbol);
+console.log('=== END ===');
+
+    // Shipping thresholds by currency
+  window.shippingThresholds = {
+    'AUD': 145,
+    'HKD': 753,
+    'NZD': 156,
+    'SGD': 126
+  };
+
+
   window.productVariants = {
     {% for variant in product.variants %}
       "{{ product.id }}-{{ variant.option1 | downcase }}-{{ variant.option2 | downcase }}": {
@@ -1525,13 +1573,19 @@ font-size: 18px;
 
   <!-- Add to Cart -->
   <div class="add-to-cart-section">
-    <button class="add-to-cart-btn" id="addToCartBtn">
-      <span id="addToCartText">Add to Cart</span>
-      <div class="price-info">
-        <span class="original-price">$39.00</span>
-        <span class="sudo-sale-price">$35.92</span>
-      </div>
-    </button>
+  <button class="add-to-cart-btn" id="addToCartBtn">
+    <span id="addToCartText">Add to Cart</span>
+    <div class="price-info">
+      {% if product.compare_at_price %}
+        <span class="original-price">
+          {{ product.compare_at_price | money }}{% unless shop.currency == 'AUD' %} {{ shop.currency }}{% endunless %}
+        </span>
+      {% endif %}
+      <span class="sudo-sale-price">
+        {{ product.price | money }}{% unless shop.currency == 'AUD' %} {{ shop.currency }}{% endunless %}
+      </span>
+    </div>
+  </button>
     <p id="preorder-text">Pre-order now to secure your preferred design. Your entire order will ship once this item becomes available. Thanks for your patience!</p>
     <div class="shipping-info">
    <div class="shipping-badge">
@@ -1543,7 +1597,8 @@ font-size: 18px;
         </span>
         <span id="arrival-date">Loading...</span>
     </div>
-      <div class="shipping-badge">
+     <div class="shipping-badge" id="freeShippingBadge">
+
         <span><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" width="256" height="256" viewBox="0 0 256 256" xml:space="preserve">
 <g style="stroke: none; stroke-width: 0; stroke-dasharray: none; stroke-linecap: butt; stroke-linejoin: miter; stroke-miterlimit: 10; fill: none; fill-rule: nonzero; opacity: 1;" transform="translate(1.4065934065934016 1.4065934065934016) scale(2.81 2.81)">
 	<circle cx="45" cy="45" r="45" style="stroke: none; stroke-width: 1; stroke-dasharray: none; stroke-linecap: butt; stroke-linejoin: miter; stroke-miterlimit: 10; fill: rgb(0,0,102); fill-rule: nonzero; opacity: 1;" transform="  matrix(1 0 0 1 0 0) "/>
@@ -1557,7 +1612,7 @@ font-size: 18px;
 </g>
 </svg>
 </span>
-        <span>FREE Shipping over $145</span>
+        <span id="shippingThresholdText">Loading...</span>
       </div>
     </div>
   </div>
@@ -1673,11 +1728,13 @@ function updatePriceInfo(styleOption) {
   const sudoSalePriceElement = document.querySelector('.sudo-sale-price');
   
   if (sudoSalePriceElement && priceData) {
-    sudoSalePriceElement.textContent = priceData;
+    const priceValue = extractPriceValue(priceData);
+sudoSalePriceElement.textContent = formatPrice(priceValue);
   }
   
   if (originalPriceElement && compareData) {
-    originalPriceElement.textContent = compareData;
+   const comparePriceValue = extractPriceValue(compareData);
+originalPriceElement.textContent = formatPrice(comparePriceValue);
   }
 }
 
@@ -2122,7 +2179,8 @@ styleOptions.forEach(option => {
     if(priceData==""){
       sudoSalePriceElement.textContent = "";
     }else{
-      sudoSalePriceElement.textContent = priceData;
+      const priceValue = extractPriceValue(priceData);
+sudoSalePriceElement.textContent = formatPrice(priceValue);
     }
     
     // Show/hide the original price element
@@ -2130,7 +2188,8 @@ styleOptions.forEach(option => {
       originalPriceElement.style.display = "none";
     } else {
       originalPriceElement.style.display = ""; // or "inline", "block" depending on your layout
-      originalPriceElement.textContent = compareData;
+      const comparePriceValue = extractPriceValue(compareData);
+originalPriceElement.textContent = formatPrice(comparePriceValue);
     }
 
     // Check inventory for new product
@@ -2321,12 +2380,13 @@ addToCartBtn.addEventListener('click', function() {
   addItemsSequentially(cartItems);
 });
 
-// Initialize default selections and check inventory
 selectedTypeInput.value = 'regular';
 selectedSizeInput.value = 's';
 checkInventoryAndUpdateButton();
 updatePreorderText();
-});</script>
+updateATCPrices(); 
+});
+</script>
 
 <div class="woof-faq">
 
@@ -2848,21 +2908,12 @@ function extractPriceValue(priceString) {
   return isNaN(numericValue) ? 0 : numericValue;
 }
 
-function formatPrice(value, originalPriceString) {
-  if (!originalPriceString) return value.toFixed(2);
+function formatPrice(value) {
+  const currencySymbol = window.currencySymbol || '$';
   
-  const currencyMatch = originalPriceString.match(/[^0-9.,]+/);
-  const currencySymbol = currencyMatch ? currencyMatch[0] : '$';
-  
-  const currencyAtStart = originalPriceString.indexOf(currencySymbol) < originalPriceString.search(/[0-9]/);
-  
-  if (currencyAtStart) {
-    return currencySymbol + value.toFixed(2);
-  } else {
-    return value.toFixed(2) + currencySymbol;
-  }
+  // Just return symbol + price, no currency code
+  return currencySymbol + value.toFixed(2);
 }
-
 function getCurrentProductPrice() {
   const activeStyleOption = document.querySelector('.style-option.active');
   if (activeStyleOption && activeStyleOption.dataset.price) {
@@ -2926,14 +2977,14 @@ function updateATCPrices() {
   const sudoSalePriceElement = document.querySelector('.sudo-sale-price');
   
   // Get current format reference
-  let formatReference = '$35.92'; // fallback
+ let formatReference = (window.currencySymbol || '$') + '35.92';
   if (sudoSalePriceElement && sudoSalePriceElement.textContent) {
     formatReference = sudoSalePriceElement.textContent;
   }
   
   // Update the price displays
   if (originalPriceElement) {
-    originalPriceElement.textContent = formatPrice(totalOriginalPrice, formatReference);
+    originalPriceElement.textContent = formatPrice(totalOriginalPrice);
     // Show original price ONLY if there's a discount
     if (discountPercentage > 0) {
       originalPriceElement.style.display = '';
@@ -2944,12 +2995,17 @@ function updateATCPrices() {
   
   if (sudoSalePriceElement) {
     if (discountPercentage > 0) {
-      sudoSalePriceElement.textContent = formatPrice(finalPrice, formatReference);
+      sudoSalePriceElement.textContent = formatPrice(finalPrice);
     } else {
-      sudoSalePriceElement.textContent = formatPrice(totalOriginalPrice, formatReference);
+      sudoSalePriceElement.textContent = formatPrice(totalOriginalPrice);
     }
   }
   
+  const priceInfoContainer = document.querySelector('.price-info');
+  if (priceInfoContainer) {
+    priceInfoContainer.classList.add('visible');
+  }
+
   console.log('=== PRICE UPDATE DEBUG ===');
   console.log('Memory products quantity:', totalMemoryQuantity);
   console.log('Including current product:', totalMemoryQuantity === 0);
@@ -3701,6 +3757,28 @@ document.addEventListener('DOMContentLoaded', function() {
 
 
 <script>
+
+function updateShippingBadge() {
+  const shippingBadge = document.getElementById('freeShippingBadge');
+  const shippingText = document.getElementById('shippingThresholdText');
+  
+  if (!shippingBadge || !shippingText) return;
+  
+  const currency = window.displayCurrency || 'AUD';
+  const threshold = window.shippingThresholds[currency] || 145;
+  const symbol = window.currencySymbol || '$';
+  
+  // Don't show currency code for AUD, show it for others
+  if (currency === 'AUD') {
+    shippingText.textContent = `FREE Shipping over ${symbol}${threshold}`;
+  } else {
+    shippingText.textContent = `FREE Shipping over ${symbol}${threshold} ${currency}`;
+  }
+}
+// Call on page load
+document.addEventListener('DOMContentLoaded', updateShippingBadge);
+updateShippingBadge();
+
 function countCompressionSocks() {
   let totalCount = 0;
   

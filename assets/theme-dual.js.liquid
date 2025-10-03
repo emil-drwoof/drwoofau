@@ -176,10 +176,18 @@ $(document).ready(function(){
               $(".preorderdate").html($(".preespresso").html())
            } 
 
-                                 if ($color == 'chocolate brownie') {
+                                            if ($color == 'chocolate brownie') {
               $(".preorderdate").html($(".prechocolatebrownie").html())
            } 
-
+          if ($color == 'popberry') {
+              $(".preorderdate").html($(".prepopberry").html())
+           }
+          if ($color == 'jacaranda') {
+              $(".preorderdate").html($(".prejacaranda").html())
+           } 
+                                  if ($color == 'bubblegum') {
+              $(".preorderdate").html($(".prebubblegum").html())
+           }  
 
     }else{
        $(".preorder-text").hide()
@@ -12132,6 +12140,9 @@ $('.datavariant.dtwo .parentvar').each(function(){
                      if ($color == 'jacaranda') {
               $(".preorderdate").html($(".prejacaranda").html())
            } 
+                                  if ($color == 'bubblegum') {
+              $(".preorderdate").html($(".prebubblegum").html())
+           }  
   }else{
      $(".preorder-text").hide()
      $("#deliveryDiv").hide()

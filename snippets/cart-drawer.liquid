@@ -497,7 +497,7 @@
                   $10.00 SGD
                   {% elsif cart.currency.iso_code == 'NZD' %}
                   $ 19.90 NZD
-                  {% elsif request.host contains 'hk.' %}
+                  {% elsif cart.currency.iso_code == 'HKD'%}
                   HK$99.90
                   {% else %}
                   $11.90
@@ -511,23 +511,33 @@
             Total
           </div>
           <div class="cart__detail-info">
-            {% assign xter = cart.total_price |  divided_by: 100 %}
-            {% if xter >= 145 %}
-              <span data-cart-subtotal class="totalin_hidden" style="font-weight:900;display:none !important;">{{ cart.total_price | money_with_currency }}</span>
-              <span data-cart-subtotal class="totalin" style="font-weight:900">{{ cart.total_price | money_with_currency }}</span>
-            {% else %}
-              <span data-cart-subtotal class="totalin_hidden" style="font-weight:900;display:none !important;">{{ cart.total_price | money_with_currency }}</span>
-              <span data-cart-subtotal class="totalin" style="font-weight:900">{% if cart.currency.iso_code == 'SGD' %}
-          {{ cart.total_price | plus: 1000 | round: 2 | money_with_currency }}
-          {% elsif cart.currency.iso_code == 'NZD' %}
-          {{ cart.total_price | plus: 1990 | round: 2 | money_with_currency }}
-          {% elsif request.host contains 'hk.' %}
-          {{ cart.total_price | plus: 2597 | round: 2 | money_with_currency }}
-          {% else %}
-          {{ cart.total_price | plus: 1190 | round: 2 | money_with_currency }}
-          {% endif %}          
-          </span>
-            {% endif %}
+{% comment %} Get cart total in the main currency unit (not cents) {% endcomment %}
+{% assign cart_total = cart.total_price | divided_by: 100 %}
+
+{% comment %} Set threshold and shipping fee based on currency {% endcomment %}
+{% if cart.currency.iso_code == 'HKD' %}
+  {% assign free_shipping_threshold = 750 %}
+  {% assign shipping_fee = 9990 %}
+{% elsif cart.currency.iso_code == 'NZD' %}
+  {% assign free_shipping_threshold = 157 %}
+  {% assign shipping_fee = 1990 %}
+{% elsif cart.currency.iso_code == 'SGD' %}
+  {% assign free_shipping_threshold = 124 %}
+  {% assign shipping_fee = 1000 %}
+{% else %}
+  {% comment %} Default to AUD {% endcomment %}
+  {% assign free_shipping_threshold = 145 %}
+  {% assign shipping_fee = 1190 %}
+{% endif %}
+
+{% comment %} Check if cart meets free shipping threshold {% endcomment %}
+{% if cart_total >= free_shipping_threshold %}
+  <span data-cart-subtotal class="totalin_hidden" style="font-weight:900;display:none !important;">{{ cart.total_price | money_with_currency }}</span>
+  <span data-cart-subtotal class="totalin" style="font-weight:900">{{ cart.total_price | money_with_currency }}</span>
+{% else %}
+  <span data-cart-subtotal class="totalin_hidden" style="font-weight:900;display:none !important;">{{ cart.total_price | money_with_currency }}</span>
+  <span data-cart-subtotal class="totalin" style="font-weight:900">{{ cart.total_price | plus: shipping_fee | money_with_currency }}</span>
+{% endif %}
           </div>
         </div>
         <!-- shipping calculation -->
@@ -782,7 +792,7 @@ window.setInterval(function () {
                 borderRadius: '4px'
             });
     }
-    {% elsif request.host contains 'hk.' %}
+    {% elsif cart.currency.iso_code == 'HKD'%}
     if ($totalin >= 750) {
         $("#cartshipping")
             .html("<span style='text-decoration: line-through; font-weight: 400;'>HK$99.90</span> Free")
@@ -839,7 +849,7 @@ let $totalin = parseInt($(".set_range").val());
                 borderRadius: '4px'
             });
     }
-          {% elsif request.host contains 'hk.' %}
+          {% elsif cart.currency.iso_code == 'HKD'%}
     if ($totalin >= 750) {
         $("#cartshipping")
             .html("<span style='text-decoration: line-through; font-weight: 400;'>HK$99.90</span> Free")

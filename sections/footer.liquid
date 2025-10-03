@@ -608,15 +608,24 @@
 
     updateSelected(select.value);
 
-    options.forEach(option => {
-      option.addEventListener('click', () => {
-        const code = option.getAttribute('data-code');
-        const url = option.getAttribute('data-url');
-        
-        // Redirect to the URL instead of just updating the selector
-        window.location.href = url;
-      });
-    });
+options.forEach(option => {
+  option.addEventListener('click', () => {
+    const code = option.getAttribute('data-code');
+    const url = option.getAttribute('data-url');
+    
+    // Get current path after removing any existing locale prefix
+    let currentPath = window.location.pathname;
+    currentPath = currentPath.replace(/^\/(en-hk|en-nz|en-sg)/, '');
+    
+    // Remove trailing slash from base URL if present
+    const baseUrl = url.replace(/\/$/, '');
+    
+    // Construct new URL with locale and current path
+    const newUrl = baseUrl + currentPath + window.location.search;
+    
+    window.location.href = newUrl;
+  });
+});
 
     selected.addEventListener('click', (e) => {
       e.stopPropagation();
@@ -658,15 +667,24 @@
 
     updateSelected(select.value);
 
-    options.forEach(option => {
-      option.addEventListener('click', () => {
-        const code = option.getAttribute('data-code');
-        const url = option.getAttribute('data-url');
-        
-        // Redirect to the URL instead of just updating the selector
-        window.location.href = url;
-      });
-    });
+options.forEach(option => {
+  option.addEventListener('click', () => {
+    const code = option.getAttribute('data-code');
+    const url = option.getAttribute('data-url');
+    
+    // Get current path after removing any existing locale prefix
+    let currentPath = window.location.pathname;
+    currentPath = currentPath.replace(/^\/(en-hk|en-nz|en-sg)/, '');
+    
+    // Remove trailing slash from base URL if present
+    const baseUrl = url.replace(/\/$/, '');
+    
+    // Construct new URL with locale and current path
+    const newUrl = baseUrl + currentPath + window.location.search;
+    
+    window.location.href = newUrl;
+  });
+});
 
     selected.addEventListener('click', (e) => {
       e.stopPropagation();
