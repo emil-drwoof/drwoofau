@@ -2729,7 +2729,7 @@ $(document).ready(function(){
       $varquan = parseInt($(".atv").attr("data-socqty"))
       $varprice = $(".atv").attr("data-socvarprice")
       $(".product-single__prices .sale-price").html($varprice)
-
+      $(".product__price").html($varprice)              
       if(($varavail == "true") && ($varquan <= 0)) {
         $(".preorder-text").show()
         $(".preorderdate").html("September 10")
@@ -5615,132 +5615,6 @@ $(document).ready(function(){
       }
     }
 </style>
-{% unless template.name contains 'page' %}
-<div id="surveyModal" class="kmodal">
-  <div class="kmodal-content">
-    <div class="kmodal-header">
-      <button class="close-btn">×</button>
-    </div>
-    <iframe 
-      src="https://app.knocommerce.com/surveys/1687304d-9548-4f9c-bd40-c9f82c5bd0df" 
-      frameborder="0"
-      id="surveyIframe"
-    ></iframe>
-    <div class="footer">
-      Powered by <a href="https://knocommerce.com/" target="_blank">KnoCommerce</a>
-    </div>
-  </div>
-</div>
-<script>
-  document.addEventListener('DOMContentLoaded', () => {
-    const modalElement = document.getElementById('surveyModal');
-    const closeBtn = modalElement.querySelector('.close-btn');
-    const iframe = document.getElementById('surveyIframe');
-    let cooldownActive = false;
-    let cooldownTime = 30000; // 30 seconds cooldown between showings
-    
-    // Function to check if device is mobile
-    function isMobileDevice() {
-      return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
-    }
-
-    // Function to handle exit intent
-    function handleExitIntent(e) {
-      // If cooldown is active, don't show the modal
-      if (cooldownActive) return;
-      
-      // Improved exit intent detection for cross-browser compatibility
-      const shouldShowModal = 
-        (e.clientY <= 20 && e.clientY >= 0) || // Moving towards top
-        (e.clientX <= 0) || // Moving towards left edge
-        (e.clientX >= window.innerWidth - 1); // Moving towards right edge
-        
-      if (shouldShowModal) {
-        // showModal();
-      }
-    }
-    
-    // Function to show modal
-    function showModal() {
-      modalElement.classList.add('open');
-      iframe.contentWindow.postMessage('modal-opened', '*');
-      
-      // Set cooldown
-      cooldownActive = true;
-      setTimeout(() => {
-        cooldownActive = false;
-      }, cooldownTime);
-    }
-    
-    // Function to close modal
-    function closeModal() {
-      modalElement.classList.remove('open');
-    }
-
-    // Only initialize modal if not on mobile
-    if (!isMobileDevice()) {
-      // Exit intent detection - works across major browsers
-      document.addEventListener('mouseleave', handleExitIntent);
-      
-      // Also detect rapid mouse movements toward the top
-      document.addEventListener('mousemove', (e) => {
-        // Detect rapid upward movement
-        if (typeof e.movementY === 'number' && e.movementY < -30 && e.clientY < 150) {
-          handleExitIntent(e);
-        }
-      });
-
-      // Close button handler
-      closeBtn.addEventListener('click', closeModal);
-
-      // Close on outside click
-      document.addEventListener('click', (e) => {
-        if (!modalElement.contains(e.target) && modalElement.classList.contains('open')) {
-          closeModal();
-        }
-      });
-
-      // Close on ESC key
-      document.addEventListener('keydown', (e) => {
-        if (e.key === 'Escape' && modalElement.classList.contains('open')) {
-          closeModal();
-        }
-      });
-
-      // Handle messages from iframe (for survey completion)
-      window.addEventListener('message', (event) => {
-        // Check if the message is from our survey iframe domain
-        if (event.origin.includes('knocommerce.com')) {
-          // Check if survey was completed
-          if (event.data === 'survey-completed') {
-            closeModal();
-            // Set a longer cooldown after completion
-            cooldownActive = true;
-            setTimeout(() => {
-              cooldownActive = false;
-            }, 24 * 60 * 60 * 1000); // 24 hours
-          }
-        }
-      });
-
-      // Adjust iframe height after content loads
-      iframe.addEventListener('load', () => {
-        try {
-          const iframeDoc = iframe.contentDocument || iframe.contentWindow.document;
-          const contentHeight = iframeDoc.body.scrollHeight;
-          iframe.style.height = `${contentHeight}px`;
-          iframe.scrolling = 'no';
-        } catch (e) {
-          console.log('Cannot access iframe content height due to CORS');
-          iframe.style.height = '600px';
-          iframe.scrolling = 'auto';
-        }
-      });
-    }
-  });
-</script>
-
-{% endunless %}
 
 
     {% if product.handle contains "bag" %}

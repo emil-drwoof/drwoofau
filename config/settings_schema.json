@@ -1079,6 +1079,11 @@
         "type": "url",
         "id": "cart_terms_conditions_link",
         "label": "Terms and conditions page"
+      },
+      {
+        "type": "number",
+        "id": "shipping_treshold",
+        "label": "Shipping Treshold (in AUD)"
       }
     ]
   },

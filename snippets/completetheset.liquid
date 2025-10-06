@@ -85,57 +85,60 @@
                   {% for product in collections['complete-the-set'].products %}
                     {% unless cts_product_1_a == blank %}
                       {% if product.handle == cts_product_1_a %}
-                        {% for variant in product.variants %}
-                          <div class="parentvar">
-                            {% if variant.available %}
-                              <input
-                                value="{{ variant.featured_image | img_url: 'master' }}"
-                                type="hidden"
-                                class="datavarimage">
-                              <input
-                                value="{{ variant.id }}"
-                                type="hidden"
-                                class="datavarid">
-                              <input
-                                value="{{ variant.title }}"
-                                type="hidden"
-                                class="datatitle">
-                              <input
-                                value="available"
-                                type="hidden"
-                                class="dataavail">
-                              <input
-                                value="{{ variant.price | money_with_currency }}"
-                                type="hidden"
-                                class="dataprice">
-                            {% else %}
-                              <input
-                                value="{{ variant.featured_image | img_url: 'master' }}"
-                                type="hidden"
-                                class="datavarimage">
-                              <input
-                                value="{{ variant.id }}"
-                                type="hidden"
-                                class="datavarid">
-                              <input
-                                value="{{ variant.title }}"
-                                type="hidden"
-                                class="datatitle">
-                              <input
-                                value="soldout"
-                                type="hidden"
-                                class="dataavail">
+                        {% if product.available %}
+                          {% for variant in product.variants %}
+                            <div class="parentvar">
+                              {% if variant.available %}
                                 <input
-                                value="{{ variant.price | money_with_currency }}"
-                                type="hidden"
-                                class="dataprice">
-                            {% endif %}
-                          </div>
-                        {% endfor %}
+                                  value="{{ variant.featured_image | img_url: 'master' }}"
+                                  type="hidden"
+                                  class="datavarimage">
+                                <input
+                                  value="{{ variant.id }}"
+                                  type="hidden"
+                                  class="datavarid">
+                                <input
+                                  value="{{ variant.title }}"
+                                  type="hidden"
+                                  class="datatitle">
+                                <input
+                                  value="available"
+                                  type="hidden"
+                                  class="dataavail">
+                                <input
+                                  value="{{ variant.price | money_with_currency }}"
+                                  type="hidden"
+                                  class="dataprice">
+                              {% else %}
+                                <input
+                                  value="{{ variant.featured_image | img_url: 'master' }}"
+                                  type="hidden"
+                                  class="datavarimage">
+                                <input
+                                  value="{{ variant.id }}"
+                                  type="hidden"
+                                  class="datavarid">
+                                <input
+                                  value="{{ variant.title }}"
+                                  type="hidden"
+                                  class="datatitle">
+                                <input
+                                  value="soldout"
+                                  type="hidden"
+                                  class="dataavail">
+                                  <input
+                                  value="{{ variant.price | money_with_currency }}"
+                                  type="hidden"
+                                  class="dataprice">
+                              {% endif %}
+                            </div>
+                          {% endfor %}
+                        {% endif %}
                       {% endif %}
                     {% endunless %}
                     {% unless cts_product_1_b == blank %}
                       {% if product.handle == cts_product_1_b %}
+                        {% if product.available %}
                         {% for variant in product.variants %}
                           <div class="parentvar">
                             {% if variant.available %}
@@ -183,10 +186,12 @@
                             {% endif %}
                           </div>
                         {% endfor %}
+                        {% endif %}
                       {% endif %}
                     {% endunless %}
                     {% unless cts_product_1_c == blank %}
                       {% if product.handle == cts_product_1_c %}
+                        {% if product.available %}
                         {% for variant in product.variants %}
                           <div class="parentvar">
                             {% if variant.available %}
@@ -234,6 +239,7 @@
                             {% endif %}
                           </div>
                         {% endfor %}
+                        {% endif %}
                       {% endif %}
                     {% endunless %}
                   {% endfor %}
@@ -633,9 +639,7 @@
                     {% endunless %}
                     <div class="error_message1" style="display: none;">Oh no! It looks like you missed something. Please review your choices.</div>
                   </div>
-
-
-                </div>
+                
               </div>
 
 

@@ -1,4 +1,4 @@
-<!-- snippets/product-template.liquid -->
+<!-- snippets/product-template.liquid x -->
 <script
   src="https://code.jquery.com/jquery-3.6.0.min.js"
   integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
@@ -1213,11 +1213,15 @@ dual
                                       {% assign overlayimagex = overlayimage | img_url: '500x500' %}
                                       {% endif %}
                                     {% endfor %}
-                                    <div class="image-overlay activer" data-id="{{ productb.id }}" data-title="{{ productb.title }}" data-image="{{ productb.images.first | product_img_url: 'medium' }}" data-url="{{ productb.url }}" data-handle="{{ productb.handle }}" data-price="{{ productb.price | money_with_currency }}" data-compare="{{ productb.compare_at_price | money_with_currency }}" 
+                                    <div class="image-overlay activer" data-id="{{ productb.id }}" data-title="{{ productb.title }}" data-image="{{ productb.images.first | product_img_url: 'medium' }}" data-url="{{ productb.url }}" data-handle="{{ productb.handle }}" data-compare="{{ productb.compare_at_price | money_with_currency }}" 
                                     {% for variant in productb.variants %}
-                                      data-{{ variant.title }} = '{{ variant.id }}'
-                                      data-{{ variant.title }}-avail = '{{ variant.available }}'
-                                      data-{{ variant.title }}-quantity = '{{ variant.inventory_quantity }}'
+                                      {% if variant.available %}
+                                        data-{{ variant.id }}-title = '{{ variant.title }}'
+                                        data-price = '{{ variant.price | money }}'
+                                      data-{{ variant.id }} = '{{ variant.id }}'
+                                      data-{{ variant.id }}-avail = '{{ variant.available }}'
+                                      data-{{ variant.id }}-quantity = '{{ variant.inventory_quantity }}'
+                                    {% endif %}
                                   {% endfor %}
                                     style="background: url({{ overlayimagex }}) left top;" >
                                     {% for variant in productb.variants %}
@@ -1865,6 +1869,9 @@ dual
   .trigger-pop-up {
     margin: 10px 0;
     width: 100%;
+  }
+  .butttonsoldout{
+    pointer-events: none;
   }
   @media only screen and (max-width: 749px) {
     .threeway .product__main-photos--slider .product__slide {
