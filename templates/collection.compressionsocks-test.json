@@ -1,8 +1,78 @@
 {
   "sections": {
+    "collection_hero_b_MCPJGk": {
+      "type": "collection-hero-b",
+      "blocks": {
+        "button_7bHw9t": {
+          "type": "button",
+          "settings": {
+            "title": "Best Sellers",
+            "collection": "https:\/\/www.drwoofapparel.com.au\/collections\/compression-socks?sort_by=best-selling"
+          }
+        },
+        "button_mQ8Xc7": {
+          "type": "button",
+          "settings": {
+            "title": "New Releases",
+            "collection": "https:\/\/www.drwoofapparel.com.au\/collections\/compression-socks?sort_by=created-descending"
+          }
+        },
+        "button_WbWdKg": {
+          "type": "button",
+          "settings": {
+            "title": "Animals",
+            "collection": "https:\/\/www.drwoofapparel.com.au\/collections\/compression-socks\/animal-patterns"
+          }
+        },
+        "button_dFxyMW": {
+          "type": "button",
+          "settings": {
+            "title": "Nature",
+            "collection": "https:\/\/www.drwoofapparel.com.au\/collections\/compression-socks\/nature-patterns"
+          }
+        },
+        "button_8Wxwqr": {
+          "type": "button",
+          "settings": {
+            "title": "Whimsical",
+            "collection": "https:\/\/www.drwoofapparel.com.au\/collections\/compression-socks\/whimsical-patterns"
+          }
+        },
+        "button_mzAx64": {
+          "type": "button",
+          "settings": {
+            "title": "Causes",
+            "collection": "https:\/\/www.drwoofapparel.com.au\/collections\/compression-socks\/causes-patterns"
+          }
+        }
+      },
+      "block_order": [
+        "button_7bHw9t",
+        "button_mQ8Xc7",
+        "button_WbWdKg",
+        "button_dFxyMW",
+        "button_8Wxwqr",
+        "button_mzAx64"
+      ],
+      "custom_css": [
+        ".scrub-collection-b {display: flex; justify-content: center;}"
+      ],
+      "name": "Collection Hero B",
+      "settings": {
+        "space_top": 0,
+        "space_bottom": 0,
+        "bg_clr": "#0b0e30",
+        "rating": 4.8,
+        "rating_text": "If nurses trust them for 12-hour shifts, imagine what they can do for you.",
+        "title": "{{ collection.title }}",
+        "subtitle": "Doctor-designed and nurse-approved, Dr. Woof Bamboo Compression Socks are built for long shifts in hospitals and loved by travellers, mums-to-be, athletes, and anyone on their feet all day."
+      }
+    },
     "collection-header": {
       "type": "dr-woof-hero-scrubs3",
-      "custom_css": [],
+      "custom_css": [
+        ".fullwidth,.mobilever {display: none;}"
+      ],
       "settings": {
         "pad": "30px",
         "enable_auto": true,
@@ -17,6 +87,7 @@
     },
     "replo_replo_text_below_banner_DKcJej": {
       "type": "replo-replo-text-below-banner",
+      "disabled": true,
       "settings": {
         "replo_text_e352686d-11b3-4326-ad82-8260998ffdde": "<p>Bamboo Compression Socks<\/p>",
         "replo_text_ffb59253-7bb2-43f4-99c4-ed60813402d8": "<p>Discover the viral secret Aussie nurses rely on to bounce back after tough shifts: our Bamboo Compression Socks. Made with breathable bamboo, they reduce fatigue, boost recovery, and offer all-day comfort—whether you’re pregnant, flying long-haul, or on your feet for hours.<\/p>"
@@ -91,6 +162,7 @@
         "image_D3BQUn",
         "image_ExjqT4"
       ],
+      "disabled": true,
       "settings": {
         "title_enable": false
       }
@@ -123,6 +195,7 @@
     }
   },
   "order": [
+    "collection_hero_b_MCPJGk",
     "collection-header",
     "replo_replo_text_below_banner_DKcJej",
     "collection-filter",

@@ -6497,6 +6497,16 @@
         "type": "shopify:\/\/apps\/axon\/blocks\/app-embed\/baa0f014-62ea-462f-a8aa-a94befb1cbad",
         "disabled": false,
         "settings": {}
+      },
+      "2567389343055140935": {
+        "type": "shopify:\/\/apps\/microsoft-clarity\/blocks\/clarity_js\/31c3d126-8116-4b4a-8ba1-baeda7c4aeea",
+        "disabled": false,
+        "settings": {}
+      },
+      "2200952712151285029": {
+        "type": "shopify:\/\/apps\/microsoft-clarity\/blocks\/brandAgents_js\/31c3d126-8116-4b4a-8ba1-baeda7c4aeea",
+        "disabled": false,
+        "settings": {}
       }
     }
   },
