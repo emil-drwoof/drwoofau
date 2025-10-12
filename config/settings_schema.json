@@ -1083,7 +1083,13 @@
       {
         "type": "number",
         "id": "shipping_treshold",
-        "label": "Shipping Treshold (in AUD)"
+        "label": "Shipping Treshold (in AUD)",
+        "default": 145
+      },
+      {
+        "type": "number",
+        "id": "shipping_cost",
+        "label": "Shipping Cost (in AUD)"
       }
     ]
   },

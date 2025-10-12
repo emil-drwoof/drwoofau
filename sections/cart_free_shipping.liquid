@@ -1,22 +1,45 @@
 {% assign spendmsg = '' %}
-         {% if cart.currency.iso_code == 'SGD' %}
-            {% assign total_cart = cart.total_price | plus: 1000 | divided_by: 100 | format: "%.2f" %}
-          {% elsif cart.currency.iso_code == 'NZD' %}
-            {% assign total_cart = cart.total_price | plus: 1990 | divided_by: 100 | format: "%.2f" %}
-          {% elsif cart.currency.iso_code == 'HKD'%}
-            {% assign total_cart = cart.total_price | plus: 2597 | divided_by: 100 | format: "%.2f" %}
-          {% else %}
-            {% assign total_cart = cart.total_price | plus: 1190 | divided_by: 100 | format: "%.2f" %}
-          {% endif %}
-          {% if cart.currency.iso_code == 'SGD' %}
-            {% assign totalrange = cart.total_price | divided_by: 100 | format: "%.2f" %}
-          {% elsif cart.currency.iso_code == 'NZD' %}
-            {% assign totalrange = cart.total_price | divided_by: 100 | format: "%.2f" %}
-          {% elsif cart.currency.iso_code == 'HKD'%}
-            {% assign totalrange = cart.total_price | divided_by: 100 | format: "%.2f" %}
-          {% else %}
-            {% assign totalrange = cart.total_price | divided_by: 100 | format: "%.2f" %}
-          {% endif %}
+
+{% comment %} Currency conversion rates for THRESHOLD {% endcomment %}
+{% assign threshold_sgd_rate = 0.858876 %}
+{% assign threshold_nzd_rate = 1.09421 %}
+{% assign threshold_hkd_rate = 5.1949824 %}
+
+{% comment %} Currency conversion rates for SHIPPING COST {% endcomment %}
+{% assign shipping_sgd_rate = 0.840336 %}
+{% assign shipping_nzd_rate = 1.672269 %}
+{% assign shipping_hkd_rate = 8.394958 %}
+
+{% comment %} Convert shipping cost from string to cents (handles both "11.90" and "1190") {% endcomment %}
+{% assign shipping_cost_setting = settings.shipping_cost | times: 1 %}
+{% if shipping_cost_setting < 100 %}
+  {% comment %} If less than 100, assume it's in dollars (e.g., 11.90) {% endcomment %}
+  {% assign base_shipping_cents = shipping_cost_setting | times: 100 | round %}
+{% else %}
+  {% comment %} If 100 or more, assume it's already in cents (e.g., 1190) {% endcomment %}
+  {% assign base_shipping_cents = shipping_cost_setting | round %}
+{% endif %}
+
+{% comment %} Convert shipping threshold and cost based on currency {% endcomment %}
+{% if cart.currency.iso_code == 'SGD' %}
+  {% assign shipping_treshold = settings.shipping_treshold | times: threshold_sgd_rate | round %}
+  {% assign shipping_cost = base_shipping_cents | times: shipping_sgd_rate | round %}
+  {% assign total_cart = cart.total_price | plus: shipping_cost | divided_by: 100 | format: "%.2f" %}
+{% elsif cart.currency.iso_code == 'NZD' %}
+  {% assign shipping_treshold = settings.shipping_treshold | times: threshold_nzd_rate | round %}
+  {% assign shipping_cost = base_shipping_cents | times: shipping_nzd_rate | round %}
+  {% assign total_cart = cart.total_price | plus: shipping_cost | divided_by: 100 | format: "%.2f" %}
+{% elsif cart.currency.iso_code == 'HKD' %}
+  {% assign shipping_treshold = settings.shipping_treshold | times: threshold_hkd_rate | round %}
+  {% assign shipping_cost = base_shipping_cents | times: shipping_hkd_rate | round %}
+  {% assign total_cart = cart.total_price | plus: shipping_cost | divided_by: 100 | format: "%.2f" %}
+{% else %}
+  {% assign shipping_treshold = settings.shipping_treshold %}
+  {% assign shipping_cost = base_shipping_cents | round %}
+  {% assign total_cart = cart.total_price | plus: shipping_cost | divided_by: 100 | format: "%.2f" %}
+{% endif %}
+
+{% assign totalrange = cart.total_price | divided_by: 100 | format: "%.2f" %}
 
 <input type="hidden" class="set_cart" value="{{ total_cart }}" /> 
 <input type="hidden" class="set_range" value="{{ totalrange }}" /> 
@@ -37,46 +60,40 @@
   {% if forloop.first == true %}
     {% assign firstindex = block.settings.spendamount | times: 1 %}
     {% if cart.currency.iso_code == 'SGD' %}
-      {% assign firstindex = 126 %}
+      {% assign firstindex = shipping_treshold %}
     {% elsif cart.currency.iso_code == 'NZD' %}
-      {% assign firstindex = 156  %}
+      {% assign firstindex = shipping_treshold %}
     {% elsif cart.currency.iso_code == 'HKD'%}
-      {% assign firstindex = 753 %}
+      {% assign firstindex = shipping_treshold %}
     {% endif %}
 
     {% assign firstmsg = block.settings.spendamountmsg %}
-    <!-- emil spendamount first -->
   {% endif %}
   {% if forloop.last == true %}
     {% assign lastindex = block.settings.spendamount | times: 1.0 %}
     {% if cart.currency.iso_code == 'SGD' %}
-      {% assign lastindex = block.settings.spendamount | times: 1.0 | times: 0.858876 | round %}      
+      {% assign lastindex = block.settings.spendamount | times: 1.0 | times: threshold_sgd_rate | round %}      
     {% elsif cart.currency.iso_code == 'NZD' %}
-      {% assign lastindex = block.settings.spendamount | times: 1.0 | times: 1.09421 | round %}      
+      {% assign lastindex = block.settings.spendamount | times: 1.0 | times: threshold_nzd_rate | round %}      
     {% elsif cart.currency.iso_code == 'HKD'%}
-      {% assign lastindex = block.settings.spendamount | times: 1.0 | times: 5.1949824 | round %}      
+      {% assign lastindex = block.settings.spendamount | times: 1.0 | times: threshold_hkd_rate | round %}      
     {% endif %}
 
     {% assign lastmsg = block.settings.spendamountmsg %}
-    <!-- emil spendamount 2nd -->
   {% endif %}
 {% endfor %}
 
 
 {%- for block in section.blocks -%}
   {% if forloop.last == true %}
-    {% comment %}
-      {% assign lastindex = block.settings.spendamount | times: 1.0 %}
-    {% endcomment %}
     {% assign lastindexnozero = block.settings.spendamount %}
     {% if cart.currency.iso_code == 'SGD' %}
-      {% assign lastindexnozero = block.settings.spendamount | times: 0.858876 | round %}      
+      {% assign lastindexnozero = block.settings.spendamount | times: threshold_sgd_rate | round %}      
     {% elsif cart.currency.iso_code == 'NZD' %}
-      {% assign lastindexnozero = block.settings.spendamount | times: 1.09421 | round %}      
+      {% assign lastindexnozero = block.settings.spendamount | times: threshold_nzd_rate | round %}      
     {% elsif cart.currency.iso_code == 'HKD'%}
-      {% assign lastindexnozero = block.settings.spendamount | times: 5.1949824 | round %}      
+      {% assign lastindexnozero = block.settings.spendamount | times: threshold_hkd_rate | round %}      
     {% endif %}
-<!-- emil spendamount second -->
     {% assign lastindexof  = forloop.index   %}  
   {% endif %}
 {% endfor %}
@@ -88,7 +105,6 @@
 {% assign cartamount =  cart.original_total_price | divided_by: 100 %}
 {% if cartamount > lastindex %}
   {% assign perc = '102.5' %}
-  <!-- emil spendamount adjustment -->
   {% assign previndex = lastindexof %} 
 {% endif %}
 
@@ -115,7 +131,7 @@
     <div class="progress-text">
         <span class="notif-inc">Add <strong>{% if cart.currency.iso_code == 'HKD'%}HK${% else %}${% endif %}<span class="amount-needed"></span></strong> more to cart to get <b>{{ firstmsg }}</b> </span>
         <span class="notif-com1">Congratulations! You get FREE <b>Standard Shipping</b> and <b>FREE 
-        {% if cart.currency.iso_code == 'HKD'%}HK$208{% else %}$40{% endif %} <!-- emil spendamount adjustment -->Gift Card</b> </span>
+        {% if cart.currency.iso_code == 'HKD'%}HK$208{% else %}$40{% endif %} Gift Card</b> </span>
     </div>
   </div>
   
@@ -261,21 +277,23 @@ $(".another").hide()
     var totalfk = $(".totalin_hidden").html()
     totalcart  = parseFloat(totalcart.replace(/[^0-9.]/g, ''));
     totalfk = Number(totalfk.replace('$',''));
-    var progress = 0; // Percentage value to change the progress
+    var progress = 0;
         progress = totalcart - 10;
         
-    // Update the progress bar width and the position of the circle
     progressPercentage1 = ( progress / {{ lastindex }} ) * 100;
     
+    // Clamp percentage between 0 and 100
+    if(progressPercentage1 < 0) progressPercentage1 = 0;
+    if(progressPercentage1 > 100) progressPercentage1 = 100;
     
       {% if cart.currency.iso_code == 'SGD' %}
-        $tempval = 350 * 0.858876;
+        $tempval = 350 * {{ threshold_sgd_rate }};
         if(totalcart >= $tempval){        
       {% elsif cart.currency.iso_code == 'NZD' %}
-        $tempval = 350 * 1.09421;
+        $tempval = 350 * {{ threshold_nzd_rate }};
         if(totalcart >= $tempval){                
       {% elsif cart.currency.iso_code == 'HKD'%}
-        $tempval = 350 * 5.1949824;
+        $tempval = 350 * {{ threshold_hkd_rate }};
         if(totalcart >= $tempval){                
       {% else %}
         if(totalcart >= 350){
@@ -283,32 +301,28 @@ $(".another").hide()
 
       $('.off1 .notif-inc').hide()
       $('.off1 .notif-com1').show()
-      $('.off1 .progress').css('width', 100 + '%');
-      $('.off1 .progress-circle').css('left', 100 + '%');
+      $('.off1 .progress').css('width', '100%');
+      $('.off1 .progress-circle').css('left', 'calc(100% - 10px)');
       
     }else{
 
 
       
-        // emil adjustment
-        // bad
         {% if cart.currency.iso_code == 'HKD'%}
-          if(totalcart < 753){
+          if(totalcart < {{ shipping_treshold }}){
         {% else %}
           {% if cart.currency.iso_code == 'SGD' %}
-            $tempval = 145 * 0.858876;
-            if(totalcart < 126){        
+            if(totalcart < {{ shipping_treshold }}){        
           {% elsif cart.currency.iso_code == 'NZD' %}
-            $tempval = 145 * 156;
-            if(totalcart < $tempval){                
+            if(totalcart < {{ shipping_treshold }}){                
           {% elsif cart.currency.iso_code == 'HKD'%}
-            if(totalcart < 753){
+            if(totalcart < {{ shipping_treshold }}){
           {% else %}
-            if(totalcart < 145){
+            if(totalcart < {{ settings.shipping_treshold }}){
           {% endif %}
         {% endif %}
-
-
+        
+      
          if(totalfk  == 0){
             $('.off1 .notif-inc').hide()
           }else{
@@ -316,29 +330,24 @@ $(".another").hide()
           }
           $('.off1 .notif-com1').hide()
           $('.off1 .progress').css('width', progressPercentage1 + '%');
-          $('.off1 .progress-circle').css('left', progressPercentage1 + '%');
-          // Calculate the remaining amount for FREE shipping
+          $('.off1 .progress-circle').css('left', 'calc(' + progressPercentage1 + '% - 10px)');
           
           var amountNeeded = {{ firstindex }} - totalcart;
           $('.off1 .amount-needed').html(amountNeeded.toFixed(2));
 
         console.log("eto na this {{ firstindex  }} - " + totalfk )
       }else{
-        // good
-
 
           $('.off1 .notif-inc').show()
           $('.off1 .notif-com1').hide()
           $('.off1 .progress').css('width', progressPercentage1 + '%');
-          $('.off1 .progress-circle').css('left', progressPercentage1 + '%');
-          // Calculate the remaining amount for FREE shipping
+          $('.off1 .progress-circle').css('left', 'calc(' + progressPercentage1 + '% - 10px)');
           var amountNeeded = {{ lastindex }} - totalcart;
           {% if cart.currency.iso_code == 'HKD'%}
             $('.off1 .notif-inc b').html("FREE HK$208 Gift Card")
           {% else %}
             $('.off1 .notif-inc b').html("FREE $40 Gift Card")
           {% endif %}
-          // emil adjustment
           $('.off1 .amount-needed').html(amountNeeded.toFixed(2));
         
       }
@@ -353,12 +362,6 @@ $(".another").hide()
   $('.cart__item').each(function() {
       $proqty = $(this).find(".Custom_cart__quantity").val()
       carttype = $(this).find(".protype").val();
-
-      /*
-      if ((carttype == "Women Scrub Pants") || (carttype == "Women Scrub Tops") || (carttype == "Men Scrub Pants") || (carttype == "Men Scrub Tops")) {
-          $scrubcount = $scrubcount + parseInt($proqty);
-      }
-      */
      
       $setCount = $(".set_count").val()
       if (carttype == "Compression Socks") {
@@ -385,21 +388,19 @@ if ($setCount > 0) {
   const notifCom2 = $('.off2 .notif-com2');
   const amountNeeded = $('.off2 .amount-needed');
 
-  // Default: hide all notifs first
   notifInc.hide();
   notifCom1.hide();
   notifCom2.hide();
 
-  // Special cases based on sock and set count
   if ($setCount == 1) {
     progress.css('width', '50%');
-    progressCircle.css('left', '50%');
+    progressCircle.css('left', 'calc(50% - 10px)');
     notifCom1.html("Add 1 more set to get 1 compression socks for FREE").show();
     
   } else{
 
     progress.css('width', '100%');
-    progressCircle.css('left', '100%');
+    progressCircle.css('left', 'calc(100% - 10px)');
     if($sockcount == 0){
       notifCom1.html("<span style='color:red'><br/>Don't forget to add the FREE compression socks to your cart!</span>").show();
       notifCom1.show();
@@ -425,13 +426,13 @@ if($sockcount > 0){
   if( $sockcount >= 6 ){
       $('.off3 .notif-inc').hide()
       $('.off3 .notif-com1').show()
-      $('.off3 .progress').css('width', 100 + '%');
-      $('.off3 .progress-circle').css('left', 100 + '%');
+      $('.off3 .progress').css('width', '100%');
+      $('.off3 .progress-circle').css('left', 'calc(100% - 10px)');
       $('.off3 .notif-com1').html("Congratulations! You get <b>30% OFF</b> on your Compression Socks order")
       
     }else{
       $('.off3 .progress').css('width', $sockcountpercent + '%');
-      $('.off3 .progress-circle').css('left', $sockcountpercent + '%');
+      $('.off3 .progress-circle').css('left', 'calc(' + $sockcountpercent + '% - 10px)');
       if($sockcount < 4){
         $(".off3 .another").hide()
         $('.off3 .notif-inc').show()
@@ -475,12 +476,12 @@ if($capscount > 0){
   if( $capscount >= 3 ){
       $('.off4 .notif-inc').hide()
       $('.off4 .notif-com1').show()
-      $('.off4 .progress').css('width', 100 + '%');
-      $('.off4 .progress-circle').css('left', 100 + '%');
+      $('.off4 .progress').css('width', '100%');
+      $('.off4 .progress-circle').css('left', 'calc(100% - 10px)');
       $('.off4 .notif-com1').html("You get <b>15%</b> OFF for Printed Scrub Tops")
     }else{
       $('.off4 .progress').css('width', $capscountpercent + '%');
-      $('.off4 .progress-circle').css('left', $capscountpercent + '%');
+      $('.off4 .progress-circle').css('left', 'calc(' + $capscountpercent + '% - 10px)');
       if($capscount < 2){
         $(".off4 .another").hide()
         $('.off4 .notif-inc').show()
@@ -523,12 +524,12 @@ if($scrunchiescount > 0){
   if( $scrunchiescount >= 4 ){
       $('.off5 .notif-inc').hide()
       $('.off5 .notif-com1').show()
-      $('.off5 .progress').css('width', 100 + '%');
-      $('.off5 .progress-circle').css('left', 100 + '%');
+      $('.off5 .progress').css('width', '100%');
+      $('.off5 .progress-circle').css('left', 'calc(100% - 10px)');
       
     }else{
       $('.off5 .progress').css('width', $scrunchiespercent + '%');
-      $('.off5 .progress-circle').css('left', $scrunchiespercent + '%');
+      $('.off5 .progress-circle').css('left', 'calc(' + $scrunchiespercent + '% - 10px)');
         
           $('.off5 .notif-inc').show()
           $('.off5 .notif-com1').hide()
@@ -545,30 +546,6 @@ if($scrunchiescount > 0){
 
 });
 </script>
-
-
-
-
-
-
-
-<!-- 
-<div class="off2 progress-container">
-  
-  <div class="offer">Offer #2</div>
-
-  <div class="progress-bar">
-      <div class="milestone top-mon secret-gift">$350</div>
-      <div class="progress"></div>
-      <div class="progress-circle"></div>
-      <div class="milestone bot-mon secret-gift">Secret Gift</div>
-  </div>
-
-  <div class="progress-text">
-      <span>Add items for <strong>$<span id="amount-needed">89</span></strong> more  to get <b>Secret Gift</b></span>
-  </div>
-</div>
--->
 
 <style>
   .top-mon{
@@ -697,7 +674,7 @@ if($scrunchiescount > 0){
 .progress-circle {
     position: absolute;
     top: 50%;
-    transform: translate(-50%, -50%);
+    transform: translateY(-50%);
     width: 20px;
     height: 20px;
     background-color: #ff0;
@@ -873,7 +850,6 @@ if($scrunchiescount > 0){
     height:26px !important;
   }
   .cart_drawer_custom .drawer__footer{
-    /* border-top: 1px solid #EBEBEB !important; */
     border-top: none !important;
   }
   .cart__details{
@@ -883,7 +859,6 @@ if($scrunchiescount > 0){
   .cart-all-products{
     background:#f7f7f7 !important;
     border-radius:8px;
-    /* overflow: hidden; */
   }
   .qty-remove .cart__item-price p{
     font-size:14px !important;
@@ -916,10 +891,10 @@ if($scrunchiescount > 0){
       position: absolute;
       top: 50%;
       right: 100%;
-      margin-top: -5px; /* Half of the arrow height */
+      margin-top: -5px;
       border-width: 5px;
       border-style: solid;
-      border-color: transparent #B53728 transparent transparent; /* Adjust the color as needed */
+      border-color: transparent #B53728 transparent transparent;
     }
     .cart-all-products .slick-track{
       padding-top:0px;
@@ -1034,4 +1009,3 @@ if($scrunchiescount > 0){
 
 {% stylesheet %}
 {% endstylesheet %}
-

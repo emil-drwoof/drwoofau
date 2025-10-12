@@ -55,7 +55,7 @@
         "button_mzAx64"
       ],
       "custom_css": [
-        ".scrub-collection-b {display: flex; justify-content: center;}"
+        "@media (min-width: 993px) {.scrub-collection-b {display: flex; justify-content: center; }}"
       ],
       "name": "Collection Hero B",
       "settings": {
@@ -63,8 +63,9 @@
         "space_bottom": 0,
         "bg_clr": "#0b0e30",
         "rating": 4.8,
-        "rating_text": "Doctor-designed. Nurse-approved. Worn everywhere.",
+        "rating_text": "Loved by 100,000+ Nurses and Doctors",
         "title": "{{ collection.title }}",
+        "description": "Doctor-designed. Nurse-approved. Worn everywhere.",
         "subtitle": "Born in hospitals, trusted by Australia’s healthcare workers, and now the #1 compression sock for everyday life. From flights to long shifts to pregnancy, Dr. Woof keeps legs feeling fresher, longer."
       }
     },

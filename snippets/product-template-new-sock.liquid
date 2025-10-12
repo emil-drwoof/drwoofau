@@ -1687,14 +1687,61 @@ console.log('=== END ===');
   </div>
 
 <script>
+function updateCurrentProductStatus(productId = null) {  
+  const selectedType = document.querySelector('.selected-type')?.value || 'Regular';
+  const selectedSize = document.querySelector('.selected-size')?.value || 'S';
+  const selectedProductId = productId || document.querySelector('.sockvarid')?.value || '{{ product.id }}';
+  const variantKey = `${selectedProductId}-${selectedType.toLowerCase()}-${selectedSize.toLowerCase()}`;
+  
+  console.log('=== UPDATE CURRENT PRODUCT STATUS ===');
+  console.log('Product ID:', selectedProductId);
+
+  
+  const variant = window.productVariants[variantKey];
+  
+  if (!variant) {
+    console.log('Variant not found - SOLD OUT');
+    addToCartBtn.classList.add('sold-out');
+    addToCartBtn.disabled = true;
+    addToCartText.textContent = 'Sold Out';
+    return;
+  }
+  
+
+  
+  // Check the three conditions
+  if (variant.available && variant.inventory > 0) {
+    // In stock
+    console.log('Status: IN STOCK');
+    addToCartBtn.classList.remove('sold-out');
+    addToCartBtn.disabled = false;
+    addToCartText.textContent = 'Add to Cart';
+  } else if (variant.available && variant.inventory <= 0) {
+    // Preorder
+    console.log('Status: PREORDER');
+    addToCartBtn.classList.remove('sold-out');
+    addToCartBtn.disabled = false;
+    addToCartText.textContent = 'Pre-Order';
+  } else {
+    // Sold out
+    console.log('Status: SOLD OUT');
+    addToCartBtn.classList.add('sold-out');
+    addToCartBtn.disabled = true;
+    addToCartText.textContent = 'Sold Out';
+  }
+  
+  console.log('Final button text:', addToCartText.textContent);
+  console.log('=== END UPDATE ===');
+}
+
 
 function updatePreorderText() {
   const preorderTextElement = document.getElementById('preorder-text');
   if (!preorderTextElement) return;
   
   // Check if current product is sold out
-  const selectedType = document.querySelector('.selected-type')?.value || 'regular';
-  const selectedSize = document.querySelector('.selected-size')?.value || 's';
+  const selectedType = document.querySelector('.selected-type')?.value || 'Regular';
+  const selectedSize = document.querySelector('.selected-size')?.value || 'S';
   const selectedProductId = document.querySelector('.sockvarid').value || '{{ product.id }}';
   const variantKey = `${selectedProductId}-${selectedType.toLowerCase()}-${selectedSize.toLowerCase()}`;
   const currentVariant = window.productVariants[variantKey];
@@ -1808,8 +1855,8 @@ function updateThumbnailButton(productId) {
   const quantityControls = button.querySelector('.quantity-controls');
   const quantityDisplay = button.querySelector('.quantity-display');
   
-  const selectedType = selectedTypeInput.value || 'regular';
-  const selectedSize = selectedSizeInput.value || 's';
+  const selectedType = selectedTypeInput.value || 'Regular';
+  const selectedSize = selectedSizeInput.value || 'S';
   const isAvailable = isProductVariantAvailable(productId, selectedType, selectedSize);
   const preorderTextElement = document.getElementById('preorder-text');
   
@@ -2004,65 +2051,20 @@ document.addEventListener('touchend', function(e) {
   }
 });
 
-  // Function to check inventory and update button state
-function checkInventoryAndUpdateButton() {
-  const preorderTextElement = document.getElementById('preorder-text');
-  const selectedType = selectedTypeInput.value || 'Regular';
-  const selectedSize = selectedSizeInput.value || 'S';
-  const selectedProductId = document.querySelector('.sockvarid').value || '{{ product.id }}';
-  const variantKey = `${selectedProductId}-${selectedType.toLowerCase()}-${selectedSize.toLowerCase()}`;
-  
-  if (window.productVariants && window.productVariants[variantKey]) {
-    const variant = window.productVariants[variantKey];
-    
-    if (variant.available && variant.inventory > 0) {
-      // In stock
-      addToCartBtn.classList.remove('sold-out');
-      preorderTextElement.classList.remove('hide-preorder');
-      addToCartBtn.disabled = false;
-      // Don't set text here - let updateATCButtonText handle it
-    } else if (variant.available && variant.inventory <= 0) {
-      // Preorder (available but no inventory)
-      addToCartBtn.classList.remove('sold-out');
-      preorderTextElement.classList.remove('hide-preorder');
-      addToCartBtn.disabled = false;
-      // Don't set text here - let updateATCButtonText handle it
-    } else {
-      // Sold out (not available)
-      addToCartBtn.classList.add('sold-out');
-      addToCartBtn.disabled = true;
-      addToCartText.textContent = 'Sold Out';
-      preorderTextElement.classList.add('hide-preorder');
-      return; // Exit early for sold out items
-    }
-  } else {
-    // Variant not found, assume sold out
-    addToCartBtn.classList.add('sold-out');
-    addToCartBtn.disabled = true;
-    addToCartText.textContent = 'Sold Out';
-    preorderTextElement.classList.add('hide-preorder');
-    return; // Exit early for sold out items
-  }
-  
-  // Update ATC text and arrival date for available items
-  updateATCButtonText();
-  updateArrivalDate();
-  updatePreorderText();
-}
-
-  // Type selection
+// Type selection
 typeButtons.forEach(button => {
   button.addEventListener('click', function() {
     typeButtons.forEach(btn => btn.classList.remove('active'));
     this.classList.add('active');
     selectedTypeInput.value = this.dataset.type;
-    selectedTypeText.textContent = this.textContent;
-    checkInventoryAndUpdateButton();
-    updateAllThumbnailAvailability(); // ADD THIS LINE
+    selectedTypeText.textContent = this.textContent; 
+    updateCurrentProductStatus(); // CHANGED
+    updatePreorderText()
+    updateAllThumbnailAvailability();
   });
 });
 
-  // Size selection
+// Size selection
 sizeButtons.forEach(button => {
   button.addEventListener('click', function() {
     sizeButtons.forEach(btn => btn.classList.remove('active'));
@@ -2079,8 +2081,9 @@ sizeButtons.forEach(button => {
       sizeText = 'Large (Women 12-15 | Men 10-13)';
     }
     selectedSizeText.textContent = sizeText;
-    checkInventoryAndUpdateButton();
-    updateAllThumbnailAvailability(); // ADD THIS LINE
+    updateCurrentProductStatus(); // CHANGED
+    updatePreorderText()
+    updateAllThumbnailAvailability();
   });
 });
 
@@ -2152,14 +2155,15 @@ categoryBtns.forEach(btn => {
   });
 });
 
-  // Style selection - changes main title instead of selected-type-text
+// Style selection - changes main title
 styleOptions.forEach(option => {
   option.addEventListener('click', function(e) {
     // Check if click originated from thumbnails-add-button
     if (e.target.closest('.thumbnails-add-button')) {
-      return; // Don't execute style selection
+      return;
     }
-    
+ 
+
     styleOptions.forEach(opt => opt.classList.remove('active'));
     this.classList.add('active');
     
@@ -2168,34 +2172,34 @@ styleOptions.forEach(option => {
     
     // Update hidden inputs with selected product data
     document.querySelector('.sockvarid').value = this.dataset.id;
-    
+    const clickedProductId = this.dataset.id;
     // Update price information
+        // Check ONLY current product status
+    updateCurrentProductStatus(); // CHANGED
+    updateATCPrices(); 
+    updatePreorderText();
+    updateArrivalDate();
     const priceData = this.dataset.price;
     const compareData = this.dataset.compare;
-
     const originalPriceElement = document.querySelector('.original-price');
     const sudoSalePriceElement = document.querySelector('.sudo-sale-price');
-    // Update the price display elements
+    
     if(priceData==""){
       sudoSalePriceElement.textContent = "";
     }else{
       const priceValue = extractPriceValue(priceData);
-sudoSalePriceElement.textContent = formatPrice(priceValue);
+      sudoSalePriceElement.textContent = formatPrice(priceValue);
     }
     
-    // Show/hide the original price element
     if (compareData === "") {
       originalPriceElement.style.display = "none";
     } else {
-      originalPriceElement.style.display = ""; // or "inline", "block" depending on your layout
+      originalPriceElement.style.display = "";
       const comparePriceValue = extractPriceValue(compareData);
-originalPriceElement.textContent = formatPrice(comparePriceValue);
+      originalPriceElement.textContent = formatPrice(comparePriceValue);
     }
 
-    // Check inventory for new product
-    checkInventoryAndUpdateButton();
-    updateATCPrices(); 
-    updatePreorderText();
+
   });
 });
 
@@ -2228,10 +2232,13 @@ addToCartBtn.addEventListener('click', function() {
   
   if (memoryProductCount === 0) {
     // No memory products - add current product only
-    const selectedType = selectedTypeInput.value || 'regular';
-    const selectedSize = selectedSizeInput.value || 's';
+    const selectedType = selectedTypeInput.value || 'Regular';
+    const selectedSize = selectedSizeInput.value || 'S';
     const selectedProductId = document.querySelector('.sockvarid').value || '{{ product.id }}';
     const variantKey = `${selectedProductId}-${selectedType.toLowerCase()}-${selectedSize.toLowerCase()}`;
+    // ADD THESE TWO LINES:
+    const addToCartBtn = document.getElementById('addToCartBtn');
+    const addToCartText = document.getElementById('addToCartText');
     const mainVariant = window.productVariants[variantKey];
     
     if (mainVariant && mainVariant.available) {
@@ -2380,9 +2387,9 @@ addToCartBtn.addEventListener('click', function() {
   addItemsSequentially(cartItems);
 });
 
-selectedTypeInput.value = 'regular';
-selectedSizeInput.value = 's';
-checkInventoryAndUpdateButton();
+selectedTypeInput.value = 'Regular';
+selectedSizeInput.value = 'S';
+updateCurrentProductStatus(); // CHANGED
 updatePreorderText();
 updateATCPrices(); 
 });
@@ -2708,8 +2715,8 @@ updateATCPrices();
 // ADD THESE NEW FUNCTIONS
 
 function isCurrentProductPreorder() {
-  const selectedType = document.querySelector('.selected-type')?.value || 'regular';
-  const selectedSize = document.querySelector('.selected-size')?.value || 's';
+  const selectedType = document.querySelector('.selected-type')?.value || 'Regular';
+  const selectedSize = document.querySelector('.selected-size')?.value || 'S';
   const selectedProductId = document.querySelector('.sockvarid').value || '{{ product.id }}';
   const variantKey = `${selectedProductId}-${selectedType.toLowerCase()}-${selectedSize.toLowerCase()}`;
   
@@ -2722,8 +2729,8 @@ function isCurrentProductPreorder() {
 function isProductPreorder(productId) {
   const selectedTypeInput = document.querySelector('.selected-type');
   const selectedSizeInput = document.querySelector('.selected-size');
-  const selectedType = (selectedTypeInput ? selectedTypeInput.value : '') || 'regular';
-  const selectedSize = (selectedSizeInput ? selectedSizeInput.value : '') || 's';
+  const selectedType = (selectedTypeInput ? selectedTypeInput.value : '') || 'Regular';
+  const selectedSize = (selectedSizeInput ? selectedSizeInput.value : '') || 'S';
   const variantKey = `${productId}-${selectedType.toLowerCase()}-${selectedSize.toLowerCase()}`;
   
   const variant = window.productVariants[variantKey];
@@ -2752,8 +2759,8 @@ function hasPreorderItems() {
   console.log('=== DEBUG hasPreorderItems ===');
   
   // Check current product - only if it's available
-  const selectedType = document.querySelector('.selected-type')?.value || 'regular';
-  const selectedSize = document.querySelector('.selected-size')?.value || 's';
+  const selectedType = document.querySelector('.selected-type')?.value || 'Regular';
+  const selectedSize = document.querySelector('.selected-size')?.value || 'S';
   const selectedProductId = document.querySelector('.sockvarid').value || '{{ product.id }}';
   const variantKey = `${selectedProductId}-${selectedType.toLowerCase()}-${selectedSize.toLowerCase()}`;
   const currentVariant = window.productVariants[variantKey];
@@ -2822,8 +2829,8 @@ function updateAllThumbnailAvailability() {
   const selectedTypeInput = document.querySelector('.selected-type');
   const selectedSizeInput = document.querySelector('.selected-size');
   
-  const selectedType = (selectedTypeInput ? selectedTypeInput.value : '') || 'regular';
-  const selectedSize = (selectedSizeInput ? selectedSizeInput.value : '') || 's';
+  const selectedType = (selectedTypeInput ? selectedTypeInput.value : '') || 'Regular';
+  const selectedSize = (selectedSizeInput ? selectedSizeInput.value : '') || 'S';
   
   console.log('=== DEBUGGING VARIANT CHECK ===');
   console.log('selectedType:', selectedType);
