@@ -52,9 +52,9 @@
         "bg_clr": "#f7f7f7",
         "main_image": "shopify:\/\/shop_images\/Group_480987941.png",
         "title": "{{ collection.title }}",
-        "subtitle": "Built for Performance. Designed for Comfort.",
+        "subtitle": "Premium Quality Without the Premium Price.",
         "rating": 4.8,
-        "rating_text": "Trusted by nurses"
+        "rating_text": "$99 Per Set + 99-Day Guarantee"
       }
     },
     "collection-header": {

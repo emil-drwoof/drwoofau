@@ -302,7 +302,7 @@ $(".another").hide()
       $('.off1 .notif-inc').hide()
       $('.off1 .notif-com1').show()
       $('.off1 .progress').css('width', '100%');
-      $('.off1 .progress-circle').css('left', 'calc(100% - 10px)');
+      $('.off1 .progress-circle').css('left', 'calc(100% )');
       
     }else{
 
@@ -330,7 +330,7 @@ $(".another").hide()
           }
           $('.off1 .notif-com1').hide()
           $('.off1 .progress').css('width', progressPercentage1 + '%');
-          $('.off1 .progress-circle').css('left', 'calc(' + progressPercentage1 + '% - 10px)');
+          $('.off1 .progress-circle').css('left', 'calc(' + progressPercentage1 + '% )');
           
           var amountNeeded = {{ firstindex }} - totalcart;
           $('.off1 .amount-needed').html(amountNeeded.toFixed(2));
@@ -341,7 +341,7 @@ $(".another").hide()
           $('.off1 .notif-inc').show()
           $('.off1 .notif-com1').hide()
           $('.off1 .progress').css('width', progressPercentage1 + '%');
-          $('.off1 .progress-circle').css('left', 'calc(' + progressPercentage1 + '% - 10px)');
+          $('.off1 .progress-circle').css('left', 'calc(' + progressPercentage1 + '% )');
           var amountNeeded = {{ lastindex }} - totalcart;
           {% if cart.currency.iso_code == 'HKD'%}
             $('.off1 .notif-inc b').html("FREE HK$208 Gift Card")
@@ -394,13 +394,13 @@ if ($setCount > 0) {
 
   if ($setCount == 1) {
     progress.css('width', '50%');
-    progressCircle.css('left', 'calc(50% - 10px)');
+    progressCircle.css('left', 'calc(50% )');
     notifCom1.html("Add 1 more set to get 1 compression socks for FREE").show();
     
   } else{
 
     progress.css('width', '100%');
-    progressCircle.css('left', 'calc(100% - 10px)');
+    progressCircle.css('left', 'calc(100% )');
     if($sockcount == 0){
       notifCom1.html("<span style='color:red'><br/>Don't forget to add the FREE compression socks to your cart!</span>").show();
       notifCom1.show();
@@ -427,12 +427,12 @@ if($sockcount > 0){
       $('.off3 .notif-inc').hide()
       $('.off3 .notif-com1').show()
       $('.off3 .progress').css('width', '100%');
-      $('.off3 .progress-circle').css('left', 'calc(100% - 10px)');
+      $('.off3 .progress-circle').css('left', 'calc(100% )');
       $('.off3 .notif-com1').html("Congratulations! You get <b>30% OFF</b> on your Compression Socks order")
       
     }else{
       $('.off3 .progress').css('width', $sockcountpercent + '%');
-      $('.off3 .progress-circle').css('left', 'calc(' + $sockcountpercent + '% - 10px)');
+      $('.off3 .progress-circle').css('left', 'calc(' + $sockcountpercent + '% )');
       if($sockcount < 4){
         $(".off3 .another").hide()
         $('.off3 .notif-inc').show()
@@ -477,11 +477,11 @@ if($capscount > 0){
       $('.off4 .notif-inc').hide()
       $('.off4 .notif-com1').show()
       $('.off4 .progress').css('width', '100%');
-      $('.off4 .progress-circle').css('left', 'calc(100% - 10px)');
+      $('.off4 .progress-circle').css('left', 'calc(100% )');
       $('.off4 .notif-com1').html("You get <b>15%</b> OFF for Printed Scrub Tops")
     }else{
       $('.off4 .progress').css('width', $capscountpercent + '%');
-      $('.off4 .progress-circle').css('left', 'calc(' + $capscountpercent + '% - 10px)');
+      $('.off4 .progress-circle').css('left', 'calc(' + $capscountpercent + '% )');
       if($capscount < 2){
         $(".off4 .another").hide()
         $('.off4 .notif-inc').show()
@@ -525,11 +525,11 @@ if($scrunchiescount > 0){
       $('.off5 .notif-inc').hide()
       $('.off5 .notif-com1').show()
       $('.off5 .progress').css('width', '100%');
-      $('.off5 .progress-circle').css('left', 'calc(100% - 10px)');
+      $('.off5 .progress-circle').css('left', 'calc(100% )');
       
     }else{
       $('.off5 .progress').css('width', $scrunchiespercent + '%');
-      $('.off5 .progress-circle').css('left', 'calc(' + $scrunchiespercent + '% - 10px)');
+      $('.off5 .progress-circle').css('left', 'calc(' + $scrunchiespercent + '% )');
         
           $('.off5 .notif-inc').show()
           $('.off5 .notif-com1').hide()

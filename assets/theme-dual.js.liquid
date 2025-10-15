@@ -11395,41 +11395,7 @@ $.ajax({
    error: function (t, e, i) {},
 }),
 $(document).ready(function () {
-   $(".cart-all-products").slick({ dots: !0, infinite: !0, speed: 300, slidesToShow: 1, slidesToScroll: 1, dots: !0, arrows: true }),
-       $(document).on("click", ".add-cart-drawer", function (t) {
-           t.preventDefault();
-           var e = $(this).parents(".product-data").find(".size").val(),
-               i = $(this).parents(".product-data").find(".type").val();
-           /*    
-           if ("2" == $(this).attr("data-size"))
-               var n = i + " / " + e,
-                   a = $(this)
-                       .parents(".product-data")
-                       .find(".variproducts div[data-name='" + n + "']")
-                       .attr("value");
-           else
-               var n = i,
-                   a = $(this)
-                       .parents(".product-data")
-                       .find(".variproducts div[data-name='" + n + "']")
-                       .attr("value");
-           $(".drawer__inner").addClass("overlay-applied"),
-           */
-           a = $(this)
-                       .parents(".product-data")
-                       .find(".product-name")
-                       .attr("data-varid");
-                       
-               $.ajax({
-                   type: "POST",
-                   url: "/cart/add.js",
-                   data: { quantity: 1, id: a },
-                   dataType: "json",
-                   success: function (t) {
-                    cart_update();
-                   },
-               });
-       }),
+   $(".cart-all-products").slick({ dots: !0, infinite: !0, speed: 300, slidesToShow: 1, slidesToScroll: 1, dots: !0, arrows: true }),       
        $(document).on("click", ".all-colors label", function (t) {
            $(this).parent().find("label").removeClass("active"), $(this).addClass("active");
            var e = $(this).parents(".product-data").find(".size").val(),
@@ -11870,13 +11836,13 @@ $(".cone select").change(function(){
         
         if($actualavail == "available"){
               
-            $(".cts-flexer.cone .imagepart").attr("src",$actualvarimage)
+            
             $("#cts-prod1").addClass('adisabled');
             $("#cts-prod1").removeClass('anotift');
             $("#cts-prod1").html("ADD")
             $ok1 = "ok"
         }else{
-             $(".cts-flexer.cone .imagepart").attr("src","//www.drwoofapparel.com.au/cdn/shop/files/DrWoof_Jun2416758-web.jpg?v=1722413391") 
+             
              // $("#cts-prod1").addClass('adisabled');  
              // $("#cts-prod1").html("Soldout")
         }  
@@ -11940,7 +11906,7 @@ $(".ctwo select").change(function(){
               $("#cts-prod2").html("ADD")
               $ok2 = "ok"
           }else{
-            $(".cts-flexer.cone .imagepart").attr("src","//www.drwoofapparel.com.au/cdn/shop/files/DrWoof_Jun2416758-web.jpg?v=1722413391") 
+            
               // $("#cts-prod2").removeClass('bdisabled');  
               // $("#cts-prod2").html("Soldout")
           }  
@@ -11979,13 +11945,13 @@ $('.datavariant.done .parentvar').each(function(){
     $actualvarimage = $(this).find(".datavarimage").val()
     $actualavail = $(this).find(".dataavail").val()
     $actualprice = $(this).find(".dataprice").val()
-    $(".cts-flexer.cone .imagepart").attr("src",$actualvarimage)
+    
     $("#cts-prod1").addClass('adisabled');
     $("#cts-prod1").removeClass('anotift');
     $("#cts-prod1").html("ADD")
     $ok1 = "ok"
   }else{
-    $(".cts-flexer.cone .imagepart").attr("src","//www.drwoofapparel.com.au/cdn/shop/files/DrWoof_Jun2416758-web.jpg?v=1722413391") 
+    
   }
 })
 
@@ -12289,7 +12255,7 @@ $('.datavariant.dtwo .parentvar').each(function(){
               // if title contains color, navy is used if no color
           }
           if($score <= 0){
-            $(".cts-flexer.cone .imagepart").attr("src","//www.drwoofapparel.com.au/cdn/shop/files/DrWoof_Jun2416758-web.jpg?v=1722413391") 
+            
           }
           
           if($actualvar == $defaultchosenone){
@@ -12307,13 +12273,13 @@ $('.datavariant.dtwo .parentvar').each(function(){
 
               $oknarin1 = "ok"
               if($actualavail == "available"){
-                  $(".cts-flexer.cone .imagepart").attr("src",$actualvarimage)
+                  
                   $("#cts-prod1").addClass('adisabled');
                   $("#cts-prod1").removeClass('anotift');
                   $("#cts-prod1").html("ADD")
                   $ok1 = "ok"
               }else{
-                $(".cts-flexer.cone .imagepart").attr("src","//www.drwoofapparel.com.au/cdn/shop/files/DrWoof_Jun2416758-web.jpg?v=1722413391") 
+                
                  // $(".cts-flexer.cone .imagepart").attr("src",$soldoutvarimageone)
                   //$(".cone select[data-index='xoption1']").val("Select")
                   

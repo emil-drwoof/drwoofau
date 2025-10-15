@@ -12,17 +12,22 @@
             "col_url": "shopify:\/\/collections\/women"
           }
         },
-        "5460b48e-4911-4ed3-8b83-a1e90605016e": {
-          "settings": {
-            "col_url": "shopify:\/\/collections\/compression-socks"
-          }
-        },
         "39becd13-a0d2-4719-ad38-95850449f974": {
           "settings": {
             "col_url": "shopify:\/\/products\/womens-flare-scrub-pants"
           }
+        },
+        "5460b48e-4911-4ed3-8b83-a1e90605016e": {
+          "settings": {
+            "col_url": "shopify:\/\/collections\/compression-socks"
+          }
         }
       }
+    },
+    "logolistaani_YJptaJ": {
+      "disabled": true,
+      "settings": {},
+      "blocks": {}
     }
   }
 }

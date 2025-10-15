@@ -1571,6 +1571,26 @@ console.log('=== END ===');
       </div>
   </div>
 
+  <!-- New Banner -->
+  <style>
+    .banner-version1 {
+      display: none;
+      margin-bottom: 20px;
+      text-align: center;
+      background: #FDF6EF;
+     border-radius: 20px;
+    }
+
+    @media(min-width: 993px){
+      .banner-version1 img{
+        height: 230px;
+      }
+    }
+  </style>
+  <div class="banner-version1">
+    <img src="https://cdn.shopify.com/s/files/1/0573/7250/8344/files/Product_Image_-_10.png?v=1760302267">
+  </div>
+
   <!-- Add to Cart -->
   <div class="add-to-cart-section">
   <button class="add-to-cart-btn" id="addToCartBtn">
@@ -2060,6 +2080,7 @@ typeButtons.forEach(button => {
     selectedTypeText.textContent = this.textContent; 
     updateCurrentProductStatus(); // CHANGED
     updatePreorderText()
+    updateArrivalDate()
     updateAllThumbnailAvailability();
   });
 });
@@ -2083,6 +2104,7 @@ sizeButtons.forEach(button => {
     selectedSizeText.textContent = sizeText;
     updateCurrentProductStatus(); // CHANGED
     updatePreorderText()
+    updateArrivalDate()
     updateAllThumbnailAvailability();
   });
 });
@@ -3246,6 +3268,10 @@ scrollThumb.style.cursor = 'grab';
     margin-top: 12px;
     font-size: 12px;
     margin-bottom: 0;
+}
+#preorder-text{
+  color:red !important;
+  font-weight:900;
 }
 .grid-product__price{
   display:flex;

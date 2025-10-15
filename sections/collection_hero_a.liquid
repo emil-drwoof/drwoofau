@@ -1,0 +1,171 @@
+<section class="scrub-collection">
+  <div class="scrub-container">
+
+    <div class="reviews-summary">
+        {% if section.settings.rating != blank %}
+            <div class="stars_part"><span class="stars" style="--rating: {{ section.settings.rating }};">⭐⭐⭐⭐⭐</span> <span>{{ section.settings.rating }}/5</span></div>
+        {% endif %}
+
+        {% if section.settings.rating_text != blank %}
+            <div class="text_part">
+                <svg xmlns="http://www.w3.org/2000/svg" width="11" height="10" viewBox="0 0 11 10" fill="none">
+                    <path d="M5.5 10C4.81046 10 4.1634 9.86928 3.55882 9.60784C2.95425 9.34967 2.4232 8.99183 1.96569 8.53431C1.50817 8.07353 1.14869 7.54248 0.887255 6.94118C0.629085 6.3366 0.5 5.68954 0.5 5C0.5 4.31046 0.629085 3.6634 0.887255 3.05882C1.14869 2.45425 1.50817 1.9232 1.96569 1.46569C2.4232 1.00817 2.95425 0.650327 3.55882 0.392157C4.1634 0.130719 4.81046 0 5.5 0C6.18954 0 6.8366 0.130719 7.44118 0.392157C8.04575 0.650327 8.5768 1.00817 9.03431 1.46569C9.49183 1.9232 9.84967 2.45425 10.1078 3.05882C10.3693 3.6634 10.5 4.31046 10.5 5C10.5 5.68954 10.3693 6.3366 10.1078 6.94118C9.84967 7.54248 9.49183 8.07353 9.03431 8.53431C8.5768 8.99183 8.04575 9.34967 7.44118 9.60784C6.8366 9.86928 6.18954 10 5.5 10ZM2.70588 5.52941C2.70588 5.68628 2.75327 5.81373 2.84804 5.91177C2.94608 6.00654 3.0719 6.05392 3.22549 6.05392H4.44118V7.2598C4.44118 7.41994 4.48856 7.54902 4.58333 7.64706C4.68137 7.74183 4.80719 7.78922 4.96078 7.78922H6.02941C6.18628 7.78922 6.31209 7.74183 6.40686 7.64706C6.50163 7.54902 6.54902 7.41994 6.54902 7.2598V6.05392H7.76471C7.92157 6.05392 8.04739 6.00654 8.14216 5.91177C8.2402 5.81373 8.28922 5.68628 8.28922 5.52941V4.46078C8.28922 4.30719 8.2402 4.18301 8.14216 4.08824C8.04739 3.9902 7.92157 3.94118 7.76471 3.94118H6.54902V2.73529C6.54902 2.57516 6.50163 2.44771 6.40686 2.35294C6.31209 2.25817 6.18628 2.21078 6.02941 2.21078H4.96078C4.80719 2.21078 4.68137 2.25817 4.58333 2.35294C4.48856 2.44771 4.44118 2.57516 4.44118 2.73529V3.94118H3.22549C3.06863 3.94118 2.94281 3.9902 2.84804 4.08824C2.75327 4.18301 2.70588 4.30719 2.70588 4.46078V5.52941Z" fill="black"/>
+                </svg>
+                <span>{{ section.settings.rating_text }}</span>
+            </div>
+        {% endif %}
+    </div>
+
+    {% if section.settings.title != blank %}
+        <h2 class="scrub-title">{{ section.settings.title }}</h2>
+    {%endif %}
+
+    {% if section.settings.subtitle != blank %}
+        <div class="scrub-subtitle">{{ section.settings.subtitle }}</div>
+    {% endif %}
+
+    {% if section.settings.main_image != blank %}
+      <div class="scrub-image">
+        <img src="{{ section.settings.main_image | img_url: '800x' }}" alt="Scrub Pants Collection">
+      </div>
+    {% endif %}
+  </div>
+</section>
+
+<style>
+.scrub-collection {
+  text-align: center;
+  padding: 40px 20px 0;
+  background-color: {{ section.settings.bg_clr }};
+  margin-top: {{ section.settings.space_top }};
+  margin-bottom: {{ section.settings.space_bottom }};
+}
+
+.reviews-summary .stars_part,
+.reviews-summary .text_part{
+    background-color: #fff;
+    padding: 6px 8px;
+    border-radius: 99px;
+    display: flex;
+    gap: 5px;
+    align-items: center;
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 100%;
+    letter-spacing: 0px;
+}
+.reviews-summary {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  margin-bottom: 15px;
+}
+
+.stars {
+    background: linear-gradient(90deg, #000 calc(var(--rating) / 5 * 100%), #ccc calc(var(--rating) / 5 * 100%));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    letter-spacing: -2px;
+}
+
+.scrub-title {
+  font-size: 24px;
+  font-weight: 700;
+  margin: 10px 0;
+  font-family: Outfit, sans-serif;
+  color: #000;
+}
+
+.scrub-subtitle {
+  background: #000;
+  color: #fff;
+  display: inline-block;
+  padding: 10px 18px;
+  border-radius: 6px;
+  font-size: 14px;
+  font-family: Outfit, sans-serif;
+}
+
+.scrub-image img {
+  max-width: 100%;
+  border-radius: 0;
+}
+
+@media screen and (max-width: 377px){
+.scrub-subtitle {
+    padding: 10px;
+    border-radius: 4px;
+    font-size: 13px;
+}
+}
+</style>
+
+{% schema %}
+{
+  "name": "Collection Hero A",
+  "settings": [
+    {
+      "type": "range",
+      "id": "space_top",
+      "label": "Space Top",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "default": 0
+    },
+    {
+      "type": "range",
+      "id": "space_bottom",
+      "label": "Space Bottom",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "default": 0
+    },
+    {
+        "type": "color",
+        "id": "bg_clr",
+        "label": "Section BG Color",
+        "default": "#F7F7F7"
+    },
+    {
+      "type": "image_picker",
+      "id": "main_image",
+      "label": "Main Collection Image"
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Heading",
+      "default": "Scrub Pants Collection"
+    },
+    {
+      "type": "text",
+      "id": "subtitle",
+      "label": "Subtitle",
+      "default": "Built for Performance. Designed for Comfort."
+    },
+    {
+      "type": "range",
+      "id": "rating",
+      "label": "Rating",
+      "min": 0,
+      "max": 5,
+      "step": 0.1,
+      "default": 4.8
+    },
+    {
+      "type": "text",
+      "id": "rating_text",
+      "label": "Rating Text",
+      "default": "Trusted by nurses"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Collection Hero A"
+    }
+  ]
+}
+{% endschema %}

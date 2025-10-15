@@ -1,0 +1,94 @@
+{
+  "parent": "index.json",
+  "context": {
+    "market": "international"
+  },
+  "sections": {
+    "logolistaani_YJptaJ": {
+      "disabled": true,
+      "settings": {},
+      "blocks": {}
+    },
+    "ugcslider_WVccfR": {
+      "disabled": true,
+      "settings": {},
+      "blocks": {}
+    },
+    "14a6d1da-4bb0-467d-8179-0f89444b4027": {
+      "disabled": true,
+      "settings": {},
+      "blocks": {}
+    },
+    "collection_slider_hFVCUM": {
+      "type": "collection-slider",
+      "disabled": false,
+      "settings": {
+        "header-fbeeb1d3a202e78a24bc0ab5dc3195fd": null,
+        "reviewstars": false,
+        "blocklist": false,
+        "show_title": true,
+        "dark_theme": false,
+        "martop_this": 60,
+        "marbot_this": 40,
+        "mmartop_this": 20,
+        "mmarbot_this": 0,
+        "selected_collection": "compression-socks",
+        "sec_name": "Best Sellers"
+      },
+      "blocks": {},
+      "block_order": []
+    },
+    "collection_slider_epWUAK": {
+      "type": "collection-slider",
+      "disabled": false,
+      "settings": {
+        "header-fbeeb1d3a202e78a24bc0ab5dc3195fd": null,
+        "reviewstars": false,
+        "blocklist": false,
+        "show_title": true,
+        "dark_theme": false,
+        "martop_this": 60,
+        "marbot_this": 40,
+        "mmartop_this": 20,
+        "mmarbot_this": 0,
+        "selected_collection": "curated",
+        "sec_name": "Bundles"
+      },
+      "blocks": {},
+      "block_order": []
+    },
+    "ce9a6cf9-6111-4efb-b6e0-d16d8fd842df": {
+      "disabled": true,
+      "settings": {},
+      "blocks": {}
+    },
+    "headerv5_yCPF3w": {
+      "settings": {
+        "hero_image": "shopify:\/\/shop_images\/3_8fafc89d-bcdf-4a57-9230-1887960074fe.png"
+      },
+      "blocks": {}
+    }
+  },
+  "order": [
+    "replo_replo_hero_banner_FJyVaW",
+    "headerv5_yCPF3w",
+    "1c64d667-b672-4f7b-b9be-2310692e99f1",
+    "logolistaani_YJptaJ",
+    "logo_list_gcipMb",
+    "collection_slider_hFVCUM",
+    "collection_slider_epWUAK",
+    "b08ad3ae-1d49-443c-bf20-3daa936d220c",
+    "14a6d1da-4bb0-467d-8179-0f89444b4027",
+    "text_and_image_FYCijp",
+    "ugcslider_WVccfR",
+    "7369b26d-3f2e-4d4c-a896-29470c300195",
+    "ddf4d5b8-a6eb-415b-9b5f-fde5f56a7fbc",
+    "ba72dc37-5808-48c1-b3cb-3ec8be06d8fe",
+    "text_and_image_LkLYGw",
+    "9e8f0f64-90c7-4706-a7a9-aa3e68275269",
+    "1650947126b57380d2",
+    "16324507174c90bdf2",
+    "ce9a6cf9-6111-4efb-b6e0-d16d8fd842df",
+    "162682029070dd2a76"
+  ]
+}

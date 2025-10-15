@@ -140,14 +140,17 @@
       $(this).find(".iconsizer").toggle()
       
     })
-    $(".imagesource").hover(function(){
-      
-      $imagesourch = $(this).attr("data-img")
-      if ( typeof $imagesourch !== "undefined" && $imagesourch) {
-        $(".hoverimage").html("<img src='" + $imagesourch + "' class='imghoverimage'>")
-      } 
-      
-    })
+    $(".imagesource").hover(
+      function(){
+        $imagesourch = $(this).attr("data-img")
+        if ( typeof $imagesourch !== "undefined" && $imagesourch) {
+          $(".hoverimage").html("<img src='" + $imagesourch + "' class='imghoverimage'>")
+        } 
+      },
+      function(){
+        $(".hoverimage").html("")
+      }
+    )
 
   })
 </script>

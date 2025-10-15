@@ -5,6 +5,12 @@
     },
     "sg": {
       "parent": "@default"
+    },
+    "international": {
+      "parent": "@default"
+    },
+    "au": {
+      "parent": "@default"
     }
   }
 }
