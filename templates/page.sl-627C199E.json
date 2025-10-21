@@ -59,7 +59,7 @@
         "textaroundtop": "",
         "textaroundbottom": "",
         "button_text_1": "SHOP NOW",
-        "button_1_url": "shopify:\/\/collections\/compression-socks",
+        "button_1_url": "shopify:\/\/collections\/bamboo-compression-socks",
         "button_text_2": "",
         "button_2_url": "",
         "header_image": "shopify:\/\/shop_images\/DESKTOP_NEW_BANNER_THUMBNAIL_1_2d363452-5f1d-4c68-9b87-e645847971b0.png",
@@ -177,7 +177,7 @@
       "settings": {
         "title": "Our Best Sellers",
         "description": "",
-        "home_featured_products": "compression-socks",
+        "home_featured_products": "bamboo-compression-socks",
         "per_row": "five",
         "alt": false
       }
@@ -232,7 +232,7 @@
         "big_header_text": "Aussie Designed, Built for Lasting Comfort",
         "subtitle_text": "From the minds of a family of Aussie docs, these socks are as durable as the Outback and as cozy as they come—ideal for surviving long shifts!",
         "button_text": "SHOP NOW",
-        "button_link": "shopify:\/\/collections\/compression-socks",
+        "button_link": "shopify:\/\/collections\/bamboo-compression-socks",
         "background_color": "#f5be15",
         "desktop_padding_top": 50,
         "desktop_padding_bottom": 50,
@@ -282,7 +282,7 @@
         "big_header_text": "99-day Guarantee: Longer Than Your Longest Shift (We Hope)",
         "subtitle_text": "Not convinced? Try them for 99 days. That's longer than your worst stretch of night shifts, longer than the time it takes to get an ortho consult, and definitely longer than your patience when someone says, \"You're just a nurse.\" If you don't love them, we'll take them back – no questions asked (except maybe \"Are you feeling okay? Should we check your temperature?\").",
         "button_text": "SHOP NOW",
-        "button_link": "shopify:\/\/collections\/compression-socks",
+        "button_link": "shopify:\/\/collections\/bamboo-compression-socks",
         "background_color": "#f5be15",
         "desktop_padding_top": 50,
         "desktop_padding_bottom": 50,
@@ -490,7 +490,7 @@
         "reviewstars_text": "",
         "bigtextsize": 36,
         "textbut": "SHOP NOW",
-        "buttonlink": "shopify:\/\/collections\/compression-socks",
+        "buttonlink": "shopify:\/\/collections\/bamboo-compression-socks",
         "bgcolor": "#0b0d32"
       }
     },

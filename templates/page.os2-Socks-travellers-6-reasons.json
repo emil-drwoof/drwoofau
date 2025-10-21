@@ -73,7 +73,7 @@
         "textaroundtop": "",
         "textaroundbottom": "",
         "button_text_1": "✨ Buy 6 Pairs, Get 30% Off | Shop Now",
-        "button_1_url": "shopify:\/\/collections\/compression-socks",
+        "button_1_url": "shopify:\/\/collections\/bamboo-compression-socks",
         "button_text_2": "",
         "button_2_url": "",
         "header_image": "shopify:\/\/shop_images\/13_eaa726d1-767e-4078-b2ad-d733fa715262.png",
@@ -191,7 +191,7 @@
       "settings": {
         "title": "The Frequent Flyer Favorites",
         "description": "",
-        "home_featured_products": "compression-socks",
+        "home_featured_products": "bamboo-compression-socks",
         "per_row": "five",
         "alt": false
       }
@@ -254,7 +254,7 @@
         "big_header_text": "Designed for Travelers, Loved by Nurses",
         "subtitle_text": "We’re not just a medical apparel company. We’re a family of healthcare professionals—and our socks have gone viral with the people who put comfort to the test daily: nurses.\nTens of thousands wear Dr. Woof in hospitals around the world.\n<br><br>And here’s the best part: we listen. Constantly.\nWe take feedback from real people and use it to perfect our design, down to the last thread.\n he result? A sock so trusted on the hospital floor, it’s now flying off the shelves for the tarmac.",
         "button_text": "SHOP NOW",
-        "button_link": "shopify:\/\/collections\/compression-socks",
+        "button_link": "shopify:\/\/collections\/bamboo-compression-socks",
         "background_color": "#f5be15",
         "desktop_padding_top": 50,
         "desktop_padding_bottom": 50,
@@ -343,7 +343,7 @@
         "big_header_text": "99-day Guarantee: Your Travel Essential, Risk-Free",
         "subtitle_text": "We stand behind the comfort and support of our compression socks with a 99-day guarantee. Try them on your next journey, and if they don’t deliver the refresh you need, we’ll refund you, no fuss. Travel confidently with comfort you can count on.",
         "button_text": "SHOP NOW",
-        "button_link": "shopify:\/\/collections\/compression-socks",
+        "button_link": "shopify:\/\/collections\/bamboo-compression-socks",
         "background_color": "#f5be15",
         "desktop_padding_top": 50,
         "desktop_padding_bottom": 50,
@@ -551,7 +551,7 @@
         "reviewstars_text": "",
         "bigtextsize": 36,
         "textbut": "SHOP NOW",
-        "buttonlink": "shopify:\/\/collections\/compression-socks",
+        "buttonlink": "shopify:\/\/collections\/bamboo-compression-socks",
         "bgcolor": "#0b0d32"
       }
     },

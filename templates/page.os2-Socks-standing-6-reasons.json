@@ -73,7 +73,7 @@
         "textaroundtop": "",
         "textaroundbottom": "",
         "button_text_1": "BUY 6 PAIRS GET 35% OFF | SHOP NOW",
-        "button_1_url": "shopify:\/\/collections\/compression-socks",
+        "button_1_url": "shopify:\/\/collections\/bamboo-compression-socks",
         "button_text_2": "",
         "button_2_url": "",
         "header_image": "shopify:\/\/shop_images\/DESKTOP_NEW_BANNER_THUMBNAIL_1_2d363452-5f1d-4c68-9b87-e645847971b0.png",
@@ -191,7 +191,7 @@
       "settings": {
         "title": "Our Best Sellers",
         "description": "",
-        "home_featured_products": "compression-socks",
+        "home_featured_products": "bamboo-compression-socks",
         "per_row": "five",
         "alt": false
       }
@@ -246,7 +246,7 @@
         "big_header_text": "Aussie-Designed: Built Tough for Your Tough Days",
         "subtitle_text": "Designed right here in Oz, these socks are made to handle whatever your day throws at you. Long shifts, constant standing—no worries, mate. They’re built to last and keep you comfortable while you power through.",
         "button_text": "SHOP NOW",
-        "button_link": "shopify:\/\/collections\/compression-socks",
+        "button_link": "shopify:\/\/collections\/bamboo-compression-socks",
         "background_color": "#f5be15",
         "desktop_padding_top": 50,
         "desktop_padding_bottom": 50,
@@ -296,7 +296,7 @@
         "big_header_text": "99-day Guarantee: We’ve Got Your Back (And Your Feet)",
         "subtitle_text": "We’re so sure you’ll love our socks that we’re giving you 99 days to try them out, risk-free. If they don’t make your legs feel brand new, we’ll give you your money back—no questions asked. Easy as, mate.",
         "button_text": "SHOP NOW",
-        "button_link": "shopify:\/\/collections\/compression-socks",
+        "button_link": "shopify:\/\/collections\/bamboo-compression-socks",
         "background_color": "#f5be15",
         "desktop_padding_top": 50,
         "desktop_padding_bottom": 50,
@@ -570,7 +570,7 @@
         "reviewstars_text": "",
         "bigtextsize": 36,
         "textbut": "SHOP NOW",
-        "buttonlink": "shopify:\/\/collections\/compression-socks",
+        "buttonlink": "shopify:\/\/collections\/bamboo-compression-socks",
         "bgcolor": "#0b0d32"
       }
     },

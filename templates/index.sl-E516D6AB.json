@@ -51,7 +51,7 @@
         "button_text_1": "SHOP WOMEN",
         "button_1_url": "shopify:\/\/collections\/women",
         "button_text_2": "SHOP COMPRESSION SOCKS",
-        "button_2_url": "shopify:\/\/collections\/compression-socks",
+        "button_2_url": "shopify:\/\/collections\/bamboo-compression-socks",
         "header_image": "shopify:\/\/shop_images\/DESKTOP_NEW_BANNER_THUMBNAIL_2_ee3f2195-e587-4a24-9fff-b3171e858c17.png",
         "mobile_image": "shopify:\/\/shop_images\/MOBILE_NEW_BANNER_THUMBNAIL_2_2da61f18-8950-4da5-88c4-db2a7d340e20.jpg",
         "bg_color": "#fafafa",
@@ -337,7 +337,7 @@
             "col_image": "shopify:\/\/shop_images\/Quicknav_Homepage_Images_4.jpg",
             "col_image_mobile": "shopify:\/\/shop_images\/NEW_HOMEPAGE_MOBILE_QUICK_NAV_7.jpg",
             "col_name": "Compression Socks",
-            "col_url": "shopify:\/\/collections\/compression-socks"
+            "col_url": "shopify:\/\/collections\/bamboo-compression-socks"
           }
         },
         "list_xkTVTc": {

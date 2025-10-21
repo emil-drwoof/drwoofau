@@ -251,25 +251,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 {% endcomment %}
 
 {% unless product.handle == 'scrub-cap-mega-pack' or product.handle == 'wardrobe-deal' %}
-  <!-- heatmap.com snippet -->
-  <script>
-    (function() {      
-      var _heatmap_paq = window._heatmap_paq = window._heatmap_paq || [];
-      var heatUrl = window.heatUrl = 'https://dashboard.heatmap.com/';
-      function hLoadInitialScript(url) {
-        var script = document.createElement('script'); script.type = 'text/javascript'; 
-        script.src = url; script.async = false; script.defer = true; document.head.appendChild(script);
-      }
-      hLoadInitialScript(heatUrl+'preprocessor.min.js?sid=531');
-      window.addEventListener('DOMContentLoaded', function (){	 
-          if(typeof _heatmap_paq != 'object' || _heatmap_paq.length == 0) {     
-            _heatmap_paq.push(['setTrackerUrl', heatUrl+'sttracker.php']);
-            hLoadInitialScript(heatUrl+'heatmap-light.min.js?sid=531');
-          } 
-      });
-    })();
-  </script>
-  <!-- End heatmap.com snippet Code -->
+
 {% endunless %}
 {% if section.settings.newpdptop %}
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -1333,7 +1315,11 @@ document.addEventListener("DOMContentLoaded", function () {
               {% if product.type == "Free Gift" or product.type == 'Gift Cards' or product.type == 'Printed Pattern Scrub Jumpsuit' %}
                   <script src="{{ 'theme.js' | asset_url }}" defer></script>
               {% else %}
-                  <script src="{{ 'theme-preorder.js' | asset_url }}" defer></script>
+                  {% if product.type == "Compression Socks" %}
+                    <script src="{{ 'theme-preorder-removed-flicker.js' | asset_url }}" defer></script>                  
+                  {% else %}
+                    <script src="{{ 'theme-preorder.js' | asset_url }}" defer></script>
+                  {% endif %}
               {% endif %}
             {% else %}
                 <script src="{{ 'theme.js' | asset_url }}" defer></script>
@@ -2732,7 +2718,7 @@ $(document).ready(function(){
       $(".product__price").html($varprice)              
       if(($varavail == "true") && ($varquan <= 0)) {
         $(".preorder-text").show()
-        $(".preorderdate").html("September 10")
+        $(".preorderdate").html("November 12")
         $(".capsbundleatc").html("PRE-ORDER")
       }else{
         $(".preorder-text").hide()
@@ -2923,7 +2909,7 @@ $(".image-overlay").on("click",function(){
 
       if(($varavail == "true") && ($varquan <= 0)) {
         $(".preorder-text").show()
-        $(".preorderdate").html("September 10")
+        $(".preorderdate").html("November 12")
         $(".capsbundleatc").html("PRE-ORDER")
       }else{
         $(".preorder-text").hide()
@@ -3544,7 +3530,7 @@ $capqty = parseFloat($(this).attr("data-socqty"))
         if(($capqty <= 0) && ($capavail == 'true')){
               $(".capsbundleatc").html("PRE-ORDER")
               $(".preorder-text").show()
-              $(".preorder-text").html("September 10")
+              $(".preorder-text").html("November 12")
             }else{
               if($capavail == 'true'){
                 $(".preorder-text").hide()
@@ -3559,7 +3545,7 @@ $capqty = parseFloat($(this).attr("data-socqty"))
         if(($capqty <= 0) && ($capavail == 'true')){
               $(".capsbundleatc").html("PRE-ORDER")
               $(".preorder-text").show()
-              $(".preorder-text").html("September 10")
+              $(".preorder-text").html("November 12")
             }else{
               if($capavail == 'true'){
                 $(".preorder-text").hide()
@@ -3587,7 +3573,7 @@ $capqty = parseFloat($(this).attr("data-socqty"))
         case "8687500263682":
         if(($capqty <= 0) && ($capavail == 'true')){
               $(".capsbundleatc").html("PRE-ORDER")
-              $(".preorder-text").html("September 10")
+              $(".preorder-text").html("November 12")
               $(".preorder-text").show()
             }else{
               if($capavail == 'true'){
@@ -3631,7 +3617,7 @@ $capqty = parseFloat($(this).attr("data-socqty"))
           if(($capqty <= 0) && ($capavail == 'true')){
               $(".capsbundleatc").html("PRE-ORDER")
               $(".preorder-text").show()
-              $(".preorderdate").html("September 10")
+              $(".preorderdate").html("November 12")
             }else{
               if($capavail == 'true'){
                 $(".preorder-text").hide()
@@ -4366,7 +4352,7 @@ $capqty = parseFloat($(this).attr("data-socqty"))
         if(($capqty <= 0) && ($capavail == 'true')){
               $(".capsbundleatc").html("PRE-ORDER")
               $(".preorder-text").show()
-              $(".preorderdate").html("September 10")
+              $(".preorderdate").html("November 12")
             }else{
               if($capavail == 'true'){
                 $(".preorder-text").hide()
@@ -4381,7 +4367,7 @@ $capqty = parseFloat($(this).attr("data-socqty"))
         if(($capqty <= 0) && ($capavail == 'true')){
               $(".capsbundleatc").html("PRE-ORDER")
               $(".preorder-text").show()
-              $(".preorderdate").html("September 10")
+              $(".preorderdate").html("November 12")
             }else{
               if($capavail == 'true'){
                 $(".preorder-text").hide()
@@ -4396,7 +4382,7 @@ $capqty = parseFloat($(this).attr("data-socqty"))
         if(($capqty <= 0) && ($capavail == 'true')){
               $(".capsbundleatc").html("PRE-ORDER")
               $(".preorder-text").show()
-              $(".preorderdate").html("September 10")
+              $(".preorderdate").html("November 12")
             }else{
               if($capavail == 'true'){
                 $(".preorder-text").hide()
@@ -4411,7 +4397,7 @@ $capqty = parseFloat($(this).attr("data-socqty"))
         if(($capqty <= 0) && ($capavail == 'true')){
               $(".capsbundleatc").html("PRE-ORDER")
               $(".preorder-text").show()
-              $(".preorderdate").html("September 10")
+              $(".preorderdate").html("November 12")
             }else{
               if($capavail == 'true'){
                 $(".preorder-text").hide()
@@ -4426,7 +4412,7 @@ $capqty = parseFloat($(this).attr("data-socqty"))
         if(($capqty <= 0) && ($capavail == 'true')){
               $(".capsbundleatc").html("PRE-ORDER")
               $(".preorder-text").show()
-              $(".preorderdate").html("September 10")
+              $(".preorderdate").html("November 12")
             }else{
               if($capavail == 'true'){
                 $(".preorder-text").hide()
@@ -4441,7 +4427,7 @@ $capqty = parseFloat($(this).attr("data-socqty"))
         if(($capqty <= 0) && ($capavail == 'true')){
               $(".capsbundleatc").html("PRE-ORDER")
               $(".preorder-text").show()
-              $(".preorderdate").html("September 10")
+              $(".preorderdate").html("November 12")
             }else{
               if($capavail == 'true'){
                 $(".preorder-text").hide()
@@ -4456,7 +4442,7 @@ $capqty = parseFloat($(this).attr("data-socqty"))
         if(($capqty <= 0) && ($capavail == 'true')){
               $(".capsbundleatc").html("PRE-ORDER")
               $(".preorder-text").show()
-              $(".preorderdate").html("September 10")
+              $(".preorderdate").html("November 12")
             }else{
               if($capavail == 'true'){
                 $(".preorder-text").hide()
@@ -4471,7 +4457,7 @@ $capqty = parseFloat($(this).attr("data-socqty"))
         if(($capqty <= 0) && ($capavail == 'true')){
               $(".capsbundleatc").html("PRE-ORDER")
               $(".preorder-text").show()
-              $(".preorderdate").html("September 10")
+              $(".preorderdate").html("November 12")
             }else{
               if($capavail == 'true'){
                 $(".preorder-text").hide()
@@ -4486,7 +4472,7 @@ $capqty = parseFloat($(this).attr("data-socqty"))
         if(($capqty <= 0) && ($capavail == 'true')){
               $(".capsbundleatc").html("PRE-ORDER")
               $(".preorder-text").show()
-              $(".preorderdate").html("September 10")
+              $(".preorderdate").html("November 12")
             }else{
               if($capavail == 'true'){
                 $(".preorder-text").hide()
@@ -4501,7 +4487,7 @@ $capqty = parseFloat($(this).attr("data-socqty"))
         if(($capqty <= 0) && ($capavail == 'true')){
               $(".capsbundleatc").html("PRE-ORDER")
               $(".preorder-text").show()
-              $(".preorderdate").html("September 10")
+              $(".preorderdate").html("November 12")
             }else{
               if($capavail == 'true'){
                 $(".preorder-text").hide()
@@ -4516,7 +4502,7 @@ $capqty = parseFloat($(this).attr("data-socqty"))
         if(($capqty <= 0) && ($capavail == 'true')){
               $(".capsbundleatc").html("PRE-ORDER")
               $(".preorder-text").show()
-              $(".preorderdate").html("September 10")
+              $(".preorderdate").html("November 12")
             }else{
               if($capavail == 'true'){
                 $(".preorder-text").hide()
@@ -4530,7 +4516,7 @@ $capqty = parseFloat($(this).attr("data-socqty"))
         case "8687500263682":
         if(($capqty <= 0) && ($capavail == 'true')){
               $(".capsbundleatc").html("PRE-ORDER")
-              $(".preorder-text").html("September 10")
+              $(".preorder-text").html("November 12")
               $(".preorder-text").show()
             }else{
               if($capavail == 'true'){
@@ -4560,7 +4546,7 @@ $capqty = parseFloat($(this).attr("data-socqty"))
           if(($capqty <= 0) && ($capavail == 'true')){
               $(".capsbundleatc").html("PRE-ORDER")
               $(".preorder-text").show()
-              $(".preorderdate").html("September 10")
+              $(".preorderdate").html("November 12")
             }else{
               if($capavail == 'true'){
                 $(".preorder-text").hide()
@@ -4618,7 +4604,7 @@ $capqty = parseFloat($(this).attr("data-socqty"))
           if(($capqty <= 0) && ($capavail == 'true')){
               $(".capsbundleatc").html("PRE-ORDER")
               $(".preorder-text").show()
-              $(".preorderdate").html("September 10")
+              $(".preorderdate").html("November 12")
             }else{
               if($capavail == 'true'){
                 $(".preorder-text").hide()

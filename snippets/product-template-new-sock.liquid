@@ -25,10 +25,29 @@
     src: url("https://cdn.shopify.com/s/files/1/0573/7250/8344/files/FuturaPTMedium.otf?v=1682068317") format("opentype");
 }
 @media only screen and (max-width:480px){
+  .slick-prev, .slick-next {
+    top:50% !important;
+  }
+  .slick-next{
+    right:-10px !important;
+  }
   .product-content-right{
     position:relative;
     top:-8px;
     padding-left:35px !important;
+  }
+  .slick-list{
+    overflow:visible !important;
+  }
+  .product__main-photos .slick-dots{
+    left:10px !important;
+  }
+  .slick-slider{
+    overflow:visible;
+    left:-10px;
+  }
+  .slick-slide{
+    padding-right:10px;
   }
 }
 .hide-preorder {
@@ -838,6 +857,10 @@ font-size: 18px;
   }
 }
 @media only screen and (min-width:481px){
+  .oneway.product__photos.product__photos--beside {    
+    display:block;
+  }
+  
    .scrubcaps-wrapper{
     height:460px !important;
    }
@@ -1583,12 +1606,17 @@ console.log('=== END ===');
 
     @media(min-width: 993px){
       .banner-version1 img{
-        height: 230px;
+        width:77%;
       }
     }
   </style>
   <div class="banner-version1">
-    <img src="https://cdn.shopify.com/s/files/1/0573/7250/8344/files/Product_Image_-_10.png?v=1760302267">
+{% if section.settings.freesetcap %}
+  <img src="{{ section.settings.freesetcap | image_url: width: 800 }}" alt="{{ section.settings.freesetcap.alt | default: 'Product image' }}">
+{% else %}
+  <img src="https://cdn.shopify.com/s/files/1/0573/7250/8344/files/Product_Image_-_10.png?v=1760302267" alt="Default product image">
+{% endif %}
+    
   </div>
 
   <!-- Add to Cart -->
@@ -2606,6 +2634,10 @@ updateATCPrices();
     margin: 10px 0;
     width: 100%;
   }
+  .product__thumbs--beside{
+    max-width:100% !important;
+  }
+
   @media only screen and (max-width: 749px) {
     .threeway .product__main-photos--slider .product__slide {
       margin-left: 0 !important;
@@ -2637,8 +2669,26 @@ updateATCPrices();
       padding: 10px;
     }
   }
-
+  .product__thumb-item{
+    width:86px !important;
+    display:block;
+    margin-right:10px;
+    float:left;
+  }
+  .product__thumb-item img,
+  .product__thumb-item a{
+    display:block !important;
+    width:100% !important;
+  }
+  .product__thumbs{
+    height:106px;
+    overflow-y:hidden;
+  }
+  
   @media only screen and (max-width:490px) {
+    .product__slide{
+      
+    }
     .threeway .slick-slide {
       width: 236px;
     }
@@ -2660,59 +2710,20 @@ updateATCPrices();
       {% if template contains "template-scrub-caps" %}
         bottom: 36px;
       {% else %}
-        bottom: 56px;
+        bottom: 40px;
       {% endif %}
     }
 
-    {% if section.settings.threeway %}
-      .product__thumbs--beside .product__thumb-item{
-      padding-left:8px;
-      padding-right:8px;
+    .product-image-left{
+      margin-bottom:8px;
     }
-    .product__thumbs--beside .product__thumb-item,
-    .image-wrap{
-      margin-bottom:0 !important;
-    }
-    .product__main-photos .slick-dots {
-      z-index: 9 !important;
-      {% if template contains "template-scrub-caps" %}
-        bottom: 36px;
-      {% else %}
-        bottom: 56px;
-      {% endif %}
-    }
-    .product__photos--beside{
-      display:block !important; 
-    }
-    .product__thumbs img{
-      overflow:hidden;
-      border-radius:8px !important;
-      border:1px solid #000;
-    }
-    .slick-slide,
-    .product__thumb-item{
- 
+    .Main--ProductPhotos{
+      height:400px !important;
+      border-bottom:1px solid #fefefe;
 
     }
-    .product__thumbs .product__thumb-item{
-      overflow:hidden;
-      border-radius:8px !important;
-    }
-    .Main--ProductPhotos .slick-slide{
-      padding-left:8px;
-      padding-right:8px;
-    }
-    .product__thumbs{
-      z-index: 99;
-      position: absolute;
-      display: flex;
-      bottom: 10px;
-      width: 100%;
-      margin-top:-15px;
-      justify-content: center;
-    }
-    {% endif %}
   }
+  
 </style>
 <script>
   const modal = document.querySelector(".pop-up-modal");
@@ -3474,13 +3485,14 @@ scrollThumb.style.cursor = 'grab';
 </style>
 
 <script>
+var preorderdate = '{{ section.settings.sockpreorderdate }}';
 function updateArrivalDate() {
   const arrivalElement = document.getElementById('arrival-date');
   const preorderText = document.getElementById('preorder-text');
   if (!arrivalElement) return;
   
   if (hasPreorderItems()) {
-    arrivalElement.textContent = 'Expected dispatch by Oct 20';
+    arrivalElement.textContent = 'Expected dispatch by ' + preorderdate;
   } else {    
     preorderText.style.display = 'none';
     const today = new Date();

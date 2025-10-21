@@ -1221,6 +1221,13 @@ li.tag.product-tabs-data[value='bubblegum'] {
   order: {{ section.settings.color_bubblegum }};
 }
 
+.color-option[value='noosa-sea-mist'],
+.variant-input[data-value='Noosa Sea Mist'],
+.variant-input[data-arrange='noosa-sea-mist'],
+li.tag.product-tabs-data[value='noosa-sea-mist'] {
+  order: {{ section.settings.color_noosa-sea-mist }};
+}
+
 
 .site-footer__section p{
     color:#fff;
@@ -1679,7 +1686,16 @@ li.tag.product-tabs-data[value='bubblegum'] {
         "min": 1,
         "max": 40,
         "step": 1
-      },        
+      },    
+      {
+        "type": "range",
+        "id": "color_noosa-sea-mist",
+        "label": "Order Noosa Sea Mist",
+        "default": 40,
+        "min": 1,
+        "max": 40,
+        "step": 1
+      },               
       {
         "type": "header",
         "content": "Footer Text"

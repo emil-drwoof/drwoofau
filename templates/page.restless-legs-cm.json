@@ -83,7 +83,7 @@
         "textaroundtop": "",
         "textaroundbottom": "",
         "button_text_1": "SHOP NOW",
-        "button_1_url": "shopify:\/\/collections\/compression-socks",
+        "button_1_url": "shopify:\/\/collections\/bamboo-compression-socks",
         "button_text_2": "",
         "button_2_url": "",
         "header_image": "shopify:\/\/shop_images\/1_2796f493-5c17-4fac-940e-79e0baf1cbc7.png",
@@ -201,7 +201,7 @@
       "settings": {
         "title": "Fatigue-Busting Favorites",
         "description": "",
-        "home_featured_products": "compression-socks",
+        "home_featured_products": "bamboo-compression-socks",
         "per_row": "five",
         "alt": false
       }
@@ -264,7 +264,7 @@
         "big_header_text": "Created by Doctors. Designed for People Living With Restless Legs.",
         "subtitle_text": "We know what it’s like to live with aching, restless legs that never seem to settle. That’s why a family of doctors designed Dr Woof Compression Socks to bring real relief you can feel every day.<br><br><b> Trusted by thousands and loved by nurses who wear them through 10+ hour shifts, they are proven to ease restlessness, swelling, and fatigue.<\/b>",
         "button_text": "SHOP NOW",
-        "button_link": "shopify:\/\/collections\/compression-socks",
+        "button_link": "shopify:\/\/collections\/bamboo-compression-socks",
         "background_color": "#f5be15",
         "desktop_padding_top": 50,
         "desktop_padding_bottom": 50,
@@ -323,7 +323,7 @@
         "replo_text_d2339081-2aac-40df-931c-5c07ef32b084": "",
         "replo_text_35ec7589-2470-4d8f-bcfd-c874e67bfb08": "<p>Say Goodbye to Fatigue in 99 Days—Or It’s Free!<br\/><br\/><\/p>",
         "replo_text_a22d138f-60a4-4bfd-96ed-20ea923e6381": "<p>We’re so confident you’ll love them, we’re offering a 99-Day Money-Back Guarantee. Not satisfied? We’ll give you a full refund—no questions asked.<\/p>",
-        "replo_url_a6be2aa5-eb93-44f3-a993-ae2aa2816ea1": "shopify:\/\/collections\/compression-socks",
+        "replo_url_a6be2aa5-eb93-44f3-a993-ae2aa2816ea1": "shopify:\/\/collections\/bamboo-compression-socks",
         "replo_text_3c32c631-d5f6-4308-923c-195d96de1982": "<p>SHOP NOW<\/p>",
         "replo_style_image_e27af923-d3a0-4fc3-940b-8e3217b8c347": "shopify:\/\/shop_images\/Logo_List_fcec1733-2afe-4577-b5a9-7d20c699d4f3.png"
       }
@@ -353,7 +353,7 @@
         "big_header_text": "6. Feel Confident with Our 99-day Guarantee",
         "subtitle_text": "We know trying something new can feel like a leap of faith, but with our 99-day guarantee, there’s no need to worry. Give our bamboo compression socks a try, and if they’re not the perfect fit, we’ll take them back—no hassle, no stress. You’ve got nothing to lose, except those tired legs.",
         "button_text": "SHOP NOW",
-        "button_link": "shopify:\/\/collections\/compression-socks",
+        "button_link": "shopify:\/\/collections\/bamboo-compression-socks",
         "background_color": "#f5be15",
         "desktop_padding_top": 50,
         "desktop_padding_bottom": 50,
@@ -561,7 +561,7 @@
         "reviewstars_text": "",
         "bigtextsize": 36,
         "textbut": "SHOP NOW",
-        "buttonlink": "shopify:\/\/collections\/compression-socks",
+        "buttonlink": "shopify:\/\/collections\/bamboo-compression-socks",
         "bgcolor": "#0b0d32"
       }
     },

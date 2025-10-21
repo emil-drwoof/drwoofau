@@ -4,6 +4,99 @@
   integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
   crossorigin="anonymous"></script>
 <style>
+  .jdgm-prev-badge__text{
+    display:none !important;
+  }
+  #CollectionAjaxContent .grid{
+      display: flex;
+      flex-wrap: wrap;
+      align-items: stretch;      
+      gap:20px;
+  }
+  .grid__image-ratio--portrait:before {
+    padding-bottom: 100% !important;
+  }
+  .grid__item{
+    flex:0 0 32% !important;
+    padding-left: 0px !important;
+    background:#F9F9F9;
+  }
+  .main-metafield-image{
+    background: #FFFBE8;
+  }
+  .image-metafield-one{
+    width:100% !important;        
+    z-index: 9;
+  }
+  .grid-product__meta{    
+    padding:20px !important;
+  }
+  .grid-product__content{
+    margin-bottom:0px !important;
+  }
+  .grid{
+    margin-left: 0px !important;
+  }
+  .main-metafield-image .Main-alt-image{
+    top:12px;
+  }
+  .desktop{
+    display:block;
+  }
+  .mobile{
+    display:none;
+  }
+  @media only screen and (max-width:480px){
+    .desktop{
+      display:none;
+    }
+    .mobile{
+      display:block;
+    }
+      .main-metafield-image .Main-alt-image{
+        top:26px;
+      }
+      .template-collection .grid-product__title{
+        font-size:16px;
+        line-height:18px;
+      }
+      .jdgm-preview-badge .jdgm-star.jdgm-star{
+        font-size:15px;
+      }
+      .jdgm-prev-badge__text, .jdgm-prev-badge__stars{
+        vertical-align: baseline !important;
+      }
+      #CollectionAjaxContent .grid{
+        justify-content: space-around;
+        gap:10px;
+        padding-left: 10px;
+        padding-right: 10px;
+      }
+      .grid{
+        margin-left:0px !important;
+      }
+      .page-width{
+        padding:0px !important;
+      }
+      .grid__item{
+        padding-left:0px !important;
+        margin-bottom:4px !important;
+        flex:0 0 48% !important;
+      }
+      .image-metafield-one{       
+        
+       
+      }
+      .grid-product__meta{        
+        padding:10px !important;
+      }
+      .grid-product__meta .grid-product__price{
+        font-size:14px;
+      }
+      .grid-product__content{
+        margin-bottom:0px !important;
+      }
+  }
   {% if template.suffix == 'performancesocks' %}
   .grid__image-ratio--portrait:before{
     padding-bottom:100% !important;
@@ -56,7 +149,7 @@
 {% endif %}
 {% assign product_count = collection.products_count %}
 <div class="page-width" style="text-align:right">
-  <span style="display:inline-block;margin-bottom:12px;border-bottom:1px solid #000;width:auto">{{ product_count }} Total</span>
+  <span style="display:inline-block;margin-top:6px;margin-bottom:6px;border-bottom:1px solid #000;width:auto">{{ product_count }} Total</span>
 </div>
 <div class="page-width">
   <div id="CollectionAjaxContent">
@@ -64,6 +157,7 @@
 
       {% capture first_mf %}
         {% assign first_image = collection.metafields.sf_collection.first_image %}
+        {% assign first_mobile = collection.metafields.sf_collection.first_image_url_mobile %}        
         {% assign first_text = collection.metafields.sf_collection.first_text %}
         {% assign first_url = collection.metafields.sf_collection.first_url %}
 
@@ -81,7 +175,11 @@
                     {% endif %}
                     <img
                       src="{{ first_image }}"
-                      class="image-metafield-one"
+                      class="image-metafield-one desktop"
+                      alt="{% if first_text != blank %}{{ first_text }}{% else %}{{ collection.title }}{% endif %}" />
+                    <img
+                      src="{{ first_mobile }}"
+                      class="image-metafield-one mobile"
                       alt="{% if first_text != blank %}{{ first_text }}{% else %}{{ collection.title }}{% endif %}" />
                     {% if first_url != blank %}
                     </a>

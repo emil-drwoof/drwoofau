@@ -6,24 +6,19 @@
   "sections": {
     "logolistaani_YJptaJ": {
       "disabled": true,
-      "settings": {},
-      "blocks": {}
+      "settings": {}
     },
     "ugcslider_WVccfR": {
       "disabled": true,
-      "settings": {},
-      "blocks": {}
+      "settings": {}
     },
     "14a6d1da-4bb0-467d-8179-0f89444b4027": {
       "disabled": true,
-      "settings": {},
-      "blocks": {}
+      "settings": {}
     },
     "collection_slider_hFVCUM": {
       "type": "collection-slider",
-      "disabled": false,
       "settings": {
-        "header-fbeeb1d3a202e78a24bc0ab5dc3195fd": null,
         "reviewstars": false,
         "blocklist": false,
         "show_title": true,
@@ -32,17 +27,13 @@
         "marbot_this": 40,
         "mmartop_this": 20,
         "mmarbot_this": 0,
-        "selected_collection": "compression-socks",
+        "selected_collection": "bamboo-compression-socks",
         "sec_name": "Best Sellers"
-      },
-      "blocks": {},
-      "block_order": []
+      }
     },
     "collection_slider_epWUAK": {
       "type": "collection-slider",
-      "disabled": false,
       "settings": {
-        "header-fbeeb1d3a202e78a24bc0ab5dc3195fd": null,
         "reviewstars": false,
         "blocklist": false,
         "show_title": true,
@@ -53,20 +44,16 @@
         "mmarbot_this": 0,
         "selected_collection": "curated",
         "sec_name": "Bundles"
-      },
-      "blocks": {},
-      "block_order": []
+      }
     },
     "ce9a6cf9-6111-4efb-b6e0-d16d8fd842df": {
       "disabled": true,
-      "settings": {},
-      "blocks": {}
+      "settings": {}
     },
     "headerv5_yCPF3w": {
       "settings": {
         "hero_image": "shopify:\/\/shop_images\/3_8fafc89d-bcdf-4a57-9230-1887960074fe.png"
-      },
-      "blocks": {}
+      }
     }
   },
   "order": [

@@ -143,8 +143,7 @@
   })
 
   $(".image-overlay").on("click", function() {
-    
-   
+       
       $(".capsbundleatd").removeClass("soldoutx")
       $(".btn-primer").show()
 
@@ -167,92 +166,6 @@
       $capsprice = $(this).attr("data-price")
       $capscompare = $(this).attr("data-compare")
 
-      console.log("xoooo" + $capid)
-              switch($capid) {
-    case "8742079267074":
-        $(".preorderdate").html("September 10");
-        break;
-    case "8702953947394":
-        $(".preorderdate").html("September 10");
-        break;
-    case "8742080872706":
-        $(".preorderdate").html("September 10");
-        break;
-    case "8742083002626":
-        $(".preorderdate").html("September 10");
-        break;
-    case "8320634192130":
-        $(".preorderdate").html("September 10");
-        break;
-    case "8742084247810":
-        $(".preorderdate").html("September 10");
-        break;
-    case "8702954799362":
-        $(".preorderdate").html("September 10");
-        break;
-    case "8702953062658":
-        $(".preorderdate").html("September 10");
-        break;
-    case "8742079267074":
-        $(".preorderdate").html("September 10");
-        break;
-    case "8702949916930":
-        $(".preorderdate").html("September 10");
-        break;
-    case "8702953718018":
-        $(".preorderdate").html("September 10");
-        break;
-    case "8702953947394":
-        $(".preorderdate").html("September 10");
-        break;
-    case "87029547993624":
-        $(".preorderdate").html("September 10");
-        break;
-    case "8702954963202":
-        $(".preorderdate").html("September 10");
-        break;
-    case "8702955356418":
-        $(".preorderdate").html("September 10");
-        break;
-    
-    // New product IDs
-    case "8810379739394":
-    $(".preorderdate").html("September 10");
-    break;
-    case "8810379444482":
-    $(".preorderdate").html("September 10");
-    break;
-    case "8810379116802":
-    $(".preorderdate").html("September 10");
-    break;
-    case "8810378658050":
-    $(".preorderdate").html("September 10");
-    break;
-    case "8810378297602":
-    $(".preorderdate").html("September 10");
-    break;
-    case "8810377347330":
-    $(".preorderdate").html("September 10");
-    break;
-    case "8810376167682":
-    $(".preorderdate").html("September 10");
-    break;
-    case "8810375086338":
-    $(".preorderdate").html("September 10");
-    break;
-    case "8810373382402":
-    $(".preorderdate").html("September 10");
-    break;
-    case "8810373185794":
-    $(".preorderdate").html("September 10");
-    break;
-    case "8810372858114":
-        $(".preorderdate").html("September 10");
-        break;
-
-    default:
-        $(".preorderdate").html("September 10");
-}
       $selectedProductHandle = $(".activer").attr('data-handle')
       $selectedProductType = $(".actives").attr('data-type')
       $selectedProductSize = $(".atv").attr('data-size')
@@ -355,6 +268,7 @@
               }, 1);
           },
           success: function(t) {
+             
               t = disableJavaScript(t)
               
               var i = $(t).find(".oneway.product__photos").html();
@@ -364,40 +278,16 @@
               var l = $(t).find(".main-content .shopify-section:nth-child(2) .sections-wrapper.page-blocks").html();
               $(".oneway.product__photos").html(i),
                   $(".woof-accordion-content:first-of-type").html(j),
-                  // $(".main-content .shopify-section:nth-child(2)").html('<div class="page-width feature-row-wrapper custom-image-with-richtext">' + k + '</div>'),
-                  // $(".main-content .shopify-section:nth-child(2)").html(l),
-{% if template.suffix == 'os2printedtopsbundle' or template.suffix == 'sl-36C42638' %}
-                                                  $(".oneway .product__thumbs").slick({ slidesToShow: 6, slidesToScroll: 1, arrows: !1, fade: !1, vertical: !0 }),
-                                768 >= $(window).width() && $(".oneway .Main--ProductPhotos").slick({                                             
-                                            asNavFor: '', 
-                                            arrows: true,
-                                            dots: false,
-                                            initialSlide: 0,
-                                            centerMode: false,
-                                            centerPadding: '0px',
-                                            slidesToScroll: 2,
-                                            slidesToShow: 2,
-                                            infinite: true }),   
-                                $(".Main--ProductPhotos video").trigger("play"),        
-{% else %}
-
                   $(".oneway .product__thumbs").slick({
                       slidesToShow: 6,
                       slidesToScroll: 1,
                       arrows: !1,
                       fade: !1,
-                      vertical: !0
+                      vertical: !1
                   }),
-                  768 >= $(window).width() && $(".oneway .Main--ProductPhotos").slick({
-                      slidesToShow: 1,
-                      centerMode: true,
-                      slidesToScroll: 1,
-                      arrows: !1,
-                      centerPadding: '70px',
-                      dots: !0
-                  }),
-{% endif %}
+                  768 >= $(window).width() && $(".oneway .Main--ProductPhotos").slick({ slidesToShow: 1, centerMode: !0, slidesToScroll: 1, arrows: !0, centerPadding: '10px', dots: true }),
                   $(".product__photos").css("opacity", 1);
+
           },
       });
      
@@ -637,6 +527,7 @@
       {
       "type":"text",
         "id":"sockpreorderdate",
+        "default":"Oct 30",
         "label":"Sock preorder date"
       },
       {

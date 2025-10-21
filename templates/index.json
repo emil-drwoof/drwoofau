@@ -35,7 +35,7 @@
         "primary_button_text": "SHOP SCRUBS",
         "primary_button_url": "shopify:\/\/collections\/women",
         "secondary_button_text": "SHOP COMPRESSION SOCKS",
-        "secondary_button_url": "shopify:\/\/collections\/compression-socks",
+        "secondary_button_url": "shopify:\/\/collections\/bamboo-compression-socks",
         "title_font_family": "futura2",
         "title_size_desktop": 48,
         "title_color_desktop": "#ffffff",
@@ -443,7 +443,7 @@
             "col_image": "shopify:\/\/shop_images\/Quicknav_Homepage_Images_4.jpg",
             "col_image_mobile": "shopify:\/\/shop_images\/NEW_HOMEPAGE_MOBILE_QUICK_NAV_7.jpg",
             "col_name": "Compression Socks",
-            "col_url": "shopify:\/\/collections\/compression-socks"
+            "col_url": "shopify:\/\/collections\/bamboo-compression-socks"
           }
         },
         "2f0efd8f-06c8-4a42-9684-158cf8909a11": {
@@ -549,7 +549,7 @@
             "video_link": "https:\/\/cdn.shopify.com\/videos\/c\/o\/v\/8700e862e424424c98b86bf5b75812ea.mp4",
             "text-upper": "",
             "text-bottom": "NAVY",
-            "button-link": "shopify:\/\/collections\/blue-scrubs",
+            "button-link": "shopify:\/\/collections\/navy-scrubs",
             "button-text": "SHOP NOW"
           }
         },

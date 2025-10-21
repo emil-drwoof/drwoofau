@@ -3,7 +3,7 @@
     "product-template": {
       "type": "product-template-new-sock",
       "settings": {
-        "sockpreorderdate": "",
+        "sockpreorderdate": "Oct 30",
         "abtestnoicons": false,
         "abtestdavideo": true,
         "enable_ab_size": true,

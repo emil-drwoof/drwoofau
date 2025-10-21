@@ -73,7 +73,7 @@
         "textaroundtop": "",
         "textaroundbottom": "",
         "button_text_1": "SHOP NOW",
-        "button_1_url": "shopify:\/\/collections\/compression-socks",
+        "button_1_url": "shopify:\/\/collections\/bamboo-compression-socks",
         "button_text_2": "",
         "button_2_url": "",
         "header_image": "shopify:\/\/shop_images\/HERO.png",
@@ -191,7 +191,7 @@
       "settings": {
         "title": "Our Most-Loved by the Most Exhausted",
         "description": "",
-        "home_featured_products": "compression-socks",
+        "home_featured_products": "bamboo-compression-socks",
         "per_row": "five",
         "alt": false
       }
@@ -254,7 +254,7 @@
         "big_header_text": "Created by Vets. Made Famous by Nurses.",
         "subtitle_text": "We’re a family of veterinarians—so we know the physical toll of care. But the magic of Dr. Woof?\n It’s not just what we put in.\n It’s what nurses put back.<br>\n<br>Our socks have gone viral in hospitals across Australia because we ask, we listen, and we change things.\n Every pocket of cushion. Every band of compression. Every thread of softness—it’s been field-tested on the hardest floors by the people who never get to sit.\n<br><br>These aren’t just made for nurses. They’re made with them.",
         "button_text": "SHOP NOW",
-        "button_link": "shopify:\/\/collections\/compression-socks",
+        "button_link": "shopify:\/\/collections\/bamboo-compression-socks",
         "background_color": "#f5be15",
         "desktop_padding_top": 50,
         "desktop_padding_bottom": 50,
@@ -342,7 +342,7 @@
         "big_header_text": "99-day Guarantee: Longer Than Your Longest Shift (We Hope)",
         "subtitle_text": "Not convinced? Try them for 99 days. That's longer than your worst stretch of night shifts, longer than the time it takes to get an ortho consult, and definitely longer than your patience when someone says, \"You're just a nurse.\" If you don't love them, we'll take them back – no questions asked (except maybe \"Are you feeling okay? Should we check your temperature?\").",
         "button_text": "SHOP NOW",
-        "button_link": "shopify:\/\/collections\/compression-socks",
+        "button_link": "shopify:\/\/collections\/bamboo-compression-socks",
         "background_color": "#f5be15",
         "desktop_padding_top": 50,
         "desktop_padding_bottom": 50,
@@ -662,7 +662,7 @@
         "reviewstars_text": "",
         "bigtextsize": 36,
         "textbut": "SHOP NOW",
-        "buttonlink": "shopify:\/\/collections\/compression-socks",
+        "buttonlink": "shopify:\/\/collections\/bamboo-compression-socks",
         "bgcolor": "#0b0d32"
       }
     },

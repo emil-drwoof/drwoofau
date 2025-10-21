@@ -86,7 +86,7 @@
         "textaroundtop": "",
         "textaroundbottom": "",
         "button_text_1": "Order Now & Save Up To 35%",
-        "button_1_url": "shopify:\/\/collections\/compression-socks",
+        "button_1_url": "shopify:\/\/collections\/bamboo-compression-socks",
         "button_text_2": "",
         "button_2_url": "",
         "header_image": "shopify:\/\/shop_images\/Compression_Socks_Listicle_-_6_Reasons_Why_1.gif",
@@ -288,7 +288,7 @@
         "title": "How To Use Compression Socks",
         "text": "<p>Pop your hand in, flip 'em inside out, slide your foot in, ease over your heel, roll 'em up, smooth any bumps, and adjust to your vibe.<\/p>",
         "button_label": "SHOP NOW",
-        "button_link": "shopify:\/\/collections\/compression-socks",
+        "button_link": "shopify:\/\/collections\/bamboo-compression-socks",
         "button_style": "primary",
         "layout": "left",
         "alt": false
@@ -335,7 +335,7 @@
         "reviewstars_text": "",
         "bigtextsize": 36,
         "textbut": "Shop",
-        "buttonlink": "shopify:\/\/collections\/compression-socks",
+        "buttonlink": "shopify:\/\/collections\/bamboo-compression-socks",
         "bgcolor": "#050507"
       }
     },
