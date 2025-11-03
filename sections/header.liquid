@@ -1,5 +1,14 @@
 <!-- section/header.liquid -->
-{%- assign main_menu = linklists[section.settings.main_menu_link_list] -%}
+{% if localization.country.currency.iso_code == 'AUD' %}
+   {%- assign main_menu = linklists[section.settings.main_menu_link_list] -%}
+{% else %}
+   {% if localization.country.currency.iso_code == 'USD' %}
+      {%- assign main_menu = linklists[section.settings.us_menu_link_list] -%}
+   {% else %}
+      {%- assign main_menu = linklists[section.settings.int_menu_link_list] -%}
+   {% endif %}
+{% endif %}
+
 
 {% comment %}
 menu_alignment options:
@@ -207,9 +216,17 @@ margin-top: 40px;
 {% endif %}
 
 {% if section.settings.megmenu %}
-   {% render 'newslidingmenu2' %}
+   {% if localization.country.currency.iso_code != 'AUD' %}
+      {% render 'newslidingmenu-us' %}
+   {% else %}
+      {% render 'newslidingmenu2' %}
+   {% endif %}
 {% else %}
-   {% render 'newslidingmenu' %}
+   {% if localization.country.currency.iso_code != 'AUD' %}
+      {% render 'newslidingmenu-us' %}
+   {% else %}
+      {% render 'newslidingmenu' %}
+   {% endif %}   
 {% endif %}
 
 {% schema %}
@@ -340,6 +357,18 @@ margin-top: 40px;
          "type": "link_list",
          "id": "main_menu_link_list",
          "label": "Menu",
+         "default": "main-menu"
+      },
+      {
+         "type": "link_list",
+         "id": "us_menu_link_list",
+         "label": "US Menu",
+         "default": "main-menu"
+      },
+      {
+         "type": "link_list",
+         "id": "int_menu_link_list",
+         "label": "International Menu",
          "default": "main-menu"
       },
       {

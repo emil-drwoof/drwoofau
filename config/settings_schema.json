@@ -1090,6 +1090,50 @@
         "type": "number",
         "id": "shipping_cost",
         "label": "Shipping Cost (in AUD)"
+      },
+      {
+        "type": "number",
+        "id": "us_shipping_treshold",
+        "label": "Shipping Treshold (in USD)",
+        "default": 145
+      },
+      {
+        "type": "number",
+        "id": "us_shipping_cost",
+        "label": "Shipping Cost (in USD)"
+      },
+      {
+        "type": "number",
+        "id": "gb_shipping_treshold",
+        "label": "Shipping Treshold (UK)",
+        "default": 145
+      },
+      {
+        "type": "number",
+        "id": "gb_shipping_cost",
+        "label": "Shipping Cost (UK)"
+      },
+      {
+        "type": "number",
+        "id": "ca_shipping_treshold",
+        "label": "Shipping Treshold (in CAD)",
+        "default": 145
+      },
+      {
+        "type": "number",
+        "id": "ca_shipping_cost",
+        "label": "Shipping Cost (in CAD)"
+      },
+      {
+        "type": "number",
+        "id": "eu_shipping_treshold",
+        "label": "Shipping Treshold (in EUR)",
+        "default": 145
+      },
+      {
+        "type": "number",
+        "id": "eu_shipping_cost",
+        "label": "Shipping Cost (in EUR)"
       }
     ]
   },

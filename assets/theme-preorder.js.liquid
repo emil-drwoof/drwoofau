@@ -1371,7 +1371,18 @@ console.log('After:', arrayval);
         */
         $kingmo = $(".prohandleactive").attr("data-prohandle")
         console.log(variant)
-        var i = window.location.protocol + '//' + window.location.host + "/products/" + $kingmo + '?variant=' + variant.id;
+// Get current pathname and extract locale prefix if it exists
+        var currentPath = window.location.pathname;
+        var localePrefix = '';
+
+        // Check if URL has locale prefix (en-hk, en-sg, etc.)
+        var localeMatch = currentPath.match(/^\/(en-[a-z]{2})\//);
+        if (localeMatch) {
+            localePrefix = '/' + localeMatch[1];
+        }
+
+        // Build new URL preserving the locale prefix
+        var i = window.location.protocol + '//' + window.location.host + localePrefix + "/products/" + $kingmo + '?variant=' + variant.id;
         window.history.replaceState({path: i}, '', i);
 
 

@@ -4,21 +4,11 @@
     "market": "international"
   },
   "sections": {
-    "logolistaani_YJptaJ": {
-      "disabled": true,
-      "settings": {}
-    },
-    "ugcslider_WVccfR": {
-      "disabled": true,
-      "settings": {}
-    },
-    "14a6d1da-4bb0-467d-8179-0f89444b4027": {
-      "disabled": true,
-      "settings": {}
-    },
     "collection_slider_hFVCUM": {
       "type": "collection-slider",
+      "disabled": false,
       "settings": {
+        "header-d188f44811bf5783a950d208ce361eaa": null,
         "reviewstars": false,
         "blocklist": false,
         "show_title": true,
@@ -29,11 +19,15 @@
         "mmarbot_this": 0,
         "selected_collection": "bamboo-compression-socks",
         "sec_name": "Best Sellers"
-      }
+      },
+      "blocks": {},
+      "block_order": []
     },
     "collection_slider_epWUAK": {
       "type": "collection-slider",
+      "disabled": true,
       "settings": {
+        "header-ff7e28e6e6da379f3f89284c8921545a": null,
         "reviewstars": false,
         "blocklist": false,
         "show_title": true,
@@ -44,16 +38,41 @@
         "mmarbot_this": 0,
         "selected_collection": "curated",
         "sec_name": "Bundles"
-      }
-    },
-    "ce9a6cf9-6111-4efb-b6e0-d16d8fd842df": {
-      "disabled": true,
-      "settings": {}
+      },
+      "blocks": {},
+      "block_order": []
     },
     "headerv5_yCPF3w": {
       "settings": {
-        "hero_image": "shopify:\/\/shop_images\/3_8fafc89d-bcdf-4a57-9230-1887960074fe.png"
-      }
+        "title": "Compression Socks Born in Medical Apparel",
+        "subtitle": "We are an Australian medical apparel company. If our socks keep nurses comfortable through 12 hour shifts, they will keep you supported anywhere in the world.",
+        "hero_image": "shopify:\/\/shop_images\/3_8fafc89d-bcdf-4a57-9230-1887960074fe.png",
+        "primary_button_text": "SHOP COMPRESSION SOCKS",
+        "primary_button_url": "shopify:\/\/collections\/compression-socks",
+        "secondary_button_text": "SHOP VETMED SCRUBS",
+        "secondary_button_url": "shopify:\/\/collections\/vet-med-scrubs"
+      },
+      "blocks": {}
+    },
+    "logolistaani_YJptaJ": {
+      "disabled": true,
+      "settings": {},
+      "blocks": {}
+    },
+    "14a6d1da-4bb0-467d-8179-0f89444b4027": {
+      "disabled": true,
+      "settings": {},
+      "blocks": {}
+    },
+    "ugcslider_WVccfR": {
+      "disabled": true,
+      "settings": {},
+      "blocks": {}
+    },
+    "ce9a6cf9-6111-4efb-b6e0-d16d8fd842df": {
+      "disabled": true,
+      "settings": {},
+      "blocks": {}
     }
   },
   "order": [

@@ -315,6 +315,22 @@
       <img class="currency-flag" src="https://flagcdn.com/hk.svg" alt="HKD" style="margin-left:0">
       HKD
     </div>
+    <div class="currency-option" data-code="USD" data-url="https://www.drwoofapparel.com">
+      <img class="currency-flag" src="https://flagcdn.com/us.svg" alt="USD" style="margin-left:0">
+      USD
+    </div>
+    <div class="currency-option" data-code="GBP" data-url="https://www.drwoofapparel.com.au/en-gb">
+      <img class="currency-flag" src="https://flagcdn.com/gb.svg" alt="GBP" style="margin-left:0">
+      GBP
+    </div>
+    <div class="currency-option" data-code="EUR" data-url="https://www.drwoofapparel.com.au/en-eu">
+      <img class="currency-flag" src="https://flagcdn.com/eu.svg" alt="EUR" style="margin-left:0">
+      EUR
+    </div>
+    <div class="currency-option" data-code="CAD" data-url="https://www.drwoofapparel.com.au/en-ca">
+      <img class="currency-flag" src="https://flagcdn.com/ca.svg" alt="CAD" style="margin-left:0">
+      CAD
+    </div>
   </div>
 </div>
 </div>
@@ -452,7 +468,17 @@
           {% endif %}
           {% if section.settings.subheading3 != blank %}
             <div class="footer-more-info-inner">
-              <img src="{{ section.settings.image_3 | img_url: '25x'}}" alt="{{ section.settings.image_3.alt | escape }}" /> {{ section.settings.subheading3 }}
+              <img src="{{ section.settings.image_3 | img_url: '25x'}}" alt="{{ section.settings.image_3.alt | escape }}" /> 
+              {% if localization.country.currency.iso_code == 'AUD' %}
+                {{ section.settings.subheading3 }}
+              {% else %}
+                {% if localization.country.currency.iso_code == 'USD' %}
+                  {{ section.settings.us_subheading3 }}
+                {% else %}
+                  {{ section.settings.int_subheading3 }}
+                {% endif %}
+              {% endif %}
+              
             </div>
           {% endif %}
   <style>
@@ -572,8 +598,24 @@
       SGD
     </div>
     <div class="currency-option" data-code="HKD" data-url="https://www.drwoofapparel.com.au/en-hk">
-      <img class="currency-flag" src="https://flagcdn.com/hk.svg" alt="HKD">
+      <img class="currency-flag" src="https://flagcdn.com/hk.svg" alt="HKD" style="margin-left:0">
       HKD
+    </div>
+    <div class="currency-option" data-code="USD" data-url="https://www.drwoofapparel.com">
+      <img class="currency-flag" src="https://flagcdn.com/us.svg" alt="USD" style="margin-left:0">
+      USD
+    </div>
+    <div class="currency-option" data-code="GBP" data-url="https://www.drwoofapparel.com.au/en-gb">
+      <img class="currency-flag" src="https://flagcdn.com/gb.svg" alt="GBP" style="margin-left:0">
+      GBP
+    </div>
+        <div class="currency-option" data-code="EUR" data-url="https://www.drwoofapparel.com.au/en-eu">
+      <img class="currency-flag" src="https://flagcdn.com/eu.svg" alt="EUR" style="margin-left:0">
+      EUR
+    </div>
+    <div class="currency-option" data-code="CAD" data-url="https://www.drwoofapparel.com.au/en-ca">
+      <img class="currency-flag" src="https://flagcdn.com/ca.svg" alt="CAD" style="margin-left:0">
+      CAD
     </div>
   </div>
 </div>
@@ -589,7 +631,11 @@
       "AUD": "au",
       "NZD": "nz",
       "SGD": "sg",
-      "HKD": "hk"
+      "HKD": "hk",
+      "USD": "us",
+      "GBP": "gb",
+      "EUR": "eu",
+      "CAD": "ca"
     };
 
     function updateSelected(code) {
@@ -601,7 +647,7 @@
     }
 
     // Fallback to AUD if current currency isn't allowed
-    const allowed = ['AUD', 'NZD', 'SGD', 'HKD'];
+    const allowed = ['AUD', 'NZD', 'SGD', 'HKD', 'USD', 'GBP', 'EUR', 'CAD'];
     if (!allowed.includes(select.value)) {
       select.value = 'AUD';
     }
@@ -648,7 +694,11 @@ options.forEach(option => {
       "AUD": "au",
       "NZD": "nz",
       "SGD": "sg",
-      "HKD": "hk"
+      "HKD": "hk",
+      "USD": "us",
+      "GBP": "gb",
+      "EUR": "eu",
+      "CAD": "ca"
     };
 
     function updateSelected(code) {
@@ -660,7 +710,7 @@ options.forEach(option => {
     }
 
     // Fallback to AUD if current currency isn't allowed
-    const allowed = ['AUD', 'NZD', 'SGD', 'HKD'];
+    const allowed = ['AUD', 'NZD', 'SGD', 'HKD', 'USD', 'GBP', 'EUR', 'CAD'];
     if (!allowed.includes(select.value)) {
       select.value = 'AUD';
     }
@@ -1754,7 +1804,18 @@ li.tag.product-tabs-data[value='noosa-sea-mist'] {
         "type": "richtext",
         "id": "subheading3",
         "label": "Address text"
-      }, {
+      }, 
+      {
+        "type": "richtext",
+        "id": "us_subheading3",
+        "label": "US Address text"
+      },
+      {
+        "type": "richtext",
+        "id": "int_subheading3",
+        "label": "International Address text"
+      },
+      {
         "type": "header",
         "content": "Additional footer content"
       }, {

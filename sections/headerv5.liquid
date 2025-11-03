@@ -338,7 +338,7 @@
     
     <div class="medical-hero-image-{{ section.id }}">
       {% if section.settings.hero_image != blank %}
-        <img src="{{ section.settings.hero_image | image_url: width: 600 }}" 
+        <img src="{{ section.settings.hero_image | image_url }}" 
              alt="{{ section.settings.hero_image.alt | default: 'Medical professionals in scrubs' }}"
              fetchpriority="high">
       {% else %}

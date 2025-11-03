@@ -484,7 +484,7 @@ function cart_update() {
                           
                           if((varqty <= 0) && (varava == true)){
                               
-                              $(".add-to-cart span").html("PRE-ORDER")
+                              $(".add-to-cart span").html("ADD TO BAG")
                               $(".preorder-text").show()
                               $color = $(".variant-change-color span[data-option-index=1]").html().toLowerCase()
                               $color = $color.trim()
@@ -2489,7 +2489,7 @@ function cart_update() {
                           a
                               ? a.available
                                   ? (t(n.addToCart, this.$container).removeClass(i.disabled).prop("disabled", !1),
-                                    t("body").hasClass("Body_preorder_Template") ? t(n.addToCartText, this.$container).html("Pre-order") : t(n.addToCartText, this.$container).html(theme.strings.addToCart))
+                                    t("body").hasClass("Body_preorder_Template") ? t(n.addToCartText, this.$container).html("ADD TO BAG") : t(n.addToCartText, this.$container).html(theme.strings.addToCart))
                                   : (t(n.addToCart, this.$container).addClass("d"), t(n.addToCartText, this.$container).html(theme.strings.soldOut))
                               : (t(n.addToCart, this.$container).addClass("d"), t(n.addToCartText, this.$container));
                       },

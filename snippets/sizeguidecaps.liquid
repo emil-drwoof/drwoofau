@@ -1,6 +1,23 @@
 <div class="size-guide-wrapper">
     <div class="size-guide section-id-{{ section.id }}">
+        <img src="https://cdn.shopify.com/s/files/1/0573/7250/8344/files/Frame_147.png?v=1706547860" class="close-guide">
 
+        {% if texter %}
+            <p style="margin-top:40px;"><i>"Love these pants! Unfortunately I ordered a size too small originally however Dr Woof was super efficient and helpful in exchanging for a bigger size! Will definitely be returning as a customer"<br/></i></p>
+                <p style="text-align:right"><i>- Katherine D. </i></p>
+        {% else %}
+            <h4>Size guide</h4>
+            
+        {% endif %}
+        <hr/>
+        <div class="flexerstandard">
+            <img src="https://cdn.shopify.com/s/files/1/0573/7250/8344/files/96_4.png?v=1756827457" class="gse22" />
+            <p class="gse23"><b>96% of customers nail their size on the first try.</b><br/>
+            (Based on tens of thousands of orders + our proven sizing guide.)
+            </p>
+        </div>
+        <hr/>
+        <h4>Sizes & Measurements</h4>
         <img src="https://cdn.shopify.com/s/files/1/0573/7250/8344/files/Frame_147.png?v=1706547860" class="close-guide">
         <h4>Tie Back Scrub Caps</h4>
         <p>When covering short hair:</p>
@@ -218,6 +235,21 @@
     .size-table-2{
         margin-bottom:0 !important;
     }
+    .flexerstandard{
+        display:flex;
+        justify-content:flex-start;
+        flex-wrap:wrap;
+        align-items: center;
+    }
+    .gse22{
+        width:137px;
+        height:auto;        
+        padding-right:9px;
+    }
+    .gse23{
+        width:311px;
+        margin-bottom:0;
+    }
     @media only screen and (max-width:480px){
         .size-guide{
             width:100%;
@@ -228,8 +260,8 @@
     }
 </style>
 <script>
-    $(document).ready(function(){
-        $(".trigger-pop-up").click(function(){
+    $(document).ready(function(){        
+        $(".fit-guide").click(function(){
             $('.size-guide-wrapper').css('right', '0'); 
             setTimeout(function() {
                 $('.size-guide-wrapper').css('background', 'rgba(0,0,0,0.6)'); 
@@ -238,6 +270,15 @@
             
         })
 
+                $(".trigger-pop-up").click(function(){
+            $('.size-guide-wrapper').css('right', '0'); 
+            setTimeout(function() {
+                $('.size-guide-wrapper').css('background', 'rgba(0,0,0,0.6)'); 
+            }, 500);
+            
+            
+        })
+        
         $(".close-guide").click(function(){
             
             $('.size-guide-wrapper').css('background', 'transparent');

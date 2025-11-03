@@ -33,6 +33,12 @@
 </section>
 
 <style>
+.scrub-container{
+    max-width:1300px;
+    margin-left: auto;
+    margin-right:auto;
+    padding:0 10px;
+}
 .scrub-collection {
   text-align: center;
   padding: 40px 20px 0;
@@ -91,7 +97,11 @@
   max-width: 100%;
   border-radius: 0;
 }
-
+@media screen and (max-width:480px){
+  .scrub-container{
+      padding:0;
+  }
+}
 @media screen and (max-width: 377px){
 .scrub-subtitle {
     padding: 10px;

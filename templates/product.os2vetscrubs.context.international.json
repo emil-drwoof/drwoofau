@@ -1,0 +1,14 @@
+{
+  "parent": "product.os2vetscrubs.json",
+  "context": {
+    "market": "international"
+  },
+  "sections": {
+    "product-template": {
+      "settings": {
+        "txt": "93% satisfaction rate from 100,000+ customers"
+      },
+      "blocks": {}
+    }
+  }
+}

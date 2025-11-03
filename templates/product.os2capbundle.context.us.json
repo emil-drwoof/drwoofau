@@ -1,0 +1,16 @@
+{
+  "parent": "product.os2capbundle.json",
+  "context": {
+    "market": "us"
+  },
+  "sections": {
+    "product-template": {
+      "settings": {
+        "txt_": "Dispatch from Carlsbad, CA within 24 hours",
+        "txt": "93% satisfaction rate from 100,000+ customers",
+        "txt2": "Free & Fast shipping over $30"
+      },
+      "blocks": {}
+    }
+  }
+}

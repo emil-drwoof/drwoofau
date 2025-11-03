@@ -60,7 +60,7 @@
   }
   @media only screen and (max-width:480px){
       .dr-woof-features{
-        display:none !important;
+       /* display:none !important; */
       }
   }
   .container {
@@ -91,6 +91,7 @@
   .badge-icon {
     font-size: 12px;
     font-weight: bold;
+    line-height:1px;
   }
 
   .main-title {
@@ -177,6 +178,28 @@
 
     .features-grid {
       gap: 40px;
+    }
+  }
+    @media only screen and (max-width:480px){
+    .dr-woof-features {
+        background-position: center 32px;
+        background-size: 200%;
+    }
+    .main-title{
+      font-size:23px;
+    }
+    .feature-item{
+      width:100%;
+      flex:0 0 100%;
+    }
+    .badge {
+      padding: 2px 14px;
+    }
+    .badge-icon {
+      line-height:1em;
+    }
+    .features-grid{
+      gap:24px;
     }
   }
 </style>

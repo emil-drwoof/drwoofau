@@ -1,0 +1,15 @@
+{
+  "parent": "product.os2newsock.json",
+  "context": {
+    "market": "international"
+  },
+  "sections": {
+    "product-template": {
+      "settings": {
+        "trust_badge_text": "Trusted by Comfy Nurses & Doctors",
+        "loved": "Loved by 100,000+ Comfy Nurses & Doctors"
+      },
+      "blocks": {}
+    }
+  }
+}

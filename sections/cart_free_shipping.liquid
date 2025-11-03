@@ -1,22 +1,19 @@
-{% comment %} {%- liquid
+{%- liquid
   assign ig_test_groups = cart.attributes.igTestGroups
-  
-  # Set the base threshold - default to settings value
-  assign shipping_treshold = settings.shipping_treshold
   
   # Override shipping threshold based on test group
   if ig_test_groups != blank
     # Test Group: $125 threshold
-    if ig_test_groups contains '7dca6550767d'
-      assign shipping_treshold = 12500
+    if ig_test_groups contains '5ea693784504'
+      assign settings.shipping_treshold = 12500
     endif
     
     # Test Group: $165 threshold
-    if ig_test_groups contains '87cc1c79ec26'
-      assign shipping_treshold = 16500
+    if ig_test_groups contains '2b8332f4be81'
+      assign settings.shipping_treshold = 16500
     endif
   endif
--%} {% endcomment %}
+-%}
 
 {% assign spendmsg = '' %}
 
@@ -41,7 +38,23 @@
 {% endif %}
 
 {% comment %} Convert shipping threshold and cost based on currency {% endcomment %}
-{% if cart.currency.iso_code == 'SGD' %}
+{% if cart.currency.iso_code == 'USD' %}
+  {% assign shipping_treshold = settings.us_shipping_treshold %}
+  {% assign shipping_cost = settings.us_shipping_cost | times: 100 | round %}
+  {% assign total_cart = cart.total_price | plus: shipping_cost | divided_by: 100 | format: "%.2f" %}
+{% elsif cart.currency.iso_code == 'CAD' %}
+  {% assign shipping_treshold = settings.ca_shipping_treshold %}
+  {% assign shipping_cost = settings.ca_shipping_cost | times: 100 | round %}
+  {% assign total_cart = cart.total_price | plus: shipping_cost | divided_by: 100 | format: "%.2f" %}
+{% elsif cart.currency.iso_code == 'EUR' %}
+  {% assign shipping_treshold = settings.eu_shipping_treshold %}
+  {% assign shipping_cost = settings.eu_shipping_cost | times: 100 | round %}
+  {% assign total_cart = cart.total_price | plus: shipping_cost | divided_by: 100 | format: "%.2f" %}
+{% elsif cart.currency.iso_code == 'GBP' %}
+  {% assign shipping_treshold = settings.gb_shipping_treshold %}
+  {% assign shipping_cost = settings.gb_shipping_cost | times: 100 | round %}
+  {% assign total_cart = cart.total_price | plus: shipping_cost | divided_by: 100 | format: "%.2f" %}
+{% elsif cart.currency.iso_code == 'SGD' %}
   {% assign shipping_treshold = settings.shipping_treshold | times: threshold_sgd_rate | round %}
   {% assign shipping_cost = base_shipping_cents | times: shipping_sgd_rate | round %}
   {% assign total_cart = cart.total_price | plus: shipping_cost | divided_by: 100 | format: "%.2f" %}
@@ -77,9 +90,17 @@
 
 {%- for block in section.blocks -%}
 
-  {% if forloop.first == true %}
+{% if forloop.first == true %}
     {% assign firstindex = block.settings.spendamount | times: 1 %}
-    {% if cart.currency.iso_code == 'SGD' %}
+    {% if cart.currency.iso_code == 'USD' %}
+      {% assign firstindex = settings.us_shipping_treshold %}
+    {% elsif cart.currency.iso_code == 'CAD' %}
+      {% assign firstindex = settings.ca_shipping_treshold %}
+    {% elsif cart.currency.iso_code == 'EUR' %}
+      {% assign firstindex = settings.eu_shipping_treshold %}
+    {% elsif cart.currency.iso_code == 'GBP' %}
+      {% assign firstindex = settings.gb_shipping_treshold %}
+    {% elsif cart.currency.iso_code == 'SGD' %}
       {% assign firstindex = shipping_treshold %}
     {% elsif cart.currency.iso_code == 'NZD' %}
       {% assign firstindex = shipping_treshold %}
@@ -89,9 +110,18 @@
 
     {% assign firstmsg = block.settings.spendamountmsg %}
   {% endif %}
-  {% if forloop.last == true %}
+
+{% if forloop.last == true %}
     {% assign lastindex = block.settings.spendamount | times: 1.0 %}
-    {% if cart.currency.iso_code == 'SGD' %}
+    {% if cart.currency.iso_code == 'USD' %}
+      {% assign lastindex = block.settings.spendamount | times: 1.0 %}
+    {% elsif cart.currency.iso_code == 'CAD' %}
+      {% assign lastindex = block.settings.spendamount | times: 1.0 %}
+    {% elsif cart.currency.iso_code == 'EUR' %}
+      {% assign lastindex = block.settings.spendamount | times: 1.0 %}
+    {% elsif cart.currency.iso_code == 'GBP' %}
+      {% assign lastindex = block.settings.spendamount | times: 1.0 %}
+    {% elsif cart.currency.iso_code == 'SGD' %}
       {% assign lastindex = block.settings.spendamount | times: 1.0 | times: threshold_sgd_rate | round %}      
     {% elsif cart.currency.iso_code == 'NZD' %}
       {% assign lastindex = block.settings.spendamount | times: 1.0 | times: threshold_nzd_rate | round %}      
@@ -107,7 +137,15 @@
 {%- for block in section.blocks -%}
   {% if forloop.last == true %}
     {% assign lastindexnozero = block.settings.spendamount %}
-    {% if cart.currency.iso_code == 'SGD' %}
+    {% if cart.currency.iso_code == 'USD' %}
+      {% assign lastindexnozero = block.settings.spendamount %}
+    {% elsif cart.currency.iso_code == 'CAD' %}
+      {% assign lastindexnozero = block.settings.spendamount %}
+    {% elsif cart.currency.iso_code == 'EUR' %}
+      {% assign lastindexnozero = block.settings.spendamount %}
+    {% elsif cart.currency.iso_code == 'GBP' %}
+      {% assign lastindexnozero = block.settings.spendamount %}
+    {% elsif cart.currency.iso_code == 'SGD' %}
       {% assign lastindexnozero = block.settings.spendamount | times: threshold_sgd_rate | round %}      
     {% elsif cart.currency.iso_code == 'NZD' %}
       {% assign lastindexnozero = block.settings.spendamount | times: threshold_nzd_rate | round %}      
@@ -134,10 +172,10 @@
     <div class="offer">General Offer</div>
     <div class="progress-bar">
       <div class="milestone top-mon milone">
-        {% if cart.currency.iso_code == 'HKD'%}HK${% else %}${% endif %}{{ firstindex }}
+        {% if cart.currency.iso_code == 'HKD'%}HK${% elsif cart.currency.iso_code == 'GBP' %}£{% elsif cart.currency.iso_code == 'EUR' %}€{% else %}${% endif %}{{ firstindex }}
       </div>
       <div class="milestone top-mon miltwo">
-        {% if cart.currency.iso_code == 'HKD'%}HK${% else %}${% endif %}{{ lastindexnozero }}
+        {% if cart.currency.iso_code == 'HKD'%}HK${% elsif cart.currency.iso_code == 'GBP' %}£{% elsif cart.currency.iso_code == 'EUR' %}€{% else %}${% endif %}{{ lastindexnozero }}
       </div>
       <div class="linertop milestone milone">|</div>
       <div class="linertop milestone miltwo">|</div>
@@ -148,10 +186,10 @@
         <div class="milestone bot-mon milone">{{ firstmsg }}</div>
         <div class="milestone bot-mon miltwo">{{ lastmsg }}</div>
     </div>
-    <div class="progress-text">
-        <span class="notif-inc">Add <strong>{% if cart.currency.iso_code == 'HKD'%}HK${% else %}${% endif %}<span class="amount-needed"></span></strong> more to cart to get <b>{{ firstmsg }}</b> </span>
+<div class="progress-text">
+        <span class="notif-inc">Add <strong>{% if cart.currency.iso_code == 'HKD'%}HK${% elsif cart.currency.iso_code == 'GBP' %}£{% elsif cart.currency.iso_code == 'EUR' %}€{% else %}${% endif %}<span class="amount-needed"></span></strong> more to cart to get <b>{{ firstmsg }}</b> </span>
         <span class="notif-com1">Congratulations! You get FREE <b>Standard Shipping</b> and <b>FREE 
-        {% if cart.currency.iso_code == 'HKD'%}HK$208{% else %}$40{% endif %} Gift Card</b> </span>
+        {% if cart.currency.iso_code == 'HKD'%}HK$208{% elsif cart.currency.iso_code == 'GBP' %}£25{% elsif cart.currency.iso_code == 'EUR' %}€30{% elsif cart.currency.iso_code == 'CAD' %}CA$50{% else %}$40{% endif %} Gift Card</b> </span>
     </div>
   </div>
   
@@ -306,7 +344,15 @@ $(".another").hide()
     if(progressPercentage1 < 0) progressPercentage1 = 0;
     if(progressPercentage1 > 100) progressPercentage1 = 100;
     
-      {% if cart.currency.iso_code == 'SGD' %}
+      {% if cart.currency.iso_code == 'USD' %}
+        if(totalcart >= 350){
+      {% elsif cart.currency.iso_code == 'CAD' %}
+        if(totalcart >= 450){
+      {% elsif cart.currency.iso_code == 'EUR' %}
+        if(totalcart >= 280){
+      {% elsif cart.currency.iso_code == 'GBP' %}
+        if(totalcart >= 220){
+      {% elsif cart.currency.iso_code == 'SGD' %}
         $tempval = 350 * {{ threshold_sgd_rate }};
         if(totalcart >= $tempval){        
       {% elsif cart.currency.iso_code == 'NZD' %}
@@ -328,18 +374,22 @@ $(".another").hide()
 
 
       
-        {% if cart.currency.iso_code == 'HKD'%}
+{% if cart.currency.iso_code == 'USD' %}
+          if(totalcart < {{ settings.us_shipping_treshold }}){
+        {% elsif cart.currency.iso_code == 'CAD' %}
+          if(totalcart < {{ settings.ca_shipping_treshold }}){
+        {% elsif cart.currency.iso_code == 'EUR' %}
+          if(totalcart < {{ settings.eu_shipping_treshold }}){
+        {% elsif cart.currency.iso_code == 'GBP' %}
+          if(totalcart < {{ settings.gb_shipping_treshold }}){
+        {% elsif cart.currency.iso_code == 'HKD'%}
           if(totalcart < {{ shipping_treshold }}){
+        {% elsif cart.currency.iso_code == 'SGD' %}
+          if(totalcart < {{ shipping_treshold }}){        
+        {% elsif cart.currency.iso_code == 'NZD' %}
+          if(totalcart < {{ shipping_treshold }}){                
         {% else %}
-          {% if cart.currency.iso_code == 'SGD' %}
-            if(totalcart < {{ shipping_treshold }}){        
-          {% elsif cart.currency.iso_code == 'NZD' %}
-            if(totalcart < {{ shipping_treshold }}){                
-          {% elsif cart.currency.iso_code == 'HKD'%}
-            if(totalcart < {{ shipping_treshold }}){
-          {% else %}
-            if(totalcart < {{ settings.shipping_treshold }}){
-          {% endif %}
+          if(totalcart < {{ settings.shipping_treshold }}){
         {% endif %}
         
       
@@ -365,6 +415,12 @@ $(".another").hide()
           var amountNeeded = {{ lastindex }} - totalcart;
           {% if cart.currency.iso_code == 'HKD'%}
             $('.off1 .notif-inc b').html("FREE HK$208 Gift Card")
+          {% elsif cart.currency.iso_code == 'GBP' %}
+            $('.off1 .notif-inc b').html("FREE £25 Gift Card")
+          {% elsif cart.currency.iso_code == 'EUR' %}
+            $('.off1 .notif-inc b').html("FREE €30 Gift Card")
+          {% elsif cart.currency.iso_code == 'CAD' %}
+            $('.off1 .notif-inc b').html("FREE CA$50 Gift Card")
           {% else %}
             $('.off1 .notif-inc b').html("FREE $40 Gift Card")
           {% endif %}
@@ -602,6 +658,8 @@ if($scrunchiescount > 0){
     font-family: "futurapt";
     font-size:12px;
     color:#A8A8A8;
+    position:relative;
+    top:-12px;
 }
 
 .off1 .milone{

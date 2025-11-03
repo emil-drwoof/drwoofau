@@ -305,20 +305,22 @@ counter = 0;
 {% comment %} End Please dont delete it{% endcomment %} 
 <!-- 06 -->
 <select name="id" id="ProductSelect-{{ section_id }}" class="product-single__variants no-js" data-product-select>
+  {% paginate product.variants by 1000 %}
   {% for variant in product.variants %}
   {% if variant.available %}
   <option data-id="{{variant.id}}" data-inqua="{{ variant.inventory_quantity}}" varname="{{variant.title}}" data-avail="{% if variant.available %}available{%else %}unavailable{% endif %}" {% if variant == product.selected_or_first_available_variant %}
           selected="selected" {% endif %}
+          class="x{{ forloop.index }}"
           value="{{ variant.id }}">
     {{ variant.title }} 
   </option>
   {% else %}
-  <option data-id="{{variant.id}}" data-inqua="{{ variant.inventory_quantity}}" varname="{{variant.title}}" data-avail="{% if variant.available %}available{%else %}unavailable{% endif %}" disabled="disabled">
+  <option data-id="{{variant.id}}" class="x{{ forloop.index }}" data-inqua="{{ variant.inventory_quantity}}" varname="{{variant.title}}" data-avail="{% if variant.available %}available{%else %}unavailable{% endif %}" disabled="disabled">
     {{ variant.title }}
   </option>
   {% endif %}
   {% endfor %}
-
+{% endpaginate %}
   {% unless sf_product_combined.empty? %}
   {% for product_combined in sf_product_combined.variants %}
   {% if product_combined.available %}
@@ -388,12 +390,16 @@ counter = 0;
 </select>
   
   <select class="custom-product-single__variants no-js hidden" data-product-select>
+{% paginate product.variants by 1000 %}
   {% for variant in product.variants %}
-  <option {% if variant == product.selected_or_first_available_variant %}
-          selected="selected" {% endif %}
-          value="{{ variant.id }}">
-  </option>
+    <option
+      {% if variant == product.selected_or_first_available_variant %}
+        selected="selected"
+      {% endif %}      
+      value="{{ variant.id }}">
+    </option>
   {% endfor %}
+{% endpaginate %}
 {% unless sf_product_combined.empty? %}
   {% for product_combined in sf_product_combined.variants %}
   {% if product_combined.available %}

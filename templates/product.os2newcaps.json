@@ -1,7 +1,7 @@
 {
   "sections": {
     "product-template": {
-      "type": "product-template-perf-sock",
+      "type": "product-template-new-caps",
       "settings": {
         "sockpreorderdate": "Oct 30",
         "abtestnoicons": false,
@@ -9,7 +9,7 @@
         "enable_ab_size": true,
         "abtesting1": false,
         "abtesting2": false,
-        "freesetcap": "shopify:\/\/shop_images\/2025_-_Socks_Upsell_Banner_1.png",
+        "freesetcap": "shopify:\/\/shop_images\/1_37984a0a-baff-4156-b189-5440b5aff8ff.png",
         "dark_theme": false,
         "product_image_size": "large",
         "product_image_type": "slider",
@@ -28,7 +28,6 @@
         "social_enable": true,
         "color_link": "#2980b9",
         "img1": "shopify:\/\/shop_images\/4_2c9aee3f-aec7-4015-a798-7c27f3a591f0.png",
-        "loved": "Trusted by Runners, Lifters, Hikers and everyday active Aussies",
         "txt": "93% satisfaction rate from 40,000+ customers",
         "img2": "shopify:\/\/shop_images\/Untitled_design_2_4043dd2d-b061-4ce9-a771-22be6e7d9d6e.png",
         "txt_": "Dispatch from Melbourne within 24 hours",
@@ -48,11 +47,19 @@
     },
     "pdpaboutsection_g8BKqr": {
       "type": "pdpaboutsection",
-      "disabled": true,
       "name": "Full Width Image",
       "settings": {
         "desktop_image": "shopify:\/\/shop_images\/image.png",
         "mobile_image": "shopify:\/\/shop_images\/image.png",
+        "alt_text": ""
+      }
+    },
+    "pdpaboutsection_w9ijBh": {
+      "type": "pdpaboutsection",
+      "name": "Full Width Image",
+      "settings": {
+        "desktop_image": "shopify:\/\/shop_images\/Frame_1484580308.png",
+        "mobile_image": "shopify:\/\/shop_images\/Frame_1484580308.png",
         "alt_text": ""
       }
     },
@@ -63,24 +70,24 @@
           "type": "feature",
           "settings": {
             "icon": "shopify:\/\/shop_images\/5e01bf98-946a-436c-9c87-edbc87a2db54.png",
-            "title": "Grad. Compression",
-            "description": "15–20 mmHg of targeted compression improves blood flow and oxygen delivery, keeping your legs feeling fresh for longer. Push harder during your session and bounce back faster afterwards."
+            "title": "Soft Like a Cloud",
+            "description": "Gentle on the skin with no tight marks—just cloud-level softness that lasts all shift long. Worn by nurses, vets, and anyone on their feet all day."
           }
         },
         "feature_DGJ3jq": {
           "type": "feature",
           "settings": {
             "icon": "shopify:\/\/shop_images\/c71bbbc2-32ad-4aed-84cf-b934e8d817aa.png",
-            "title": "Anatomical Fit",
-            "description": "Shaped to follow the natural contours of your feet for a snug, supportive fit. No slipping, no bunching, just a locked-in feel that moves with you every step of the way."
+            "title": "Support That Works",
+            "description": "Boosts circulation, reduces swelling, reduces risk of DVT, and relieves pain—clinically tested and loved by 90,000+ healthcare workers."
           }
         },
         "feature_dxq4h3": {
           "type": "feature",
           "settings": {
             "icon": "shopify:\/\/shop_images\/5c6c5b31-85cf-44d2-983e-a0a0c80a1b36.png",
-            "title": "Arch Support",
-            "description": "Targeted arch compression gives your feet a stable base for every stride, lift or climb. More control, less fatigue, and support that adapts as you move."
+            "title": "Fun Meets Function",
+            "description": "From cute animals to bold prints, our socks turn long shifts into something brighter—without compromising on compression that supports you."
           }
         }
       },
@@ -92,17 +99,8 @@
       "name": "Dr. Woof Features",
       "settings": {
         "show_badge": true,
-        "badge_text": "Designed by Doctors in partnership with Athletes",
-        "main_title": "Why active Aussies trust Dr. Woof"
-      }
-    },
-    "pdpaboutsection_w9ijBh": {
-      "type": "pdpaboutsection",
-      "name": "Full Width Image",
-      "settings": {
-        "desktop_image": "shopify:\/\/shop_images\/Frame_1484580308.png",
-        "mobile_image": "shopify:\/\/shop_images\/Frame_1484580308.png",
-        "alt_text": ""
+        "badge_text": "Designed by a family of Doctors",
+        "main_title": "Why nurses love Dr. Woof"
       }
     },
     "team_highlight_CCTm8Q": {
@@ -128,8 +126,8 @@
   "order": [
     "product-template",
     "pdpaboutsection_g8BKqr",
-    "pdpsection_zNdFcq",
     "pdpaboutsection_w9ijBh",
+    "pdpsection_zNdFcq",
     "team_highlight_CCTm8Q",
     "judgemewidget_emVfMH",
     "product_recommendations_HKAV6j"

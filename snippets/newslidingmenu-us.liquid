@@ -1,0 +1,300 @@
+<!-- snippets/newslidingmenu-us.liquid -->
+<div class="outer-menu">
+   <button type="button" class="close-x">
+      <svg aria-hidden="true" focusable="false" role="presentation" class="icon icon-close" viewBox="0 0 64 64">
+         <path d="M19 17.61l27.12 27.13m0-27.12L19 44.74"></path>
+      </svg>
+      <span class="icon__fallback-text">Close (esc)</span>
+   </button>
+   <div class="newmenu">
+
+      <div class="newmenu-inner">
+         {% if localization.country.currency.iso_code == 'USD' %}
+            {% for link in linklists[section.settings.us_menu_link_list].links %}
+            <div class="slink-entry dropdower">
+               {% if link.links.size > 0 %}
+               <div class="link-entry">
+                  <div class="link-info">
+                     <span>{{ link.title }}</span>
+                  </div>
+                  <i class="fa fa-angle-right righter" aria-hidden="true"></i>
+                  <i class="fa fa-angle-down righter" aria-hidden="true"></i>
+               </div>
+               {% else %}
+               <a href="{{ link.url }}" class="link-entry">
+                  <div class="link-info">
+                     <span>{{ link.title }}</span>
+                  </div>
+               </a>
+               {% endif %}
+               {% if link.links.size > 0 %}
+               <ul class="linker dropdown-child">
+                  {% for childlink in link.links %}
+                  <li class="menu-link">
+                     <a href="{{ childlink.url }}">{{ childlink.title }}</a>
+                  </li>
+                  {% endfor %}
+               </ul>
+               {% endif %}
+            </div>
+            {% endfor %}
+         {% else %}
+            {% for link in linklists[section.settings.int_menu_link_list].links %}
+               <div class="slink-entry dropdower">
+                  {% if link.links.size > 0 %}
+                  <div class="link-entry">
+                     <div class="link-info">
+                        <span>{{ link.title }}</span>
+                     </div>
+                     <i class="fa fa-angle-right righter" aria-hidden="true"></i>
+                     <i class="fa fa-angle-down righter" aria-hidden="true"></i>
+                  </div>
+                  {% else %}
+                  <a href="{{ link.url }}" class="link-entry">
+                     <div class="link-info">
+                        <span>{{ link.title }}</span>
+                     </div>
+                  </a>
+                  {% endif %}
+                  {% if link.links.size > 0 %}
+                  <ul class="linker dropdown-child">
+                     {% for childlink in link.links %}
+                     <li class="menu-link">
+                        <a href="{{ childlink.url }}">{{ childlink.title }}</a>
+                     </li>
+                     {% endfor %}
+                  </ul>
+                  {% endif %}
+               </div>
+            {% endfor %}
+         {% endif %}
+         <hr>
+         {% for link in linklists.slider-simple-3.links %}
+         <a href="{{ link.url }}" class="newmenulink">{{ link.title }}</a>
+         {% endfor %}
+      </div>
+   </div>
+</div>
+<style>
+   .outer-menu{
+   display:none;
+   }
+   @media only screen and (max-width:480px){
+   .newmenu{
+      font-size:14px;
+   }
+   .menu-link a{
+      font-size:14px;
+   }
+   .link-entry .link-info span{
+      font-size:16px;
+   }
+   .top-mobile-images{
+      padding-left:0px;
+      padding-right:0px;
+   }
+   .top-mobile-images img{
+      margin-bottom:8px;
+      width:100%;
+   }
+   .botborder{
+      border-bottom:1px solid #000;
+      padding-top:20px;
+      padding-bottom:24px;
+   }
+   img.menu-icon-image{
+   width: 43px;
+   margin: 0 9px 0 8px;
+   padding-right: 0px !important;
+   }
+   .righter{
+   position: absolute;
+   right: 0px;
+   font-size: 28px;
+   top: 8px;
+   }
+   
+   .iconily{
+   display: inline-block;
+   display:none;
+   font-size: 34px;
+   width: 60px;
+   text-align: center;
+   display:none !important;
+   }
+   .slink-entry{
+   position:relative;
+   }
+   .slink-entry .fa-angle-right{
+   display:none;
+   }
+   .linker{
+   list-style-type: none;
+   }
+   .linker li{
+   margin-bottom:18px;
+   }
+   .outer-menu{
+   display: block;
+   }
+   .dropdown-child{
+   display:none;
+   padding-top:16px;
+   padding-left:0px;
+   margin-left:16px !important;
+   }
+   .newmenulink{
+   padding:12px 12px 1px;
+   width:100%;
+   display:inline-block;
+   }
+   .newmenu hr{
+   border-top: 1px solid #fff !important; 
+   }
+   .outer-menu{
+   width:100%;
+   background:rgba(0,0,0,0.4);
+   }
+   .top-navmenu{
+   width: 100%;
+   position: relative;
+   background: #fff;
+   height: 42px;
+   position: relative;
+   display: flex;
+   text-align: center;
+   align-items: center;
+   justify-content: flex-end;
+   }
+   .jactive{
+   // color:gold;
+   }
+   .close-x{
+   position:absolute;
+   right:5px;
+   top:6px;
+   color:#fff;
+
+   border-radius:50%;
+   height:60px;
+   width:60px;
+   // border:2px solid #0B0D32;
+   color:#0B0D32;
+   display:flex;
+   justify-content:center;
+   align-items:center;
+   flex-wrap:wrap;
+   font-weight:800;
+   background:transparent;     
+   }
+   .close-x .icon{
+      width:100% !important;
+      height:auto;
+   }
+   .newmenu{
+   width:83%;
+   position: relative;
+   top: 0;
+   background: #fff;
+   color:#000;
+   left: 0;
+   z-index:999999;
+   height:100vh;
+   overflow-y:scroll;
+   
+   }
+   .newmenu-inner{
+      padding:16px 16px 30px;
+   }
+   .collection-entry{
+   display:flex;
+   flex-wrap:wrap;
+   justify-content:space-between;
+   border-bottom:1px solid #fff;
+   }
+   .collection-entry img{
+   flex: 0 0 30%;
+   height:auto;
+   width:30%;
+   }
+   .collection-entry .col-info{
+   flex: 0 0 70%;
+   display:flex;
+   flex-wrap:wrap;
+   justify-content:space-between;
+   align-items:center;
+   padding-left:12px;
+   }
+   .link-entry{
+   padding: 12px 20px 12px 0;
+   width: 100%;
+   display: flex;
+   justify-content: flex-start;
+   align-items: center;
+   border-bottom:1px solid #000;
+   }
+   .link-entry img{
+   display:none !important;
+   }
+   .link-entry .link-info span{
+   font-weight:700;
+   }
+   .link-entry img{
+   padding-right:20px;
+   }
+   .outer-menu{
+   position: fixed;
+   z-index: 99999;
+   width: 100%;
+   /* position: relative; */
+   /* left: -100%; */
+   background: #e8e8e8;
+   width: 100%;
+   left: -100%;
+   display: block;
+   top: 0;
+   }
+   }
+
+</style>
+<script>
+   $(document).ready(function(){
+      
+     $('body').on("click",".dropdower",function(){
+       $(".dropdown-child").hide()
+         $(this).find(".dropdown-child").toggle()
+         $(".slink-entry").removeClass("jactive")
+         $(".slink-entry").addClass("dropdower")
+         $(this).addClass("jactive")
+          $(this).removeClass("dropdower")
+   
+          
+        
+         $(this).find(".righter").toggle()
+     })
+     $('body').on("click",".jactive",function(){
+          $(".dropdown-child").hide()
+   
+   
+         $(".slink-entry").removeClass("jactive")
+         $(".slink-entry").addClass("dropdower")
+   
+   
+   
+          $(this).find(".righter").toggle()
+          
+     })
+    $(".close-x").on("click",function(){
+       $(".outer-menu").animate({
+       "left": '-=100%'
+     }, 500);
+    })
+   
+    $(".site-nav__thumb-menu").on("click",function(){
+       $(".outer-menu").animate({
+       "left": '0'
+     }, 500);
+    
+   })
+   })
+</script>

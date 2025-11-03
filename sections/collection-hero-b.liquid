@@ -38,6 +38,12 @@
 </section>
 
 <style>
+.scrub-container{
+    max-width:1300px;
+    margin-left: auto;
+    margin-right:auto;
+    padding:0 10px;
+}
 .scrub-collection-b {
   padding: 40px 20px;
   background-color: {{ section.settings.bg_clr }};
@@ -139,9 +145,14 @@
   .button-group::-webkit-scrollbar { display: none; }
   .button-group { scrollbar-width: none; }
 }
-
+@media screen and (max-width:480px){
+  .scrub-container{
+      padding:0;
+  }
+}
 /* Your small-screen tweaks (with px fix) */
 @media screen and (max-width: 380px){
+
   .btn_hero {
       padding: 8px 4px;            /* fixed 'px' */
       font-size: 12px;

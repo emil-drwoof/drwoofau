@@ -38,7 +38,7 @@
     margin-left: 0px !important;
   }
   .main-metafield-image .Main-alt-image{
-    top:12px;
+    top:0px;
   }
   .desktop{
     display:block;
@@ -54,7 +54,7 @@
       display:block;
     }
       .main-metafield-image .Main-alt-image{
-        top:26px;
+        top:0px;
       }
       .template-collection .grid-product__title{
         font-size:16px;
@@ -167,7 +167,9 @@
             <div class="Main-alt-image grid__image-ratio grid__image-ratio--portrait lazyloaded">
               <div class="metafield-image collection-image-metafield">
               {% if section.settings.super_image_1 %}
+                <a href="{{ section.settings.super_link_1 }}">
                 <img src="{{ section.settings.super_image_1 | img_url: 'master' }}" class="image-metafield-one" alt="{{ section.settings.super_text_1 }}" />                
+                </a>
               {% else %}
                 {% if first_image != blank %}
                   {% if first_url != blank %}

@@ -3,30 +3,5 @@
   "context": {
     "market": "sg"
   },
-  "sections": {
-    "14a6d1da-4bb0-467d-8179-0f89444b4027": {
-      "blocks": {
-        "56d56b04-d0d1-4c87-97f7-58c52ed604c0": {
-          "settings": {
-            "col_url": "shopify:\/\/collections\/women"
-          }
-        },
-        "39becd13-a0d2-4719-ad38-95850449f974": {
-          "settings": {
-            "col_url": "shopify:\/\/products\/womens-flare-scrub-pants"
-          }
-        },
-        "5460b48e-4911-4ed3-8b83-a1e90605016e": {
-          "settings": {
-            "col_url": "shopify:\/\/collections\/bamboo-compression-socks"
-          }
-        }
-      },
-      "settings": {}
-    },
-    "logolistaani_YJptaJ": {
-      "disabled": true,
-      "settings": {}
-    }
-  }
+  "sections": {}
 }

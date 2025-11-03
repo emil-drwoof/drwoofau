@@ -47,6 +47,7 @@
     },
     "pdpaboutsection_g8BKqr": {
       "type": "pdpaboutsection",
+      "disabled": true,
       "name": "Full Width Image",
       "settings": {
         "desktop_image": "shopify:\/\/shop_images\/image.png",
@@ -126,8 +127,8 @@
   "order": [
     "product-template",
     "pdpaboutsection_g8BKqr",
-    "pdpaboutsection_w9ijBh",
     "pdpsection_zNdFcq",
+    "pdpaboutsection_w9ijBh",
     "team_highlight_CCTm8Q",
     "judgemewidget_emVfMH",
     "product_recommendations_HKAV6j"

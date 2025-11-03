@@ -1127,14 +1127,14 @@
       ],
       "settings": {
         "reviewstars": false,
-        "blocklist": true,
+        "blocklist": false,
         "show_title": true,
         "dark_theme": false,
         "martop_this": 60,
         "marbot_this": 40,
         "mmartop_this": 20,
         "mmarbot_this": 0,
-        "selected_collection": "",
+        "selected_collection": "new-releases-1",
         "sec_name": "This just in"
       }
     },

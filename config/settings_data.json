@@ -129,6 +129,10 @@
     "cart_terms_conditions_enable": false,
     "cart_terms_conditions_link": "",
     "shipping_cost": 11.9,
+    "us_shipping_treshold": 30,
+    "gb_shipping_treshold": 50,
+    "ca_shipping_treshold": 80,
+    "eu_shipping_treshold": 60,
     "social_instagram_link": "https:\/\/www.instagram.com\/drwoofapparel\/",
     "social_facebook_link": "https:\/\/www.facebook.com\/drwoofapparel",
     "social_twitter_link": "",
@@ -263,7 +267,7 @@
           "men-hide-color": "",
           "men-hide-color2": "",
           "men-hide-color3": "",
-          "women-hide-color": "Noosa Sea Mist",
+          "women-hide-color": "",
           "women-hide-color2": "",
           "women-hide-color3": "",
           "show_newsletter": true,
@@ -313,6 +317,7 @@
           "color_popberry": 24,
           "color_jacaranda": 25,
           "color_bubblegum": 26,
+          "color_noosa-sea-mist": 40,
           "footer_richtext": "<p>In the spirit of reconciliation, Dr Woof Apparel acknowledges the Traditional Custodians of country throughout Australia and their connections to land, sea and community. We pay our respect to their Elders past and present and extend that respect to all Aboriginal and Torres Strait Islander peoples today.<\/p>",
           "show_locale_selector": false,
           "show_currency_selector": false,
@@ -323,6 +328,8 @@
           "subheading1": "",
           "subheading2": "<p><a href=\"mailto:hello@drwoofapparel.com.au\" target=\"_blank\" title=\"mailto:hello@drwoofapparel.com.au\">hello@drwoofapparel.com.au<\/a><\/p>",
           "subheading3": "<p>Dr Woof Warehouse<br\/>20 Litoria Court, Epping VIC 3076<br\/><br\/>ABN | 95 646 195 593<br\/><br\/><\/p><p><br\/><br\/><\/p>",
+          "us_subheading3": "",
+          "int_subheading3": "",
           "show_social_icons": true,
           "menu": "",
           "show_payment_icons": false,
@@ -1865,9 +1872,9 @@
               "menu-title": "Who Are We?",
               "menu-icon": "fa-globe",
               "menu-icon-image": "shopify:\/\/shop_images\/white_logo_transparent_background_no_words_e5be0237-220e-4803-b4fa-f45b168f9199.png",
-              "menu-link": "",
+              "menu-link": "shopify:\/\/pages\/about-us",
               "dropdown-link": "slider-menu-who-are-we",
-              "gender": "men"
+              "gender": "unisex"
             }
           }
         },
@@ -1910,14 +1917,16 @@
           "mobile_logo_width": 160,
           "logo_hide_mobile": true,
           "main_menu_link_list": "new-homepage-menu",
+          "us_menu_link_list": "us-navigation",
+          "int_menu_link_list": "intl-navigation",
           "show_announcement": true,
           "show_announcement_home_only": false,
           "announcement_text": "99 Days Risk Free Guarantee On All Products",
           "announcement_link": "shopify:\/\/collections\/compression-socks",
           "right_image_1": "shopify:\/\/shop_images\/Homepage_-_Navigation_Featured_bb302dcd-ad7f-4804-810c-d52d8fcf1144.png",
           "right_link_1": "shopify:\/\/collections\/performance-compression-socks",
-          "right_image_2": "shopify:\/\/shop_images\/Homepage_-_Navigation_Featured_1_345ad0af-85ae-4959-9296-e6676cab6a1e.png",
-          "right_link_2": "shopify:\/\/products\/womens-3-pocket-scrub-top-2",
+          "right_image_2": "shopify:\/\/shop_images\/Homepage_-_Navigation_Featured_2ffbdf03-e3e7-472c-8347-b0fd948f780d.png",
+          "right_link_2": "\/products\/womens-3-pocket-scrub-top?variant=46914330755330",
           "trending_title": "Trending",
           "clearance_text_color": "#e63946"
         }
@@ -6454,16 +6463,6 @@
         "disabled": false,
         "settings": {}
       },
-      "uppromote-affiliate-referral-customer-referral-57368-64c32457-930d-4cb9-9641-e24c0d9cf1f4": {
-        "type": "shopify:\/\/apps\/uppromote-affiliate-referral\/blocks\/customer-referral\/64c32457-930d-4cb9-9641-e24c0d9cf1f4",
-        "disabled": true,
-        "settings": {}
-      },
-      "uppromote-affiliate-referral-message-bar-57368-64c32457-930d-4cb9-9641-e24c0d9cf1f4": {
-        "type": "shopify:\/\/apps\/uppromote-affiliate-referral\/blocks\/message-bar\/64c32457-930d-4cb9-9641-e24c0d9cf1f4",
-        "disabled": true,
-        "settings": {}
-      },
       "1173261918193615741": {
         "type": "shopify:\/\/apps\/geo-pro-geolocation\/blocks\/geopro\/16fc5313-7aee-4e90-ac95-f50fc7c8b657",
         "disabled": false,
@@ -6484,16 +6483,6 @@
         "disabled": false,
         "settings": {}
       },
-      "3138269044488530766": {
-        "type": "shopify:\/\/apps\/uppromote-affiliate\/blocks\/core-script\/64c32457-930d-4cb9-9641-e24c0d9cf1f4",
-        "disabled": false,
-        "settings": {}
-      },
-      "1877152918344802950": {
-        "type": "shopify:\/\/apps\/intelligems-a-b-testing\/blocks\/intelligems-script\/fa83b64c-0c77-4c0c-b4b2-b94b42f5ef19",
-        "disabled": false,
-        "settings": {}
-      },
       "2786716548061469553": {
         "type": "shopify:\/\/apps\/axon\/blocks\/app-embed\/baa0f014-62ea-462f-a8aa-a94befb1cbad",
         "disabled": false,
@@ -6507,6 +6496,11 @@
       "2200952712151285029": {
         "type": "shopify:\/\/apps\/microsoft-clarity\/blocks\/brandAgents_js\/31c3d126-8116-4b4a-8ba1-baeda7c4aeea",
         "disabled": false,
+        "settings": {}
+      },
+      "1877152918344802950": {
+        "type": "shopify:\/\/apps\/intelligems-a-b-testing\/blocks\/intelligems-script\/fa83b64c-0c77-4c0c-b4b2-b94b42f5ef19",
+        "disabled": true,
         "settings": {}
       }
     }

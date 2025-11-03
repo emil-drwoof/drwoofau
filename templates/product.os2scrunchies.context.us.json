@@ -1,0 +1,16 @@
+{
+  "parent": "product.os2scrunchies.json",
+  "context": {
+    "market": "us"
+  },
+  "sections": {
+    "product-template": {
+      "settings": {
+        "txt_": "Free & Fast shipping over $30",
+        "txt": "93% satisfaction rate from 100,000+ customers",
+        "txt1": "Dispatch from Carlsbad, CA within 24 hours"
+      },
+      "blocks": {}
+    }
+  }
+}
