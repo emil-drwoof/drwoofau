@@ -1,0 +1,149 @@
+{% schema %}
+{
+  "name": "Category Slider",
+  "settings": [
+    {
+      "type": "checkbox",
+      "id": "full_width",
+      "label": "Full width",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "remove_vertical_spacing",
+      "label": "Remove vertical spacing",
+      "default": false
+    },
+    {
+      "type": "checkbox",
+      "id": "remove_horizontal_spacing",
+      "label": "Remove horizontal spacing",
+      "default": false
+    }
+  ],
+  "blocks": [
+    {
+      "type": "collection",
+      "name": "Collection",
+      "settings": [
+        {
+          "type": "collection",
+          "id": "collection",
+          "label": "Collection"
+        },
+        {
+          "type": "text",
+          "id": "custom_title",
+          "label": "Custom title (optional)",
+          "info": "Leave blank to use collection title"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Category Slider",
+      "category": "Custom"
+    }
+  ]
+}
+{% endschema %}
+
+<div {% render 'section-properties' %}>
+<div class="category-slider">
+    {% if section.blocks.size > 0 %}
+    {% for block in section.blocks %}
+      {% assign collection = block.settings.collection %}
+      {% assign display_title = block.settings.custom_title | default: collection.title %}
+      
+      {% if collection != blank %}
+      <div class="category-item" {{ block.shopify_attributes }}> 
+        <a class="category-ig-url" href="{{ collection.url }}">
+          <img src="{{ collection.image | img_url: '300x300' }}" alt="{{ display_title }}">
+          <p>{{ display_title }}</p>
+        </a>
+      </div>
+      {% endif %}
+    {% endfor %}
+{% else %}
+  <p>No collections selected.</p>
+{% endif %}
+</div>
+</div>
+
+
+
+
+<style>
+  @media (max-width: 1500px) {
+    .category-slider__wrapper{
+      padding-left: 25px;
+      padding-right: 25px;
+    }
+  }
+  .category-slider__wrapper{
+        max-width: 1500px;
+      margin: 0 auto;
+  }
+    #shopify-section-{{ section.id }} {
+      {% if section.settings.remove_vertical_spacing %}--section-spacing-block: 0px;{% endif %}
+      {% if section.settings.remove_horizontal_spacing %}--section-spacing-inline: 0px;{% endif %}
+    }
+    .category-slider {
+        {% comment %} display: flex; {% endcomment %}
+        display: none;
+        overflow-x: scroll;
+        padding-top: 15px;
+        padding-left: 15px;
+        gap: 5px;
+    }
+    .category-ig-url{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        max-width: 150px;
+    }
+    .category-item {
+        flex: 0 0 auto;
+        text-align: center;
+        margin-right: 10px;
+        position: relative; /* Position the pill relative to the category item */
+    }
+    .category-item img {
+        border-radius: 100% !important;
+        width: 100px;
+        height: 100px;
+        object-fit: cover;
+        border: 2px solid #E9E9E9;
+    }
+    .category-item p {
+        margin-top: 10px;
+        font-size: 14px;
+    }
+    .sale-pill {
+        position: absolute;
+        top: -10px;
+        left: 50%;
+        transform: translateX(-50%);
+        background-color: #0A2248; /* Customize color */
+        color: white;
+        padding: 5px 10px;
+        border-radius: 20px;
+        font-size: 12px;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+        white-space: nowrap;
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+    }
+
+    @media(max-width: 993px){
+    .category-item img{
+      width: 80px;
+      height: 80px;
+    }
+  
+  }
+</style>

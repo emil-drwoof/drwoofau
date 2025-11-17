@@ -1,0 +1,233 @@
+{
+  "sections": {
+    "annoucement_34Kk7C": {
+      "type": "annoucement",
+      "disabled": true,
+      "settings": {
+        "a_text1": "OVER 90, 000 COMFY DOCS AND NURSES",
+        "a_text2": ""
+      }
+    },
+    "featured_content_EKnF4A": {
+      "type": "featured-content",
+      "name": "Rich text",
+      "settings": {
+        "title": "Partner With Dr. Woof, Let’s Sponsor Your Organization.",
+        "text": "<p> From student events to sports teams, we support organizations that share our mission of making the medical world smile.<\/p>",
+        "align_text": "center",
+        "narrow_column": false,
+        "enlarge_text": false,
+        "alt": false
+      }
+    },
+    "custom_html_F6dhFB": {
+      "type": "custom-html",
+      "name": "Custom HTML",
+      "settings": {
+        "custom_html": "<p style=\"text-align: center;\"><a href=\"#contact\" class=\"btn btn--tertiary btn--small js-no-transition\">APPLY FOR SPONSORSHIP<\/a><\/p>"
+      }
+    },
+    "custom_html_jYzHWe": {
+      "type": "custom-html",
+      "disabled": true,
+      "name": "Custom HTML",
+      "settings": {
+        "custom_html": "<p style=\"text-align: center;\"><a href=\"#contact\" class=\"btn btn--tertiary btn--small js-no-transition\" id=\"scrollbutton\">Scroll to Section<\/a><\/p>"
+      }
+    },
+    "17591072634e00f0ba": {
+      "type": "_blocks",
+      "blocks": {
+        "ai_gen_block_3b8ca6e_fQCmtk": {
+          "type": "ai_gen_block_3b8ca6e",
+          "disabled": true,
+          "settings": {
+            "button_text": "Apply for Sponsorship",
+            "button_link": "shopify:\/\/pages\/contact",
+            "button_color": "#0b0d32",
+            "button_text_color": "#ffffff",
+            "button_border_color": "#b8d2bc",
+            "button_hover_color": "#ffffff",
+            "button_hover_text_color": "#0b0d32",
+            "button_hover_border_color": "#0b0d32",
+            "font_size": 16,
+            "font_weight": "600",
+            "text_uppercase": true,
+            "letter_spacing": 1,
+            "border_radius": 24,
+            "button_padding_vertical": 14,
+            "button_padding_horizontal": 32,
+            "min_width": 160,
+            "alignment": "center",
+            "section_padding": 20
+          },
+          "blocks": {}
+        }
+      },
+      "block_order": [
+        "ai_gen_block_3b8ca6e_fQCmtk"
+      ],
+      "settings": {}
+    },
+    "duallayout_CG47nF": {
+      "type": "duallayout",
+      "name": "Dual Section",
+      "settings": {
+        "image_left": false,
+        "background_color": "#ffffff",
+        "imagebig": "shopify:\/\/shop_images\/LANDING_PAGE_PDP.gif",
+        "contenttitle": "Why Partner With Dr. Woof",
+        "contenttext1": "<b>1. Community First: <\/b>We believe in giving back and supporting the people who support us.\n\n<br><br>\n<b>2. Flexible Sponsorships: <\/b>From universities to sports organizations, we adapt our support to your needs.\n\n<br><br>\n\n<b>3. Product Support: <\/b>Socks, scrubs, or apparel -  we provide gear that adds real value.\n<br><br>\n\n<b>4. Brand Alignment: <\/b>Join forces with a trusted healthcare brand that’s loved nationwide."
+      }
+    },
+    "duallayout_fz77Tn": {
+      "type": "duallayout",
+      "name": "Dual Section",
+      "settings": {
+        "image_left": true,
+        "background_color": "#ffffff",
+        "imagebig": "shopify:\/\/shop_images\/DRWOOF_JULY_DrWoof_13Jul22_21694.jpg",
+        "contenttitle": "Who We Sponsor",
+        "contenttext1": "<i>We’re open to all kinds of organizations. Here are just a couple of examples:<\/i>\n<br>\n<br>\n<b>1. Universities & Student Bodies: <\/b>Sponsoring medical student events, society gatherings, and healthcare education initiatives.\n<br>\n<br>\n<b>2. Sports Organizations:<\/b> Partnering with athletes and teams, especially with our compression socks; to support performance and recovery.\n<br>\n<br>\n<b>3. And More: <\/b>Community health groups, non-profits, festivals, and beyond. If you share our mission, we want to hear from you."
+      }
+    },
+    "duallayout_ghQckD": {
+      "type": "duallayout",
+      "disabled": true,
+      "name": "Dual Section",
+      "settings": {
+        "image_left": false,
+        "background_color": "#ffffff",
+        "imagebig": "shopify:\/\/shop_images\/LANDING_PAGE_PDP_4.png",
+        "contenttitle": "",
+        "contenttext1": "<b>1. Born in Healthcare: <\/b>Our socks first became a must-have for nurses, doctors, and frontline workers who needed comfort through 12-hour shifts.\n\n<br><br>\n<b>2. Viral Beyond the Hospital: <\/b>Today, they’re worn by athletes, travelers, festival-goers, and everyday Australians looking for style + support.\n<br><br>\n\n<b>3. Premium Build:<\/b> 15–20 mmHg graduated compression, bamboo yarn softness, and bold designs that are designed locally in Melbourne."
+      }
+    },
+    "text_columns_WhdCHJ": {
+      "type": "text-columns",
+      "blocks": {
+        "text_block_QXnajq": {
+          "type": "text_block",
+          "settings": {
+            "enable_image": true,
+            "desktop_image": "shopify:\/\/shop_images\/Your_paragraph_text_6.png",
+            "mobile_image": "shopify:\/\/shop_images\/Your_paragraph_text_6.png",
+            "image_width": 650,
+            "title": "",
+            "text": "",
+            "button_label": "",
+            "button_link": ""
+          }
+        },
+        "text_block_QJrR3Q": {
+          "type": "text_block",
+          "settings": {
+            "enable_image": true,
+            "desktop_image": "shopify:\/\/shop_images\/Your_paragraph_text_7.png",
+            "mobile_image": "shopify:\/\/shop_images\/Your_paragraph_text_7.png",
+            "image_width": 650,
+            "title": "",
+            "text": "",
+            "button_label": "",
+            "button_link": ""
+          }
+        }
+      },
+      "block_order": [
+        "text_block_QXnajq",
+        "text_block_QJrR3Q"
+      ],
+      "name": "Text columns with images",
+      "settings": {
+        "title": "",
+        "align_text": "center",
+        "alt": false
+      }
+    },
+    "advanced_content_6Wbn6B": {
+      "type": "advanced-content",
+      "blocks": {
+        "image_BqemPa": {
+          "type": "image",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/Your_paragraph_text_2.png",
+            "link": "",
+            "width": "50%",
+            "alignment": "top-middle"
+          }
+        },
+        "image_wcT9Ep": {
+          "type": "image",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/Your_paragraph_text_3.png",
+            "link": "",
+            "width": "50%",
+            "alignment": "top-middle"
+          }
+        }
+      },
+      "block_order": [
+        "image_BqemPa",
+        "image_wcT9Ep"
+      ],
+      "disabled": true,
+      "name": "Custom content",
+      "settings": {
+        "full_width": false,
+        "space_around": true,
+        "alt": false
+      }
+    },
+    "custom_html_8qhmPV": {
+      "type": "custom-html",
+      "name": "Custom HTML",
+      "settings": {
+        "custom_html": "<div id=\"contact\">\n    <!-- Your content here -->\n<\/div>"
+      }
+    },
+    "featured_content_79cpma": {
+      "type": "featured-content",
+      "name": "Rich text",
+      "settings": {
+        "title": "How It Works",
+        "text": "<p>1. <strong>Apply:<\/strong> Fill out our sponsorship request form.<\/p><p>2. <strong>Approval:<\/strong> We’ll review your organization and align on the best way to support.<\/p><p>3. <strong>Partner:<\/strong> We sponsor your event, club, or initiative with products, promotion, or other resources.<br\/><br\/><\/p>",
+        "align_text": "center",
+        "narrow_column": false,
+        "enlarge_text": false,
+        "alt": false
+      }
+    },
+    "contact_form_NpWq86": {
+      "type": "contact-form",
+      "name": "Contact form",
+      "settings": {
+        "title": "Contact us",
+        "show_phone": false,
+        "narrow_column": true
+      }
+    },
+    "custom_html_FRrt4q": {
+      "type": "custom-html",
+      "name": "Custom HTML",
+      "settings": {
+        "custom_html": "<div id=\"scrollbutton\">\n    <!-- Your content here -->\n<\/div>"
+      }
+    }
+  },
+  "order": [
+    "annoucement_34Kk7C",
+    "featured_content_EKnF4A",
+    "custom_html_F6dhFB",
+    "custom_html_jYzHWe",
+    "17591072634e00f0ba",
+    "duallayout_CG47nF",
+    "duallayout_fz77Tn",
+    "duallayout_ghQckD",
+    "text_columns_WhdCHJ",
+    "advanced_content_6Wbn6B",
+    "custom_html_8qhmPV",
+    "featured_content_79cpma",
+    "contact_form_NpWq86",
+    "custom_html_FRrt4q"
+  ]
+}

@@ -15,6 +15,20 @@
         "image_webp_mobile": ""
       }
     },
+    "collection_hero_b_WBVGRN": {
+      "type": "collection-hero-b",
+      "name": "Collection Hero B",
+      "settings": {
+        "space_top": 0,
+        "space_bottom": 0,
+        "bg_clr": "#0b0e30",
+        "rating": 4.8,
+        "rating_text": "Loved by 100,000+ Nurses and Doctors",
+        "title": "{{ collection.title }}",
+        "description": "Compression built for movement, recovery and all-day performance.",
+        "subtitle": "Designed with graduated compression and breathable yarn, these socks support circulation, reduce fatigue and stay comfortable through long workouts, and active days."
+      }
+    },
     "replo_replo_text_below_banner_DKcJej": {
       "type": "replo-replo-text-below-banner",
       "settings": {
@@ -132,6 +146,7 @@
   },
   "order": [
     "collection-header",
+    "collection_hero_b_WBVGRN",
     "replo_replo_text_below_banner_DKcJej",
     "collection-filter",
     "collection-filters",

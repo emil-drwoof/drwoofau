@@ -3,7 +3,10 @@
     "product-template": {
       "type": "product-template-new-sock",
       "settings": {
-        "sockpreorderdate": "Oct 30",
+        "sockpreorderdate": "Nov 17",
+        "trust_badge_text": "Trusted by Aussie Nurses & Doctors",
+        "product_description_text": "Compression socks originally designed by a family of doctors. Boost circulation, prevent swelling & DVT, and support all-day energy with fun designs.",
+        "preorder_text": "Pre-order now to secure your preferred design. Your entire order will ship once this item becomes available. Thanks for your patience!",
         "abtestnoicons": false,
         "abtestdavideo": true,
         "enable_ab_size": true,
@@ -30,6 +33,7 @@
         "img1": "shopify:\/\/shop_images\/4_2c9aee3f-aec7-4015-a798-7c27f3a591f0.png",
         "txt": "93% satisfaction rate from 40,000+ customers",
         "img2": "shopify:\/\/shop_images\/Untitled_design_2_4043dd2d-b061-4ce9-a771-22be6e7d9d6e.png",
+        "loved": "Loved by 90,000+ Aussie Nurses & Doctors",
         "txt_": "Dispatch from Melbourne within 24 hours",
         "img3": "shopify:\/\/shop_images\/Untitled_design_1_aa1e3d9a-8e5d-4738-9e79-4536b6a0d70e.png",
         "txt1": "99-day hassle-free return & exchange",
@@ -52,15 +56,6 @@
       "settings": {
         "desktop_image": "shopify:\/\/shop_images\/image.png",
         "mobile_image": "shopify:\/\/shop_images\/image.png",
-        "alt_text": ""
-      }
-    },
-    "pdpaboutsection_w9ijBh": {
-      "type": "pdpaboutsection",
-      "name": "Full Width Image",
-      "settings": {
-        "desktop_image": "shopify:\/\/shop_images\/Frame_1484580308.png",
-        "mobile_image": "shopify:\/\/shop_images\/Frame_1484580308.png",
         "alt_text": ""
       }
     },
@@ -102,6 +97,15 @@
         "show_badge": true,
         "badge_text": "Designed by a family of Doctors",
         "main_title": "Why nurses love Dr. Woof"
+      }
+    },
+    "pdpaboutsection_w9ijBh": {
+      "type": "pdpaboutsection",
+      "name": "Full Width Image",
+      "settings": {
+        "desktop_image": "shopify:\/\/shop_images\/Frame_1484580308.png",
+        "mobile_image": "shopify:\/\/shop_images\/Frame_1484580308.png",
+        "alt_text": ""
       }
     },
     "team_highlight_CCTm8Q": {

@@ -1,0 +1,8 @@
+        <script>
+          window.KlarnaThemeGlobals = {};{%case template.name%}{%when"product"%}
+            {% if product.first_available_variant.price %}
+              window.KlarnaThemeGlobals.data_purchase_amount = {{ product.first_available_variant.price }};{% endif %}window.KlarnaThemeGlobals.productVariants = {{product.variants|json}};
+            window.KlarnaThemeGlobals.documentCopy = document.cloneNode(true);
+            {%when"cart"%}window.KlarnaThemeGlobals.data_purchase_amount = {{cart.total_price}};
+            window.KlarnaThemeGlobals.documentCopy = document.cloneNode(true);{%endcase%}
+        </script>

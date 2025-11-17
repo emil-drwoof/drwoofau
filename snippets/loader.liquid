@@ -1,0 +1,17 @@
+          {%comment%}
+            {%- assign loader_size = settings.desktop_loader_width | append: 'x' -%}
+            {%- assign loader_size_mobile = settings.mobile_loader_width | append: 'x' -%}
+            <div class="splash-screen">
+            {% if settings.logo_loader_image != blank %}
+            <div class="splash-screen__loader">
+            <img data-swift-lazy="1" loading="lazy"
+            class="loader-logo__img"
+            src="{{ settings.logo_loader_image | img_url: loader_size }}"
+            srcset="{{ settings.logo_loader_image | img_url: loader_size }} 1x, {{ settings.logo_loader_image | img_url: loader_size, scale: 2 }} 2x"
+            aria-hidden="true">
+            </div>
+            {% else %}
+            <span class="loader-text">{{ 'general.accessibility.loading' | t }}</span>
+            {% endif %}
+            </div>
+          {%endcomment%}

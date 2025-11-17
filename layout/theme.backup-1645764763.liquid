@@ -136,7 +136,7 @@ window.TriplePixelData={TripleName:"dr-woof-apparel-au.myshopify.com",ver:"1.9"}
     {%- endif -%}
 
     <!-- Hotjar Tracking Code for www.drwoofapparel.com -->
-    <script defer>
+    {% comment %} <script defer>
             document.addEventListener('scroll', function() {
       (function(h,o,t,j,a,r){
         h.hj=h.hj||function(){(h.hj.q=h.hj.q||[]).push(arguments)};
@@ -147,7 +147,7 @@ window.TriplePixelData={TripleName:"dr-woof-apparel-au.myshopify.com",ver:"1.9"}
         a.appendChild(r);
       })(window,document,'https://static.hotjar.com/c/hotjar-','.js?sv=');
             });
-    </script>
+    </script> {% endcomment %}
     <!-- Critical for loader -->
     {% include 'load-css' %}
     {{ shop.metafields.loox["global_html_head"] }}

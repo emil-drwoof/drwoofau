@@ -1,0 +1,15 @@
+{
+  "parent": "collection.compressionsocks-test.json",
+  "context": {
+    "market": "sg"
+  },
+  "sections": {
+    "main-collection": {
+      "settings": {
+        "super_image_1": "shopify:\/\/shop_images\/US_D_SOCKS_SUPERPRODUCT.gif",
+        "super_image_1_mobile": "shopify:\/\/shop_images\/2025_SUPERPRODUCT_1_32a5e90e-e965-49cf-ac4f-7df6224a50ed.gif"
+      },
+      "blocks": {}
+    }
+  }
+}

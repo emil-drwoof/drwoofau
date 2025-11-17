@@ -1,7 +1,82 @@
 {
   "sections": {
+    "collection_hero_b_t6eNpa": {
+      "type": "collection-hero-b",
+      "blocks": {
+        "button_APNq6w": {
+          "type": "button",
+          "settings": {
+            "title": "Best Selling",
+            "collection": "\/collections\/printed-pattern-scrub-tops?sort_by=best-selling"
+          }
+        },
+        "button_n3PKDj": {
+          "type": "button",
+          "settings": {
+            "title": "New Releases",
+            "collection": "\/collections\/printed-pattern-scrub-tops?sort_by=created-descending"
+          }
+        },
+        "button_HzMnft": {
+          "type": "button",
+          "settings": {
+            "title": "Animals",
+            "collection": "\/collections\/printed-pattern-scrub-tops\/animal-patterns"
+          }
+        },
+        "button_qUEgkG": {
+          "type": "button",
+          "settings": {
+            "title": "Nature",
+            "collection": "\/printed-pattern-scrub-tops\/nature-patterns"
+          }
+        },
+        "button_DCULAg": {
+          "type": "button",
+          "settings": {
+            "title": "Medical",
+            "collection": "\/collections\/printed-pattern-scrub-tops\/medical-patterns"
+          }
+        },
+        "button_HQMCR3": {
+          "type": "button",
+          "settings": {
+            "title": "Whimsical",
+            "collection": "\/collections\/printed-pattern-scrub-tops\/whimsical-patterns"
+          }
+        },
+        "button_wxj7EE": {
+          "type": "button",
+          "settings": {
+            "title": "Causes",
+            "collection": "\/printed-pattern-scrub-tops\/causes-patterns"
+          }
+        }
+      },
+      "block_order": [
+        "button_APNq6w",
+        "button_n3PKDj",
+        "button_HzMnft",
+        "button_qUEgkG",
+        "button_DCULAg",
+        "button_HQMCR3",
+        "button_wxj7EE"
+      ],
+      "name": "Collection Hero B",
+      "settings": {
+        "space_top": 0,
+        "space_bottom": 0,
+        "bg_clr": "#0b0e30",
+        "rating": 4.8,
+        "rating_text": "Loved by 100,000+ Nurses and Doctors",
+        "title": "{{ collection.title }}",
+        "description": "Scrubs that work as hard as you do, with prints that actually feel fun.",
+        "subtitle": "Our printed scrubs are lightweight, comfy and bring colour, personality and a whole lot of good vibes to every ward."
+      }
+    },
     "collection-header": {
       "type": "dr-woof-hero-scrubs3",
+      "disabled": true,
       "settings": {
         "pad": "30px",
         "enable_auto": true,
@@ -12,13 +87,6 @@
         "image_webp_pc": "",
         "image_lib_mobile": "shopify:\/\/shop_images\/COLLECTION_BANNER_TEMPLATE_MOBILE_1600_x_900_px_7ae8d408-c8f7-414a-a369-1d24f40e8a19.jpg",
         "image_webp_mobile": ""
-      }
-    },
-    "replo_replo_text_below_banner_m7jNkC": {
-      "type": "replo-replo-text-below-banner",
-      "settings": {
-        "replo_text_e352686d-11b3-4326-ad82-8260998ffdde": "<p>Printed Pattern Scrubs<\/p>",
-        "replo_text_ffb59253-7bb2-43f4-99c4-ed60813402d8": "<p>Say goodbye to outdated prints. Our Printed Scrubs, thoughtfully designed by Australian designers, deliver fresh, modern style without compromising on performance. Made with 92% recycled, high-performance fabric, they’re wrinkle-resistant, ultra-breathable, and built to keep you looking and feeling your best—all shift long.<\/p>"
       }
     },
     "collection-filter": {
@@ -90,6 +158,7 @@
         "image_Ykdgt3",
         "image_t9gCbP"
       ],
+      "disabled": true,
       "settings": {
         "title_enable": false
       }
@@ -119,8 +188,8 @@
     }
   },
   "order": [
+    "collection_hero_b_t6eNpa",
     "collection-header",
-    "replo_replo_text_below_banner_m7jNkC",
     "collection-filter",
     "collection-filters",
     "main-collection"

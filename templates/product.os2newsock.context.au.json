@@ -1,7 +1,0 @@
-{
-  "parent": "product.os2newsock.json",
-  "context": {
-    "market": "au"
-  },
-  "sections": {}
-}

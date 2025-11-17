@@ -1598,7 +1598,8 @@ ul.slick-dots li.slick-active {
     padding-left: 0;
 }
 .main-metafield-image {
-    width: 100%}
+    /* width: 100% */
+}
 #shopify-section-collection-template .grid__item {
     padding-left: 10px;
 }

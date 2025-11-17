@@ -1,0 +1,688 @@
+<!-- page logo ??? -->
+    {% comment %}          
+          {% if settings.animate_page_transition_style == 'page-logo' %}
+          <div class="loader-logo">
+          {% if settings.logo_loader_image != blank %}
+          <div class="splash-screen__loader">
+          <img data-swift-lazy="1" loading="lazy"
+          class="loader-logo__img"
+          src="{{ settings.logo_loader_image | img_url: loader_size }}"
+          srcset="{{ settings.logo_loader_image | img_url: loader_size }} 1x, {{ settings.logo_loader_image | img_url: loader_size, scale: 2 }} 2x"
+          aria-hidden="true">
+          </div>
+          {% else %}
+          <span class="loader-text">{{ 'general.accessibility.loading' | t }}</span>
+          {% endif %}
+          </div>
+          {% endif %}
+    {% endcomment %}
+
+<!-- wcp_cart ??? -->
+    {% if customer.tags.size > 0 and template == 'cart' %}
+        {% include 'wcp_cart' %}
+      {% endif %}
+
+<!-- big variant object for option availability checking -->
+      <script>
+        function getLastSevenDigits(number) {
+          return number % 100000;
+        }
+      {% assign sf_product_combined = all_products[product.metafields.sf_product_combined.product_handle] %}
+      {% assign sf_product_third = all_products[product.metafields.sf_product_combined.third_product] %}
+      {% assign sf_product_fourth = all_products[product.metafields.sf_product_combined.fourth_product] %}
+      {% assign sf_product_fifth = all_products[product.metafields.sf_product_combined.fifth_product] %}
+
+      {% assign someProduct = all_products.womens-3-pocket-scrub-top-2 %}
+     
+      {% assign someProduct2 = all_products.women-classic-6-pocket-joggers %}
+      {% assign someProduct3 = all_products.womens-6-pocket-jogger-scrubup-fblander %}
+      {% assign someProduct4 = all_products.womens-essential-straight-cut-scrub-pant %}
+      {% assign someProduct5 = all_products.womens-11-pocket-skinny-scrub-pants %}
+      {% assign someProduct6 = all_products.women-3-pocket-scrub-top %}
+      {% assign someProduct7 = all_products.womens-3-4-sleeve-scrub-top %}
+      {% assign someProduct8 = all_products.womens-short-sleeve-henley %}
+      {% assign someProduct9 = all_products.womens-crew-neck %}
+      {% assign someProductx = all_products.womens-vneck-tuck-top %}
+      {% assign someProducty = all_products.womens-v-neck-tuck-top %}      
+      
+      {% assign someProduct10 = all_products.mens-3-pocket-scrub-top %}
+      {% assign someProduct11 = all_products.mens-3-pocket-scrub-top-2 %}
+      {% assign someProduct12 = all_products.women-classic-6-pocket-joggers %}
+      {% assign someProduct13 = all_products.women-classic-6-pocket-jogger %}
+      {% assign someProduct14 = all_products.womens-6-pocket-jogger1 %}
+      {% assign someProduct15 = all_products.womens-6-pocket-jogger %}
+      {% assign someProduct16 = all_products.womens-11-pocket-skinny-scrub-pant %}
+      {% assign someProduct17 = all_products.womens-11-pocket-skinny-scrub-pants %}
+      {% assign someProduct18 = all_products.womens-essential-straight-cut-scrub-pant %}
+      {% assign someProduct19 = all_products.womens-essential-straight-cut-scrub-pants-1 %}
+      {% assign someProduct20 = all_products.womens-6-pocket-jogger-scrubup-fblander %}
+      {% assign someProduct21 = all_products.mens-classic-5-pocket-joggers %}
+      {% assign someProduct22 = all_products.mens-classic-5-pocket-jogger %}
+      {% assign someProduct23 = all_products.mens-straight-cut-9-pocket-cargo-pants-2 %}
+      {% assign someProduct24 = all_products.mens-straight-cut-9-pocket-cargo-pant %}
+      {% assign someProduct25 = all_products.womens-6-pocket-jogger-5 %}      
+      {% assign someProduct26 = all_products.womens-3-pocket-scrub-top-3xl %}
+      {% assign someProduct27 = all_products.nurse-bag %}
+      {% assign someProduct28 = all_products.cherry-milkshake-womens-3-pocket-scrub-top %}
+      
+
+      var variantStock = {};
+      var variantAvail = {};
+    
+      {% for variant in product.variants %}
+        variantStock[{{- variant.id -}}] = {{ variant.inventory_quantity }};
+        variantAvail[{{- variant.id -}}] = {{ variant.available }};
+      {% endfor %}
+      {% for variant in sf_product_combined.variants %}
+        variantStock[{{- variant.id -}}] = {{ variant.inventory_quantity }};
+        variantAvail[{{- variant.id -}}] = {{ variant.available }};
+      {% endfor %}
+      {% for variant in sf_product_third.variants %}
+        variantStock[{{- variant.id -}}] = {{ variant.inventory_quantity }};
+        variantAvail[{{- variant.id -}}] = {{ variant.available }};
+      {% endfor %}
+
+      {% for variant in sf_product_fourth.variants %}
+        variantStock[{{- variant.id -}}] = {{ variant.inventory_quantity }};
+        variantAvail[{{- variant.id -}}] = {{ variant.available }};
+      {% endfor %}
+
+      {% for variant in sf_product_fifth.variants %}
+        variantStock[{{- variant.id -}}] = {{ variant.inventory_quantity }};
+        variantAvail[{{- variant.id -}}] = {{ variant.available }};
+      {% endfor %}
+
+    {% for variant in someProduct.variants %}
+      
+      variantStock[{{- variant.id -}}] = {{ variant.inventory_quantity }};
+      variantAvail[{{- variant.id -}}] = {{ variant.available }};
+
+    {% endfor %}
+    {% for variant in someProduct2.variants %}
+      
+      variantStock[{{- variant.id -}}] = {{ variant.inventory_quantity }};
+      variantAvail[{{- variant.id -}}] = {{ variant.available }};
+
+    {% endfor %}   
+    {% for variant in someProduct3.variants %}
+      
+      variantStock[{{- variant.id -}}] = {{ variant.inventory_quantity }};
+      variantAvail[{{- variant.id -}}] = {{ variant.available }};
+
+    {% endfor %}    
+    {% for variant in someProduct4.variants %}
+      
+      variantStock[{{- variant.id -}}] = {{ variant.inventory_quantity }};
+      variantAvail[{{- variant.id -}}] = {{ variant.available }};
+
+    {% endfor %}  
+    {% for variant in someProduct5.variants %}
+      
+      variantStock[{{- variant.id -}}] = {{ variant.inventory_quantity }};
+      variantAvail[{{- variant.id -}}] = {{ variant.available }};
+
+    {% endfor %}  
+
+    {% for variant in someProduct6.variants %}
+      
+      variantStock[{{- variant.id -}}] = {{ variant.inventory_quantity }};
+      variantAvail[{{- variant.id -}}] = {{ variant.available }};
+
+    {% endfor %}  
+
+    {% for variant in someProduct7.variants %}
+      
+      variantStock[{{- variant.id -}}] = {{ variant.inventory_quantity }};
+      variantAvail[{{- variant.id -}}] = {{ variant.available }};
+
+    {% endfor %}  
+
+    {% for variant in someProduct8.variants %}
+      
+      variantStock[{{- variant.id -}}] = {{ variant.inventory_quantity }};
+      variantAvail[{{- variant.id -}}] = {{ variant.available }};
+
+    {% endfor %}  
+
+    {% for variant in someProduct9.variants %}
+      
+      variantStock[{{- variant.id -}}] = {{ variant.inventory_quantity }};
+      variantAvail[{{- variant.id -}}] = {{ variant.available }};
+
+    {% endfor %}  
+
+
+    {% for variant in someProduct10.variants %}
+      
+      variantStock[{{- variant.id -}}] = {{ variant.inventory_quantity }};
+      variantAvail[{{- variant.id -}}] = {{ variant.available }};
+
+    {% endfor %}  
+
+
+    {% for variant in someProduct11.variants %}
+      
+      variantStock[{{- variant.id -}}] = {{ variant.inventory_quantity }};
+      variantAvail[{{- variant.id -}}] = {{ variant.available }};
+
+    {% endfor %}  
+
+
+    {% for variant in someProduct12.variants %}
+      
+      variantStock[{{- variant.id -}}] = {{ variant.inventory_quantity }};
+      variantAvail[{{- variant.id -}}] = {{ variant.available }};
+
+    {% endfor %}  
+
+
+    {% for variant in someProduct13.variants %}
+      
+      variantStock[{{- variant.id -}}] = {{ variant.inventory_quantity }};
+      variantAvail[{{- variant.id -}}] = {{ variant.available }};
+
+    {% endfor %}  
+
+    {% for variant in someProduct14.variants %}
+      
+      variantStock[{{- variant.id -}}] = {{ variant.inventory_quantity }};
+      variantAvail[{{- variant.id -}}] = {{ variant.available }};
+
+    {% endfor %}  
+
+    {% for variant in someProduct15.variants %}
+      
+      variantStock[{{- variant.id -}}] = {{ variant.inventory_quantity }};
+      variantAvail[{{- variant.id -}}] = {{ variant.available }};
+
+    {% endfor %}  
+
+    {% for variant in someProduct16.variants %}
+      
+      variantStock[{{- variant.id -}}] = {{ variant.inventory_quantity }};
+      variantAvail[{{- variant.id -}}] = {{ variant.available }};
+
+    {% endfor %}  
+
+
+    {% for variant in someProduct17.variants %}
+      
+      variantStock[{{- variant.id -}}] = {{ variant.inventory_quantity }};
+      variantAvail[{{- variant.id -}}] = {{ variant.available }};
+
+    {% endfor %}  
+
+
+    {% for variant in someProduct18.variants %}
+      
+      variantStock[{{- variant.id -}}] = {{ variant.inventory_quantity }};
+      variantAvail[{{- variant.id -}}] = {{ variant.available }};
+
+    {% endfor %}  
+
+
+    {% for variant in someProduct19.variants %}
+      
+      variantStock[{{- variant.id -}}] = {{ variant.inventory_quantity }};
+      variantAvail[{{- variant.id -}}] = {{ variant.available }};
+
+    {% endfor %}  
+
+    {% for variant in someProduct20.variants %}
+      
+      variantStock[{{- variant.id -}}] = {{ variant.inventory_quantity }};
+      variantAvail[{{- variant.id -}}] = {{ variant.available }};
+
+    {% endfor %}  
+
+
+    {% for variant in someProduct21.variants %}
+      
+      variantStock[{{- variant.id -}}] = {{ variant.inventory_quantity }};
+      variantAvail[{{- variant.id -}}] = {{ variant.available }};
+
+    {% endfor %}  
+
+    {% for variant in someProduct22.variants %}
+      
+      variantStock[{{- variant.id -}}] = {{ variant.inventory_quantity }};
+      variantAvail[{{- variant.id -}}] = {{ variant.available }};
+
+    {% endfor %}  
+
+
+    {% for variant in someProduct23.variants %}
+      
+      variantStock[{{- variant.id -}}] = {{ variant.inventory_quantity }};
+      variantAvail[{{- variant.id -}}] = {{ variant.available }};
+
+    {% endfor %}  
+
+
+    {% for variant in someProduct24.variants %}
+      
+      variantStock[{{- variant.id -}}] = {{ variant.inventory_quantity }};
+      variantAvail[{{- variant.id -}}] = {{ variant.available }};
+
+    {% endfor %}  
+
+    {% for variant in someProduct25.variants %}
+      
+      variantStock[{{- variant.id -}}] = {{ variant.inventory_quantity }};
+      variantAvail[{{- variant.id -}}] = {{ variant.available }};
+
+    {% endfor %}  
+    {% for variant in someProduct26.variants %}
+      
+      variantStock[{{- variant.id -}}] = {{ variant.inventory_quantity }};
+      variantAvail[{{- variant.id -}}] = {{ variant.available }};
+
+    {% endfor %}  
+    {% for variant in someProduct27.variants %}
+      
+      variantStock[{{- variant.id -}}] = {{ variant.inventory_quantity }};
+      variantAvail[{{- variant.id -}}] = {{ variant.available }};
+
+    {% endfor %}  
+
+    {% for variant in someProductx.variants %}
+      
+      variantStock[{{- variant.id -}}] = {{ variant.inventory_quantity }};
+      variantAvail[{{- variant.id -}}] = {{ variant.available }};
+
+    {% endfor %}  
+    {% for variant in someProducty.variants %}
+      
+      variantStock[{{- variant.id -}}] = {{ variant.inventory_quantity }};
+      variantAvail[{{- variant.id -}}] = {{ variant.available }};
+
+    {% endfor %}  
+      
+    {% for variant in someProduct28.variants %}
+      
+      variantStock[{{- variant.id -}}] = {{ variant.inventory_quantity }};
+      variantAvail[{{- variant.id -}}] = {{ variant.available }};
+
+    {% endfor %}  
+    
+    </script>
+
+
+
+<!-- product description popup -->
+      <style>
+        .inner-modal .icon-details{
+           display:block;
+           margin-bottom:20px !important;
+         }
+         .signalarrow .icon-chevron-down{
+           display:inline-block;
+           width:14px !important;
+           position:relative;
+           
+         }
+         .signalarrow:hover{
+          cursor:pointer;
+         }
+         .signalarrow{
+           position: absolute;
+           top: 20px;
+           right: -26px;
+
+         }
+     </style>
+     <div class="product-description-popup">
+        <div class="proddesInner">
+          <button type="button" class="btn btn--circle btn--large screen-layer__close js-screen-close proddesclose">
+            <svg aria-hidden="true" focusable="false" role="presentation" class="icon icon-close" viewBox="0 0 64 64">
+               <path d="M19 17.61l27.12 27.13m0-27.12L19 44.74"></path>
+            </svg>
+            <span class="icon__fallback-text">Close (esc)</span>
+         </button>
+         <div class="prodshowcase">
+          <div class="flexer">
+            <div class="duo">
+              <img src="#" class="des-img"/>
+            </div>
+            <div class="duo">
+              <p class="des-title product-single__title"></p>
+              <span class=" normal_price">
+                <span class="product__price sale-price">
+                </span>
+              </span>
+              <p class="des-description">
+                <!-- <img src="https://cdn.shopify.com/s/files/1/0573/7250/8344/files/Spinner-1s-200px.gif?v=1678302795" class="loadingicon"> -->
+              </p>
+            </div>
+          </div>
+         </div>
+         <!--
+          <div class="flexer">
+            <div class="duo">
+              <img src="#" class="des-img"/>
+            </div>
+            <div class="duo">
+              <h1 class="des-title product-single__title"></h1>
+              <span class=" normal_price">
+                <span class="product__price sale-price">
+                </span>
+              </span>
+              <p class="des-description"></p>
+            </div>
+          </div>
+          -->
+          <button class="roddesclose btn btn--tertiary"><- Back to the selection</button>
+        </div>
+        
+     </div>
+     <style>
+      .desktoponly{
+        display:block;
+      }
+      .mobileonly{
+        display:none;
+      }
+      @media only screen and (max-width:480px){
+        .desktoponly{
+          display:none;
+        }
+        .mobileonly{
+          display:block;
+        }       
+      }
+      .viewdetails{
+        text-decoration: underline;
+      }
+      .product-description-popup .main-text{
+        display:none
+      }
+      .product-description-popup .product__price{
+        color: #050507 !important;
+      }
+
+      
+      .product-description-popup .product-single__title{
+        margin-bottom:6px;
+      }
+      .proddesclose{
+        position: absolute;
+        top: 12px;
+        padding: 0 !important;
+        right: 12px;
+        left: unset !important;
+        min-width: 0;
+      }
+      .viewdetails:hover{
+        cursor: pointer;
+      }
+      .product-description-popup .normal_price{
+        margin-bottom:10px;
+      }
+
+      .btn--circle.btn--large .icon{
+        width:24px;
+        height:24px;
+      }
+      
+      .product-description-popup{
+        z-index: 9999;
+        display:flex;
+        display:none;
+        background:rgba(0,0,0,0.5);
+        flex-wrap:wrap;
+        justify-content:center;
+        align-items:center;
+        left: 0;
+        width: 100%;
+        top: 0;
+        padding:5% 0;
+      }
+      .product-description-popup .flexer{
+        display:flex;
+        flex-wrap:wrap;
+        justify-content:space-between; 
+      }
+      .product-description-popup .flexer .duo{
+        flex:0 0 48%;
+      }
+      .proddesInner{
+        background:#fff;
+        width:80%;
+        padding:50px;
+        height:80vh;
+        overflow-y: scroll;
+        position: relative;
+      }
+      @media only screen and (max-width:480px){
+        .proddesInner{
+          background:#fff;
+          width:100%;
+          padding:50px 12px;
+          height:100vh;
+          overflow-y: auto;
+          position: relative;
+        }
+        .proddesInner .duo{
+          padding-left:12px;
+          padding-right:12px;
+          width:100%;
+        }
+        .product-description-popup .flexer .duo{
+          flex:0 0 100%;
+        }
+      }
+     </style>
+
+
+
+
+<!-- ugs -->
+{% if product.type == 'Compression Socks' %}
+  <div class="ugs_container_popup">
+    <div class="video-gallery">
+      <span class="closevideo">X</span>
+      <div class="video-container zero1" datavideoid="1">
+        <video class="video" src="https://cdn.shopify.com/videos/c/o/v/588a4bf270f34609a6a5cf9449f76b96.mp4" loop playsinline preload="metadata"></video>
+      </div>
+      <div class="video-container zero2" datavideoid="2">
+          <video class="video" src="https://cdn.shopify.com/videos/c/o/v/6d2ffd6bfccb45dba2325f93a4992dfc.mp4" loop playsinline preload="metadata"></video>
+      </div>
+      <div class="video-container zero3" datavideoid="3">
+        <video class="video" src="https://cdn.shopify.com/videos/c/o/v/9ea0f4b08fba42b0a3628acb3ccf9c65.mp4" loop playsinline preload="metadata"></video>
+          
+      </div>
+      <!--
+      <div class="video-container zero4" datavideoid="4">
+          <video class="video" src="https://cdn.shopify.com/videos/c/o/v/c5fb46949ef64a199884f1995b514bfc.mp4" autoplay muted loop playsinline preload="metadata"></video>
+      </div>
+      -->
+    </div>
+  </div>
+{% else %}
+    {% if product.type == 'Printed Pattern Scrub Tops' or product.type == 'Printed Pattern Scrub Pants' %}
+      <div class="ugs_container_popup">
+        <div class="video-gallery">
+          <span class="closevideo">X</span>
+          <div class="video-container zero1" datavideoid="1">
+              <video class="video" src="https://cdn.shopify.com/videos/c/o/v/426dd23a96054652afdecde5e3690f50.mp4" loop playsinline preload="metadata"></video>
+          </div>
+          <div class="video-container zero2" datavideoid="2">
+              <video class="video" src="https://cdn.shopify.com/videos/c/o/v/4a3547a353b54eadabbea15e00c1be6b.mp4" loop playsinline preload="metadata"></video>
+          </div>
+          <div class="video-container zero3" datavideoid="3">
+              <video class="video" src="https://cdn.shopify.com/videos/c/o/v/5475950c13c14c8b8b21e58d8e296cdf.mp4" loop playsinline preload="metadata"></video>
+          </div>
+          <!--
+          <div class="video-container zero4" datavideoid="4">
+              <video class="video" src="https://cdn.shopify.com/videos/c/o/v/c5fb46949ef64a199884f1995b514bfc.mp4" autoplay muted loop playsinline preload="metadata"></video>
+          </div>
+          -->
+        </div>
+      </div>
+    {% else %}
+      <div class="ugs_container_popup">
+        <div class="video-gallery">
+          <span class="closevideo">X</span>
+          <div class="video-container zero1" datavideoid="1">
+              <video class="video" src="https://cdn.shopify.com/videos/c/o/v/3c13f6af71424a2cb2ca2a3626de3392.mp4" loop playsinline preload="metadata"></video>
+          </div>
+          <div class="video-container zero2" datavideoid="2">
+              <video class="video" src="https://cdn.shopify.com/videos/c/o/v/b72c5c0cb4fb4eaea3fa8d7e3a781544.mp4" loop playsinline preload="metadata"></video>
+          </div>
+          <div class="video-container zero3" datavideoid="3">
+              <video class="video" src="https://cdn.shopify.com/videos/c/o/v/23ae219f351d4904b908311813f8f54d.mp4" loop playsinline preload="metadata"></video>
+          </div>
+          <!--
+          <div class="video-container zero4" datavideoid="4">
+              <video class="video" src="https://cdn.shopify.com/videos/c/o/v/c5fb46949ef64a199884f1995b514bfc.mp4" autoplay muted loop playsinline preload="metadata"></video>
+          </div>
+          -->
+        </div>
+      </div>
+  {% endif %}
+{% endif %}
+
+
+<!-- knocommerce  -->
+{% unless template.name contains 'page' %}
+<div id="surveyModal" class="kmodal" style="display:none !important;">
+  <div class="kmodal-content">
+    <div class="kmodal-header">
+      <button class="close-btn">×</button>
+    </div>
+    <iframe 
+      src="https://app.knocommerce.com/surveys/1687304d-9548-4f9c-bd40-c9f82c5bd0df" 
+      frameborder="0"
+      id="surveyIframe"
+    ></iframe>
+    <div class="footer">
+      Powered by <a href="https://knocommerce.com/" target="_blank">KnoCommerce</a>
+    </div>
+  </div>
+</div>
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const modalElement = document.getElementById('surveyModal');
+    const closeBtn = modalElement.querySelector('.close-btn');
+    const iframe = document.getElementById('surveyIframe');
+    let cooldownActive = false;
+    let cooldownTime = 30000; // 30 seconds cooldown between showings
+    
+    // Function to check if device is mobile
+    function isMobileDevice() {
+      return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+    }
+
+    // Function to handle exit intent
+    function handleExitIntent(e) {
+      // If cooldown is active, don't show the modal
+      if (cooldownActive) return;
+      
+      // Improved exit intent detection for cross-browser compatibility
+      const shouldShowModal = 
+        (e.clientY <= 20 && e.clientY >= 0) || // Moving towards top
+        (e.clientX <= 0) || // Moving towards left edge
+        (e.clientX >= window.innerWidth - 1); // Moving towards right edge
+        
+      if (shouldShowModal) {
+        // showModal();
+      }
+    }
+    
+    // Function to show modal
+    function showModal() {
+      modalElement.classList.add('open');
+      iframe.contentWindow.postMessage('modal-opened', '*');
+      
+      // Set cooldown
+      cooldownActive = true;
+      setTimeout(() => {
+        cooldownActive = false;
+      }, cooldownTime);
+    }
+    
+    // Function to close modal
+    function closeModal() {
+      modalElement.classList.remove('open');
+    }
+
+    // Only initialize modal if not on mobile
+    if (!isMobileDevice()) {
+      // Exit intent detection - works across major browsers
+      document.addEventListener('mouseleave', handleExitIntent);
+      
+      // Also detect rapid mouse movements toward the top
+      document.addEventListener('mousemove', (e) => {
+        // Detect rapid upward movement
+        if (typeof e.movementY === 'number' && e.movementY < -30 && e.clientY < 150) {
+          handleExitIntent(e);
+        }
+      });
+
+      // Close button handler
+      closeBtn.addEventListener('click', closeModal);
+
+      // Close on outside click
+      document.addEventListener('click', (e) => {
+        if (!modalElement.contains(e.target) && modalElement.classList.contains('open')) {
+          closeModal();
+        }
+      });
+
+      // Close on ESC key
+      document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && modalElement.classList.contains('open')) {
+          closeModal();
+        }
+      });
+
+      // Handle messages from iframe (for survey completion)
+      window.addEventListener('message', (event) => {
+        // Check if the message is from our survey iframe domain
+        if (event.origin.includes('knocommerce.com')) {
+          // Check if survey was completed
+          if (event.data === 'survey-completed') {
+            closeModal();
+            // Set a longer cooldown after completion
+            cooldownActive = true;
+            setTimeout(() => {
+              cooldownActive = false;
+            }, 24 * 60 * 60 * 1000); // 24 hours
+          }
+        }
+      });
+
+      // Adjust iframe height after content loads
+      iframe.addEventListener('load', () => {
+        try {
+          const iframeDoc = iframe.contentDocument || iframe.contentWindow.document;
+          const contentHeight = iframeDoc.body.scrollHeight;
+          iframe.style.height = `${contentHeight}px`;
+          iframe.scrolling = 'no';
+        } catch (e) {
+          console.log('Cannot access iframe content height due to CORS');
+          iframe.style.height = '600px';
+          iframe.scrolling = 'auto';
+        }
+      });
+    }
+  });
+</script>
+{% endunless %}
+
+<!-- freegift  -->
+
+{% if product.type == "Free Gift" or product.type == 'Gift Cards' %}
+<script>
+$(document).ready(function(){
+  $(".preorder-text").hide()
+  $(".add-to-cart span").html("ADD TO BAG")
+})
+</script>
+<style>
+.preorder-text{display:none !important;}
+</style>
+{% endif %}
+{% if product.type == 'Compression Socks' or product.type == 'Performance Compression Socks' %}
+  {% include 'sizeguidesocks' %}
+{% endif %}

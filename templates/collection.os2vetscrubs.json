@@ -1,5 +1,19 @@
 {
   "sections": {
+    "collection_hero_b_bGgxQH": {
+      "type": "collection-hero-b",
+      "name": "Collection Hero B",
+      "settings": {
+        "space_top": 0,
+        "space_bottom": 0,
+        "bg_clr": "#0b0e30",
+        "rating": 4.8,
+        "rating_text": "Loved by 100,000+ Nurses and Doctors",
+        "title": "{{ collection.title }}",
+        "description": "Scrubs made for fur, fluff, chaos and everything in between.",
+        "subtitle": "Made by real vets with patent-pending removable knee pads, breathable fabric and comfy stretch, these scrubs keep you supported through cuddles, wrigglers and every chaotic moment on the clinic floor."
+      }
+    },
     "collection-header": {
       "type": "dr-woof-hero-scrubs3",
       "disabled": true,
@@ -122,6 +136,7 @@
       "block_order": [
         "3b7770eb-48a5-4611-bb97-b431bf4800c4"
       ],
+      "disabled": true,
       "settings": {
         "filter_type": "groups",
         "tags_combine": false,
@@ -147,6 +162,7 @@
     }
   },
   "order": [
+    "collection_hero_b_bGgxQH",
     "collection-header",
     "replo_replo_text_below_banner_4QFrCK",
     "collection-filter",

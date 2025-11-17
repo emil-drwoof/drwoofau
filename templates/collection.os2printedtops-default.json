@@ -1,0 +1,204 @@
+{
+  "sections": {
+    "collection_hero_b_t6eNpa": {
+      "type": "collection-hero-b",
+      "blocks": {
+        "button_APNq6w": {
+          "type": "button",
+          "disabled": true,
+          "settings": {
+            "title": "Best Selling",
+            "collection": "\/collections\/printed-pattern-scrub-tops?sort_by=best-selling"
+          }
+        },
+        "button_n3PKDj": {
+          "type": "button",
+          "disabled": true,
+          "settings": {
+            "title": "New Releases",
+            "collection": "\/collections\/printed-pattern-scrub-tops?sort_by=created-descending"
+          }
+        },
+        "button_HzMnft": {
+          "type": "button",
+          "disabled": true,
+          "settings": {
+            "title": "Animals",
+            "collection": "\/collections\/printed-pattern-scrub-tops\/animal-patterns"
+          }
+        },
+        "button_qUEgkG": {
+          "type": "button",
+          "disabled": true,
+          "settings": {
+            "title": "Nature",
+            "collection": "\/printed-pattern-scrub-tops\/nature-patterns"
+          }
+        },
+        "button_DCULAg": {
+          "type": "button",
+          "disabled": true,
+          "settings": {
+            "title": "Medical",
+            "collection": "\/collections\/printed-pattern-scrub-tops\/medical-patterns"
+          }
+        },
+        "button_HQMCR3": {
+          "type": "button",
+          "disabled": true,
+          "settings": {
+            "title": "Whimsical",
+            "collection": "\/collections\/printed-pattern-scrub-tops\/whimsical-patterns"
+          }
+        },
+        "button_wxj7EE": {
+          "type": "button",
+          "disabled": true,
+          "settings": {
+            "title": "Causes",
+            "collection": "\/printed-pattern-scrub-tops\/causes-patterns"
+          }
+        }
+      },
+      "block_order": [
+        "button_APNq6w",
+        "button_n3PKDj",
+        "button_HzMnft",
+        "button_qUEgkG",
+        "button_DCULAg",
+        "button_HQMCR3",
+        "button_wxj7EE"
+      ],
+      "name": "Collection Hero B",
+      "settings": {
+        "space_top": 0,
+        "space_bottom": 0,
+        "bg_clr": "#0b0e30",
+        "rating": 4.8,
+        "rating_text": "Loved by 100,000+ Nurses and Doctors",
+        "title": "{{ collection.title }}",
+        "description": "Scrubs that spread cheer faster than the ward group chat.",
+        "subtitle": "Soft, breathable and covered in festive fun, these Christmas scrubs brighten the floor and keep the whole shift feeling merry."
+      }
+    },
+    "collection-header": {
+      "type": "dr-woof-hero-scrubs3",
+      "disabled": true,
+      "settings": {
+        "pad": "30px",
+        "enable_auto": true,
+        "desktop_positioning": 0,
+        "height": 90,
+        "mobile_height": 50,
+        "image_lib_pc": "shopify:\/\/shop_images\/COLLECTION_BANNER_TEMPLATE_PC_2400_x_900_px_ec692049-8cfc-47a0-8af3-b9c415f30aad.png",
+        "image_webp_pc": "",
+        "image_lib_mobile": "shopify:\/\/shop_images\/COLLECTION_BANNER_TEMPLATE_MOBILE_1600_x_900_px_7ae8d408-c8f7-414a-a369-1d24f40e8a19.jpg",
+        "image_webp_mobile": ""
+      }
+    },
+    "collection-filter": {
+      "type": "collection-thumbnail-filter",
+      "blocks": {
+        "image_Rnr9UN": {
+          "type": "Image",
+          "settings": {
+            "image_thumbnail": "shopify:\/\/shop_images\/Best_Seller.png",
+            "collection_title": "Best Seller",
+            "linkurl": "https:\/\/www.drwoofapparel.com.au\/collections\/printed-pattern-scrub-tops?sort_by=best-selling"
+          }
+        },
+        "image_zQA7d6": {
+          "type": "Image",
+          "settings": {
+            "image_thumbnail": "shopify:\/\/shop_images\/Best_Seller_a5788409-ccbb-4111-8b25-a42377b5ac74.png",
+            "collection_title": "New Releases",
+            "linkurl": "https:\/\/www.drwoofapparel.com.au\/collections\/printed-pattern-scrub-tops?sort_by=created-descending"
+          }
+        },
+        "image_gKp4kR": {
+          "type": "Image",
+          "settings": {
+            "image_thumbnail": "shopify:\/\/shop_images\/Animals.png",
+            "collection_title": "Animals",
+            "linkurl": "https:\/\/www.drwoofapparel.com.au\/collections\/printed-pattern-scrub-tops\/animal-patterns"
+          }
+        },
+        "image_iXWtbA": {
+          "type": "Image",
+          "settings": {
+            "image_thumbnail": "shopify:\/\/shop_images\/Nature.png",
+            "collection_title": "Nature",
+            "linkurl": "https:\/\/www.drwoofapparel.com.au\/collections\/printed-pattern-scrub-tops\/nature-patterns"
+          }
+        },
+        "image_cYfHjU": {
+          "type": "Image",
+          "settings": {
+            "image_thumbnail": "shopify:\/\/shop_images\/Medical.png",
+            "collection_title": "Medical",
+            "linkurl": "https:\/\/www.drwoofapparel.com.au\/collections\/printed-pattern-scrub-tops\/medical-patterns"
+          }
+        },
+        "image_Ykdgt3": {
+          "type": "Image",
+          "settings": {
+            "image_thumbnail": "shopify:\/\/shop_images\/Whimsical.png",
+            "collection_title": "Whimsical",
+            "linkurl": "https:\/\/www.drwoofapparel.com.au\/collections\/printed-pattern-scrub-tops\/whimsical-patterns"
+          }
+        },
+        "image_t9gCbP": {
+          "type": "Image",
+          "settings": {
+            "image_thumbnail": "shopify:\/\/shop_images\/Causes.png",
+            "collection_title": "Causes",
+            "linkurl": "https:\/\/www.drwoofapparel.com.au\/collections\/printed-pattern-scrub-tops\/causes-patterns"
+          }
+        }
+      },
+      "block_order": [
+        "image_Rnr9UN",
+        "image_zQA7d6",
+        "image_gKp4kR",
+        "image_iXWtbA",
+        "image_cYfHjU",
+        "image_Ykdgt3",
+        "image_t9gCbP"
+      ],
+      "disabled": true,
+      "settings": {
+        "title_enable": false
+      }
+    },
+    "collection-filters": {
+      "type": "collection-filters-def",
+      "disabled": true,
+      "settings": {
+        "filter_type": "groups",
+        "tags_combine": false,
+        "collection_title_enable": false,
+        "collection_filter_enable": true,
+        "collection_sort_enable": true
+      }
+    },
+    "main-collection": {
+      "type": "collection-template-pt",
+      "settings": {
+        "thumbnailcollection": true,
+        "super_text_1": "",
+        "super_link_1": "shopify:\/\/products\/anatomical-hearts-surgical-scrub-cap",
+        "per_row_desktop": 3,
+        "per_row_mobile": "2",
+        "description_bottom": true,
+        "pre-navy": false
+      }
+    }
+  },
+  "order": [
+    "collection_hero_b_t6eNpa",
+    "collection-header",
+    "collection-filter",
+    "collection-filters",
+    "main-collection"
+  ]
+}

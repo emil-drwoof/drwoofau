@@ -233,12 +233,44 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet">
  {% endif %}   
-
 <script>
 document.addEventListener("DOMContentLoaded", function () {
   
   let hasRedirected = false;
   let geoCheckResult = null;
+  
+  // Check for manual region URL parameter
+  function hasManualRegionParameter() {
+    const urlParams = new URLSearchParams(window.location.search);
+    return urlParams.get('manual_region') === 'true';
+  }
+  
+  // Check if we're in Shopify admin/theme editor
+  function isInShopifyAdmin() {
+    // Check if page is in an iframe (theme editor loads store in iframe)
+    if (window.self !== window.top) {
+      return true;
+    }
+    
+    // Check for Shopify admin URL parameters
+    const urlParams = new URLSearchParams(window.location.search);
+    const adminParams = ['preview_theme_id', 'pb', '_ab', '_fd', '_sc'];
+    if (adminParams.some(param => urlParams.has(param))) {
+      return true;
+    }
+    
+    // Check referrer for admin.shopify.com
+    if (document.referrer && document.referrer.includes('admin.shopify.com')) {
+      return true;
+    }
+    
+    // Check for Shopify admin-specific elements or scripts
+    if (window.Shopify && (window.Shopify.theme || window.Shopify.designMode)) {
+      return true;
+    }
+    
+    return false;
+  }
   
   // Fetch with timeout to prevent hanging
   function fetchWithTimeout(url, timeout = 3000) {
@@ -256,14 +288,14 @@ document.addEventListener("DOMContentLoaded", function () {
       // Try GeoJS first (no rate limits)
       const response = await fetchWithTimeout('https://get.geojs.io/v1/ip/country.json', 3000);
       const data = await response.json();
-      return data.country; // Returns "SG", "NZ", "HK", "AU", etc.
+      return data.country; // Returns "SG", "NZ", "HK", "AU", "US", "GB", "CA", etc.
     } catch (error) {
       console.log('GeoJS failed, trying fallback...');
       try {
         // Fallback to ip-api.com (45 requests/minute)
         const response = await fetchWithTimeout('http://ip-api.com/json/', 3000);
         const data = await response.json();
-        return data.countryCode; // Returns "SG", "NZ", "HK", "AU", etc.
+        return data.countryCode; // Returns "SG", "NZ", "HK", "AU", "US", "GB", "CA", etc.
       } catch (fallbackError) {
         console.error('Both geo services failed');
         return null;
@@ -293,10 +325,19 @@ document.addEventListener("DOMContentLoaded", function () {
 
   function getCurrentRegionFromURL() {
     const path = window.location.pathname;
+    const hostname = window.location.hostname;
+    
+    // Check for locale prefixes
     if (path.startsWith('/en-nz')) return 'NZ';
-    if (path.startsWith('/en-sg')) return 'SG';
+    if (path.startsWith('/en-sg')) return 'SG'; 
     if (path.startsWith('/en-hk')) return 'HK';
-    return 'AU';
+    if (path.startsWith('/en-gb')) return 'GB';
+    if (path.startsWith('/en-ca')) return 'CA';
+    if (path.startsWith('/en-eu')) return 'EU';
+    
+    // Check domain for AU vs US
+    if (hostname.includes('.com.au')) return 'AU';
+    return 'US'; // Default to US for .com
   }
 
   function getRegionalURL(countryCode) {
@@ -304,51 +345,102 @@ document.addEventListener("DOMContentLoaded", function () {
     const searchParams = window.location.search;
     const hash = window.location.hash;
     
-    let cleanPath = currentPath.replace(/^\/(en-nz|en-sg|en-hk)/, '');
+    // Remove any existing locale prefix
+    let cleanPath = currentPath.replace(/^\/(en-nz|en-sg|en-hk|en-gb|en-ca|en-eu)/, '');
     
     if (!cleanPath.startsWith('/')) {
       cleanPath = '/' + cleanPath;
     }
     
+    let baseUrl = '';
     let regionalPrefix = '';
+    
     switch(countryCode) {
       case 'NZ':
+        baseUrl = 'https://drwoofapparel.com';
         regionalPrefix = '/en-nz';
         break;
       case 'SG':
+        baseUrl = 'https://drwoofapparel.com';
         regionalPrefix = '/en-sg';
         break;
       case 'HK':
+        baseUrl = 'https://drwoofapparel.com';
         regionalPrefix = '/en-hk';
         break;
+      case 'GB':
+        baseUrl = 'https://drwoofapparel.com';
+        regionalPrefix = '/en-gb';
+        break;
+      case 'CA':
+        baseUrl = 'https://drwoofapparel.com';
+        regionalPrefix = '/en-ca';
+        break;
+      case 'EU':
+        baseUrl = 'https://drwoofapparel.com';
+        regionalPrefix = '/en-eu';
+        break;
+      case 'US':
+        baseUrl = 'https://drwoofapparel.com';
+        regionalPrefix = '';
+        break;
+      case 'AU':
       default:
+        baseUrl = 'https://drwoofapparel.com.au';
         regionalPrefix = '';
     }
     
-    return `https://drwoofapparel.com.au${regionalPrefix}${cleanPath}${searchParams}${hash}`;
+    return `${baseUrl}${regionalPrefix}${cleanPath}${searchParams}${hash}`;
   }
   
   function processGeoData(countryCode, isSecondCheck = false) {
     const cookieName = "regionPreference";
     const locationCookieName = "lastDetectedCountry";
+    const manualChoiceCookieName = "manualRegionChoice";
     const cookieDays = 30;
     
     if (!countryCode) {
       return; // Failed to get country code
     }
     
+    // Check if user made manual choice recently (cookie or URL parameter)
+    const hasManualChoice = getCookie(manualChoiceCookieName) === 'true' || hasManualRegionParameter();
+    if (hasManualChoice) {
+      console.log('Respecting user manual region choice, skipping geo redirect');
+      
+      // If manual choice came via URL parameter, set the cookie for future visits
+      if (hasManualRegionParameter()) {
+        setCookie(manualChoiceCookieName, 'true', 1);
+        // Clean up URL by removing the parameter
+        const url = new URL(window.location);
+        url.searchParams.delete('manual_region');
+        window.history.replaceState({}, document.title, url.toString());
+      }
+      
+      return; // Don't override user's manual choice
+    }
+    
     // Determine expected region based on country
-    let expectedRegion = 'AU';
-    if (countryCode === 'NZ') {
+    let expectedRegion = 'US'; // Default to US instead of AU
+    
+    if (countryCode === 'AU') {
+      expectedRegion = 'AU';
+    } else if (countryCode === 'NZ') {
       expectedRegion = 'NZ';
     } else if (countryCode === 'SG') {
       expectedRegion = 'SG';
     } else if (countryCode === 'HK') {
       expectedRegion = 'HK';
+    } else if (countryCode === 'GB' || countryCode === 'UK') {
+      expectedRegion = 'GB';
+    } else if (countryCode === 'CA') {
+      expectedRegion = 'CA';
+    } else if (['DE', 'FR', 'ES', 'IT', 'NL', 'BE', 'AT', 'PT', 'IE', 'FI', 'SE', 'DK', 'NO'].includes(countryCode)) {
+      expectedRegion = 'EU';
     }
     
-    // Only process NZ, SG, HK users
-    if (expectedRegion === 'AU') {
+    // Only process non-US users (US is default, no redirect needed unless they have a saved preference)
+    if (expectedRegion === 'US' && !getCookie(cookieName)) {
       return;
     }
     
@@ -371,7 +463,7 @@ document.addEventListener("DOMContentLoaded", function () {
     }
     
     // Scenario 2: First visit
-    if (!savedPreference) {
+    if (!savedPreference && expectedRegion !== 'US') {
       setCookie(cookieName, expectedRegion, cookieDays);
       if (currentRegion !== expectedRegion) {
         hasRedirected = true;
@@ -381,7 +473,7 @@ document.addEventListener("DOMContentLoaded", function () {
     }
     
     // Scenario 3: Has saved preference but on wrong store
-    if (savedPreference !== 'AU' && savedPreference !== currentRegion) {
+    if (savedPreference && savedPreference !== currentRegion) {
       hasRedirected = true;
       window.location.href = getRegionalURL(savedPreference);
     }
@@ -390,6 +482,12 @@ document.addEventListener("DOMContentLoaded", function () {
   async function runGeoCheck(isSecondCheck = false) {
     // Early exit if already redirected
     if (hasRedirected) {
+      return;
+    }
+    
+    // Skip redirect if in Shopify admin/theme editor
+    if (isInShopifyAdmin()) {
+      console.log('Shopify admin detected, skipping geo redirect');
       return;
     }
     
@@ -448,9 +546,10 @@ document.addEventListener("DOMContentLoaded", function () {
   }
   
 });
+</script>
 
+  {% render 'tracking_script_updated' %}
 
-  </script>
 </head>
 
 
@@ -1166,7 +1265,7 @@ document.addEventListener("DOMContentLoaded", function () {
         {%- endif -%}
         
         <!-- Hotjar Tracking Code for https://www.drwoofapparel.com.au -->
-        <script>
+        {% comment %} <script>
           (function(h, o, t, j, a, r) {
             h.hj = h.hj || function() {
               (h.hj.q = h.hj.q || []).push(arguments)
@@ -1181,7 +1280,7 @@ document.addEventListener("DOMContentLoaded", function () {
             r.src = t + h._hjSettings.hjid + j + h._hjSettings.hjsv;
             a.appendChild(r);
           })(window, document, 'https://static.hotjar.com/c/hotjar-', '.js?sv=');
-        </script>
+        </script> {% endcomment %}
         
         <!-- Critical for loader -->
         {% include 'load-css' %}
@@ -5025,15 +5124,7 @@ src="https://www.facebook.com/tr?id=645105989386037&noscript=1"
 <script>
   AOS.init();
 </script>
-{% if product.type == 'Surgical Scrub Cap' %}
-  <style>
-    @media only screen and (min-width:481px){
-      .scrubs-products{
-        height:auto !important;
-      }
-    }
-  </style>
-{% endif %}
+
 
 {% if product.type == 'Compression Socks' %}
   <style>

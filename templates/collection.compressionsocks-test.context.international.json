@@ -1,0 +1,16 @@
+{
+  "parent": "collection.compressionsocks-test.json",
+  "context": {
+    "market": "international"
+  },
+  "sections": {
+    "main-collection": {
+      "settings": {
+        "super_image_1": "shopify:\/\/shop_images\/US_2025_SUPERPRODUCT_1_1.gif",
+        "super_link_1": "shopify:\/\/products\/bamboo-black-compression-socks",
+        "super_image_1_mobile": "shopify:\/\/shop_images\/2025_SUPERPRODUCT_1_32a5e90e-e965-49cf-ac4f-7df6224a50ed.gif"
+      },
+      "blocks": {}
+    }
+  }
+}

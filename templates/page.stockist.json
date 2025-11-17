@@ -12,12 +12,19 @@
       "type": "featured-content",
       "name": "Rich text",
       "settings": {
-        "title": "Healthcare’s Favorite Compression Socks — Now at Your Store",
+        "title": "Healthcare’s Favorite Compression Socks, Now at Your Store",
         "text": "<p> Stock premium bamboo compression socks designed for all-day comfort and bold style.<br\/><br\/><\/p>",
         "align_text": "center",
         "narrow_column": false,
         "enlarge_text": false,
         "alt": false
+      }
+    },
+    "custom_html_6YAdby": {
+      "type": "custom-html",
+      "name": "Custom HTML",
+      "settings": {
+        "custom_html": "<p style=\"text-align: center;\"><a href=\"#contact\" class=\"btn btn--tertiary btn--small js-no-transition\">EMAIL US TO BECOME A STOCKIST<\/a><\/p>"
       }
     },
     "17591072634e00f0ba": {
@@ -51,6 +58,7 @@
       "block_order": [
         "ai_gen_block_3b8ca6e_fQCmtk"
       ],
+      "disabled": true,
       "settings": {}
     },
     "duallayout_CG47nF": {
@@ -59,24 +67,26 @@
       "settings": {
         "image_left": false,
         "background_color": "#ffffff",
-        "imagebig": "shopify:\/\/shop_images\/LANDING_PAGE_PDP_4.png",
+        "imagebig": "shopify:\/\/shop_images\/97f9895b-dd2f-40bd-bc53-a8d6a8159f80.png",
         "contenttitle": "Why Stock Dr. Woof Compression Socks",
         "contenttext1": "<b>1. Born in Healthcare: <\/b>Our socks first became a must-have for nurses, doctors, and frontline workers who needed comfort through 12-hour shifts.\n\n<br><br>\n<b>2. Viral Beyond the Hospital: <\/b>Today, they’re worn by athletes, travelers, festival-goers, and everyday Australians looking for style + support.\n<br><br>\n\n<b>3. Premium Build:<\/b> 15–20 mmHg graduated compression, bamboo yarn softness, and bold designs that are designed locally in Melbourne."
       }
     },
     "duallayout_fz77Tn": {
       "type": "duallayout",
+      "disabled": true,
       "name": "Dual Section",
       "settings": {
         "image_left": true,
         "background_color": "#ffffff",
-        "imagebig": "shopify:\/\/shop_images\/LANDING_PAGE_PDP_4.png",
+        "imagebig": "shopify:\/\/shop_images\/ac77446e-91fc-48a5-8808-1b30349e196e.avif",
         "contenttitle": "Best-Selling Styles",
-        "contenttext1": "<i>Our socks don’t sit on shelves — they walk out the door.<\/i>\n<br>\n<br>\n<b>1. Bold Prints:<\/b> Fun, medical-inspired designs healthcare workers love.\n<br>\n<br>\n<b>2. Classic Staples:<\/b> Core colors and timeless looks.\n<br>\n<br>\n<b>3. All Sizes:<\/b> Standard, wide-calf, and men’s fits to cover every customer."
+        "contenttext1": "<i>Our socks don’t sit on shelves, they walk out the door.<\/i>\n<br>\n<br>\n<b>1. Bold Prints:<\/b> Fun, medical-inspired designs healthcare workers love.\n<br>\n<br>\n<b>2. Classic Staples:<\/b> Core colors and timeless looks.\n<br>\n<br>\n<b>3. All Sizes:<\/b> Standard, wide-calf, and men’s fits to cover every customer."
       }
     },
     "duallayout_ghQckD": {
       "type": "duallayout",
+      "disabled": true,
       "name": "Dual Section",
       "settings": {
         "image_left": false,
@@ -92,14 +102,16 @@
         "image_wcT9Ep": {
           "type": "image",
           "settings": {
+            "image": "shopify:\/\/shop_images\/Your_paragraph_text_4.png",
             "link": "",
             "width": "50%",
-            "alignment": "top-middle"
+            "alignment": "center"
           }
         },
         "image_BqemPa": {
           "type": "image",
           "settings": {
+            "image": "shopify:\/\/shop_images\/Your_paragraph_text_1.png",
             "link": "",
             "width": "50%",
             "alignment": "top-middle"
@@ -110,11 +122,60 @@
         "image_wcT9Ep",
         "image_BqemPa"
       ],
+      "disabled": true,
       "name": "Custom content",
       "settings": {
         "full_width": false,
         "space_around": true,
         "alt": false
+      }
+    },
+    "text_columns_ikrX6X": {
+      "type": "text-columns",
+      "blocks": {
+        "text_block_YrUzqn": {
+          "type": "text_block",
+          "settings": {
+            "enable_image": true,
+            "desktop_image": "shopify:\/\/shop_images\/Your_paragraph_text_4.png",
+            "mobile_image": "shopify:\/\/shop_images\/Your_paragraph_text_4.png",
+            "image_width": 650,
+            "title": "",
+            "text": "",
+            "button_label": "",
+            "button_link": ""
+          }
+        },
+        "text_block_kwVCMQ": {
+          "type": "text_block",
+          "settings": {
+            "enable_image": true,
+            "desktop_image": "shopify:\/\/shop_images\/Your_paragraph_text_5.png",
+            "mobile_image": "shopify:\/\/shop_images\/Your_paragraph_text_5.png",
+            "image_width": 650,
+            "title": "",
+            "text": "",
+            "button_label": "",
+            "button_link": ""
+          }
+        }
+      },
+      "block_order": [
+        "text_block_YrUzqn",
+        "text_block_kwVCMQ"
+      ],
+      "name": "Text columns with images",
+      "settings": {
+        "title": "",
+        "align_text": "center",
+        "alt": false
+      }
+    },
+    "custom_html_EcGaR8": {
+      "type": "custom-html",
+      "name": "Custom HTML",
+      "settings": {
+        "custom_html": "<div id=\"contact\">\n    <!-- Your content here -->\n<\/div>"
       }
     },
     "featured_content_79cpma": {
@@ -142,11 +203,14 @@
   "order": [
     "annoucement_34Kk7C",
     "featured_content_EKnF4A",
+    "custom_html_6YAdby",
     "17591072634e00f0ba",
     "duallayout_CG47nF",
     "duallayout_fz77Tn",
     "duallayout_ghQckD",
     "advanced_content_6Wbn6B",
+    "text_columns_ikrX6X",
+    "custom_html_EcGaR8",
     "featured_content_79cpma",
     "contact_form_NpWq86"
   ]

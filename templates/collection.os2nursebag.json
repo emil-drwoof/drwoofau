@@ -13,11 +13,18 @@
         "image_webp_mobile": ""
       }
     },
-    "replo_replo_text_below_banner_4QFrCK": {
-      "type": "replo-replo-text-below-banner",
+    "collection_hero_b_HDQbtc": {
+      "type": "collection-hero-b",
+      "name": "Collection Hero B",
       "settings": {
-        "replo_text_e352686d-11b3-4326-ad82-8260998ffdde": "<p>Grab & Go Bottomless Belt Bag<\/p>",
-        "replo_text_ffb59253-7bb2-43f4-99c4-ed60813402d8": "<p> <\/p>"
+        "space_top": 0,
+        "space_bottom": 0,
+        "bg_clr": "#0b0e30",
+        "rating": 4.8,
+        "rating_text": "Loved by 100,000+ Nurses and Doctors",
+        "title": "{{ collection.title }}",
+        "description": "The belt bag that keeps your shift together. Literally.",
+        "subtitle": "Lightweight, comfy and packed with pockets, it keeps your essentials close, your hands free and your workflow smoother from start to finish."
       }
     },
     "collection-filter": {
@@ -139,7 +146,7 @@
   },
   "order": [
     "collection-header",
-    "replo_replo_text_below_banner_4QFrCK",
+    "collection_hero_b_HDQbtc",
     "collection-filter",
     "collection-filters",
     "main-collection"

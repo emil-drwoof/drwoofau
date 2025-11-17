@@ -1,0 +1,50 @@
+{% schema %}
+{
+  "name": "Redirect Manager",
+  "settings": [],
+  "blocks": [
+    {
+      "type": "redirect_rule",
+      "name": "Redirect Rule",
+      "settings": [
+        {
+          "type": "url",
+          "id": "source_url",
+          "label": "Source URL"
+        },
+        {
+          "type": "url",
+          "id": "target_url",
+          "label": "Target URL (Redirect Destination)"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Redirect Manager"
+    }
+  ]
+}
+{% endschema %}
+
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+  const redirects = [
+    {% for block in section.blocks %}
+      {
+        from: "{{ block.settings.source_url | strip | escape }}",
+        to: "{{ block.settings.target_url | strip | escape }}"
+      }{% unless forloop.last %},{% endunless %}
+    {% endfor %}
+  ];
+
+  const currentUrl = window.location.href;
+
+  redirects.forEach(rule => {
+    if (rule.from && rule.to && currentUrl.includes(rule.from)) {
+      window.location.href = rule.to;
+    }
+  });
+});
+</script>

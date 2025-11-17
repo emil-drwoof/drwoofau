@@ -1,0 +1,209 @@
+<script>
+// Market detection using multiple indicators
+function getMarket() {
+  // Check Shopify currency if available
+  if (typeof Shopify !== 'undefined' && Shopify.currency) {
+    switch(Shopify.currency.active) {
+      case 'AUD':
+      case 'NZD':
+        return 'AU';
+      case 'USD':
+        return 'US';
+      case 'CAD':
+        return 'CA';
+      case 'GBP':
+        return 'UK';
+      case 'EUR':
+        return 'EU';
+      // Add more currencies as needed
+    }
+  }
+  
+  // Check URL for market indicators
+  if (window.location.hostname.includes('.com.au') || 
+      window.location.pathname.includes('/en-au') || 
+      window.location.search.includes('market=au') ||
+      window.location.search.includes('currency=AUD')) {
+    return 'AU';
+  }
+  
+  if (window.location.pathname.includes('/en-ca') || 
+      window.location.search.includes('market=ca') ||
+      window.location.search.includes('currency=CAD')) {
+    return 'CA';
+  }
+  
+  if (window.location.pathname.includes('/en-uk') || 
+      window.location.search.includes('market=uk') ||
+      window.location.search.includes('currency=GBP')) {
+    return 'UK';
+  }
+  
+  // Check localStorage for currency preference
+  const storedCurrency = localStorage.getItem('currency') || localStorage.getItem('shopify_currency');
+  if (storedCurrency === 'AUD' || storedCurrency === 'NZD') return 'AU';
+  if (storedCurrency === 'CAD') return 'CA';
+  if (storedCurrency === 'GBP') return 'UK';
+  if (storedCurrency === 'EUR') return 'EU';
+  
+  return 'US'; // Default to US
+}
+
+// Market configuration object
+const marketConfig = {
+  AU: {
+    gtag: 'G-WHPZ44KM77',
+    gads: 'AW-741070369',
+    fbPixel: '645105989386037'
+  },
+  US: {
+    gtm: 'GTM-MFKTRPC',
+    gtagUA: 'UA-123415009-2',
+    gtagGA4: 'G-VCRL5HQ46J',
+    gads: 'AW-10963264844',
+    fbPixel: '645105989386037'
+  },
+  CA: {
+    // Add Canadian tracking IDs here
+    gtag: 'G-XXXXXXXXXX',
+    fbPixel: 'XXXXXXXXXXX'
+  },
+  UK: {
+    // Add UK tracking IDs here
+    gtag: 'G-XXXXXXXXXX',
+    fbPixel: 'XXXXXXXXXXX'
+  }
+};
+
+const market = getMarket();
+const config = marketConfig[market];
+
+if (!config) {
+  console.warn('No tracking configuration found for market:', market);
+} else {
+  
+  if (market === 'AU') {
+    // AU Google Analytics & Ads
+    (function() {
+      var script = document.createElement('script');
+      script.async = true;
+      script.src = 'https://www.googletagmanager.com/gtag/js?id=' + config.gtag;
+      document.head.appendChild(script);
+      
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', config.gtag);
+      gtag('config', config.gads);
+    })();
+
+  } else if (market === 'US') {
+    // US Google Tag Manager
+    (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer',config.gtm);
+
+    // US Google Analytics (Universal)
+    (function() {
+      var script = document.createElement('script');
+      script.async = true;
+      script.src = 'https://www.googletagmanager.com/gtag/js?id=' + config.gtagUA;
+      document.head.appendChild(script);
+      
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', config.gtagUA);
+    })();
+
+    // US Google Analytics 4
+    (function() {
+      var script = document.createElement('script');
+      script.async = true;
+      script.src = 'https://www.googletagmanager.com/gtag/js?id=' + config.gtagGA4;
+      document.head.appendChild(script);
+      
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', config.gtagGA4);
+    })();
+
+    // US Google Ads
+    (function() {
+      var script = document.createElement('script');
+      script.async = true;
+      script.src = 'https://www.googletagmanager.com/gtag/js?id=' + config.gads;
+      document.head.appendChild(script);
+    })();
+
+  } else {
+    // Other markets (CA, UK, etc.) - Simple gtag setup
+    if (config.gtag) {
+      (function() {
+        var script = document.createElement('script');
+        script.async = true;
+        script.src = 'https://www.googletagmanager.com/gtag/js?id=' + config.gtag;
+        document.head.appendChild(script);
+        
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', config.gtag);
+        if (config.gads) gtag('config', config.gads);
+      })();
+    }
+  }
+
+  // Facebook Pixel for all markets
+  if (config.fbPixel) {
+    !function(f,b,e,v,n,t,s)
+    {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+    n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+    if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+    n.queue=[];t=b.createElement(e);t.async=!0;
+    t.src=v;s=b.getElementsByTagName(e)[0];
+    s.parentNode.insertBefore(t,s)}(window, document,'script',
+    'https://connect.facebook.net/en_US/fbevents.js');
+    fbq('init', config.fbPixel);
+    fbq('track', 'PageView');
+  }
+}
+</script>
+
+<!-- Facebook Pixel noscript for all markets -->
+<noscript>
+<script>
+// Simplified market detection for noscript
+function getNoscriptMarket() {
+  if (window.location.hostname.includes('.com.au') || 
+      window.location.pathname.includes('/en-au') || 
+      window.location.search.includes('market=au')) {
+    return 'AU';
+  }
+  if (window.location.pathname.includes('/en-ca') || 
+      window.location.search.includes('market=ca')) {
+    return 'CA';
+  }
+  if (window.location.pathname.includes('/en-uk') || 
+      window.location.search.includes('market=uk')) {
+    return 'UK';
+  }
+  return 'US';
+}
+
+var market = getNoscriptMarket();
+var pixelIds = {
+  'AU': '645105989386037',
+  'US': '491985055899657',
+  'CA': 'XXXXXXXXXXX', // Add your Canadian pixel ID
+  'UK': 'XXXXXXXXXXX'  // Add your UK pixel ID
+};
+
+if (pixelIds[market]) {
+  document.write('<img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=' + pixelIds[market] + '&ev=PageView&noscript=1"/>');
+}
+</script>
+</noscript>

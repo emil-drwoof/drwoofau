@@ -487,9 +487,12 @@
     </div>
 
 {% comment %} Currency conversion rates {% endcomment %}
+
+{% assign threshold_aud_rate = 1 %}
 {% assign threshold_sgd_rate = 0.858876 %}
 {% assign threshold_nzd_rate = 1.09421 %}
 {% assign threshold_hkd_rate = 5.1949824 %}
+{% assign shipping_aud_rate = 1 %}
 {% assign shipping_sgd_rate = 0.840336 %}
 {% assign shipping_nzd_rate = 1.672269 %}
 {% assign shipping_hkd_rate = 8.394958 %}
@@ -505,19 +508,67 @@
 {% endif %}
 
 {% comment %} Convert based on currency {% endcomment %}
-{% if cart.currency.iso_code == 'SGD' %}
-  {% assign free_shipping_treshold = settings.shipping_treshold | times: threshold_sgd_rate | round %}
-  {% assign shipping_fee = base_shipping_cents | times: shipping_sgd_rate | round %}
-{% elsif cart.currency.iso_code == 'NZD' %}
-  {% assign free_shipping_treshold = settings.shipping_treshold | times: threshold_nzd_rate | round %}
-  {% assign shipping_fee = base_shipping_cents | times: shipping_nzd_rate | round %}
-{% elsif cart.currency.iso_code == 'HKD' %}
-  {% assign free_shipping_treshold = settings.shipping_treshold | times: threshold_hkd_rate | round %}
-  {% assign shipping_fee = base_shipping_cents | times: shipping_hkd_rate | round %}
-{% else %}
-  {% assign free_shipping_treshold = settings.shipping_treshold %}
-  {% assign shipping_fee = base_shipping_cents | round %}
-{% endif %}
+{% case cart.currency.iso_code %}
+  {% when 'SGD' %}
+    {% assign threshold_setting = settings.shipping_treshold %}
+    {% assign free_shipping_treshold = threshold_setting | times: threshold_sgd_rate | round %}
+    {% assign shipping_fee = base_shipping_cents | times: shipping_sgd_rate | round %}
+
+  {% when 'NZD' %}
+    {% assign threshold_setting = settings.shipping_treshold %}
+    {% assign free_shipping_treshold = threshold_setting | times: threshold_nzd_rate | round %}
+    {% assign shipping_fee = base_shipping_cents | times: shipping_nzd_rate | round %}
+
+  {% when 'HKD' %}
+    {% assign threshold_setting = settings.shipping_treshold %}
+    {% assign free_shipping_treshold = threshold_setting | times: threshold_hkd_rate | round %}
+    {% assign shipping_fee = base_shipping_cents | times: shipping_hkd_rate | round %}
+
+  {% when 'AUD' %}
+    {% assign threshold_setting = settings.shipping_treshold %}
+    {% assign free_shipping_treshold = threshold_setting | times: threshold_aud_rate | round %}
+    {% assign shipping_fee = base_shipping_cents | times: shipping_aud_rate | round %}
+    
+    {%- liquid
+      assign ig_test_groups = cart.attributes.igTestGroups  
+      # Override shipping threshold based on test group
+      if ig_test_groups != blank
+        # Test Group: $125 threshold
+        if ig_test_groups contains '5ea693784504'
+          assign free_shipping_treshold = 125
+        endif
+        # Test Group: $165 threshold
+        if ig_test_groups contains '2b8332f4be81'
+          assign free_shipping_treshold = 165
+        endif
+      endif
+    -%}
+  {% when 'USD' %}
+    {% assign threshold_setting = settings.us_shipping_treshold %}
+    {% assign free_shipping_treshold = threshold_setting | round %}
+    {% assign shipping_fee = base_shipping_cents | times: shipping_usd_rate | round %}
+
+  {% when 'GBP' %}
+    {% assign threshold_setting = settings.gb_shipping_treshold %}
+    {% assign free_shipping_treshold = threshold_setting | round %}
+    {% assign shipping_fee = base_shipping_cents | times: shipping_gbp_rate | round %}
+
+  {% when 'CAD' %}
+    {% assign threshold_setting = settings.ca_shipping_treshold %}
+    {% assign free_shipping_treshold = threshold_setting | round %}
+    {% assign shipping_fee = base_shipping_cents | times: shipping_cad_rate | round %}
+
+  {% when 'EUR' %}
+    {% assign threshold_setting = settings.eu_shipping_treshold %}
+    {% assign free_shipping_treshold = threshold_setting | round %}
+    {% assign shipping_fee = base_shipping_cents | times: shipping_eur_rate | round %}
+
+  {% else %}
+    {% assign threshold_setting = settings.shipping_treshold %}
+    {% assign free_shipping_treshold = threshold_setting | round %}
+
+    {% assign shipping_fee = base_shipping_cents | round %}
+{% endcase %}
 
       <div class="cart__details" style="border-bottom: 1px solid #ebebeb;margin-bottom: 17px;padding-bottom: 16px;">
         <div class="" style="font-weight:900;">

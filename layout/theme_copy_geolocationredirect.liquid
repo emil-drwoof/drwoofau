@@ -149,7 +149,7 @@ pintrk('page');
   {%- endif -%}
 
     <!-- Hotjar Tracking Code for www.drwoofapparel.com -->
-<script defer>
+{% comment %} <script defer>
     (function(h,o,t,j,a,r){
         h.hj=h.hj||function(){(h.hj.q=h.hj.q||[]).push(arguments)};
         h._hjSettings={hjid:1908831,hjsv:6};
@@ -158,7 +158,7 @@ pintrk('page');
         r.src=t+h._hjSettings.hjid+j+h._hjSettings.hjsv;
         a.appendChild(r);
     })(window,document,'https://static.hotjar.com/c/hotjar-','.js?sv=');
-</script>
+</script> {% endcomment %}
 <!-- Critical for loader -->
   {% include 'load-css' %}
 	{{ shop.metafields.loox["global_html_head"] }}

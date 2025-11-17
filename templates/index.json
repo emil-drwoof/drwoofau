@@ -13,6 +13,78 @@
         "replo_text_9482aefc-d769-4fc6-ad8f-1e3f3bbbf03d": "<p>99-day money back guarantee<\/p>"
       }
     },
+    "ig_slider_QetiBi": {
+      "type": "ig-slider",
+      "blocks": {
+        "collection_Ah4kgk": {
+          "type": "collection",
+          "settings": {
+            "collection": "compression-socks",
+            "custom_title": ""
+          }
+        },
+        "collection_KgkCjd": {
+          "type": "collection",
+          "settings": {
+            "collection": "women",
+            "custom_title": ""
+          }
+        },
+        "collection_RBTqCg": {
+          "type": "collection",
+          "settings": {
+            "collection": "printed-pattern-scrub-tops",
+            "custom_title": "Printed Scrubs"
+          }
+        },
+        "collection_8fR8dg": {
+          "type": "collection",
+          "settings": {
+            "collection": "men",
+            "custom_title": ""
+          }
+        },
+        "collection_GE66kj": {
+          "type": "collection",
+          "settings": {
+            "collection": "scrub-caps",
+            "custom_title": ""
+          }
+        },
+        "collection_g9zNGX": {
+          "type": "collection",
+          "settings": {
+            "collection": "layers",
+            "custom_title": "Outerwear"
+          }
+        },
+        "collection_HWdGDd": {
+          "type": "collection",
+          "settings": {
+            "collection": "accessories-and-gifts-under-20",
+            "custom_title": ""
+          }
+        }
+      },
+      "block_order": [
+        "collection_Ah4kgk",
+        "collection_KgkCjd",
+        "collection_RBTqCg",
+        "collection_8fR8dg",
+        "collection_GE66kj",
+        "collection_g9zNGX",
+        "collection_HWdGDd"
+      ],
+      "custom_css": [
+        ".main-content img {border-radius: 100px !important;}"
+      ],
+      "name": "Category Slider",
+      "settings": {
+        "full_width": true,
+        "remove_vertical_spacing": false,
+        "remove_horizontal_spacing": false
+      }
+    },
     "headerv5_yCPF3w": {
       "type": "headerv5",
       "name": "Medical Scrubs Hero",
@@ -1220,10 +1292,44 @@
         "per_row": "five",
         "alt": false
       }
+    },
+    "redirect_manager_tBG9p8": {
+      "type": "redirect-manager",
+      "blocks": {
+        "redirect_rule_qzHH9P": {
+          "type": "redirect_rule",
+          "settings": {
+            "source_url": "https:\/\/www.drwoofapparel.com.au\/en-sg\/collections\/compression-socks",
+            "target_url": "https:\/\/www.drwoofapparel.com\/en-sg\/collections\/compression-socks"
+          }
+        },
+        "redirect_rule_NFqHdm": {
+          "type": "redirect_rule",
+          "settings": {
+            "source_url": "https:\/\/www.drwoofapparel.com.au\/en-hk",
+            "target_url": "https:\/\/www.drwoofapparel.com\/en-hk"
+          }
+        }
+      },
+      "block_order": [
+        "redirect_rule_qzHH9P",
+        "redirect_rule_NFqHdm"
+      ],
+      "name": "Redirect Manager",
+      "settings": {}
+    },
+    "custom_html_bfzYyA": {
+      "type": "custom-html",
+      "disabled": true,
+      "name": "Custom HTML",
+      "settings": {
+        "custom_html": "<script>\ndocument.addEventListener(\"DOMContentLoaded\", function () {\n  \n  let hasRedirected = false;\n  let geoCheckResult = null;\n  \n  \/\/ Check for manual region URL parameter\n  function hasManualRegionParameter() {\n    const urlParams = new URLSearchParams(window.location.search);\n    return urlParams.get('manual_region') === 'true';\n  }\n  \n  \/\/ Fetch with timeout to prevent hanging\n  function fetchWithTimeout(url, timeout = 3000) {\n    return Promise.race([\n      fetch(url),\n      new Promise((_, reject) => \n        setTimeout(() => reject(new Error('Geo API timeout')), timeout)\n      )\n    ]);\n  }\n  \n  \/\/ Get country code with fallback\n  async function getCountryCode() {\n    try {\n      \/\/ Try GeoJS first (no rate limits)\n      const response = await fetchWithTimeout('https:\/\/get.geojs.io\/v1\/ip\/country.json', 3000);\n      const data = await response.json();\n      return data.country; \/\/ Returns \"SG\", \"NZ\", \"HK\", \"AU\", \"US\", \"GB\", \"CA\", etc.\n    } catch (error) {\n      console.log('GeoJS failed, trying fallback...');\n      try {\n        \/\/ Fallback to ip-api.com (45 requests\/minute)\n        const response = await fetchWithTimeout('http:\/\/ip-api.com\/json\/', 3000);\n        const data = await response.json();\n        return data.countryCode; \/\/ Returns \"SG\", \"NZ\", \"HK\", \"AU\", \"US\", \"GB\", \"CA\", etc.\n      } catch (fallbackError) {\n        console.error('Both geo services failed');\n        return null;\n      }\n    }\n  }\n  \n  function setCookie(name, value, days) {\n    const date = new Date();\n    date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));\n    const expires = \"expires=\" + date.toUTCString();\n    document.cookie = name + \"=\" + value + \";\" + expires + \";path=\/\";\n  }\n  \n  function getCookie(name) {\n    const cname = name + \"=\";\n    const decodedCookie = decodeURIComponent(document.cookie);\n    const ca = decodedCookie.split(';');\n    for(let i = 0; i < ca.length; i++) {\n      let c = ca[i].trim();\n      if (c.indexOf(cname) === 0) {\n        return c.substring(cname.length, c.length);\n      }\n    }\n    return \"\";\n  }\n\n  function getCurrentRegionFromURL() {\n    const path = window.location.pathname;\n    const hostname = window.location.hostname;\n    \n    \/\/ Check for locale prefixes\n    if (path.startsWith('\/en-nz')) return 'NZ';\n    if (path.startsWith('\/en-sg')) return 'SG'; \n    if (path.startsWith('\/en-hk')) return 'HK';\n    if (path.startsWith('\/en-gb')) return 'GB';\n    if (path.startsWith('\/en-ca')) return 'CA';\n    if (path.startsWith('\/en-eu')) return 'EU';\n    \n    \/\/ Check domain for AU vs US\n    if (hostname.includes('.com.au')) return 'AU';\n    return 'US'; \/\/ Default to US for .com\n  }\n\n  function getRegionalURL(countryCode) {\n    const currentPath = window.location.pathname;\n    const searchParams = window.location.search;\n    const hash = window.location.hash;\n    \n    \/\/ Remove any existing locale prefix\n    let cleanPath = currentPath.replace(\/^\\\/(en-nz|en-sg|en-hk|en-gb|en-ca|en-eu)\/, '');\n    \n    if (!cleanPath.startsWith('\/')) {\n      cleanPath = '\/' + cleanPath;\n    }\n    \n    let baseUrl = '';\n    let regionalPrefix = '';\n    \n    switch(countryCode) {\n      case 'NZ':\n        baseUrl = 'https:\/\/drwoofapparel.com';\n        regionalPrefix = '\/en-nz';\n        break;\n      case 'SG':\n        baseUrl = 'https:\/\/drwoofapparel.com';\n        regionalPrefix = '\/en-sg';\n        break;\n      case 'HK':\n        baseUrl = 'https:\/\/drwoofapparel.com';\n        regionalPrefix = '\/en-hk';\n        break;\n      case 'GB':\n        baseUrl = 'https:\/\/drwoofapparel.com';\n        regionalPrefix = '\/en-gb';\n        break;\n      case 'CA':\n        baseUrl = 'https:\/\/drwoofapparel.com';\n        regionalPrefix = '\/en-ca';\n        break;\n      case 'EU':\n        baseUrl = 'https:\/\/drwoofapparel.com';\n        regionalPrefix = '\/en-eu';\n        break;\n      case 'US':\n        baseUrl = 'https:\/\/drwoofapparel.com';\n        regionalPrefix = '';\n        break;\n      case 'AU':\n      default:\n        baseUrl = 'https:\/\/drwoofapparel.com.au';\n        regionalPrefix = '';\n    }\n    \n    return `${baseUrl}${regionalPrefix}${cleanPath}${searchParams}${hash}`;\n  }\n  \n  function processGeoData(countryCode, isSecondCheck = false) {\n    const cookieName = \"regionPreference\";\n    const locationCookieName = \"lastDetectedCountry\";\n    const manualChoiceCookieName = \"manualRegionChoice\";\n    const cookieDays = 30;\n    \n    if (!countryCode) {\n      return; \/\/ Failed to get country code\n    }\n    \n    \/\/ Check if user made manual choice recently (cookie or URL parameter)\n    const hasManualChoice = getCookie(manualChoiceCookieName) === 'true' || hasManualRegionParameter();\n    if (hasManualChoice) {\n      console.log('Respecting user manual region choice, skipping geo redirect');\n      \n      \/\/ If manual choice came via URL parameter, set the cookie for future visits\n      if (hasManualRegionParameter()) {\n        setCookie(manualChoiceCookieName, 'true', 1);\n        \/\/ Clean up URL by removing the parameter\n        const url = new URL(window.location);\n        url.searchParams.delete('manual_region');\n        window.history.replaceState({}, document.title, url.toString());\n      }\n      \n      return; \/\/ Don't override user's manual choice\n    }\n    \n    \/\/ Determine expected region based on country\n    let expectedRegion = 'US'; \/\/ Default to US instead of AU\n    \n    if (countryCode === 'AU') {\n      expectedRegion = 'AU';\n    } else if (countryCode === 'NZ') {\n      expectedRegion = 'NZ';\n    } else if (countryCode === 'SG') {\n      expectedRegion = 'SG';\n    } else if (countryCode === 'HK') {\n      expectedRegion = 'HK';\n    } else if (countryCode === 'GB' || countryCode === 'UK') {\n      expectedRegion = 'GB';\n    } else if (countryCode === 'CA') {\n      expectedRegion = 'CA';\n    } else if (['DE', 'FR', 'ES', 'IT', 'NL', 'BE', 'AT', 'PT', 'IE', 'FI', 'SE', 'DK', 'NO'].includes(countryCode)) {\n      expectedRegion = 'EU';\n    }\n    \n    \/\/ Only process non-US users (US is default, no redirect needed unless they have a saved preference)\n    if (expectedRegion === 'US' && !getCookie(cookieName)) {\n      return;\n    }\n    \n    const savedPreference = getCookie(cookieName);\n    const lastDetectedCountry = getCookie(locationCookieName);\n    const currentRegion = getCurrentRegionFromURL();\n    const locationChanged = lastDetectedCountry && lastDetectedCountry !== countryCode;\n    \n    \/\/ Update location cookie\n    setCookie(locationCookieName, countryCode, cookieDays);\n    \n    \/\/ Scenario 1: Location changed\n    if (locationChanged) {\n      setCookie(cookieName, expectedRegion, cookieDays);\n      if (currentRegion !== expectedRegion) {\n        hasRedirected = true;\n        window.location.href = getRegionalURL(expectedRegion);\n      }\n      return;\n    }\n    \n    \/\/ Scenario 2: First visit\n    if (!savedPreference && expectedRegion !== 'US') {\n      setCookie(cookieName, expectedRegion, cookieDays);\n      if (currentRegion !== expectedRegion) {\n        hasRedirected = true;\n        window.location.href = getRegionalURL(expectedRegion);\n      }\n      return;\n    }\n    \n    \/\/ Scenario 3: Has saved preference but on wrong store\n    if (savedPreference && savedPreference !== currentRegion) {\n      hasRedirected = true;\n      window.location.href = getRegionalURL(savedPreference);\n    }\n  }\n  \n  async function runGeoCheck(isSecondCheck = false) {\n    \/\/ Early exit if already redirected\n    if (hasRedirected) {\n      return;\n    }\n    \n    \/\/ Skip redirect on \/pages\/ URLs\n    if (window.location.pathname.startsWith('\/pages\/')) {\n      return;\n    }\n    \n    try {\n      \/\/ Use cached result on second check if available\n      if (isSecondCheck && geoCheckResult) {\n        processGeoData(geoCheckResult, true);\n        return;\n      }\n      \n      \/\/ Get country code from geo services\n      const countryCode = await getCountryCode();\n      \n      \/\/ Cache result for second check\n      if (!isSecondCheck) {\n        geoCheckResult = countryCode;\n      }\n      \n      processGeoData(countryCode, isSecondCheck);\n      \n    } catch (error) {\n      \/\/ Silent fail - don't break the page if geo-detection fails\n      console.error('Geo-detection error:', error);\n    }\n  }\n  \n  \/\/ First check - run immediately\n  runGeoCheck(false);\n  \n  \/\/ Second check - run after 2 seconds\n  setTimeout(function() {\n    runGeoCheck(true);\n  }, 2000);\n  \n  \/\/ Manual currency change handler\n  const currencySelector = document.getElementById(\"CurrencySelector\");\n  if (currencySelector) {\n    currencySelector.addEventListener(\"change\", function () {\n      const newCurrency = this.value;\n      fetch(`\/currency`, {\n        method: 'POST',\n        headers: {\n          'Content-Type': 'application\/json',\n          'X-Requested-With': 'XMLHttpRequest',\n        },\n        body: JSON.stringify({ currency: newCurrency })\n      }).then(() => {\n        location.reload();\n      });\n    });\n  }\n  \n});\n<\/script>"
+      }
     }
   },
   "order": [
     "replo_replo_hero_banner_FJyVaW",
+    "ig_slider_QetiBi",
     "headerv5_yCPF3w",
     "1c64d667-b672-4f7b-b9be-2310692e99f1",
     "logolistaani_YJptaJ",
@@ -1240,6 +1346,8 @@
     "1650947126b57380d2",
     "16324507174c90bdf2",
     "ce9a6cf9-6111-4efb-b6e0-d16d8fd842df",
-    "162682029070dd2a76"
+    "162682029070dd2a76",
+    "redirect_manager_tBG9p8",
+    "custom_html_bfzYyA"
   ]
 }

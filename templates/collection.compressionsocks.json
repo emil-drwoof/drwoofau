@@ -7,42 +7,49 @@
           "type": "button",
           "settings": {
             "title": "Best Sellers",
-            "collection": "https:\/\/www.drwoofapparel.com.au\/collections\/compression-socks?sort_by=best-selling"
+            "collection": "\/collections\/compression-socks?sort_by=best-selling"
           }
         },
         "button_VCrpDQ": {
           "type": "button",
           "settings": {
             "title": "New Releases",
-            "collection": "https:\/\/www.drwoofapparel.com.au\/collections\/compression-socks?sort_by=created-descending"
+            "collection": "\/collections\/compression-socks?sort_by=created-descending"
           }
         },
         "button_4VPi8a": {
           "type": "button",
           "settings": {
-            "title": "Animals",
-            "collection": "https:\/\/www.drwoofapparel.com.au\/collections\/compression-socks\/animal-patterns"
+            "title": "Animals & Nature",
+            "collection": "\/collections\/compression-socks\/animals-and-nature"
+          }
+        },
+        "button_x9XNW7": {
+          "type": "button",
+          "settings": {
+            "title": "Nudes & Neutrals",
+            "collection": "\/collections\/compression-socks\/nudes-and-neutrals"
           }
         },
         "button_Wg4dVz": {
           "type": "button",
           "settings": {
-            "title": "Nature",
-            "collection": "https:\/\/www.drwoofapparel.com.au\/collections\/compression-socks\/nature-patterns"
+            "title": "All-Rounders",
+            "collection": "\/collections\/compression-socks\/all-rounders"
           }
         },
         "button_U8YKVk": {
           "type": "button",
           "settings": {
             "title": "Whimsical",
-            "collection": "https:\/\/www.drwoofapparel.com.au\/collections\/compression-socks\/whimsical-patterns"
+            "collection": "\/collections\/compression-socks\/whimsical"
           }
         },
         "button_Bpc64n": {
           "type": "button",
           "settings": {
             "title": "Causes",
-            "collection": "https:\/\/www.drwoofapparel.com.au\/collections\/compression-socks\/causes-patterns"
+            "collection": "\/collections\/compression-socks\/causes"
           }
         }
       },
@@ -50,6 +57,7 @@
         "button_kmWyM7",
         "button_VCrpDQ",
         "button_4VPi8a",
+        "button_x9XNW7",
         "button_Wg4dVz",
         "button_U8YKVk",
         "button_Bpc64n"
@@ -81,14 +89,6 @@
         "image_webp_pc": "",
         "image_lib_mobile": "shopify:\/\/shop_images\/COLLECTION_BANNER_TEMPLATE_MOBILE_1600_x_900_px_13.jpg",
         "image_webp_mobile": ""
-      }
-    },
-    "replo_replo_text_below_banner_DKcJej": {
-      "type": "replo-replo-text-below-banner",
-      "disabled": true,
-      "settings": {
-        "replo_text_e352686d-11b3-4326-ad82-8260998ffdde": "<p>Bamboo Compression Socks<\/p>",
-        "replo_text_ffb59253-7bb2-43f4-99c4-ed60813402d8": "<p>Discover the viral secret Aussie nurses rely on to bounce back after tough shifts: our Bamboo Compression Socks. Made with breathable bamboo, they reduce fatigue, boost recovery, and offer all-day comfort—whether you’re pregnant, flying long-haul, or on your feet for hours.<\/p>"
       }
     },
     "collection-filter": {
@@ -179,8 +179,9 @@
     "main-collection": {
       "type": "collection-template-socks",
       "settings": {
+        "super_image_1": "shopify:\/\/shop_images\/2025_SUPERPRODUCT_2.png",
         "super_text_1": "",
-        "super_link_1": "",
+        "super_link_1": "\/products\/compression-socks-6pack-black",
         "super_text_2": "",
         "super_link_2": "",
         "thumbnailcollection": false,
@@ -195,7 +196,6 @@
   "order": [
     "collection_hero_b_JPQ9fm",
     "collection-header",
-    "replo_replo_text_below_banner_DKcJej",
     "collection-filter",
     "collection-filters",
     "main-collection"

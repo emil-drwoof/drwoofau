@@ -304,90 +304,202 @@ counter = 0;
 
 {% comment %} End Please dont delete it{% endcomment %} 
 <!-- 06 -->
-<select name="id" id="ProductSelect-{{ section_id }}" class="product-single__variants no-js" data-product-select>
-  {% paginate product.variants by 1000 %}
-  {% for variant in product.variants %}
-  {% if variant.available %}
-  <option data-id="{{variant.id}}" data-inqua="{{ variant.inventory_quantity}}" varname="{{variant.title}}" data-avail="{% if variant.available %}available{%else %}unavailable{% endif %}" {% if variant == product.selected_or_first_available_variant %}
-          selected="selected" {% endif %}
-          class="x{{ forloop.index }}"
-          value="{{ variant.id }}">
-    {{ variant.title }} 
-  </option>
-  {% else %}
-  <option data-id="{{variant.id}}" class="x{{ forloop.index }}" data-inqua="{{ variant.inventory_quantity}}" varname="{{variant.title}}" data-avail="{% if variant.available %}available{%else %}unavailable{% endif %}" disabled="disabled">
-    {{ variant.title }}
-  </option>
-  {% endif %}
-  {% endfor %}
-{% endpaginate %}
-  {% unless sf_product_combined.empty? %}
-  {% for product_combined in sf_product_combined.variants %}
-  {% if product_combined.available %}
-  <option data-inqua="{{ product_combined.inventory_quantity}}" varname="{{product_combined.title}}" data-avail="{% if product_combined.available %}available{%else %}unavailable{% endif %}" {% if product_combined == product.selected_or_first_available_variant %}
-          selected="selected" {% endif %}
-          value="{{ product_combined.id }}">
-    {{ product_combined.title }} 
-  </option>
-  {% else %}
-  <option data-inqua="{{ product_combined.inventory_quantity}}" varname="{{product_combined.title}}" data-avail="{% if product_combined.available %}available{%else %}unavailable{% endif %}" disabled="disabled">
-    {{ product_combined.title }}
-  </option>
-  {% endif %}
-  {% endfor %}
-  {% endunless %}
-
-
-
-  {% unless sf_product_third.empty? %}
-  {% for product_combined in sf_product_third.variants %}
-  {% if product_combined.available %}
-  <option data-inqua="{{ product_combined.inventory_quantity}}" varname="{{product_combined.title}}" data-avail="{% if product_combined.available %}available{%else %}unavailable{% endif %}" {% if product_combined == product.selected_or_first_available_variant %}
-          selected="selected" {% endif %}
-          value="{{ product_combined.id }}">
-    {{ product_combined.title }} 
-  </option>
-  {% else %}
-  <option data-inqua="{{ product_combined.inventory_quantity}}" varname="{{product_combined.title}}" data-avail="{% if product_combined.available %}available{%else %}unavailable{% endif %}" disabled="disabled">
-    {{ product_combined.title }}
-  </option>
-  {% endif %}
-  {% endfor %}
-  {% endunless %}
-
-  {% unless sf_product_fourth.empty? %}
-    {% for product_combined in sf_product_fourth.variants %}
-    {% if product_combined.available %}
-    <option data-inqua="{{ product_combined.inventory_quantity}}" varname="{{product_combined.title}}" data-avail="{% if product_combined.available %}available{%else %}unavailable{% endif %}" {% if product_combined == product.selected_or_first_available_variant %}
-            selected="selected" {% endif %}
-            value="{{ product_combined.id }}">
-      {{ product_combined.title }} 
-    </option>
-    {% else %}
-    <option data-inqua="{{ product_combined.inventory_quantity}}" varname="{{product_combined.title}}" data-avail="{% if product_combined.available %}available{%else %}unavailable{% endif %}" disabled="disabled">
-      {{ product_combined.title }}
-    </option>
-    {% endif %}
-    {% endfor %}
-    {% endunless %}
-  
-    {% unless sf_product_fifth.empty? %}
-      {% for product_combined in sf_product_fifth.variants %}
-      {% if product_combined.available %}
-      <option data-inqua="{{ product_combined.inventory_quantity}}" varname="{{product_combined.title}}" data-avail="{% if product_combined.available %}available{%else %}unavailable{% endif %}" {% if product_combined == product.selected_or_first_available_variant %}
-              selected="selected" {% endif %}
-              value="{{ product_combined.id }}">
-        {{ product_combined.title }} 
-      </option>
-      {% else %}
-      <option data-inqua="{{ product_combined.inventory_quantity}}" varname="{{product_combined.title}}" data-avail="{% if product_combined.available %}available{%else %}unavailable{% endif %}" disabled="disabled">
-        {{ product_combined.title }}
-      </option>
-      {% endif %}
-      {% endfor %}
-      {% endunless %}
-
+{% if product.id == 6701376078008 %}
+<select name="id" id="ProductSelect-{{ section_id }}" class="product-single__variants no-js" data-product-select data-product-id="{{ product.id }}">
+  <!-- Options will be populated by Storefront GraphQL -->
 </select>
+
+<script>
+const STOREFRONT_PRODUCT_QUERY = `
+  query getProduct($handle: String!, $cursor: String) {
+    product(handle: $handle) {
+      id
+      title
+      variants(first: 250, after: $cursor) {
+        pageInfo {
+          hasNextPage
+          endCursor
+        }
+        edges {
+          node {
+            id
+            title
+            availableForSale
+            quantityAvailable
+            price {
+              amount
+              currencyCode
+            }
+          }
+        }
+      }
+    }
+  }
+`;
+
+// Reusable helper to request one page of variants
+async function fetchVariantsPage(handle, cursor = null) {
+  const res = await fetch('/api/2025-10/graphql.json', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+      'X-Shopify-Storefront-Access-Token': '0df5902a5a5f318acb7ec1b7a51d5cb5'
+    },
+    body: JSON.stringify({
+      query: STOREFRONT_PRODUCT_QUERY,
+      variables: { handle, cursor }
+    })
+  });
+  const json = await res.json();
+  if (json.errors) throw new Error(JSON.stringify(json.errors, null, 2));
+
+  const product = json.data.product;
+  if (!product) return { variants: [], hasNextPage: false, endCursor: null };
+
+  return {
+    variants: product.variants.edges.map(e => e.node),
+    hasNextPage: product.variants.pageInfo.hasNextPage,
+    endCursor: product.variants.pageInfo.endCursor
+  };
+}
+
+async function buildVariantOptionsStorefrontAPI() {
+  const selectEl = document.querySelector('#ProductSelect-{{ section_id }}');
+  const handle = '{{ product.handle }}';
+  window.jsonoption = {};
+  selectEl.innerHTML = '';
+
+  try {
+    let cursor = null;
+    let hasNext = true;
+    let page = 0;
+
+    while (hasNext) {
+      page++;
+      const { variants, hasNextPage, endCursor } = await fetchVariantsPage(handle, cursor);
+      cursor = endCursor;
+      hasNext = hasNextPage;
+
+      // Incrementally add options as they arrive (no long pause)
+      const fragment = document.createDocumentFragment();
+      variants.forEach((variant, i) => {
+        const option = document.createElement('option');
+        const numericId = variant.id.split('/').pop();
+        option.value = numericId;
+        option.dataset.id = numericId;
+        option.dataset.inqua = variant.quantityAvailable || 0;
+        option.dataset.avail = variant.availableForSale ? 'available' : 'unavailable';
+        option.setAttribute('varname', variant.title);
+        option.className = `x${page * 250 + i + 1}`;
+        option.textContent = variant.title;
+        if (variant.availableForSale && !selectEl.querySelector('option[selected]')) option.selected = true;
+        if (!variant.availableForSale) option.disabled = true;
+        fragment.appendChild(option);
+        window.jsonoption[variant.title] = variant.availableForSale ? 'available' : 'unavailable';
+      });
+      selectEl.appendChild(fragment);
+
+      // Let the browser breathe (avoids UI freeze)
+      await new Promise(r => setTimeout(r, 30));
+    }
+
+    console.log(`✅ Loaded ${selectEl.options.length} variants via Storefront GraphQL`);
+  } catch (err) {
+    console.error('❌ Storefront API Error:', err);
+  }
+}
+
+document.addEventListener('DOMContentLoaded', buildVariantOptionsStorefrontAPI);
+</script>
+
+
+  {% else %}
+          <select name="id" id="ProductSelect-{{ section_id }}" class="product-single__variants no-js" data-product-select>
+            {% paginate product.variants by 1000 %}
+            {% for variant in product.variants %}
+            {% if variant.available %}
+            <option data-id="{{variant.id}}" data-inqua="{{ variant.inventory_quantity}}" varname="{{variant.title}}" data-avail="{% if variant.available %}available{%else %}unavailable{% endif %}" {% if variant == product.selected_or_first_available_variant %}
+                    selected="selected" {% endif %}
+                    class="x{{ forloop.index }}"
+                    value="{{ variant.id }}">
+              {{ variant.title }} 
+            </option>
+            {% else %}
+            <option data-id="{{variant.id}}" class="x{{ forloop.index }}" data-inqua="{{ variant.inventory_quantity}}" varname="{{variant.title}}" data-avail="{% if variant.available %}available{%else %}unavailable{% endif %}" disabled="disabled">
+              {{ variant.title }}
+            </option>
+            {% endif %}
+            {% endfor %}
+          {% endpaginate %}
+            {% unless sf_product_combined.empty? %}
+            {% for product_combined in sf_product_combined.variants %}
+            {% if product_combined.available %}
+            <option data-inqua="{{ product_combined.inventory_quantity}}" varname="{{product_combined.title}}" data-avail="{% if product_combined.available %}available{%else %}unavailable{% endif %}" {% if product_combined == product.selected_or_first_available_variant %}
+                    selected="selected" {% endif %}
+                    value="{{ product_combined.id }}">
+              {{ product_combined.title }} 
+            </option>
+            {% else %}
+            <option data-inqua="{{ product_combined.inventory_quantity}}" varname="{{product_combined.title}}" data-avail="{% if product_combined.available %}available{%else %}unavailable{% endif %}" disabled="disabled">
+              {{ product_combined.title }}
+            </option>
+            {% endif %}
+            {% endfor %}
+            {% endunless %}
+
+
+
+            {% unless sf_product_third.empty? %}
+            {% for product_combined in sf_product_third.variants %}
+            {% if product_combined.available %}
+            <option data-inqua="{{ product_combined.inventory_quantity}}" varname="{{product_combined.title}}" data-avail="{% if product_combined.available %}available{%else %}unavailable{% endif %}" {% if product_combined == product.selected_or_first_available_variant %}
+                    selected="selected" {% endif %}
+                    value="{{ product_combined.id }}">
+              {{ product_combined.title }} 
+            </option>
+            {% else %}
+            <option data-inqua="{{ product_combined.inventory_quantity}}" varname="{{product_combined.title}}" data-avail="{% if product_combined.available %}available{%else %}unavailable{% endif %}" disabled="disabled">
+              {{ product_combined.title }}
+            </option>
+            {% endif %}
+            {% endfor %}
+            {% endunless %}
+
+            {% unless sf_product_fourth.empty? %}
+              {% for product_combined in sf_product_fourth.variants %}
+              {% if product_combined.available %}
+              <option data-inqua="{{ product_combined.inventory_quantity}}" varname="{{product_combined.title}}" data-avail="{% if product_combined.available %}available{%else %}unavailable{% endif %}" {% if product_combined == product.selected_or_first_available_variant %}
+                      selected="selected" {% endif %}
+                      value="{{ product_combined.id }}">
+                {{ product_combined.title }} 
+              </option>
+              {% else %}
+              <option data-inqua="{{ product_combined.inventory_quantity}}" varname="{{product_combined.title}}" data-avail="{% if product_combined.available %}available{%else %}unavailable{% endif %}" disabled="disabled">
+                {{ product_combined.title }}
+              </option>
+              {% endif %}
+              {% endfor %}
+              {% endunless %}
+            
+              {% unless sf_product_fifth.empty? %}
+                {% for product_combined in sf_product_fifth.variants %}
+                {% if product_combined.available %}
+                <option data-inqua="{{ product_combined.inventory_quantity}}" varname="{{product_combined.title}}" data-avail="{% if product_combined.available %}available{%else %}unavailable{% endif %}" {% if product_combined == product.selected_or_first_available_variant %}
+                        selected="selected" {% endif %}
+                        value="{{ product_combined.id }}">
+                  {{ product_combined.title }} 
+                </option>
+                {% else %}
+                <option data-inqua="{{ product_combined.inventory_quantity}}" varname="{{product_combined.title}}" data-avail="{% if product_combined.available %}available{%else %}unavailable{% endif %}" disabled="disabled">
+                  {{ product_combined.title }}
+                </option>
+                {% endif %}
+                {% endfor %}
+                {% endunless %}
+
+          </select>
+{% endif %}
+
   
   <select class="custom-product-single__variants no-js hidden" data-product-select>
 {% paginate product.variants by 1000 %}

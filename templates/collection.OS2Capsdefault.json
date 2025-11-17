@@ -16,6 +16,7 @@
     },
     "collection-header": {
       "type": "dr-woof-hero-scrubs3",
+      "disabled": true,
       "settings": {
         "pad": "30px",
         "enable_auto": true,
@@ -28,11 +29,78 @@
         "image_webp_mobile": ""
       }
     },
-    "replo_replo_text_below_banner_3x7rxf": {
-      "type": "replo-replo-text-below-banner",
+    "collection_hero_b_CXhzpP": {
+      "type": "collection-hero-b",
+      "blocks": {
+        "button_RKANc9": {
+          "type": "button",
+          "settings": {
+            "title": "Best Selling",
+            "collection": "\/collections\/scrub-caps?sort_by=best-selling"
+          }
+        },
+        "button_DjxgT6": {
+          "type": "button",
+          "settings": {
+            "title": "New Releases",
+            "collection": "\/collections\/scrub-caps?sort_by=created-descending"
+          }
+        },
+        "button_Cfaqqx": {
+          "type": "button",
+          "settings": {
+            "title": "Animals",
+            "collection": "\/collections\/scrub-caps\/animal-patterns"
+          }
+        },
+        "button_CPhGKB": {
+          "type": "button",
+          "settings": {
+            "title": "Nature",
+            "collection": "\/collections\/scrub-caps\/nature-patterns"
+          }
+        },
+        "button_LiTKwa": {
+          "type": "button",
+          "settings": {
+            "title": "Whimsical",
+            "collection": "\/collections\/scrub-caps\/whimsical-patterns"
+          }
+        },
+        "button_iXaD3J": {
+          "type": "button",
+          "settings": {
+            "title": "Causes",
+            "collection": "\/collections\/scrub-caps\/causes-patterns"
+          }
+        },
+        "button_e9DJhE": {
+          "type": "button",
+          "settings": {
+            "title": "Solids",
+            "collection": "\/collections\/scrub-caps\/solid-patterns"
+          }
+        }
+      },
+      "block_order": [
+        "button_RKANc9",
+        "button_DjxgT6",
+        "button_Cfaqqx",
+        "button_CPhGKB",
+        "button_LiTKwa",
+        "button_iXaD3J",
+        "button_e9DJhE"
+      ],
+      "name": "Collection Hero B",
       "settings": {
-        "replo_text_e352686d-11b3-4326-ad82-8260998ffdde": "<p>Scrub Caps<\/p>",
-        "replo_text_ffb59253-7bb2-43f4-99c4-ed60813402d8": "<p>Tired of sore ears from mask straps? Our Scrub Caps come with built-in button loops for painless, all-day wear. With fresh prints by Australian designers (no more outdated patterns) and crafted from 100% cotton, these caps keep you comfortable while accommodating every hair type.<\/p>"
+        "space_top": 0,
+        "space_bottom": 0,
+        "bg_clr": "#0b0e30",
+        "rating": 4.8,
+        "rating_text": "Loved by 100,000+ Nurses and Doctors",
+        "title": "{{ collection.title }}",
+        "description": "Scrub caps that stay put, stay comfy and look ridiculously adorable.",
+        "subtitle": "Soft fabric, secure ties and cheerful prints that keep your hair sorted and your shift vibes high from the first round to the last."
       }
     },
     "collection-filter": {
@@ -104,6 +172,7 @@
         "image_UTbeFK",
         "image_TJaLVB"
       ],
+      "disabled": true,
       "settings": {
         "title_enable": false
       }
@@ -137,7 +206,7 @@
   "order": [
     "collection-headervar",
     "collection-header",
-    "replo_replo_text_below_banner_3x7rxf",
+    "collection_hero_b_CXhzpP",
     "collection-filter",
     "collection-filters",
     "main-collection"

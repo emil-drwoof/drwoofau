@@ -1,7 +1,22 @@
 {
   "sections": {
+    "collection_hero_b_TQFcmq": {
+      "type": "collection-hero-b",
+      "name": "Collection Hero B",
+      "settings": {
+        "space_top": 0,
+        "space_bottom": 0,
+        "bg_clr": "#0B0E30",
+        "rating": 4.8,
+        "rating_text": "Loved by 100,000+ Nurses and Doctors",
+        "title": "{{ collection.title }}",
+        "description": "",
+        "subtitle": "Discover our performance-driven collection of scrunchies, designed for ultimate comfort, durability, and mobility."
+      }
+    },
     "collection-header": {
       "type": "dr-woof-hero-scrubs3",
+      "disabled": true,
       "settings": {
         "pad": "30px",
         "enable_auto": true,
@@ -34,6 +49,7 @@
       "block_order": [
         "color_group_KyE7pW"
       ],
+      "disabled": true,
       "settings": {
         "filter_type": "groups",
         "tags_combine": false,
@@ -45,13 +61,21 @@
     "main-collection": {
       "type": "collection-template-scrubs",
       "settings": {
+        "super_text_1": "",
+        "super_link_1": "",
+        "super_text_2": "",
+        "super_link_2": "",
+        "super_text_3": "",
+        "super_link_3": "",
         "per_row_desktop": 3,
         "per_row_mobile": "2",
-        "description_bottom": true
+        "description_bottom": true,
+        "pre-navy": false
       }
     }
   },
   "order": [
+    "collection_hero_b_TQFcmq",
     "collection-header",
     "collection-filter",
     "collection-filters",

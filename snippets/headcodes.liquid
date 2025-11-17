@@ -1,0 +1,68 @@
+      <script> $(document).ready(function() { $('.cart__footer .grid').append('<div class="grid__item medium-up--one-half text-center medium-up--text-left medium-up--push-one-half new-adding"></div>'); $(".new-adding").append($(".site-footer__section .payment-icons").clone()); $('.cart__footer .grid .new-adding').insertBefore('.cart__footer .grid .medium-up--text-right'); });
+      </script>
+        
+        
+
+      {% comment %}
+        {% render 'sca-aff-refer-customer' %}
+        
+      {% endcomment %}
+
+      
+
+      <style>{% if template.name contains 'index' of template.name contains 'collection' %}
+        .grid-product__colors {
+          display: none !important;
+        }
+        {% endif %}
+      </style>
+      <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+{% comment %}
+
+        <!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-5HNBFCH');</script>
+<!-- End Google Tag Manager -->
+
+        <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-WHPZ44KM77"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-WHPZ44KM77');
+</script>
+
+{% endcomment %}
+
+{% unless product.handle == 'scrub-cap-mega-pack' or product.handle == 'wardrobe-deal' %}
+  <!-- heatmap.com snippet -->
+  <script>
+    (function() {      
+      var _heatmap_paq = window._heatmap_paq = window._heatmap_paq || [];
+      var heatUrl = window.heatUrl = 'https://dashboard.heatmap.com/';
+      function hLoadInitialScript(url) {
+        var script = document.createElement('script'); script.type = 'text/javascript'; 
+        script.src = url; script.async = false; script.defer = true; document.head.appendChild(script);
+      }
+      hLoadInitialScript(heatUrl+'preprocessor.min.js?sid=531');
+      window.addEventListener('DOMContentLoaded', function (){	 
+          if(typeof _heatmap_paq != 'object' || _heatmap_paq.length == 0) {     
+            _heatmap_paq.push(['setTrackerUrl', heatUrl+'sttracker.php']);
+            hLoadInitialScript(heatUrl+'heatmap-light.min.js?sid=531');
+          } 
+      });
+    })();
+  </script>
+  <!-- End heatmap.com snippet Code -->
+{% endunless %}
+
+{% if section.settings.newpdptop %}
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet">
+ {% endif %}

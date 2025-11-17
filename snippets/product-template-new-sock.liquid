@@ -930,6 +930,7 @@ font-size: 18px;
     line-height:18px;
   }
   @media only screen and (max-width:393px){
+
     .stars {
       font-size:15px !important;
     }
@@ -1354,7 +1355,19 @@ if (typeof Currency !== 'undefined' && Currency.currentCurrency) {
 }
 
 // Set currency symbol based on detected currency
-switch(window.displayCurrency) {
+switch (window.displayCurrency) {
+  case 'AUD':
+    window.currencySymbol = '$';
+    break;
+  case 'CAD':
+    window.currencySymbol = 'CA$';
+    break;
+  case 'EUR':
+    window.currencySymbol = '€';
+    break;
+  case 'GBP':
+    window.currencySymbol = '£';
+    break;
   case 'HKD':
     window.currencySymbol = 'HK$';
     break;
@@ -1364,10 +1377,12 @@ switch(window.displayCurrency) {
   case 'SGD':
     window.currencySymbol = 'SG$';
     break;
+  case 'USD':
+    window.currencySymbol = '$';
+    break;
   default:
     window.currencySymbol = '$';
 }
-
 // Debug log
 console.log('=== CURRENCY DETECTION ===');
 console.log('Shop base currency:', window.shopCurrency);
@@ -1376,12 +1391,16 @@ console.log('Currency symbol:', window.currencySymbol);
 console.log('=== END ===');
 
     // Shipping thresholds by currency
-  window.shippingThresholds = {
-    'AUD': 145,
-    'HKD': 753,
-    'NZD': 156,
-    'SGD': 126
-  };
+window.shippingThresholds = {
+  'AUD': {{ settings.shipping_treshold }},
+  'HKD': 753,
+  'NZD': 156,
+  'SGD': 126,
+  'CAD': {{ settings.ca_shipping_treshold }},
+  'GBP': {{ settings.gb_shipping_treshold }},
+  'EUR': {{ settings.eu_shipping_treshold }},
+  'USD': {{ settings.us_shipping_treshold }}
+};
 
 
   window.productVariants = {
@@ -1642,18 +1661,20 @@ console.log('=== END ===');
   </button>
     <p id="preorder-text">{{ section.settings.preorder_text }}</p>
     <div class="shipping-info">
-   <div class="shipping-badge">
+   <div class="shipping-badge">    
         <span>
             <svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <circle cx="6" cy="6" r="3" fill="#1E781C"></circle>
                 <circle cx="6" cy="6" r="4.5" stroke="#1E781C" stroke-opacity="0.2" stroke-width="3"></circle>
             </svg>
-        </span>
+        </span>    
         <span id="arrival-date">Loading...</span>
     </div>
      <div class="shipping-badge" id="freeShippingBadge">
 
-        <span><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" width="256" height="256" viewBox="0 0 256 256" xml:space="preserve">
+        <span>
+          {% if cart.currency.iso_code == 'AUD' or cart.currency.iso_code == 'NZD' %}
+            <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" width="256" height="256" viewBox="0 0 256 256" xml:space="preserve">
 <g style="stroke: none; stroke-width: 0; stroke-dasharray: none; stroke-linecap: butt; stroke-linejoin: miter; stroke-miterlimit: 10; fill: none; fill-rule: nonzero; opacity: 1;" transform="translate(1.4065934065934016 1.4065934065934016) scale(2.81 2.81)">
 	<circle cx="45" cy="45" r="45" style="stroke: none; stroke-width: 1; stroke-dasharray: none; stroke-linecap: butt; stroke-linejoin: miter; stroke-miterlimit: 10; fill: rgb(0,0,102); fill-rule: nonzero; opacity: 1;" transform="  matrix(1 0 0 1 0 0) "/>
 	<path d="M 25.304 23.603 V 13.115 h -7.928 v 10.488 L 9.227 17.71 c -1.261 1.65 -2.407 3.391 -3.433 5.209 l 2.3 1.663 H 4.903 c -1.824 3.575 -3.193 7.42 -4.01 11.467 h 7.201 l -7.969 5.764 C 0.051 42.867 0 43.927 0 45 c 0 0.845 0.028 1.684 0.074 2.517 h 2.8 l 14.502 -10.488 v 10.488 h 7.928 V 37.029 l 14.502 10.488 h 5.318 v -3.846 L 34.586 36.05 h 10.538 V 24.583 H 34.587 l 10.538 -7.621 v -3.846 h -5.318 L 25.304 23.603 z" style="stroke: none; stroke-width: 1; stroke-dasharray: none; stroke-linecap: butt; stroke-linejoin: miter; stroke-miterlimit: 10; fill: rgb(243,244,245); fill-rule: nonzero; opacity: 1;" transform=" matrix(1 0 0 1 0 0) " stroke-linecap="round"/>
@@ -1663,8 +1684,8 @@ console.log('=== END ===');
 	<polygon points="29.27,36.05 45.13,47.52 45.13,47.52 45.13,44.95 32.81,36.05 " style="stroke: none; stroke-width: 1; stroke-dasharray: none; stroke-linecap: butt; stroke-linejoin: miter; stroke-miterlimit: 10; fill: rgb(204,0,0); fill-rule: nonzero; opacity: 1;" transform="  matrix(1 0 0 1 0 0) "/>
 	<polygon points="45.13,13.12 41.58,13.12 25.72,24.58 29.27,24.58 " style="stroke: none; stroke-width: 1; stroke-dasharray: none; stroke-linecap: butt; stroke-linejoin: miter; stroke-miterlimit: 10; fill: rgb(204,0,0); fill-rule: nonzero; opacity: 1;" transform="  matrix(1 0 0 1 0 0) "/>
 	<path d="M 7.422 20.25 c -0.382 0.579 -0.752 1.166 -1.107 1.763 l 3.552 2.569 h 3.545 L 7.422 20.25 z" style="stroke: none; stroke-width: 1; stroke-dasharray: none; stroke-linecap: butt; stroke-linejoin: miter; stroke-miterlimit: 10; fill: rgb(204,0,0); fill-rule: nonzero; opacity: 1;" transform=" matrix(1 0 0 1 0 0) " stroke-linecap="round"/>
-</g>
-</svg>
+</g></svg>
+{% endif %}
 </span>
         <span id="shippingThresholdText">Loading...</span>
       </div>
@@ -2689,6 +2710,14 @@ updateATCPrices();
   }
   
   @media only screen and (max-width:490px) {
+      .rating{
+    justify-content:space-between;
+    margin-top: 12px;
+  }
+  .jdgm-widget.jdgm-widget{
+    position:relative;
+    top:-2px;
+  }
     .product__slide{
       
     }

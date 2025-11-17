@@ -182,7 +182,8 @@
     "main-collection": {
       "type": "collection-template-socks",
       "settings": {
-        "super_image_1": "shopify:\/\/shop_images\/2025_SUPERPRODUCT_2.png",
+        "super_image_1": "shopify:\/\/shop_images\/AU_D_SOCKS_SUPERPRODUCT.gif",
+        "super_image_1_mobile": "shopify:\/\/shop_images\/2025_SUPERPRODUCT_ec62c03c-14f1-42ca-b84b-45c9e10a9414.gif",
         "super_text_1": "",
         "super_link_1": "shopify:\/\/products\/compression-socks-6pack-black",
         "super_text_2": "",

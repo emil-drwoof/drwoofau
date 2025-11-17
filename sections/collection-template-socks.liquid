@@ -4,6 +4,20 @@
   integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
   crossorigin="anonymous"></script>
 <style>
+  .desktop{
+    display:block;
+  }
+  .mobile{
+    display:none;
+  }
+  @media only screen and (max-width:480px){
+    .desktop{
+      display:none;
+    }
+    .mobile{
+      display:block;
+    }  
+  }
   .jdgm-prev-badge__text{
     display:none !important;
   }
@@ -168,7 +182,11 @@
               <div class="metafield-image collection-image-metafield">
               {% if section.settings.super_image_1 %}
                 <a href="{{ section.settings.super_link_1 }}">
-                <img src="{{ section.settings.super_image_1 | img_url: 'master' }}" class="image-metafield-one" alt="{{ section.settings.super_text_1 }}" />                
+                <img src="{{ section.settings.super_image_1 | img_url: 'master' }}" class="image-metafield-one {% if section.settings.super_image_1_mobile %}desktop{% endif %}" alt="{{ section.settings.super_text_1 }}" />                
+                {% if section.settings.super_image_1_mobile %}
+                <img src="{{ section.settings.super_image_1_mobile | img_url: 'master' }}" class="image-metafield-one {% if section.settings.super_image_1_mobile %}mobile{% endif %}" alt="{{ section.settings.super_text_1 }}" />                
+                {% endif %}
+                
                 </a>
               {% else %}
                 {% if first_image != blank %}
@@ -1449,6 +1467,11 @@ $(document).ready(function(){
                "type": "image_picker",
                "id": "super_image_1",
                "label": "Super Product Image 1"
+      },
+      {
+               "type": "image_picker",
+               "id": "super_image_1_mobile",
+               "label": "Super Product Image 1 mobile"
       },
       {
             "type": "text",

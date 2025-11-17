@@ -1,0 +1,603 @@
+<!-- sections/size-guide-merged.liquid -->
+<div class="size-guide-wrapper">
+    <div class="size-guide section-id-{{ section.id }}">
+        <img src="{{ section.settings.close_icon | img_url: 'master' }}" class="close-guide">
+
+        {% if product.type == 'Surgical Scrub Cap' %}
+            {% if section.settings.show_testimonial %}
+                <p style="margin-top:40px;"><i>"{{ section.settings.testimonial_text }}"<br/></i></p>
+                <p style="text-align:right"><i>- {{ section.settings.testimonial_author }}</i></p>
+            {% else %}
+                <h4>{{ section.settings.caps_title }}</h4>
+            {% endif %}
+        {% else %}
+            <h4>{{ section.settings.socks_title }}</h4>
+        {% endif %}
+        
+        <hr/>
+        <div class="flexerstandard">
+            <img src="{{ section.settings.stats_icon | img_url: 'master' }}" class="gse22" />
+            <p class="gse23"><b>{{ section.settings.stats_percentage }}</b><br/>
+            {{ section.settings.stats_description }}
+            </p>
+        </div>
+        <hr/>
+        
+        <h4>{{ section.settings.measurements_title }}</h4>
+        
+        {% if product.type == 'Surgical Scrub Cap' %}
+            <img src="{{ section.settings.close_icon | img_url: 'master' }}" class="close-guide">
+            
+            <h4>{{ section.settings.caps_tieback_title }}</h4>
+            <p>{{ section.settings.caps_short_hair_text }}</p>
+            <ul>
+                {% for item in section.settings.caps_short_hair_points %}
+                    <li>{{ item }}</li>
+                {% endfor %}
+                <li>{{ section.settings.caps_short_hair_point1 }}</li>
+                <li>{{ section.settings.caps_short_hair_point2 }}</li>
+            </ul>
+            
+            <p>{{ section.settings.caps_long_hair_text }}</p>
+            <ul>
+                <li>{{ section.settings.caps_long_hair_point1 }}</li>
+                <li>{{ section.settings.caps_long_hair_point2 }}</li>
+                <li>{{ section.settings.caps_long_hair_point3 }}</li>
+            </ul>
+            
+            <h4>{{ section.settings.caps_ponytail_title }}</h4>
+            <p>{{ section.settings.caps_ponytail_description }}</p>
+            <ul>
+                <li>{{ section.settings.caps_ponytail_point1 }}</li>
+                <li>{{ section.settings.caps_ponytail_point2 }}</li>
+            </ul>
+            
+            <img src="{{ section.settings.caps_sizing_image | img_url: 'master' }}" class="img size-table-1">
+            
+        {% else %}
+            <!-- Compression Socks Content -->
+            <img src="{{ section.settings.socks_sizing_table | img_url: 'master' }}" class="img size-table-1">
+            <hr/>
+            <img src="{{ section.settings.socks_product_image | img_url: 'master' }}" class="img humanpic">
+            <hr/>
+            
+            <!-- Measurement Definitions for Socks -->
+            <div class="accordion">
+                <div class="accordion-item">
+                    <img src="{{ section.settings.plus_icon | img_url: 'master' }}" class="item-plus">
+                    <img src="{{ section.settings.minus_icon | img_url: 'master' }}" class="item-minus">
+                    <h6>{{ section.settings.shoe_size_title }}</h6>
+                    <p>{{ section.settings.shoe_size_description }}</p>
+                </div>
+                <div class="accordion-item">
+                    <img src="{{ section.settings.plus_icon | img_url: 'master' }}" class="item-plus">
+                    <img src="{{ section.settings.minus_icon | img_url: 'master' }}" class="item-minus">
+                    <h6>{{ section.settings.calf_circumference_title }}</h6>
+                    <p>{{ section.settings.calf_circumference_description }}</p>
+                </div>
+                <div class="accordion-item">
+                    <img src="{{ section.settings.plus_icon | img_url: 'master' }}" class="item-plus">
+                    <img src="{{ section.settings.minus_icon | img_url: 'master' }}" class="item-minus">
+                    <h6>{{ section.settings.socks_length_title }}</h6>
+                    <p>{{ section.settings.socks_length_description }}</p>
+                </div>
+            </div>
+        {% endif %}
+        
+        <hr/>
+        <h4>{{ section.settings.faq_title }}</h4>
+        <div class="accordion">
+            {% for faq in section.blocks %}
+                {% if faq.type == 'faq_item' %}
+                    {% assign show_faq = false %}
+                    {% if faq.settings.show_for == 'both' %}
+                        {% assign show_faq = true %}
+                    {% elsif faq.settings.show_for == 'caps' and product.type == 'Surgical Scrub Cap' %}
+                        {% assign show_faq = true %}
+                    {% elsif faq.settings.show_for == 'socks' and product.type != 'Surgical Scrub Cap' %}
+                        {% assign show_faq = true %}
+                    {% endif %}
+                    
+                    {% if show_faq %}
+                        <div class="accordion-item">
+                            <img src="{{ section.settings.plus_icon | img_url: 'master' }}" class="item-plus">
+                            <img src="{{ section.settings.minus_icon | img_url: 'master' }}" class="item-minus">
+                            <h6>{{ faq.settings.question }}</h6>
+                            <p>{{ faq.settings.answer }}</p>
+                        </div>
+                    {% endif %}
+                {% endif %}
+            {% endfor %}
+        </div>
+    </div>
+</div>
+
+<style>
+    .size-guide-wrapper{
+        width:100%;
+        height:100vh;
+        position:fixed;
+        top:0px;
+        right:-100%;
+        transition: all 0.5s ease;
+        z-index: 99999;
+        overflow-y:scroll;
+    }
+    .size-guide-wrapper hr{
+        border-top:1px solid #EBEBEB;
+        height: 1px;
+        margin-top:24px;
+        margin-bottom:24px;
+    }
+   
+    .size-guide{
+        width:489px;
+        background:#fff;
+        color:#010101;
+        z-index:9999;
+        position:absolute;
+        top:0;
+        right:0;
+        padding:20px;
+    }
+    .sizeslider{
+        margin-bottom:20px;
+    }
+    .size-guide h4{
+        font-size:24px;
+        font-weight:500;
+        margin-bottom:12px;
+        color:#010101;
+    }
+    .size-guide h5{
+        font-size:18px;
+        font-weight:500;
+        margin-bottom:12px;
+        color:#010101;
+    }
+    .size-guide p{
+        font-size:16px;
+        font-weight:400;
+        color:#010101;
+    }
+    
+    .size-guide .img{
+        width:100%;
+        margin-bottom:20px;
+    }
+    .close-guide{
+        position:absolute;
+        top:20px;
+        right:20px;
+    }
+    .close-guide:hover{
+        cursor:pointer;
+    }
+    .accordion{
+        margin-bottom:30px;
+    }
+    .accordion-item{
+        background:#F0F0F7;
+        padding: 20px;
+        position:relative;
+        margin-bottom:12px;
+        border-radius: 8px;
+    }
+    .accordion-item h6{
+        font-size:16px;
+        font-weight:600;
+        display:inline-block;
+        color:#363640;
+        width:90%;
+    }
+    .accordion-item p{
+        font-size:14px;
+        font-weight:400;
+        color:#363640;
+    }
+    .item-minus,
+    .item-plus{
+        width:24px;
+        height:24px;
+        position:absolute;
+        right:20px;
+        top:20px;
+    }
+    .item-minus:hover,
+    .item-plus:hover{
+        cursor:pointer;
+    }
+
+    .item-minus{
+        display:none;
+    }
+    .accordion-item p{
+        display:none;
+        margin-bottom: 0;
+        margin-top:20px;
+        line-height: 20px;
+    }
+
+    .accordion-item h6{
+        margin-bottom:0;
+        padding-bottom:0;
+    }
+    
+    .flexerstandard{
+        display:flex;
+        justify-content:flex-start;
+        flex-wrap:wrap;
+        align-items: center;
+    }
+    .gse22{
+        width:137px;
+        height:auto;        
+        padding-right:9px;
+    }
+    .gse23{
+        width:311px;
+        margin-bottom:0;
+    }
+    @media only screen and (max-width:480px){
+        .size-guide{
+            width:100%;
+        }
+        .gse23{
+            width:227px;
+        }
+    }
+</style>
+
+<script>
+    $(document).ready(function(){        
+        $(".fit-guide").click(function(){
+            $('.size-guide-wrapper').css('right', '0'); 
+            setTimeout(function() {
+                $('.size-guide-wrapper').css('background', 'rgba(0,0,0,0.6)'); 
+            }, 500);
+        })
+
+        $(".trigger-pop-up").click(function(){
+            $('.size-guide-wrapper').css('right', '0'); 
+            setTimeout(function() {
+                $('.size-guide-wrapper').css('background', 'rgba(0,0,0,0.6)'); 
+            }, 500);
+        })
+
+        $(".size-guide-pop").click(function(){
+            $('.size-guide-wrapper').css('right', '0'); 
+            setTimeout(function() {
+                $('.size-guide-wrapper').css('background', 'rgba(0,0,0,0.6)'); 
+            }, 500);
+        })
+        
+        $(".close-guide").click(function(){
+            $('.size-guide-wrapper').css('background', 'transparent');
+            setTimeout(function() {
+                $('.size-guide-wrapper').css('right', '-100%');      
+            }, 500);
+        })
+
+        $(".item-plus").click(function(){
+            $(this).parent(".accordion-item").find("p").slideDown()
+            $(this).parent(".accordion-item").find(".item-plus").hide()
+            $(this).parent(".accordion-item").find(".item-minus").show()
+        })
+
+        $(".item-minus").click(function(){
+            $(this).parent(".accordion-item").find("p").slideUp()
+            $(this).parent(".accordion-item").find(".item-plus").show()
+            $(this).parent(".accordion-item").find(".item-minus").hide()
+        })
+    })
+</script>
+
+{% schema %}
+{
+  "name": "Size Guide - Merged",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Icons & Images"
+    },
+    {
+      "type": "image_picker",
+      "id": "close_icon",
+      "label": "Close Icon",
+      "info": "24x24px recommended"
+    },
+    {
+      "type": "image_picker",
+      "id": "plus_icon",
+      "label": "Plus Icon (Accordion)",
+      "info": "24x24px recommended"
+    },
+    {
+      "type": "image_picker",
+      "id": "minus_icon",
+      "label": "Minus Icon (Accordion)",
+      "info": "24x24px recommended"
+    },
+    {
+      "type": "image_picker",
+      "id": "stats_icon",
+      "label": "Statistics Icon",
+      "info": "137px wide recommended"
+    },
+    {
+      "type": "header",
+      "content": "General Content"
+    },
+    {
+      "type": "text",
+      "id": "caps_title",
+      "label": "Scrub Caps Title",
+      "default": "Size guide"
+    },
+    {
+      "type": "text",
+      "id": "socks_title",
+      "label": "Compression Socks Title",
+      "default": "Size guide"
+    },
+    {
+      "type": "text",
+      "id": "measurements_title",
+      "label": "Measurements Section Title",
+      "default": "Sizes & Measurements"
+    },
+    {
+      "type": "text",
+      "id": "faq_title",
+      "label": "FAQ Section Title",
+      "default": "Frequently asked questions"
+    },
+    {
+      "type": "header",
+      "content": "Statistics Section"
+    },
+    {
+      "type": "text",
+      "id": "stats_percentage",
+      "label": "Statistics Percentage",
+      "default": "96% of customers nail their size on the first try."
+    },
+    {
+      "type": "textarea",
+      "id": "stats_description",
+      "label": "Statistics Description",
+      "default": "(Based on tens of thousands of orders + our proven sizing guide.)"
+    },
+    {
+      "type": "header",
+      "content": "Testimonial (Scrub Caps Only)"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_testimonial",
+      "label": "Show testimonial instead of title",
+      "default": false
+    },
+    {
+      "type": "textarea",
+      "id": "testimonial_text",
+      "label": "Testimonial Text",
+      "default": "Love these pants! Unfortunately I ordered a size too small originally however Dr Woof was super efficient and helpful in exchanging for a bigger size! Will definitely be returning as a customer"
+    },
+    {
+      "type": "text",
+      "id": "testimonial_author",
+      "label": "Testimonial Author",
+      "default": "Katherine D."
+    },
+    {
+      "type": "header",
+      "content": "Scrub Caps Content"
+    },
+    {
+      "type": "text",
+      "id": "caps_tieback_title",
+      "label": "Tie Back Caps Title",
+      "default": "Tie Back Scrub Caps"
+    },
+    {
+      "type": "text",
+      "id": "caps_ponytail_title",
+      "label": "Ponytail Caps Title",
+      "default": "Ponytail Scrub Caps"
+    },
+    {
+      "type": "text",
+      "id": "caps_short_hair_text",
+      "label": "Short Hair Description",
+      "default": "When covering short hair:"
+    },
+    {
+      "type": "text",
+      "id": "caps_short_hair_point1",
+      "label": "Short Hair Point 1",
+      "default": "Our Tie Back Scrub Caps fit almost all heads."
+    },
+    {
+      "type": "text",
+      "id": "caps_short_hair_point2",
+      "label": "Short Hair Point 2",
+      "default": "They stretch up to 62 cm in circumference. That's hat sizes XS - XXL."
+    },
+    {
+      "type": "text",
+      "id": "caps_long_hair_text",
+      "label": "Long Hair Description",
+      "default": "When covering medium-long hair in a bun:"
+    },
+    {
+      "type": "text",
+      "id": "caps_long_hair_point1",
+      "label": "Long Hair Point 1",
+      "default": "The caps have an elastic back to stretch over your bun."
+    },
+    {
+      "type": "text",
+      "id": "caps_long_hair_point2",
+      "label": "Long Hair Point 2",
+      "default": "They stretch up to 62 cm in circumference."
+    },
+    {
+      "type": "text",
+      "id": "caps_long_hair_point3",
+      "label": "Long Hair Point 3",
+      "default": "To check the fit, tie your hair in a bun just below the crown of your head and measure around your head with the bun included."
+    },
+    {
+      "type": "textarea",
+      "id": "caps_ponytail_description",
+      "label": "Ponytail Caps Description",
+      "default": "Our Ponytail Scrub Caps fit almost all heads."
+    },
+    {
+      "type": "text",
+      "id": "caps_ponytail_point1",
+      "label": "Ponytail Point 1",
+      "default": "The hat stretches up to 65cm in circumference. That's hat sizes XS -XXXL."
+    },
+    {
+      "type": "text",
+      "id": "caps_ponytail_point2",
+      "label": "Ponytail Point 2",
+      "default": "The ponytail pouch can stretch up to 10cm. That's roughly the size of a cantaloupe."
+    },
+    {
+      "type": "image_picker",
+      "id": "caps_sizing_image",
+      "label": "Scrub Caps Sizing Image"
+    },
+    {
+      "type": "header",
+      "content": "Compression Socks Content"
+    },
+    {
+      "type": "image_picker",
+      "id": "socks_sizing_table",
+      "label": "Socks Sizing Table Image"
+    },
+    {
+      "type": "image_picker",
+      "id": "socks_product_image",
+      "label": "Socks Product Image"
+    },
+    {
+      "type": "text",
+      "id": "shoe_size_title",
+      "label": "Shoe Size Title",
+      "default": "Shoe Size"
+    },
+    {
+      "type": "textarea",
+      "id": "shoe_size_description",
+      "label": "Shoe Size Description",
+      "default": "It's the number that tells you if the shoe fits without turning you into Cinderella's stepsister. It's like a secret code for your feet, but with less mystery and more \"Will my toes be squished?\""
+    },
+    {
+      "type": "text",
+      "id": "calf_circumference_title",
+      "label": "Calf Circumference Title",
+      "default": "Calf Circumference"
+    },
+    {
+      "type": "textarea",
+      "id": "calf_circumference_description",
+      "label": "Calf Circumference Description",
+      "default": "Calf circumference is the measurement around the widest part of your calf. It's like a hug for your leg, but with a measuring tape instead of arms."
+    },
+    {
+      "type": "text",
+      "id": "socks_length_title",
+      "label": "Socks Length Title",
+      "default": "Socks Length"
+    },
+    {
+      "type": "textarea",
+      "id": "socks_length_description",
+      "label": "Socks Length Description",
+      "default": "Socks length is how tall your socks stand, from toe to top. It's like measuring the height of a mini-skyscraper, if the skyscraper was made for your feet."
+    }
+  ],
+  "blocks": [
+    {
+      "type": "faq_item",
+      "name": "FAQ Item",
+      "settings": [
+        {
+          "type": "select",
+          "id": "show_for",
+          "label": "Show for Product Type",
+          "options": [
+            {
+              "value": "both",
+              "label": "Both Caps & Socks"
+            },
+            {
+              "value": "caps",
+              "label": "Scrub Caps Only"
+            },
+            {
+              "value": "socks",
+              "label": "Compression Socks Only"
+            }
+          ],
+          "default": "both"
+        },
+        {
+          "type": "text",
+          "id": "question",
+          "label": "FAQ Question"
+        },
+        {
+          "type": "richtext",
+          "id": "answer",
+          "label": "FAQ Answer"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Size Guide - Merged",
+      "blocks": [
+        {
+          "type": "faq_item",
+          "settings": {
+            "show_for": "both",
+            "question": "I'm worried about buying online. Are Dr. Woof's products as good as they look?",
+            "answer": "<p>Yes!<br><br>… but we understand you being cautious.<br><br>Nowadays, almost everyone's had at least one bad online shopping experience—the sort where a product looks amazing online but ends up being low-quality junk.<br><br>It sucks, and you deserve better.<br><br>That's why Dr. Woof says no to dropshipping, white-labelling and corner-cutting of any kind. When a product has a Dr. Woof label, you know it's:<br>✔️ Designed by our team<br>✔️ Made to last with high-quality fabrics and craftsmanship<br>✔️Tested through an independent quality assurance process<br>✔️ Shipped from our warehouse in Melbourne, Australia or California, USA.<br><br>If you've been burned with online shopping before, it might be comforting to know that:<br>* Our products have thousands of 5-star reviews, with more popping up every day.<br>* Many reputable uniform companies stock Dr. Woof items, including Smile Wear and Sauers Uniforms Australia.<br>* Over 200 clinics choose Dr. Woof for their uniforms.</p>"
+          }
+        },
+        {
+          "type": "faq_item",
+          "settings": {
+            "show_for": "caps",
+            "question": "What's your return and exchange policy for scrub caps?",
+            "answer": "<p>Our mission is to make the medical world smile.<br><br>If you don't fall head over heels in love with your scrub cap, contact us for a refund, exchange or replacement.<br><br>There are a few conditions:<br>* You must contact us within 99 days of purchase.<br>* Items must be clean, unworn and in their original packaging.<br>* We don't accept refunds or exchanges on clearance items.<br>* You'll need to cover the cost of shipping.</p>"
+          }
+        },
+        {
+          "type": "faq_item",
+          "settings": {
+            "show_for": "socks",
+            "question": "What's your return and exchange policy for socks?",
+            "answer": "<p>For hygiene reasons, we can't accept returns or exchanges on socks. But your happiness is still important to us.<br><br>If you don't fall head over heels in love with your socks, let our team know. We won't be able to offer a full refund, but we'll do our best to find a solution that makes you happy.<br><br>To help with this, we recommend you:<br>* Use the sizing chart to select the correct size.<br>* If you buy multiple pairs, try on the first pair before opening the others.</p>"
+          }
+        },
+        {
+          "type": "faq_item",
+          "settings": {
+            "show_for": "both",
+            "question": "How much will shipping cost?",
+            "answer": "<p>Enjoy free shipping for orders over $150 — no matter where in Australia you live.<br><br>For orders under $150, shipping is calculated at checkout.</p>"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

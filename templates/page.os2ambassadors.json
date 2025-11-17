@@ -1,0 +1,227 @@
+{
+  "sections": {
+    "annoucement_34Kk7C": {
+      "type": "annoucement",
+      "disabled": true,
+      "settings": {
+        "a_text1": "OVER 90, 000 COMFY DOCS AND NURSES",
+        "a_text2": ""
+      }
+    },
+    "featured_content_EKnF4A": {
+      "type": "featured-content",
+      "name": "Rich text",
+      "settings": {
+        "title": "Become a Dr. Woof Ambassador — Join the Pack",
+        "text": "<p>This isn’t just about wearing our gear. As an ambassador, you’ll join our community, get early access, shape new products, and help make the medical world smile.<\/p>",
+        "align_text": "center",
+        "narrow_column": false,
+        "enlarge_text": false,
+        "alt": false
+      }
+    },
+    "custom_html_6YAdby": {
+      "type": "custom-html",
+      "name": "Custom HTML",
+      "settings": {
+        "custom_html": "<p style=\"text-align: center;\"><a href=\"#contact\" class=\"btn btn--tertiary btn--small js-no-transition\">APPLY TO BE AN AMBASSADOR<\/a><\/p>"
+      }
+    },
+    "17591072634e00f0ba": {
+      "type": "_blocks",
+      "blocks": {
+        "ai_gen_block_3b8ca6e_fQCmtk": {
+          "type": "ai_gen_block_3b8ca6e",
+          "settings": {
+            "button_text": "Email Us to Become a Stockist",
+            "button_link": "shopify:\/\/pages\/contact",
+            "button_color": "#0b0d32",
+            "button_text_color": "#ffffff",
+            "button_border_color": "#b8d2bc",
+            "button_hover_color": "#ffffff",
+            "button_hover_text_color": "#0b0d32",
+            "button_hover_border_color": "#0b0d32",
+            "font_size": 16,
+            "font_weight": "600",
+            "text_uppercase": true,
+            "letter_spacing": 1,
+            "border_radius": 24,
+            "button_padding_vertical": 14,
+            "button_padding_horizontal": 32,
+            "min_width": 160,
+            "alignment": "center",
+            "section_padding": 20
+          },
+          "blocks": {}
+        }
+      },
+      "block_order": [
+        "ai_gen_block_3b8ca6e_fQCmtk"
+      ],
+      "disabled": true,
+      "settings": {}
+    },
+    "duallayout_CG47nF": {
+      "type": "duallayout",
+      "name": "Dual Section",
+      "settings": {
+        "image_left": false,
+        "background_color": "#ffffff",
+        "imagebig": "shopify:\/\/shop_images\/97f9895b-dd2f-40bd-bc53-a8d6a8159f80.png",
+        "contenttitle": "Why Become a Dr. Woof Ambassador",
+        "contenttext1": "<b>• Closer to the Community:<\/b> Be part of a passionate global network of healthcare pros and supporters.\n\n<br><br>\n<b>• Early Access:<\/b> Get first dibs on new products and limited editions before anyone else.\n<br><br>\n\n<b>• Have a Say: <\/b>Share your feedback directly with our team to help shape future designs.\n<br><br>\n\n<b>• Shoutouts & Exposure: <\/b>We’ll highlight your page and story across our platforms.\n\n<br><br>\n\n<b>• Exclusive Perks: <\/b>Participate in ambassador-only events, giveaways, and collabs."
+      }
+    },
+    "duallayout_fz77Tn": {
+      "type": "duallayout",
+      "disabled": true,
+      "name": "Dual Section",
+      "settings": {
+        "image_left": true,
+        "background_color": "#ffffff",
+        "imagebig": "shopify:\/\/shop_images\/ac77446e-91fc-48a5-8808-1b30349e196e.avif",
+        "contenttitle": "Best-Selling Styles",
+        "contenttext1": "<i>Our socks don’t sit on shelves, they walk out the door.<\/i>\n<br>\n<br>\n<b>1. Bold Prints:<\/b> Fun, medical-inspired designs healthcare workers love.\n<br>\n<br>\n<b>2. Classic Staples:<\/b> Core colors and timeless looks.\n<br>\n<br>\n<b>3. All Sizes:<\/b> Standard, wide-calf, and men’s fits to cover every customer."
+      }
+    },
+    "duallayout_ghQckD": {
+      "type": "duallayout",
+      "disabled": true,
+      "name": "Dual Section",
+      "settings": {
+        "image_left": false,
+        "background_color": "#ffffff",
+        "imagebig": "shopify:\/\/shop_images\/LANDING_PAGE_PDP_4.png",
+        "contenttitle": "",
+        "contenttext1": "<b>1. Born in Healthcare: <\/b>Our socks first became a must-have for nurses, doctors, and frontline workers who needed comfort through 12-hour shifts.\n\n<br><br>\n<b>2. Viral Beyond the Hospital: <\/b>Today, they’re worn by athletes, travelers, festival-goers, and everyday Australians looking for style + support.\n<br><br>\n\n<b>3. Premium Build:<\/b> 15–20 mmHg graduated compression, bamboo yarn softness, and bold designs that are designed locally in Melbourne."
+      }
+    },
+    "advanced_content_6Wbn6B": {
+      "type": "advanced-content",
+      "blocks": {
+        "image_wcT9Ep": {
+          "type": "image",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/Your_paragraph_text_4.png",
+            "link": "",
+            "width": "50%",
+            "alignment": "center"
+          }
+        },
+        "image_BqemPa": {
+          "type": "image",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/Your_paragraph_text_1.png",
+            "link": "",
+            "width": "50%",
+            "alignment": "top-middle"
+          }
+        }
+      },
+      "block_order": [
+        "image_wcT9Ep",
+        "image_BqemPa"
+      ],
+      "disabled": true,
+      "name": "Custom content",
+      "settings": {
+        "full_width": false,
+        "space_around": true,
+        "alt": false
+      }
+    },
+    "text_columns_ikrX6X": {
+      "type": "text-columns",
+      "blocks": {
+        "text_block_YrUzqn": {
+          "type": "text_block",
+          "settings": {
+            "enable_image": true,
+            "desktop_image": "shopify:\/\/shop_images\/Your_paragraph_text_4.png",
+            "mobile_image": "shopify:\/\/shop_images\/Your_paragraph_text_4.png",
+            "image_width": 650,
+            "title": "",
+            "text": "",
+            "button_label": "",
+            "button_link": ""
+          }
+        },
+        "text_block_kwVCMQ": {
+          "type": "text_block",
+          "settings": {
+            "enable_image": true,
+            "desktop_image": "shopify:\/\/shop_images\/Your_paragraph_text_5.png",
+            "mobile_image": "shopify:\/\/shop_images\/Your_paragraph_text_5.png",
+            "image_width": 650,
+            "title": "",
+            "text": "",
+            "button_label": "",
+            "button_link": ""
+          }
+        }
+      },
+      "block_order": [
+        "text_block_YrUzqn",
+        "text_block_kwVCMQ"
+      ],
+      "disabled": true,
+      "name": "Text columns with images",
+      "settings": {
+        "title": "",
+        "align_text": "center",
+        "alt": false
+      }
+    },
+    "custom_html_EcGaR8": {
+      "type": "custom-html",
+      "name": "Custom HTML",
+      "settings": {
+        "custom_html": "<div id=\"contact\">\n    <!-- Your content here -->\n<\/div>"
+      }
+    },
+    "featured_content_79cpma": {
+      "type": "featured-content",
+      "name": "Rich text",
+      "settings": {
+        "title": "How It Works",
+        "text": "<p><strong>1. Apply:<\/strong> Fill out our quick affiliate application.<\/p><p><strong>2. Approval:<\/strong> We review each application to ensure new partners share our values of making the medical world smile.<\/p><p><strong>3. Promote:<\/strong> Once approved, you’ll get your unique links and access to content.<\/p><p><strong>4. Earn:<\/strong> Share Dr. Woof with your community and get paid for every sale.<br\/><\/p>",
+        "align_text": "center",
+        "narrow_column": false,
+        "enlarge_text": false,
+        "alt": false
+      }
+    },
+    "contact_form_NpWq86": {
+      "type": "contact-form",
+      "disabled": true,
+      "name": "Contact form",
+      "settings": {
+        "title": "Contact us",
+        "show_phone": false,
+        "narrow_column": true
+      }
+    },
+    "custom_html_i4JAyd": {
+      "type": "custom-html",
+      "name": "Custom HTML",
+      "settings": {
+        "custom_html": "<iframe id=\"affiliate-sign-up-form\" style=\"border: 0; width: 100%; height: 100vh;\" src=\"https:\/\/api.socialsnowball.io\/register-form\/17393\/7d3bfa7f-7010-4d75-8883-4a8768887954\"><\/iframe><script>!async function(){let e=document.querySelector(\"#affiliate-sign-up-form\");window.addEventListener(\"message\",t=>{t.origin===new URL(e.getAttribute(\"src\")).origin&&(e.style.height=t.data.height)})}();<\/script>"
+      }
+    }
+  },
+  "order": [
+    "annoucement_34Kk7C",
+    "featured_content_EKnF4A",
+    "custom_html_6YAdby",
+    "17591072634e00f0ba",
+    "duallayout_CG47nF",
+    "duallayout_fz77Tn",
+    "duallayout_ghQckD",
+    "advanced_content_6Wbn6B",
+    "text_columns_ikrX6X",
+    "custom_html_EcGaR8",
+    "featured_content_79cpma",
+    "contact_form_NpWq86",
+    "custom_html_i4JAyd"
+  ]
+}
