@@ -170,6 +170,18 @@
     },
     "collection-filters": {
       "type": "collection-filters-def",
+      "blocks": {
+        "tags_group_C687xf": {
+          "type": "tags_group",
+          "settings": {
+            "title": "Tag Group",
+            "tag_list": "First tag \nSecond tag \nThird tag"
+          }
+        }
+      },
+      "block_order": [
+        "tags_group_C687xf"
+      ],
       "disabled": true,
       "settings": {
         "filter_type": "groups",

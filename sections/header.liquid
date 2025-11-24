@@ -1,5 +1,5 @@
 <!-- section/header.liquid -->
-{% if localization.country.currency.iso_code == 'AUD' %}
+{% if localization.country.currency.iso_code == 'AUD' or localization.country.currency.iso_code == 'NZD' %}
    {%- assign main_menu = linklists[section.settings.main_menu_link_list] -%}
 {% else %}
    {% if localization.country.currency.iso_code == 'USD' %}
@@ -216,13 +216,13 @@ margin-top: 40px;
 {% endif %}
 
 {% if section.settings.megmenu %}
-   {% if localization.country.currency.iso_code != 'AUD' %}
+   {% if localization.country.currency.iso_code != 'AUD' or localization.country.currency.iso_code != 'NZD' %}
       {% render 'newslidingmenu-us' %}
    {% else %}
       {% render 'newslidingmenu2' %}
    {% endif %}
 {% else %}
-   {% if localization.country.currency.iso_code != 'AUD' %}
+   {% if localization.country.currency.iso_code != 'AUD' or localization.country.currency.iso_code != 'NZD' %}
       {% render 'newslidingmenu-us' %}
    {% else %}
       {% render 'newslidingmenu' %}

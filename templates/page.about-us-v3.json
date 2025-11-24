@@ -1,0 +1,147 @@
+{
+  "sections": {
+    "custom_html_jYzHWe": {
+      "type": "custom-html",
+      "name": "Custom HTML",
+      "settings": {
+        "custom_html": ""
+      }
+    },
+    "featured_content_dxTk9D": {
+      "type": "featured-content",
+      "name": "Rich text",
+      "settings": {
+        "title": "",
+        "text": "<h2><strong>About Dr Woof<\/strong><\/h2><p><strong>Comfort that makes the medical world smile.<\/strong><\/p><p>At Dr Woof, we believe that the people who care for others deserve to feel cared for every single day. We are a joyful blend of medical knowledge and playful spirit, creating scrubs and compression socks that deliver both true performance and real happiness.<br\/><br\/><\/p>",
+        "align_text": "center",
+        "narrow_column": true,
+        "enlarge_text": false,
+        "alt": false
+      }
+    },
+    "duallayout_yFtL9U": {
+      "type": "duallayout",
+      "name": "Dual Section",
+      "settings": {
+        "image_left": false,
+        "background_color": "#ffffff",
+        "imagebig": "shopify:\/\/shop_images\/de1d1caa-9bf6-43ec-9b24-25284c010e95.png",
+        "contenttitle": "",
+        "contenttext1": "<h2><b>Our Story<\/b><\/h2><br>\nDr Woof began with clinicians who were living the reality of long nights, aching feet, and uniforms that did nothing to lift the spirit. We asked ourselves a simple question. Why does the gear look so tired when the people wearing it give so much?\n<br><br>\nWe did not want to create another ordinary uniform. We wanted to build something that felt good in every way. Something medically comfortable. Something that brought joy, personality, and humanity into healthcare.<br><br>\nSo we started designing from the inside out. First came bamboo rich compression socks engineered for real comfort. Then came scrubs built to stretch, breathe, and move. Every product had to pass what we called the twelve hour shift test. If it did not feel exceptional during a real shift, we went back to the drawing board."
+      }
+    },
+    "duallayout_LdAFGK": {
+      "type": "duallayout",
+      "name": "Dual Section",
+      "settings": {
+        "image_left": true,
+        "background_color": "#ffffff",
+        "imagebig": "shopify:\/\/shop_images\/1d4354f6-891d-416d-92d5-b9ab9d947424.png",
+        "contenttitle": "",
+        "contenttext1": "<h2><b>Why We Do It<\/b><\/h2><br>We know the feeling of tired legs, rushing between patients, and trying to stay human in the middle of pressure and noise. We also know the power of a smile, a splash of color, or a small moment of fun. Our prints and colors are designed to lift not only your comfort but your spirit.\n<br><br>\nEvery pattern is created to brighten tough rooms and remind you that your personality matters. A small dose of joy can change an entire shift.\n<br><br>\n<h2><b>What We Make<\/b><\/h2>\n<br>\nMedical grade comfort with bamboo softness and reliable compression\n<br><br>\nJoyful prints that make people smile.\n<br><br>\nScrubs and socks that move with you and brighten every kind of day.\n<br><br>\nGear made for healthcare professionals and for anyone who values true comfort\n<br><br>"
+      }
+    },
+    "duallayout_bQM4aT": {
+      "type": "duallayout",
+      "name": "Dual Section",
+      "settings": {
+        "image_left": false,
+        "background_color": "#ffffff",
+        "imagebig": "shopify:\/\/shop_images\/LANDING_PAGE_PDP_da4f17f2-f9fe-42e7-886e-7bf7006efb41-ezgif.com-optimize.gif",
+        "contenttitle": "",
+        "contenttext1": "<h2><b>You Are Part of This<\/b><\/h2><br>\nWhen you wear Dr Woof, you join a community of people who bring positivity into the world. Thousands of nurses, doctors, and healthcare workers have made our prints part of their identity, and we welcome anyone who appreciates comfort, color, and joyful design."
+      }
+    },
+    "featured_content_iE4LDc": {
+      "type": "featured-content",
+      "name": "Rich text",
+      "settings": {
+        "title": "",
+        "text": "<h2><strong>Our Promise<\/strong><\/h2><p>Designed by clinicians who know the struggle<br\/>Made for your hardest days and your happiest ones<br\/>Supported by our ninety nine day happiness guarantee<\/p><h2><strong>Thank You<\/strong><\/h2><p>From people who spend their nights awake to those who spend their days caring for others, we see you. Dr Woof exists for you. Together, let us keep making the medical world smile.<br\/><br\/><\/p>",
+        "align_text": "center",
+        "narrow_column": true,
+        "enlarge_text": false,
+        "alt": false
+      }
+    },
+    "custom_html_eiNfQP": {
+      "type": "custom-html",
+      "name": "Custom HTML",
+      "settings": {
+        "custom_html": "<h2 class=\"section-header__title appear-delay\" style=\"text-align:center;\">Meet The Dr. Woof Team<\/h2>"
+      }
+    },
+    "text_and_image_p7rtT4": {
+      "type": "text-and-image",
+      "name": "Image with text",
+      "settings": {
+        "image": "shopify:\/\/shop_images\/Medical-Universe-Avi_TN_360x_7a6c352e-a9fd-4687-9ece-0e716406058c.webp",
+        "image_width": 300,
+        "subtitle": "Hi I'm",
+        "title": "Dr Ron BBioMedSc DVM",
+        "text": "<p>Emergency Veterinarian, Photography nerd, Couch potato and A strong believer that Ferrero Rocher is the king of chocolate balls, don't @ me.<\/p>",
+        "button_label": "See my favourite Dr. Woof Design",
+        "button_link": "shopify:\/\/products\/aussie-natives-bamboo-compression-socks",
+        "button_style": "primary",
+        "layout": "left",
+        "alt": false,
+        "font_size_desktop": 24,
+        "font_size_mobile": 18,
+        "padding_bottom_text": 20,
+        "padding_top_bottom_main_div": 40
+      }
+    },
+    "text_and_image_jPqENa": {
+      "type": "text-and-image",
+      "name": "Image with text",
+      "settings": {
+        "image": "shopify:\/\/shop_images\/Medical-Universe-Avi_TN_56eec9fe-56a7-4baa-ba6d-c46b73711c96.jpg",
+        "image_width": 300,
+        "subtitle": "And I'm",
+        "title": "Dr Dave BSc BVSc (Hons)",
+        "text": "<p>Emergency clinician, Car guy, Semi-pro Redditor, Will pet every cat that lets him<\/p>",
+        "button_label": "See my favourite Dr. Woof Design",
+        "button_link": "shopify:\/\/products\/seal-bamboo-compression-socks",
+        "button_style": "primary",
+        "layout": "right",
+        "alt": false,
+        "font_size_desktop": 24,
+        "font_size_mobile": 18,
+        "padding_bottom_text": 20,
+        "padding_top_bottom_main_div": 40
+      }
+    },
+    "text_and_image_8iGGq7": {
+      "type": "text-and-image",
+      "name": "Image with text",
+      "settings": {
+        "image": "shopify:\/\/shop_images\/Medical-Universe-Avi_TN_d9fffb6a-7361-4468-bc20-f659967a172b.jpg",
+        "image_width": 300,
+        "subtitle": "and there's me",
+        "title": "Dr. An BBioSc DVM DACVECC",
+        "text": "<p>Boarded Veterinary Criticalist, Ocean lover, Avid reader of Just Jared, Jingle writing enthusiast<\/p>",
+        "button_label": "See my favourite Dr. Woof Design",
+        "button_link": "shopify:\/\/products\/dinosaurs-bamboo-compression-socks",
+        "button_style": "primary",
+        "layout": "left",
+        "alt": false,
+        "font_size_desktop": 24,
+        "font_size_mobile": 18,
+        "padding_bottom_text": 20,
+        "padding_top_bottom_main_div": 40
+      }
+    }
+  },
+  "order": [
+    "custom_html_jYzHWe",
+    "featured_content_dxTk9D",
+    "duallayout_yFtL9U",
+    "duallayout_LdAFGK",
+    "duallayout_bQM4aT",
+    "featured_content_iE4LDc",
+    "custom_html_eiNfQP",
+    "text_and_image_p7rtT4",
+    "text_and_image_jPqENa",
+    "text_and_image_8iGGq7"
+  ]
+}

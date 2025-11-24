@@ -8,7 +8,7 @@
       "type": "collection-slider",
       "disabled": false,
       "settings": {
-        "header-21ccfe010c62f921ccaad23daa03b352": null,
+        "header-027453b80051e67e911ed7c6ab03c4e9": null,
         "reviewstars": false,
         "blocklist": false,
         "show_title": true,
@@ -27,7 +27,7 @@
       "type": "collection-slider",
       "disabled": true,
       "settings": {
-        "header-3dcb4f36a7fa46f70096a931978cc257": null,
+        "header-063cea75c490082a52b9d57a3ed31ebc": null,
         "reviewstars": false,
         "blocklist": false,
         "show_title": true,
@@ -46,11 +46,14 @@
       "settings": {
         "title": "Compression Socks Born in Medical Apparel",
         "subtitle": "We are an Australian medical apparel company. If our socks keep nurses comfortable through 12 hour shifts, they will keep you supported anywhere in the world.",
-        "hero_image": "shopify:\/\/shop_images\/Untitled_design_6fa5c113-e332-498c-b6de-98daf3812041.png",
+        "hero_image": "shopify:\/\/shop_images\/BFCM_BANNER_a19da92c-8ff5-43f3-91ed-ae16b2662752.png",
         "primary_button_text": "SHOP COMPRESSION SOCKS",
         "primary_button_url": "shopify:\/\/collections\/compression-socks",
         "secondary_button_text": "SHOP VETMED SCRUBS",
-        "secondary_button_url": "shopify:\/\/collections\/vet-med-scrubs"
+        "secondary_button_url": "shopify:\/\/collections\/vet-med-scrubs",
+        "title_font_family": "",
+        "title_size_desktop": 38,
+        "subtitle_size_mobile": 16
       },
       "blocks": {}
     },

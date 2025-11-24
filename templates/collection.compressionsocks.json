@@ -20,36 +20,36 @@
         "button_4VPi8a": {
           "type": "button",
           "settings": {
-            "title": "Animals & Nature",
-            "collection": "\/collections\/compression-socks\/animals-and-nature"
+            "title": "Classics",
+            "collection": "\/collections\/compression-socks\/classics"
           }
         },
         "button_x9XNW7": {
           "type": "button",
           "settings": {
-            "title": "Nudes & Neutrals",
-            "collection": "\/collections\/compression-socks\/nudes-and-neutrals"
+            "title": "Animals",
+            "collection": "\/collections\/compression-socks\/animals"
           }
         },
         "button_Wg4dVz": {
-          "type": "button",
-          "settings": {
-            "title": "All-Rounders",
-            "collection": "\/collections\/compression-socks\/all-rounders"
-          }
-        },
-        "button_U8YKVk": {
           "type": "button",
           "settings": {
             "title": "Whimsical",
             "collection": "\/collections\/compression-socks\/whimsical"
           }
         },
-        "button_Bpc64n": {
+        "button_U8YKVk": {
           "type": "button",
           "settings": {
             "title": "Causes",
             "collection": "\/collections\/compression-socks\/causes"
+          }
+        },
+        "button_Bpc64n": {
+          "type": "button",
+          "settings": {
+            "title": "Lifestyle",
+            "collection": "\/collections\/compression-socks\/lifestyle"
           }
         }
       },

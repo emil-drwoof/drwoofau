@@ -31,6 +31,7 @@
     },
     "replo_replo_text_below_banner_DKcJej": {
       "type": "replo-replo-text-below-banner",
+      "disabled": true,
       "settings": {
         "replo_text_e352686d-11b3-4326-ad82-8260998ffdde": "<p>Performance Compression Socks<\/p>",
         "replo_text_ffb59253-7bb2-43f4-99c4-ed60813402d8": "<p> <\/p>"

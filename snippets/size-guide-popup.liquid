@@ -1,0 +1,133 @@
+<div id="size-guide-modal" class="modal-size" aria-hidden="true" role="dialog" aria-labelledby="modal-title">
+  <div class="modal-content">
+
+    {% if product.type contains "Men" %}
+        {{ pages['mens-sizing-chart'].content }}
+    {% else %}
+        {{ pages['womens-sizes'].content }}
+    {% endif %}
+ {% comment %}  {% endcomment %}
+
+    <button class="close-button" aria-label="Close Size Guide">&times;</button>
+  </div>
+</div>
+
+<style>
+
+    .product-options-container {
+    margin-top: 20px;
+}
+
+  /* Basic Reset and Modal Base */
+.modal-size {
+  display: none; /* Hidden by default */
+  position: fixed;
+  z-index: 1000; /* Ensure it's on top of other content */
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0, 0, 0, 0.7); /* Dark semi-transparent background */
+  /* Optimized centering using flexbox */
+  {% comment %} display: flex; {% endcomment %}
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+}
+
+.modal-content {
+    background-color: #fefefe;
+    padding: 20px;
+    border-radius: 8px;
+    max-width: 50%;
+    width: 90%;
+    position: relative;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    animation: fadeIn 0.3s ease-out;
+    overflow: scroll;
+    height: -webkit-fill-available;
+}
+
+/* Close Button Styling */
+.close-button {
+  position: absolute;
+  top: 10px;
+  right: 15px;
+  font-size: 28px;
+  font-weight: bold;
+  color: #aaa;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  line-height: 1;
+}
+
+.close-button:hover,
+.close-button:focus {
+  color: #333;
+  text-decoration: none;
+  outline: none;
+}
+
+/* Simple Animation */
+@keyframes fadeIn {
+  from {opacity: 0; transform: translateY(-20px);}
+  to {opacity: 1; transform: translateY(0);}
+}
+
+/* Utility Class to Show Modal */
+.modal-size.show {
+  display: none !important; /* Override 'display: none' */
+}
+@media only screen and (max-width: 680px) {
+    .modal-content {
+        max-width: 100%;
+        width: 100%;
+    }
+}
+</style>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    // 1. Cache DOM elements for better performance
+    const sizeLink = document.querySelector('.size-guide-pop');
+    const modal = document.getElementById('size-guide-modal');
+    const closeModalButton = modal.querySelector('.close-button');
+
+    // 2. Optimized functions for showing/hiding
+    const openModal = (e) => {
+        e.preventDefault(); // Stop the link from jumping/reloading
+        modal.classList.add('show');
+        modal.setAttribute('aria-hidden', 'false');
+        // Optional: set focus to the close button for accessibility
+        closeModalButton.focus();
+    };
+
+    const closeModal = () => {
+        modal.classList.remove('show');
+        modal.setAttribute('aria-hidden', 'true');
+    };
+
+    // 3. Attach Event Listeners
+    // Open on link click
+    sizeLink.addEventListener('click', openModal);
+
+    // Close when clicking the close button or outside the content
+    modal.addEventListener('click', (e) => {
+        // If the click is on the modal backdrop itself (not the content)
+        if (e.target === modal || e.target === closeModalButton) {
+            closeModal();
+        }
+    });
+
+    // Close on Escape key press (excellent for accessibility)
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && modal.classList.contains('show')) {
+            closeModal();
+        }
+    });
+});
+
+</script>

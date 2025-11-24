@@ -226,327 +226,355 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 {% endcomment %}
 
 {% unless product.handle == 'scrub-cap-mega-pack' or product.handle == 'wardrobe-deal' %}
-
+<script>
+  
+</script>
 {% endunless %}
 {% if section.settings.newpdptop %}
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet">
  {% endif %}   
+
+ {% unless request.design_mode or template == 'page' %}
 <script>
-document.addEventListener("DOMContentLoaded", function () {
-  
-  let hasRedirected = false;
-  let geoCheckResult = null;
-  
-  // Check for manual region URL parameter
-  function hasManualRegionParameter() {
-    const urlParams = new URLSearchParams(window.location.search);
-    return urlParams.get('manual_region') === 'true';
-  }
-  
-  // Check if we're in Shopify admin/theme editor
-  function isInShopifyAdmin() {
-    // Check if page is in an iframe (theme editor loads store in iframe)
-    if (window.self !== window.top) {
-      return true;
+    document.addEventListener("DOMContentLoaded", function () {
+    
+    let drwGeoHasRedirected = false;
+    let drwGeoCheckResult = null;
+    let drwGeoAttempts = 0;
+    const drwGeoMaxAttempts = 3;
+    
+    // Check for manual region URL parameter
+    function drwGeoHasManualRegionParameter() {
+      const urlParams = new URLSearchParams(window.location.search);
+      return urlParams.get('manual_region') === 'true';
     }
     
-    // Check for Shopify admin URL parameters
-    const urlParams = new URLSearchParams(window.location.search);
-    const adminParams = ['preview_theme_id', 'pb', '_ab', '_fd', '_sc'];
-    if (adminParams.some(param => urlParams.has(param))) {
-      return true;
+    // Fetch with timeout to prevent hanging
+    function drwGeoFetchWithTimeout(url, timeout = 5000) {
+      return Promise.race([
+        fetch(url),
+        new Promise((_, reject) => 
+          setTimeout(() => reject(new Error('Geo API timeout')), timeout)
+        )
+      ]);
     }
     
-    // Check referrer for admin.shopify.com
-    if (document.referrer && document.referrer.includes('admin.shopify.com')) {
-      return true;
-    }
-    
-    // Check for Shopify admin-specific elements or scripts
-    if (window.Shopify && (window.Shopify.theme || window.Shopify.designMode)) {
-      return true;
-    }
-    
-    return false;
-  }
-  
-  // Fetch with timeout to prevent hanging
-  function fetchWithTimeout(url, timeout = 3000) {
-    return Promise.race([
-      fetch(url),
-      new Promise((_, reject) => 
-        setTimeout(() => reject(new Error('Geo API timeout')), timeout)
-      )
-    ]);
-  }
-  
-  // Get country code with fallback
-  async function getCountryCode() {
-    try {
-      // Try GeoJS first (no rate limits)
-      const response = await fetchWithTimeout('https://get.geojs.io/v1/ip/country.json', 3000);
-      const data = await response.json();
-      return data.country; // Returns "SG", "NZ", "HK", "AU", "US", "GB", "CA", etc.
-    } catch (error) {
-      console.log('GeoJS failed, trying fallback...');
-      try {
-        // Fallback to ip-api.com (45 requests/minute)
-        const response = await fetchWithTimeout('http://ip-api.com/json/', 3000);
-        const data = await response.json();
-        return data.countryCode; // Returns "SG", "NZ", "HK", "AU", "US", "GB", "CA", etc.
-      } catch (fallbackError) {
-        console.error('Both geo services failed');
-        return null;
-      }
-    }
-  }
-  
-  function setCookie(name, value, days) {
-    const date = new Date();
-    date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
-    const expires = "expires=" + date.toUTCString();
-    document.cookie = name + "=" + value + ";" + expires + ";path=/";
-  }
-  
-  function getCookie(name) {
-    const cname = name + "=";
-    const decodedCookie = decodeURIComponent(document.cookie);
-    const ca = decodedCookie.split(';');
-    for(let i = 0; i < ca.length; i++) {
-      let c = ca[i].trim();
-      if (c.indexOf(cname) === 0) {
-        return c.substring(cname.length, c.length);
-      }
-    }
-    return "";
-  }
-
-  function getCurrentRegionFromURL() {
-    const path = window.location.pathname;
-    const hostname = window.location.hostname;
-    
-    // Check for locale prefixes
-    if (path.startsWith('/en-nz')) return 'NZ';
-    if (path.startsWith('/en-sg')) return 'SG'; 
-    if (path.startsWith('/en-hk')) return 'HK';
-    if (path.startsWith('/en-gb')) return 'GB';
-    if (path.startsWith('/en-ca')) return 'CA';
-    if (path.startsWith('/en-eu')) return 'EU';
-    
-    // Check domain for AU vs US
-    if (hostname.includes('.com.au')) return 'AU';
-    return 'US'; // Default to US for .com
-  }
-
-  function getRegionalURL(countryCode) {
-    const currentPath = window.location.pathname;
-    const searchParams = window.location.search;
-    const hash = window.location.hash;
-    
-    // Remove any existing locale prefix
-    let cleanPath = currentPath.replace(/^\/(en-nz|en-sg|en-hk|en-gb|en-ca|en-eu)/, '');
-    
-    if (!cleanPath.startsWith('/')) {
-      cleanPath = '/' + cleanPath;
-    }
-    
-    let baseUrl = '';
-    let regionalPrefix = '';
-    
-    switch(countryCode) {
-      case 'NZ':
-        baseUrl = 'https://drwoofapparel.com';
-        regionalPrefix = '/en-nz';
-        break;
-      case 'SG':
-        baseUrl = 'https://drwoofapparel.com';
-        regionalPrefix = '/en-sg';
-        break;
-      case 'HK':
-        baseUrl = 'https://drwoofapparel.com';
-        regionalPrefix = '/en-hk';
-        break;
-      case 'GB':
-        baseUrl = 'https://drwoofapparel.com';
-        regionalPrefix = '/en-gb';
-        break;
-      case 'CA':
-        baseUrl = 'https://drwoofapparel.com';
-        regionalPrefix = '/en-ca';
-        break;
-      case 'EU':
-        baseUrl = 'https://drwoofapparel.com';
-        regionalPrefix = '/en-eu';
-        break;
-      case 'US':
-        baseUrl = 'https://drwoofapparel.com';
-        regionalPrefix = '';
-        break;
-      case 'AU':
-      default:
-        baseUrl = 'https://drwoofapparel.com.au';
-        regionalPrefix = '';
-    }
-    
-    return `${baseUrl}${regionalPrefix}${cleanPath}${searchParams}${hash}`;
-  }
-  
-  function processGeoData(countryCode, isSecondCheck = false) {
-    const cookieName = "regionPreference";
-    const locationCookieName = "lastDetectedCountry";
-    const manualChoiceCookieName = "manualRegionChoice";
-    const cookieDays = 30;
-    
-    if (!countryCode) {
-      return; // Failed to get country code
-    }
-    
-    // Check if user made manual choice recently (cookie or URL parameter)
-    const hasManualChoice = getCookie(manualChoiceCookieName) === 'true' || hasManualRegionParameter();
-    if (hasManualChoice) {
-      console.log('Respecting user manual region choice, skipping geo redirect');
+    // Get country code with fallback and better error handling
+    async function drwGeoGetCountryCode() {
+      const services = [
+        {
+          url: 'https://get.geojs.io/v1/ip/country.json',
+          parser: (data) => data.country
+        },
+        {
+          url: 'https://ip-api.com/json/',
+          parser: (data) => data.countryCode
+        },
+        {
+          url: 'https://ipapi.co/json/',
+          parser: (data) => data.country_code
+        }
+      ];
       
-      // If manual choice came via URL parameter, set the cookie for future visits
-      if (hasManualRegionParameter()) {
-        setCookie(manualChoiceCookieName, 'true', 1);
-        // Clean up URL by removing the parameter
-        const url = new URL(window.location);
-        url.searchParams.delete('manual_region');
-        window.history.replaceState({}, document.title, url.toString());
+      for (let service of services) {
+        try {
+          console.log(`Trying geo service: ${service.url}`);
+          const response = await drwGeoFetchWithTimeout(service.url, 5000);
+          if (!response.ok) throw new Error(`HTTP ${response.status}`);
+          
+          const data = await response.json();
+          const countryCode = service.parser(data);
+          
+          if (countryCode && typeof countryCode === 'string') {
+            console.log(`Geo detection successful: ${countryCode}`);
+            return countryCode.toUpperCase();
+          }
+        } catch (error) {
+          console.warn(`Geo service ${service.url} failed:`, error.message);
+        }
       }
       
-      return; // Don't override user's manual choice
+      console.error('All geo services failed');
+      return null;
     }
     
-    // Determine expected region based on country
-    let expectedRegion = 'US'; // Default to US instead of AU
-    
-    if (countryCode === 'AU') {
-      expectedRegion = 'AU';
-    } else if (countryCode === 'NZ') {
-      expectedRegion = 'NZ';
-    } else if (countryCode === 'SG') {
-      expectedRegion = 'SG';
-    } else if (countryCode === 'HK') {
-      expectedRegion = 'HK';
-    } else if (countryCode === 'GB' || countryCode === 'UK') {
-      expectedRegion = 'GB';
-    } else if (countryCode === 'CA') {
-      expectedRegion = 'CA';
-    } else if (['DE', 'FR', 'ES', 'IT', 'NL', 'BE', 'AT', 'PT', 'IE', 'FI', 'SE', 'DK', 'NO'].includes(countryCode)) {
-      expectedRegion = 'EU';
+    function drwGeoSetCookie(name, value, days) {
+      const date = new Date();
+      date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
+      const expires = "expires=" + date.toUTCString();
+      document.cookie = name + "=" + value + ";" + expires + ";path=/;SameSite=Lax";
     }
     
-    // Only process non-US users (US is default, no redirect needed unless they have a saved preference)
-    if (expectedRegion === 'US' && !getCookie(cookieName)) {
-      return;
-    }
-    
-    const savedPreference = getCookie(cookieName);
-    const lastDetectedCountry = getCookie(locationCookieName);
-    const currentRegion = getCurrentRegionFromURL();
-    const locationChanged = lastDetectedCountry && lastDetectedCountry !== countryCode;
-    
-    // Update location cookie
-    setCookie(locationCookieName, countryCode, cookieDays);
-    
-    // Scenario 1: Location changed
-    if (locationChanged) {
-      setCookie(cookieName, expectedRegion, cookieDays);
-      if (currentRegion !== expectedRegion) {
-        hasRedirected = true;
-        window.location.href = getRegionalURL(expectedRegion);
+    function drwGeoGetCookie(name) {
+      const cname = name + "=";
+      const decodedCookie = decodeURIComponent(document.cookie);
+      const ca = decodedCookie.split(';');
+      for(let i = 0; i < ca.length; i++) {
+        let c = ca[i].trim();
+        if (c.indexOf(cname) === 0) {
+          return c.substring(cname.length, c.length);
+        }
       }
-      return;
+      return "";
     }
-    
-    // Scenario 2: First visit
-    if (!savedPreference && expectedRegion !== 'US') {
-      setCookie(cookieName, expectedRegion, cookieDays);
-      if (currentRegion !== expectedRegion) {
-        hasRedirected = true;
-        window.location.href = getRegionalURL(expectedRegion);
+
+    function drwGeoGetCurrentRegionFromURL() {
+      const path = window.location.pathname;
+      const hostname = window.location.hostname;
+      
+      // Check for locale prefixes
+      if (path.startsWith('/en-nz')) return 'NZ';
+      if (path.startsWith('/en-sg')) return 'SG'; 
+      if (path.startsWith('/en-hk')) return 'HK';
+      if (path.startsWith('/en-uk')) return 'GB';
+      if (path.startsWith('/en-ca')) return 'CA';
+      if (path.startsWith('/en-eu')) return 'EU';
+      
+      // Check domain for AU vs US
+      if (hostname.includes('.com.au')) return 'AU';
+      return 'US'; // Default to US for .com
+    }
+
+    function drwGeoGetRegionalURL(countryCode) {
+      const currentPath = window.location.pathname;
+      const searchParams = window.location.search;
+      const hash = window.location.hash;
+      
+      // Remove any existing locale prefix
+      let cleanPath = currentPath.replace(/^\/(en-nz|en-sg|en-hk|en-uk|en-ca|en-eu)/, '');
+      
+      if (!cleanPath.startsWith('/')) {
+        cleanPath = '/' + cleanPath;
       }
-      return;
+      
+      let baseUrl = '';
+      let regionalPrefix = '';
+      
+      switch(countryCode) {
+        case 'NZ':
+          baseUrl = 'https://drwoofapparel.com';
+          regionalPrefix = '/en-nz';
+          break;
+        case 'SG':
+          baseUrl = 'https://drwoofapparel.com';
+          regionalPrefix = '/en-sg';
+          break;
+        case 'HK':
+          baseUrl = 'https://drwoofapparel.com';
+          regionalPrefix = '/en-hk';
+          break;
+        case 'GB':
+          baseUrl = 'https://drwoofapparel.com';
+          regionalPrefix = '/en-uk';
+          break;
+        case 'CA':
+          baseUrl = 'https://drwoofapparel.com';
+          regionalPrefix = '/en-ca';
+          break;
+        case 'EU':
+          baseUrl = 'https://drwoofapparel.com';
+          regionalPrefix = '/en-eu';
+          break;
+        case 'US':
+          baseUrl = 'https://drwoofapparel.com';
+          regionalPrefix = '';
+          break;
+        case 'AU':
+        default:
+          baseUrl = 'https://drwoofapparel.com.au';
+          regionalPrefix = '';
+      }
+      
+      return `${baseUrl}${regionalPrefix}${cleanPath}${searchParams}${hash}`;
     }
     
-    // Scenario 3: Has saved preference but on wrong store
-    if (savedPreference && savedPreference !== currentRegion) {
-      hasRedirected = true;
-      window.location.href = getRegionalURL(savedPreference);
-    }
-  }
-  
-  async function runGeoCheck(isSecondCheck = false) {
-    // Early exit if already redirected
-    if (hasRedirected) {
-      return;
+    function drwGeoProcessGeoData(countryCode, attemptNumber = 1) {
+      const cookieName = "regionPreference";
+      const locationCookieName = "lastDetectedCountry";
+      const manualChoiceCookieName = "manualRegionChoice";
+      const cookieDays = 30;
+      
+      if (!countryCode) {
+        console.log(`Geo check attempt ${attemptNumber} failed - no country code`);
+        return false; // Signal that we should retry
+      }
+      
+      console.log(`Processing geo data: ${countryCode} (attempt ${attemptNumber})`);
+      
+      // Check if user made manual choice recently (cookie or URL parameter)
+      const hasManualChoice = drwGeoGetCookie(manualChoiceCookieName) === 'true' || drwGeoHasManualRegionParameter();
+      if (hasManualChoice) {
+        console.log('Respecting user manual region choice, skipping geo redirect');
+        
+        // If manual choice came via URL parameter, set the cookie for future visits
+        if (drwGeoHasManualRegionParameter()) {
+          drwGeoSetCookie(manualChoiceCookieName, 'true', 1);
+          // Clean up URL by removing the parameter
+          const url = new URL(window.location);
+          url.searchParams.delete('manual_region');
+          window.history.replaceState({}, document.title, url.toString());
+        }
+        
+        return true; // Don't override user's manual choice, but don't retry
+      }
+      
+      // Determine expected region based on country
+      let expectedRegion = 'US'; // Default to US instead of AU
+      
+      if (countryCode === 'AU') {
+        expectedRegion = 'AU';
+      } else if (countryCode === 'NZ') {
+        expectedRegion = 'NZ';
+      } else if (countryCode === 'SG') {
+        expectedRegion = 'SG';
+      } else if (countryCode === 'HK') {
+        expectedRegion = 'HK';
+      } else if (countryCode === 'GB' || countryCode === 'UK') {
+        expectedRegion = 'GB';
+      } else if (countryCode === 'CA') {
+        expectedRegion = 'CA';
+      } else if (['DE', 'FR', 'ES', 'IT', 'NL', 'BE', 'AT', 'PT', 'IE', 'FI', 'SE', 'DK', 'NO'].includes(countryCode)) {
+        expectedRegion = 'EU';
+      }
+      
+      const currentRegion = drwGeoGetCurrentRegionFromURL();
+      const savedPreference = drwGeoGetCookie(cookieName);
+      const lastDetectedCountry = drwGeoGetCookie(locationCookieName);
+      const locationChanged = lastDetectedCountry && lastDetectedCountry !== countryCode;
+      
+      // Update location cookie
+      drwGeoSetCookie(locationCookieName, countryCode, cookieDays);
+      
+      // Check if redirect is needed
+      let shouldRedirect = false;
+      let targetRegion = expectedRegion;
+      
+      // Scenario 1: Location changed - redirect to new region
+      if (locationChanged) {
+        console.log(`Location changed from ${lastDetectedCountry} to ${countryCode}`);
+        drwGeoSetCookie(cookieName, expectedRegion, cookieDays);
+        if (currentRegion !== expectedRegion) {
+          shouldRedirect = true;
+        }
+      }
+      // Scenario 2: Has saved preference but on wrong store
+      else if (savedPreference && savedPreference !== currentRegion) {
+        console.log(`Saved preference ${savedPreference} doesn't match current region ${currentRegion}`);
+        shouldRedirect = true;
+        targetRegion = savedPreference;
+      }
+      // Scenario 3: First visit and not in correct region
+      else if (!savedPreference && currentRegion !== expectedRegion) {
+        console.log(`First visit: ${currentRegion} !== ${expectedRegion}`);
+        drwGeoSetCookie(cookieName, expectedRegion, cookieDays);
+        shouldRedirect = true;
+      }
+      
+      // Perform redirect if needed
+      if (shouldRedirect) {
+        console.log(`Redirecting to ${targetRegion} region`);
+        drwGeoHasRedirected = true;
+        window.location.href = drwGeoGetRegionalURL(targetRegion);
+      } else {
+        console.log('No redirect needed - user is in correct region');
+      }
+      
+      return true; // Success, no retry needed
     }
     
-    // Skip redirect if in Shopify admin/theme editor
-    if (isInShopifyAdmin()) {
-      console.log('Shopify admin detected, skipping geo redirect');
-      return;
-    }
-    
-    // Skip redirect on /pages/ URLs
-    if (window.location.pathname.startsWith('/pages/')) {
-      return;
-    }
-    
-    try {
-      // Use cached result on second check if available
-      if (isSecondCheck && geoCheckResult) {
-        processGeoData(geoCheckResult, true);
+    async function drwGeoRunGeoCheck(attemptNumber = 1) {
+      // Early exit if already redirected
+      if (drwGeoHasRedirected) {
+        console.log('Already redirected, skipping check');
         return;
       }
       
-      // Get country code from geo services
-      const countryCode = await getCountryCode();
-      
-      // Cache result for second check
-      if (!isSecondCheck) {
-        geoCheckResult = countryCode;
+      // Skip redirect on /pages/ URLs (anywhere in the URL)
+      if (window.location.href.includes('/pages/')) {
+        console.log('Skipping redirect on /pages/ URL');
+        return;
       }
       
-      processGeoData(countryCode, isSecondCheck);
+      // Skip redirect in Shopify admin/theme customizer
+      if (window.location.href.includes('admin.shopify.com/store/')) {
+        console.log('Skipping redirect in Shopify admin');
+        return;
+      }
       
-    } catch (error) {
-      // Silent fail - don't break the page if geo-detection fails
-      console.error('Geo-detection error:', error);
+      console.log(`Starting geo check attempt ${attemptNumber}/${drwGeoMaxAttempts}`);
+      
+      try {
+        // Use cached result if available (from previous attempt)
+        let countryCode = drwGeoCheckResult;
+        
+        // Get fresh data if no cache or first attempt
+        if (!countryCode || attemptNumber === 1) {
+          countryCode = await drwGeoGetCountryCode();
+          drwGeoCheckResult = countryCode; // Cache for potential retries
+        }
+        
+        const success = drwGeoProcessGeoData(countryCode, attemptNumber);
+        
+        if (!success && attemptNumber < drwGeoMaxAttempts) {
+          // Schedule retry with exponential backoff
+          const retryDelay = Math.min(1000 * Math.pow(2, attemptNumber - 1), 5000); // 1s, 2s, 4s max
+          console.log(`Retry scheduled in ${retryDelay}ms`);
+          
+          setTimeout(() => {
+            drwGeoRunGeoCheck(attemptNumber + 1);
+          }, retryDelay);
+        }
+        
+      } catch (error) {
+        console.error(`Geo-detection attempt ${attemptNumber} failed:`, error);
+        
+        // Retry if we haven't exceeded max attempts
+        if (attemptNumber < drwGeoMaxAttempts) {
+          const retryDelay = Math.min(1000 * Math.pow(2, attemptNumber - 1), 5000);
+          console.log(`Error retry scheduled in ${retryDelay}ms`);
+          
+          setTimeout(() => {
+            drwGeoRunGeoCheck(attemptNumber + 1);
+          }, retryDelay);
+        } else {
+          console.error('All geo-detection attempts failed');
+        }
+      }
     }
-  }
-  
-  // First check - run immediately
-  runGeoCheck(false);
-  
-  // Second check - run after 2 seconds
-  setTimeout(function() {
-    runGeoCheck(true);
-  }, 2000);
-  
-  // Manual currency change handler
-  const currencySelector = document.getElementById("CurrencySelector");
-  if (currencySelector) {
-    currencySelector.addEventListener("change", function () {
-      const newCurrency = this.value;
-      fetch(`/currency`, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          'X-Requested-With': 'XMLHttpRequest',
-        },
-        body: JSON.stringify({ currency: newCurrency })
-      }).then(() => {
-        location.reload();
+    
+    // Wait for DOM to be fully ready, then start
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', () => {
+        setTimeout(() => drwGeoRunGeoCheck(1), 100); // Small delay to ensure everything is ready
       });
-    });
-  }
-  
-});
-</script>
+    } else {
+      // DOM already ready
+      setTimeout(() => drwGeoRunGeoCheck(1), 100);
+    }
+    
+    // Manual currency change handler
+    const currencySelector = document.getElementById("CurrencySelector");
+    if (currencySelector) {
+      currencySelector.addEventListener("change", function () {
+        const newCurrency = this.value;
+        fetch(`/currency`, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            'X-Requested-With': 'XMLHttpRequest',
+          },
+          body: JSON.stringify({ currency: newCurrency })
+        }).then(() => {
+          location.reload();
+        });
+      });
+    }
+    
+  });
+  </script>
+{% endunless %}
 
   {% render 'tracking_script_updated' %}
 

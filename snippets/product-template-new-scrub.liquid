@@ -853,7 +853,7 @@ font-size: 18px;
 @media only screen and (min-width:1201px){
   .oneway.product__photos.product__photos--beside {
     width: 600px;
-    position: fixed;
+    {% comment %} position: fixed; {% endcomment %}
   }
 }
 @media only screen and (min-width:481px){
@@ -930,7 +930,6 @@ font-size: 18px;
     line-height:18px;
   }
   @media only screen and (max-width:393px){
-
     .stars {
       font-size:15px !important;
     }
@@ -1355,19 +1354,7 @@ if (typeof Currency !== 'undefined' && Currency.currentCurrency) {
 }
 
 // Set currency symbol based on detected currency
-switch (window.displayCurrency) {
-  case 'AUD':
-    window.currencySymbol = '$';
-    break;
-  case 'CAD':
-    window.currencySymbol = 'CA$';
-    break;
-  case 'EUR':
-    window.currencySymbol = '€';
-    break;
-  case 'GBP':
-    window.currencySymbol = '£';
-    break;
+switch(window.displayCurrency) {
   case 'HKD':
     window.currencySymbol = 'HK$';
     break;
@@ -1377,12 +1364,10 @@ switch (window.displayCurrency) {
   case 'SGD':
     window.currencySymbol = 'SG$';
     break;
-  case 'USD':
-    window.currencySymbol = '$';
-    break;
   default:
     window.currencySymbol = '$';
 }
+
 // Debug log
 console.log('=== CURRENCY DETECTION ===');
 console.log('Shop base currency:', window.shopCurrency);
@@ -1391,40 +1376,15 @@ console.log('Currency symbol:', window.currencySymbol);
 console.log('=== END ===');
 
     // Shipping thresholds by currency
-window.shippingThresholds = {
-  'AUD': {{ settings.shipping_treshold }},
-  'HKD': 753,
-  'NZD': 156,
-  'SGD': 126,
-  'CAD': {{ settings.ca_shipping_treshold }},
-  'GBP': {{ settings.gb_shipping_treshold }},
-  'EUR': {{ settings.eu_shipping_treshold }},
-  'USD': {{ settings.us_shipping_treshold }}
-};
-
-
-  window.productVariants = {
-    {% for variant in product.variants %}
-      "{{ product.id }}-{{ variant.option1 | downcase }}-{{ variant.option2 | downcase }}": {
-        id: {{ variant.id }},
-        inventory: {{ variant.inventory_quantity | default: 0 }},
-        available: {{ variant.available | json }}
-      }{% unless forloop.last %},{% endunless %}
-    {% endfor %}
-    {% paginate collections['new-wide-socks'].products by 200 %}
-      {% for productb in collections['new-wide-socks'].products limit:200 %}
-        {% if productb.available and productb.id != product.id %}
-          {% for variant in productb.variants %}
-            ,"{{ productb.id }}-{{ variant.option1 | downcase }}-{{ variant.option2 | downcase }}": {
-              id: {{ variant.id }},
-              inventory: {{ variant.inventory_quantity | default: 0 }},
-              available: {{ variant.available | json }}
-            }
-          {% endfor %}
-        {% endif %}
-      {% endfor %}
-    {% endpaginate %}
+  window.shippingThresholds = {
+    'AUD': 145,
+    'HKD': 753,
+    'NZD': 156,
+    'SGD': 126
   };
+
+
+
 
   function updateThumbnailAddedState(productId) {
   const styleOption = document.querySelector(`[data-id="${productId}"]`);
@@ -1453,19 +1413,13 @@ window.shippingThresholds = {
 <div class="product-options-container">
   <!-- Rating and Trust Badge -->
   <div class="rating">
-    
-    <!-- Start of Judge.me code -->
-  <div class='jdgm-widget jdgm-preview-badge'>
-    {{ product.metafields.judgeme.badge }}
-  </div>
-<!-- End of Judge.me code -->
-
+    <span class="stars">★★★★★ <span class="sudoloox">4.8/5(511)</span></span>
     <div class="trusted-badge">
       <span><svg width="10" height="10" viewBox="0 0 10 10" fill="none" xmlns="http://www.w3.org/2000/svg">
 <path d="M5 10C4.31046 10 3.6634 9.86928 3.05882 9.60784C2.45425 9.34967 1.9232 8.99183 1.46569 8.53431C1.00817 8.07353 0.648693 7.54248 0.387255 6.94118C0.129085 6.3366 0 5.68954 0 5C0 4.31046 0.129085 3.6634 0.387255 3.05882C0.648693 2.45425 1.00817 1.9232 1.46569 1.46569C1.9232 1.00817 2.45425 0.650327 3.05882 0.392157C3.6634 0.130719 4.31046 0 5 0C5.68954 0 6.3366 0.130719 6.94118 0.392157C7.54575 0.650327 8.0768 1.00817 8.53431 1.46569C8.99183 1.9232 9.34967 2.45425 9.60784 3.05882C9.86928 3.6634 10 4.31046 10 5C10 5.68954 9.86928 6.3366 9.60784 6.94118C9.34967 7.54248 8.99183 8.07353 8.53431 8.53431C8.0768 8.99183 7.54575 9.34967 6.94118 9.60784C6.3366 9.86928 5.68954 10 5 10ZM2.20588 5.52941C2.20588 5.68628 2.25327 5.81373 2.34804 5.91177C2.44608 6.00654 2.5719 6.05392 2.72549 6.05392H3.94118V7.2598C3.94118 7.41994 3.98856 7.54902 4.08333 7.64706C4.18137 7.74183 4.30719 7.78922 4.46078 7.78922H5.52941C5.68628 7.78922 5.81209 7.74183 5.90686 7.64706C6.00163 7.54902 6.04902 7.41994 6.04902 7.2598V6.05392H7.26471C7.42157 6.05392 7.54739 6.00654 7.64216 5.91177C7.7402 5.81373 7.78922 5.68628 7.78922 5.52941V4.46078C7.78922 4.30719 7.7402 4.18301 7.64216 4.08824C7.54739 3.9902 7.42157 3.94118 7.26471 3.94118H6.04902V2.73529C6.04902 2.57516 6.00163 2.44771 5.90686 2.35294C5.81209 2.25817 5.68628 2.21078 5.52941 2.21078H4.46078C4.30719 2.21078 4.18137 2.25817 4.08333 2.35294C3.98856 2.44771 3.94118 2.57516 3.94118 2.73529V3.94118H2.72549C2.56863 3.94118 2.44281 3.9902 2.34804 4.08824C2.25327 4.18301 2.20588 4.30719 2.20588 4.46078V5.52941Z" fill="black"/>
 </svg>
 </span>
-      <span>{{ section.settings.trust_badge_text }}</span>
+      <span>Trusted by Aussie Nurses & Doctors</span>
     </div>
   </div>
 
@@ -1474,13 +1428,13 @@ window.shippingThresholds = {
   
   <!-- Product Description -->
   <p class="product-description">
-    {{ section.settings.product_description_text }}
+    Compression socks originally designed by a family of doctors. Boost circulation, prevent swelling & DVT, and support all-day energy with fun designs.
   </p>
 
-  <div class="curated-packs">
+  {% comment %} <div class="curated-packs">
     <button class="pack-btn cactive" data-pack="singles">Build a Pack</button>
     <a href="https://www.drwoofapparel.com.au/products/compression-socks-6pack-black"><button class="pack-btn" data-pack="curated">Curated Packs</button></a>     
-  </div>
+  </div> {% endcomment %}
 
   <!-- Hidden inputs for variant data -->
   <input type="hidden" class="sockvarid" value=""/>
@@ -1490,7 +1444,7 @@ window.shippingThresholds = {
   <input type="hidden" class="selected-size" value=""/>
 
   <!-- Type Selection -->
-  <div class="option-section">
+  {% comment %} <div class="option-section" >
     <div class="option-label">
       Type: <span class="selected-type-text">Regular Calves</span>
       <span class="fit-guide size-guide-pop">Fit Guide</span>
@@ -1499,7 +1453,7 @@ window.shippingThresholds = {
       <button class="option-btn active" data-type="Regular">Regular Calves</button>
       <button class="option-btn" data-type="Wide">Wide Calves</button>
     </div>
-  </div>
+  </div> {% endcomment %}
 
   <!-- Size Selection -->
   <div class="option-section">
@@ -1508,9 +1462,13 @@ window.shippingThresholds = {
       <span class="fit-guide size-guide-pop">Size Guide</span>
     </div>
     <div class="option-buttons">
-      <button class="option-btn active" data-size="S">Small</button>
-      <button class="option-btn" data-size="M">Medium</button>
-      <button class="option-btn" data-size="L">Large</button>
+        <button class="option-btn active" data-size="S">S</button>
+      <button class="option-btn " data-size="XXS">XXS</button>
+      <button class="option-btn" data-size="XS">XS</button>
+      <button class="option-btn" data-size="M">M</button>
+      <button class="option-btn" data-size="L">L</button>
+      <button class="option-btn" data-size="XL">XL</button>
+      <button class="option-btn" data-size="XXL">XXL</button>
     </div>
   </div>
 
@@ -1528,19 +1486,15 @@ window.shippingThresholds = {
     </div>
 
     <!-- Style Categories -->
-     <div class="style-categories">
-  {% for block in section.blocks %}
-    <button class="category-btn{% if block.settings.is_active %} jactive{% endif %}" 
-            data-category="{{ block.settings.category_value }}"
-            {{ block.shopify_attributes }}>
-      {{ block.settings.category_label }}
-      {% if block.settings.item_count and block.settings.item_count > 0 %}
-        <span class="sudo-style-count">{{ block.settings.item_count }}</span>
-      {% endif %}
-    </button>
-  {% endfor %}
-     </div>
-
+    <div class="style-categories">
+      <button class="category-btn jactive" data-category="all">All <span class="sudo-style-count">61</span></button>
+      <button class="category-btn" data-category="animals"> Animals</button>
+      <button class="category-btn" data-category="nature"> Nature</button>   
+      <button class="category-btn" data-category="solids"> Solids</button>   
+      <button class="category-btn" data-category="bestseller"> Best Sellers</button>
+      <button class="category-btn" data-category="new"> New</button>    
+      
+    </div>
 
     <!-- Styles Grid -->
     <div class="styles-grid">
@@ -1548,8 +1502,8 @@ window.shippingThresholds = {
       <div class="scrubcaps-wrapper" id="scrollContainer">
         <div class="scrubs-products">
           <!-- Replace this section with your paginate loop -->
-          {% paginate collections['new-wide-socks'].products by 200 %}
-            {% for productb in collections['new-wide-socks'].products limit:100 %}
+          {% paginate collections['printed-pattern-scrub-tops-1'].products by 200 %}
+            {% for productb in collections['printed-pattern-scrub-tops-1'].products limit:100 %}
               {% if productb.available %}
 
                 {% if productb.metafields.custom.design_details %}
@@ -1626,10 +1580,10 @@ window.shippingThresholds = {
   <!-- New Banner -->
   <style>
     .banner-version1 {
-      display: block;
+      display: none;
       margin-bottom: 20px;
       text-align: center;
-      background: #FDF5EF; 
+      background: #FDF6EF;
      border-radius: 20px;
     }
 
@@ -1663,22 +1617,20 @@ window.shippingThresholds = {
       </span>
     </div>
   </button>
-    <p id="preorder-text">{{ section.settings.preorder_text }}</p>
+    <p id="preorder-text">Pre-order now to secure your preferred design. Your entire order will ship once this item becomes available. Thanks for your patience!</p>
     <div class="shipping-info">
-   <div class="shipping-badge">    
+   <div class="shipping-badge">
         <span>
             <svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <circle cx="6" cy="6" r="3" fill="#1E781C"></circle>
                 <circle cx="6" cy="6" r="4.5" stroke="#1E781C" stroke-opacity="0.2" stroke-width="3"></circle>
             </svg>
-        </span>    
+        </span>
         <span id="arrival-date">Loading...</span>
     </div>
      <div class="shipping-badge" id="freeShippingBadge">
 
-        <span>
-          {% if cart.currency.iso_code == 'AUD' or cart.currency.iso_code == 'NZD' %}
-            <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" width="256" height="256" viewBox="0 0 256 256" xml:space="preserve">
+        <span><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" width="256" height="256" viewBox="0 0 256 256" xml:space="preserve">
 <g style="stroke: none; stroke-width: 0; stroke-dasharray: none; stroke-linecap: butt; stroke-linejoin: miter; stroke-miterlimit: 10; fill: none; fill-rule: nonzero; opacity: 1;" transform="translate(1.4065934065934016 1.4065934065934016) scale(2.81 2.81)">
 	<circle cx="45" cy="45" r="45" style="stroke: none; stroke-width: 1; stroke-dasharray: none; stroke-linecap: butt; stroke-linejoin: miter; stroke-miterlimit: 10; fill: rgb(0,0,102); fill-rule: nonzero; opacity: 1;" transform="  matrix(1 0 0 1 0 0) "/>
 	<path d="M 25.304 23.603 V 13.115 h -7.928 v 10.488 L 9.227 17.71 c -1.261 1.65 -2.407 3.391 -3.433 5.209 l 2.3 1.663 H 4.903 c -1.824 3.575 -3.193 7.42 -4.01 11.467 h 7.201 l -7.969 5.764 C 0.051 42.867 0 43.927 0 45 c 0 0.845 0.028 1.684 0.074 2.517 h 2.8 l 14.502 -10.488 v 10.488 h 7.928 V 37.029 l 14.502 10.488 h 5.318 v -3.846 L 34.586 36.05 h 10.538 V 24.583 H 34.587 l 10.538 -7.621 v -3.846 h -5.318 L 25.304 23.603 z" style="stroke: none; stroke-width: 1; stroke-dasharray: none; stroke-linecap: butt; stroke-linejoin: miter; stroke-miterlimit: 10; fill: rgb(243,244,245); fill-rule: nonzero; opacity: 1;" transform=" matrix(1 0 0 1 0 0) " stroke-linecap="round"/>
@@ -1688,8 +1640,8 @@ window.shippingThresholds = {
 	<polygon points="29.27,36.05 45.13,47.52 45.13,47.52 45.13,44.95 32.81,36.05 " style="stroke: none; stroke-width: 1; stroke-dasharray: none; stroke-linecap: butt; stroke-linejoin: miter; stroke-miterlimit: 10; fill: rgb(204,0,0); fill-rule: nonzero; opacity: 1;" transform="  matrix(1 0 0 1 0 0) "/>
 	<polygon points="45.13,13.12 41.58,13.12 25.72,24.58 29.27,24.58 " style="stroke: none; stroke-width: 1; stroke-dasharray: none; stroke-linecap: butt; stroke-linejoin: miter; stroke-miterlimit: 10; fill: rgb(204,0,0); fill-rule: nonzero; opacity: 1;" transform="  matrix(1 0 0 1 0 0) "/>
 	<path d="M 7.422 20.25 c -0.382 0.579 -0.752 1.166 -1.107 1.763 l 3.552 2.569 h 3.545 L 7.422 20.25 z" style="stroke: none; stroke-width: 1; stroke-dasharray: none; stroke-linecap: butt; stroke-linejoin: miter; stroke-miterlimit: 10; fill: rgb(204,0,0); fill-rule: nonzero; opacity: 1;" transform=" matrix(1 0 0 1 0 0) " stroke-linecap="round"/>
-</g></svg>
-{% endif %}
+</g>
+</svg>
 </span>
         <span id="shippingThresholdText">Loading...</span>
       </div>
@@ -1755,7 +1707,7 @@ window.shippingThresholds = {
   </style>
 
 
-  <div class="uses">
+  {% comment %} <div class="uses">
     <div class="label">What are you using this for?</div>
     <div class="tag-container">
       <div class="tag">Work</div>
@@ -1763,19 +1715,21 @@ window.shippingThresholds = {
       <div class="tag">Health</div>
       <div class="tag">Varicose Veins</div>
     </div>
-  </div>
+  </div> {% endcomment %}
 
 <script>
 function updateCurrentProductStatus(productId = null) {  
-  const selectedType = document.querySelector('.selected-type')?.value || 'Regular';
+  const selectedType = "";// HERE WE CSN PASSS TYPE IF NEEDED document.querySelector('.selected-type')?.value || 'Regular';
   const selectedSize = document.querySelector('.selected-size')?.value || 'S';
   const selectedProductId = productId || document.querySelector('.sockvarid')?.value || '{{ product.id }}';
-  const variantKey = `${selectedProductId}-${selectedType.toLowerCase()}-${selectedSize.toLowerCase()}`;
+  {% comment %} const variantKey = `${selectedProductId}-${selectedType.toLowerCase()}-${selectedSize.toLowerCase()}`; {% endcomment %}
+  const variantKey = `${selectedProductId}-${selectedSize.toLowerCase()}`;
   
   console.log('=== UPDATE CURRENT PRODUCT STATUS ===');
   console.log('Product ID:', selectedProductId);
-
-  
+{% comment %} 8405151645954-regular-s {% endcomment %}
+    console.log(window.productVariants);
+  console.log(variantKey + "variantKey");
   const variant = window.productVariants[variantKey];
   
   if (!variant) {
@@ -1822,7 +1776,7 @@ function updatePreorderText() {
   const selectedType = document.querySelector('.selected-type')?.value || 'Regular';
   const selectedSize = document.querySelector('.selected-size')?.value || 'S';
   const selectedProductId = document.querySelector('.sockvarid').value || '{{ product.id }}';
-  const variantKey = `${selectedProductId}-${selectedType.toLowerCase()}-${selectedSize.toLowerCase()}`;
+  const variantKey = `${selectedProductId}-${selectedSize.toLowerCase()}`;
   const currentVariant = window.productVariants[variantKey];
   
   // If current product is sold out (not available), hide preorder text
@@ -2313,15 +2267,16 @@ addToCartBtn.addEventListener('click', function() {
   
   if (memoryProductCount === 0) {
     // No memory products - add current product only
-    const selectedType = selectedTypeInput.value || 'Regular';
+    console.log(window.productVariants);
+    const selectedType = "";//selectedTypeInput.value || 'Regular';
     const selectedSize = selectedSizeInput.value || 'S';
     const selectedProductId = document.querySelector('.sockvarid').value || '{{ product.id }}';
-    const variantKey = `${selectedProductId}-${selectedType.toLowerCase()}-${selectedSize.toLowerCase()}`;
+    const variantKey = `${selectedProductId}-${selectedSize.toLowerCase()}`;
     // ADD THESE TWO LINES:
     const addToCartBtn = document.getElementById('addToCartBtn');
     const addToCartText = document.getElementById('addToCartText');
     const mainVariant = window.productVariants[variantKey];
-    
+    console.log(mainVariant);
     if (mainVariant && mainVariant.available) {
       cartItems.push({
         id: mainVariant.id,
@@ -2496,20 +2451,16 @@ updateATCPrices();
       {% endif %}
     {% endunless %}
   {% endfor %}
-    <button class="woof-accordion-header wdyd-header">Do they work for long shifts?<span class="icon"><svg width="10" height="10" viewBox="0 0 10 10" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M10 4.24468V5.52128H5.74468V9.94681H4.25532V5.52128H0V4.24468H4.25532V0.0531921H5.74468V4.24468H10Z" fill="black"></path></svg></span></button>
+    {% comment %} <button class="woof-accordion-header wdyd-header">Do they work for long shifts?<span class="icon"><svg width="10" height="10" viewBox="0 0 10 10" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M10 4.24468V5.52128H5.74468V9.94681H4.25532V5.52128H0V4.24468H4.25532V0.0531921H5.74468V4.24468H10Z" fill="black"></path></svg></span></button>
         <div class="woof-accordion-content wdyd-content" style="display: none;">
           <p><span><strong>Yes! These are literally made by doctors who worked those brutal shifts.</strong> <br></span></p>
 <p><span>Not too tight to be uncomfortable during long shifts, but strong enough to prevent swelling and boost circulation. This is exactly what your legs need for 10+ hour days!</span></p>
-        </div>
+        </div> {% endcomment %}
 </div>
 </div>
 
 <div class="loved-by-thousands">
-  {% if section.settings.loved %}
-    <h2>{{ section.settings.loved }}</h2>
-  {% else %}
-    <h2>Loved by 90,000+ Aussie Nurses & Doctors</h2>
-  {% endif %}
+  <h2>Loved by 90,000+ Aussie Nurses & Doctors</h2>
   <div class="video-scroller">
     <div class="video-card">
       <div class="video-wrapper zero1">
@@ -2553,6 +2504,20 @@ updateATCPrices();
       </div>
       <span class="ugstext">Make sure your day off is actually a day off</span>
     </div>
+
+    <div class="video-card">
+      <div class="video-wrapper zero4">
+      <video poster="https://cdn.shopify.com/s/files/1/0573/7250/8344/files/Screenshot_2025-07-11_184453.png?v=1752230829">
+        <source src="https://cdn.shopify.com/videos/c/o/v/24b7096fe22f4d86b3186d157cb7d8e9.mp4" type="video/mp4" />
+        Your browser does not support the video tag.
+      </video>
+      <div class="play-button"><svg width="30" height="30" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M14.9927 30C12.9221 30 10.9821 29.6079 9.17271 28.8238C7.36333 28.0494 5.77165 26.9748 4.39768 25.6002C3.02371 24.2256 1.94485 22.6331 1.1611 20.8228C0.387034 19.0126 0 17.0716 0 15C0 12.9284 0.387034 10.9874 1.1611 9.17715C1.94485 7.35721 3.02371 5.76476 4.39768 4.39981C5.77165 3.02517 7.36333 1.95063 9.17271 1.17619C10.9821 0.392062 12.9221 0 14.9927 0C17.0634 0 19.0034 0.392062 20.8128 1.17619C22.6318 1.95063 24.2284 3.02517 25.6023 4.39981C26.9763 5.76476 28.0503 7.35721 28.8244 9.17715C29.6081 10.9874 30 12.9284 30 15C30 17.0716 29.6081 19.0126 28.8244 20.8228C28.0503 22.6331 26.9763 24.2256 25.6023 25.6002C24.2284 26.9748 22.6318 28.0494 20.8128 28.8238C19.0034 29.6079 17.0634 30 14.9927 30ZM12.3803 20.9245L20.7547 15.9874C20.9966 15.8325 21.1563 15.6341 21.2337 15.3921C21.3208 15.1404 21.3208 14.8887 21.2337 14.637C21.1563 14.3853 20.9966 14.1917 20.7547 14.0561L12.3803 9.09003C12.119 8.93514 11.8481 8.87222 11.5675 8.90126C11.2966 8.9303 11.0692 9.03195 10.8853 9.2062C10.7015 9.37076 10.6096 9.6031 10.6096 9.90319V20.1113C10.6096 20.4114 10.7015 20.6534 10.8853 20.8374C11.0692 21.0116 11.2917 21.1133 11.553 21.1423C11.8239 21.1617 12.0997 21.0891 12.3803 20.9245Z" fill="white"/>
+</svg>
+</div>
+      </div>
+      <span class="ugstext">Why nurses should wear compression socks</span>
+    </div>
   </div>
 </div>
 
@@ -2574,14 +2539,7 @@ updateATCPrices();
 </div>
 
 <style>
-  .jdgm-prev-badge__text, .jdgm-prev-badge__stars{
-    font-size:12px
-  }
-  @media only screen and (max-width:480px){
-      .jdgm-prev-badge__text, .jdgm-prev-badge__stars{
-        font-size:10px
-      }
-  }
+  
   .flexerd{
     display:block;   
     width:100px;
@@ -2714,14 +2672,6 @@ updateATCPrices();
   }
   
   @media only screen and (max-width:490px) {
-      .rating{
-    justify-content:space-between;
-    margin-top: 12px;
-  }
-  .jdgm-widget.jdgm-widget{
-    position:relative;
-    top:-2px;
-  }
     .product__slide{
       
     }
@@ -2787,7 +2737,7 @@ function isCurrentProductPreorder() {
   const selectedType = document.querySelector('.selected-type')?.value || 'Regular';
   const selectedSize = document.querySelector('.selected-size')?.value || 'S';
   const selectedProductId = document.querySelector('.sockvarid').value || '{{ product.id }}';
-  const variantKey = `${selectedProductId}-${selectedType.toLowerCase()}-${selectedSize.toLowerCase()}`;
+  const variantKey = `${selectedProductId}-${selectedSize.toLowerCase()}`;
   
   const variant = window.productVariants[variantKey];
   if (!variant) return false;
@@ -2800,7 +2750,7 @@ function isProductPreorder(productId) {
   const selectedSizeInput = document.querySelector('.selected-size');
   const selectedType = (selectedTypeInput ? selectedTypeInput.value : '') || 'Regular';
   const selectedSize = (selectedSizeInput ? selectedSizeInput.value : '') || 'S';
-  const variantKey = `${productId}-${selectedType.toLowerCase()}-${selectedSize.toLowerCase()}`;
+  const variantKey = `${productId}-${selectedSize.toLowerCase()}`;
   
   const variant = window.productVariants[variantKey];
   
@@ -2831,7 +2781,8 @@ function hasPreorderItems() {
   const selectedType = document.querySelector('.selected-type')?.value || 'Regular';
   const selectedSize = document.querySelector('.selected-size')?.value || 'S';
   const selectedProductId = document.querySelector('.sockvarid').value || '{{ product.id }}';
-  const variantKey = `${selectedProductId}-${selectedType.toLowerCase()}-${selectedSize.toLowerCase()}`;
+  const variantKey = `${selectedProductId}-${selectedSize.toLowerCase()}`;
+
   const currentVariant = window.productVariants[variantKey];
   
   const currentIsPreorder = currentVariant && currentVariant.available && currentVariant.inventory <= 0;
@@ -3211,7 +3162,7 @@ updateScrollIndicator();
 scrollThumb.style.cursor = 'grab';
 
 
-  const myInterval = setInterval(afterpay, 1000);
+  {% comment %} const myInterval = setInterval(afterpay, 1000); {% endcomment %}
 
   function afterpay() {
     var data_price = $(".product-single__prices.bundle_template.grid-product__price span.normalPrice").attr("data-price");
@@ -3407,6 +3358,8 @@ scrollThumb.style.cursor = 'grab';
 }
       @media only screen and (min-width:481px){
         
+
+
         .add-to-cart-btn{
           font-weight:500;
         }
@@ -3568,6 +3521,7 @@ function updateArrivalDate() {
 
     headers.forEach(header => {
       header.addEventListener("click", () => {
+      
         const isActive = header.classList.contains("mactive");
         // Close all
         headers.forEach(h => {

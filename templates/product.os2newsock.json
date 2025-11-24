@@ -2,6 +2,82 @@
   "sections": {
     "product-template": {
       "type": "product-template-new-sock",
+      "blocks": {
+        "category_filter_Cg4kdP": {
+          "type": "category_filter",
+          "settings": {
+            "category_label": "All",
+            "category_value": "All",
+            "is_active": true
+          }
+        },
+        "category_filter_tJz4Mf": {
+          "type": "category_filter",
+          "settings": {
+            "category_label": "Classics",
+            "category_value": "Classics",
+            "is_active": false
+          }
+        },
+        "category_filter_hGGNDC": {
+          "type": "category_filter",
+          "settings": {
+            "category_label": "Animals",
+            "category_value": "Animals",
+            "is_active": false
+          }
+        },
+        "category_filter_qUdatU": {
+          "type": "category_filter",
+          "settings": {
+            "category_label": "Whimsical",
+            "category_value": "Whimsical",
+            "is_active": false
+          }
+        },
+        "category_filter_8RcBqe": {
+          "type": "category_filter",
+          "settings": {
+            "category_label": "Causes",
+            "category_value": "Causes",
+            "is_active": false
+          }
+        },
+        "category_filter_3FNf8t": {
+          "type": "category_filter",
+          "settings": {
+            "category_label": "Lifestyle",
+            "category_value": "Lifestyle",
+            "is_active": false
+          }
+        },
+        "category_filter_8t834P": {
+          "type": "category_filter",
+          "settings": {
+            "category_label": "Best Seller",
+            "category_value": "Best Seller",
+            "is_active": false
+          }
+        },
+        "category_filter_GF3yHE": {
+          "type": "category_filter",
+          "settings": {
+            "category_label": "New",
+            "category_value": "New",
+            "is_active": false
+          }
+        }
+      },
+      "block_order": [
+        "category_filter_Cg4kdP",
+        "category_filter_tJz4Mf",
+        "category_filter_hGGNDC",
+        "category_filter_qUdatU",
+        "category_filter_8RcBqe",
+        "category_filter_3FNf8t",
+        "category_filter_8t834P",
+        "category_filter_GF3yHE"
+      ],
       "settings": {
         "sockpreorderdate": "Nov 17",
         "trust_badge_text": "Trusted by Aussie Nurses & Doctors",

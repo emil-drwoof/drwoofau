@@ -118,6 +118,14 @@
         "list_VLNxpM"
       ]
     },
+    "headerv5_yCPF3w": {
+      "settings": {
+        "primary_button_text": "SHOP VET MED SCRUBS",
+        "primary_button_url": "shopify:\/\/collections\/vet-med-scrubs",
+        "secondary_button_url": "shopify:\/\/collections\/compression-socks"
+      },
+      "blocks": {}
+    },
     "logolistaani_YJptaJ": {
       "disabled": true,
       "settings": {},
@@ -131,19 +139,6 @@
     "ugcslider_WVccfR": {
       "disabled": true,
       "settings": {},
-      "blocks": {}
-    },
-    "ce9a6cf9-6111-4efb-b6e0-d16d8fd842df": {
-      "disabled": true,
-      "settings": {},
-      "blocks": {}
-    },
-    "headerv5_yCPF3w": {
-      "settings": {
-        "primary_button_text": "SHOP VET MED SCRUBS",
-        "primary_button_url": "shopify:\/\/collections\/vet-med-scrubs",
-        "secondary_button_url": "shopify:\/\/collections\/compression-socks"
-      },
       "blocks": {}
     }
   },
@@ -165,8 +160,6 @@
     "9e8f0f64-90c7-4706-a7a9-aa3e68275269",
     "1650947126b57380d2",
     "16324507174c90bdf2",
-    "ce9a6cf9-6111-4efb-b6e0-d16d8fd842df",
-    "162682029070dd2a76",
-    "custom_html_bfzYyA"
+    "162682029070dd2a76"
   ]
 }

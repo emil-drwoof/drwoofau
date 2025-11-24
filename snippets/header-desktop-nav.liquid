@@ -33,8 +33,9 @@
           <div class="flexer">
               <div class="side">
                 <a href="{{ section.settings.right_link_1 }}"><img src="{{ section.settings.right_image_1 | img_url: '500x' }}" class="twoimage"></a>
-                  
-                <a href="{{ section.settings.right_link_2 }}"><img src="{{ section.settings.right_image_2 | img_url: '500x' }}" class="twoimage"></a>
+                {% if localization.country.currency.iso_code == 'AUD' or localization.country.currency.iso_code == 'NZD' %}
+                  <a href="{{ section.settings.right_link_2 }}"><img src="{{ section.settings.right_image_2 | img_url: '500x' }}" class="twoimage"></a>
+                {% endif %}                
               </div>
 
               <div class="midside">

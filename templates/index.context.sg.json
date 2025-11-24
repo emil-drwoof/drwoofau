@@ -3,5 +3,76 @@
   "context": {
     "market": "sg"
   },
-  "sections": {}
+  "sections": {
+    "collection_slider_xMmiJ": {
+      "type": "collection-slider",
+      "disabled": false,
+      "settings": {
+        "header-1660de9c8bceed8ab1b65c3e2a31b556": null,
+        "reviewstars": false,
+        "blocklist": false,
+        "show_title": true,
+        "dark_theme": false,
+        "martop_this": 0,
+        "marbot_this": 0,
+        "mmartop_this": 0,
+        "mmarbot_this": 0,
+        "selected_collection": "bamboo-compression-socks",
+        "sec_name": "Best Sellers"
+      },
+      "blocks": {},
+      "block_order": [],
+      "name": "New Collection Slider"
+    },
+    "headerv5_yCPF3w": {
+      "settings": {
+        "title": "Compression Socks Born in Medical Apparel",
+        "subtitle": "We are an Australian medical apparel company. If our socks keep nurses comfortable through 12 hour shifts, they will keep you supported anywhere in the world.",
+        "hero_image": "shopify:\/\/shop_images\/BFCM_BANNER_a19da92c-8ff5-43f3-91ed-ae16b2662752.png",
+        "primary_button_text": "SHOP COMPRESSION SOCKS",
+        "primary_button_url": "shopify:\/\/collections\/compression-socks",
+        "secondary_button_text": "SHOP VETMED SCRUBS",
+        "secondary_button_url": "shopify:\/\/collections\/vet-med-scrubs"
+      },
+      "blocks": {}
+    },
+    "logolistaani_YJptaJ": {
+      "disabled": true,
+      "settings": {},
+      "blocks": {}
+    },
+    "14a6d1da-4bb0-467d-8179-0f89444b4027": {
+      "disabled": true,
+      "settings": {},
+      "blocks": {}
+    },
+    "ugcslider_WVccfR": {
+      "disabled": true,
+      "settings": {},
+      "blocks": {}
+    }
+  },
+  "order": [
+    "replo_replo_hero_banner_FJyVaW",
+    "ig_slider_QetiBi",
+    "headerv5_yCPF3w",
+    "1c64d667-b672-4f7b-b9be-2310692e99f1",
+    "collection_slider_xMmiJ",
+    "logolistaani_YJptaJ",
+    "logo_list_gcipMb",
+    "b08ad3ae-1d49-443c-bf20-3daa936d220c",
+    "14a6d1da-4bb0-467d-8179-0f89444b4027",
+    "text_and_image_FYCijp",
+    "ugcslider_WVccfR",
+    "7369b26d-3f2e-4d4c-a896-29470c300195",
+    "ddf4d5b8-a6eb-415b-9b5f-fde5f56a7fbc",
+    "ba72dc37-5808-48c1-b3cb-3ec8be06d8fe",
+    "text_and_image_LkLYGw",
+    "9e8f0f64-90c7-4706-a7a9-aa3e68275269",
+    "1650947126b57380d2",
+    "16324507174c90bdf2",
+    "ce9a6cf9-6111-4efb-b6e0-d16d8fd842df",
+    "162682029070dd2a76",
+    "redirect_manager_tBG9p8"
+  ]
 }

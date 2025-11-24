@@ -1,5 +1,3 @@
-
-
 {%- if section.settings.filter_type != 'none' -%}
   <div class="collection-filters">
     {%- if section.settings.filter_type == 'groups' -%}
@@ -15,9 +13,9 @@
     {% if section.settings.filter_type == 'dropdown' or section.settings.collection_sort_enable %}
       <div class="collection-dropdowns">
         {% if section.settings.filter_type == 'dropdown' %}
-          <div class="collection-dropdowns__item">
-            <label for="SortTags" class="hidden-label">{{ 'collections.filters.title_tags' | t }}</label>
-            <select name="SortTags" id="SortTags">
+          <div class="collection-dropdowns__item for_mobile_side">
+            <label for="SortTags" class="hidden-label mobile_view">{{ 'collections.filters.title_tags' | t }}</label>
+            <select name="SortTags" id="SortTags" class="mobile_hide">
               {% if current_tags %}
                 {% if collection.handle %}
                   <option value="{{ routes.collections_url }}/{{ collection.handle }}">{{ 'collections.filters.all_tags' | t }}</option>
@@ -38,11 +36,78 @@
                 <option value="{{ routes.collections_url }}/{% if collection.handle != blank %}{{ collection.handle }}{% else %}all{% endif %}/{{ tag | handleize }}"{% if current_tags contains tag %} selected="selected"{% endif %}>{{ tag }}</option>
               {% endfor %}
             </select>
+
+        {% if section.settings.collection_mobile_enable == true %}
+            <div class="desktop_hide">
+              <div class="custom-filters-wrapper">
+                <form id="FacetFiltersForm" class="filters-form">
+                  <div class="tag-scroll-buttons ">
+                    {% for filter in collection.filters %}
+                      <button type="button" class="filter-button" data-filter="{{ forloop.index }}">
+                        {{ filter.label }}
+                      </button>
+                    {% endfor %}
+                  </div>
+
+                  <div class="filter-drawer" data-drawer="all-filters">
+                    <div class="filter-drawer-content">
+                      <div class="filter-drawer-header">
+                        <span>Filters</span>
+                        <button type="button" class="close-drawer">
+                          <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 36 36" fill="none">
+                            <circle cx="18" cy="18" r="17.5" stroke="#0B0E30"/>
+                            <line x1="26.2735" y1="10.4335" x2="10.4335" y2="26.2735" stroke="#0B0E30"/>
+                            <line x1="10.4336" y1="9.7264" x2="26.2736" y2="25.5664" stroke="#0B0E30"/>
+                          </svg>
+                        </button>
+                      </div>
+
+                      {% assign product_count = collection.all_products_count %}
+                      <div class="total_items_count">{{ product_count }} items</div>
+
+                      {% for filter in collection.filters %}
+                        <div class="filter-section" data-filter-section="{{ forloop.index }}">
+                          <h3 class="filter-section-title">
+                            {{ filter.label }}
+                            <span class="dropdown_icon">
+                              <svg xmlns="http://www.w3.org/2000/svg" width="21" height="11" viewBox="0 0 21 11" fill="none">
+                                <line x1="0.353553" y1="0.646447" x2="9.35355" y2="9.64645" stroke="#0B0E30"/>
+                                <line x1="20.3363" y1="0.36997" x2="9.33634" y2="10.37" stroke="#0B0E30"/>
+                              </svg>
+                            </span>
+                          </h3>
+                          <div class="filter-options">
+                            {% for value in filter.values %}
+                              <label class="filter-option">
+                                <input
+                                  type="checkbox"
+                                  name="{{ value.param_name }}"
+                                  value="{{ value.value }}"
+                                  data-url="{{ value.url_to_add }}"
+                                  {% if value.active %}checked{% endif %}
+                                >
+                                <span>{{ value.label }}</span>
+                              </label>
+                            {% endfor %}
+                          </div>
+                        </div>
+                      {% endfor %}
+
+                      <button type="button" class="close-drawer result_show_button">Show results</button>
+                    </div>
+                  </div>
+                </form>
+
+                <div class="filter-overlay"></div>
+              </div>
+            </div>
+             {% endif %}
           </div>
+       
         {% endif %}
 
         {% if section.settings.collection_sort_enable %}
-          <div class="collection-dropdowns__item">
+          <div class="collection-dropdowns__item for_mobile_side sort_mobile">
             {%- assign sort_by = collection.sort_by | default: collection.default_sort_by -%}
             <label for="SortBy" class="hidden-label">{{ 'collections.sorting.title' | t }}</label>
             <select name="SortBy" id="SortBy" data-default-sortby="{{ collection.default_sort_by }}">
@@ -57,6 +122,301 @@
     {% endif %}
   </div>
 {%- endif -%}
+
+<style>
+.custom-filters-wrapper {
+  padding: 1rem 0;
+}
+
+.filter-button {
+      flex: 0 0 auto;
+      background: transparent;
+      border-radius: 6px;
+      padding: 8px 16px;
+      color: #000;
+      text-decoration: none;
+      border: 1px solid #DBDBDB;
+      font-family: Outfit;
+      font-weight: 500;
+      font-style: Medium;
+      font-size: 14px;
+      leading-trim: CAP_HEIGHT;
+      line-height: 105%;
+      letter-spacing: 0%;
+      text-align: center;
+      vertical-align: middle;
+      text-transform: capitalize;
+  cursor: pointer;
+  transition: 0.25s;
+}
+
+.filter-drawer {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: -100%;
+  background: #fff;
+  transition: bottom 0.4s ease;
+  border-radius: 20px 20px 0 0;
+  box-shadow: 0 -5px 15px rgba(0, 0, 0, 0.15);
+  z-index: 100;
+}
+
+.filter-drawer.open {
+  bottom: 0;
+}
+
+.filter-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.4);
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.4s ease;
+  z-index: 90;
+}
+
+.filter-overlay.active {
+  opacity: 1;
+  visibility: visible;
+}
+
+.filter-drawer-content {
+  max-height: 70vh;
+  overflow-y: auto;
+  padding: 1rem 1.5rem;
+  scroll-behavior: smooth;
+}
+
+.filter-drawer-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-family: Outfit;
+  font-weight: 500;
+  font-size: 16px;
+  color: #0B0E30;
+}
+
+.total_items_count {
+  font-family: Outfit;
+  font-weight: 500;
+  font-size: 14px;
+  color: #0B0E30;
+  padding: 15px 0 5px;
+}
+
+.filter-section {
+  border-bottom: 1px solid #D0D0D040;
+  margin: 0;
+  transition: 0.25s;
+}
+
+.filter-section-title {
+    font-family: Outfit;
+    font-weight: 500;
+    font-size: 16px;
+    color: #0B0E30;
+    padding: 10px 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    cursor: pointer;
+    margin: 0;
+}
+
+.filter-option {
+    display: flex;
+    align-items: center;
+    gap: 3px;
+}
+.filter-option span{
+font-family: Outfit;
+font-weight: 500;
+font-style: Medium;
+font-size: 14px;
+leading-trim: CAP_HEIGHT;
+line-height: 100%;
+letter-spacing: 0%;
+text-align: center;
+vertical-align: middle;
+text-transform: capitalize;
+color: #0B0E30;
+}
+
+.dropdown_icon svg,
+.close-drawer svg {
+  width: 100%;
+  height: 100%;
+}
+
+.close-drawer {
+  padding: 0;
+  width: 20px;
+  height: 20px;
+  cursor: pointer;
+}
+
+.dropdown_icon {
+  width: 12px;
+  height: 12px;
+}
+
+.result_show_button {
+  background-color: #0A0D34;
+  color: #fff;
+  font-family: Outfit;
+  font-weight: 500;
+  font-size: 16px;
+  width: 100%;
+  border-radius: 6px !important;
+  height: 50px;
+  margin-top: 15px;
+}
+
+.filter-options {
+  display: none;
+}
+
+.filter-section.active .filter-options {
+  display: block;
+}
+.filter-section.active .dropdown_icon {
+  rotate: 180deg;
+}
+
+
+
+  .desktop_hide{
+    display: none;
+  }
+  @media (max-width: 768px){
+    .mobile_hide{
+      display: none !important;
+    }
+    .for_mobile_side{
+      flex: 0 1 76% !important;
+      width: 76% !important;
+      margin-left: 0 !important;
+    }
+    .for_mobile_side.sort_mobile{
+      flex: 0 1 24% !important;
+      width: 24% !important;
+      margin: 0 15px !important;
+    }
+    .collection-dropdowns {
+      flex-wrap: nowrap !important;
+      flex-direction: row-reverse;
+    }
+    .collection-dropdowns select {
+      display: block;
+      width: max-content;
+      border: 1px solid #DBDBDB;
+      padding: 8px;
+      border-radius: 6px;
+      font-family: Outfit;
+      font-weight: 500;
+      font-style: Medium;
+      font-size: 14px !important;
+      leading-trim: CAP_HEIGHT;
+      line-height: 112%;
+      letter-spacing: 0%;
+      vertical-align: middle;
+      text-transform: capitalize;
+      background-size: 9px !important;
+      text-align: left;
+    }
+
+    .tag-scroll-buttons {
+      display: flex;
+      gap: 8px;
+      overflow-x: auto;
+      white-space: nowrap;
+      padding: 10px 0;
+      scrollbar-width: none;
+    }
+    .tag-scroll-buttons::-webkit-scrollbar {
+      display: none;
+    }    
+    .desktop_hide{
+      display: block;
+    }
+  }
+</style> 
+
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+  const filterButtons = document.querySelectorAll(".filter-button");
+  const drawer = document.querySelector(".filter-drawer");
+  const overlay = document.querySelector(".filter-overlay");
+  const closeBtns = document.querySelectorAll(".close-drawer");
+
+  filterButtons.forEach((btn) => {
+    btn.addEventListener("click", () => {
+      const id = btn.getAttribute("data-filter");
+      const section = document.querySelector(`.filter-section[data-filter-section="${id}"]`);
+
+      filterButtons.forEach((b) => b.classList.remove("active"));
+      document.querySelectorAll(".filter-section").forEach((s) => s.classList.remove("active"));
+
+      btn.classList.add("active");
+      section.classList.add("active");
+
+      drawer.classList.add("open");
+      overlay.classList.add("active");
+
+      setTimeout(() => {
+        section.scrollIntoView({ behavior: "smooth", block: "start" });
+      }, 300);
+    });
+  });
+
+  document.querySelectorAll(".filter-section-title").forEach((title) => {
+    title.addEventListener("click", () => {
+      const currentSection = title.closest(".filter-section");
+      const isActive = currentSection.classList.contains("active");
+      document.querySelectorAll(".filter-section").forEach((s) => s.classList.remove("active"));
+      if (!isActive) currentSection.classList.add("active");
+      currentSection.scrollIntoView({ behavior: "smooth", block: "start" });
+    });
+  });
+
+  closeBtns.forEach((closeBtn) => {
+    closeBtn.addEventListener("click", () => {
+      drawer.classList.remove("open");
+      overlay.classList.remove("active");
+
+      filterButtons.forEach((b) => b.classList.remove("active"));
+      document.querySelectorAll(".filter-section").forEach((s) => s.classList.remove("active"));
+
+      setTimeout(() => {
+        window.scrollTo({ top: window.scrollY + 100, behavior: "smooth" });
+      }, 200);
+    });
+  });
+
+  document.querySelectorAll(".filter-option input").forEach((input) => {
+    input.addEventListener("change", () => {
+      const baseUrl = window.location.pathname;
+      const url = new URL(baseUrl, window.location.origin);
+      const params = new URLSearchParams();
+
+      document.querySelectorAll(".filter-option input:checked").forEach((checkedInput) => {
+        params.append(
+          checkedInput.getAttribute("name"),
+          checkedInput.getAttribute("value")
+        );
+      });
+
+      url.search = params.toString();
+      window.location.href = url.href;
+    });
+  });
+});
+</script>
+
+
+
 {% schema %}
   {
     "name": "Collection filter",
@@ -92,6 +452,11 @@
         "type": "checkbox",
         "id": "collection_sort_enable",
         "label": "Show sort options"
+      },
+      {
+        "type": "checkbox",
+        "id": "collection_mobile_enable",
+        "label": "Show Mobile Filter"
       }
     ],
     "blocks": [

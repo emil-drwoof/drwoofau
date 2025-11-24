@@ -1,7 +1,8 @@
 {
   "sections": {
     "product-template": {
-      "type": "product-template-new-sock",
+      "type": "product-template-new-scrub",
+      "name": "Product Scrub Template",
       "settings": {
         "sockpreorderdate": "Oct 30",
         "abtestnoicons": false,
@@ -115,6 +116,7 @@
     },
     "product_recommendations_HKAV6j": {
       "type": "product-recommendations",
+      "disabled": true,
       "name": "Product recommendations",
       "settings": {
         "show_product_recommendations": true,

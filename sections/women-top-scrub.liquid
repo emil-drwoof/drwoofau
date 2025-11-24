@@ -1,5 +1,76 @@
+    <script>
+          
+          
+
+    var variantStock = {};
+      var variantAvail = {};
+
+{% assign wide_collection = collections['printed-pattern-scrub-tops-1'] %}
+{% for product in wide_collection.products %}
+  {% for variant in product.variants %}
+    variantStock[{{ variant.id }}] = {{ variant.inventory_quantity }};
+    variantAvail[{{ variant.id }}] = {{ variant.available }};
+  {% endfor %}
+{% endfor %}
+
+{% assign wide_collection = collections['printed-pattern-scrub-tops-1'] %}
+{% for product in wide_collection.products %}
+  {% for variant in product.variants %}
+    variantStock[{{ variant.id }}] = {{ variant.inventory_quantity }};
+    variantAvail[{{ variant.id }}] = {{ variant.available }};
+  {% endfor %}
+{% endfor %}
+
+
+  window.productsData = {};
+  {% assign wideCollection = collections['printed-pattern-scrub-tops-1'] %}
+{% paginate wideCollection.products by 1000 %}
+  {% for product in wideCollection.products %}
+    productsData["{{ product.handle }}"] = {
+      id: "{{ product.id }}",
+      variants: [
+        {% for variant in product.variants %}
+          {
+            id: "{{ variant.id }}",
+            option1: "{{ variant.option1 }}", // This could be product type (e.g., regular or wide)
+            option2: "{{ variant.option2 }}", // This could be size (e.g., S or M)
+            inventory_quantity: {{ variant.inventory_quantity }},
+            available: {{ variant.available | json }}
+          }{% unless forloop.last %},{% endunless %}
+        {% endfor %}
+      ]
+    };
+  {% endfor %}
+{% endpaginate %}
+
+ window.productVariants = {
+  {% for variant in product.variants %}"{{ product.id }}{%- if variant.option1 -%}-{{ variant.option1 | downcase }}{% endif -%}{%- if variant.option2 -%}-{{ variant.option2 | downcase }}{% endif -%}": {
+      id: {{ variant.id }},
+      inventory: {{ variant.inventory_quantity | default: 0 }},
+      available: {{ variant.available | json }}
+    }{% unless forloop.last %},{% endunless %}
+  {% endfor %}
+  {% paginate collections['printed-pattern-scrub-tops-1'].products by 200 %}
+    {% for productb in collections['printed-pattern-scrub-tops-1'].products limit:100 %}
+      {% if productb.available and productb.id != product.id %}
+        {% for variant in productb.variants %}
+          ,"{{ productb.id }}{%- if variant.option1 -%}-{{ variant.option1 | downcase }}{% endif -%}{%- if variant.option2 -%}-{{ variant.option2 | downcase }}{% endif -%}": {
+            id: {{ variant.id }},
+            inventory: {{ variant.inventory_quantity | default: 0 }},
+            available: {{ variant.available | json }}
+          }
+        {% endfor %}
+      {% endif %}
+    {% endfor %}
+  {% endpaginate %}
+};
+
+
+
+          </script>
+
 <!-- sections/product-template-new-sock -->
-{% include 'product-template-new-sock',
+{% include 'product-template-top-scrub',
   section_id: product.id,
 
   product_shipping_callout: section.settings.product_shipping_callout,
@@ -28,7 +99,10 @@
 }
 </style>
 <script>
+
+
     function findVariantId(productHandle, productType, productSize) {
+        
     var product = productsData[productHandle];
     
     if (product) {
@@ -174,7 +248,12 @@
       $socavail = isVariantAvailable($selectedProductHandle, $selectedProductType, $selectedProductSize);
       $socqty = getVariantStock($selectedProductHandle, $selectedProductType, $selectedProductSize);
       
-      
+      console.log($socvarid);
+      console.log($socavail);
+      console.log($socqty);
+      console.log("styntra");
+
+
       if(($socavail) && ($socqty <= 0)){
         $(".capsbundleatd").html("PREORDER")
         $(".preorder-text").show()
@@ -285,7 +364,7 @@
                       fade: !1,
                       vertical: !1
                   }),
-                  768 >= $(window).width() && $(".oneway .Main--ProductPhotos").slick({ slidesToShow: 1, centerMode: !0, slidesToScroll: 1, arrows: !0, centerPadding: '10px', dots: true }),
+                  768 >= $(window).width() && $(".oneway .Main--ProductPhotos").slick({ slidesToShow: 1, centerMode: !0, slidesToScroll: 1, arrows: 1, centerPadding: '10px', dots: true }),
                   $(".product__photos").css("opacity", 1);
 
           },
@@ -522,7 +601,7 @@
 </script>
 {% schema %}
   {
-    "name": "Product pages",
+    "name": "New Scrub Top",
     "settings": [
       {
       "type":"text",
@@ -530,28 +609,6 @@
         "default":"Oct 30",
         "label":"Sock preorder date"
       },
-            {
-        "type": "header",
-        "content": "Custom text content"
-      }, 
-          {
-      "type": "text",
-      "id": "trust_badge_text",
-      "label": "Trust Badge Text",
-      "default": "Trusted by Aussie Nurses & Doctors"
-    },
-    {
-      "type": "textarea",
-      "id": "product_description_text",
-      "label": "Product Description",
-      "default": "Compression socks originally designed by a family of doctors. Boost circulation, prevent swelling & DVT, and support all-day energy with fun designs."
-    },
-    {
-      "type": "textarea",
-      "id": "preorder_text",
-      "label": "Preorder Text",
-      "default": "Pre-order now to secure your preferred design. Your entire order will ship once this item becomes available. Thanks for your patience!"
-    },
       {
         "type": "header",
         "content": "Caps A/B testing"
@@ -765,12 +822,6 @@
   },
   {
    "type":"text",
-     "id":"loved",
-     "label":"Loved by: text",
-     "default":"Loved by 90,000+ Aussie Nurses & Doctors"
-  },
-  {
-   "type":"text",
      "id":"txt_",
      "label":"Add_text"
   },
@@ -831,71 +882,10 @@
      "label":"Men’s Scrub pants"
   }
   
-],
-  "blocks": [
-    {
-      "type": "category_filter",
-      "name": "Category Button",
-      "settings": [
-        {
-          "type": "text",
-          "id": "category_label",
-          "label": "Category Label",
-          "default": "All"
-        },
-        {
-          "type": "text", 
-          "id": "category_value",
-          "label": "Category Value",
-          "info": "Used for data-category attribute",
-          "default": "all"
-        },
-        {
-          "type": "checkbox",
-          "id": "is_active",
-          "label": "Active by default",
-          "default": false
-        },
-        {
-          "type": "number",
-          "id": "item_count",
-          "label": "Item Count",
-          "info": "Leave empty to hide count"
-        }
-      ]
-    }
-  ],
-  "presets": [
-    {
-      "name": "Product pages",
-      "blocks": [
-        {
-          "type": "category_filter",
-          "settings": {
-            "category_label": "All",
-            "category_value": "all",
-            "is_active": true,
-            "item_count": 61
-          }
-        },
-        {
-          "type": "category_filter",
-          "settings": {
-            "category_label": "Animals",
-            "category_value": "animals"
-          }
-        },
-        {
-          "type": "category_filter",
-          "settings": {
-            "category_label": "Nature",
-            "category_value": "nature"
-          }
-        }
-      ]
-    }
-  ]
-}
+]
+
+    
+  }
 {% endschema %}
 {% comment %}
 {% if product.metafields.loox.num_reviews %}
