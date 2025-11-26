@@ -1,0 +1,603 @@
+<section class="custom-product-filter-section">
+    <div class="page-width page-width-desktop">
+      <!-- SECTION TITLE -->
+      <h2 class="title h1 text-left">{{ section.settings.section_title }}</h2>
+  
+      <!-- FILTER BUTTONS -->
+      <ul class="filter-list">
+        {%- if section.settings.filter_best_sellers != blank and section.settings.collection1 != blank -%}
+          {%- assign collection1_obj = collections[section.settings.collection1] -%}
+          <li>
+            <button class="filter-button active" 
+                    data-filter="best_sellers" 
+                    data-url="{{ collection1_obj.url }}">
+              {{ section.settings.filter_best_sellers }}
+            </button>
+          </li>
+        {%- endif -%}
+        {%- if section.settings.filter_soft != blank and section.settings.collection2 != blank -%}
+          {%- assign collection2_obj = collections[section.settings.collection2] -%}
+          <li>
+            <button class="filter-button" 
+                    data-filter="soft" 
+                    data-url="{{ collection2_obj.url }}">
+              {{ section.settings.filter_soft }}
+            </button>
+          </li>
+        {%- endif -%}
+        {%- if section.settings.filter_full != blank and section.settings.collection3 != blank -%}
+          {%- assign collection3_obj = collections[section.settings.collection3] -%}
+          <li>
+            <button class="filter-button" 
+                    data-filter="full" 
+                    data-url="{{ collection3_obj.url }}">
+              {{ section.settings.filter_full }}
+            </button>
+          </li>
+        {%- endif -%}
+        {%- if section.settings.filter_bold != blank and section.settings.collection4 != blank -%}
+          {%- assign collection4_obj = collections[section.settings.collection4] -%}
+          <li>
+            <button class="filter-button" 
+                    data-filter="bold" 
+                    data-url="{{ collection4_obj.url }}">
+              {{ section.settings.filter_bold }}
+            </button>
+          </li>
+        {%- endif -%}
+        {%- if section.settings.filter_collection5 != blank and section.settings.collection5 != blank -%}
+          {%- assign collection5_obj = collections[section.settings.collection5] -%}
+          <li>
+            <button class="filter-button" 
+                    data-filter="collection5" 
+                    data-url="{{ collection5_obj.url }}">
+              {{ section.settings.filter_collection5 }}
+            </button>
+          </li>
+        {%- endif -%}
+        {%- if section.settings.filter_collection6 != blank and section.settings.collection6 != blank -%}
+          {%- assign collection6_obj = collections[section.settings.collection6] -%}
+          <li>
+            <button class="filter-button" 
+                    data-filter="collection6" 
+                    data-url="{{ collection6_obj.url }}">
+              {{ section.settings.filter_collection6 }}
+            </button>
+          </li>
+        {%- endif -%}
+      </ul>
+  
+      <!-- PRODUCT GRID -->
+      <div class="grid grid--uniform grid--scattered-large-4 grid--scattered-small-2 product-slider" id="product-filter-grid" style="margin-bottom: calc(-1*var(--gutter-regular));">
+        <!-- Products will load here dynamically -->
+      </div>
+  
+      <div class="center collection__view-all animate-item animate-item--child index-2" style="margin-top: 30px; text-align: center;">
+        <a href="" id="view-link-tab" class="btn" aria-label="View all products in the collection">
+          View all products
+        </a>
+      </div>
+    </div>
+  </section>
+  
+  <script>
+  document.addEventListener('DOMContentLoaded', function() {
+    const productGrid = document.getElementById('product-filter-grid');
+    const viewAllLink = document.getElementById('view-link-tab');
+    const buttons = document.querySelectorAll('.filter-button');
+    const productsToShow = {{ section.settings.products_to_show | default: 16 }};
+    
+    // Cache to store loaded products
+    const productCache = {};
+    
+    // Function to sort products based on sort_by parameter
+    function sortProducts(products, sortBy) {
+      const sorted = [...products]; // Create a copy
+      
+      switch(sortBy) {
+        case 'best-selling':
+          return sorted;
+        case 'title-ascending':
+          return sorted.sort((a, b) => a.title.localeCompare(b.title));
+        case 'title-descending':
+          return sorted.sort((a, b) => b.title.localeCompare(a.title));
+        case 'price-ascending':
+          return sorted.sort((a, b) => {
+            const priceA = parseFloat(a.variants?.[0]?.price || a.price || 0);
+            const priceB = parseFloat(b.variants?.[0]?.price || b.price || 0);
+            return priceA - priceB;
+          });
+        case 'price-descending':
+          return sorted.sort((a, b) => {
+            const priceA = parseFloat(a.variants?.[0]?.price || a.price || 0);
+            const priceB = parseFloat(b.variants?.[0]?.price || b.price || 0);
+            return priceB - priceA;
+          });
+        case 'created-ascending':
+          return sorted.sort((a, b) => new Date(a.created_at) - new Date(b.created_at));
+        case 'created-descending':
+        case 'manual':
+          return sorted.sort((a, b) => new Date(b.created_at) - new Date(a.created_at));
+        default:
+          return sorted;
+      }
+    }
+    
+    // Function to load products from a collection URL
+    async function loadProducts(collectionUrl, filterName) {
+      // Check cache first - if cached, render immediately without loading state
+      if (productCache[filterName]) {
+        renderProducts(productCache[filterName]);
+        return;
+      }
+      
+      // Only show loading state for initial load (not cached)
+      productGrid.innerHTML = '<div class="loading-spinner">Loading products...</div>';
+      
+      try {
+        // Clean up the URL and construct the proper Shopify JSON endpoint
+        let url = collectionUrl;
+        
+        // If it's a full URL with domain, extract just the path
+        if (url.includes('://')) {
+          try {
+            const urlObj = new URL(url);
+            url = urlObj.pathname + urlObj.search;
+          } catch (e) {
+            console.error('Invalid URL format:', url);
+            throw new Error('Invalid URL format. Please use a relative URL like /collections/your-collection');
+          }
+        }
+        
+        // Remove trailing slash if present
+        url = url.replace(/\/$/, '');
+        
+        // Extract any existing query parameters
+        let queryParams = '';
+        if (url.includes('?')) {
+          const parts = url.split('?');
+          url = parts[0];
+          queryParams = parts[1];
+        }
+        
+        // Parse existing parameters
+        const params = new URLSearchParams(queryParams);
+        const sortBy = params.get('sort_by');
+        
+        // Always use the products.json endpoint, fetch more products for sorting
+        if (!url.includes('.json')) {
+          url = url + '/products.json';
+        }
+        
+        // Fetch a larger set if we need to sort
+        const fetchLimit = sortBy ? 250 : productsToShow;
+        url = url + '?limit=' + fetchLimit;
+        
+        const response = await fetch(url);
+        
+        if (!response.ok) {
+          throw new Error(`HTTP error! status: ${response.status} - ${response.statusText}`);
+        }
+        
+        const data = await response.json();
+        let products = data.products || [];
+        
+        if (products.length === 0) {
+          productGrid.innerHTML = '<div class="error-message">No products found in this collection.</div>';
+          return;
+        }
+        
+        // Apply client-side sorting if needed
+        if (sortBy) {
+          products = sortProducts(products, sortBy);
+        }
+        
+        // Limit to the number we want to show
+        products = products.slice(0, productsToShow);
+        
+        // Generate HTML from product data matching theme structure
+        const html = products.map(product => {
+          // Handle different image URL formats from Shopify API
+          let imageUrl = '';
+          if (product.featured_image) {
+            imageUrl = typeof product.featured_image === 'string' ? product.featured_image : product.featured_image.src || '';
+          } else if (product.images && product.images.length > 0) {
+            imageUrl = typeof product.images[0] === 'string' ? product.images[0] : product.images[0].src || '';
+          }
+          
+          // Resize image for better performance
+          let imgSrc = '';
+          let imgSrc600 = '';
+          if (imageUrl && typeof imageUrl === 'string') {
+            // Remove any existing size parameters
+            const baseUrl = imageUrl.split('?')[0];
+            imgSrc = baseUrl.replace(/\.(jpg|jpeg|png|gif|webp)/i, '_400x.$1');
+            imgSrc600 = baseUrl.replace(/\.(jpg|jpeg|png|gif|webp)/i, '_600x.$1');
+          }
+          
+          // Check availability - Shopify API returns available as boolean
+          const soldOut = product.available === false;
+          
+          // Get price from product or first variant
+          let productPrice = product.price;
+          let productComparePrice = product.compare_at_price;
+          
+          // If price is in variants, use first variant
+          if (!productPrice && product.variants && product.variants.length > 0) {
+            productPrice = product.variants[0].price;
+            productComparePrice = product.variants[0].compare_at_price;
+          }
+          
+          // Check if product is on sale
+          const onSale = productComparePrice && parseFloat(productComparePrice) > parseFloat(productPrice);
+          
+          // Format price - Shopify API returns price as string like "34.90"
+          const price = productPrice ? `$${parseFloat(productPrice).toFixed(2)} AUD` : '';
+          const comparePrice = onSale ? `$${parseFloat(productComparePrice).toFixed(2)} AUD` : '';
+          
+          return `
+            <div class="grid__item grid-product medium-up--one-quarter small--one-half" data-aos data-product-grid data-id="${product.id}">
+              <div class="grid-product__content">
+                ${soldOut ? '<div class="grid-product__tag grid-product__tag--sold-out">Sold out</div>' : ''}
+                ${onSale && !soldOut ? '<div class="grid-product__tag grid-product__tag--sale">Sale</div>' : ''}
+                
+                <a href="/products/${product.handle}" class="grid-product__link${soldOut ? ' grid-product__link--disabled' : ''}" data-product-id="${product.id}" data-url="/products/${product.handle}">
+                  <div class="image-quick">
+                    <div class="product-slider" data-image-count="${product.images ? product.images.length : 1}" data-id="${product.id}">
+                      <div class="product-slide">
+                        <div class="image-wrap">
+                          <div class="grid__image-ratio grid__image-ratio--square lazyload __bg" 
+                               lazy-bg="${imgSrc600}" 
+                               data-sizes="auto"
+                               style="background-image: url(${imgSrc});">
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  
+                  <div class="grid-product__meta">
+                    <div class="grid-product__title">${product.title}</div>
+                    <span class="shopify-product-reviews-badge" data-id="${product.id}"></span>
+                    
+                    <div class="grid-product__price">
+                      ${onSale ? '<span class="visually-hidden">Regular price</span><del class="grid-product__price--original">' + comparePrice + '</del><span class="visually-hidden">Sale price</span>' : ''}
+                      <span ${onSale ? 'class="sale-price"' : ''}>${price}</span>
+                    </div>
+                  </div>
+                </a>
+              </div>
+            </div>
+          `;
+        }).join('');
+        
+        // Cache the results
+        productCache[filterName] = html;
+        
+        // Render the products
+        renderProducts(html);
+        
+      } catch (error) {
+        console.error('Error loading products:', error);
+        productGrid.innerHTML = '<div class="error-message">Failed to load products. Please check the collection URL and try again.<br><small>Check the console for more details.</small></div>';
+      }
+    }
+    
+    // Function to render products in the grid
+    function renderProducts(html) {
+      productGrid.innerHTML = html;
+      
+      // Trigger lazy loading for new images
+      if (window.lazySizes) {
+        window.lazySizes.autoSizer.checkElems();
+      }
+      
+      // Trigger AOS animations if available
+      if (window.AOS) {
+        window.AOS.refresh();
+      }
+      
+      // Initialize Loox reviews if available
+      if (window.loox && typeof window.loox.init_observers === 'function') {
+        window.loox.init_observers();
+      }
+      
+      // Initialize Shopify product reviews if available
+      if (window.SPR) {
+        window.SPR.initDomEls();
+        window.SPR.loadBadges();
+      }
+      
+      // Initialize any theme-specific product grid functionality
+      if (typeof theme !== 'undefined' && theme.ProductGrid) {
+        const productCards = productGrid.querySelectorAll('[data-product-grid]');
+        productCards.forEach(card => {
+          new theme.ProductGrid(card);
+        });
+      }
+    }
+    
+    // Function to handle filter change
+    function applyFilter(button) {
+      const filter = button.dataset.filter;
+      const url = button.dataset.url;
+      
+      if (!url) {
+        productGrid.innerHTML = '<div class="error-message">No collection URL configured for this filter. Please add a collection in the theme settings.</div>';
+        return;
+      }
+      
+      // Update active state
+      buttons.forEach(b => b.classList.remove('active'));
+      button.classList.add('active');
+      
+      // Update view all link
+      viewAllLink.href = url;
+      
+      // Load products
+      loadProducts(url, filter);
+    }
+    
+    // Add click listeners to filter buttons
+    buttons.forEach(btn => {
+      btn.addEventListener('click', () => applyFilter(btn));
+    });
+    
+    // Auto-load first filter on page load
+    const firstButton = buttons[0];
+    if (firstButton) {
+      applyFilter(firstButton);
+    } else {
+      productGrid.innerHTML = '<div class="error-message">No filter buttons configured. Please add collections in the theme settings.</div>';
+    }
+  });
+  </script>
+  
+  <style>
+    .text-center {
+      text-align: center;
+    }
+
+    .custom-product-filter-section {
+      padding: 32px 20px;
+      display: none;
+    }
+
+    .custom-product-filter-section .title,
+    .custom-product-filter-section h2 {
+      text-decoration: none !important;
+      border: none !important;
+      margin-bottom: 24px;
+      font-size: 32px;
+    }
+
+    .custom-product-filter-section .section-title {
+      margin: 0;
+      color: #212121;
+      font-size: 28px;
+      font-style: normal;
+      font-weight: 700;
+      line-height: normal;
+      text-align: center;
+    }
+
+    /* Filter buttons */
+    .custom-product-filter-section .filter-list {
+      display: flex;
+      gap: 12px;
+      margin: 0 0 24px 0;
+      list-style: none;
+      padding: 0;
+      overflow: scroll;
+    }
+
+    .custom-product-filter-section .filter-button {
+      display: flex;
+      height: 32px;
+      padding: 10px 16px;
+      justify-content: center;
+      align-items: center;
+      gap: 6px;
+      border-radius: 6px;
+      border: 1px solid rgba(67, 20, 20, 0.20);
+      color: #212121;
+      leading-trim: both;
+      text-edge: cap;
+      font-size: 16px;
+      font-style: normal;
+      font-weight: 500;
+      line-height: normal;
+      background: transparent;
+      cursor: pointer;
+      white-space: nowrap;
+      text-transform: capitalize;
+    }
+
+    .custom-product-filter-section .filter-button.active {
+      background: #0A0E32;
+      color: #fff;
+      border-color: #0A0E32;
+    }
+
+    /* Loading and error states */
+    .custom-product-filter-section .loading-spinner,
+    .custom-product-filter-section .error-message {
+      text-align: center;
+      padding: 40px 20px;
+      color: #666;
+      font-size: 16px;
+    }
+
+    .custom-product-filter-section .error-message {
+      color: #d32f2f;
+    }
+
+    /* Use theme's default product card styles */
+
+    .custom-product-filter-section .view-btn {
+      display: flex;
+      padding: 10px 32px;
+      justify-content: center;
+      align-items: center;
+      gap: 10px;
+      flex-shrink: 0;
+      border-radius: 200px;
+      background: #212121;
+      color: #FFF;
+      text-align: center;
+      leading-trim: both;
+      text-edge: cap;
+      font-size: 12px;
+      font-style: normal;
+      font-weight: 700;
+      line-height: normal;
+      margin-top: 30px;
+    }
+
+    @media (max-width: 768px) {
+      .custom-product-filter-section .filter-button {
+        height: 38px;
+        padding: 10px 6px;
+        font-size: 14px;
+      }
+    }
+  </style>
+  
+  {% schema %}
+  {
+    "name": "Product Filter Slider",
+    "blocks": [
+      {
+        "type": "title",
+        "name": "Product Title",
+        "limit": 1
+      },
+      {
+        "type": "price",
+        "name": "Product Price",
+        "limit": 1
+      },
+      {
+        "type": "vendor",
+        "name": "Product Vendor",
+        "limit": 1
+      },
+      {
+        "type": "rating",
+        "name": "Product Rating"
+      },
+      {
+        "type": "quick_buy",
+        "name": "Quick Buy",
+        "limit": 1
+      }
+    ],
+    "settings": [
+      {
+        "type": "inline_richtext",
+        "id": "section_title",
+        "label": "Section Title",
+        "default": "Shop Lashes"
+      },
+      {
+        "type": "header",
+        "content": "Filter Options"
+      },
+      {
+        "type": "text",
+        "id": "filter_best_sellers",
+        "label": "Collection 1 Filter Text",
+        "default": "Best Sellers"
+      },
+      {
+        "type": "text",
+        "id": "filter_soft",
+        "label": "Collection 2 Filter Text",
+        "default": "Natural"
+      },
+      {
+        "type": "text",
+        "id": "filter_full",
+        "label": "Collection 3 Filter Text",
+        "default": "Medium"
+      },
+      {
+        "type": "text",
+        "id": "filter_bold",
+        "label": "Collection 4 Filter Text",
+        "default": "Dramatic"
+      },
+      {
+        "type": "text",
+        "id": "filter_collection5",
+        "label": "Collection 5 Filter Text",
+        "default": "Collection 5"
+      },
+      {
+        "type": "text",
+        "id": "filter_collection6",
+        "label": "Collection 6 Filter Text",
+        "default": "Collection 6"
+      },
+      {
+        "type": "header",
+        "content": "Product Selection"
+      },
+      {
+        "type": "range",
+        "id": "products_to_show",
+        "min": 2,
+        "max": 25,
+        "step": 1,
+        "default": 16,
+        "label": "Products to show (4x4 grid = 16)"
+      },
+      {
+        "type": "collection",
+        "id": "collection1",
+        "label": "Collection 1 (Best Sellers)"
+      },
+      {
+        "type": "collection",
+        "id": "collection2",
+        "label": "Collection 2"
+      },
+      {
+        "type": "collection",
+        "id": "collection3",
+        "label": "Collection 3"
+      },
+       {
+        "type": "collection",
+        "id": "collection4",
+        "label": "Collection 4"
+      },
+      {
+        "type": "collection",
+        "id": "collection5",
+        "label": "Collection 5"
+      },
+      {
+        "type": "collection",
+        "id": "collection6",
+        "label": "Collection 6"
+      }
+    ],
+    "presets": [
+      {
+        "name": "Product Filter Slider",
+        "blocks": [
+          {
+            "type": "title"
+          },
+          {
+            "type": "price"
+          },
+          {
+            "type": "quick_buy"
+          }
+        ]
+      }
+    ]
+  }
+  {% endschema %}

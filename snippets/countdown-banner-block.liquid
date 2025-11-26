@@ -1,0 +1,265 @@
+<style>
+/* Countdown Header Styles */
+.countdown-header-{{ block.id }} {
+  width: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+.countdown-banner-{{ block.id }} {
+  background: var(--countdown-bg-color) !important;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: var(--countdown-gap);
+  padding: var(--countdown-padding-v) var(--countdown-padding-h);
+  font-weight: 700 !important;
+  font-family: Arial, Helvetica, sans-serif;
+  letter-spacing: var(--letter-spacing-body);
+}
+
+.countdown-banner-{{ block.id }} .countdown-banner-text {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.1;
+  text-align: center;
+  gap: 4px;
+}
+
+div.countdown-banner-{{ block.id }} .countdown-banner-text .countdown-banner-title {
+  font-size: var(--countdown-title-size) !important;
+  font-weight: 700 !important;
+  color: var(--countdown-title-color) !important;
+  letter-spacing: var(--letter-spacing-body);
+}
+
+div.countdown-banner-{{ block.id }} .countdown-banner-text .countdown-banner-subtitle {
+  font-size: var(--countdown-subtitle-size) !important;
+  font-weight: 400 !important;
+  opacity: 0.95;
+  color: var(--countdown-subtitle-color) !important;
+  letter-spacing: var(--letter-spacing-body);
+}
+
+.countdown-banner-{{ block.id }} .countdown-timer {
+  background: var(--countdown-timer-bg) !important;
+  border-radius: var(--countdown-timer-radius);
+  padding: var(--countdown-timer-padding-v) var(--countdown-timer-padding-h);
+  display: flex;
+  align-items: center;
+  gap: 0px;
+}
+
+.countdown-banner-{{ block.id }} .countdown-timer-unit {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-width: var(--countdown-unit-width);
+}
+
+.countdown-banner-{{ block.id }} .countdown-timer-value {
+  font-size: var(--countdown-value-size) !important;
+  line-height: 1;
+  font-weight: 600 !important;
+  color: var(--countdown-value-color) !important;
+  letter-spacing: var(--letter-spacing-body);
+}
+
+.countdown-banner-{{ block.id }} .countdown-timer-label {
+  font-size: var(--countdown-label-size) !important;
+  line-height: 1.1;
+  font-weight: 700 !important;
+  opacity: 0.9;
+  margin-top: 3px;
+  color: var(--countdown-label-color) !important;
+  letter-spacing: var(--letter-spacing-body);
+}
+
+.countdown-banner-{{ block.id }} .countdown-timer-separator {
+  font-size: var(--countdown-value-size) !important;
+  font-weight: 800 !important;
+  line-height: 1;
+  color: var(--countdown-separator-color) !important;
+  letter-spacing: var(--letter-spacing-body);
+}
+
+.countdown-banner-{{ block.id }} .countdown-banner-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 4px;
+  transition: opacity 0.2s ease;
+}
+
+.countdown-banner-{{ block.id }} .countdown-banner-link:hover {
+  opacity: 0.7;
+}
+
+.countdown-banner-{{ block.id }} .countdown-banner-link svg {
+  width: 12px;
+  height: 12px;
+}
+
+@media (max-width: 768px) {
+  .countdown-banner-{{ block.id }} {
+    gap: var(--countdown-mobile-gap);
+    padding: var(--countdown-mobile-padding-v) var(--countdown-mobile-padding-h);
+  }
+  
+  div.countdown-banner-{{ block.id }} .countdown-banner-text .countdown-banner-title {
+    font-size: var(--countdown-mobile-title-size) !important;
+  }
+  
+  div.countdown-banner-{{ block.id }} .countdown-banner-text .countdown-banner-subtitle {
+    font-size: var(--countdown-mobile-subtitle-size) !important;
+  }
+  
+  .countdown-banner-{{ block.id }} .countdown-timer {
+    gap: 0px;
+    padding: var(--countdown-mobile-timer-padding-v) var(--countdown-mobile-timer-padding-h);
+  }
+  
+  .countdown-banner-{{ block.id }} .countdown-timer-unit {
+    min-width: var(--countdown-mobile-unit-width);
+  }
+  
+  .countdown-banner-{{ block.id }} .countdown-timer-value {
+    font-size: var(--countdown-mobile-value-size) !important;
+  }
+  
+  .countdown-banner-{{ block.id }} .countdown-timer-label {
+    font-size: var(--countdown-mobile-label-size) !important;
+  }
+  
+  .countdown-banner-{{ block.id }} .countdown-timer-separator {
+    font-size: var(--countdown-mobile-value-size) !important;
+  }
+
+  .countdown-banner-{{ block.id }} .countdown-banner-link svg {
+    width: 10px;
+    height: 10px;
+  }
+}
+</style>
+
+<div class="countdown-header-{{ block.id }}" {{ block.shopify_attributes }} style="
+  --countdown-bg-color: {{ block.settings.background_color }};
+  --countdown-gap: {{ block.settings.gap }}px;
+  --countdown-padding-v: {{ block.settings.padding_vertical }}px;
+  --countdown-padding-h: {{ block.settings.padding_horizontal }}px;
+  --countdown-title-size: {{ block.settings.title_size }}px;
+  --countdown-subtitle-size: {{ block.settings.subtitle_size }}px;
+  --countdown-title-color: {{ block.settings.title_color }};
+  --countdown-subtitle-color: {{ block.settings.subtitle_color }};
+  --countdown-timer-bg: {{ block.settings.timer_background_color }};
+  --countdown-timer-radius: {{ block.settings.timer_border_radius }}px;
+  --countdown-timer-padding-v: {{ block.settings.timer_padding_vertical }}px;
+  --countdown-timer-padding-h: {{ block.settings.timer_padding_horizontal }}px;
+  --countdown-unit-width: {{ block.settings.unit_min_width }}px;
+  --countdown-value-size: {{ block.settings.timer_value_size }}px;
+  --countdown-label-size: {{ block.settings.timer_label_size }}px;
+  --countdown-value-color: {{ block.settings.timer_value_color }};
+  --countdown-label-color: {{ block.settings.timer_label_color }};
+  --countdown-separator-color: {{ block.settings.timer_separator_color }};
+  --countdown-mobile-gap: {{ block.settings.mobile_gap }}px;
+  --countdown-mobile-padding-v: {{ block.settings.mobile_padding_vertical }}px;
+  --countdown-mobile-padding-h: {{ block.settings.mobile_padding_horizontal }}px;
+  --countdown-mobile-title-size: {{ block.settings.mobile_title_size }}px;
+  --countdown-mobile-subtitle-size: {{ block.settings.mobile_subtitle_size }}px;
+  --countdown-mobile-timer-padding-v: {{ block.settings.mobile_timer_padding_vertical }}px;
+  --countdown-mobile-timer-padding-h: {{ block.settings.mobile_timer_padding_horizontal }}px;
+  --countdown-mobile-unit-width: {{ block.settings.mobile_unit_min_width }}px;
+  --countdown-mobile-value-size: {{ block.settings.mobile_timer_value_size }}px;
+  --countdown-mobile-label-size: {{ block.settings.mobile_timer_label_size }}px;
+  --countdown-link-icon-color: {{ block.settings.link_icon_color }};
+">
+  <div class="countdown-banner-{{ block.id }}">
+    <div class="countdown-banner-text">
+      <div class="countdown-banner-title">{{ block.settings.title }}</div>
+      <div class="countdown-banner-subtitle">{{ block.settings.subtitle }}</div>
+    </div>
+
+    <div id="countdown-{{ block.id }}" class="countdown-timer" 
+         {% if block.settings.countdown_type == 'duration' %}
+           data-hours="{{ block.settings.countdown_hours }}" 
+           data-minutes="{{ block.settings.countdown_minutes }}" 
+           data-seconds="{{ block.settings.countdown_seconds }}"
+         {% else %}
+           data-deadline="{{ block.settings.countdown_deadline }}"
+         {% endif %}>
+      <div class="countdown-timer-unit">
+        <div class="countdown-timer-value" id="dd-{{ block.id }}">00</div>
+        <div class="countdown-timer-label">{{ block.settings.days_label | default: 'DAYS' }}</div>
+      </div>
+      <div class="countdown-timer-separator">:</div>
+      <div class="countdown-timer-unit">
+        <div class="countdown-timer-value" id="hh-{{ block.id }}">{{ block.settings.countdown_hours | default: 0 | prepend: '0' | slice: -2, 2 }}</div>
+        <div class="countdown-timer-label">{{ block.settings.hours_label }}</div>
+      </div>
+      <div class="countdown-timer-separator">:</div>
+      <div class="countdown-timer-unit">
+        <div class="countdown-timer-value" id="mm-{{ block.id }}">{{ block.settings.countdown_minutes | default: 0 | prepend: '0' | slice: -2, 2 }}</div>
+        <div class="countdown-timer-label">{{ block.settings.minutes_label }}</div>
+      </div>
+    </div>
+
+    {% if block.settings.banner_link != blank %}
+    <a href="{{ block.settings.banner_link }}" class="countdown-banner-link" aria-label="Learn more">
+      <svg width="12" height="12" viewBox="0 0 8 8" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path fill-rule="evenodd" clip-rule="evenodd" d="M1 2H3.5V3H1V7H5V4.5H6V7C6 7.26522 5.89464 7.51957 5.70711 7.70711C5.51957 7.89464 5.26522 8 5 8H1C0.734784 8 0.48043 7.89464 0.292893 7.70711C0.105357 7.51957 0 7.26522 0 7V3C0 2.73478 0.105357 2.48043 0.292893 2.29289C0.48043 2.10536 0.734784 2 1 2ZM6.307 1H4V0H8V4H7V1.721L4.332 4.389L3.625 3.682L6.307 1Z" fill="var(--countdown-link-icon-color)"/>
+      </svg>
+    </a>
+    {% endif %}
+  </div>
+
+  <script>
+  (function(){
+    const el = document.getElementById('countdown-{{ block.id }}');
+    if (!el) return;
+    
+    const ddEl = document.getElementById('dd-{{ block.id }}');
+    const hhEl = document.getElementById('hh-{{ block.id }}');
+    const mmEl = document.getElementById('mm-{{ block.id }}');
+
+    // If data-deadline is present, use that exact moment; otherwise start from given H/M/S duration.
+    const deadlineAttr = el.getAttribute('data-deadline');
+    let endTime;
+
+    if (deadlineAttr) {
+      // Count down to a specific timestamp
+      endTime = new Date(deadlineAttr).getTime();
+    } else {
+      // Count down from a duration (H/M/S)
+      const H = parseInt(el.getAttribute('data-hours')||'0',10);
+      const M = parseInt(el.getAttribute('data-minutes')||'0',10);
+      const S = parseInt(el.getAttribute('data-seconds')||'0',10);
+      const durationMs = ((H*60 + M)*60 + S)*1000;
+      endTime = Date.now() + durationMs;
+    }
+
+    function pad(n){return String(n).padStart(2,'0');}
+
+    function tick(){
+      const now = Date.now();
+      let diff = Math.max(0, endTime - now);
+
+      const totalSeconds = Math.floor(diff/1000);
+      const days = Math.floor(totalSeconds/86400);
+      const hours = Math.floor((totalSeconds%86400)/3600);
+      const minutes = Math.floor((totalSeconds%3600)/60);
+
+      ddEl.textContent = pad(days);
+      hhEl.textContent = pad(hours);
+      mmEl.textContent = pad(minutes);
+
+      if (diff <= 0) {
+        clearInterval(timerId);
+      }
+    }
+
+    tick();
+    const timerId = setInterval(tick, 1000);
+  })();
+  </script>
+</div>
+

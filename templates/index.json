@@ -256,6 +256,45 @@
         "heading": "Proudly serving"
       }
     },
+    "product_home_filter_a89kq6": {
+      "type": "product-home-filter",
+      "blocks": {
+        "title_emEfLK": {
+          "type": "title",
+          "settings": {}
+        },
+        "price_ApxfT6": {
+          "type": "price",
+          "settings": {}
+        },
+        "quick_buy_7rQpr4": {
+          "type": "quick_buy",
+          "settings": {}
+        }
+      },
+      "block_order": [
+        "title_emEfLK",
+        "price_ApxfT6",
+        "quick_buy_7rQpr4"
+      ],
+      "name": "Product Filter Slider",
+      "settings": {
+        "section_title": "Best Sellers",
+        "filter_best_sellers": "Compression Socks",
+        "filter_soft": "Women's Scrub Pants",
+        "filter_full": "Printed Scrubs",
+        "filter_bold": "Men Scrubs",
+        "filter_collection5": "Scrub Caps",
+        "filter_collection6": "Accessories",
+        "products_to_show": 8,
+        "collection1": "compression-socks",
+        "collection2": "women",
+        "collection3": "printed-pattern-scrub-tops",
+        "collection4": "men",
+        "collection5": "scrub-caps",
+        "collection6": "accessories-and-gifts-under-20"
+      }
+    },
     "logo_list_gcipMb": {
       "type": "logo-list",
       "blocks": {
@@ -1325,6 +1364,7 @@
     "headerv5_yCPF3w",
     "1c64d667-b672-4f7b-b9be-2310692e99f1",
     "logolistaani_YJptaJ",
+    "product_home_filter_a89kq6",
     "logo_list_gcipMb",
     "b08ad3ae-1d49-443c-bf20-3daa936d220c",
     "14a6d1da-4bb0-467d-8179-0f89444b4027",
