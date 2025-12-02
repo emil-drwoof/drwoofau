@@ -1,47 +1,49 @@
+
     <script>
-          
-            {% if template.suffix == "os2newscrub" %}
 
-    var variantStock = {};
-      var variantAvail = {};
+         
 
+var variantStock = {};
+var variantAvail = {};
+
+{% comment %} 
+    1. Assign the collection once to avoid redundant Liquid processing. 
+    2. Only loop through the products and variants once.
+{% endcomment %}
 {% assign wide_collection = collections['printed-pattern-scrub-tops-1'] %}
-{% for product in wide_collection.products %}
-  {% for variant in product.variants %}
-    variantStock[{{ variant.id }}] = {{ variant.inventory_quantity }};
-    variantAvail[{{ variant.id }}] = {{ variant.available }};
-  {% endfor %}
-{% endfor %}
 
-{% assign wide_collection = collections['printed-pattern-scrub-tops-1'] %}
-{% for product in wide_collection.products %}
-  {% for variant in product.variants %}
-    variantStock[{{ variant.id }}] = {{ variant.inventory_quantity }};
-    variantAvail[{{ variant.id }}] = {{ variant.available }};
-  {% endfor %}
-{% endfor %}
+  var variantStock = {};
+  var variantAvail = {};
 
+  {% assign wide_collection = collections['printed-pattern-scrub-tops-1'] %}
+
+  {% for product in wide_collection.products %}
+    {% for variant in product.variants %}
+      variantStock[{{ variant.id }}] = {{ variant.inventory_quantity | default: 0 }};
+      variantAvail[{{ variant.id }}] = {{ variant.available | json }};
+    {% endfor %}
+  {% endfor %}
 
   window.productsData = {};
-  {% assign wideCollection = collections['printed-pattern-scrub-tops-1'] %}
-{% paginate wideCollection.products by 1000 %}
-  {% for product in wideCollection.products %}
-    productsData["{{ product.handle }}"] = {
-      id: "{{ product.id }}",
-      variants: [
-        {% for variant in product.variants %}
-          {
-            id: "{{ variant.id }}",
-            option1: "{{ variant.option1 }}", // This could be product type (e.g., regular or wide)
-            option2: "{{ variant.option2 }}", // This could be size (e.g., S or M)
-            inventory_quantity: {{ variant.inventory_quantity }},
-            available: {{ variant.available | json }}
-          }{% unless forloop.last %},{% endunless %}
-        {% endfor %}
-      ]
-    };
-  {% endfor %}
-{% endpaginate %}
+  
+  {% paginate wide_collection.products by 250 %}
+    {% for product in wide_collection.products %}
+      productsData["{{ product.handle }}"] = {
+        id: "{{ product.id }}",
+        variants: [
+          {% for variant in product.variants %}
+            {
+              id: "{{ variant.id }}",
+              option1: "{{ variant.option1 | escape }}", 
+              option2: "{{ variant.option2 | escape }}", 
+              inventory_quantity: {{ variant.inventory_quantity | default: 0 }},
+              available: {{ variant.available | json }}
+            }{% unless forloop.last %},{% endunless %}
+          {% endfor %}
+        ]
+      };
+    {% endfor %}
+  {% endpaginate %}
 
  window.productVariants = {
   {% for variant in product.variants %}"{{ product.id }}{%- if variant.option1 -%}-{{ variant.option1 | downcase }}{% endif -%}{%- if variant.option2 -%}-{{ variant.option2 | downcase }}{% endif -%}": {
@@ -65,7 +67,7 @@
   {% endpaginate %}
 };
 
-{% endif %}
+
 
           </script>
 

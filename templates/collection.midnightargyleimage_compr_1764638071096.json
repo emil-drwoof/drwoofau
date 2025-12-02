@@ -1,0 +1,204 @@
+{
+  "sections": {
+    "collection_hero_b_JPQ9fm": {
+      "type": "collection-hero-b",
+      "blocks": {
+        "button_kmWyM7": {
+          "type": "button",
+          "settings": {
+            "title": "Best Sellers",
+            "collection": "\/collections\/compression-socks?sort_by=best-selling"
+          }
+        },
+        "button_VCrpDQ": {
+          "type": "button",
+          "settings": {
+            "title": "New Releases",
+            "collection": "\/collections\/compression-socks?sort_by=created-descending"
+          }
+        },
+        "button_4VPi8a": {
+          "type": "button",
+          "settings": {
+            "title": "Classics",
+            "collection": "\/collections\/compression-socks\/classics"
+          }
+        },
+        "button_x9XNW7": {
+          "type": "button",
+          "settings": {
+            "title": "Animals",
+            "collection": "\/collections\/compression-socks\/animals"
+          }
+        },
+        "button_Wg4dVz": {
+          "type": "button",
+          "settings": {
+            "title": "Whimsical",
+            "collection": "\/collections\/compression-socks\/whimsical"
+          }
+        },
+        "button_U8YKVk": {
+          "type": "button",
+          "settings": {
+            "title": "Causes",
+            "collection": "\/collections\/compression-socks\/causes"
+          }
+        },
+        "button_Bpc64n": {
+          "type": "button",
+          "settings": {
+            "title": "Lifestyle",
+            "collection": "\/collections\/compression-socks\/lifestyle"
+          }
+        }
+      },
+      "block_order": [
+        "button_kmWyM7",
+        "button_VCrpDQ",
+        "button_4VPi8a",
+        "button_x9XNW7",
+        "button_Wg4dVz",
+        "button_U8YKVk",
+        "button_Bpc64n"
+      ],
+      "name": "Collection Hero B",
+      "settings": {
+        "space_top": 0,
+        "space_bottom": 0,
+        "bg_clr": "#0b0e30",
+        "rating": 4.8,
+        "rating_text": "Loved by 100,000+ Nurses and Doctors",
+        "title": "{{ collection.title }}",
+        "description": "If nurses trust them for 12-hour shifts, imagine what they can do for you.",
+        "subtitle": "Doctor-designed and nurse-approved, Dr. Woof Bamboo Compression Socks are built for long shifts in hospitals and loved by travellers, mums-to-be, athletes, and anyone on their feet all day."
+      }
+    },
+    "collection-header": {
+      "type": "dr-woof-hero-scrubs3",
+      "custom_css": [
+        ".fullwidth,.mobilever {display: none;}"
+      ],
+      "settings": {
+        "pad": "30px",
+        "enable_auto": true,
+        "desktop_positioning": 0,
+        "height": 90,
+        "mobile_height": 50,
+        "image_lib_pc": "shopify:\/\/shop_images\/COLLECTION_BANNER_TEMPLATE_PC_2400_x_900_px_12.png",
+        "image_webp_pc": "",
+        "image_lib_mobile": "shopify:\/\/shop_images\/COLLECTION_BANNER_TEMPLATE_MOBILE_1600_x_900_px_13.jpg",
+        "image_webp_mobile": ""
+      }
+    },
+    "collection-filter": {
+      "type": "collection-thumbnail-filter",
+      "blocks": {
+        "image_Mfjcpg": {
+          "type": "Image",
+          "settings": {
+            "image_thumbnail": "shopify:\/\/shop_images\/Best_Seller_2c904754-daa0-42ac-a33f-a958bc62f972.png",
+            "collection_title": "Best Sellers",
+            "linkurl": "https:\/\/www.drwoofapparel.com.au\/collections\/compression-socks?sort_by=best-selling"
+          }
+        },
+        "image_BHh6zT": {
+          "type": "Image",
+          "settings": {
+            "image_thumbnail": "shopify:\/\/shop_images\/Best_Seller_a5788409-ccbb-4111-8b25-a42377b5ac74.png",
+            "collection_title": "New Releases",
+            "linkurl": "https:\/\/www.drwoofapparel.com.au\/collections\/compression-socks?sort_by=created-descending"
+          }
+        },
+        "image_rbWijc": {
+          "type": "Image",
+          "settings": {
+            "image_thumbnail": "shopify:\/\/shop_images\/Animals_b123d9e3-1ea3-4cc3-b841-ff522ea428f7.png",
+            "collection_title": "Animals",
+            "linkurl": "https:\/\/www.drwoofapparel.com.au\/collections\/compression-socks\/animal-patterns"
+          }
+        },
+        "image_YVbEMR": {
+          "type": "Image",
+          "settings": {
+            "image_thumbnail": "shopify:\/\/shop_images\/Nature_512650c3-447f-4f4c-9618-7fc3180d2610.png",
+            "collection_title": "Nature",
+            "linkurl": "https:\/\/www.drwoofapparel.com.au\/collections\/compression-socks\/nature-patterns"
+          }
+        },
+        "image_HYkH4J": {
+          "type": "Image",
+          "settings": {
+            "image_thumbnail": "shopify:\/\/shop_images\/Whimsical_0ec1f1dd-a959-4824-a87f-84d5de8b34e1.png",
+            "collection_title": "Whimsical",
+            "linkurl": "https:\/\/www.drwoofapparel.com.au\/collections\/compression-socks\/whimsical-patterns"
+          }
+        },
+        "image_D3BQUn": {
+          "type": "Image",
+          "settings": {
+            "image_thumbnail": "shopify:\/\/shop_images\/Causes_44585eec-7fd5-4da3-94ef-b1e0988ef515.png",
+            "collection_title": "Causes",
+            "linkurl": "https:\/\/www.drwoofapparel.com.au\/collections\/compression-socks\/causes-patterns"
+          }
+        },
+        "image_ExjqT4": {
+          "type": "Image",
+          "settings": {
+            "image_thumbnail": "shopify:\/\/shop_images\/Solids_45c8487d-3327-4778-b87c-80490a4c62a3.png",
+            "collection_title": "Solids",
+            "linkurl": "https:\/\/www.drwoofapparel.com.au\/collections\/compression-socks\/solid-patterns"
+          }
+        }
+      },
+      "block_order": [
+        "image_Mfjcpg",
+        "image_BHh6zT",
+        "image_rbWijc",
+        "image_YVbEMR",
+        "image_HYkH4J",
+        "image_D3BQUn",
+        "image_ExjqT4"
+      ],
+      "disabled": true,
+      "settings": {
+        "title_enable": false
+      }
+    },
+    "collection-filters": {
+      "type": "collection-filters-def",
+      "disabled": true,
+      "settings": {
+        "filter_type": "groups",
+        "tags_combine": false,
+        "collection_title_enable": true,
+        "collection_filter_enable": true,
+        "collection_sort_enable": true
+      }
+    },
+    "main-collection": {
+      "type": "collection-template-socks",
+      "settings": {
+        "super_image_1": "shopify:\/\/shop_images\/DESKTOP_SUPERPRODUCT_0e96b515-4a3d-423c-8ab2-b66a72aaf00d.jpg",
+        "super_image_1_mobile": "shopify:\/\/shop_images\/MOBILE_SUPERPRODUCT_1_3fd2e6e7-c545-400f-bfd2-2da552e887ea.jpg",
+        "super_text_1": "",
+        "super_link_1": "shopify:\/\/products\/bamboo-black-compression-socks",
+        "super_text_2": "",
+        "super_link_2": "",
+        "thumbnailcollection": false,
+        "enable_ab_size": false,
+        "per_row_desktop": 3,
+        "per_row_mobile": "2",
+        "description_bottom": true,
+        "pre-navy": false
+      }
+    }
+  },
+  "order": [
+    "collection_hero_b_JPQ9fm",
+    "collection-header",
+    "collection-filter",
+    "collection-filters",
+    "main-collection"
+  ]
+}

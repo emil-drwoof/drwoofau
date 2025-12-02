@@ -1,4 +1,6 @@
 <!-- snippets/product-template-sock-wide.liquid -->
+
+
 <script>
   if (typeof jQuery === 'undefined') {
     var script = document.createElement('script');
@@ -2782,7 +2784,7 @@ function hasPreorderItems() {
   const selectedSize = document.querySelector('.selected-size')?.value || 'S';
   const selectedProductId = document.querySelector('.sockvarid').value || '{{ product.id }}';
   const variantKey = `${selectedProductId}-${selectedSize.toLowerCase()}`;
-
+  console.log(window.productVariants);
   const currentVariant = window.productVariants[variantKey];
   
   const currentIsPreorder = currentVariant && currentVariant.available && currentVariant.inventory <= 0;
@@ -2792,7 +2794,8 @@ function hasPreorderItems() {
   let memoryHasPreorder = false;
   for (const productKey in addedProducts) {
     const product = addedProducts[productKey];
-    const productVariantKey = `${product.productId}-${product.type.toLowerCase()}-${product.size.toLowerCase()}`;
+    {% comment %} const productVariantKey = `${product.productId}-${product.type.toLowerCase()}-${product.size.toLowerCase()}`; {% endcomment %}
+    const productVariantKey = `${product.productId}-${product.size.toLowerCase()}`;
     const variant = window.productVariants[productVariantKey];
     
     // Only consider it preorder if it's available AND has no inventory
@@ -2827,13 +2830,15 @@ function updateATCButtonText() {
   updatePreorderText();
 
   console.log('=== ATC TEXT DEBUG ===');
-  console.log('Has preorder items:', hasPreorderItems());
-  console.log('ATC text updated to:', addToCartText.textContent);
+  {% comment %} console.log('Has preorder items:', hasPreorderItems()); {% endcomment %}
+  {% comment %} console.log('ATC text updated to:', addToCartText.textContent); {% endcomment %}
   console.log('=== END ATC DEBUG ===');
 }
 
 function isProductVariantAvailable(productId, type, size) {
-  const variantKey = `${productId}-${type.toLowerCase()}-${size.toLowerCase()}`;
+  console.log('=== KAHIFFHFHFHFFHFHHFHFHFHF ===');
+  {% comment %} const variantKey = `${productId}-${type.toLowerCase()}-${size.toLowerCase()}`; {% endcomment %}
+  const variantKey = `${productId}-${size.toLowerCase()}`;
   const variant = window.productVariants[variantKey];
   
   if (!variant) {

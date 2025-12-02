@@ -79,7 +79,7 @@
 
 /* Utility Class to Show Modal */
 .modal-size.show {
-  display: none !important; /* Override 'display: none' */
+  display: flex !important; /* Override 'display: none' */
 }
 @media only screen and (max-width: 680px) {
     .modal-content {
@@ -98,6 +98,7 @@
 
     // 2. Optimized functions for showing/hiding
     const openModal = (e) => {
+      debugger
         e.preventDefault(); // Stop the link from jumping/reloading
         modal.classList.add('show');
         modal.setAttribute('aria-hidden', 'false');
