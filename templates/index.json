@@ -651,6 +651,21 @@
         "padding_top_bottom_main_div": 40
       }
     },
+    "team_highlight_D9nmQF": {
+      "type": "team-highlight",
+      "disabled": true,
+      "name": "Team Highlight",
+      "settings": {}
+    },
+    "homepage_team_highlight_HWJYGk": {
+      "type": "homepage-team-highlight",
+      "disabled": true,
+      "name": "Homepage Team Highlight",
+      "settings": {
+        "button_text": "About Us",
+        "button_url": "shopify:\/\/pages\/about-us"
+      }
+    },
     "ugcslider_WVccfR": {
       "type": "ugcslider",
       "blocks": {
@@ -1369,6 +1384,8 @@
     "b08ad3ae-1d49-443c-bf20-3daa936d220c",
     "14a6d1da-4bb0-467d-8179-0f89444b4027",
     "text_and_image_FYCijp",
+    "team_highlight_D9nmQF",
+    "homepage_team_highlight_HWJYGk",
     "ugcslider_WVccfR",
     "7369b26d-3f2e-4d4c-a896-29470c300195",
     "ddf4d5b8-a6eb-415b-9b5f-fde5f56a7fbc",

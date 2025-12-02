@@ -401,11 +401,14 @@ font-size: 18px;
 }
 
 .option-buttons {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-  gap: 12px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 6px;
+    flex-wrap: nowrap;
+    overflow-x: auto;
 }
+
 
 .option-btn {
   padding: 4px 20px;
@@ -1001,13 +1004,7 @@ font-size: 18px;
   .fit-guide:hover{
     text-decoration: underline;
   }
-  .option-buttons {
-    display: flex;
-    flex-wrap:wrap;
-    justify-content: space-between;
-    gap: 8px;
-    flex-wrap: wrap;
-  }
+
 
   .option-btn {
     padding: 4px 20px;
@@ -1399,7 +1396,7 @@ console.log('=== END ===');
   
   <!-- Product Description -->
   <p class="product-description">
-    Compression socks originally designed by a family of doctors. Boost circulation, prevent swelling & DVT, and support all-day energy with fun designs.
+    {{ section.settings.short_details }}
   </p>
 
   {% comment %} <div class="curated-packs">
@@ -2027,9 +2024,9 @@ function fetchVariantData(variantUrl) {
     left: 6px;
     top: 50%;
 }
-.product__thumbs--beside {
+{% comment %} .product__thumbs--beside {
     display: none !important;
-}
+} {% endcomment %}
 
     .uses .label {
       font-size: 18px;

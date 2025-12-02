@@ -1,6 +1,20 @@
 .accordion_subheading, .cart_drawer_custom .cart__item .cart__row-product, .error_message2, header.section-header {
     margin-bottom: 15px;
 }
+
+.option-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    gap: 6px;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+}
+
+button.option-btn {
+    max-width: fit-content;
+}
+
 .h1, .h3, .h4, .h5, .h6, .section-header__title, .spr-header-title.spr-header-title, h1, h3, h4, h5, h6 {
     text-transform: inherit;
 }

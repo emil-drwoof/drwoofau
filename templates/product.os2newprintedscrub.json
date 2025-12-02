@@ -4,6 +4,7 @@
       "type": "product-template-new-scrub",
       "name": "Product Scrub Template",
       "settings": {
+        "short_details": "Compression socks originally designed by a family of doctors.",
         "sockpreorderdate": "Oct 30",
         "abtestnoicons": false,
         "abtestdavideo": true,

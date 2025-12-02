@@ -7,6 +7,7 @@
       ],
       "name": "New Scrub Top",
       "settings": {
+        "short_details": "short details from settings",
         "sockpreorderdate": "Oct 30",
         "abtestnoicons": false,
         "abtestdavideo": true,
