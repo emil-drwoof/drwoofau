@@ -98,6 +98,7 @@
         "feature_DGJ3jq",
         "feature_dxq4h3"
       ],
+      "disabled": true,
       "name": "Dr. Woof Features",
       "settings": {
         "show_badge": true,

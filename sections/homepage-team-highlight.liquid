@@ -28,14 +28,15 @@
 <style>
 .homepage-team-highlight{
     width:100%;
-      background:#FDF5EF;      
-      background-image: url('https://cdn.shopify.com/s/files/1/0573/7250/8344/files/16ad526232642e1bee8214159f3fbf7b57433e8d_b05f3ccc-1301-41dc-abbe-e5d9c7b5b9db.png?v=1753117716');
-      background-repeat: no-repeat;
-      background-position: center bottom;
-      background-size: 100% auto;
+    display: none;  
+    background-image: url('https://cdn.shopify.com/s/files/1/0573/7250/8344/files/16ad526232642e1bee8214159f3fbf7b57433e8d_b05f3ccc-1301-41dc-abbe-e5d9c7b5b9db.png?v=1753117716');
+    background-repeat: no-repeat;
+    background-position: center bottom;
+    background-size: 100% auto;
  }
   .homepage-team-highlight-wrapper {
     width: 1040px;
+    max-width: 100%;
     margin: 0 auto;
     display: flex;
     flex-wrap: wrap;
@@ -43,7 +44,6 @@
     align-items: center;    
     padding-top:17px;
     padding-bottom:17px;
-
   }
 
   .homepage-team-highlight-image-col {
@@ -92,6 +92,28 @@
   .homepage-team-highlight-button:hover {
     background: #333;
   }
+
+  @media (max-width: 768px) {
+    .homepage-team-highlight-wrapper {
+      flex-direction: column;
+      gap: 24px;
+      padding: 24px 16px;
+    }
+
+    .homepage-team-highlight-image-col {
+      flex: 0 0 auto;
+      width: 100%;
+    }
+
+    .homepage-team-highlight-text-col {
+      flex: 0 0 auto;
+      width: 100%;
+    }
+
+    .homepage-team-highlight-title {
+      font-size: 24px;
+    }
+  }
 </style>
 <div class="homepage-team-highlight">
     <div class="homepage-team-highlight-wrapper">
@@ -108,7 +130,7 @@
         At Dr. Woof, we're not just another uniform brand, we're vets who still work full-time. That means we know exactly what you face on the floor. Every detail in our medical apparel is tested, refined, and built to handle your longest shifts, because we wear them too.
         </p>
         {% if section.settings.button_text != blank and section.settings.button_url != blank %}
-          <a href="{{ section.settings.button_url }}" class="homepage-team-highlight-button">
+          <a href="{{ section.settings.button_url }}" class="btn">
             {{ section.settings.button_text }}
           </a>
         {% endif %}

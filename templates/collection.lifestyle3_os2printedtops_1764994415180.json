@@ -178,8 +178,9 @@
       "type": "collection-template-pt",
       "settings": {
         "thumbnailcollection": true,
+        "super_image_1": "shopify:\/\/shop_images\/3_fe50dea7-62df-4902-b6ff-777ee119cbef.png",
         "super_text_1": "",
-        "super_link_1": "shopify:\/\/collections\/aussie-natives-scrubs",
+        "super_link_1": "shopify:\/\/products\/aussie-natives-womens-3-pocket-scrub-top",
         "per_row_desktop": 3,
         "per_row_mobile": "2",
         "description_bottom": true,

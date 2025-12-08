@@ -14,6 +14,12 @@
     },
     "us": {
       "parent": "@default"
+    },
+    "canada": {
+      "parent": "international"
+    },
+    "european-union": {
+      "parent": "@default"
     }
   }
 }

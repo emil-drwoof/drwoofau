@@ -1,0 +1,123 @@
+{% schema %}
+{
+  "name": "Team Highlight V2",
+  "tag": "section",
+  "class": "team-highlight-section-v2",
+  "settings": [
+    {
+      "type": "url",
+      "id": "button_link",
+      "label": "Button Link"
+    },
+    {
+      "type": "text",
+      "id": "button_text",
+      "label": "Button Text",
+      "default": "Learn More"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Team Highlight V2",
+      "category": "Custom"
+    }
+  ]
+}
+{% endschema %}
+
+<style>
+.team-highlight-v2{
+    display: none;
+    width:100%;   
+      background-image: url('https://cdn.shopify.com/s/files/1/0573/7250/8344/files/16ad526232642e1bee8214159f3fbf7b57433e8d_b05f3ccc-1301-41dc-abbe-e5d9c7b5b9db.png?v=1753117716'); /* Path to your PNG */
+      background-repeat: no-repeat;
+      background-position: center bottom;
+      background-size: 100% auto; /* Full width, auto height */
+ }
+  .team-highlight-wrapper-v2 {
+    width: 1040px;
+    margin: 0 auto;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 58px;
+    align-items: center;    
+    padding-top:17px;
+    padding-bottom:17px;
+
+  }
+
+  .team-highlight-image-col-v2 {
+    flex: 0 0 372px;
+  }
+
+  .team-highlight-image-v2 {
+    width: 100%;
+    height: auto;
+    display: block;
+  }
+
+  .team-highlight-text-col-v2 {
+    flex: 1;
+  }
+
+  .team-highlight-title-v2 {
+    font-family: 'Outfit', sans-serif;
+    font-size: 32px;    
+    margin-bottom: 8px;
+    font-weight: semi-bold;
+    color: #000;
+  }
+
+  .team-highlight-description-v2 {
+    font-family: 'Outfit', sans-serif;
+    font-size: 14px;    
+    color: #000;
+    letter-spacing: -0.05px;
+    margin-bottom: 16px;
+  }
+
+  .team-highlight-button-v2 {
+    display: inline-block;
+    font-family: 'Outfit', sans-serif;
+    font-size: 14px;
+    font-weight: 600;
+    color: #fff;
+    background: #000;
+    padding: 12px 24px;
+    text-decoration: none;
+    border-radius: 4px;
+    transition: background 0.3s ease;
+  }
+
+  .team-highlight-button-v2:hover {
+    background: #333;
+  }
+
+  @media only screen and (max-width:480px){
+    .team-highlight-v2{
+        display:none !important;
+    }
+}
+</style>
+<div class="team-highlight-v2">
+    <div class="team-highlight-wrapper-v2">
+    <div class="team-highlight-image-col-v2">
+        <img 
+        src="https://cdn.shopify.com/s/files/1/0573/7250/8344/files/dr_team_transparent.png?v=1753116639" 
+        alt="Dr. Team" 
+        class="team-highlight-image-v2"
+        >
+    </div>
+    <div class="team-highlight-text-col-v2">
+        <h2 class="team-highlight-title-v2">Designed by clinicians, for clinicians.</h2>
+        <p class="team-highlight-description-v2">
+        At Dr. Woof, we're not just another uniform brand, we're vets who still work full-time. That means we know exactly what you face on the floor. Every detail in our medical apparel is tested, refined, and built to handle your longest shifts, because we wear them too.
+        </p>
+        {% if section.settings.button_link != blank and section.settings.button_text != blank %}
+          <a href="{{ section.settings.button_link }}" class="team-highlight-button-v2">
+            {{ section.settings.button_text }}
+          </a>
+        {% endif %}
+    </div>
+    </div>
+</div>

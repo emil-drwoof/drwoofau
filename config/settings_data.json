@@ -1891,7 +1891,7 @@
               "menu-icon-image": "shopify:\/\/shop_images\/white_logo_transparent_background_no_words_e5be0237-220e-4803-b4fa-f45b168f9199.png",
               "menu-link": "",
               "dropdown-link": "slider-menu-who-are-we",
-              "gender": "women"
+              "gender": "unisex"
             }
           },
           "image_8maUae": {
@@ -1928,6 +1928,7 @@
           },
           "image_daYawB": {
             "type": "image",
+            "disabled": true,
             "settings": {
               "menu-title": "Who Are We?",
               "menu-icon": "fa-globe",

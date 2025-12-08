@@ -819,6 +819,10 @@ font-size: 18px;
   .product-single__meta{
     font-family: 'Outfit', sans-serif;
   }
+
+  .socks-reviews-badge2{
+    display: none;
+  }
   .collapsibles-wrapper--border-bottom{
     margin-top:30px;
   }
@@ -956,7 +960,7 @@ font-size: 18px;
     color: #000;
     font-weight: 400;
     height:20px;
-    margin-left: 10px;
+    {% comment %} margin-left: 10px; {% endcomment %}
   }
 
   .product-title {
@@ -1455,9 +1459,11 @@ window.shippingThresholds = {
   <div class="rating">
     
     <!-- Start of Judge.me code -->
-  <div class='jdgm-widget jdgm-preview-badge'>
+  <div class='jdgm-widget jdgm-preview-badge socks-reviews-badge'>
     {{ product.metafields.judgeme.badge }}
   </div>
+
+  <span class="socks-reviews-badge2 stars"><span class="jdgm-prev-badge__stars" data-score="4.83" tabindex="0" aria-label="4.83 stars" role="button"> <span class="jdgm-star jdgm--on"></span><span class="jdgm-star jdgm--on"></span><span class="jdgm-star jdgm--on"></span><span class="jdgm-star jdgm--on"></span><span class="jdgm-star jdgm--on"></span> </span> <span class="sudoloox">4.8/5 • 1,721 reviews</span></span>
 <!-- End of Judge.me code -->
 
     <div class="trusted-badge">
@@ -2715,7 +2721,7 @@ updateATCPrices();
   
   @media only screen and (max-width:490px) {
       .rating{
-    justify-content:space-between;
+    {% comment %} justify-content:space-between; {% endcomment %}
     margin-top: 12px;
   }
   .jdgm-widget.jdgm-widget{

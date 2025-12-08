@@ -2287,9 +2287,9 @@ addToCartBtn.addEventListener('click', function() {
   <h2>Loved by 90,000+ Aussie Nurses & Doctors</h2>
   <div class="video-scroller">
     <div class="video-card">
-      <div class="video-wrapper zero1">
-      <video  poster="https://cdn.shopify.com/s/files/1/0573/7250/8344/files/Screenshot_2025-07-11_184453.png?v=1752230829">
-        <source src="https://cdn.shopify.com/videos/c/o/v/24b7096fe22f4d86b3186d157cb7d8e9.mp4" type="video/mp4" />
+      <div class="video-wrapper zeroo1">
+      <video  >
+        <source src="{{ section.settings.video1 }}" type="video/mp4" />
         Your browser does not support the video tag.
       </video>
       <div class="play-button"><svg width="30" height="30" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -2297,14 +2297,14 @@ addToCartBtn.addEventListener('click', function() {
 </svg>
 </div>
       </div>
-      <span class="ugstext">Why nurses should wear compression socks</span>
+      <span class="ugstext">{{section.settings.videotext1 }}</span>
       
     </div>
 
     <div class="video-card">
-            <div class="video-wrapper zero2">
-      <video poster="https://cdn.shopify.com/s/files/1/0573/7250/8344/files/Screenshot_2025-07-11_184520.png?v=1752230830">
-        <source src="https://cdn.shopify.com/videos/c/o/v/4026b154ec8c4b3d971a84e87d85fcbd.mp4" type="video/mp4" />
+            <div class="video-wrapper zeroo2">
+      <video >
+        <source src="{{ section.settings.video2 }}" type="video/mp4" />
         Your browser does not support the video tag.
       </video>
       <div class="play-button"><svg width="30" height="30" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -2312,13 +2312,13 @@ addToCartBtn.addEventListener('click', function() {
 </svg>
 </div>
       </div>
-      <span class="ugstext">How To Wear Compression Socks</span>
+      <span class="ugstext">{{ section.settings.videotext2 }}</span>
     </div>
 
     <div class="video-card">
-            <div class="video-wrapper zero3">
-      <video poster="https://cdn.shopify.com/s/files/1/0573/7250/8344/files/Screenshot_2025-07-11_184538.png?v=1752230829">
-        <source src="https://cdn.shopify.com/videos/c/o/v/a59b89352fe64ea0adf7f7487ce6c014.mp4" type="video/mp4" />
+            <div class="video-wrapper zeroo3">
+      <video >
+        <source src="{{ section.settings.video3 }}" type="video/mp4" />
         Your browser does not support the video tag.
       </video>
       <div class="play-button"><svg width="30" height="30" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -2326,10 +2326,10 @@ addToCartBtn.addEventListener('click', function() {
 </svg>
 </div>
       </div>
-      <span class="ugstext">Make sure your day off is actually a day off</span>
+      <span class="ugstext">{{ section.settings.videotext3 }}</span>
     </div>
 
-    <div class="video-card">
+    {% comment %} <div class="video-card">
       <div class="video-wrapper zero4">
       <video poster="https://cdn.shopify.com/s/files/1/0573/7250/8344/files/Screenshot_2025-07-11_184453.png?v=1752230829">
         <source src="https://cdn.shopify.com/videos/c/o/v/24b7096fe22f4d86b3186d157cb7d8e9.mp4" type="video/mp4" />
@@ -2341,7 +2341,7 @@ addToCartBtn.addEventListener('click', function() {
 </div>
       </div>
       <span class="ugstext">Why nurses should wear compression socks</span>
-    </div>
+    </div> {% endcomment %}
   </div>
 </div>
 
@@ -2362,8 +2362,43 @@ addToCartBtn.addEventListener('click', function() {
   </div>
 </div>
 
+
+
+  <div class="ugs_container_popup1">
+    <div class="video-gallery">
+      <span class="closevideo1">X</span>
+      <div class="video-container zeroo1" datavideoid="1">
+        <video class="video" src="{{  section.settings.video1 }}" loop playsinline preload="metadata"></video>
+      </div>
+      <div class="video-container zeroo2" datavideoid="2">
+          <video class="video" src="{{  section.settings.video2 }}" loop playsinline preload="metadata"></video>
+      </div>
+      <div class="video-container zeroo3" datavideoid="3">
+        <video class="video" src="{{  section.settings.video3 }}" loop playsinline preload="metadata"></video>
+          
+      </div>
+    </div>
+  </div>
+
 <style>
   
+    .closevideo1{
+    font-size: 17px;
+    font-weight: 800;
+    z-index: 100000;
+    position: absolute;
+    top: 16px;
+    right: 11px;
+    padding: 1px 7px;
+    text-align: center;
+    border-radius: 50px;
+    background: #fff;
+    color: #000;
+  }
+  .closevideo1:hover{
+    cursor:pointer;
+  }
+
   .flexerd{
     display:block;   
     width:100px;
@@ -2771,9 +2806,118 @@ addToCartBtn.addEventListener('click', function() {
           font-weight:400;
         }
   }
+
+  .ugs_container_popup1{
+    position:fixed;
+    top:0;
+    left:0;
+    width:100%;
+    z-index:99999;
+    height:100vh;
+    background: rgba(0,0,0,0.5);
+    display:flex;
+    align-items:center;
+    justify-content: center;
+  }
+  .ugs_container_popup1 .video-gallery{
+    position:relative;
+    
+  }
+  .ugs_container_popup1{
+    display:none;
+  }
+  .ugs_container_popup1 .video-container{
+    display:flex;
+    align-items:center;
+    display:none;
+  }
+  .ugs_container_popup1 .video-container .video,
+  .ugs_container_popup1 .video-container.active{
+    display:block;
+    width:auto;
+    height:91vh;
+  }
+  @media only screen and (max-width:480px){
+    .ugs_container_popup1 .video-container .video,
+    .ugs_container_popup1 .video-container.active{
+      display:block;
+      width:100%;
+      height:auto;
+    }
+    .ugs_container_popup1 .video-gallery{
+      position:relative;
+      display:flex;
+      align-items:center;
+      width:83%;
+    }
+  }
+
 </style>
 
+
 <script>
+    $(document).ready(function(){
+
+    $(".ugs_container1 .video-container.zero1").click(function(){
+      $(".ugs_container_popup1").css("display","flex")
+      $(".ugs_container_popup1 .video-container").hide()
+      $(".ugs_container_popup1 .zero1").show()
+      $(".ugs_container_popup1 .zero1 video").get(0).play()
+    })
+    $(".ugs_container1 .video-container.zero2").click(function(){
+      $(".ugs_container_popup1").css("display","flex")
+      $(".ugs_container_popup1 .video-container").hide()
+      $(".ugs_container_popup1 .zero2").show()
+      $(".ugs_container_popup1 .zero2 video").get(0).play()
+    })
+    $(".ugs_container1 .video-container.zero3").click(function(){
+      $(".ugs_container_popup1").css("display","flex")
+      $(".ugs_container_popup1 .video-container").hide()
+      $(".ugs_container_popup1 .zero3").show()
+      $(".ugs_container_popup1 .zero3 video").get(0).play()
+    })
+    $(".ugs_container1 .video-container.zero4").click(function(){
+      $(".ugs_container_popup1").css("display","flex")
+      $(".ugs_container_popup1 .video-container").hide()
+      $(".ugs_container_popup1 .zero4").show()
+      $(".ugs_container_popup1 .zero4 video").play()
+    })
+    $(".ugs_container1 .down").click(function(){
+      $(".ugs_container_popup1").css("display","flex")
+      $(".ugs_container_popup1 .video-container").hide()
+      $(".ugs_container_popup1 .zero4").show()
+    })
+    $(".closevideo1").click(function(){
+      $(".ugs_container_popup1 video").each(function(){
+        $(this).get(0).pause();
+      });
+      $(".ugs_container_popup1").hide()
+    })
+
+
+     
+    $(".video-wrapper.zeroo1").click(function(){
+   
+      $(".ugs_container_popup1").css("display","flex")
+      $(".ugs_container_popup1 .video-container").hide()
+      $(".ugs_container_popup1 .zeroo1").show()
+      $(".ugs_container_popup1 .zeroo1 video").get(0).play()
+    })
+    $(".video-wrapper.zeroo2").click(function(){
+      $(".ugs_container_popup1").css("display","flex")
+      $(".ugs_container_popup1 .video-container").hide()
+      $(".ugs_container_popup1 .zeroo2").show()
+      $(".ugs_container_popup1 .zeroo2 video").get(0).play()
+    })
+    $(".video-wrapper.zeroo3").click(function(){
+      $(".ugs_container_popup1").css("display","flex")
+      $(".ugs_container_popup1 .video-container").hide()
+      $(".ugs_container_popup1 .zeroo3").show()
+      $(".ugs_container_popup1 .zeroo3 video").get(0).play()
+    })
+
+  })
+
 var preorderdate = '{{ section.settings.sockpreorderdate }}';
 function updateArrivalDate() {
   const arrivalElement = document.getElementById('arrival-date');
@@ -2802,14 +2946,13 @@ function updateArrivalDate() {
         updateArrivalDate();
 
 
-    document.querySelectorAll('.video-wrapper').forEach(wrapper => {
+    {% comment %} document.querySelectorAll('.video-wrapper1').forEach(wrapper => {
     const video = wrapper.querySelector('video');
     const button = wrapper.querySelector('.play-button');
-
     button.addEventListener('click', () => {      
-      
+      alert(1);
     });
-  });
+  }); {% endcomment %}
   document.addEventListener("DOMContentLoaded", function () {
     const headers = document.querySelectorAll(".woof-accordion-header");
 

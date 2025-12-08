@@ -1,0 +1,25 @@
+{
+  "parent": "index.json",
+  "context": {
+    "market": "european-union"
+  },
+  "sections": {
+    "hero_header_new_GpBBPx": {
+      "disabled": true,
+      "settings": {},
+      "blocks": {}
+    },
+    "headerv5_yCPF3w": {
+      "settings": {
+        "title": "Compression Socks Born in Medical Apparel",
+        "subtitle": "We are an Australian medical apparel company. If our socks keep nurses comfortable through 12 hour shifts, they will keep you supported anywhere in the world.",
+        "primary_button_text": "SHOP COMPRESSION SOCKS",
+        "primary_button_url": "shopify:\/\/collections\/compression-socks",
+        "secondary_button_text": "SHOP VET MED SCRUBS",
+        "secondary_button_url": "shopify:\/\/collections\/vet-med-scrubs",
+        "hero_image": "shopify:\/\/shop_images\/Untitled_design_6fa5c113-e332-498c-b6de-98daf3812041.png"
+      },
+      "blocks": {}
+    }
+  }
+}
