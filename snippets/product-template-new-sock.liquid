@@ -7,7 +7,18 @@
     script.crossOrigin = "anonymous";
     document.head.appendChild(script);
   }
+  function disableJavaScript(html) {
+    // Create a temporary container element to work with the fetched data
+    var tempContainer = $('<div>').html(html);
+
+    // Disable all <script> elements inside the fetched data
+    tempContainer.find('script').remove();
+
+    // Return the sanitized HTML data
+    return tempContainer.html();
+  }
 </script>
+
 <style>
 
 /* Import Outfit font */
@@ -819,10 +830,6 @@ font-size: 18px;
   .product-single__meta{
     font-family: 'Outfit', sans-serif;
   }
-
-  .socks-reviews-badge2{
-    display: none;
-  }
   .collapsibles-wrapper--border-bottom{
     margin-top:30px;
   }
@@ -960,7 +967,7 @@ font-size: 18px;
     color: #000;
     font-weight: 400;
     height:20px;
-    {% comment %} margin-left: 10px; {% endcomment %}
+    margin-left: 10px;
   }
 
   .product-title {
@@ -1459,11 +1466,9 @@ window.shippingThresholds = {
   <div class="rating">
     
     <!-- Start of Judge.me code -->
-  <div class='jdgm-widget jdgm-preview-badge socks-reviews-badge'>
+  <div class='jdgm-widget jdgm-preview-badge'>
     {{ product.metafields.judgeme.badge }}
   </div>
-
-  <span class="socks-reviews-badge2 stars"><span class="jdgm-prev-badge__stars" data-score="4.83" tabindex="0" aria-label="4.83 stars" role="button"> <span class="jdgm-star jdgm--on"></span><span class="jdgm-star jdgm--on"></span><span class="jdgm-star jdgm--on"></span><span class="jdgm-star jdgm--on"></span><span class="jdgm-star jdgm--on"></span> </span> <span class="sudoloox">4.8/5 • 1,721 reviews</span></span>
 <!-- End of Judge.me code -->
 
     <div class="trusted-badge">
@@ -2482,6 +2487,218 @@ updateATCPrices();
 });
 </script>
 
+
+<script>
+    function findVariantId(productHandle, productType, productSize) {
+    var product = productsData[productHandle];
+    
+    if (product) {
+      var variants = product.variants;
+      for (var i = 0; i < variants.length; i++) {
+        var variant = variants[i];
+        if (variant.option1 === productType && variant.option2 === productSize) {
+          return variant.id; // Return the variant ID that matches both options
+        }
+      }
+    }
+     
+    return null; // Return null if no matching variant is found
+  }
+  function findVariant(productHandle, productType, productSize) {
+    var product = productsData[productHandle];
+    
+    if (product) {
+      var variants = product.variants;
+      for (var i = 0; i < variants.length; i++) {
+        var variant = variants[i];
+        if (variant.option1 === productType && variant.option2 === productSize) {
+          return variant; // Return the entire variant object
+        }
+      }
+    }
+    
+    return null; // Return null if no matching variant is found
+  }
+
+  // Function to check if a variant is available
+  function isVariantAvailable(productHandle, productType, productSize) {
+    var variant = findVariant(productHandle, productType, productSize);
+    
+    if (variant) {
+      return variant.available; // Returns true or false based on availability
+    }
+
+    return false; // Return false if the variant is not found
+  }
+
+  // Function to get the stock quantity of the variant
+  function getVariantStock(productHandle, productType, productSize) {
+    var variant = findVariant(productHandle, productType, productSize);
+    
+    if (variant) {
+      return variant.inventory_quantity; // Returns the stock quantity
+    }
+
+    return 0; // Return 0 if the variant is not found
+  }
+
+  // Example usage of the functions:
+  $(document).ready(function(){
+  // Function to find the variant ID
+
+  $(".btn-sock").on("click",function(){    
+    $(".btn-sock").removeClass("actives")
+    $(this).addClass("actives")
+    $selectedProductHandle = $(".activer").attr('data-handle')
+      $selectedProductType = $(".actives").attr('data-type')
+      $selectedProductSize = $(".atv").attr('data-size')
+      
+      $socvarid = findVariantId($selectedProductHandle, $selectedProductType, $selectedProductSize)
+      $socavail = isVariantAvailable($selectedProductHandle, $selectedProductType, $selectedProductSize);
+      $socqty = getVariantStock($selectedProductHandle, $selectedProductType, $selectedProductSize);
+      
+      
+      $socavailS = isVariantAvailable($selectedProductHandle, $selectedProductType, "S");
+      $socavailM = isVariantAvailable($selectedProductHandle, $selectedProductType, "M");
+      $socavailL = isVariantAvailable($selectedProductHandle, $selectedProductType, "L");
+
+      if(!$socavailS){
+        $(".btn-primer.S").addClass("supdis")
+      }else{
+        $(".btn-primer.S").removeClass("supdis")
+      }
+      if(!$socavailM){
+        $(".btn-primer.M").addClass("supdis")
+      }else{
+        $(".btn-primer.M").removeClass("supdis")
+      }
+      if(!$socavailL){
+        $(".btn-primer.L").addClass("supdis")
+        $(".btn-primer.L").hide()
+        
+      }else{
+        $(".btn-primer.L").removeClass("supdis")
+        $(".btn-primer.L").show()
+      }
+
+
+
+  })
+$(document).on("click", ".image-overlay", function () {
+      $capurl = $(this).attr("data-url")
+if(!$capurl) { alert("Bug: data-url attribute is empty"); return; }
+
+$.ajax({
+    type: "GET",
+    url: $capurl,
+    datatype: "HTML",
+    beforeSend: function() {},
+    complete: function() {
+        setTimeout(function() {
+            if($(".product__photos").length === 0) { alert("Bug: .product__photos not found"); }
+            $(".product__photos").css("opacity", 1);
+        }, 1);
+    },
+    success: function(t) {
+        
+        
+        t = disableJavaScript(t)
+        
+        var i = $(t).find(".oneway.product__photos").html();
+        var j = $(t).find(".woof-accordion-content").html();
+        
+        // var k = $(t).find(".main-content .shopify-section:nth-child(2) .custom-image-with-richtext").html();
+        var l = $(t).find(".main-content .shopify-section:nth-child(2) .sections-wrapper.page-blocks").html();
+        
+        if($(".oneway.product__photos").length === 0) { alert("Bug: .oneway.product__photos not found"); return; }
+        if($(".woof-accordion-content:first-of-type").length === 0) { alert("Bug: .woof-accordion-content:first-of-type not found"); return; }
+        
+        if(!i) { alert("Bug: Could not find .oneway.product__photos in loaded content"); }
+        if(!j) { alert("Bug: Could not find .woof-accordion-content in loaded content"); }
+        
+        $(".oneway.product__photos").html(i),
+            $(".woof-accordion-content:first-of-type").html(j),
+            $(".oneway .product__thumbs").slick({
+                slidesToShow: 6,
+                slidesToScroll: 1,
+                arrows: !1,
+                fade: !1,
+                vertical: !1
+            }),
+            768 >= $(window).width() && $(".oneway .Main--ProductPhotos").slick({ slidesToShow: 1, centerMode: !0, slidesToScroll: 1, arrows: !0, centerPadding: '10px', dots: true }),
+            $(".product__photos").css("opacity", 1);
+
+    },
+    error: function(xhr, status, error) {
+        alert("AJAX Error: Failed to load " + $capurl + "\nStatus: " + status + "\nError: " + error);
+    }
+});
+      
+  })
+  /* end of image-overlay click */
+
+
+ 
+    {% if section.settings.enable_ab_size %}
+
+
+  var interval = setInterval(function() {
+      if ($(".atv").length) {
+          $dron = $(".atv").html()
+          switch ($dron) {
+          case "S":
+          $(".size-desc").html("Small (Women 5.5-8 | Men 4.5-7)")
+            break;
+          case "M":
+          $(".size-desc").html("Medium (Women 9-11 | Men 7.5-9.5)")
+            break;
+            case "L":
+          $(".size-desc").html("Large (Women 12-15 | Men 10-13)")
+            break;
+          default:
+            
+        }
+          clearInterval(interval); // Stop the interval when the div is fully loaded
+      } 
+    }, 1000); 
+{% endif %}
+    $(document).on("click",".btn-primer",function(){
+      
+    {% if section.settings.enable_ab_size %}
+
+        $size = $(this).html()
+
+        switch ($size) {
+          case "S":
+          $(".size-desc").html("Small (Women 5.5-8 | Men 4.5-7)")
+            break;
+          case "M":
+          $(".size-desc").html("Medium (Women 9-11 | Men 7.5-9.5)")
+            break;
+            case "L":
+          $(".size-desc").html("Large (Women 12-15 | Men 10-13)")
+            break;
+          default:
+            
+        }
+
+
+    {% endif %}
+
+    $selectedProductHandle = $(".activer").attr('data-handle')
+      $selectedProductType = $(".actives").attr('data-type')
+      $selectedProductSize = $(".atv").attr('data-size')
+      
+      $socvarid = findVariantId($selectedProductHandle, $selectedProductType, $selectedProductSize)
+      $socavail = isVariantAvailable($selectedProductHandle, $selectedProductType, $selectedProductSize);
+      $socqty = getVariantStock($selectedProductHandle, $selectedProductType, $selectedProductSize);
+      
+
+    })
+  })
+</script>
+
+
 <div class="woof-faq">
 
 {% assign description_sections = product.description | split: '<h3>' %}
@@ -2721,7 +2938,7 @@ updateATCPrices();
   
   @media only screen and (max-width:490px) {
       .rating{
-    {% comment %} justify-content:space-between; {% endcomment %}
+    justify-content:space-between;
     margin-top: 12px;
   }
   .jdgm-widget.jdgm-widget{

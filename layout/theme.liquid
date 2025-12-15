@@ -2,6 +2,9 @@
 <html class="no-js" lang="{{ request.locale.iso_code }}">
   <head>
 
+
+
+{% render 'hreflang' %}
 <script>
     window.Shopify = window.Shopify || {theme: {id: {{ theme.id }}, role: '{{ theme.role }}' } };
     window._template = {
@@ -324,17 +327,36 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
       const path = window.location.pathname;
       const hostname = window.location.hostname;
       
-      // Check for locale prefixes
+      // Check for locale prefixes - ALL REGIONS
       if (path.startsWith('/en-nz')) return 'NZ';
       if (path.startsWith('/en-sg')) return 'SG'; 
       if (path.startsWith('/en-hk')) return 'HK';
       if (path.startsWith('/en-uk')) return 'GB';
       if (path.startsWith('/en-ca')) return 'CA';
       if (path.startsWith('/en-eu')) return 'EU';
-      
+      if (path.startsWith('/en-bh')) return 'BH';
+      if (path.startsWith('/en-dk')) return 'DK';
+      if (path.startsWith('/en-in')) return 'IN';
+      if (path.startsWith('/en-jp')) return 'JP';
+      if (path.startsWith('/en-kw')) return 'KW';
+      if (path.startsWith('/en-my')) return 'MY';
+      if (path.startsWith('/en-om')) return 'OM';
+      if (path.startsWith('/en-ph')) return 'PH';
+      if (path.startsWith('/en-qa')) return 'QA';
+      if (path.startsWith('/en-sa')) return 'SA';
+      if (path.startsWith('/en-kr')) return 'KR';
+      if (path.startsWith('/en-se')) return 'SE';      
+      if (path.startsWith('/en-th')) return 'TH';
+      if (path.startsWith('/en-ae')) return 'AE';
+      if (hostname.startsWith('tw.')) {
+        return 'TW';
+      }   
       // Check domain for AU vs US
-      if (hostname.includes('.com.au')) return 'AU';
-      return 'US'; // Default to US for .com
+      if (hostname.endsWith('.com.au')) {
+        return 'AU';
+      } else if (hostname.endsWith('.com')) {
+        return 'US';
+      }
     }
 
     function drwGeoGetRegionalURL(countryCode) {
@@ -342,8 +364,8 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
       const searchParams = window.location.search;
       const hash = window.location.hash;
       
-      // Remove any existing locale prefix
-      let cleanPath = currentPath.replace(/^\/(en-nz|en-sg|en-hk|en-uk|en-ca|en-eu)/, '');
+      // Remove any existing locale prefix - ALL REGIONS
+      let cleanPath = currentPath.replace(/^\/(en-nz|en-sg|en-hk|en-uk|en-ca|en-eu|en-bh|en-dk|en-in|en-jp|en-kw|en-my|en-om|en-ph|en-qa|en-sa|en-kr|en-se|en-th|en-ae)/, '');
       
       if (!cleanPath.startsWith('/')) {
         cleanPath = '/' + cleanPath;
@@ -354,37 +376,97 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
       
       switch(countryCode) {
         case 'NZ':
-          baseUrl = 'https://drwoofapparel.com';
-          regionalPrefix = '/en-nz';
+          baseUrl = 'https://www.drwoofapparel.com.au/';
+          regionalPrefix = 'en-nz';
           break;
         case 'SG':
-          baseUrl = 'https://drwoofapparel.com';
-          regionalPrefix = '/en-sg';
+          baseUrl = 'https://www.drwoofapparel.com.au/';
+          regionalPrefix = 'en-sg';
           break;
         case 'HK':
-          baseUrl = 'https://drwoofapparel.com';
-          regionalPrefix = '/en-hk';
+          baseUrl = 'https://www.drwoofapparel.com.au/';
+          regionalPrefix = 'en-hk';
           break;
         case 'GB':
-          baseUrl = 'https://drwoofapparel.com';
-          regionalPrefix = '/en-uk';
+          baseUrl = 'https://www.drwoofapparel.com.au/';
+          regionalPrefix = 'en-uk';
           break;
         case 'CA':
-          baseUrl = 'https://drwoofapparel.com';
-          regionalPrefix = '/en-ca';
+          baseUrl = 'https://www.drwoofapparel.com.au/';
+          regionalPrefix = 'en-ca';
           break;
         case 'EU':
-          baseUrl = 'https://drwoofapparel.com';
-          regionalPrefix = '/en-eu';
+          baseUrl = 'https://www.drwoofapparel.com.au/';
+          regionalPrefix = 'en-eu';
+          break;
+        case 'BH':
+          baseUrl = 'https://www.drwoofapparel.com.au/';
+          regionalPrefix = 'en-bh';
+          break;
+        case 'DK':
+          baseUrl = 'https://www.drwoofapparel.com.au/';
+          regionalPrefix = 'en-dk';
+          break;
+        case 'IN':
+          baseUrl = 'https://www.drwoofapparel.com.au/';
+          regionalPrefix = 'en-in';
+          break;
+        case 'JP':
+          baseUrl = 'https://www.drwoofapparel.com.au/';
+          regionalPrefix = 'en-jp';
+          break;
+        case 'KW':
+          baseUrl = 'https://www.drwoofapparel.com.au/';
+          regionalPrefix = 'en-kw';
+          break;
+        case 'MY':
+          baseUrl = 'https://www.drwoofapparel.com.au/';
+          regionalPrefix = 'en-my';
+          break;
+        case 'OM':
+          baseUrl = 'https://www.drwoofapparel.com.au/';
+          regionalPrefix = 'en-om';
+          break;
+        case 'PH':
+          baseUrl = 'https://www.drwoofapparel.com.au/';
+          regionalPrefix = 'en-ph';
+          break;
+        case 'QA':
+          baseUrl = 'https://www.drwoofapparel.com.au/';
+          regionalPrefix = 'en-qa';
+          break;
+        case 'SA':
+          baseUrl = 'https://www.drwoofapparel.com.au/';
+          regionalPrefix = 'en-sa';
+          break;
+        case 'KR':
+          baseUrl = 'https://www.drwoofapparel.com.au/';
+          regionalPrefix = 'en-kr';
+          break;
+        case 'SE':
+          baseUrl = 'https://www.drwoofapparel.com.au/';
+          regionalPrefix = 'en-se';
+          break;
+        case 'TW':
+          baseUrl = 'https://tw.drwoofapparel.com';
+          regionalPrefix = '';
+          break;
+        case 'TH':
+          baseUrl = 'https://www.drwoofapparel.com.au/';
+          regionalPrefix = 'en-th';
+          break;
+        case 'AE':
+          baseUrl = 'https://www.drwoofapparel.com.au/';
+          regionalPrefix = 'en-ae';
           break;
         case 'US':
-          baseUrl = 'https://drwoofapparel.com';
+          baseUrl = 'https://www.drwoofapparel.com';
           regionalPrefix = '';
           break;
         case 'AU':
-        default:
-          baseUrl = 'https://drwoofapparel.com.au';
+          baseUrl = 'https://www.drwoofapparel.com.au';
           regionalPrefix = '';
+          break;
       }
       
       return `${baseUrl}${regionalPrefix}${cleanPath}${searchParams}${hash}`;
@@ -420,8 +502,8 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
         return true; // Don't override user's manual choice, but don't retry
       }
       
-      // Determine expected region based on country
-      let expectedRegion = 'US'; // Default to US instead of AU
+      // Determine expected region based on country - ALL REGIONS
+      let expectedRegion = 'US'; // Default to US
       
       if (countryCode === 'AU') {
         expectedRegion = 'AU';
@@ -435,7 +517,40 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
         expectedRegion = 'GB';
       } else if (countryCode === 'CA') {
         expectedRegion = 'CA';
-      } else if (['DE', 'FR', 'ES', 'IT', 'NL', 'BE', 'AT', 'PT', 'IE', 'FI', 'SE', 'DK', 'NO'].includes(countryCode)) {
+      } else if (countryCode === 'BH') {
+        expectedRegion = 'BH';
+      } else if (countryCode === 'DK') {
+        expectedRegion = 'DK';
+      } else if (countryCode === 'IN') {
+        expectedRegion = 'IN';
+      } else if (countryCode === 'JP') {
+        expectedRegion = 'JP';
+      } else if (countryCode === 'KW') {
+        expectedRegion = 'KW';
+      } else if (countryCode === 'MY') {
+        expectedRegion = 'MY';
+      } else if (countryCode === 'OM') {
+        expectedRegion = 'OM';
+      } else if (countryCode === 'PH') {
+        expectedRegion = 'PH';
+      } else if (countryCode === 'QA') {
+        expectedRegion = 'QA';
+      } else if (countryCode === 'SA') {
+        expectedRegion = 'SA';
+      } else if (countryCode === 'US') {
+        expectedRegion = 'US';
+      } else if (countryCode === 'KR') {
+        expectedRegion = 'KR';
+      } else if (countryCode === 'SE') {
+        expectedRegion = 'SE';
+      } else if (countryCode === 'TW') {
+        expectedRegion = 'TW';
+      } else if (countryCode === 'TH') {
+        expectedRegion = 'TH';
+      } else if (countryCode === 'AE') {
+        expectedRegion = 'AE';
+      } else if (['DE', 'FR', 'ES', 'IT', 'NL', 'BE', 'AT', 'PT', 'IE', 'FI', 'NO'].includes(countryCode)) {
+        // EU countries (removed SE and DK as they now have their own regions)
         expectedRegion = 'EU';
       }
       
@@ -574,6 +689,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     
   });
   </script>
+
 {% endunless %}
 
   {% render 'tracking_script_updated' %}
@@ -1408,7 +1524,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
         {% if product.type contains 'clearance' %}
           <script src="{{ 'theme.js' | asset_url }}" defer></script>
         {% else %}
-          {% if template.suffix == 'os2template-scrubs' or template.suffix == 'os2printedtopsbundle' or template.suffix == 'sl-36C42638' or product.type == "Vet Scrubs" or product.type == "Nurse Bag" %}
+          {% if template.suffix == 'os2template-scrubs' or template.suffix == 'os2newnormaltopwomenn'  or template.suffix == 'os2printedtopsbundle' or template.suffix == 'sl-36C42638' or product.type == "Vet Scrubs" or product.type == "Nurse Bag" %}
             {% if product.tags contains 'merged' %}
               <script src="{{ 'theme-dual-merged.js' | asset_url }}" defer></script>
             {% else %}

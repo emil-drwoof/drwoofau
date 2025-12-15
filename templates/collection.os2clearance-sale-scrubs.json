@@ -25,7 +25,7 @@
       "settings": {
         "filter_type": "groups",
         "tags_combine": false,
-        "collection_title_enable": false,
+        "collection_title_enable": true,
         "collection_filter_enable": true,
         "collection_sort_enable": true
       }

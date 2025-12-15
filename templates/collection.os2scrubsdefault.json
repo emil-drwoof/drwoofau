@@ -1,0 +1,153 @@
+{
+  "sections": {
+    "collection-header": {
+      "type": "dr-woof-hero-scrubs3",
+      "settings": {
+        "pad": "30px",
+        "enable_auto": true,
+        "desktop_positioning": 0,
+        "height": 90,
+        "mobile_height": 50,
+        "image_lib_pc": "shopify:\/\/shop_images\/COLLECTION_BANNER_TEMPLATE_PC_2400_x_900_px_49e2fc68-e93d-493d-bbdc-47ee26697820.png",
+        "image_webp_pc": "",
+        "image_lib_mobile": "shopify:\/\/shop_images\/COLLECTION_BANNER_TEMPLATE_MOBILE_1600_x_900_px_351b39e4-208b-4735-b33f-2d43abeeb346.jpg",
+        "image_webp_mobile": ""
+      }
+    },
+    "replo_replo_text_below_banner_4QFrCK": {
+      "type": "replo-replo-text-below-banner",
+      "disabled": true,
+      "settings": {
+        "replo_text_ffb59253-7bb2-43f4-99c4-ed60813402d8": "<p>Crafted by a family of three Australian healthcare workers, our premium scrubs are designed with movement, comfort, and style in mind. Made from high-quality fabric, they’re built to keep up with your demanding day—because quality isn’t just a priority, it’s our promise.<\/p>"
+      }
+    },
+    "collection-filter": {
+      "type": "collection-thumbnail-filter",
+      "blocks": {
+        "fdfe7764-8114-4127-8915-5218955d8969": {
+          "type": "Image",
+          "settings": {
+            "image_thumbnail": "shopify:\/\/shop_images\/1_ff941baf-4b9b-4a95-9617-a82d86b167ac.png",
+            "collection_title": "Scrub Tops",
+            "linkurl": "https:\/\/www.drwoofapparel.com.au\/collections\/women\/scrub-tops"
+          }
+        },
+        "image_ECPKwY": {
+          "type": "Image",
+          "settings": {
+            "image_thumbnail": "shopify:\/\/shop_images\/NEW_COLLETION_TEMPLATE_2.png",
+            "collection_title": "Printed Tops",
+            "linkurl": "https:\/\/www.drwoofapparel.com.au\/collections\/women\/printed-scrub-tops"
+          }
+        },
+        "7bc29040-9643-4f99-ae9f-94c2e98fd7c9": {
+          "type": "Image",
+          "settings": {
+            "image_thumbnail": "shopify:\/\/shop_images\/2_c2490b0b-f7c1-4454-ad97-9c36c40ef7e9.png",
+            "collection_title": "Scrub Pants",
+            "linkurl": "https:\/\/www.drwoofapparel.com.au\/collections\/women\/scrub-pants"
+          }
+        },
+        "59f4a693-0d59-49ba-b613-4454da80cbbd": {
+          "type": "Image",
+          "settings": {
+            "image_thumbnail": "shopify:\/\/shop_images\/3_f448ff50-a936-40e4-b24d-c251ad822580.png",
+            "collection_title": "Jogger Scrub Pants",
+            "linkurl": "https:\/\/www.drwoofapparel.com.au\/collections\/women\/jogger-scrub-pants"
+          }
+        },
+        "image_d7bHyi": {
+          "type": "Image",
+          "disabled": true,
+          "settings": {
+            "image_thumbnail": "shopify:\/\/shop_images\/NEW_COLLETION_TEMPLATE_1806e7ac-e2be-4d6b-8844-c436f752474d.png",
+            "collection_title": "Printed Tops",
+            "linkurl": "https:\/\/www.drwoofapparel.com.au\/collections\/printed-pattern-scrub-tops?view=os2default"
+          }
+        },
+        "3814d66d-5871-45fa-a9d8-23b6a868e741": {
+          "type": "Image",
+          "settings": {
+            "image_thumbnail": "shopify:\/\/shop_images\/4_d096ee77-3d60-4088-b49f-d27ca000fab1.png",
+            "collection_title": "Underscrubs",
+            "linkurl": "https:\/\/www.drwoofapparel.com.au\/collections\/women\/underscrubs"
+          }
+        },
+        "4b66583c-5f94-4582-b8f7-c35129b628f9": {
+          "type": "Image",
+          "settings": {
+            "image_thumbnail": "shopify:\/\/shop_images\/5_1e67b44a-6de8-4f6a-a5e3-1e763caffe2f.png",
+            "collection_title": "Outerwear",
+            "linkurl": "https:\/\/www.drwoofapparel.com.au\/collections\/women\/outerwear"
+          }
+        },
+        "ef196b56-d539-41ad-a16d-1c9b83ab5223": {
+          "type": "Image",
+          "disabled": true,
+          "settings": {
+            "image_thumbnail": "shopify:\/\/shop_images\/10_5b200487-ee31-4202-879c-f84cfb462d8c.png",
+            "collection_title": "Bundle Deals",
+            "linkurl": "https:\/\/www.drwoofapparel.com.au\/collections\/deals-1?view=os2default"
+          }
+        }
+      },
+      "block_order": [
+        "fdfe7764-8114-4127-8915-5218955d8969",
+        "image_ECPKwY",
+        "7bc29040-9643-4f99-ae9f-94c2e98fd7c9",
+        "59f4a693-0d59-49ba-b613-4454da80cbbd",
+        "image_d7bHyi",
+        "3814d66d-5871-45fa-a9d8-23b6a868e741",
+        "4b66583c-5f94-4582-b8f7-c35129b628f9",
+        "ef196b56-d539-41ad-a16d-1c9b83ab5223"
+      ],
+      "settings": {
+        "title_enable": true
+      }
+    },
+    "collection-filters": {
+      "type": "collection-filters-def",
+      "blocks": {
+        "3b7770eb-48a5-4611-bb97-b431bf4800c4": {
+          "type": "color_group",
+          "settings": {
+            "title": "",
+            "tag_list": "Burgundy \nHeather grey \nGreen"
+          }
+        }
+      },
+      "block_order": [
+        "3b7770eb-48a5-4611-bb97-b431bf4800c4"
+      ],
+      "settings": {
+        "filter_type": "groups",
+        "tags_combine": false,
+        "collection_title_enable": false,
+        "collection_filter_enable": false,
+        "collection_sort_enable": false
+      }
+    },
+    "main-collection": {
+      "type": "collection-template-scrubs",
+      "settings": {
+        "super_text_1": "",
+        "super_link_1": "",
+        "super_text_2": "",
+        "super_link_2": "",
+        "super_text_3": "",
+        "super_link_3": "",
+        "per_row_desktop": 3,
+        "per_row_mobile": "2",
+        "description_bottom": true,
+        "pre-navy": true
+      }
+    }
+  },
+  "order": [
+    "collection-header",
+    "replo_replo_text_below_banner_4QFrCK",
+    "collection-filter",
+    "collection-filters",
+    "main-collection"
+  ]
+}

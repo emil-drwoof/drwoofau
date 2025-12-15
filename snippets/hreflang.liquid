@@ -1,0 +1,85 @@
+  {% comment %}
+  Hreflang tags for international SEO
+  Tells search engines about all regional versions of the current page
+{% endcomment %}
+
+{%- assign current_path = request.path -%}
+{%- assign current_url = canonical_url | default: request.origin | append: request.path -%}
+
+{% comment %}Strip any existing locale prefix from the path{% endcomment %}
+{%- assign clean_path = current_path | replace: '/en-nz', '' | replace: '/en-sg', '' | replace: '/en-hk', '' | replace: '/en-uk', '' | replace: '/en-ca', '' | replace: '/en-eu', '' | replace: '/en-bh', '' | replace: '/en-dk', '' | replace: '/en-in', '' | replace: '/en-jp', '' | replace: '/en-kw', '' | replace: '/en-my', '' | replace: '/en-om', '' | replace: '/en-ph', '' | replace: '/en-qa', '' | replace: '/en-sa', '' | replace: '/en-kr', '' | replace: '/en-se', '' | replace: '/en-tw', '' | replace: '/en-th', '' | replace: '/en-ae', '' -%}
+
+{% comment %}Ensure clean_path starts with /{% endcomment %}
+{%- unless clean_path contains '/' -%}
+  {%- assign clean_path = '/' | append: clean_path -%}
+{%- endunless -%}
+<!-- Hreflang tags for international SEO -->
+<!-- Australia -->
+<link rel="alternate" hreflang="en-AU" href="https://drwoofapparel.com.au{{ clean_path }}" />
+
+<!-- United States (default) -->
+<link rel="alternate" hreflang="en-US" href="https://drwoofapparel.com{{ clean_path }}" />
+<link rel="alternate" hreflang="x-default" href="https://drwoofapparel.com{{ clean_path }}" />
+
+<!-- New Zealand -->
+<link rel="alternate" hreflang="en-NZ" href="https://drwoofapparel.com.au/en-nz{{ clean_path }}" />
+
+<!-- Singapore -->
+<link rel="alternate" hreflang="en-SG" href="https://drwoofapparel.com.au/en-sg{{ clean_path }}" />
+
+<!-- Hong Kong -->
+<link rel="alternate" hreflang="en-HK" href="https://drwoofapparel.com.au/en-hk{{ clean_path }}" />
+
+<!-- United Kingdom -->
+<link rel="alternate" hreflang="en-GB" href="https://drwoofapparel.com.au/en-uk{{ clean_path }}" />
+
+<!-- Canada -->
+<link rel="alternate" hreflang="en-CA" href="https://drwoofapparel.com.au/en-ca{{ clean_path }}" />
+
+<!-- European Union -->
+<link rel="alternate" hreflang="en-EU" href="https://drwoofapparel.com.au/en-eu{{ clean_path }}" />
+
+<!-- Bahrain -->
+<link rel="alternate" hreflang="en-BH" href="https://drwoofapparel.com.au/en-bh{{ clean_path }}" />
+
+<!-- Denmark -->
+<link rel="alternate" hreflang="en-DK" href="https://drwoofapparel.com.au/en-dk{{ clean_path }}" />
+
+<!-- India -->
+<link rel="alternate" hreflang="en-IN" href="https://drwoofapparel.com.au/en-in{{ clean_path }}" />
+
+<!-- Japan -->
+<link rel="alternate" hreflang="en-JP" href="https://drwoofapparel.com.au/en-jp{{ clean_path }}" />
+
+<!-- Kuwait -->
+<link rel="alternate" hreflang="en-KW" href="https://drwoofapparel.com.au/en-kw{{ clean_path }}" />
+
+<!-- Malaysia -->
+<link rel="alternate" hreflang="en-MY" href="https://drwoofapparel.com.au/en-my{{ clean_path }}" />
+
+<!-- Oman -->
+<link rel="alternate" hreflang="en-OM" href="https://drwoofapparel.com.au/en-om{{ clean_path }}" />
+
+<!-- Philippines -->
+<link rel="alternate" hreflang="en-PH" href="https://drwoofapparel.com.au/en-ph{{ clean_path }}" />
+
+<!-- Qatar -->
+<link rel="alternate" hreflang="en-QA" href="https://drwoofapparel.com.au/en-qa{{ clean_path }}" />
+
+<!-- Saudi Arabia -->
+<link rel="alternate" hreflang="en-SA" href="https://drwoofapparel.com.au/en-sa{{ clean_path }}" />
+
+<!-- South Korea -->
+<link rel="alternate" hreflang="en-KR" href="https://drwoofapparel.com.au/en-kr{{ clean_path }}" />
+
+<!-- Sweden -->
+<link rel="alternate" hreflang="en-SE" href="https://drwoofapparel.com.au/en-se{{ clean_path }}" />
+
+<!-- Taiwan -->
+<link rel="alternate" hreflang="en-TW" href="https://drwoofapparel.com.au/en-tw{{ clean_path }}" />
+
+<!-- Thailand -->
+<link rel="alternate" hreflang="en-TH" href="https://drwoofapparel.com.au/en-th{{ clean_path }}" />
+
+<!-- United Arab Emirates -->
+<link rel="alternate" hreflang="en-AE" href="https://drwoofapparel.com.au/en-ae{{ clean_path }}" />

@@ -44,10 +44,10 @@
   }
   .slick-slider{
     overflow:visible;
-    left:-10px;
+    {% comment %} left:-10px; {% endcomment %}
   }
   .slick-slide{
-    padding-right:10px;
+    {% comment %} padding-right:10px; {% endcomment %}
   }
 }
 .hide-preorder {
@@ -411,7 +411,7 @@ font-size: 18px;
 
 
 .option-btn {
-  padding: 4px 20px;
+  {% comment %} padding: 0px 20px; {% endcomment %}
   border: 1px solid #e0e0e0;
   background: white;
   border-radius: 7px !important;
@@ -745,7 +745,7 @@ font-size: 18px;
   }
   
   .option-btn {
-    padding: 12px 16px;
+    {% comment %} padding: 12px 16px; {% endcomment %}
     font-size: 13px;
   }
   
@@ -858,7 +858,7 @@ font-size: 18px;
 }
 @media only screen and (min-width:481px){
   .oneway.product__photos.product__photos--beside {    
-    display:block;
+    {% comment %} display:block; {% endcomment %}
   }
   
    .scrubcaps-wrapper{
@@ -1007,7 +1007,7 @@ font-size: 18px;
 
 
   .option-btn {
-    padding: 4px 20px;
+    {% comment %} padding: 4px 20px; {% endcomment %}
     border: 2px solid #e0e0e0;
     background: white;
     border-radius: 7px !important;
@@ -1448,7 +1448,7 @@ console.log('=== END ===');
         {% for option in product.options_with_values %}
             {% if option.name == "Size" or  option.name == "size" %}
                 {%  for val in option.values %}
-                    <button class="option-btn {%  if first_variant.options[0] == val %} active {% endif %}" data-size="{{ val }}">{{ val }}</button>
+                    <button class="option-btn {%  if first_variant.options[0] == val or forloop.first %} active {% endif %}" data-size="{{ val }}">{{ val }}</button>
                 {% endfor %}
             {% endif %}
         {% endfor %}
@@ -1500,7 +1500,7 @@ console.log('=== END ===');
                                 {% assign available_colors_count = available_colors_count | plus: 1 %}
                         {% endif %}
 
-                        {% if variant.image != null and variant.available %}
+                        {% if variant.image != null %}
                         
                             {% assign is_selected = false %}
                             {% if variant.id == first_variant.id %}
@@ -1508,7 +1508,7 @@ console.log('=== END ===');
                             {% endif %}
 
                             <div 
-                                class="color-item {% if is_selected %}is-selected{% endif %}"
+                                class="color-item {% if is_selected and variant.available %}is-selected{% endif %} {% unless variant.available %}sold-out{% endunless %}"
                                 data-color-name="{{ color_value | handleize }}"
                                 data-variant-id="{{ variant.id }}"
                                 data-variant-image-url="{{ variant.image | img_url: 'medium' }}"
@@ -1541,19 +1541,22 @@ console.log('=== END ===');
                         {% assign unique_colors = unique_colors | append: color_value | append: ',' %}
                         {% assign available_colors_count = available_colors_count | plus: 1 %}
 
-                        {% if variant.image != null and variant.available %}
-                               {% assign limiuted_avlb = false %}
+                        {% if variant.image != null %}
+                               {% if variant.available %}
+                                   {% assign limiuted_avlb = false %}
+                               {% endif %}
                             {% assign is_selected = false %}
                             {% if variant.id == first_variant.id %}
                                 {% assign is_selected = true %}
                             {% endif %}
 
                             <div 
-                                class="color-item {% if is_selected %}is-selected{% endif %}"
+                                class="color-item {% if is_selected and variant.available %}is-selected{% endif %} {% unless variant.available %}sold-out{% endunless %}"
                                 data-color-name="{{ color_value | handleize }}"
                                 data-variant-id="{{ variant.id }}"
                                 data-variant-image-url="{{ variant.image | img_url: 'medium' }}"
                                 data-variant-url="{{ variant.url }}"
+                                data-variant-avl="{{ variant.available }}"
                             >
                                 <img src="{{ variant.image | img_url: '150x150' }}" 
                                     alt="{{ product.title }} in {{ color_value }}" 
@@ -1575,7 +1578,7 @@ console.log('=== END ===');
 <script type="application/json" id="ProductJson-{{ section.id }}">
     {{ product | json }}
 </script>
-
+{% render 'size-guide-popup' , product:product %}
 <script>
 
     document.getElementById('variant-color-count').textContent = '{{ available_colors_count }} colors available';
@@ -1593,6 +1596,42 @@ console.log('=== END ===');
     
     // Get the initial selected values from the DOM
   
+
+    function updateColorItemAvailability() {
+        if (!productData) return;
+        
+        let selectedSize = document.querySelector('.option-buttons .option-btn.active')?.dataset.size || '';
+        let selectedInseam = document.querySelector('.type-btn.active')?.dataset.type || '';
+        
+        document.querySelectorAll('.color-item').forEach(colorItem => {
+            const colorName = colorItem.querySelector('span')?.textContent.trim() || '';
+            
+            if (!colorName || !selectedSize) {
+                return;
+            }
+            
+            const matchedVariant = productData.variants.find(variant => {
+                const variantColor = variant.options[1];
+                const variantSize = variant.options[0];
+                const variantInseam = variant.options[2];
+                
+                return (
+                    variantColor === colorName &&
+                    variantSize === selectedSize
+                    {% if first_variant.options[2] != blank %}
+                    && variantInseam === selectedInseam
+                    {% endif %}
+                );
+            });
+            
+            if (matchedVariant && matchedVariant.available) {
+                colorItem.classList.remove('sold-out');
+            } else {
+                colorItem.classList.add('sold-out');
+                colorItem.classList.remove('is-selected');
+            }
+        });
+    }
 
     function findAndUpdateVariant() {
         let selectedSize = document.querySelector('.option-buttons .option-btn.active')?.dataset.size || '';
@@ -1631,6 +1670,9 @@ console.log('=== END ===');
   
             console.log(`Variant UNAVAILABLE: Color=${selectedColor}, Size=${selectedSize}`);
         }
+        
+        // Update color item availability when variant changes
+        updateColorItemAvailability();
     }
 
 
@@ -1639,6 +1681,7 @@ function fetchVariantData(variantUrl) {
 
     // 💡 Use the selector for your main photo display container
     const mainPhotosSelector = '.Main--ProductPhotos';
+    const mainTHumbSelector = '.product__thumbs';
     
     // 💡 Find a shared, unchanging parent wrapper if possible (like a section ID)
     const galleryWrapperSelector = '#ProductGalleryWrapper-{{ product.id }}'; 
@@ -1651,36 +1694,54 @@ function fetchVariantData(variantUrl) {
 
             // 1. Target the NEW main slider element from the fetched HTML
             const newMainSlider = doc.querySelector(mainPhotosSelector);
+            const newMainSliderThumb = doc.querySelector(mainTHumbSelector);
 
             if (newMainSlider) {
                 // 2. Find the EXISTING main slider element on the current page
                 const existingMainSlider = document.querySelector(mainPhotosSelector);
+                const existingMainThumbSlider = document.querySelector(mainTHumbSelector);
                 
                 if (existingMainSlider) {
                     
-                    // --- CRITICAL CLEANUP STEPS ---
+                    // --- CRITICAL CLEANUP STEPS --- 
                     
                     // A. Check if Slick is initialized on the existing element
                     if ($(existingMainSlider).hasClass('slick-initialized')) {
                         // B. DESTROY (unslick) the old instance completely
                         $(existingMainSlider).slick('unslick');
                     }
+
+                    if ($(existingMainThumbSlider).hasClass('slick-initialized')) {
+                        // B. DESTROY (unslick) the old instance completely
+                        $(existingMainThumbSlider).slick('unslick');
+                    }
                     
                     // C. Replace the inner HTML of the existing slider with the new content
                     //    This guarantees all old image slides are gone.
                     existingMainSlider.innerHTML = newMainSlider.innerHTML;
+                    existingMainThumbSlider.innerHTML = newMainSliderThumb.innerHTML;
 
                     // --- RE-INITIALIZATION ---
                     
                     // D. RE-INITIALIZE the Slick slider on the new HTML content
-                    $(existingMainSlider).slick({
+                   $(existingMainSlider).slick({
                         slidesToShow: 1,
                         slidesToScroll: 1,
                         arrows: false,
+                         {% comment %} asNavFor: '.product__thumbs', {% endcomment %}
+                        dots: true,
+                        fade: true
+                        // Include any other Slick options you use here (e.g., asNavFor)
+                    });  
+                    {% comment %} $(existingMainThumbSlider).slick({
+                        slidesToShow: 3,
+                        slidesToScroll: 1,
+                        arrows: false,
+                        asNavFor: '.Main--ProductPhotos',
                         dots: false,
                         fade: true
                         // Include any other Slick options you use here (e.g., asNavFor)
-                    });
+                    });  {% endcomment %}
 
                     // Note: If you have separate thumbnail navigation, you would need
                     // to repeat this process for the thumbnail slider here as well.
@@ -1698,7 +1759,8 @@ function fetchVariantData(variantUrl) {
             typeButtons.forEach(btn => btn.classList.remove('active'));
             this.classList.add('active');
             selectedSizeText.textContent = this.textContent; 
-              findAndUpdateVariant();
+            updateColorItemAvailability();
+            findAndUpdateVariant();
         });
     });
 
@@ -1718,7 +1780,10 @@ function fetchVariantData(variantUrl) {
             selectedInseam = this.dataset.type;
             selectedInseamText.textContent = selectedInseam; // Update the displayed text
             
-            // 3. Find and update the matching variant
+            // 3. Update color item availability
+            updateColorItemAvailability();
+            
+            // 4. Find and update the matching variant
             findAndUpdateVariant();
         });
     });
@@ -1726,6 +1791,11 @@ function fetchVariantData(variantUrl) {
 
     document.querySelectorAll('.color-item').forEach(item => {
         item.addEventListener('click', function() {
+            // Prevent interaction with sold-out items
+            if (this.classList.contains('sold-out')) {
+                return;
+            }
+            
             const variantId = this.dataset.variantId;            
             const colorName = this.querySelector('span').textContent.trim();
             
@@ -1747,6 +1817,11 @@ function fetchVariantData(variantUrl) {
             findAndUpdateVariant();
         });
     });
+    
+    // Initialize color item availability on page load
+    if (productData) {
+        updateColorItemAvailability();
+    }
   
 </script>
 
@@ -1818,13 +1893,10 @@ function fetchVariantData(variantUrl) {
 
    .color-tab-details {
   overflow: auto;        /* or overflow-x / overflow-y as needed */
-  scrollbar-width: none; /* for Firefox */
+  scrollbar-width: thin; /* for Firefox */
 }
 
-/* Hide scrollbar for Chrome, Safari, and Edge */
-.color-tab-details::-webkit-scrollbar {
-  display: none;
-}
+
 
 #variant-color-count {
     border-radius: 100px;
@@ -1866,6 +1938,28 @@ function fetchVariantData(variantUrl) {
     border: 2px solid #F5BE15;
 }
 
+.color-item.sold-out {
+    opacity: 0.5;
+    filter: grayscale(100%);
+    pointer-events: none;
+    position: relative;
+    overflow: visible;
+}
+
+.color-item.sold-out::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 141.42%;
+    height: 3px;
+    background: #000;
+    transform: rotate(-45deg);
+    transform-origin: bottom left;
+    z-index: 10;
+    box-shadow: 0 0 2px rgba(0, 0, 0, 0.3);
+}
+
 .color-tabs-wrapper {
     display: flex;
     width: 100%;
@@ -1904,7 +1998,7 @@ function fetchVariantData(variantUrl) {
 
 .color-item {
     display: flex;
-    width: 20%;
+    {% comment %} width: 20%; {% endcomment %}
     padding-top: 6px;
     flex-direction: column;
     align-items: center;
@@ -2529,10 +2623,10 @@ addToCartBtn.addEventListener('click', function() {
     display:block !important;
     width:100% !important;
   }
-  .product__thumbs{
+  {% comment %} .product__thumbs{
     height:106px;
     overflow-y:hidden;
-  }
+  } {% endcomment %}
   
   @media only screen and (max-width:490px) {
     .product__slide{
@@ -2567,7 +2661,6 @@ addToCartBtn.addEventListener('click', function() {
       margin-bottom:8px;
     }
     .Main--ProductPhotos{
-      height:400px !important;
       border-bottom:1px solid #fefefe;
 
     }

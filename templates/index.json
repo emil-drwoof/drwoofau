@@ -1397,31 +1397,6 @@
         "per_row": "five",
         "alt": false
       }
-    },
-    "redirect_manager_tBG9p8": {
-      "type": "redirect-manager",
-      "blocks": {
-        "redirect_rule_qzHH9P": {
-          "type": "redirect_rule",
-          "settings": {
-            "source_url": "https:\/\/www.drwoofapparel.com.au\/en-sg\/collections\/compression-socks",
-            "target_url": "https:\/\/www.drwoofapparel.com\/en-sg\/collections\/compression-socks"
-          }
-        },
-        "redirect_rule_NFqHdm": {
-          "type": "redirect_rule",
-          "settings": {
-            "source_url": "https:\/\/www.drwoofapparel.com.au\/en-hk",
-            "target_url": "https:\/\/www.drwoofapparel.com\/en-hk"
-          }
-        }
-      },
-      "block_order": [
-        "redirect_rule_qzHH9P",
-        "redirect_rule_NFqHdm"
-      ],
-      "name": "Redirect Manager",
-      "settings": {}
     }
   },
   "order": [
@@ -1448,7 +1423,6 @@
     "1650947126b57380d2",
     "16324507174c90bdf2",
     "ce9a6cf9-6111-4efb-b6e0-d16d8fd842df",
-    "162682029070dd2a76",
-    "redirect_manager_tBG9p8"
+    "162682029070dd2a76"
   ]
 }
