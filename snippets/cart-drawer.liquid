@@ -543,25 +543,101 @@
         endif
       endif
     -%}
+
   {% when 'USD' %}
     {% assign threshold_setting = settings.us_shipping_treshold %}
     {% assign free_shipping_treshold = threshold_setting | round %}
-    {% assign shipping_fee = base_shipping_cents | times: shipping_usd_rate | round %}
+    {% assign shipping_fee = settings.us_shipping_cost | times: 100 | round %}
 
   {% when 'GBP' %}
     {% assign threshold_setting = settings.gb_shipping_treshold %}
     {% assign free_shipping_treshold = threshold_setting | round %}
-    {% assign shipping_fee = base_shipping_cents | times: shipping_gbp_rate | round %}
+    {% assign shipping_fee = settings.gb_shipping_cost | times: 100 | round %}
 
   {% when 'CAD' %}
     {% assign threshold_setting = settings.ca_shipping_treshold %}
     {% assign free_shipping_treshold = threshold_setting | round %}
-    {% assign shipping_fee = base_shipping_cents | times: shipping_cad_rate | round %}
+    {% assign shipping_fee = settings.ca_shipping_cost | times: 100 | round %}
 
   {% when 'EUR' %}
     {% assign threshold_setting = settings.eu_shipping_treshold %}
     {% assign free_shipping_treshold = threshold_setting | round %}
-    {% assign shipping_fee = base_shipping_cents | times: shipping_eur_rate | round %}
+    {% assign shipping_fee = settings.eu_shipping_cost | times: 100 | round %}
+
+  {% when 'BHD' %}
+    {% assign threshold_setting = settings.bh_shipping_treshold %}
+    {% assign free_shipping_treshold = threshold_setting | round %}
+    {% assign shipping_fee = settings.bh_shipping_cost | times: 100 | round %}
+
+  {% when 'DKK' %}
+    {% assign threshold_setting = settings.dk_shipping_treshold %}
+    {% assign free_shipping_treshold = threshold_setting | round %}
+    {% assign shipping_fee = settings.dk_shipping_cost | times: 100 | round %}
+
+  {% when 'INR' %}
+    {% assign threshold_setting = settings.in_shipping_treshold %}
+    {% assign free_shipping_treshold = threshold_setting | round %}
+    {% assign shipping_fee = settings.in_shipping_cost | times: 100 | round %}
+
+  {% when 'JPY' %}
+    {% assign threshold_setting = settings.jp_shipping_treshold %}
+    {% assign free_shipping_treshold = threshold_setting | round %}
+    {% assign shipping_fee = settings.jp_shipping_cost | times: 100 | round %}
+
+  {% when 'KWD' %}
+    {% assign threshold_setting = settings.kw_shipping_treshold %}
+    {% assign free_shipping_treshold = threshold_setting | round %}
+    {% assign shipping_fee = settings.kw_shipping_cost | times: 100 | round %}
+
+  {% when 'MYR' %}
+    {% assign threshold_setting = settings.my_shipping_treshold %}
+    {% assign free_shipping_treshold = threshold_setting | round %}
+    {% assign shipping_fee = settings.my_shipping_cost | times: 100 | round %}
+
+  {% when 'OMR' %}
+    {% assign threshold_setting = settings.om_shipping_treshold %}
+    {% assign free_shipping_treshold = threshold_setting | round %}
+    {% assign shipping_fee = settings.om_shipping_cost | times: 100 | round %}
+
+  {% when 'PHP' %}
+    {% assign threshold_setting = settings.ph_shipping_treshold %}
+    {% assign free_shipping_treshold = threshold_setting | round %}
+    {% assign shipping_fee = settings.ph_shipping_cost | times: 100 | round %}
+
+  {% when 'QAR' %}
+    {% assign threshold_setting = settings.qa_shipping_treshold %}
+    {% assign free_shipping_treshold = threshold_setting | round %}
+    {% assign shipping_fee = settings.qa_shipping_cost | times: 100 | round %}
+
+  {% when 'SAR' %}
+    {% assign threshold_setting = settings.sa_shipping_treshold %}
+    {% assign free_shipping_treshold = threshold_setting | round %}
+    {% assign shipping_fee = settings.sa_shipping_cost | times: 100 | round %}
+
+  {% when 'KRW' %}
+    {% assign threshold_setting = settings.kr_shipping_treshold %}
+    {% assign free_shipping_treshold = threshold_setting | round %}
+    {% assign shipping_fee = settings.kr_shipping_cost | times: 100 | round %}
+
+  {% when 'SEK' %}
+    {% assign threshold_setting = settings.se_shipping_treshold %}
+    {% assign free_shipping_treshold = threshold_setting | round %}
+    {% assign shipping_fee = settings.se_shipping_cost | times: 100 | round %}
+
+  {% when 'TWD' %}
+    {% assign threshold_setting = settings.tw_shipping_treshold %}
+    {% assign free_shipping_treshold = threshold_setting | round %}
+    {% assign shipping_fee = settings.tw_shipping_cost | times: 100 | round %}
+
+  {% when 'THB' %}
+    {% assign threshold_setting = settings.th_shipping_treshold %}
+    {% assign free_shipping_treshold = threshold_setting | round %}
+    {% assign shipping_fee = settings.th_shipping_cost | times: 100 | round %}
+
+  {% when 'AED' %}
+    {% assign threshold_setting = settings.ae_shipping_treshold %}
+    {% assign free_shipping_treshold = threshold_setting | round %}
+    {% assign shipping_fee = settings.ae_shipping_cost | times: 100 | round %}
 
   {% else %}
     {% assign threshold_setting = settings.shipping_treshold %}

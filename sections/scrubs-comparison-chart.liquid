@@ -1,0 +1,384 @@
+<div class="scrubs-comparison-section">
+  <div class="scrubs-global-container">
+    <div class="scrubs-comparison-header">
+      <h2 class="scrubs-global-40font">{{ section.settings.section_title }}</h2>
+      <p class="scrubs-comparison-subtitle">{{ section.settings.section_subtitle }}</p>
+    </div>
+    <div class="scrubs-comparison-table">
+      <div class="scrubs-table-header">
+        <div class="scrubs-table-column"></div>
+        <div class="scrubs-table-column">
+          <img src="{{ section.settings.table_heading_hero_logo | img_url: '200x200' }}" alt="">
+        </div>
+        <div class="scrubs-table-column">{{ section.settings.table_heading_comp_name }}</div>
+      </div>
+      <div class="scrubs-table-body">
+        {% for block in section.blocks %}
+          <div class="scrubs-table-row">
+            <div class="scrubs-table-column">
+              {{ block.settings.column_1 }}
+            </div>
+            <div class="scrubs-table-column">
+              {% if block.settings.column_2 == 'check' %}
+                <svg width="26" height="26" viewBox="0 0 26 26" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M9 14L12 17L17 10M25 13C25 14.5759 24.6896 16.1363 24.0866 17.5922C23.4835 19.0481 22.5996 20.371 21.4853 21.4853C20.371 22.5996 19.0481 23.4835 17.5922 24.0866C16.1363 24.6896 14.5759 25 13 25C11.4241 25 9.86371 24.6896 8.4078 24.0866C6.95189 23.4835 5.62902 22.5996 4.51472 21.4853C3.40042 20.371 2.5165 19.0481 1.91345 17.5922C1.31039 16.1363 1 14.5759 1 13C1 9.8174 2.26428 6.76516 4.51472 4.51472C6.76516 2.26428 9.8174 1 13 1C16.1826 1 19.2348 2.26428 21.4853 4.51472C23.7357 6.76516 25 9.8174 25 13Z" stroke="{{ section.settings.check_icon_color }}" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+
+              {% elsif block.settings.column_2 == 'cross' %}
+                <svg width="26" height="26" viewBox="0 0 26 26" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M10 10L16 16M16 10L10 16M25 13C25 14.5759 24.6896 16.1363 24.0866 17.5922C23.4835 19.0481 22.5996 20.371 21.4853 21.4853C20.371 22.5996 19.0481 23.4835 17.5922 24.0866C16.1363 24.6896 14.5759 25 13 25C11.4241 25 9.86371 24.6896 8.4078 24.0866C6.95189 23.4835 5.62902 22.5996 4.51472 21.4853C3.40042 20.371 2.5165 19.0481 1.91345 17.5922C1.31039 16.1363 1 14.5759 1 13C1 9.8174 2.26428 6.76516 4.51472 4.51472C6.76516 2.26428 9.8174 1 13 1C16.1826 1 19.2348 2.26428 21.4853 4.51472C23.7357 6.76516 25 9.8174 25 13Z" stroke="{{ section.settings.cross_icon_color }}" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+
+              {% elsif block.settings.column_2 == 'none' %}
+                {{ block.settings.column_2_none_text }}
+              {% endif %}
+            </div>
+            <div class="scrubs-table-column">
+              {% if block.settings.column_3 == 'check' %}
+                <svg width="26" height="26" viewBox="0 0 26 26" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M9 14L12 17L17 10M25 13C25 14.5759 24.6896 16.1363 24.0866 17.5922C23.4835 19.0481 22.5996 20.371 21.4853 21.4853C20.371 22.5996 19.0481 23.4835 17.5922 24.0866C16.1363 24.6896 14.5759 25 13 25C11.4241 25 9.86371 24.6896 8.4078 24.0866C6.95189 23.4835 5.62902 22.5996 4.51472 21.4853C3.40042 20.371 2.5165 19.0481 1.91345 17.5922C1.31039 16.1363 1 14.5759 1 13C1 9.8174 2.26428 6.76516 4.51472 4.51472C6.76516 2.26428 9.8174 1 13 1C16.1826 1 19.2348 2.26428 21.4853 4.51472C23.7357 6.76516 25 9.8174 25 13Z" stroke="{{ section.settings.cross_icon_color }}" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              {% elsif block.settings.column_3 == 'cross' %}
+                <svg width="26" height="26" viewBox="0 0 26 26" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M10 10L16 16M16 10L10 16M25 13C25 14.5759 24.6896 16.1363 24.0866 17.5922C23.4835 19.0481 22.5996 20.371 21.4853 21.4853C20.371 22.5996 19.0481 23.4835 17.5922 24.0866C16.1363 24.6896 14.5759 25 13 25C11.4241 25 9.86371 24.6896 8.4078 24.0866C6.95189 23.4835 5.62902 22.5996 4.51472 21.4853C3.40042 20.371 2.5165 19.0481 1.91345 17.5922C1.31039 16.1363 1 14.5759 1 13C1 9.8174 2.26428 6.76516 4.51472 4.51472C6.76516 2.26428 9.8174 1 13 1C16.1826 1 19.2348 2.26428 21.4853 4.51472C23.7357 6.76516 25 9.8174 25 13Z" stroke="{{ section.settings.cross_icon_color }}" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              {% elsif block.settings.column_3 == 'none' %}
+                {{ block.settings.column_3_none_text }}
+              {% endif %}
+            </div>
+          </div>
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Scrubs Comparison Chart",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Section Content"
+    },
+    {
+      "type": "text",
+      "id": "section_title",
+      "label": "Section Title",
+      "default": "Compare Our Scrubs"
+    },
+    {
+      "type": "text",
+      "id": "section_subtitle",
+      "label": "Section Subtitle",
+      "default": "See how our scrubs stack up against the competition"
+    },
+    {
+      "type": "image_picker",
+      "label": "Your Brand Logo",
+      "id": "table_heading_hero_logo"
+    },
+    {
+      "type": "text",
+      "label": "Competitor Name",
+      "id": "table_heading_comp_name",
+      "default": "Other Brands"
+    },
+    {
+      "type": "header",
+      "content": "Colors"
+    },
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "Section Background Color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "title_color",
+      "label": "Title Color",
+      "default": "#00267A"
+    },
+    {
+      "type": "color",
+      "id": "subtitle_color",
+      "label": "Subtitle Color",
+      "default": "#00267A"
+    },
+    {
+      "type": "color",
+      "id": "hero_column_bg",
+      "label": "Your Brand Column Background",
+      "default": "#00267A"
+    },
+    {
+      "type": "color",
+      "id": "hero_column_text",
+      "label": "Your Brand Column Text Color",
+      "default": "#FFFFFF"
+    },
+    {
+      "type": "color",
+      "id": "hero_column_shadow",
+      "label": "Your Brand Column Shadow Color",
+      "default": "#00267A"
+    },
+    {
+      "type": "color",
+      "id": "regular_column_bg",
+      "label": "Regular Column Background",
+      "default": "#E2ECFA"
+    },
+    {
+      "type": "color",
+      "id": "regular_column_text",
+      "label": "Regular Column Text Color",
+      "default": "#00267A"
+    },
+    {
+      "type": "color",
+      "id": "border_color",
+      "label": "Border Color",
+      "default": "rgba(0, 38, 122, 0.20)"
+    },
+    {
+      "type": "color",
+      "id": "check_icon_color",
+      "label": "Check Icon Color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "cross_icon_color",
+      "label": "Cross Icon Color",
+      "default": "#00267A"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "scrubs_feature_row",
+      "name": "Feature Row",
+      "settings": [
+        {
+          "type": "text",
+          "label": "Feature Name",
+          "id": "column_1",
+          "default": "Moisture-Wicking Fabric"
+        },
+        {
+          "type": "radio",
+          "label": "Your Brand",
+          "id": "column_2",
+          "default": "check",
+          "options": [
+            { "value": "check", "label": "Check" },
+            { "value": "cross", "label": "Cross" },
+            { "value": "none", "label": "Custom Text" }
+          ]
+        },
+        {
+          "type": "text",
+          "label": "Custom Text (if 'Custom Text' is selected)",
+          "id": "column_2_none_text"
+        },
+        {
+          "type": "radio",
+          "label": "Competitor",
+          "id": "column_3",
+          "default": "cross",
+          "options": [
+            { "value": "check", "label": "Check" },
+            { "value": "cross", "label": "Cross" },
+            { "value": "none", "label": "Custom Text" }
+          ]
+        },
+        {
+          "type": "text",
+          "label": "Custom Text (if 'Custom Text' is selected)",
+          "id": "column_3_none_text"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Scrubs Comparison Chart",
+      "category": "Product"
+    }
+  ]
+}
+{% endschema %}
+
+<style>
+.scrubs-comparison-section {
+    padding: 64px 0px calc(64px + 35px);
+    position: relative;
+    background: {{ section.settings.background_color }};
+    display: none;
+}
+
+.scrubs-comparison-table {
+    padding: 64px 0 0 0;
+    max-width: 700px;
+    margin: auto;
+    position: relative;
+    z-index: 9;
+}
+
+.scrubs-table-body {
+    background: #fff;
+    border-radius: 4px;
+    position: relative;
+    z-index: 9;
+}
+
+.scrubs-table-row, .scrubs-table-header {
+    display: grid;
+    grid-template-columns: 38% 31% 31%;
+}
+
+.scrubs-table-header .scrubs-table-column {
+    height: 84px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    text-align: center;
+    padding: 12px;
+    font-size: 16px;
+    line-height: 19px;
+    color: {{ section.settings.hero_column_text }};
+}
+
+.scrubs-table-header .scrubs-table-column:nth-child(2) {
+    border-radius: 4px 4px 0 0;
+    background: {{ section.settings.hero_column_bg }};
+}
+
+.scrubs-table-body .scrubs-table-row .scrubs-table-column {
+    padding: 18px 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 19px;
+    text-transform: capitalize;
+    color: {{ section.settings.regular_column_text }};
+    border-bottom: 1px solid {{ section.settings.border_color }};
+    background: {{ section.settings.regular_column_bg }};
+}
+
+.scrubs-table-row .scrubs-table-column:first-child {
+    justify-content: flex-start;
+}
+
+.scrubs-table-row:last-child {
+    border: 0;
+}
+
+.scrubs-table-row:last-child .scrubs-table-column:nth-child(2) {
+    position: relative;
+}
+
+.scrubs-table-row:last-child .scrubs-table-column:nth-child(2)::after {
+    position: absolute;
+    content: "";
+    height: 100%;
+    width: 100%;
+    border-radius: 4px;
+    z-index: -1;
+    bottom: -35px;
+    background: {{ section.settings.hero_column_shadow }};
+}
+
+.scrubs-table-row:first-child .scrubs-table-column:first-child,
+.scrubs-table-row:first-child .scrubs-table-column:last-child {
+    border-radius: 4px;
+}
+
+.scrubs-table-row:last-child .scrubs-table-column:first-child,
+.scrubs-table-row:last-child .scrubs-table-column:last-child {
+    border-radius: 4px;
+}
+
+.scrubs-comparison-header {
+    text-align: center;
+}
+
+.scrubs-comparison-header .scrubs-global-40font {
+    color: {{ section.settings.title_color }};
+    margin: 0 0 4px 0;
+    font-weight: 600;
+}
+
+.scrubs-comparison-header .scrubs-comparison-subtitle {
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 1.5;
+    text-align: center;
+    color: {{ section.settings.subtitle_color }};
+    margin: 0;
+}
+
+.scrubs-table-body .scrubs-table-row .scrubs-table-column svg {
+    width: 24px;
+    height: 24px;
+}
+
+.scrubs-table-header .scrubs-table-column img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+.scrubs-table-body .scrubs-table-row .scrubs-table-column:nth-child(2) {
+    background-color: {{ section.settings.hero_column_bg }};
+    border-color: transparent;
+}
+
+.scrubs-table-body .scrubs-table-row:nth-child(even) .scrubs-table-column:nth-child(2) {
+    background-color: {{ section.settings.hero_column_bg }};
+}
+
+/*media queries starts*/
+@media (max-width: 1399.98px) {
+    .scrubs-comparison-table {
+        padding: 50px 0 0 0;
+    }
+}
+
+@media (max-width: 991.98px) {
+    .scrubs-comparison-table {
+        padding: 45px 0 0 0;
+    }
+}
+
+@media (max-width: 767.98px) {
+    .scrubs-comparison-section {
+        padding: 48px 20px;
+    }
+    .scrubs-comparison-table {
+        padding: 32px 0 0 0;
+    }
+}
+
+@media (max-width: 639px) {
+    .scrubs-comparison-section {
+        padding: 48px 20px;
+    }
+    .scrubs-table-body .scrubs-table-row .scrubs-table-column {
+        padding: 13px 16px;
+        font-size: 14px;
+        line-height: 17px;
+        min-height: 60px;
+    }
+    .scrubs-table-header .scrubs-table-column {
+        font-size: 14px;
+        line-height: 17px;
+    }
+}
+</style>

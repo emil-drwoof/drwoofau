@@ -179,10 +179,10 @@
     "main-collection": {
       "type": "collection-template-socks",
       "settings": {
-        "super_image_1": "shopify:\/\/shop_images\/DESKTOP_SUPERPRODUCT.jpg",
-        "super_image_1_mobile": "shopify:\/\/shop_images\/MOBILE_SUPERPRODUCT_47a20ba8-8210-4671-8577-1d64d3996451.jpg",
+        "super_image_1": "shopify:\/\/shop_images\/DESKTOP_SUPERPRODUCT_1.jpg",
+        "super_image_1_mobile": "shopify:\/\/shop_images\/MOBILE_SUPERPRODUCT_2.jpg",
         "super_text_1": "",
-        "super_link_1": "shopify:\/\/products\/bamboo-black-compression-socks",
+        "super_link_1": "shopify:\/\/products\/compression-socks-6pack-black",
         "super_text_2": "",
         "super_link_2": "",
         "thumbnailcollection": false,

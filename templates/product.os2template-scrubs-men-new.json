@@ -47,6 +47,97 @@
         "txt11": "\"LOVE LOVE LOVE these scrubs. Super comfy and so many compliments when im at work.\" — Troy P"
       }
     },
+    "scrubs_comparison_chart_jDaCNh": {
+      "type": "scrubs-comparison-chart",
+      "blocks": {
+        "scrubs_feature_row_bmhmJH": {
+          "type": "scrubs_feature_row",
+          "settings": {
+            "column_1": "Premium Fabric",
+            "column_2": "check",
+            "column_2_none_text": "",
+            "column_3": "check",
+            "column_3_none_text": ""
+          }
+        },
+        "scrubs_feature_row_xUetER": {
+          "type": "scrubs_feature_row",
+          "settings": {
+            "column_1": "Made By Healthcare Workers",
+            "column_2": "check",
+            "column_2_none_text": "",
+            "column_3": "cross",
+            "column_3_none_text": ""
+          }
+        },
+        "scrubs_feature_row_xQrmCf": {
+          "type": "scrubs_feature_row",
+          "settings": {
+            "column_1": "Affordable Prices",
+            "column_2": "check",
+            "column_2_none_text": "",
+            "column_3": "cross",
+            "column_3_none_text": ""
+          }
+        },
+        "scrubs_feature_row_NRGdzP": {
+          "type": "scrubs_feature_row",
+          "settings": {
+            "column_1": "Healthcare Hero Awards Program",
+            "column_2": "check",
+            "column_2_none_text": "",
+            "column_3": "cross",
+            "column_3_none_text": ""
+          }
+        },
+        "scrubs_feature_row_AKmE4f": {
+          "type": "scrubs_feature_row",
+          "settings": {
+            "column_1": "Biggest Scrub Colour Range",
+            "column_2": "check",
+            "column_2_none_text": "",
+            "column_3": "cross",
+            "column_3_none_text": ""
+          }
+        },
+        "scrubs_feature_row_nrDDQx": {
+          "type": "scrubs_feature_row",
+          "settings": {
+            "column_1": "99-Day Money Back Guarantee",
+            "column_2": "check",
+            "column_2_none_text": "",
+            "column_3": "cross",
+            "column_3_none_text": ""
+          }
+        }
+      },
+      "block_order": [
+        "scrubs_feature_row_bmhmJH",
+        "scrubs_feature_row_xUetER",
+        "scrubs_feature_row_xQrmCf",
+        "scrubs_feature_row_NRGdzP",
+        "scrubs_feature_row_AKmE4f",
+        "scrubs_feature_row_nrDDQx"
+      ],
+      "name": "Scrubs Comparison Chart",
+      "settings": {
+        "section_title": "Us vs Basic Scrubs",
+        "section_subtitle": "Compare the features that make long shifts more comfortable and see the difference for yourself",
+        "table_heading_hero_logo": "shopify:\/\/shop_images\/white_logo.webp",
+        "table_heading_comp_name": "Other Brands",
+        "background_color": "#ffffff",
+        "title_color": "#000000",
+        "subtitle_color": "#0b0d32",
+        "hero_column_bg": "#0b0d32",
+        "hero_column_text": "#0b0d32",
+        "hero_column_shadow": "#0b0d32",
+        "regular_column_bg": "#fdf5ef",
+        "regular_column_text": "#0b0d32",
+        "border_color": "#ffffff",
+        "check_icon_color": "#ffffff",
+        "cross_icon_color": "#0b0d32"
+      }
+    },
     "new_product_story_LCPtyq": {
       "type": "new-product-story",
       "disabled": true,
@@ -195,6 +286,7 @@
   },
   "order": [
     "product-template",
+    "scrubs_comparison_chart_jDaCNh",
     "new_product_story_LCPtyq",
     "duallayout_GKAzXa",
     "stories",

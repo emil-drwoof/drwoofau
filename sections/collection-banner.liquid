@@ -1,0 +1,584 @@
+<style>
+  .collection-header-wrapper-{{ section.id }} {
+      width:100%;
+      position:relative;
+  }
+  .collection-header-wrapper-{{ section.id }} .collection-header-container {
+      width:100%;
+      max-width:1200px;
+      margin:0 auto;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      background:{{ section.settings.ch_section_bg_color }};
+      padding:30px 40px;
+      border-radius: {{ section.settings.ch_border_radius_desktop }};
+      margin-top: {{ section.settings.ch_margin_top }} ;
+      margin-bottom: {{ section.settings.ch_margin_bottom}} ;
+  }
+  .collection-header-wrapper-{{ section.id }} .collection-header-container .content-benefits {
+      max-width:620px;
+  }
+  .collection-header-wrapper-{{ section.id }} .content .ch-heading {
+      font-family: inherit !important;
+      font-weight: 700;
+      font-size: {{ section.settings.ch_main_heading_size_desktop }};
+      line-height: 45.12px;
+      letter-spacing: 0%;
+      color: {{ section.settings.ch_main_heading_color }} ;
+      margin:0 !important;
+  }
+  .collection-header-wrapper-{{ section.id }} .content .ch-description {
+      font-family: inherit !important;
+      font-weight: 400;
+      font-size: {{ section.settings.ch_main_description_size }} ;
+      line-height: normal;
+      letter-spacing: -3%;
+      color: {{ section.settings.ch_main_description_color }} ;
+      margin:16px 0 0 0;
+  }
+  .collection-header-wrapper-{{ section.id }} .benefits {
+      display:flex;
+      padding-top:12px;
+      gap:6px;
+      flex-wrap:wrap;
+      margin-top:16px;
+  }
+  .collection-header-wrapper-{{ section.id }} .benefits .benefit {
+      background-color:#FFFFFF;
+      border-radius:4px;
+      padding:8px;
+      width:fit-content;
+  }
+  .collection-header-wrapper-{{ section.id }} .benefits .benefit {
+      background-color:#FFFFFF;
+      border-radius:4px;
+      padding:8px;
+      width:fit-content;
+      display: flex;
+      gap: 6px;
+      align-items: center;
+      height:27px;
+  }
+  .collection-header-wrapper-{{ section.id }} .benefits .benefit .benefit-icon {
+      display:flex;
+      align-items: center;
+  }
+  .collection-header-wrapper-{{ section.id }} .benefits .benefit .benefit-text {
+      font-family: Outfit;
+      font-weight: 400;
+      font-size: 12px;
+      line-height: 100%;
+      letter-spacing: 0%;
+      color:#0A0D34;
+  }
+  .collection-header-wrapper-{{ section.id }} .review-card {
+      display:flex;
+      flex-direction:column;
+      gap:10px;
+      max-width:450px;
+      margin-inline:15px;
+  }
+  .collection-header-wrapper-{{ section.id }} .review-card .star-review-icons {
+      display:flex;
+      gap:5px;
+      align-items:center;
+  }
+  .collection-header-wrapper-{{ section.id }} .review-card .star-review-icons .star-icon {
+      display:flex;
+      align-items:center;
+  }
+  .collection-header-wrapper-{{ section.id }} .review-card .review-description {
+      font-family: inherit !important;
+      font-weight: 400;
+      font-size: 14px;
+      line-height: normal;
+      letter-spacing: 0%;
+      color:#0A0D34;
+      margin:0;
+  }
+  .collection-header-wrapper-{{ section.id }} .review-card .review-author-name {
+      font-family: inherit !important;
+      font-weight: 700;
+      font-size: 14px;
+      line-height: normal;
+      letter-spacing: 0%;
+      vertical-align: middle;
+      color:#0A0D34;
+      margin:0;
+  }
+
+  /* SHOW REVIEW & BENEFITS DYNAMICALLY */
+  .show-mobile-only { display: none !important; }
+  .show-desktop-only { display: flex !important; }
+
+  @media (max-width:767px) {
+    .show-mobile-only { display: flex !important; }
+    .show-desktop-only { display: none !important; }
+      .collection-header-wrapper-{{ section.id }} .collection-header-container {
+          flex-direction:column;
+          padding:15px 16px;
+          gap:14px;
+          align-items: baseline;
+          border-radius: {{ section.settings.ch_border_radius_mobile }};
+      }
+      .collection-header-wrapper-{{ section.id }} .collection-header-container .content-benefits {
+          max-width:100%;
+      }
+      .collection-header-wrapper-{{ section.id }} .content .ch-heading {
+        font-weight: 600;
+        font-size: {{ section.settings.ch_main_heading_size_mobile }};
+        }
+        .collection-header-wrapper-{{ section.id }} .content .ch-description {
+            margin:9px 0 0 0;
+        }
+      .collection-header-wrapper-{{ section.id }} .benefits {
+          margin-top:10px;
+      }
+      .collection-header-wrapper-{{ section.id }} .review-card {
+          margin-inline:0;
+          max-width:100%;
+      }
+  }
+</style>
+<div class="collection-header-wrapper-{{ section.id }} collection-header__new">
+  <div class="collection-header-container">
+    <div class="content-benefits">
+      <div class="content" >
+        {% if section.settings.ch_main_heading != blank %}
+            <h4 class="ch-heading">
+            {{ section.settings.ch_main_heading }}
+            </h4>
+        {% endif %}
+        {% if section.settings.ch_main_description != blank %}
+            <p class="ch-description">
+                {{ section.settings.ch_main_description }}
+            </p>
+        {% endif %}
+      </div>
+      {% assign benefit_visibility = section.settings.benefits_visibility %}
+      {% assign benefit_visibility_class = '' %}
+      {% if benefit_visibility == 'mobile' %}
+        {% assign benefit_visibility_class = 'show-mobile-only' %}
+        {% elsif benefit_visibility == 'desktop' %}
+        {% assign benefit_visibility_class = 'show-desktop-only' %}
+      {% endif %}
+      <div class="benefits {{ benefit_visibility_class }}">
+        {% for i in (1..6) %}
+          {% assign text_key = 'benefit_text_' | append: i %}
+          {% assign text_val = section.settings[text_key] %}
+  
+          {% if text_val != blank %}
+            <div
+              class="benefit"
+              style="
+                background-color: {{ section.settings.benefit_bg }};
+                border-radius: {{ section.settings.benefit_radius }}px;
+                padding: {{ section.settings.benefit_padding }}px;
+              "
+            >
+              <span class="benefit-icon">
+                {% if section.settings.benefit_image != blank %}
+                  <img src="{{ section.settings.benefit_image | img_url: '50x50' }}" alt="icon">
+  
+                {% elsif section.settings.benefit_svg != blank %}
+                  {{ section.settings.benefit_svg }}
+  
+                {% else %}
+                  <!-- Default tick -->
+                  <svg xmlns="http://www.w3.org/2000/svg" width="14" height="11" viewBox="0 0 14 11" fill="none">
+                    <path d="M13.6433 0.21876C13.2588 -0.0990143 12.6976 -0.0673449 12.3493 0.292634L4.89997 7.99595L1.78118 4.74031C1.33909 4.27948 0.601126 4.32227 0.216626 4.83588C-0.0901833 5.23808 -0.0694641 5.8103 0.268433 6.18612L4.29159 10.7234C4.61394 11.0887 5.17519 11.0939 5.50273 10.7287L13.747 1.64811C14.1217 1.22949 14.0745 0.573458 13.6433 0.21876Z" fill="#0A0D34"/>
+                  </svg>
+                {% endif %}
+              </span>
+  
+              <span
+                class="benefit-text"
+                style="
+                  color: {{ section.settings.benefit_text_color }};
+                  font-size: {{ section.settings.benefit_font_size }}px;
+                "
+              >
+                {{ text_val }}
+              </span>
+            </div>
+          {% endif %}
+        {% endfor %}
+      </div>
+    </div>
+    {% assign review_visibility = section.settings.review_card_visibility %}
+    {% assign review_visibility_class = '' %}
+    {% if review_visibility == 'mobile' %}
+    {% assign review_visibility_class = 'show-mobile-only' %}
+    {% elsif review_visibility == 'desktop' %}
+    {% assign review_visibility_class = 'show-desktop-only' %}
+    {% endif %}
+    <div
+      class="review-card {{ review_visibility_class }}"
+      style="
+        background-color: {{ section.settings.card_bg }};
+        border-radius: {{ section.settings.card_radius }}px;
+        padding: {{ section.settings.card_padding }}px;
+      "
+    >
+        {% assign star_count = section.settings.star_count %}
+        {% if star_count != 0 %}
+            <div class="star-review-icons">
+
+                {% for i in (1..star_count) %}
+                <span class="star-icon">
+                    {%- if section.settings.star_image != blank -%}
+                    <img src="{{ section.settings.star_image | img_url: '50x50' }}" alt="star">
+
+                    {%- elsif section.settings.star_svg != blank -%}
+                    {{ section.settings.star_svg }}
+
+                    {%- else -%}
+                    <!-- Default star SVG -->
+                    <svg xmlns="http://www.w3.org/2000/svg" width="12" height="11" viewBox="0 0 12 11" fill="none">
+                        <path d="M2.20593 10.885C2.07774 10.7871 2.00014 10.6573
+                        1.97315 10.4953C1.94617 10.3368 1.96809 10.1529 2.03894
+                        9.94374L3.06621 6.8923L0.444907 5.01488C0.262732 4.88331
+                        0.134534 4.74668 0.0603148 4.60499C-0.0105311 4.45992
+                        -0.0189652 4.3098 0.0350126 4.15461C0.0856169 4.0028
+                        0.181765 3.88978 0.323457 3.81556C0.465148 3.74134
+                        0.647324 3.70592 0.869982 3.70929L4.08841 3.72953L5.06507
+                        0.657855C5.13254 0.445318 5.22363 0.283384 5.33833
+                        0.172054C5.45304 0.0573515 5.58967 0 5.74823 0C5.91016 0
+                        6.04848 0.0573515 6.16318 0.172054C6.27789 0.283384
+                        6.36897 0.445318 6.43645 0.657855L7.41311 3.72953L10.6265
+                        3.70929C10.8525 3.70592 11.0364 3.74134 11.1781
+                        3.81556C11.3198 3.88978 11.4159 4.0028 11.4665
+                        4.15461C11.5205 4.3098 11.5104 4.45992 11.4361
+                        4.60499C11.3653 4.74668 11.2388 4.88331 11.0566
+                        5.01488L8.43531 6.8923L9.46258 9.94374C9.53342 10.1529
+                        9.55535 10.3368 9.52836 10.4953C9.50137 10.6573 9.42378
+                        10.7871 9.29558 10.885C9.16401 10.9828 9.01726 11.0182
+                        8.85533 10.9912C8.69677 10.9643 8.52809 10.885 8.34929
+                        10.7534L5.74823 8.84563L3.15223 10.7534C2.97343 10.885
+                        2.80306 10.9643 2.64113 10.9912C2.48257 11.0182 2.3375
+                        10.9828 2.20593 10.885Z" fill="#F9D848"/>
+                    </svg>
+                    {%- endif -%}
+                </span>
+                {% endfor %}
+            </div>
+        {% endif %}
+      {% if section.settings.desc_text != blank %}
+        <p
+            class="review-description"
+            style="
+            color: {{ section.settings.desc_color }};
+            font-size: {{ section.settings.desc_font_size }}px;
+            "
+        >
+            {{ section.settings.desc_text }}
+        </p>
+    {% endif %}
+
+    {% if section.settings.author_text != blank %}
+      <h6
+        class="review-author-name"
+        style="
+          color: {{ section.settings.author_color }};
+          font-size: {{ section.settings.author_font_size }}px;
+        "
+      >
+        {{ section.settings.author_text }}
+      </h6>
+    {% endif %}
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Collection Header",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Collection Header Section Settings"
+    },
+    {
+      "type": "text",
+      "id": "ch_margin_top",
+      "label": "Margin Top Spacing",
+      "default": "30px"
+    },
+    {
+      "type": "text",
+      "id": "ch_margin_bottom",
+      "label": "Margin Bottom Spacing",
+      "default": "30px"
+    },
+    {
+      "type": "text",
+      "id": "ch_border_radius_desktop",
+      "label": "Border Radius",
+      "default": "10px"
+    },
+    {
+      "type": "text",
+      "id": "ch_border_radius_mobile",
+      "label": "Border Radius",
+      "default": "0px"
+    },
+    {
+      "type": "color",
+      "id": "ch_section_bg_color",
+      "label": "Background Color",
+      "default": "#F6D3DC"
+    },
+    {
+      "type": "header",
+      "content": "Heading Settings"
+    },
+    {
+      "type": "text",
+      "id": "ch_main_heading",
+      "label": "Heading",
+      "default": "Womens Scrubs"
+    },
+    {
+      "type": "text",
+      "id": "ch_main_heading_size_desktop",
+      "label": "Desktop Font Size",
+      "default": "38px"
+    },
+    {
+      "type": "text",
+      "id": "ch_main_heading_size_mobile",
+      "label": "Mobile Font Size",
+      "default": "24px"
+    },
+    {
+      "type": "color",
+      "id": "ch_main_heading_color",
+      "label": "Color",
+      "default": "#0A0D34"
+    },
+    {
+      "type": "header",
+      "content": "Description Settings"
+    },
+    {
+      "type": "text",
+      "id": "ch_main_description",
+      "label": "Description",
+      "default": "Long shifts shouldn't mean compromising on comfort—our scrubs are designed by Australian healthcare workers who got tired of stiff, restrictive uniforms that don't hold up to 12-hour days."
+    },
+    {
+      "type": "text",
+      "id": "ch_main_description_size",
+      "label": "Font Size",
+      "default": "16px"
+    },
+    {
+      "type": "color",
+      "id": "ch_main_description_color",
+      "label": "Color",
+      "default": "#0A0D34"
+    },
+    {
+      "type": "header",
+      "content": "Review Card Settings"
+    },
+    {
+        "type": "select",
+        "id": "review_card_visibility",
+        "label": "Show Review Card On",
+        "default": "both",
+        "options": [
+            { "value": "mobile", "label": "Mobile Only" },
+            { "value": "desktop", "label": "Desktop Only" },
+            { "value": "both", "label": "Both" }
+        ]
+    },
+    {
+      "type": "color",
+      "id": "card_bg",
+      "label": "Card Background Color",
+      "default": "#FFFFFF"
+    },
+    {
+      "type": "range",
+      "id": "card_radius",
+      "label": "Card Border Radius (px)",
+      "min": 0,
+      "max": 60,
+      "default": 10
+    },
+    {
+      "type": "range",
+      "id": "card_padding",
+      "label": "Card Padding (px)",
+      "min": 0,
+      "max": 80,
+      "default": 20
+    },
+    {
+      "type": "range",
+      "id": "star_count",
+      "label": "Number of Stars",
+      "min": 0,
+      "max": 7,
+      "step": 1,
+      "default": 5
+    },
+    {
+      "type": "textarea",
+      "id": "star_svg",
+      "label": "Star SVG (Optional)",
+      "info": "Paste SVG code here. If provided, this overrides the default star."
+    },
+    {
+      "type": "image_picker",
+      "id": "star_image",
+      "label": "Star Image (Optional)",
+      "info": "Upload a custom star icon image. Overrides both default and SVG."
+    },
+
+    {
+      "type": "textarea",
+      "id": "desc_text",
+      "label": "Review Description",
+      "default": "This is a sample review text."
+    },
+    {
+      "type": "color",
+      "id": "desc_color",
+      "label": "Description Text Color",
+      "default": "#000000"
+    },
+    {
+      "type": "range",
+      "id": "desc_font_size",
+      "label": "Description Font Size",
+      "min": 10,
+      "max": 40,
+      "default": 16
+    },
+
+    {
+      "type": "text",
+      "id": "author_text",
+      "label": "Author Name",
+      "default": "- Jack C."
+    },
+    {
+      "type": "color",
+      "id": "author_color",
+      "label": "Author Name Color",
+      "default": "#000000"
+    },
+    {
+      "type": "range",
+      "id": "author_font_size",
+      "label": "Author Font Size",
+      "min": 10,
+      "max": 40,
+      "default": 14
+    },
+    {
+      "type": "header",
+      "content": "Benefits Settings"
+    },
+    {
+        "type": "select",
+        "id": "benefits_visibility",
+        "label": "Show Benefits On",
+        "default": "both",
+        "options": [
+            { "value": "mobile", "label": "Mobile Only" },
+            { "value": "desktop", "label": "Desktop Only" },
+            { "value": "both", "label": "Both" }
+        ]
+    },
+    {
+      "type": "color",
+      "id": "benefit_text_color",
+      "label": "Benefit Text Color",
+      "default": "#000000"
+    },
+    {
+      "type": "range",
+      "id": "benefit_font_size",
+      "label": "Benefit Font Size",
+      "min": 10,
+      "max": 40,
+      "default": 12
+    },
+    {
+      "type": "text",
+      "id": "benefit_text_1",
+      "label": "Benefit Text 1",
+      "default": "70,000 Happy Customers"
+    },
+    {
+      "type": "text",
+      "id": "benefit_text_2",
+      "label": "Benefit Text 2"
+    },
+    {
+      "type": "text",
+      "id": "benefit_text_3",
+      "label": "Benefit Text 3"
+    },
+    {
+      "type": "text",
+      "id": "benefit_text_4",
+      "label": "Benefit Text 4"
+    },
+    {
+      "type": "text",
+      "id": "benefit_text_5",
+      "label": "Benefit Text 5"
+    },
+    {
+      "type": "text",
+      "id": "benefit_text_6",
+      "label": "Benefit Text 6"
+    },
+
+    {
+      "type": "image_picker",
+      "id": "benefit_image",
+      "label": "Benefit Icon Image (Optional)"
+    },
+    {
+      "type": "textarea",
+      "id": "benefit_svg",
+      "label": "Benefit Icon SVG (Optional)",
+      "info": "Overrides default tick icon"
+    },
+
+    {
+      "type": "color",
+      "id": "benefit_bg",
+      "label": "Benefit Background Color",
+      "default": "#FFFFFF"
+    },
+    {
+      "type": "range",
+      "id": "benefit_radius",
+      "label": "Benefit Border Radius (px)",
+      "min": 0,
+      "max": 60,
+      "default": 4
+    },
+    {
+      "type": "range",
+      "id": "benefit_padding",
+      "label": "Benefit Padding (px)",
+      "min": 0,
+      "max": 50,
+      "default": 8
+    }
+  ],
+  "presets": [
+    {
+      "name": "Collection Header - Newest"
+    }
+  ]
+}
+{% endschema %}

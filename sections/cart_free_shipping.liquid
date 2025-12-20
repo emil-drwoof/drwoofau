@@ -37,6 +37,66 @@
   {% assign shipping_treshold = settings.gb_shipping_treshold %}
   {% assign shipping_cost = settings.gb_shipping_cost | times: 100 | round %}
   {% assign total_cart = cart.total_price | plus: shipping_cost | divided_by: 100 | format: "%.2f" %}
+{% elsif cart.currency.iso_code == 'BHD' %}
+  {% assign shipping_treshold = settings.bh_shipping_treshold %}
+  {% assign shipping_cost = settings.bh_shipping_cost | times: 100 | round %}
+  {% assign total_cart = cart.total_price | plus: shipping_cost | divided_by: 100 | format: "%.2f" %}
+{% elsif cart.currency.iso_code == 'DKK' %}
+  {% assign shipping_treshold = settings.dk_shipping_treshold %}
+  {% assign shipping_cost = settings.dk_shipping_cost | times: 100 | round %}
+  {% assign total_cart = cart.total_price | plus: shipping_cost | divided_by: 100 | format: "%.2f" %}
+{% elsif cart.currency.iso_code == 'INR' %}
+  {% assign shipping_treshold = settings.in_shipping_treshold %}
+  {% assign shipping_cost = settings.in_shipping_cost | times: 100 | round %}
+  {% assign total_cart = cart.total_price | plus: shipping_cost | divided_by: 100 | format: "%.2f" %}
+{% elsif cart.currency.iso_code == 'JPY' %}
+  {% assign shipping_treshold = settings.jp_shipping_treshold %}
+  {% assign shipping_cost = settings.jp_shipping_cost | times: 100 | round %}
+  {% assign total_cart = cart.total_price | plus: shipping_cost | divided_by: 100 | format: "%.2f" %}
+{% elsif cart.currency.iso_code == 'KWD' %}
+  {% assign shipping_treshold = settings.kw_shipping_treshold %}
+  {% assign shipping_cost = settings.kw_shipping_cost | times: 100 | round %}
+  {% assign total_cart = cart.total_price | plus: shipping_cost | divided_by: 100 | format: "%.2f" %}
+{% elsif cart.currency.iso_code == 'MYR' %}
+  {% assign shipping_treshold = settings.my_shipping_treshold %}
+  {% assign shipping_cost = settings.my_shipping_cost | times: 100 | round %}
+  {% assign total_cart = cart.total_price | plus: shipping_cost | divided_by: 100 | format: "%.2f" %}
+{% elsif cart.currency.iso_code == 'OMR' %}
+  {% assign shipping_treshold = settings.om_shipping_treshold %}
+  {% assign shipping_cost = settings.om_shipping_cost | times: 100 | round %}
+  {% assign total_cart = cart.total_price | plus: shipping_cost | divided_by: 100 | format: "%.2f" %}
+{% elsif cart.currency.iso_code == 'PHP' %}
+  {% assign shipping_treshold = settings.ph_shipping_treshold %}
+  {% assign shipping_cost = settings.ph_shipping_cost | times: 100 | round %}
+  {% assign total_cart = cart.total_price | plus: shipping_cost | divided_by: 100 | format: "%.2f" %}
+{% elsif cart.currency.iso_code == 'QAR' %}
+  {% assign shipping_treshold = settings.qa_shipping_treshold %}
+  {% assign shipping_cost = settings.qa_shipping_cost | times: 100 | round %}
+  {% assign total_cart = cart.total_price | plus: shipping_cost | divided_by: 100 | format: "%.2f" %}
+{% elsif cart.currency.iso_code == 'SAR' %}
+  {% assign shipping_treshold = settings.sa_shipping_treshold %}
+  {% assign shipping_cost = settings.sa_shipping_cost | times: 100 | round %}
+  {% assign total_cart = cart.total_price | plus: shipping_cost | divided_by: 100 | format: "%.2f" %}
+{% elsif cart.currency.iso_code == 'KRW' %}
+  {% assign shipping_treshold = settings.kr_shipping_treshold %}
+  {% assign shipping_cost = settings.kr_shipping_cost | times: 100 | round %}
+  {% assign total_cart = cart.total_price | plus: shipping_cost | divided_by: 100 | format: "%.2f" %}
+{% elsif cart.currency.iso_code == 'SEK' %}
+  {% assign shipping_treshold = settings.se_shipping_treshold %}
+  {% assign shipping_cost = settings.se_shipping_cost | times: 100 | round %}
+  {% assign total_cart = cart.total_price | plus: shipping_cost | divided_by: 100 | format: "%.2f" %}
+{% elsif cart.currency.iso_code == 'TWD' %}
+  {% assign shipping_treshold = settings.tw_shipping_treshold %}
+  {% assign shipping_cost = settings.tw_shipping_cost | times: 100 | round %}
+  {% assign total_cart = cart.total_price | plus: shipping_cost | divided_by: 100 | format: "%.2f" %}
+{% elsif cart.currency.iso_code == 'THB' %}
+  {% assign shipping_treshold = settings.th_shipping_treshold %}
+  {% assign shipping_cost = settings.th_shipping_cost | times: 100 | round %}
+  {% assign total_cart = cart.total_price | plus: shipping_cost | divided_by: 100 | format: "%.2f" %}
+{% elsif cart.currency.iso_code == 'AED' %}
+  {% assign shipping_treshold = settings.ae_shipping_treshold %}
+  {% assign shipping_cost = settings.ae_shipping_cost | times: 100 | round %}
+  {% assign total_cart = cart.total_price | plus: shipping_cost | divided_by: 100 | format: "%.2f" %}
 {% elsif cart.currency.iso_code == 'SGD' %}
   {% assign shipping_treshold = settings.shipping_treshold | times: threshold_sgd_rate | round %}
   {% assign shipping_cost = base_shipping_cents | times: shipping_sgd_rate | round %}
@@ -112,6 +172,36 @@
       {% assign firstindex = settings.eu_shipping_treshold %}
     {% elsif cart.currency.iso_code == 'GBP' %}
       {% assign firstindex = settings.gb_shipping_treshold %}
+    {% elsif cart.currency.iso_code == 'BHD' %}
+      {% assign firstindex = settings.bh_shipping_treshold %}
+    {% elsif cart.currency.iso_code == 'DKK' %}
+      {% assign firstindex = settings.dk_shipping_treshold %}
+    {% elsif cart.currency.iso_code == 'INR' %}
+      {% assign firstindex = settings.in_shipping_treshold %}
+    {% elsif cart.currency.iso_code == 'JPY' %}
+      {% assign firstindex = settings.jp_shipping_treshold %}
+    {% elsif cart.currency.iso_code == 'KWD' %}
+      {% assign firstindex = settings.kw_shipping_treshold %}
+    {% elsif cart.currency.iso_code == 'MYR' %}
+      {% assign firstindex = settings.my_shipping_treshold %}
+    {% elsif cart.currency.iso_code == 'OMR' %}
+      {% assign firstindex = settings.om_shipping_treshold %}
+    {% elsif cart.currency.iso_code == 'PHP' %}
+      {% assign firstindex = settings.ph_shipping_treshold %}
+    {% elsif cart.currency.iso_code == 'QAR' %}
+      {% assign firstindex = settings.qa_shipping_treshold %}
+    {% elsif cart.currency.iso_code == 'SAR' %}
+      {% assign firstindex = settings.sa_shipping_treshold %}
+    {% elsif cart.currency.iso_code == 'KRW' %}
+      {% assign firstindex = settings.kr_shipping_treshold %}
+    {% elsif cart.currency.iso_code == 'SEK' %}
+      {% assign firstindex = settings.se_shipping_treshold %}
+    {% elsif cart.currency.iso_code == 'TWD' %}
+      {% assign firstindex = settings.tw_shipping_treshold %}
+    {% elsif cart.currency.iso_code == 'THB' %}
+      {% assign firstindex = settings.th_shipping_treshold %}
+    {% elsif cart.currency.iso_code == 'AED' %}
+      {% assign firstindex = settings.ae_shipping_treshold %}
     {% elsif cart.currency.iso_code == 'SGD' %}
       {% assign firstindex = shipping_treshold %}
     {% elsif cart.currency.iso_code == 'NZD' %}
@@ -132,6 +222,36 @@
     {% elsif cart.currency.iso_code == 'EUR' %}
       {% assign lastindex = block.settings.spendamount | times: 1.0 %}
     {% elsif cart.currency.iso_code == 'GBP' %}
+      {% assign lastindex = block.settings.spendamount | times: 1.0 %}
+    {% elsif cart.currency.iso_code == 'BHD' %}
+      {% assign lastindex = block.settings.spendamount | times: 1.0 %}
+    {% elsif cart.currency.iso_code == 'DKK' %}
+      {% assign lastindex = block.settings.spendamount | times: 1.0 %}
+    {% elsif cart.currency.iso_code == 'INR' %}
+      {% assign lastindex = block.settings.spendamount | times: 1.0 %}
+    {% elsif cart.currency.iso_code == 'JPY' %}
+      {% assign lastindex = block.settings.spendamount | times: 1.0 %}
+    {% elsif cart.currency.iso_code == 'KWD' %}
+      {% assign lastindex = block.settings.spendamount | times: 1.0 %}
+    {% elsif cart.currency.iso_code == 'MYR' %}
+      {% assign lastindex = block.settings.spendamount | times: 1.0 %}
+    {% elsif cart.currency.iso_code == 'OMR' %}
+      {% assign lastindex = block.settings.spendamount | times: 1.0 %}
+    {% elsif cart.currency.iso_code == 'PHP' %}
+      {% assign lastindex = block.settings.spendamount | times: 1.0 %}
+    {% elsif cart.currency.iso_code == 'QAR' %}
+      {% assign lastindex = block.settings.spendamount | times: 1.0 %}
+    {% elsif cart.currency.iso_code == 'SAR' %}
+      {% assign lastindex = block.settings.spendamount | times: 1.0 %}
+    {% elsif cart.currency.iso_code == 'KRW' %}
+      {% assign lastindex = block.settings.spendamount | times: 1.0 %}
+    {% elsif cart.currency.iso_code == 'SEK' %}
+      {% assign lastindex = block.settings.spendamount | times: 1.0 %}
+    {% elsif cart.currency.iso_code == 'TWD' %}
+      {% assign lastindex = block.settings.spendamount | times: 1.0 %}
+    {% elsif cart.currency.iso_code == 'THB' %}
+      {% assign lastindex = block.settings.spendamount | times: 1.0 %}
+    {% elsif cart.currency.iso_code == 'AED' %}
       {% assign lastindex = block.settings.spendamount | times: 1.0 %}
     {% elsif cart.currency.iso_code == 'SGD' %}
       {% assign lastindex = block.settings.spendamount | times: 1.0 | times: threshold_sgd_rate | round %}
@@ -155,6 +275,36 @@
     {% elsif cart.currency.iso_code == 'EUR' %}
       {% assign lastindexnozero = block.settings.spendamount %}
     {% elsif cart.currency.iso_code == 'GBP' %}
+      {% assign lastindexnozero = block.settings.spendamount %}
+    {% elsif cart.currency.iso_code == 'BHD' %}
+      {% assign lastindexnozero = block.settings.spendamount %}
+    {% elsif cart.currency.iso_code == 'DKK' %}
+      {% assign lastindexnozero = block.settings.spendamount %}
+    {% elsif cart.currency.iso_code == 'INR' %}
+      {% assign lastindexnozero = block.settings.spendamount %}
+    {% elsif cart.currency.iso_code == 'JPY' %}
+      {% assign lastindexnozero = block.settings.spendamount %}
+    {% elsif cart.currency.iso_code == 'KWD' %}
+      {% assign lastindexnozero = block.settings.spendamount %}
+    {% elsif cart.currency.iso_code == 'MYR' %}
+      {% assign lastindexnozero = block.settings.spendamount %}
+    {% elsif cart.currency.iso_code == 'OMR' %}
+      {% assign lastindexnozero = block.settings.spendamount %}
+    {% elsif cart.currency.iso_code == 'PHP' %}
+      {% assign lastindexnozero = block.settings.spendamount %}
+    {% elsif cart.currency.iso_code == 'QAR' %}
+      {% assign lastindexnozero = block.settings.spendamount %}
+    {% elsif cart.currency.iso_code == 'SAR' %}
+      {% assign lastindexnozero = block.settings.spendamount %}
+    {% elsif cart.currency.iso_code == 'KRW' %}
+      {% assign lastindexnozero = block.settings.spendamount %}
+    {% elsif cart.currency.iso_code == 'SEK' %}
+      {% assign lastindexnozero = block.settings.spendamount %}
+    {% elsif cart.currency.iso_code == 'TWD' %}
+      {% assign lastindexnozero = block.settings.spendamount %}
+    {% elsif cart.currency.iso_code == 'THB' %}
+      {% assign lastindexnozero = block.settings.spendamount %}
+    {% elsif cart.currency.iso_code == 'AED' %}
       {% assign lastindexnozero = block.settings.spendamount %}
     {% elsif cart.currency.iso_code == 'SGD' %}
       {% assign lastindexnozero = block.settings.spendamount | times: threshold_sgd_rate | round %}
@@ -350,6 +500,36 @@
       if (totalcart >= 280) {
     {% elsif cart.currency.iso_code == 'GBP' %}
       if (totalcart >= 220) {
+    {% elsif cart.currency.iso_code == 'BHD' %}
+      if (totalcart >= 350) {
+    {% elsif cart.currency.iso_code == 'DKK' %}
+      if (totalcart >= 350) {
+    {% elsif cart.currency.iso_code == 'INR' %}
+      if (totalcart >= 350) {
+    {% elsif cart.currency.iso_code == 'JPY' %}
+      if (totalcart >= 350) {
+    {% elsif cart.currency.iso_code == 'KWD' %}
+      if (totalcart >= 350) {
+    {% elsif cart.currency.iso_code == 'MYR' %}
+      if (totalcart >= 350) {
+    {% elsif cart.currency.iso_code == 'OMR' %}
+      if (totalcart >= 350) {
+    {% elsif cart.currency.iso_code == 'PHP' %}
+      if (totalcart >= 350) {
+    {% elsif cart.currency.iso_code == 'QAR' %}
+      if (totalcart >= 350) {
+    {% elsif cart.currency.iso_code == 'SAR' %}
+      if (totalcart >= 350) {
+    {% elsif cart.currency.iso_code == 'KRW' %}
+      if (totalcart >= 350) {
+    {% elsif cart.currency.iso_code == 'SEK' %}
+      if (totalcart >= 350) {
+    {% elsif cart.currency.iso_code == 'TWD' %}
+      if (totalcart >= 350) {
+    {% elsif cart.currency.iso_code == 'THB' %}
+      if (totalcart >= 350) {
+    {% elsif cart.currency.iso_code == 'AED' %}
+      if (totalcart >= 350) {
     {% elsif cart.currency.iso_code == 'SGD' %}
       $tempval = 350 * {{ threshold_sgd_rate }};
       if (totalcart >= $tempval) {
@@ -378,6 +558,36 @@
         if (totalcart < {{ settings.eu_shipping_treshold }}) {
       {% elsif cart.currency.iso_code == 'GBP' %}
         if (totalcart < {{ settings.gb_shipping_treshold }}) {
+      {% elsif cart.currency.iso_code == 'BHD' %}
+        if (totalcart < {{ settings.bh_shipping_treshold }}) {
+      {% elsif cart.currency.iso_code == 'DKK' %}
+        if (totalcart < {{ settings.dk_shipping_treshold }}) {
+      {% elsif cart.currency.iso_code == 'INR' %}
+        if (totalcart < {{ settings.in_shipping_treshold }}) {
+      {% elsif cart.currency.iso_code == 'JPY' %}
+        if (totalcart < {{ settings.jp_shipping_treshold }}) {
+      {% elsif cart.currency.iso_code == 'KWD' %}
+        if (totalcart < {{ settings.kw_shipping_treshold }}) {
+      {% elsif cart.currency.iso_code == 'MYR' %}
+        if (totalcart < {{ settings.my_shipping_treshold }}) {
+      {% elsif cart.currency.iso_code == 'OMR' %}
+        if (totalcart < {{ settings.om_shipping_treshold }}) {
+      {% elsif cart.currency.iso_code == 'PHP' %}
+        if (totalcart < {{ settings.ph_shipping_treshold }}) {
+      {% elsif cart.currency.iso_code == 'QAR' %}
+        if (totalcart < {{ settings.qa_shipping_treshold }}) {
+      {% elsif cart.currency.iso_code == 'SAR' %}
+        if (totalcart < {{ settings.sa_shipping_treshold }}) {
+      {% elsif cart.currency.iso_code == 'KRW' %}
+        if (totalcart < {{ settings.kr_shipping_treshold }}) {
+      {% elsif cart.currency.iso_code == 'SEK' %}
+        if (totalcart < {{ settings.se_shipping_treshold }}) {
+      {% elsif cart.currency.iso_code == 'TWD' %}
+        if (totalcart < {{ settings.tw_shipping_treshold }}) {
+      {% elsif cart.currency.iso_code == 'THB' %}
+        if (totalcart < {{ settings.th_shipping_treshold }}) {
+      {% elsif cart.currency.iso_code == 'AED' %}
+        if (totalcart < {{ settings.ae_shipping_treshold }}) {
       {% elsif cart.currency.iso_code == 'HKD'%}
         if (totalcart < {{ shipping_treshold }}) {
       {% elsif cart.currency.iso_code == 'SGD' %}

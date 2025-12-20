@@ -76,8 +76,30 @@
                               </svg>
                             </span>
                           </h3>
-                          <div class="filter-options">
+                          <div class="filter-options {% if filter.label == "Color" %} color-swactes {% endif %}">
                             {% for value in filter.values %}
+                              {% if filter.label == "Color" %}
+                              <label class="filter-option {% if value.active %}active-swatch{% endif %}">
+                                <input
+                                  type="checkbox"
+                                  name="{{ value.param_name }}"
+                                  value="{{ value.value }}"
+                                  data-url="{{ value.url_to_add }}"
+                                  {% if value.active %}checked{% endif %}
+                                >
+                                  
+                                   {%- assign swatch_file_extension = 'png' -%}
+                                   {%- assign color_image = value.value | handle | append: '.' | append: swatch_file_extension | asset_img_url: '50x' | prepend: 'https:' | split: '?' | first -%}
+                                    {%- assign color_swatch_fallback = value.value | split: ' ' | last | handle -%}
+
+                                <span
+                                      class="color-swatch color-swatch--filter color-swatch--{{ option | handleize }}"
+                                      style="background-image: url({{ color_image }}); background-color: {{ color_swatch_fallback }};">
+                                  {{ value.label }}
+                                </span>
+                              </label>
+                            {% else %}
+
                               <label class="filter-option">
                                 <input
                                   type="checkbox"
@@ -86,8 +108,9 @@
                                   data-url="{{ value.url_to_add }}"
                                   {% if value.active %}checked{% endif %}
                                 >
-                                <span>{{ value.label }}</span>
-                              </label>
+                                    <span >{{ value.label }}</span>
+                                     </label>
+                            {% endif %}
                             {% endfor %}
                           </div>
                         </div>
@@ -128,7 +151,23 @@
   padding: 1rem 0;
 }
 
- 
+ .active-swatch .color-swatch--filter {
+    border: 2px solid #000;
+}
+
+.filter-option input[type="checkbox"]:checked + span {
+    border: 2px solid;
+}
+
+.filter-options.color-swactes {
+    display: flex !important;
+    flex-wrap: wrap;
+    gap: 2px;
+    flex-direction: row;
+}
+.color-swactes input[type="checkbox"] {
+    display: none;
+}
 
 .filter-button {
       flex: 0 0 auto;
@@ -150,17 +189,23 @@
   cursor: pointer;
   transition: 0.25s;
 }
+select#SortTags {
+    display: none;
+}
 
 .filter-drawer {
-  position: fixed;
-  left: 0;
-  right: 0;
-  bottom: -100%;
-  background: #fff;
-  transition: bottom 0.4s ease;
-  border-radius: 20px 20px 0 0;
-  box-shadow: 0 -5px 15px rgba(0, 0, 0, 0.15);
-  z-index: 100;
+    position: fixed;
+    left: 0;
+    right: 11px;
+    bottom: -100%;
+    background: #fff;
+    transition: bottom 0.4s ease;
+    border-radius: 20px 20px 0 0;
+    box-shadow: 0 -5px 15px rgba(0, 0, 0, 0.15);
+    z-index: 100;
+    max-width: 498px;
+    left: auto;
+    width: 500px;
 }
 
 .filter-drawer.open {
@@ -284,12 +329,29 @@ color: #0B0E30;
 
 
   .desktop_hide{
-    display: none;
+    {% comment %} display: none; {% endcomment %}
   }
+
+ 
+.tag-scroll-buttons {
+    display: flex;
+    gap: 5px;
+    /* max-width: 105px; */
+    overflow-x: scroll;
+    align-items: center;
+    justify-content: start;
+}
+  
   @media (max-width: 768px){
     .mobile_hide{
       display: none !important;
     }
+
+    .filter-drawer {
+    width: 100%;
+    max-width: 96%;
+}
+
     .for_mobile_side {
           flex: 0 1 44% !important;
           width: 50% !important;
@@ -341,6 +403,24 @@ color: #0B0E30;
 </style> 
 
 <script>
+
+  function applyFiltersWithoutReload() {
+    // 1. GATHER NEW PARAMETERS (Same as before)
+    const baseUrl = window.location.pathname;
+    const url = new URL(baseUrl, window.location.origin);
+    const params = new URLSearchParams();
+
+    document.querySelectorAll(".filter-option input:checked").forEach((checkedInput) => {
+        params.append(
+            checkedInput.getAttribute("name"),
+            checkedInput.getAttribute("value")
+        );
+    });
+
+    url.search = params.toString(); // The new, clean URL query string is ready (e.g., ?color=blue&sort=price)
+
+    window.location.href = url.href;
+}
 document.addEventListener("DOMContentLoaded", () => {
   const filterButtons = document.querySelectorAll(".filter-button");
   const drawer = document.querySelector(".filter-drawer");
@@ -385,15 +465,7 @@ document.addEventListener("DOMContentLoaded", () => {
       filterButtons.forEach((b) => b.classList.remove("active"));
       document.querySelectorAll(".filter-section").forEach((s) => s.classList.remove("active"));
 
-      setTimeout(() => {
-        window.scrollTo({ top: window.scrollY + 100, behavior: "smooth" });
-      }, 200);
-    });
-  });
-
-  document.querySelectorAll(".filter-option input").forEach((input) => {
-    input.addEventListener("change", () => {
-      const baseUrl = window.location.pathname;
+            {% comment %} const baseUrl = window.location.pathname;
       const url = new URL(baseUrl, window.location.origin);
       const params = new URLSearchParams();
 
@@ -405,7 +477,16 @@ document.addEventListener("DOMContentLoaded", () => {
       });
 
       url.search = params.toString();
-      window.location.href = url.href;
+      window.location.href = url.href; {% endcomment %}
+      applyFiltersWithoutReload();
+
+
+    });
+  });
+
+  document.querySelectorAll(".filter-option input").forEach((input) => {
+    input.addEventListener("change", () => {
+
     });
   });
 });

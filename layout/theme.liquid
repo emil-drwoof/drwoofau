@@ -329,28 +329,48 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
       
       // Check for locale prefixes - ALL REGIONS
       if (path.startsWith('/en-nz')) return 'NZ';
-      if (path.startsWith('/en-sg')) return 'SG'; 
-      if (path.startsWith('/en-hk')) return 'HK';
-      if (path.startsWith('/en-uk')) return 'GB';
-      if (path.startsWith('/en-ca')) return 'CA';
-      if (path.startsWith('/en-eu')) return 'EU';
-      if (path.startsWith('/en-bh')) return 'BH';
-      if (path.startsWith('/en-dk')) return 'DK';
-      if (path.startsWith('/en-in')) return 'IN';
-      if (path.startsWith('/en-jp')) return 'JP';
-      if (path.startsWith('/en-kw')) return 'KW';
-      if (path.startsWith('/en-my')) return 'MY';
-      if (path.startsWith('/en-om')) return 'OM';
-      if (path.startsWith('/en-ph')) return 'PH';
-      if (path.startsWith('/en-qa')) return 'QA';
-      if (path.startsWith('/en-sa')) return 'SA';
-      if (path.startsWith('/en-kr')) return 'KR';
-      if (path.startsWith('/en-se')) return 'SE';      
-      if (path.startsWith('/en-th')) return 'TH';
-      if (path.startsWith('/en-ae')) return 'AE';
-      if (hostname.startsWith('tw.')) {
-        return 'TW';
-      }   
+      
+if (hostname.startsWith('sg.')) {
+  return 'SG';
+} else if (hostname.startsWith('hk.')) {
+  return 'HK';
+} else if (hostname.startsWith('uk.')) {
+  return 'GB';
+} else if (hostname.startsWith('ca.')) {
+  return 'CA';
+} else if (hostname.startsWith('eu.')) {
+  return 'EU';
+} else if (hostname.startsWith('bh.')) {
+  return 'BH';
+} else if (hostname.startsWith('dk.')) {
+  return 'DK';
+} else if (hostname.startsWith('in.')) {
+  return 'IN';
+} else if (hostname.startsWith('kr.')) {
+  return 'KR';
+} else if (hostname.startsWith('se.')) {
+  return 'SE';
+} else if (hostname.startsWith('th.')) {
+  return 'TH';
+} else if (hostname.startsWith('tw.')) {
+  return 'TW';
+} else if (hostname.startsWith('ae.')) {
+  return 'AE';
+} else if (hostname.startsWith('sa.')) {
+  return 'SA';
+} else if (hostname.startsWith('jp.')) {
+  return 'JP';
+} else if (hostname.startsWith('kw.')) {
+  return 'KW';
+} else if (hostname.startsWith('my.')) {
+  return 'MY';
+} else if (hostname.startsWith('om.')) {
+  return 'OM';
+} else if (hostname.startsWith('ph.')) {
+  return 'PH';
+} else if (hostname.startsWith('qa.')) {
+  return 'QA';
+}
       // Check domain for AU vs US
       if (hostname.endsWith('.com.au')) {
         return 'AU';
@@ -365,7 +385,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
       const hash = window.location.hash;
       
       // Remove any existing locale prefix - ALL REGIONS
-      let cleanPath = currentPath.replace(/^\/(en-nz|en-sg|en-hk|en-uk|en-ca|en-eu|en-bh|en-dk|en-in|en-jp|en-kw|en-my|en-om|en-ph|en-qa|en-sa|en-kr|en-se|en-th|en-ae)/, '');
+      let cleanPath = currentPath.replace(/^\/(en-nz|en-sg|en-hk|en-uk|en-ca|en-eu|en-bh|en-dk|en-in|en-jp|en-kw|en-my|en-om|en-ph|en-qa|en-sa|en-kr|en-se|en-th)/, '');
       
       if (!cleanPath.startsWith('/')) {
         cleanPath = '/' + cleanPath;
@@ -380,84 +400,85 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
           regionalPrefix = 'en-nz';
           break;
         case 'SG':
-          baseUrl = 'https://www.drwoofapparel.com.au/';
-          regionalPrefix = 'en-sg';
+          baseUrl = 'https://sg.drwoofapparel.com';
+          regionalPrefix = '';
           break;
         case 'HK':
-          baseUrl = 'https://www.drwoofapparel.com.au/';
-          regionalPrefix = 'en-hk';
+          baseUrl = 'https://hk.drwoofapparel.com';
+          regionalPrefix = '';
           break;
         case 'GB':
-          baseUrl = 'https://www.drwoofapparel.com.au/';
-          regionalPrefix = 'en-uk';
+          baseUrl = 'https://uk.drwoofapparel.com';
+          regionalPrefix = '';
           break;
         case 'CA':
-          baseUrl = 'https://www.drwoofapparel.com.au/';
-          regionalPrefix = 'en-ca';
+          baseUrl = 'https://ca.drwoofapparel.com';
+          regionalPrefix = '';
           break;
         case 'EU':
-          baseUrl = 'https://www.drwoofapparel.com.au/';
-          regionalPrefix = 'en-eu';
+          baseUrl = 'https://eu.drwoofapparel.com';
+          regionalPrefix = '';
           break;
         case 'BH':
-          baseUrl = 'https://www.drwoofapparel.com.au/';
-          regionalPrefix = 'en-bh';
+          baseUrl = 'https://bh.drwoofapparel.com';
+          regionalPrefix = '';
           break;
         case 'DK':
-          baseUrl = 'https://www.drwoofapparel.com.au/';
-          regionalPrefix = 'en-dk';
+          baseUrl = 'https://dk.drwoofapparel.com';
+          regionalPrefix = '';
           break;
         case 'IN':
-          baseUrl = 'https://www.drwoofapparel.com.au/';
-          regionalPrefix = 'en-in';
+          baseUrl = 'https://in.drwoofapparel.com';
+          regionalPrefix = '';
           break;
-        case 'JP':
-          baseUrl = 'https://www.drwoofapparel.com.au/';
-          regionalPrefix = 'en-jp';
-          break;
-        case 'KW':
-          baseUrl = 'https://www.drwoofapparel.com.au/';
-          regionalPrefix = 'en-kw';
-          break;
-        case 'MY':
-          baseUrl = 'https://www.drwoofapparel.com.au/';
-          regionalPrefix = 'en-my';
-          break;
-        case 'OM':
-          baseUrl = 'https://www.drwoofapparel.com.au/';
-          regionalPrefix = 'en-om';
-          break;
-        case 'PH':
-          baseUrl = 'https://www.drwoofapparel.com.au/';
-          regionalPrefix = 'en-ph';
-          break;
-        case 'QA':
-          baseUrl = 'https://www.drwoofapparel.com.au/';
-          regionalPrefix = 'en-qa';
-          break;
-        case 'SA':
-          baseUrl = 'https://www.drwoofapparel.com.au/';
-          regionalPrefix = 'en-sa';
-          break;
-        case 'KR':
-          baseUrl = 'https://www.drwoofapparel.com.au/';
-          regionalPrefix = 'en-kr';
-          break;
-        case 'SE':
-          baseUrl = 'https://www.drwoofapparel.com.au/';
-          regionalPrefix = 'en-se';
-          break;
+case 'KW':
+  baseUrl = 'https://kw.drwoofapparel.com';
+  regionalPrefix = '';
+  break;
+case 'MY':
+  baseUrl = 'https://my.drwoofapparel.com';
+  regionalPrefix = '';
+  break;
+case 'OM':
+  baseUrl = 'https://om.drwoofapparel.com';
+  regionalPrefix = '';
+  break;
+case 'PH':
+  baseUrl = 'https://ph.drwoofapparel.com';
+  regionalPrefix = '';
+  break;
+case 'QA':
+  baseUrl = 'https://qa.drwoofapparel.com';
+  regionalPrefix = '';
+  break;
+
+case 'TH':
+  baseUrl = 'https://th.drwoofapparel.com';
+  regionalPrefix = '';
+  break;
+
+case 'SE':
+  baseUrl = 'https://se.drwoofapparel.com';
+  regionalPrefix = '';
+  break;
+
+case 'KR':
+  baseUrl = 'https://kr.drwoofapparel.com';
+  regionalPrefix = '';
+  break;
+
+case 'SA':
+  baseUrl = 'https://sa.drwoofapparel.com';
+  regionalPrefix = '';
+  break;
         case 'TW':
           baseUrl = 'https://tw.drwoofapparel.com';
           regionalPrefix = '';
           break;
-        case 'TH':
-          baseUrl = 'https://www.drwoofapparel.com.au/';
-          regionalPrefix = 'en-th';
-          break;
+
         case 'AE':
-          baseUrl = 'https://www.drwoofapparel.com.au/';
-          regionalPrefix = 'en-ae';
+          baseUrl = 'https://ae.drwoofapparel.com';
+          regionalPrefix = '';
           break;
         case 'US':
           baseUrl = 'https://www.drwoofapparel.com';
@@ -830,7 +851,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
                      
                      <span class="formmessage notifcolorchecker"></span>
                      <input type="hidden" class="colorchecker" value="false" style="display:none;">
-                     <p><input type="checkbox" class="addname-checkbox"> <span style="color:red">IMPORTANT: I understand and agree that orders are final and cannot be canceled or refunded once placed. I have reviewed the FAQ below.</span></b></p>
+                     <p><input type="checkbox" class="addname-checkbox"> <span style="color:red">IMPORTANT: I understand and agree that orders are final and cannot be canceled or refunded once placed.  I understand that all orders placed today will be processed by January 12, and shipping will begin at the end of January. I have reviewed the FAQ below.</span></b></p>
                      <div class="button-flexer">
                         <button class="big-duo-button reset">RESET</button> <button class="big-duo-button active" id="aadd" disabled>ADD</button>
                      </div>
@@ -946,7 +967,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
                      <span class="formmessage notifcolorchecker"></span>
                      <span class="formmessage notifcolorchecker"></span>
                      <input type="hidden" class="colorchecker" value="false" style="display:none;">
-                     <p><input type="checkbox" class="addicon-checkbox"> <span style="color:red">IMPORTANT: I understand and agree that orders are final and cannot be canceled or refunded once placed. I have reviewed the FAQ below.</span></b>
+                     <p><input type="checkbox" class="addicon-checkbox"> <span style="color:red">IMPORTANT: I understand and agree that orders are final and cannot be canceled or refunded once placed.  I understand that all orders placed today will be processed by January 12, and shipping will begin at the end of January. I have reviewed the FAQ below.</span></b>
                      </p>
                      <div class="button-flexer">
                         <button class="big-duo-button reset">RESET</button> <button class="big-duo-button active badd" disabled>ADD</button>
@@ -1100,7 +1121,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
                      <span class="formmessage notifcolorchecker"></span>
                      <span class="formmessage notifinitialcolorchecker"></span>
                      <input type="hidden" class="initialcolorchecker" value="false" style="display:none;">
-                     <p><input type="checkbox" class="addboth-checkbox"> <span style="color:red">IMPORTANT: I understand and agree that orders are final and cannot be canceled or refunded once placed. I have reviewed the FAQ below.</span></p>
+                     <p><input type="checkbox" class="addboth-checkbox"> <span style="color:red">IMPORTANT: I understand and agree that orders are final and cannot be canceled or refunded once placed.  I understand that all orders placed today will be processed by January 12, and shipping will begin at the end of January. I have reviewed the FAQ below.</span></p>
                      <div class="button-flexer">
                         <button class="big-duo-button reset">RESET</button> <button class="big-duo-button active cadd" disabled>ADD</button>
                      </div>
@@ -1268,7 +1289,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     
 
                      <input type="hidden" class="initialcolorchecker" value="true" style="display:none;">
-                     <p><input type="checkbox" class="addyouricon-checkbox"> <span style="color:red">IMPORTANT: I understand and agree that orders are final and cannot be canceled or refunded once placed. I have reviewed the FAQ below.</span></b>
+                     <p><input type="checkbox" class="addyouricon-checkbox"> <span style="color:red">IMPORTANT: I understand and agree that orders are final and cannot be canceled or refunded once placed.  I understand that all orders placed today will be processed by January 12, and shipping will begin at the end of January. I have reviewed the FAQ below.</span></b>
                      </p>
                      <div class="button-flexer">
                         <button class="big-duo-button reset">RESET</button> <button class="big-duo-button active eadd" disabled>ADD</button>
@@ -2939,7 +2960,7 @@ $(document).ready(function(){
       $(".product__price").html($varprice)              
       if(($varavail == "true") && ($varquan <= 0)) {
         $(".preorder-text").show()
-        $(".preorderdate").html("November 12")
+        $(".preorderdate").html("December 23")
         $(".capsbundleatc").html("PRE-ORDER")
       }else{
         $(".preorder-text").hide()
@@ -3131,7 +3152,7 @@ $(".image-overlay").on("click",function(){
 
       if(($varavail == "true") && ($varquan <= 0)) {
         $(".preorder-text").show()
-        $(".preorderdate").html("November 12")
+        $(".preorderdate").html("December 23")
         $(".capsbundleatc").html("PRE-ORDER")
       }else{
         $(".preorder-text").hide()
@@ -3752,7 +3773,7 @@ $capqty = parseFloat($(this).attr("data-socqty"))
         if(($capqty <= 0) && ($capavail == 'true')){
               $(".capsbundleatc").html("PRE-ORDER")
               $(".preorder-text").show()
-              $(".preorder-text").html("November 12")
+              $(".preorder-text").html("December 23")
             }else{
               if($capavail == 'true'){
                 $(".preorder-text").hide()
@@ -3767,7 +3788,7 @@ $capqty = parseFloat($(this).attr("data-socqty"))
         if(($capqty <= 0) && ($capavail == 'true')){
               $(".capsbundleatc").html("PRE-ORDER")
               $(".preorder-text").show()
-              $(".preorder-text").html("November 12")
+              $(".preorder-text").html("December 23")
             }else{
               if($capavail == 'true'){
                 $(".preorder-text").hide()
@@ -3795,7 +3816,7 @@ $capqty = parseFloat($(this).attr("data-socqty"))
         case "8687500263682":
         if(($capqty <= 0) && ($capavail == 'true')){
               $(".capsbundleatc").html("PRE-ORDER")
-              $(".preorder-text").html("November 12")
+              $(".preorder-text").html("December 23")
               $(".preorder-text").show()
             }else{
               if($capavail == 'true'){
@@ -3839,7 +3860,7 @@ $capqty = parseFloat($(this).attr("data-socqty"))
           if(($capqty <= 0) && ($capavail == 'true')){
               $(".capsbundleatc").html("PRE-ORDER")
               $(".preorder-text").show()
-              $(".preorderdate").html("November 12")
+              $(".preorderdate").html("December 23")
             }else{
               if($capavail == 'true'){
                 $(".preorder-text").hide()
@@ -4574,7 +4595,7 @@ $capqty = parseFloat($(this).attr("data-socqty"))
         if(($capqty <= 0) && ($capavail == 'true')){
               $(".capsbundleatc").html("PRE-ORDER")
               $(".preorder-text").show()
-              $(".preorderdate").html("November 12")
+              $(".preorderdate").html("December 23")
             }else{
               if($capavail == 'true'){
                 $(".preorder-text").hide()
@@ -4589,7 +4610,7 @@ $capqty = parseFloat($(this).attr("data-socqty"))
         if(($capqty <= 0) && ($capavail == 'true')){
               $(".capsbundleatc").html("PRE-ORDER")
               $(".preorder-text").show()
-              $(".preorderdate").html("November 12")
+              $(".preorderdate").html("December 23")
             }else{
               if($capavail == 'true'){
                 $(".preorder-text").hide()
@@ -4604,7 +4625,7 @@ $capqty = parseFloat($(this).attr("data-socqty"))
         if(($capqty <= 0) && ($capavail == 'true')){
               $(".capsbundleatc").html("PRE-ORDER")
               $(".preorder-text").show()
-              $(".preorderdate").html("November 12")
+              $(".preorderdate").html("December 23")
             }else{
               if($capavail == 'true'){
                 $(".preorder-text").hide()
@@ -4619,7 +4640,7 @@ $capqty = parseFloat($(this).attr("data-socqty"))
         if(($capqty <= 0) && ($capavail == 'true')){
               $(".capsbundleatc").html("PRE-ORDER")
               $(".preorder-text").show()
-              $(".preorderdate").html("November 12")
+              $(".preorderdate").html("December 23")
             }else{
               if($capavail == 'true'){
                 $(".preorder-text").hide()
@@ -4634,7 +4655,7 @@ $capqty = parseFloat($(this).attr("data-socqty"))
         if(($capqty <= 0) && ($capavail == 'true')){
               $(".capsbundleatc").html("PRE-ORDER")
               $(".preorder-text").show()
-              $(".preorderdate").html("November 12")
+              $(".preorderdate").html("December 23")
             }else{
               if($capavail == 'true'){
                 $(".preorder-text").hide()
@@ -4649,7 +4670,7 @@ $capqty = parseFloat($(this).attr("data-socqty"))
         if(($capqty <= 0) && ($capavail == 'true')){
               $(".capsbundleatc").html("PRE-ORDER")
               $(".preorder-text").show()
-              $(".preorderdate").html("November 12")
+              $(".preorderdate").html("December 23")
             }else{
               if($capavail == 'true'){
                 $(".preorder-text").hide()
@@ -4664,7 +4685,7 @@ $capqty = parseFloat($(this).attr("data-socqty"))
         if(($capqty <= 0) && ($capavail == 'true')){
               $(".capsbundleatc").html("PRE-ORDER")
               $(".preorder-text").show()
-              $(".preorderdate").html("November 12")
+              $(".preorderdate").html("December 23")
             }else{
               if($capavail == 'true'){
                 $(".preorder-text").hide()
@@ -4679,7 +4700,7 @@ $capqty = parseFloat($(this).attr("data-socqty"))
         if(($capqty <= 0) && ($capavail == 'true')){
               $(".capsbundleatc").html("PRE-ORDER")
               $(".preorder-text").show()
-              $(".preorderdate").html("November 12")
+              $(".preorderdate").html("December 23")
             }else{
               if($capavail == 'true'){
                 $(".preorder-text").hide()
@@ -4694,7 +4715,7 @@ $capqty = parseFloat($(this).attr("data-socqty"))
         if(($capqty <= 0) && ($capavail == 'true')){
               $(".capsbundleatc").html("PRE-ORDER")
               $(".preorder-text").show()
-              $(".preorderdate").html("November 12")
+              $(".preorderdate").html("December 23")
             }else{
               if($capavail == 'true'){
                 $(".preorder-text").hide()
@@ -4709,7 +4730,7 @@ $capqty = parseFloat($(this).attr("data-socqty"))
         if(($capqty <= 0) && ($capavail == 'true')){
               $(".capsbundleatc").html("PRE-ORDER")
               $(".preorder-text").show()
-              $(".preorderdate").html("November 12")
+              $(".preorderdate").html("December 23")
             }else{
               if($capavail == 'true'){
                 $(".preorder-text").hide()
@@ -4724,7 +4745,7 @@ $capqty = parseFloat($(this).attr("data-socqty"))
         if(($capqty <= 0) && ($capavail == 'true')){
               $(".capsbundleatc").html("PRE-ORDER")
               $(".preorder-text").show()
-              $(".preorderdate").html("November 12")
+              $(".preorderdate").html("December 23")
             }else{
               if($capavail == 'true'){
                 $(".preorder-text").hide()
@@ -4738,7 +4759,7 @@ $capqty = parseFloat($(this).attr("data-socqty"))
         case "8687500263682":
         if(($capqty <= 0) && ($capavail == 'true')){
               $(".capsbundleatc").html("PRE-ORDER")
-              $(".preorder-text").html("November 12")
+              $(".preorder-text").html("December 23")
               $(".preorder-text").show()
             }else{
               if($capavail == 'true'){
@@ -4768,7 +4789,7 @@ $capqty = parseFloat($(this).attr("data-socqty"))
           if(($capqty <= 0) && ($capavail == 'true')){
               $(".capsbundleatc").html("PRE-ORDER")
               $(".preorder-text").show()
-              $(".preorderdate").html("November 12")
+              $(".preorderdate").html("December 23")
             }else{
               if($capavail == 'true'){
                 $(".preorder-text").hide()
@@ -4826,7 +4847,7 @@ $capqty = parseFloat($(this).attr("data-socqty"))
           if(($capqty <= 0) && ($capavail == 'true')){
               $(".capsbundleatc").html("PRE-ORDER")
               $(".preorder-text").show()
-              $(".preorderdate").html("November 12")
+              $(".preorderdate").html("December 23")
             }else{
               if($capavail == 'true'){
                 $(".preorder-text").hide()
@@ -5384,10 +5405,6 @@ $(document).ready(function(){
   </div>
 {% else %}
     {% if product.type == 'Printed Pattern Scrub Tops' or product.type == 'Printed Pattern Scrub Pants' %}
-
-      
-      
-
       <div class="ugs_container_popup">
         <div class="video-gallery">
           <span class="closevideo">X</span>
@@ -5408,25 +5425,47 @@ $(document).ready(function(){
         </div>
       </div>
     {% else %}
-    <div class="ugs_container_popup">
-      <div class="video-gallery">
-        <span class="closevideo">X</span>
-        <div class="video-container zero1" datavideoid="1">
-            <video class="video" src="https://cdn.shopify.com/videos/c/o/v/3c13f6af71424a2cb2ca2a3626de3392.mp4" loop playsinline preload="metadata"></video>
+      {% if product.type == 'Performance Compression Socks' %}
+        <div class="ugs_container_popup">
+          <div class="video-gallery">
+            <span class="closevideo">X</span>
+            <div class="video-container zero1" datavideoid="2">
+                <video class="video" src="https://cdn.shopify.com/videos/c/o/v/9b561d74b321475d99563560d6069614.mp4" loop playsinline preload="metadata"></video>
+            </div>
+            <div class="video-container zero2" datavideoid="3">
+                <video class="video" src="https://cdn.shopify.com/videos/c/o/v/f6691bc751ca4b8fad2ce8f1f55213b2.mp4" loop playsinline preload="metadata"></video>
+            </div>
+            <div class="video-container zero3" datavideoid="1">
+                <video class="video" src="https://cdn.shopify.com/videos/c/o/v/d864e76605af468986ab8ba587a8c530.mp4" loop playsinline preload="metadata"></video>
+            </div>
+            <!--
+            <div class="video-container zero4" datavideoid="4">
+                <video class="video" src="https://cdn.shopify.com/videos/c/o/v/c5fb46949ef64a199884f1995b514bfc.mp4" autoplay muted loop playsinline preload="metadata"></video>
+            </div>
+            -->
+          </div>
         </div>
-        <div class="video-container zero2" datavideoid="2">
-            <video class="video" src="https://cdn.shopify.com/videos/c/o/v/b72c5c0cb4fb4eaea3fa8d7e3a781544.mp4" loop playsinline preload="metadata"></video>
+      {% else %}
+        <div class="ugs_container_popup">
+          <div class="video-gallery">
+            <span class="closevideo">X</span>
+            <div class="video-container zero1" datavideoid="1">
+                <video class="video" src="https://cdn.shopify.com/videos/c/o/v/3c13f6af71424a2cb2ca2a3626de3392.mp4" loop playsinline preload="metadata"></video>
+            </div>
+            <div class="video-container zero2" datavideoid="2">
+                <video class="video" src="https://cdn.shopify.com/videos/c/o/v/b72c5c0cb4fb4eaea3fa8d7e3a781544.mp4" loop playsinline preload="metadata"></video>
+            </div>
+            <div class="video-container zero3" datavideoid="3">
+                <video class="video" src="https://cdn.shopify.com/videos/c/o/v/23ae219f351d4904b908311813f8f54d.mp4" loop playsinline preload="metadata"></video>
+            </div>
+            <!--
+            <div class="video-container zero4" datavideoid="4">
+                <video class="video" src="https://cdn.shopify.com/videos/c/o/v/c5fb46949ef64a199884f1995b514bfc.mp4" autoplay muted loop playsinline preload="metadata"></video>
+            </div>
+            -->
+          </div>
         </div>
-        <div class="video-container zero3" datavideoid="3">
-            <video class="video" src="https://cdn.shopify.com/videos/c/o/v/23ae219f351d4904b908311813f8f54d.mp4" loop playsinline preload="metadata"></video>
-        </div>
-        <!--
-        <div class="video-container zero4" datavideoid="4">
-            <video class="video" src="https://cdn.shopify.com/videos/c/o/v/c5fb46949ef64a199884f1995b514bfc.mp4" autoplay muted loop playsinline preload="metadata"></video>
-        </div>
-        -->
-      </div>
-    </div>
+      {% endif %}
   {% endif %}
 {% endif %}
 <script>

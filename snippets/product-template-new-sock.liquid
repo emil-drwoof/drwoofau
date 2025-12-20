@@ -1353,52 +1353,13 @@ font-size: 18px;
 <!-- Create variant lookup object -->
 <script>
 window.shopCurrency = '{{ shop.currency }}';
+window.displayCurrency = '{{ cart.currency.iso_code }}' || 'AUD';
+window.moneyFormat = '{{ shop.money_format }}';
 
-// Try to detect the actual displayed currency
-window.displayCurrency = 'AUD'; // default
-window.currencySymbol = '$'; // default
-
-// Check if there's a currency converter setting the currency
-if (typeof Currency !== 'undefined' && Currency.currentCurrency) {
-  window.displayCurrency = Currency.currentCurrency;
-} else if (window.Shopify && window.Shopify.currency && window.Shopify.currency.active) {
-  window.displayCurrency = window.Shopify.currency.active;
-}
-
-// Set currency symbol based on detected currency
-switch (window.displayCurrency) {
-  case 'AUD':
-    window.currencySymbol = '$';
-    break;
-  case 'CAD':
-    window.currencySymbol = 'CA$';
-    break;
-  case 'EUR':
-    window.currencySymbol = '€';
-    break;
-  case 'GBP':
-    window.currencySymbol = '£';
-    break;
-  case 'HKD':
-    window.currencySymbol = 'HK$';
-    break;
-  case 'NZD':
-    window.currencySymbol = 'NZ$';
-    break;
-  case 'SGD':
-    window.currencySymbol = 'SG$';
-    break;
-  case 'USD':
-    window.currencySymbol = '$';
-    break;
-  default:
-    window.currencySymbol = '$';
-}
-// Debug log
 console.log('=== CURRENCY DETECTION ===');
 console.log('Shop base currency:', window.shopCurrency);
-console.log('Detected display currency:', window.displayCurrency);
-console.log('Currency symbol:', window.currencySymbol);
+console.log('Display currency:', window.displayCurrency);
+console.log('Money format:', window.moneyFormat);
 console.log('=== END ===');
 
     // Shipping thresholds by currency
@@ -1855,23 +1816,22 @@ function updatePreorderText() {
 let addedProducts = {};
 
 document.addEventListener('DOMContentLoaded', function() {
-  // Function to update price information
+// Function to update price information
 function updatePriceInfo(styleOption) {
-  const priceData = styleOption.dataset.price;
+  const priceData = styleOption.dataset.price; // Already formatted!
   const compareData = styleOption.dataset.compare;
   
   // Update the price display elements
   const originalPriceElement = document.querySelector('.original-price');
   const sudoSalePriceElement = document.querySelector('.sudo-sale-price');
   
+  // FIXED: Just use the formatted prices directly - don't extract/reformat!
   if (sudoSalePriceElement && priceData) {
-    const priceValue = extractPriceValue(priceData);
-sudoSalePriceElement.textContent = formatPrice(priceValue);
+    sudoSalePriceElement.textContent = priceData; // DHS 87.00 stays as DHS 87.00
   }
   
   if (originalPriceElement && compareData) {
-   const comparePriceValue = extractPriceValue(compareData);
-originalPriceElement.textContent = formatPrice(comparePriceValue);
+    originalPriceElement.textContent = compareData; // Keep original format
   }
 }
 
@@ -2247,51 +2207,43 @@ categoryBtns.forEach(btn => {
   });
 });
 
-// Style selection - changes main title
+// When updating prices on style selection
 styleOptions.forEach(option => {
   option.addEventListener('click', function(e) {
-    // Check if click originated from thumbnails-add-button
     if (e.target.closest('.thumbnails-add-button')) {
       return;
     }
- 
 
     styleOptions.forEach(opt => opt.classList.remove('active'));
     this.classList.add('active');
     
-    // Update main product title with selected style name
     productTitle.textContent = this.dataset.title;
-    
-    // Update hidden inputs with selected product data
     document.querySelector('.sockvarid').value = this.dataset.id;
-    const clickedProductId = this.dataset.id;
-    // Update price information
-        // Check ONLY current product status
-    updateCurrentProductStatus(); // CHANGED
+    
+    updateCurrentProductStatus();
     updateATCPrices(); 
     updatePreorderText();
     updateArrivalDate();
-    const priceData = this.dataset.price;
+    
+    // FIXED: Just use the formatted prices directly from data attributes
+    const priceData = this.dataset.price; // Already formatted by Shopify!
     const compareData = this.dataset.compare;
+    
     const originalPriceElement = document.querySelector('.original-price');
     const sudoSalePriceElement = document.querySelector('.sudo-sale-price');
     
-    if(priceData==""){
-      sudoSalePriceElement.textContent = "";
-    }else{
-      const priceValue = extractPriceValue(priceData);
-      sudoSalePriceElement.textContent = formatPrice(priceValue);
+    // Don't reformat - just use what Shopify gave us!
+    if (sudoSalePriceElement && priceData) {
+      sudoSalePriceElement.textContent = priceData; // DHS 87.00 stays as DHS 87.00
     }
     
-    if (compareData === "") {
-      originalPriceElement.style.display = "none";
-    } else {
+    // Show/hide original price
+    if (compareData && compareData !== "") {
+      originalPriceElement.textContent = compareData; // Also keep original format
       originalPriceElement.style.display = "";
-      const comparePriceValue = extractPriceValue(compareData);
-      originalPriceElement.textContent = formatPrice(comparePriceValue);
+    } else {
+      originalPriceElement.style.display = "none";
     }
-
-
   });
 });
 
@@ -3167,44 +3119,69 @@ function updateAllThumbnailAvailability() {
 
 
 
-// ADD THESE 6 NEW FUNCTIONS
-// REPLACE your existing extractPriceValue function with this fixed version:
+// SIMPLE: Extract numeric value from any formatted price string
 function extractPriceValue(priceString) {
   if (!priceString) return 0;
   
-  // Remove currency symbols and extra text, keep only numbers, commas, and dots
-  let cleanString = priceString.replace(/[^0-9.,]/g, '');
+  // Remove everything except numbers, dots, and commas
+  let cleanString = priceString.replace(/[^\d.,]/g, '');
   
-  // Handle different number formats
-  // Check if it's likely a thousands separator (comma) vs decimal separator
+  // Handle decimal separators
   const lastCommaIndex = cleanString.lastIndexOf(',');
   const lastDotIndex = cleanString.lastIndexOf('.');
   
-  // If there's both comma and dot, determine which is decimal separator
-  if (lastCommaIndex !== -1 && lastDotIndex !== -1) {
-    if (lastDotIndex > lastCommaIndex) {
-      // Dot comes after comma, so comma is thousands separator: 1,400.00
-      cleanString = cleanString.replace(/,/g, '');
-    } else {
-      // Comma comes after dot, so comma is decimal separator: 1.400,00
-      cleanString = cleanString.replace(/\./g, '').replace(',', '.');
-    }
-  } else if (lastCommaIndex !== -1) {
-    // Only comma exists - check if it's likely a decimal separator
-    const parts = cleanString.split(',');
-    if (parts.length === 2 && parts[1].length <= 2) {
-      // Likely decimal separator: 1400,00
-      cleanString = cleanString.replace(',', '.');
-    } else {
-      // Likely thousands separator: 1,400
-      cleanString = cleanString.replace(/,/g, '');
-    }
+  if (lastCommaIndex > lastDotIndex) {
+    // Comma is decimal separator (e.g., 84,00)
+    cleanString = cleanString.replace(/\./g, '').replace(',', '.');
+  } else {
+    // Dot is decimal separator (e.g., 84.00)
+    cleanString = cleanString.replace(/,/g, '');
   }
   
   const numericValue = parseFloat(cleanString);
-  console.log('Price extraction debug:', priceString, '->', cleanString, '->', numericValue);
-  
   return isNaN(numericValue) ? 0 : numericValue;
+}
+
+// FIXED: Format price using Shopify's native formatter
+function formatPrice(value) {
+  // Convert to cents for Shopify
+  const cents = Math.round(value * 100);
+  
+  // Use Shopify's native formatter if available
+  if (typeof Shopify !== 'undefined' && Shopify.formatMoney) {
+    const formatted = Shopify.formatMoney(cents, window.moneyFormat);
+    console.log('Formatted', value, 'as', formatted);
+    return formatted;
+  }
+  
+  // Fallback: just return the number with 2 decimals
+  console.warn('Shopify.formatMoney not available, using fallback');
+  return value.toFixed(2);
+}
+
+// NEW: Get current product price directly from data-price attribute
+function getCurrentProductPrice() {
+  const activeStyleOption = document.querySelector('.style-option.active');
+  if (activeStyleOption && activeStyleOption.dataset.price) {
+    return extractPriceValue(activeStyleOption.dataset.price);
+  }
+  
+  // Fallback to first style option
+  const firstStyleOption = document.querySelector('.style-option');
+  if (firstStyleOption && firstStyleOption.dataset.price) {
+    return extractPriceValue(firstStyleOption.dataset.price);
+  }
+  
+  return 0;
+}
+
+// NEW: Get product price from data-price attribute
+function getProductPrice(productId) {
+  const styleOption = document.querySelector(`[data-id="${productId}"]`);
+  if (styleOption && styleOption.dataset.price) {
+    return extractPriceValue(styleOption.dataset.price);
+  }
+  return 0;
 }
 
 function formatPrice(value) {
@@ -3253,35 +3230,36 @@ function updateATCPrices() {
     totalMemoryQuantity += product.quantity;
   });
   
-  let totalOriginalPrice = 0;
+  const originalPriceElement = document.querySelector('.original-price');
+  const sudoSalePriceElement = document.querySelector('.sudo-sale-price');
+  const priceInfoContainer = document.querySelector('.price-info');
   
+  // FIXED: If no memory products, don't touch the prices - they're already formatted by Shopify!
   if (totalMemoryQuantity === 0) {
-    // No memory products - show current product price only
-    totalOriginalPrice = getCurrentProductPrice();
-  } else {
-    // 1+ memory products - show ONLY memory products total (exclude current product)
-    Object.values(addedProducts).forEach(product => {
-      const productPrice = getProductPrice(product.productId);
-      totalOriginalPrice += (productPrice * product.quantity);
-    });
+    // Just show the price container with existing formatted prices
+    if (originalPriceElement) {
+      originalPriceElement.style.display = 'none'; // No discount, hide compare price
+    }
+    if (priceInfoContainer) {
+      priceInfoContainer.classList.add('visible');
+    }
+    console.log('No memory products - keeping Shopify formatted prices');
+    return; // EXIT - don't reformat anything!
   }
   
-  // Calculate discount based on memory products only
+  // Only reformat when there ARE memory products
+  let totalOriginalPrice = 0;
+  Object.values(addedProducts).forEach(product => {
+    const productPrice = getProductPrice(product.productId);
+    totalOriginalPrice += (productPrice * product.quantity);
+  });
+  
+  // Calculate discount based on memory products
   const discountPercentage = getDiscountPercentage(totalMemoryQuantity);
   const discountAmount = (totalOriginalPrice * discountPercentage) / 100;
   const finalPrice = totalOriginalPrice - discountAmount;
   
-  // Get elements
-  const originalPriceElement = document.querySelector('.original-price');
-  const sudoSalePriceElement = document.querySelector('.sudo-sale-price');
-  
-  // Get current format reference
- let formatReference = (window.currencySymbol || '$') + '35.92';
-  if (sudoSalePriceElement && sudoSalePriceElement.textContent) {
-    formatReference = sudoSalePriceElement.textContent;
-  }
-  
-  // Update the price displays
+  // Update the price displays with calculated totals
   if (originalPriceElement) {
     originalPriceElement.textContent = formatPrice(totalOriginalPrice);
     // Show original price ONLY if there's a discount
@@ -3300,14 +3278,12 @@ function updateATCPrices() {
     }
   }
   
-  const priceInfoContainer = document.querySelector('.price-info');
   if (priceInfoContainer) {
     priceInfoContainer.classList.add('visible');
   }
 
   console.log('=== PRICE UPDATE DEBUG ===');
   console.log('Memory products quantity:', totalMemoryQuantity);
-  console.log('Including current product:', totalMemoryQuantity === 0);
   console.log('Total original price:', totalOriginalPrice);
   console.log('Discount percentage:', discountPercentage + '%');
   console.log('Final price:', finalPrice);
@@ -4068,16 +4044,13 @@ function updateShippingBadge() {
   
   if (!shippingBadge || !shippingText) return;
   
-  const currency = window.displayCurrency || 'AUD';
+  const currency = window.displayCurrency;
   const threshold = window.shippingThresholds[currency] || 145;
-  const symbol = window.currencySymbol || '$';
   
-  // Don't show currency code for AUD, show it for others
-  if (currency === 'AUD') {
-    shippingText.textContent = `FREE Shipping over ${symbol}${threshold}`;
-  } else {
-    shippingText.textContent = `FREE Shipping over ${symbol}${threshold} ${currency}`;
-  }
+  // Use Shopify's formatter
+  const formattedThreshold = formatPrice(threshold);
+  
+  shippingText.textContent = `FREE Shipping over ${formattedThreshold}`;
 }
 // Call on page load
 document.addEventListener('DOMContentLoaded', updateShippingBadge);

@@ -1,0 +1,169 @@
+{
+  "sections": {
+    "annoucement_34Kk7C": {
+      "type": "annoucement",
+      "disabled": true,
+      "settings": {
+        "a_text1": "OVER 90, 000 COMFY DOCS AND NURSES",
+        "a_text2": ""
+      }
+    },
+    "featured_content_EKnF4A": {
+      "type": "featured-content",
+      "name": "Rich text",
+      "settings": {
+        "title": "Come help us make the medical world smile.",
+        "text": "<p>We’re looking for thoughtful, motivated people to join our growing family.<\/p>",
+        "align_text": "center",
+        "narrow_column": true,
+        "enlarge_text": false,
+        "alt": false
+      }
+    },
+    "custom_html_F6dhFB": {
+      "type": "custom-html",
+      "name": "Custom HTML",
+      "settings": {
+        "custom_html": "<p style=\"text-align: center;\"><a href=\"#contact\" class=\"btn btn--tertiary btn--small js-no-transition\">VIEW OPENINGS<\/a><\/p>"
+      }
+    },
+    "custom_html_jYzHWe": {
+      "type": "custom-html",
+      "disabled": true,
+      "name": "Custom HTML",
+      "settings": {
+        "custom_html": "<p style=\"text-align: center;\"><a href=\"#contact\" class=\"btn btn--tertiary btn--small js-no-transition\" id=\"scrollbutton\">Scroll to Section<\/a><\/p>"
+      }
+    },
+    "17591072634e00f0ba": {
+      "type": "_blocks",
+      "blocks": {
+        "ai_gen_block_3b8ca6e_fQCmtk": {
+          "type": "ai_gen_block_3b8ca6e",
+          "disabled": true,
+          "settings": {
+            "button_text": "Apply for Sponsorship",
+            "button_link": "shopify:\/\/pages\/contact",
+            "button_color": "#0b0d32",
+            "button_text_color": "#ffffff",
+            "button_border_color": "#b8d2bc",
+            "button_hover_color": "#ffffff",
+            "button_hover_text_color": "#0b0d32",
+            "button_hover_border_color": "#0b0d32",
+            "font_size": 16,
+            "font_weight": "600",
+            "text_uppercase": true,
+            "letter_spacing": 1,
+            "border_radius": 24,
+            "button_padding_vertical": 14,
+            "button_padding_horizontal": 32,
+            "min_width": 160,
+            "alignment": "center",
+            "section_padding": 20
+          },
+          "blocks": {}
+        }
+      },
+      "block_order": [
+        "ai_gen_block_3b8ca6e_fQCmtk"
+      ],
+      "settings": {}
+    },
+    "duallayout_CG47nF": {
+      "type": "duallayout",
+      "name": "Dual Section",
+      "settings": {
+        "image_left": false,
+        "background_color": "#ffffff",
+        "imagebig": "shopify:\/\/shop_images\/LANDING_PAGE_PDP.gif",
+        "contenttitle": "",
+        "contenttext1": "Dr. Woof is a family-owned brand built to support healthcare workers. Nurses, vets, doctors, techs, students. The people who show up for others, day after day.<br><br>\nWe design functional, joyful apparel made for long shifts, real movement, and real humans. We believe workwear can be practical and still bring a bit of warmth, personality, and lightness into demanding days.<br><br>\nSome of us have worked in healthcare ourselves, and we see that lived experience as a huge bonus. But it’s not a requirement. What matters most is that you care about the people we serve and genuinely want to help the helpers.<br><br>\nWe’re a small team that values empathy, ownership, and doing things properly. No corporate layers, no ego, no pretending. Just people who take pride in their work and want it to mean something.<br><br>\nIf you’re excited by building a thoughtful brand, enjoy working closely with others, and want your work to have a positive impact on the medical world, we’d love to hear from you.\nLet’s build something meaningful together.<br><br>\n\n<b>You don’t need to be in healthcare to work here. You just need to care about the people who are.<\/b>"
+      }
+    },
+    "duallayout_ghQckD": {
+      "type": "duallayout",
+      "disabled": true,
+      "name": "Dual Section",
+      "settings": {
+        "image_left": false,
+        "background_color": "#ffffff",
+        "imagebig": "shopify:\/\/shop_images\/LANDING_PAGE_PDP_4.png",
+        "contenttitle": "",
+        "contenttext1": "<b>1. Born in Healthcare: <\/b>Our socks first became a must-have for nurses, doctors, and frontline workers who needed comfort through 12-hour shifts.\n\n<br><br>\n<b>2. Viral Beyond the Hospital: <\/b>Today, they’re worn by athletes, travelers, festival-goers, and everyday Australians looking for style + support.\n<br><br>\n\n<b>3. Premium Build:<\/b> 15–20 mmHg graduated compression, bamboo yarn softness, and bold designs that are designed locally in Melbourne."
+      }
+    },
+    "advanced_content_6Wbn6B": {
+      "type": "advanced-content",
+      "blocks": {
+        "image_BqemPa": {
+          "type": "image",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/Your_paragraph_text_2.png",
+            "link": "",
+            "width": "50%",
+            "alignment": "top-middle"
+          }
+        },
+        "image_wcT9Ep": {
+          "type": "image",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/Your_paragraph_text_3.png",
+            "link": "",
+            "width": "50%",
+            "alignment": "top-middle"
+          }
+        }
+      },
+      "block_order": [
+        "image_BqemPa",
+        "image_wcT9Ep"
+      ],
+      "disabled": true,
+      "name": "Custom content",
+      "settings": {
+        "full_width": false,
+        "space_around": true,
+        "alt": false
+      }
+    },
+    "custom_html_8qhmPV": {
+      "type": "custom-html",
+      "name": "Custom HTML",
+      "settings": {
+        "custom_html": "<div id=\"contact\">\n    <!-- Your content here -->\n<\/div>"
+      }
+    },
+    "featured_content_79cpma": {
+      "type": "featured-content",
+      "name": "Rich text",
+      "settings": {
+        "title": "Our Openings",
+        "text": "<p>We’re always looking for talented people across:<br\/><br\/>Marketing & Growth<br\/>Design & Creative<br\/>Customer Experience<br\/>Operations & eCommerce<\/p><p>If you want to build, create, and grow with a brand that values ownership and quality — we’d love to hear from you.<br\/><br\/>Apply below and join the Dr. Woof Apparel team.<\/p>",
+        "align_text": "left",
+        "narrow_column": true,
+        "enlarge_text": false,
+        "alt": false
+      }
+    },
+    "custom_html_FRrt4q": {
+      "type": "custom-html",
+      "name": "Custom HTML",
+      "settings": {
+        "custom_html": "<div id=\"scrollbutton\">\n    <!-- Your content here -->\n<\/div>"
+      }
+    }
+  },
+  "order": [
+    "annoucement_34Kk7C",
+    "featured_content_EKnF4A",
+    "custom_html_F6dhFB",
+    "custom_html_jYzHWe",
+    "17591072634e00f0ba",
+    "duallayout_CG47nF",
+    "duallayout_ghQckD",
+    "advanced_content_6Wbn6B",
+    "custom_html_8qhmPV",
+    "featured_content_79cpma",
+    "custom_html_FRrt4q"
+  ]
+}

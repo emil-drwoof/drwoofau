@@ -1,0 +1,233 @@
+<style>
+  .video-section-wrapper-{{ section.id }} {
+    padding: 30px;
+    font-family:inherit;
+    background-color: {{ section.settings.video_gallery_background }};
+    margin-top: {{ section.settings.video_gallery_top_spacing }}px ;
+    margin-bottom: {{ section.settings.video_gallery_bottom_spacing }}px ;
+  }
+  .video-section-wrapper-{{ section.id }} .video-section-container {
+      max-width:1440px;
+      margin-inline:auto;
+  }
+  .video-section-wrapper-{{ section.id }} .headings-parent {
+      display:flex;
+      flex-direction:column;
+      gap:25px;
+  }
+  .video-section-wrapper-{{ section.id }} .section-top-subheading {
+      font-size:14px;
+      font-weight:400;
+      font-family:inherit;
+      line-height:20px;
+      color: {{ section.settings.video_gallery_text_color }} ;
+      font-style: italic;
+  }
+  .video-section-wrapper-{{ section.id }} .section-heading {
+      font-size:32px;
+      font-weight:600;
+      font-family:inherit;
+      line-height:33px;
+      color: {{ section.settings.video_gallery_text_color }} ;
+      margin:0;
+  }
+  .video-section-wrapper-{{ section.id }} .section-description {
+      font-size:14px;
+      font-weight:400;
+      font-family:inherit;
+      line-height:20px;
+      color: {{ section.settings.video_gallery_text_color }} ;
+      margin:0;
+      max-width:700px;
+  }
+  .video-section-wrapper-{{ section.id }} .video-gallery-container {
+    display: flex;
+      gap: 40px;
+      margin-top: 30px;
+      overflow-x: auto;
+      scrollbar-width: none;
+  }
+  .video-section-wrapper-{{ section.id }} .video-gallery-container::-webkit-scrollbar {
+      display: none;
+    }
+  .video-section-wrapper-{{ section.id }} .video-block-item {
+    max-width:330px;
+    display:flex;
+    flex-direction:column;
+    gap:14px;
+    flex: 0 0 330px;
+  }
+  .video-section-wrapper-{{ section.id }} .video-block-item video {
+    width: 100%;
+  }
+  .video-section-wrapper-{{ section.id }} .video-block-item .video-title {
+      font-size:24px;
+      font-weight:600;
+      line-height:20px;
+      font-family:inherit;
+      color: {{ section.settings.video_gallery_text_color }} ;
+      margin:0;
+  }
+  .video-section-wrapper-{{ section.id }} .video-block-item .video-description {
+      font-size:14px;
+      font-weight:300;
+      line-height:21px;
+      font-family:inherit;
+      color: {{ section.settings.video_gallery_text_color }} ;
+      margin:0;
+  }
+  /* MOBILE: 0px to 750px */
+  @media (max-width: 750px) {
+    .video-section-wrapper-{{ section.id }} {
+    padding: 20px 16px;
+  }
+  .video-section-wrapper-{{ section.id }} .headings-parent {
+      gap:15px;
+  }
+  .video-section-wrapper-{{ section.id }} .section-top-subheading {
+      font-size:12px;
+  }
+  .video-section-wrapper-{{ section.id }} .section-heading {
+      font-size:20px;
+      line-height:25px;
+  }
+    .video-section-wrapper-{{ section.id }} .video-gallery-container {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 30px;
+      overflow-x: hidden;
+    }
+    .video-section-wrapper-{{ section.id }} .video-block-item {
+      max-width: 100%;
+      width: 100%;
+    }
+    .video-section-wrapper-{{ section.id }} .video-block-item .video-title {
+      font-size:18px;
+  }
+  .video-section-wrapper-{{ section.id }} .video-block-item .video-description {
+      font-size:12px;
+  }
+  }
+</style>
+<div class="video-section-wrapper-{{ section.id }}">
+  <div class="video-section-container">
+    <div class="headings-parent">
+      <span class="section-top-subheading">
+        {{ section.settings.top_subheading }}
+      </span>
+      <h3 class="section-heading">
+        {{ section.settings.main_heading_top }}
+      </h3>
+      <p class="section-description">
+        {{ section.settings.section_description_top }}
+      </p>
+    </div>
+    <div class="video-gallery-container">
+      {% for block in section.blocks %}
+        <div class="video-block-item">
+          {% if block.settings.video_file != blank %}
+            {{
+              block.settings.video_file
+              | video_tag:
+                image_size: '800x',
+                controls: false,
+                autoplay: true,
+                loop: true,
+                muted: true,
+                playsinline: true,
+                preload: 'metadata'
+            }}
+          {% endif %}
+          {% if block.settings.video_heading != blank %}
+            <h4 class="video-title">{{ block.settings.video_heading }}</h4>
+          {% endif %}
+          {% if block.settings.video_description != blank %}
+            <p class="video-description">{{ block.settings.video_description }}</p>
+          {% endif %}
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+</div>
+{% schema %}
+{
+  "name": "Video Gallery",
+  "settings": [
+    {
+      "type": "color",
+      "id": "video_gallery_background",
+      "label": "Background Color"
+    },
+    {
+      "type": "color",
+      "id": "video_gallery_text_color",
+      "label": "Text Color",
+      "default": "#000000"
+    },
+    {
+      "type": "range",
+      "id": "video_gallery_top_spacing",
+      "label": "Top Spacing",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "default": 24
+    },
+    {
+      "type": "range",
+      "id": "video_gallery_bottom_spacing",
+      "label": "Bottom Spacing",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "default": 24
+    },
+    {
+      "type": "text",
+      "id": "top_subheading",
+      "label": "Subheading",
+      "default": "Designed by Doctors in partnership with Athletes"
+    },
+    {
+      "type": "text",
+      "id": "main_heading_top",
+      "label": "Heading",
+      "default": "Why active Aussies trust Dr. Woof"
+    },
+    {
+      "type": "textarea",
+      "id": "section_description_top",
+      "label": "Description",
+      "default": "Transform your space with our versatile collection of everyday essentials. Elevate your routine with essentials designed for comfort and simplicity."
+    }
+  ],
+  "blocks": [
+    {
+      "type": "video_block",
+      "name": "Video Block",
+      "settings": [
+        {
+          "type": "video",
+          "id": "video_file",
+          "label": "Upload Video"
+        },
+        {
+          "type": "text",
+          "id": "video_heading",
+          "label": "Video Heading"
+        },
+        {
+          "type": "textarea",
+          "id": "video_description",
+          "label": "Video Description"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Video Gallery"
+    }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,381 @@
+<div class="bhigh-comparison-section">
+  <div class="bigh-global-container">
+    <div class="bhigh-comparison-header">
+      <h2 class="bigh-global-40font">{{ section.settings.section_title }}</h2>
+      <p class="bhigh-comparison-subtitle">{{ section.settings.section_subtitle }}</p>
+    </div>
+    <div class="bhigh-comparison-table">
+      <div class="vscomparison-header">
+        <div class="vscomparison-column"></div>
+        <div class="vscomparison-column">
+          <img src="{{ section.settings.table_heading_hero_logo | img_url: '200x200' }}" alt="">
+        </div>
+        <div class="vscomparison-column">{{ section.settings.table_heading_comp_name }}</div>
+      </div>
+      <div class="vscomparison-body">
+        {% for block in section.blocks %}
+          <div class="vscomparison-row">
+            <div class="vscomparison-column">
+              {{ block.settings.column_1 }}
+            </div>
+            <div class="vscomparison-column">
+              {% if block.settings.column_2 == 'check' %}
+                <svg width="26" height="26" viewBox="0 0 26 26" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M9 14L12 17L17 10M25 13C25 14.5759 24.6896 16.1363 24.0866 17.5922C23.4835 19.0481 22.5996 20.371 21.4853 21.4853C20.371 22.5996 19.0481 23.4835 17.5922 24.0866C16.1363 24.6896 14.5759 25 13 25C11.4241 25 9.86371 24.6896 8.4078 24.0866C6.95189 23.4835 5.62902 22.5996 4.51472 21.4853C3.40042 20.371 2.5165 19.0481 1.91345 17.5922C1.31039 16.1363 1 14.5759 1 13C1 9.8174 2.26428 6.76516 4.51472 4.51472C6.76516 2.26428 9.8174 1 13 1C16.1826 1 19.2348 2.26428 21.4853 4.51472C23.7357 6.76516 25 9.8174 25 13Z" stroke="{{ section.settings.check_icon_color }}" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+
+              {% elsif block.settings.column_2 == 'cross' %}
+                <svg width="26" height="26" viewBox="0 0 26 26" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M10 10L16 16M16 10L10 16M25 13C25 14.5759 24.6896 16.1363 24.0866 17.5922C23.4835 19.0481 22.5996 20.371 21.4853 21.4853C20.371 22.5996 19.0481 23.4835 17.5922 24.0866C16.1363 24.6896 14.5759 25 13 25C11.4241 25 9.86371 24.6896 8.4078 24.0866C6.95189 23.4835 5.62902 22.5996 4.51472 21.4853C3.40042 20.371 2.5165 19.0481 1.91345 17.5922C1.31039 16.1363 1 14.5759 1 13C1 9.8174 2.26428 6.76516 4.51472 4.51472C6.76516 2.26428 9.8174 1 13 1C16.1826 1 19.2348 2.26428 21.4853 4.51472C23.7357 6.76516 25 9.8174 25 13Z" stroke="{{ section.settings.cross_icon_color }}" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+
+              {% elsif block.settings.column_2 == 'none' %}
+                {{ block.settings.column_2_none_text }}
+              {% endif %}
+            </div>
+            <div class="vscomparison-column">
+              {% if block.settings.column_3 == 'check' %}
+                <svg width="26" height="26" viewBox="0 0 26 26" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M9 14L12 17L17 10M25 13C25 14.5759 24.6896 16.1363 24.0866 17.5922C23.4835 19.0481 22.5996 20.371 21.4853 21.4853C20.371 22.5996 19.0481 23.4835 17.5922 24.0866C16.1363 24.6896 14.5759 25 13 25C11.4241 25 9.86371 24.6896 8.4078 24.0866C6.95189 23.4835 5.62902 22.5996 4.51472 21.4853C3.40042 20.371 2.5165 19.0481 1.91345 17.5922C1.31039 16.1363 1 14.5759 1 13C1 9.8174 2.26428 6.76516 4.51472 4.51472C6.76516 2.26428 9.8174 1 13 1C16.1826 1 19.2348 2.26428 21.4853 4.51472C23.7357 6.76516 25 9.8174 25 13Z" stroke="{{ section.settings.cross_icon_color }}" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              {% elsif block.settings.column_3 == 'cross' %}
+                <svg width="26" height="26" viewBox="0 0 26 26" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M10 10L16 16M16 10L10 16M25 13C25 14.5759 24.6896 16.1363 24.0866 17.5922C23.4835 19.0481 22.5996 20.371 21.4853 21.4853C20.371 22.5996 19.0481 23.4835 17.5922 24.0866C16.1363 24.6896 14.5759 25 13 25C11.4241 25 9.86371 24.6896 8.4078 24.0866C6.95189 23.4835 5.62902 22.5996 4.51472 21.4853C3.40042 20.371 2.5165 19.0481 1.91345 17.5922C1.31039 16.1363 1 14.5759 1 13C1 9.8174 2.26428 6.76516 4.51472 4.51472C6.76516 2.26428 9.8174 1 13 1C16.1826 1 19.2348 2.26428 21.4853 4.51472C23.7357 6.76516 25 9.8174 25 13Z" stroke="{{ section.settings.cross_icon_color }}" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              {% elsif block.settings.column_3 == 'none' %}
+                {{ block.settings.column_3_none_text }}
+              {% endif %}
+            </div>
+          </div>
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Pdp Comparison Section",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Section Content"
+    },
+    {
+      "type": "text",
+      "id": "section_title",
+      "label": "Section Title"
+    },
+    {
+      "type": "text",
+      "id": "section_subtitle",
+      "label": "Section Subtitle"
+    },
+    {
+      "type": "image_picker",
+      "label": "Table header Hero logo",
+      "id": "table_heading_hero_logo"
+    },
+    {
+      "type": "text",
+      "label": "Table header competition name",
+      "id": "table_heading_comp_name"
+    },
+    {
+      "type": "header",
+      "content": "Colors"
+    },
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "Section Background Color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "title_color",
+      "label": "Title Color",
+      "default": "#00267A"
+    },
+    {
+      "type": "color",
+      "id": "subtitle_color",
+      "label": "Subtitle Color",
+      "default": "#00267A"
+    },
+    {
+      "type": "color",
+      "id": "hero_column_bg",
+      "label": "Hero Column Background",
+      "default": "#00267A"
+    },
+    {
+      "type": "color",
+      "id": "hero_column_text",
+      "label": "Hero Column Text Color",
+      "default": "#FFFFFF"
+    },
+    {
+      "type": "color",
+      "id": "hero_column_shadow",
+      "label": "Hero Column Shadow Color",
+      "default": "#00267A"
+    },
+    {
+      "type": "color",
+      "id": "regular_column_bg",
+      "label": "Regular Column Background",
+      "default": "#E2ECFA"
+    },
+    {
+      "type": "color",
+      "id": "regular_column_text",
+      "label": "Regular Column Text Color",
+      "default": "#00267A"
+    },
+    {
+      "type": "color",
+      "id": "border_color",
+      "label": "Border Color",
+      "default": "rgba(0, 38, 122, 0.20)"
+    },
+    {
+      "type": "color",
+      "id": "check_icon_color",
+      "label": "Check Icon Color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "cross_icon_color",
+      "label": "Cross Icon Color",
+      "default": "#00267A"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "row",
+      "name": "Comparison Row",
+      "settings": [
+        {
+          "type": "text",
+          "label": "Column 1 Text",
+          "id": "column_1",
+          "default": "Your Text Here"
+        },
+        {
+          "type": "radio",
+          "label": "Column 2 Option",
+          "id": "column_2",
+          "default": "none",
+          "options": [
+            { "value": "check", "label": "Check" },
+            { "value": "cross", "label": "Cross" },
+            { "value": "none", "label": "None" }
+          ]
+        },
+        {
+          "type": "text",
+          "label": "Custom Text for Column 2 (if 'None' is selected)",
+          "id": "column_2_none_text"
+        },
+        {
+          "type": "radio",
+          "label": "Column 3 Option",
+          "id": "column_3",
+          "default": "none",
+          "options": [
+            { "value": "check", "label": "Check" },
+            { "value": "cross", "label": "Cross" },
+            { "value": "none", "label": "None" }
+          ]
+        },
+        {
+          "type": "text",
+          "label": "Custom Text for Column 3 (if 'None' is selected)",
+          "id": "column_3_none_text"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Pdp Comparison Section",
+      "category": "Custom Sections"
+    }
+  ]
+}
+{% endschema %}
+
+<style>
+.bhigh-comparison-section {
+    padding: 64px 0px calc(64px + 35px);
+    position: relative;
+    background: {{ section.settings.background_color }};
+    display: none;
+}
+
+.bhigh-comparison-table {
+    padding: 64px 0 0 0;
+    max-width: 700px;
+    margin: auto;
+    position: relative;
+    z-index: 9;
+}
+
+.vscomparison-body {
+    background: #fff;
+    border-radius: 4px;
+    position: relative;
+    z-index: 9;
+}
+
+.vscomparison-row, .vscomparison-header {
+    display: grid;
+    grid-template-columns: 38% 31% 31%;
+}
+
+.vscomparison-header .vscomparison-column {
+    height: 84px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    text-align: center;
+    padding: 12px;
+    font-size: 16px;
+    line-height: 19px;
+    color: {{ section.settings.hero_column_text }};
+}
+
+.vscomparison-header .vscomparison-column:nth-child(2) {
+    border-radius: 4px 4px 0 0;
+    background: {{ section.settings.hero_column_bg }};
+}
+
+.vscomparison-body .vscomparison-row .vscomparison-column {
+    padding: 18px 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 19px;
+    text-transform: capitalize;
+    color: {{ section.settings.regular_column_text }};
+    border-bottom: 1px solid {{ section.settings.border_color }};
+    background: {{ section.settings.regular_column_bg }};
+}
+
+.vscomparison-row .vscomparison-column:first-child {
+    justify-content: flex-start;
+}
+
+.vscomparison-row:last-child {
+    border: 0;
+}
+
+.vscomparison-row:last-child .vscomparison-column:nth-child(2) {
+    position: relative;
+}
+
+.vscomparison-row:last-child .vscomparison-column:nth-child(2)::after {
+    position: absolute;
+    content: "";
+    height: 100%;
+    width: 100%;
+    border-radius: 4px;
+    z-index: -1;
+    bottom: -35px;
+    background: {{ section.settings.hero_column_shadow }};
+}
+
+.vscomparison-row:first-child .vscomparison-column:first-child,
+.vscomparison-row:first-child .vscomparison-column:last-child {
+    border-radius: 4px;
+}
+
+.vscomparison-row:last-child .vscomparison-column:first-child,
+.vscomparison-row:last-child .vscomparison-column:last-child {
+    border-radius: 4px;
+}
+
+.bhigh-comparison-header {
+    text-align: center;
+}
+
+.bhigh-comparison-header .bigh-global-40font {
+    color: {{ section.settings.title_color }};
+    margin: 0 0 4px 0;
+    font-weight: 600;
+}
+
+.bhigh-comparison-header .bhigh-comparison-subtitle {
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 1.5;
+    text-align: center;
+    color: {{ section.settings.subtitle_color }};
+    margin: 0;
+}
+
+.vscomparison-body .vscomparison-row .vscomparison-column svg {
+    width: 24px;
+    height: 24px;
+}
+
+.vscomparison-header .vscomparison-column img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+.vscomparison-body .vscomparison-row .vscomparison-column:nth-child(2) {
+    background-color: {{ section.settings.hero_column_bg }};
+    border-color: transparent;
+}
+
+.vscomparison-body .vscomparison-row:nth-child(even) .vscomparison-column:nth-child(2) {
+    background-color: {{ section.settings.hero_column_bg }};
+}
+
+/*media queries starts*/
+@media (max-width: 1399.98px) {
+    .bhigh-comparison-table {
+        padding: 50px 0 0 0;
+    }
+}
+
+@media (max-width: 991.98px) {
+    .bhigh-comparison-table {
+        padding: 45px 0 0 0;
+    }
+}
+
+@media (max-width: 767.98px) {
+    .bhigh-comparison-section {
+        padding: 48px 20px;
+    }
+    .bhigh-comparison-table {
+        padding: 32px 0 0 0;
+    }
+}
+
+@media (max-width: 639px) {
+    .bhigh-comparison-section {
+        padding: 48px 20px;
+    }
+    .vscomparison-body .vscomparison-row .vscomparison-column {
+        padding: 13px 16px;
+        font-size: 14px;
+        line-height: 17px;
+        min-height: 60px;
+    }
+    .vscomparison-header .vscomparison-column {
+        font-size: 14px;
+        line-height: 17px;
+    }
+}
+</style>
