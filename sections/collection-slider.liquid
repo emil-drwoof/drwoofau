@@ -1,4 +1,4 @@
-<!-- sections/collection-slider.liquid -->
+<!-- sections/collection-slider.liquid xc-->
 {%- assign collection = collections[section.settings.selected_collection] -%}
 <div class="collection-slider slidertop{{ section.id }} {% if section.settings.dark_theme %}darktheme{% endif %}" style="">
   <div class="pager-wrapper">
@@ -24,118 +24,149 @@
       {% endunless %}
   </div>
 {% unless section.settings.blocklist %}
-
-    <div class="collection-slider-wrapper slider{{ section.id }}">
-        {% for product in collection.products %}
-          {% unless product.title contains "Add" %}
-              <div class="product_slide">
-                  <a href="{{ product.url }}" class="collection-slider-url">
-                      <img alt="{{ product.featured_image.alt | img_url: 'grande' }}" 
-                          src="{{ product.featured_image.src | img_url: '100x' }}" 
-                          data-src="{{ product.featured_image.src | img_url: 'grande' }}" 
-                          data-srcset="{{ product.featured_image.src | img_url: '300x' }} 300w,
-                                          {{ product.featured_image.src | img_url: '600x' }} 600w,
-                                          {{ product.featured_image.src | img_url: 'grande' }} 1000w"
-                          class="collection-slider-thumbnail lazyload" 
-                          style="margin-bottom:20px;" 
-                          loading="lazy" />
-                      {% if section.settings.reviewstars %}
-                      {% render 'loox_reviews', product: product %}
-                      {% endif %}
-
-                      <p><b>{{ product.title }}</b></p>
-                      <div class="product-price">
-                          {% if product.compare_at_price > product.price %}
-                              <p>
-                              <span class="original-price">{{ product.compare_at_price | money_with_currency }}</span>
-                              <span class="sale-price">{{ product.price | money_with_currency }}</span>
-                              </p>
-                          {% else %}
-                              <p class="regular-price">{{ product.price | money_with_currency }}</p>
-                          {% endif %}
-                      </div>
-                  </a>
-              </div>
-            {% endunless %}
-        {% endfor %}
-    </div>
-
-    
-      {% else %}
-
-    <div class="collection-slider-wrapper slider{{ section.id }}">
-        {% for block in section.blocks %}
-            <div class="product_slide">
-                <a href="{{ block.settings.col_url }}" class="collection-slider-url">
-                    <img alt="{{ block.settings.col_image.alt }}" 
-                         src="{{ block.settings.col_image | img_url: '100x' }}" 
-                         data-src="{{ block.settings.col_image | img_url: 'grande' }}" 
-                         data-srcset="{{ block.settings.col_image | img_url: '300x' }} 300w,
-                                        {{ block.settings.col_image | img_url: '600x' }} 600w,
-                                        {{ block.settings.col_image | img_url: 'grande' }} 1000w"
-                         class="collection-slider-thumbnail desktopview lazyload" 
-                         loading="lazy" />
-                    <img alt="{{ block.settings.mobcol_image.alt }}" 
-                         src="{{ block.settings.mobcol_image | img_url: '100x' }}" 
-                         data-src="{{ block.settings.mobcol_image | img_url: 'grande' }}" 
-                         data-srcset="{{ block.settings.mobcol_image | img_url: '300x' }} 300w,
-                                        {{ block.settings.mobcol_image | img_url: '600x' }} 600w,
-                                        {{ block.settings.mobcol_image | img_url: 'grande' }} 1000w"
-                         class="collection-slider-thumbnail mobileview lazyload" 
-                         loading="lazy" />
-                    
-                    {% if section.settings.dark_theme %}
-                      {% if section.settings.reviewstars %}
-                      <div class="review"><img alt="stars" src="{{ 'stars.png' | asset_url }}" /> {% unless block.settings.reviewstarsnumber == "" %}({{ block.settings.reviewstarsnumber }}){% endunless %}</div>
-                      {% endif %}
-                      
-                    {% else %}
-                    {% if section.settings.reviewstars %}
-                    <div class="review"><img alt="stars" src="{{ 'darkstars.png' | asset_url }}" />  {% unless block.settings.reviewstarsnumber == "" %}({{ block.settings.reviewstarsnumber }}){% endunless %}</div>
-                      {% endif %}
-                    {% endif %}
-                    
-                    {% if block.settings.block_title %}
-                      <p style="margin-bottom:12px;"><b>{{ block.settings.col_text }}</b></p>
-                    {% else %}
-                      <p style="margin-bottom:12px;">{{ block.settings.col_text }}</p>
-                    {% endif %}
-                    
-                  <p class="{% if section.settings.dark_theme %}twittername{% endif %}" style="margin-bottom:8px;"><b>{{ block.settings.col_name }}</b></p>
-                    <p class="blockprices"><span class="blackprice">
-                      
-                   {% assign raw_price = block.settings.blackprice | remove: '$' | plus: 0 %}
-{% if cart.currency.iso_code == 'SGD' %}
-  {% assign converted_price = raw_price | times: 0.858876 %}
-  {{ converted_price | floor | append: '.00' }} SGD
-{% elsif cart.currency.iso_code == 'NZD' %}
-  {% assign converted_price = raw_price | times: 1.09421 %}
-  {{ converted_price | floor | append: '.00' }} NZD
-{% else %}
-  {{ block.settings.blackprice }}
-{% endif %}
-                    </span> <span class="slashprice">{{ block.settings.slashprice }}</span> <span class="redprice">{{ block.settings.redprice }}</span></p>
-                    
-                    {% comment %}
-                    <div class="product-price">
-                        {% if product.compare_at_price > product.price %}
-                            <p>
-                            <span class="original-price">{{ product.compare_at_price | money_with_currency }}</span>
-                            <span class="sale-price">{{ product.price | money_with_currency }}</span>
-                            </p>
-                        {% else %}
-                            <p class="regular-price">{{ product.price | money_with_currency }}</p>
+  <div class="showwrapper">
+  <div class="hiddenwrapper">
+      <div class="collection-slider-wrapper slider{{ section.id }}">
+          {% for product in collection.products %}
+            {% unless product.title contains "Add" %}
+                <div class="product_slide">
+                    <a href="{{ product.url }}" class="collection-slider-url">
+                        <img alt="{{ product.featured_image.alt | img_url: 'grande' }}" 
+                            src="{{ product.featured_image.src | img_url: 'grande' }}" 
+                            srcset="{{ product.featured_image.src | img_url: '300x' }} 300w,
+                                    {{ product.featured_image.src | img_url: '600x' }} 600w,
+                                    {{ product.featured_image.src | img_url: 'grande' }} 1000w"
+                            class="collection-slider-thumbnail" 
+                            style="margin-bottom:20px;" 
+                            width="385"
+                            height="385"
+                            loading="lazy" />
+                        {% if section.settings.reviewstars %}
+                        {% render 'loox_reviews', product: product %}
                         {% endif %}
-                    </div>
-                    {% endcomment %}
-                </a>
-            </div>
-        {% endfor %}
-    </div>
+
+                        <p><b>{{ product.title }}</b></p>
+                        <div class="product-price">
+                            {% if product.compare_at_price > product.price %}
+                                <p>
+                                <span class="original-price">{{ product.compare_at_price | money_with_currency }}</span>
+                                <span class="sale-price">{{ product.price | money_with_currency }}</span>
+                                </p>
+                            {% else %}
+                                <p class="regular-price">{{ product.price | money_with_currency }}</p>
+                            {% endif %}
+                        </div>
+                    </a>
+                </div>
+              {% endunless %}
+          {% endfor %}
+      </div>
+    </div>    
+  </div>
+  
+      {% else %}
+        <div class="showwrapper">
+          <div class="hiddenwrapper">
+              <div class="collection-slider-wrapper slider{{ section.id }}">
+                  {% for block in section.blocks %}
+                      <div class="product_slide">
+                          <a href="{{ block.settings.col_url }}" class="collection-slider-url">
+                              <img alt="{{ block.settings.col_image.alt }}" 
+                                  src="{{ block.settings.col_image | img_url: 'grande' }}" 
+                                  srcset="{{ block.settings.col_image | img_url: '300x' }} 300w,
+                                          {{ block.settings.col_image | img_url: '600x' }} 600w,
+                                          {{ block.settings.col_image | img_url: 'grande' }} 1000w"
+                                  class="collection-slider-thumbnail desktopview" 
+                                  width="385"
+                                  height="385"
+                                  loading="lazy" />
+                              <img alt="{{ block.settings.mobcol_image.alt }}" 
+                                  src="{{ block.settings.mobcol_image | img_url: 'grande' }}" 
+                                  srcset="{{ block.settings.mobcol_image | img_url: '300x' }} 300w,
+                                          {{ block.settings.mobcol_image | img_url: '600x' }} 600w,
+                                          {{ block.settings.mobcol_image | img_url: 'grande' }} 1000w"
+                                  class="collection-slider-thumbnail mobileview" 
+                                  width="385"
+                                  height="385"
+                                  loading="lazy" />
+                              
+                              {% if section.settings.dark_theme %}
+                                {% if section.settings.reviewstars %}
+                                <div class="review"><img alt="stars" src="{{ 'stars.png' | asset_url }}" /> {% unless block.settings.reviewstarsnumber == "" %}({{ block.settings.reviewstarsnumber }}){% endunless %}</div>
+                                {% endif %}
+                                
+                              {% else %}
+                              {% if section.settings.reviewstars %}
+                              <div class="review"><img alt="stars" src="{{ 'darkstars.png' | asset_url }}" />  {% unless block.settings.reviewstarsnumber == "" %}({{ block.settings.reviewstarsnumber }}){% endunless %}</div>
+                                {% endif %}
+                              {% endif %}
+                              
+                              {% if block.settings.block_title %}
+                                <p style="margin-bottom:12px;"><b>{{ block.settings.col_text }}</b></p>
+                              {% else %}
+                                <p style="margin-bottom:12px;">{{ block.settings.col_text }}</p>
+                              {% endif %}
+                              
+                            <p class="{% if section.settings.dark_theme %}twittername{% endif %}" style="margin-bottom:8px;"><b>{{ block.settings.col_name }}</b></p>
+                              <p class="blockprices"><span class="blackprice">
+                                
+                            {% assign raw_price = block.settings.blackprice | remove: '$' | plus: 0 %}
+          {% if cart.currency.iso_code == 'SGD' %}
+            {% assign converted_price = raw_price | times: 0.858876 %}
+            {{ converted_price | floor | append: '.00' }} SGD
+          {% elsif cart.currency.iso_code == 'NZD' %}
+            {% assign converted_price = raw_price | times: 1.09421 %}
+            {{ converted_price | floor | append: '.00' }} NZD
+          {% else %}
+            {{ block.settings.blackprice }}
+          {% endif %}
+                              </span> <span class="slashprice">{{ block.settings.slashprice }}</span> <span class="redprice">{{ block.settings.redprice }}</span></p>
+                              
+                              {% comment %}
+                              <div class="product-price">
+                                  {% if product.compare_at_price > product.price %}
+                                      <p>
+                                      <span class="original-price">{{ product.compare_at_price | money_with_currency }}</span>
+                                      <span class="sale-price">{{ product.price | money_with_currency }}</span>
+                                      </p>
+                                  {% else %}
+                                      <p class="regular-price">{{ product.price | money_with_currency }}</p>
+                                  {% endif %}
+                              </div>
+                              {% endcomment %}
+                          </a>
+                      </div>
+                  {% endfor %}
+              </div>
+          </div>
+        </div>
+
+
       {% endunless %}
 
 </div>
 <style>
+  .showwrapper{
+      max-width: 1300px;
+        margin-left:auto;        
+        margin-right:auto;
+  }
+  .hiddenwrapper{
+    width:124%; 
+    overflow:hidden;
+  }
+  .arrow-active:hover{
+    cursor:pointer;
+  }
+  .arrow-wrapper img {
+  opacity: 0.3;
+  cursor: default;
+}
+
+.arrow-wrapper img.arrow-active {
+  opacity: 1;
+  cursor: pointer;
+}
   .product_slide a{
     position:relative;
   }
@@ -270,12 +301,9 @@
     }
 
     .collection-slider-wrapper{
-        max-width:1300px;
-        overflow-x: visible;
-        margin-left:auto;
-        margin-right:auto;
+        gap:18px;
         display:flex;
-        flex-wrap:wrap;
+        flex-wrap:nowrap;
         justify-content: space-between;
     }
     
@@ -285,9 +313,13 @@
     }
     .collection-slider-wrapper .product_slide{
         /* flex:0 0 19%; */
+        width:385px;
+        flex:0 0 385px;
+       
     }
     .collection-slider-wrapper .product_slide .collection-slider-thumbnail{
         width:100%;
+        height:auto;
         display:block;
         margin-bottom:8px;
     }
@@ -356,6 +388,11 @@
       text-align:right;
     }
     @media only screen and (max-width:480px){
+     .collection-slider-wrapper .product_slide{
+        /* flex:0 0 19%; */
+        width:45%;
+        flex:0 0 45%;
+      }
       .twittername{
         font-size:12px !important;
       }
@@ -440,44 +477,155 @@
 
 </style>
 <script>
-
-$(document).ready(function(){
-
-  $('.slider{{ section.id }}').slick({
-    slidesToShow: 4,
-    prevArrow: $('.prev{{ section.id }}'),
-    nextArrow: $('.next{{ section.id }}'),
-    dots: true,
-    autoplay: false,
-    responsive: [
-      {
-        breakpoint: 1024,
-        settings: {
-          slidesToShow: 4
+  document.addEventListener('DOMContentLoaded', function() {
+  
+  function initCollectionSlider(sectionId) {
+    var wrapper = document.querySelector('.slider' + sectionId);
+    var prevBtn = document.querySelector('.prev' + sectionId);
+    var nextBtn = document.querySelector('.next' + sectionId);
+    
+    if (!wrapper || !prevBtn || !nextBtn) return;
+    
+    var slides = wrapper.querySelectorAll('.product_slide');
+    var slideWidth = 385;
+    var gap = 18;
+    var slideStep = slideWidth + gap;
+    var currentIndex = 0;
+    
+    // Drag/swipe variables
+    var isDragging = false;
+    var startPos = 0;
+    var currentTranslate = 0;
+    var prevTranslate = 0;
+    var animationID = 0;
+    
+    function getVisibleSlides() {
+      var containerWidth = wrapper.parentElement.offsetWidth;
+      return Math.floor(containerWidth / slideStep) || 1;
+    }
+    
+    function getMaxIndex() {
+      var visibleSlides = getVisibleSlides();
+      return Math.max(0, slides.length - visibleSlides);
+    }
+    
+    function updateArrows() {
+      var maxIndex = getMaxIndex();
+      prevBtn.classList.toggle('arrow-active', currentIndex > 0);
+      nextBtn.classList.toggle('arrow-active', currentIndex < maxIndex);
+    }
+    
+    function updateSlider() {
+      wrapper.style.transform = 'translateX(-' + (currentIndex * slideStep) + 'px)';
+      wrapper.style.transition = 'transform 0.4s ease';
+      updateArrows();
+    }
+    
+    function setSliderPosition() {
+      wrapper.style.transform = 'translateX(' + currentTranslate + 'px)';
+    }
+    
+    function getPositionX(event) {
+      return event.type.includes('mouse') ? event.pageX : event.touches[0].clientX;
+    }
+    
+    function touchStart(event) {
+      isDragging = true;
+      startPos = getPositionX(event);
+      animationID = requestAnimationFrame(animation);
+      wrapper.style.transition = 'none';
+      prevTranslate = -currentIndex * slideStep;
+    }
+    
+    function touchMove(event) {
+      if (isDragging) {
+        var currentPosition = getPositionX(event);
+        var diff = currentPosition - startPos;
+        
+        // Prevent vertical scroll when dragging horizontally
+        if (Math.abs(diff) > 5) {
+          event.preventDefault();
         }
-      },
-      {
-        breakpoint: 600,
-        settings: {
-          slidesToShow: 2
-        }
-      },
-      {
-        breakpoint: 480,
-        settings: {
-          slidesToShow: 2
+        
+        currentTranslate = prevTranslate + diff;
+        
+        // Add resistance at boundaries
+        var maxTranslate = 0;
+        var minTranslate = -getMaxIndex() * slideStep;
+        
+        if (currentTranslate > maxTranslate) {
+          currentTranslate = maxTranslate + (currentTranslate - maxTranslate) * 0.3;
+        } else if (currentTranslate < minTranslate) {
+          currentTranslate = minTranslate + (currentTranslate - minTranslate) * 0.3;
         }
       }
-      // You can unslick at a given breakpoint now by adding:
-      // settings: "unslick"
-      // instead of a settings object
-    ]
-  });
-
-
-
-})
-
+    }
+    
+    function touchEnd() {
+      isDragging = false;
+      cancelAnimationFrame(animationID);
+      
+      var movedBy = currentTranslate - prevTranslate;
+      
+      // Determine if we should snap to next/prev slide
+      if (movedBy < -50 && currentIndex < getMaxIndex()) {
+        currentIndex++;
+      } else if (movedBy > 50 && currentIndex > 0) {
+        currentIndex--;
+      }
+      
+      // Snap to nearest slide
+      wrapper.style.transition = 'transform 0.4s ease';
+      updateSlider();
+    }
+    
+    function animation() {
+      setSliderPosition();
+      if (isDragging) requestAnimationFrame(animation);
+    }
+    
+    // Touch events
+    wrapper.addEventListener('touchstart', touchStart);
+    wrapper.addEventListener('touchmove', touchMove, { passive: false });
+    wrapper.addEventListener('touchend', touchEnd);
+    
+    // Mouse events (for desktop drag)
+    wrapper.addEventListener('mousedown', touchStart);
+    wrapper.addEventListener('mousemove', touchMove);
+    wrapper.addEventListener('mouseup', touchEnd);
+    wrapper.addEventListener('mouseleave', function() {
+      if (isDragging) touchEnd();
+    });
+    
+    // Prevent context menu on long press
+    wrapper.addEventListener('contextmenu', function(e) {
+      e.preventDefault();
+    });
+    
+    // Arrow button functionality
+    prevBtn.addEventListener('click', function() {
+      if (currentIndex > 0) {
+        currentIndex--;
+        updateSlider();
+      }
+    });
+    
+    nextBtn.addEventListener('click', function() {
+      if (currentIndex < getMaxIndex()) {
+        currentIndex++;
+        updateSlider();
+      }
+    });
+    
+    updateArrows();
+    window.addEventListener('resize', updateArrows);
+  }
+  
+  // Initialize each slider with its section ID
+  // Initialize this slider with its section ID
+  initCollectionSlider('{{ section.id }}');
+  
+});
 </script>
 {% schema %}
   {

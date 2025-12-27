@@ -40,6 +40,19 @@
         {%- endif -%}
       </div>
 
+      {%- if section.settings.show_trust_badge -%}
+        <div class="hero-trust-badge">
+          {%- if section.settings.trust_badge_svg != blank -%}
+            <div class="trust-badge-icon">
+              {{ section.settings.trust_badge_svg }}
+            </div>
+          {%- endif -%}
+          {%- if section.settings.trust_badge_text != blank -%}
+            <span class="trust-badge-text">{{ section.settings.trust_badge_text }}</span>
+          {%- endif -%}
+        </div>
+      {%- endif -%}
+
       {%- if section.settings.guarantee_text != blank -%}
         <p class="hero-guarantee">{{ section.settings.guarantee_text }}</p>
       {%- endif -%}
@@ -120,6 +133,100 @@
       "type": "url",
       "id": "button_2_link",
       "label": "Button 2 Link"
+    },
+    {
+      "type": "header",
+      "content": "Trust Badge"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_trust_badge",
+      "label": "Show Trust Badge",
+      "default": false
+    },
+    {
+      "type": "html",
+      "id": "trust_badge_svg",
+      "label": "Trust Badge SVG",
+      "info": "Paste your SVG code here"
+    },
+    {
+      "type": "text",
+      "id": "trust_badge_text",
+      "label": "Trust Badge Text",
+      "default": "Free Shipping on Orders Over $50"
+    },
+    {
+      "type": "range",
+      "id": "trust_badge_icon_size",
+      "min": 16,
+      "max": 48,
+      "step": 2,
+      "unit": "px",
+      "label": "Trust Badge Icon Size",
+      "default": 24
+    },
+    {
+      "type": "range",
+      "id": "trust_badge_font_size_desktop",
+      "min": 12,
+      "max": 24,
+      "step": 1,
+      "unit": "px",
+      "label": "Trust Badge Font Size (Desktop)",
+      "default": 14
+    },
+    {
+      "type": "range",
+      "id": "trust_badge_font_size_mobile",
+      "min": 10,
+      "max": 20,
+      "step": 1,
+      "unit": "px",
+      "label": "Trust Badge Font Size (Mobile)",
+      "default": 12
+    },
+    {
+      "type": "select",
+      "id": "trust_badge_font_weight",
+      "label": "Trust Badge Font Weight",
+      "options": [
+        { "value": "400", "label": "Regular (400)" },
+        { "value": "500", "label": "Medium (500)" },
+        { "value": "600", "label": "Semi-bold (600)" },
+        { "value": "700", "label": "Bold (700)" }
+      ],
+      "default": "500"
+    },
+    {
+      "type": "select",
+      "id": "trust_badge_alignment_desktop",
+      "label": "Trust Badge Alignment (Desktop)",
+      "options": [
+        { "value": "inherit", "label": "Inherit section alignment" },
+        { "value": "left", "label": "Left" },
+        { "value": "center", "label": "Center" },
+        { "value": "right", "label": "Right" }
+      ],
+      "default": "inherit"
+    },
+    {
+      "type": "select",
+      "id": "trust_badge_alignment_mobile",
+      "label": "Trust Badge Alignment (Mobile)",
+      "options": [
+        { "value": "inherit", "label": "Inherit section alignment" },
+        { "value": "left", "label": "Left" },
+        { "value": "center", "label": "Center" },
+        { "value": "right", "label": "Right" }
+      ],
+      "default": "inherit"
+    },
+    {
+      "type": "color",
+      "id": "trust_badge_color",
+      "label": "Trust Badge Color",
+      "default": "#ffffff"
     },
     {
       "type": "header",
@@ -448,6 +555,16 @@
   {% assign guarantee_align_mobile = section.settings.text_alignment_mobile | default: section.settings.text_alignment %}
 {% endif %}
 
+{% assign trust_badge_align_desktop = section.settings.trust_badge_alignment_desktop | default: 'inherit' %}
+{% if trust_badge_align_desktop == 'inherit' %}
+  {% assign trust_badge_align_desktop = section.settings.text_alignment %}
+{% endif %}
+
+{% assign trust_badge_align_mobile = section.settings.trust_badge_alignment_mobile | default: 'inherit' %}
+{% if trust_badge_align_mobile == 'inherit' %}
+  {% assign trust_badge_align_mobile = section.settings.text_alignment_mobile | default: section.settings.text_alignment %}
+{% endif %}
+
 <style>
   .hero-section {
     position: relative;
@@ -455,8 +572,7 @@
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
-    {% comment %} display: flex; {% endcomment %}
-    display: none;
+    display: flex;
     align-items: center;
     overflow: hidden;
   }
@@ -524,31 +640,33 @@
 
   .rating-text {
     font-size: 14px;
-    font-weight: 600;
+    font-weight: 500;
     letter-spacing: 1.5px;
     text-transform: uppercase;
     opacity: 0.95;
+    font-family: Futura;
   }
 
   .hero-headline {
     font-size: {{ section.settings.headline_font_size_desktop | default: 50 }}px;
-    font-family: Futura, " sans-serif";
     font-weight: {{ section.settings.headline_font_weight | default: 600 }};
     line-height: 1.1;
     margin: 0;
     text-transform: capitalize;
     color: {{ section.settings.text_color }};
     text-align: {{ headline_align_desktop }};
+    font-family: Futura;
   }
 
   .hero-subheadline {
     font-size: {{ section.settings.subheadline_font_size_desktop | default: 20 }}px;
     line-height: 1.6;
-    margin: 1rem 0;
+    margin: 0;
     opacity: 0.95;
     font-weight: {{ section.settings.subheadline_font_weight | default: 600 }};
-    font-family: Futura, " sans-serif";
     text-align: {{ subheadline_align_desktop }};
+    font-family: Futura;
+    font-weight: 500;
   }
 
   .hero-buttons {
@@ -567,18 +685,19 @@
 
   .hero-button {
     display: inline-block;
-    padding: 8px 36px;
-    font-size: 25px;
+    padding: 16px 36px;
+    font-size: 16px;
     font-weight: 700;
     letter-spacing: 1.2px;
     text-transform: uppercase;
     text-decoration: none;
-    border-radius: 4px;
+    border-radius: 0px;
     transition: all 0.3s ease;
     cursor: pointer;
     border: none;
     width: 80%;
     text-align: center;
+    font-family: Futura;
   }
 
   .button-primary {
@@ -603,6 +722,43 @@
     opacity: 0.9;
   }
 
+  .hero-trust-badge {
+    {% comment %} display: flex; {% endcomment %}
+    display: none;
+    align-items: center;
+    gap: 8px;
+    margin-top: 4px;
+    color: {{ section.settings.trust_badge_color }};
+    text-align: {{ trust_badge_align_desktop }};
+    {%- if trust_badge_align_desktop == 'center' -%}
+      justify-content: center;
+    {%- elsif trust_badge_align_desktop == 'right' -%}
+      justify-content: flex-end;
+    {%- else -%}
+      justify-content: flex-start;
+    {%- endif -%}
+    width: 80%;
+  }
+
+  .trust-badge-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .trust-badge-icon svg {
+    width: {{ section.settings.trust_badge_icon_size | default: 24 }}px;
+    height: {{ section.settings.trust_badge_icon_size | default: 24 }}px;
+    fill: currentColor;
+  }
+
+  .trust-badge-text {
+    font-size: {{ section.settings.trust_badge_font_size_desktop | default: 14 }}px;
+    font-weight: {{ section.settings.trust_badge_font_weight | default: 500 }};
+    font-family: Futura;
+    opacity: 0.95;
+  }
+
   .hero-guarantee {
     font-size: {{ section.settings.guarantee_font_size_desktop | default: 16 }}px;
     font-weight: {{ section.settings.guarantee_font_weight | default: 700 }};
@@ -621,11 +777,14 @@
     {%- if section.settings.background_image_mobile -%}
       [data-section-id="{{ section.id }}"].hero-section {
         background-image: url('{{ section.settings.background_image_mobile | image_url: width: 1200 }}');
+        background-size: 450px;
+        background-position-y: -100px;
+        background-position-x: 0px;
       }
     {%- endif -%}
 
     .hero-container {
-      padding: 600px 20px 40px 20px;
+      padding: 300px 20px 40px 20px;
     }
 
     .hero-content {
@@ -646,13 +805,21 @@
 
     .hero-headline {
       font-size: {{ section.settings.headline_font_size_mobile | default: section.settings.headline_font_size_desktop | default: 30 }}px;
-      margin-bottom: 20px;
+      margin-bottom: 0px;
       text-align: {{ headline_align_mobile }};
+      font-family: Futura;
     }
 
     .hero-subheadline {
       font-size: {{ section.settings.subheadline_font_size_mobile | default: section.settings.subheadline_font_size_desktop | default: 18 }}px;
       text-align: {{ subheadline_align_mobile }};
+      margin: 0px;
+      font-family: Futura; 
+      font-weight: 500;
+    }
+
+    .hero-subheadline p{
+      margin: 0px;
     }
 
     .hero-buttons {
@@ -676,6 +843,23 @@
 
     .rating-text {
       font-size: 12px;
+      font-family: Futura;
+    }
+
+    .hero-trust-badge {
+      text-align: {{ trust_badge_align_mobile }};
+      {%- if trust_badge_align_mobile == 'center' -%}
+        justify-content: center;
+      {%- elsif trust_badge_align_mobile == 'right' -%}
+        justify-content: flex-end;
+      {%- else -%}
+        justify-content: flex-start;
+      {%- endif -%}
+      width: 100%;
+    }
+
+    .trust-badge-text {
+      font-size: {{ section.settings.trust_badge_font_size_mobile | default: section.settings.trust_badge_font_size_desktop | default: 12 }}px;
     }
 
     .hero-guarantee {

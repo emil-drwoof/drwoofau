@@ -127,17 +127,19 @@
                     {% assign itemImage = false %}
                   {% endif %}
                   <div class="cart__product-image-wrap">
-                  
-                    <a
-                      href="{% unless item.id == 45814306570498 or item.id == 43272026063106 or item.id == 43272054112514 or item.id == 43048672166146 or item.id == 43096458625282 %}{{ item.url }}{% else %}#{% endunless %}"
-                      class="cart__product-image lazypreload{% if itemImage %} lazyload{% endif %}"
-                      data-cart-item-href
-                      data-cart-item-background-image
-                      data-sizes="auto"
-                      {% if itemImage %}
-                        data-bgset="{% include 'bgset', image: item.image %}"
-                      {% endif %}
-                    ></a>
+
+                    <a href="{% unless item.id == 45814306570498 or item.id == 43272026063106 or item.id == 43272054112514 or item.id == 43048672166146 or item.id == 43096458625282 %}{{ item.url }}{% else %}#{% endunless %}"
+                    class="cart__product-image"
+                    data-cart-item-href
+                  >
+                    {% if itemImage %}
+                      <img 
+                        src="{{ item.image | img_url: '300x' }}" 
+                        alt="{{ item.title | escape }}"
+                        loading="lazy"
+                      >
+                    {% endif %}
+                  </a>
                   </div>
   
                   <div class="ajaxcart__item-content">
@@ -543,107 +545,91 @@
         endif
       endif
     -%}
-
   {% when 'USD' %}
     {% assign threshold_setting = settings.us_shipping_treshold %}
     {% assign free_shipping_treshold = threshold_setting | round %}
-    {% assign shipping_fee = settings.us_shipping_cost | times: 100 | round %}
+    {% assign shipping_fee = settings.us_shipping_cost | | times: 100 | round %}
 
   {% when 'GBP' %}
     {% assign threshold_setting = settings.gb_shipping_treshold %}
     {% assign free_shipping_treshold = threshold_setting | round %}
-    {% assign shipping_fee = settings.gb_shipping_cost | times: 100 | round %}
+    {% assign shipping_fee = settings.uk_shipping_cost |  times: 100 | round %}
 
   {% when 'CAD' %}
     {% assign threshold_setting = settings.ca_shipping_treshold %}
     {% assign free_shipping_treshold = threshold_setting | round %}
-    {% assign shipping_fee = settings.ca_shipping_cost | times: 100 | round %}
+    {% assign shipping_fee = settings.ca_shipping_cost |  times: 100 | round %}
 
   {% when 'EUR' %}
     {% assign threshold_setting = settings.eu_shipping_treshold %}
     {% assign free_shipping_treshold = threshold_setting | round %}
-    {% assign shipping_fee = settings.eu_shipping_cost | times: 100 | round %}
-
+    {% assign shipping_fee = settings.eu_shipping_cost |  times: 100 | round %}
   {% when 'BHD' %}
     {% assign threshold_setting = settings.bh_shipping_treshold %}
     {% assign free_shipping_treshold = threshold_setting | round %}
     {% assign shipping_fee = settings.bh_shipping_cost | times: 100 | round %}
-
   {% when 'DKK' %}
     {% assign threshold_setting = settings.dk_shipping_treshold %}
     {% assign free_shipping_treshold = threshold_setting | round %}
     {% assign shipping_fee = settings.dk_shipping_cost | times: 100 | round %}
-
   {% when 'INR' %}
     {% assign threshold_setting = settings.in_shipping_treshold %}
     {% assign free_shipping_treshold = threshold_setting | round %}
     {% assign shipping_fee = settings.in_shipping_cost | times: 100 | round %}
-
   {% when 'JPY' %}
     {% assign threshold_setting = settings.jp_shipping_treshold %}
     {% assign free_shipping_treshold = threshold_setting | round %}
     {% assign shipping_fee = settings.jp_shipping_cost | times: 100 | round %}
-
   {% when 'KWD' %}
     {% assign threshold_setting = settings.kw_shipping_treshold %}
     {% assign free_shipping_treshold = threshold_setting | round %}
     {% assign shipping_fee = settings.kw_shipping_cost | times: 100 | round %}
-
   {% when 'MYR' %}
     {% assign threshold_setting = settings.my_shipping_treshold %}
     {% assign free_shipping_treshold = threshold_setting | round %}
     {% assign shipping_fee = settings.my_shipping_cost | times: 100 | round %}
-
   {% when 'OMR' %}
     {% assign threshold_setting = settings.om_shipping_treshold %}
     {% assign free_shipping_treshold = threshold_setting | round %}
     {% assign shipping_fee = settings.om_shipping_cost | times: 100 | round %}
-
   {% when 'PHP' %}
     {% assign threshold_setting = settings.ph_shipping_treshold %}
     {% assign free_shipping_treshold = threshold_setting | round %}
     {% assign shipping_fee = settings.ph_shipping_cost | times: 100 | round %}
-
   {% when 'QAR' %}
     {% assign threshold_setting = settings.qa_shipping_treshold %}
     {% assign free_shipping_treshold = threshold_setting | round %}
     {% assign shipping_fee = settings.qa_shipping_cost | times: 100 | round %}
-
   {% when 'SAR' %}
     {% assign threshold_setting = settings.sa_shipping_treshold %}
     {% assign free_shipping_treshold = threshold_setting | round %}
     {% assign shipping_fee = settings.sa_shipping_cost | times: 100 | round %}
-
   {% when 'KRW' %}
     {% assign threshold_setting = settings.kr_shipping_treshold %}
     {% assign free_shipping_treshold = threshold_setting | round %}
     {% assign shipping_fee = settings.kr_shipping_cost | times: 100 | round %}
-
   {% when 'SEK' %}
     {% assign threshold_setting = settings.se_shipping_treshold %}
     {% assign free_shipping_treshold = threshold_setting | round %}
     {% assign shipping_fee = settings.se_shipping_cost | times: 100 | round %}
-
   {% when 'TWD' %}
     {% assign threshold_setting = settings.tw_shipping_treshold %}
     {% assign free_shipping_treshold = threshold_setting | round %}
     {% assign shipping_fee = settings.tw_shipping_cost | times: 100 | round %}
-
   {% when 'THB' %}
     {% assign threshold_setting = settings.th_shipping_treshold %}
     {% assign free_shipping_treshold = threshold_setting | round %}
     {% assign shipping_fee = settings.th_shipping_cost | times: 100 | round %}
-
   {% when 'AED' %}
     {% assign threshold_setting = settings.ae_shipping_treshold %}
     {% assign free_shipping_treshold = threshold_setting | round %}
     {% assign shipping_fee = settings.ae_shipping_cost | times: 100 | round %}
-
+    
   {% else %}
-    {% assign threshold_setting = settings.shipping_treshold %}
+    {% assign threshold_setting = settings.us_shipping_treshold %}
     {% assign free_shipping_treshold = threshold_setting | round %}
 
-    {% assign shipping_fee = base_shipping_cents | round %}
+    {% assign shipping_fee = settings.us_shipping_cost |  times: 100 | round %}
 {% endcase %}
 
       <div class="cart__details" style="border-bottom: 1px solid #ebebeb;margin-bottom: 17px;padding-bottom: 16px;">
@@ -800,7 +786,9 @@
   
 </div>
 <style>
-  
+  .cart__product-image{
+    padding-top:0 !important;
+  }
   /* thiscode */
   {% if cart.item_count == 0 %}
           .cart__empty-text{
@@ -889,59 +877,57 @@
 }
 </style>
 <script>
-$(document).ready(function(){
-  $(".cart__remove").on("click",function(){
-        
-  })
+document.addEventListener('DOMContentLoaded', function() {
+  document.querySelectorAll(".cart__remove").forEach(function(el) {
+    el.addEventListener("click", function() {
+      
+    });
+  });
 
   
-window.setInterval(function () {
+  window.setInterval(function () {
     let t, a = 0;
 
-    $(".cart__item").each(function () {
-        t = $(this).find(".qb-price-item").html();
-        t = parseInt(t.replace("$", ""));
-        a += t;
+    document.querySelectorAll(".cart__item").forEach(function(item) {
+      t = item.querySelector(".qb-price-item").innerHTML;
+      t = parseInt(t.replace("$", ""));
+      a += t;
     });
 
-    let $totalin = parseInt($(".set_range").val());
+    let totalin = parseInt(document.querySelector(".set_range").value);
 
-    if ($totalin >= {{ free_shipping_treshold }}) {
-        $("#cartshipping")
-            .html("<span style='text-decoration: line-through; font-weight: 400;'>{{ shipping_fee | money }}</span> Free")
-            .css({
-                padding: '4px 12px',
-                background: '#000',
-                color: '#fff',
-                borderRadius: '4px'
-            });
+    if (totalin >= {{ free_shipping_treshold }}) {
+      const cartshipping = document.querySelector("#cartshipping");
+      cartshipping.innerHTML = "<span style='text-decoration: line-through; font-weight: 400;'>{{ shipping_fee | money }}</span> Free";
+      cartshipping.style.padding = '4px 12px';
+      cartshipping.style.background = '#000';
+      cartshipping.style.color = '#fff';
+      cartshipping.style.borderRadius = '4px';
     }
 
-}, 2000);
+  }, 2000);
 
-// Initial run (without waiting 2s)
-let t, a = 0;
+  // Initial run (without waiting 2s)
+  let t, a = 0;
 
-$(".cart__item").each(function () {
-    t = $(this).find(".qb-price-item").html();
+  document.querySelectorAll(".cart__item").forEach(function(item) {
+    t = item.querySelector(".qb-price-item").innerHTML;
     t = parseInt(t.replace("$", ""));
     a += t;
+  });
+  let totalin = parseInt(document.querySelector(".set_range").value);
+
+  if (totalin >= {{ free_shipping_treshold }}) {
+    const cartshipping = document.querySelector("#cartshipping");
+    cartshipping.innerHTML = "<span style='text-decoration: line-through; font-weight: 400;'>{{ shipping_fee | money }}</span> Free";
+    cartshipping.style.padding = '4px 12px';
+    cartshipping.style.background = '#000';
+    cartshipping.style.color = '#fff';
+    cartshipping.style.borderRadius = '4px';
+  }
+
+
 });
-let $totalin = parseInt($(".set_range").val());
-
-if ($totalin >= {{ free_shipping_treshold }}) {
-    $("#cartshipping")
-        .html("<span style='text-decoration: line-through; font-weight: 400;'>{{ shipping_fee | money }}</span> Free")
-        .css({
-            padding: '4px 12px',
-            background: '#000',
-            color: '#fff',
-            borderRadius: '4px'
-        });
-}
-
-
-})
 
 
 document.addEventListener("DOMContentLoaded", function() {
@@ -957,6 +943,4 @@ document.addEventListener("DOMContentLoaded", function() {
     el.innerHTML = updated;
   });
 });
-
-
 </script>

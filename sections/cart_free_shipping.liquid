@@ -125,15 +125,14 @@
       endif
     endif
   -%}
-  
   {% assign shipping_cost = base_shipping_cents | round %}
   {% assign total_cart = cart.total_price | plus: shipping_cost | divided_by: 100 | format: "%.2f" %}
 {% endif %}
 
 {% assign totalrange = cart.total_price | divided_by: 100 | format: "%.2f" %}
 
-<input type="hidden" class="set_cart" value="{{ total_cart }}" />
-<input type="hidden" class="set_range" value="{{ totalrange }}" />
+<input type="hidden" class="set_cart" value="{{ total_cart }}">
+<input type="hidden" class="set_range" value="{{ totalrange }}">
 
 {%- for block in section.blocks -%}
   {% assign cartamount = cart.original_total_price | divided_by: 100 %}
@@ -163,7 +162,6 @@
         endif
       endif
     -%}
-    
     {% if cart.currency.iso_code == 'USD' %}
       {% assign firstindex = settings.us_shipping_treshold %}
     {% elsif cart.currency.iso_code == 'CAD' %}
@@ -209,7 +207,6 @@
     {% elsif cart.currency.iso_code == 'HKD'%}
       {% assign firstindex = shipping_treshold %}
     {% endif %}
-
     {% assign firstmsg = block.settings.spendamountmsg %}
   {% endif %}
 
@@ -260,7 +257,6 @@
     {% elsif cart.currency.iso_code == 'HKD'%}
       {% assign lastindex = block.settings.spendamount | times: 1.0 | times: threshold_hkd_rate | round %}
     {% endif %}
-
     {% assign lastmsg = block.settings.spendamountmsg %}
   {% endif %}
 {% endfor %}
@@ -319,7 +315,6 @@
 
 {% assign xxxs = firstindex | times: 100.0 %}
 {% assign firstpos = xxxs | divided_by: lastindex %}
-
 {% assign perc = cartamount | divided_by: lastindex | times: 100 %}
 {% assign cartamount = cart.original_total_price | divided_by: 100 %}
 {% if cartamount > lastindex %}
@@ -347,12 +342,18 @@
   </div>
   <div class="progress-text">
     <span class="notif-inc">
-      Add <strong>{% if cart.currency.iso_code == 'HKD'%}HK${% elsif cart.currency.iso_code == 'GBP' %}£{% elsif cart.currency.iso_code == 'EUR' %}€{% else %}${% endif %}<span class="amount-needed"></span></strong> more to cart to get <b>{{ firstmsg }}</b>
+      Add <strong>{% case cart.currency.iso_code %}{% when 'AUD' %}${% when 'HKD' %}HK${% when 'NZD' %}NZ${% when 'SGD' %}S${% when 'CAD' %}CA${% when 'GBP' %}£{% when 'EUR' %}€{% when 'USD' %}${% when 'BHD' %}BD{% when 'DKK' %}kr{% when 'INR' %}₹{% when 'JPY' %}¥{% when 'KWD' %}KD{% when 'MYR' %}RM{% when 'OMR' %}OMR{% when 'PHP' %}₱{% when 'QAR' %}QR{% when 'SAR' %}SR{% when 'KRW' %}₩{% when 'SEK' %}kr{% when 'TWD' %}NT${% when 'THB' %}฿{% when 'AED' %}AED{% else %}${% endcase %}<span class="amount-needed"></span></strong> more to cart to get <b>{{ firstmsg }}</b>
     </span>
-    <span class="notif-com1">
-      Congratulations! You get FREE <b>Standard Shipping</b> and <b>FREE
-      {% if cart.currency.iso_code == 'HKD'%}HK$208{% elsif cart.currency.iso_code == 'GBP' %}£25{% elsif cart.currency.iso_code == 'EUR' %}€30{% elsif cart.currency.iso_code == 'CAD' %}CA$50{% else %}$40{% endif %} Gift Card</b>
-    </span>
+    {% if cart.currency.iso_code == 'USD' or cart.currency.iso_code == 'AUD' or cart.currency.iso_code == 'NZD' %}
+        <span class="notif-com1">
+          Congratulations! You get FREE <b>Standard Shipping</b> and <b>FREE
+          {% if cart.currency.iso_code == 'HKD'%}HK$208{% elsif cart.currency.iso_code == 'GBP' %}£25{% elsif cart.currency.iso_code == 'EUR' %}€30{% elsif cart.currency.iso_code == 'CAD' %}CA$50{% else %}$40{% endif %} Gift Card</b>
+        </span>
+    {% else %}
+        <span class="notif-com1">
+          Congratulations! You get FREE <b>Standard Shipping</b> 
+        </span>    
+    {% endif %}
   </div>
 </div>
 
@@ -394,7 +395,7 @@
 
   {% assign total_sets = women_sets | plus: men_sets %}
 
-  <input type="hidden" class="set_count" value="{{ total_sets }}" />
+  <input type="hidden" class="set_count" value="{{ total_sets }}">
   <div class="offer">Scrubs Offer</div>
   <div class="progress-bar">
     <div class="milestone top-mon miltwo">2 Sets of Scrubs</div>
@@ -474,359 +475,648 @@
 </div>
 
 <script>
-  $(document).ready(function() {
-    $(".another").hide();
+  function updateCartProgress() {
+    // Check if required elements exist
+    if (!document.querySelector(".totalin") || !document.querySelector(".totalin_hidden")) {
+      console.error("Required cart elements not found");
+      return;
+    }
 
-    var totalcart = $(".totalin").html();
-    var totalxxd = $(".totalin_hidden").html();
-    var totalfk = $(".totalin_hidden").html();
-    totalxxd = parseFloat(totalxxd.replace(/[^0-9.]/g, ''));
-    totalcart = parseFloat(totalcart.replace(/[^0-9.]/g, ''));
-    totalfk = Number(totalfk.replace('$', ''));
+    document.querySelectorAll(".another").forEach(el => el.style.display = 'none');
+
+    function parsePrice(priceStr) {
+      let cleaned = priceStr.replace(/[^0-9.,]/g, '');
+      let lastComma = cleaned.lastIndexOf(',');
+      let lastPeriod = cleaned.lastIndexOf('.');
+      
+      if (lastComma > lastPeriod) {
+        return parseFloat(cleaned.replace(/\./g, '').replace(',', '.'));
+      } else {
+        return parseFloat(cleaned.replace(/,/g, ''));
+      }
+    }
+
+    var totalcart = parsePrice(document.querySelector(".totalin").innerHTML);
+    var totalxxd = parsePrice(document.querySelector(".totalin_hidden").innerHTML);
+    var totalfk = parsePrice(document.querySelector(".totalin_hidden").innerHTML);
     var progress = 0;
-    progress = totalxxd - 10;
-
-    progressPercentage1 = (progress / {{ lastindex }}) * 100;
-
+    progress = totalxxd;
+    {% if cart.currency.iso_code == 'USD' or cart.currency.iso_code == 'AUD' or cart.currency.iso_code == 'NZD' %}
+        var progressPercentage1 = (progress / {{ lastindex }}) * 100;
+    {% else %}
+        var progressPercentage1 = (progress / {{ firstindex }}) * 100;
+    {% endif %}
     // Clamp percentage between 0 and 100
     if (progressPercentage1 < 0) progressPercentage1 = 0;
     if (progressPercentage1 > 100) progressPercentage1 = 100;
+    {% if cart.currency.iso_code == 'USD' or cart.currency.iso_code == 'AUD' or cart.currency.iso_code == 'NZD' %}
+        {% if cart.currency.iso_code == 'USD' %}
+          if (totalcart >= 350) {
+        {% elsif cart.currency.iso_code == 'CAD' %}
+          if (totalcart >= 450) {
+        {% elsif cart.currency.iso_code == 'EUR' %}
+          if (totalcart >= 350) {
+        {% elsif cart.currency.iso_code == 'GBP' %}
+          if (totalcart >= 220) {
+        {% elsif cart.currency.iso_code == 'BHD' %}
+          if (totalcart >= 350) {
+        {% elsif cart.currency.iso_code == 'DKK' %}
+          if (totalcart >= 350) {
+        {% elsif cart.currency.iso_code == 'INR' %}
+          if (totalcart >= 350) {
+        {% elsif cart.currency.iso_code == 'JPY' %}
+          if (totalcart >= 350) {
+        {% elsif cart.currency.iso_code == 'KWD' %}
+          if (totalcart >= 350) {
+        {% elsif cart.currency.iso_code == 'MYR' %}
+          if (totalcart >= 350) {
+        {% elsif cart.currency.iso_code == 'OMR' %}
+          if (totalcart >= 350) {
+        {% elsif cart.currency.iso_code == 'PHP' %}
+          if (totalcart >= 350) {
+        {% elsif cart.currency.iso_code == 'QAR' %}
+          if (totalcart >= 350) {
+        {% elsif cart.currency.iso_code == 'SAR' %}
+          if (totalcart >= 350) {
+        {% elsif cart.currency.iso_code == 'KRW' %}
+          if (totalcart >= 350) {
+        {% elsif cart.currency.iso_code == 'SEK' %}
+          if (totalcart >= 350) {
+        {% elsif cart.currency.iso_code == 'TWD' %}
+          if (totalcart >= 350) {
+        {% elsif cart.currency.iso_code == 'THB' %}
+          if (totalcart >= 350) {
+        {% elsif cart.currency.iso_code == 'AED' %}
+          if (totalcart >= 350) {
+        {% elsif cart.currency.iso_code == 'SGD' %}
+          var tempval = 350 * {{ threshold_sgd_rate }};
+          if (totalcart >= tempval) {
+        {% elsif cart.currency.iso_code == 'NZD' %}
+          var tempval = 350 * {{ threshold_nzd_rate }};
+          if (totalcart >= tempval) {
+        {% elsif cart.currency.iso_code == 'HKD'%}
+          var tempval = 350 * {{ threshold_hkd_rate }};
+          if (totalcart >= tempval) {
+        {% else %}
+          if (totalcart >= 350) {
+        {% endif %}
 
-    {% if cart.currency.iso_code == 'USD' %}
-      if (totalcart >= 350) {
-    {% elsif cart.currency.iso_code == 'CAD' %}
-      if (totalcart >= 450) {
-    {% elsif cart.currency.iso_code == 'EUR' %}
-      if (totalcart >= 280) {
-    {% elsif cart.currency.iso_code == 'GBP' %}
-      if (totalcart >= 220) {
-    {% elsif cart.currency.iso_code == 'BHD' %}
-      if (totalcart >= 350) {
-    {% elsif cart.currency.iso_code == 'DKK' %}
-      if (totalcart >= 350) {
-    {% elsif cart.currency.iso_code == 'INR' %}
-      if (totalcart >= 350) {
-    {% elsif cart.currency.iso_code == 'JPY' %}
-      if (totalcart >= 350) {
-    {% elsif cart.currency.iso_code == 'KWD' %}
-      if (totalcart >= 350) {
-    {% elsif cart.currency.iso_code == 'MYR' %}
-      if (totalcart >= 350) {
-    {% elsif cart.currency.iso_code == 'OMR' %}
-      if (totalcart >= 350) {
-    {% elsif cart.currency.iso_code == 'PHP' %}
-      if (totalcart >= 350) {
-    {% elsif cart.currency.iso_code == 'QAR' %}
-      if (totalcart >= 350) {
-    {% elsif cart.currency.iso_code == 'SAR' %}
-      if (totalcart >= 350) {
-    {% elsif cart.currency.iso_code == 'KRW' %}
-      if (totalcart >= 350) {
-    {% elsif cart.currency.iso_code == 'SEK' %}
-      if (totalcart >= 350) {
-    {% elsif cart.currency.iso_code == 'TWD' %}
-      if (totalcart >= 350) {
-    {% elsif cart.currency.iso_code == 'THB' %}
-      if (totalcart >= 350) {
-    {% elsif cart.currency.iso_code == 'AED' %}
-      if (totalcart >= 350) {
-    {% elsif cart.currency.iso_code == 'SGD' %}
-      $tempval = 350 * {{ threshold_sgd_rate }};
-      if (totalcart >= $tempval) {
-    {% elsif cart.currency.iso_code == 'NZD' %}
-      $tempval = 350 * {{ threshold_nzd_rate }};
-      if (totalcart >= $tempval) {
-    {% elsif cart.currency.iso_code == 'HKD'%}
-      $tempval = 350 * {{ threshold_hkd_rate }};
-      if (totalcart >= $tempval) {
+          var notifInc = document.querySelector('.off1 .notif-inc');
+          var notifCom1 = document.querySelector('.off1 .notif-com1');
+          var progressBar = document.querySelector('.off1 .progress');
+          var progressCircle = document.querySelector('.off1 .progress-circle');
+
+          if (notifInc) notifInc.style.display = 'none';
+          if (notifCom1) notifCom1.style.display = 'block';
+          if (progressBar) progressBar.style.width = '100%';
+          if (progressCircle) progressCircle.style.left = 'calc(100%)';
+
+        } else {
+          /* free shipping */
+          {% if cart.currency.iso_code == 'USD' %}
+            if (totalcart < {{ settings.us_shipping_treshold }}) {
+          {% elsif cart.currency.iso_code == 'CAD' %}
+            if (totalcart < {{ settings.ca_shipping_treshold }}) {
+          {% elsif cart.currency.iso_code == 'EUR' %}
+            if (totalcart < {{ settings.eu_shipping_treshold }}) {
+          {% elsif cart.currency.iso_code == 'GBP' %}
+            if (totalcart < {{ settings.gb_shipping_treshold }}) {
+          {% elsif cart.currency.iso_code == 'BHD' %}
+            if (totalcart < {{ settings.bh_shipping_treshold }}) {
+          {% elsif cart.currency.iso_code == 'DKK' %}
+            if (totalcart < {{ settings.dk_shipping_treshold }}) {
+          {% elsif cart.currency.iso_code == 'INR' %}
+            if (totalcart < {{ settings.in_shipping_treshold }}) {
+          {% elsif cart.currency.iso_code == 'JPY' %}
+            if (totalcart < {{ settings.jp_shipping_treshold }}) {
+          {% elsif cart.currency.iso_code == 'KWD' %}
+            if (totalcart < {{ settings.kw_shipping_treshold }}) {
+          {% elsif cart.currency.iso_code == 'MYR' %}
+            if (totalcart < {{ settings.my_shipping_treshold }}) {
+          {% elsif cart.currency.iso_code == 'OMR' %}
+            if (totalcart < {{ settings.om_shipping_treshold }}) {
+          {% elsif cart.currency.iso_code == 'PHP' %}
+            if (totalcart < {{ settings.ph_shipping_treshold }}) {
+          {% elsif cart.currency.iso_code == 'QAR' %}
+            if (totalcart < {{ settings.qa_shipping_treshold }}) {
+          {% elsif cart.currency.iso_code == 'SAR' %}
+            if (totalcart < {{ settings.sa_shipping_treshold }}) {
+          {% elsif cart.currency.iso_code == 'KRW' %}
+            if (totalcart < {{ settings.kr_shipping_treshold }}) {
+          {% elsif cart.currency.iso_code == 'SEK' %}
+            if (totalcart < {{ settings.se_shipping_treshold }}) {
+          {% elsif cart.currency.iso_code == 'TWD' %}
+            if (totalcart < {{ settings.tw_shipping_treshold }}) {
+          {% elsif cart.currency.iso_code == 'THB' %}
+            if (totalcart < {{ settings.th_shipping_treshold }}) {
+          {% elsif cart.currency.iso_code == 'AED' %}
+            if (totalcart < {{ settings.ae_shipping_treshold }}) {
+          {% elsif cart.currency.iso_code == 'HKD'%}
+            if (totalcart < {{ shipping_treshold }}) {
+          {% elsif cart.currency.iso_code == 'SGD' %}
+            if (totalcart < {{ shipping_treshold }}) {
+          {% elsif cart.currency.iso_code == 'NZD' %}
+            if (totalcart < {{ shipping_treshold }}) {
+          {% else %}
+            {%- liquid
+              assign shipping_treshold = settings.shipping_treshold
+              assign ig_test_groups = cart.attributes.igTestGroups
+              # Override shipping threshold based on test group
+              if ig_test_groups != blank
+                # Test Group: $125 threshold
+                if ig_test_groups contains '5ea693784504'
+                  assign shipping_treshold = 125
+                endif
+                # Test Group: $165 threshold
+                if ig_test_groups contains '2b8332f4be81'
+                  assign shipping_treshold = 165
+                endif
+              endif
+            -%}
+            if (totalcart < {{ shipping_treshold }}) {
+          {% endif %}
+
+            var notifInc = document.querySelector('.off1 .notif-inc');
+            var notifCom1 = document.querySelector('.off1 .notif-com1');
+            var progressBar = document.querySelector('.off1 .progress');
+            var progressCircle = document.querySelector('.off1 .progress-circle');
+            var amountNeededEl = document.querySelector('.off1 .amount-needed');
+
+            if (totalfk == 0) {
+              if (notifInc) notifInc.style.display = 'none';
+            } else {
+              if (notifInc) notifInc.style.display = 'block';
+            }
+            if (notifCom1) notifCom1.style.display = 'none';
+            if (progressBar) progressBar.style.width = progressPercentage1 + '%';
+            if (progressCircle) progressCircle.style.left = 'calc(' + progressPercentage1 + '% )';
+
+            var amountNeeded = {{ firstindex }} - totalxxd;
+            if (amountNeededEl) amountNeededEl.innerHTML = amountNeeded.toFixed(2);
+
+            console.log("eto na this {{ firstindex  }} - " + totalfk);
+
+          } else {
+
+            var notifInc = document.querySelector('.off1 .notif-inc');
+            var notifCom1 = document.querySelector('.off1 .notif-com1');
+            var progressBar = document.querySelector('.off1 .progress');
+            var progressCircle = document.querySelector('.off1 .progress-circle');
+            var notifIncB = document.querySelector('.off1 .notif-inc b');
+            var amountNeededEl = document.querySelector('.off1 .amount-needed');
+
+            if (notifInc) notifInc.style.display = 'block';
+            if (notifCom1) notifCom1.style.display = 'none';
+            if (progressBar) progressBar.style.width = progressPercentage1 + '%';
+            if (progressCircle) progressCircle.style.left = 'calc(' + progressPercentage1 + '% )';
+            
+            var amountNeeded = {{ lastindex }} - totalcart;
+            {% if cart.currency.iso_code == 'HKD'%}
+              if (notifIncB) notifIncB.innerHTML = "FREE HK$208 Gift Card";
+            {% elsif cart.currency.iso_code == 'GBP' %}
+              if (notifIncB) notifIncB.innerHTML = "FREE £25 Gift Card";
+            {% elsif cart.currency.iso_code == 'EUR' %}
+              if (notifIncB) notifIncB.innerHTML = "FREE €30 Gift Card";
+            {% elsif cart.currency.iso_code == 'CAD' %}
+              if (notifIncB) notifIncB.innerHTML = "FREE CA$50 Gift Card";
+            {% else %}
+              if (notifIncB) notifIncB.innerHTML = "FREE $40 Gift Card";
+            {% endif %}
+            if (amountNeededEl) amountNeededEl.innerHTML = amountNeeded.toFixed(2);
+          }
+        }
+
     {% else %}
-      if (totalcart >= 350) {
+            /* no free shipping */
+            {% if cart.currency.iso_code == 'USD' %}
+              if (totalfk < {{ settings.us_shipping_treshold }}) {
+            {% elsif cart.currency.iso_code == 'CAD' %}
+              if (totalfk < {{ settings.ca_shipping_treshold }}) {
+            {% elsif cart.currency.iso_code == 'EUR' %}
+              if (totalfk < {{ settings.eu_shipping_treshold }}) {
+            {% elsif cart.currency.iso_code == 'GBP' %}
+              if (totalfk < {{ settings.gb_shipping_treshold }}) {
+            {% elsif cart.currency.iso_code == 'BHD' %}
+              if (totalfk < {{ settings.bh_shipping_treshold }}) {
+            {% elsif cart.currency.iso_code == 'DKK' %}
+              if (totalfk < {{ settings.dk_shipping_treshold }}) {
+            {% elsif cart.currency.iso_code == 'INR' %}
+              if (totalfk < {{ settings.in_shipping_treshold }}) {
+            {% elsif cart.currency.iso_code == 'JPY' %}
+              if (totalfk < {{ settings.jp_shipping_treshold }}) {
+            {% elsif cart.currency.iso_code == 'KWD' %}
+              if (totalfk < {{ settings.kw_shipping_treshold }}) {
+            {% elsif cart.currency.iso_code == 'MYR' %}
+              if (totalfk < {{ settings.my_shipping_treshold }}) {
+            {% elsif cart.currency.iso_code == 'OMR' %}
+              if (totalfk < {{ settings.om_shipping_treshold }}) {
+            {% elsif cart.currency.iso_code == 'PHP' %}
+              if (totalfk < {{ settings.ph_shipping_treshold }}) {
+            {% elsif cart.currency.iso_code == 'QAR' %}
+              if (totalfk < {{ settings.qa_shipping_treshold }}) {
+            {% elsif cart.currency.iso_code == 'SAR' %}
+              if (totalfk < {{ settings.sa_shipping_treshold }}) {
+            {% elsif cart.currency.iso_code == 'KRW' %}
+              if (totalfk < {{ settings.kr_shipping_treshold }}) {
+            {% elsif cart.currency.iso_code == 'SEK' %}
+              if (totalfk < {{ settings.se_shipping_treshold }}) {
+            {% elsif cart.currency.iso_code == 'TWD' %}
+              if (totalfk < {{ settings.tw_shipping_treshold }}) {
+            {% elsif cart.currency.iso_code == 'THB' %}
+              if (totalfk < {{ settings.th_shipping_treshold }}) {
+            {% elsif cart.currency.iso_code == 'AED' %}
+              if (totalfk < {{ settings.ae_shipping_treshold }}) {
+            {% elsif cart.currency.iso_code == 'HKD' %}
+              if (totalfk < {{ shipping_treshold }}) {
+            {% elsif cart.currency.iso_code == 'SGD' %}
+              if (totalfk < {{ shipping_treshold }}) {
+            {% elsif cart.currency.iso_code == 'NZD' %}
+              if (totalfk < {{ shipping_treshold }}) {
+            {% else %}
+              {%- liquid
+                assign shipping_treshold = settings.shipping_treshold
+                assign ig_test_groups = cart.attributes.igTestGroups
+                # Override shipping threshold based on test group
+                if ig_test_groups != blank
+                  # Test Group: $125 threshold
+                  if ig_test_groups contains '5ea693784504'
+                    assign shipping_treshold = 125
+                  endif
+                  # Test Group: $165 threshold
+                  if ig_test_groups contains '2b8332f4be81'
+                    assign shipping_treshold = 165
+                  endif
+                endif
+              -%}
+              if (totalfk < {{ shipping_treshold }}) {
+            {% endif %}
+
+
+
+            var notifInc = document.querySelector('.off1 .notif-inc');
+            var notifCom1 = document.querySelector('.off1 .notif-com1');
+            var progressBar = document.querySelector('.off1 .progress');
+            var progressCircle = document.querySelector('.off1 .progress-circle');
+            var amountNeededEl = document.querySelector('.off1 .amount-needed');
+
+            if (totalfk == 0) {
+              if (notifInc) notifInc.style.display = 'none';
+            } else {
+              if (notifInc) notifInc.style.display = 'block';
+            }
+            if (notifCom1) notifCom1.style.display = 'none';
+            if (progressBar) progressBar.style.width = progressPercentage1 + '%';
+            if (progressCircle) progressCircle.style.left = 'calc(' + progressPercentage1 + '% )';
+
+            var amountNeeded = {{ firstindex }} - totalxxd;
+            if (amountNeededEl) amountNeededEl.innerHTML = amountNeeded.toFixed(2);
+
+            console.log("eto na this {{ firstindex  }} - " + totalfk);
+
+          } else {
+            /* free shipping */ 
+
+            var notifInc = document.querySelector('.off1 .notif-inc');
+            var notifCom1 = document.querySelector('.off1 .notif-com1');
+            var progressBar = document.querySelector('.off1 .progress');
+            var progressCircle = document.querySelector('.off1 .progress-circle');
+            var notifIncB = document.querySelector('.off1 .notif-inc b');
+            var amountNeededEl = document.querySelector('.off1 .amount-needed');
+
+            if (notifInc) notifInc.style.display = 'none';
+            if (notifCom1) notifCom1.style.display = 'block';
+            if (progressBar) progressBar.style.width = '100%';
+            if (progressCircle) progressCircle.style.left = 'calc(100%)';
+            
+            var amountNeeded = {{ lastindex }} - totalcart;
+            // if (amountNeededEl) amountNeededEl.innerHTML = amountNeeded.toFixed(2);
+          }        
     {% endif %}
 
-      $('.off1 .notif-inc').hide();
-      $('.off1 .notif-com1').show();
-      $('.off1 .progress').css('width', '100%');
-      $('.off1 .progress-circle').css('left', 'calc(100%)');
 
-    } else {
-
-      {% if cart.currency.iso_code == 'USD' %}
-        if (totalcart < {{ settings.us_shipping_treshold }}) {
-      {% elsif cart.currency.iso_code == 'CAD' %}
-        if (totalcart < {{ settings.ca_shipping_treshold }}) {
-      {% elsif cart.currency.iso_code == 'EUR' %}
-        if (totalcart < {{ settings.eu_shipping_treshold }}) {
-      {% elsif cart.currency.iso_code == 'GBP' %}
-        if (totalcart < {{ settings.gb_shipping_treshold }}) {
-      {% elsif cart.currency.iso_code == 'BHD' %}
-        if (totalcart < {{ settings.bh_shipping_treshold }}) {
-      {% elsif cart.currency.iso_code == 'DKK' %}
-        if (totalcart < {{ settings.dk_shipping_treshold }}) {
-      {% elsif cart.currency.iso_code == 'INR' %}
-        if (totalcart < {{ settings.in_shipping_treshold }}) {
-      {% elsif cart.currency.iso_code == 'JPY' %}
-        if (totalcart < {{ settings.jp_shipping_treshold }}) {
-      {% elsif cart.currency.iso_code == 'KWD' %}
-        if (totalcart < {{ settings.kw_shipping_treshold }}) {
-      {% elsif cart.currency.iso_code == 'MYR' %}
-        if (totalcart < {{ settings.my_shipping_treshold }}) {
-      {% elsif cart.currency.iso_code == 'OMR' %}
-        if (totalcart < {{ settings.om_shipping_treshold }}) {
-      {% elsif cart.currency.iso_code == 'PHP' %}
-        if (totalcart < {{ settings.ph_shipping_treshold }}) {
-      {% elsif cart.currency.iso_code == 'QAR' %}
-        if (totalcart < {{ settings.qa_shipping_treshold }}) {
-      {% elsif cart.currency.iso_code == 'SAR' %}
-        if (totalcart < {{ settings.sa_shipping_treshold }}) {
-      {% elsif cart.currency.iso_code == 'KRW' %}
-        if (totalcart < {{ settings.kr_shipping_treshold }}) {
-      {% elsif cart.currency.iso_code == 'SEK' %}
-        if (totalcart < {{ settings.se_shipping_treshold }}) {
-      {% elsif cart.currency.iso_code == 'TWD' %}
-        if (totalcart < {{ settings.tw_shipping_treshold }}) {
-      {% elsif cart.currency.iso_code == 'THB' %}
-        if (totalcart < {{ settings.th_shipping_treshold }}) {
-      {% elsif cart.currency.iso_code == 'AED' %}
-        if (totalcart < {{ settings.ae_shipping_treshold }}) {
-      {% elsif cart.currency.iso_code == 'HKD'%}
-        if (totalcart < {{ shipping_treshold }}) {
-      {% elsif cart.currency.iso_code == 'SGD' %}
-        if (totalcart < {{ shipping_treshold }}) {
-      {% elsif cart.currency.iso_code == 'NZD' %}
-        if (totalcart < {{ shipping_treshold }}) {
-      {% else %}
-        {%- liquid
-          assign shipping_treshold = settings.shipping_treshold
-          assign ig_test_groups = cart.attributes.igTestGroups
-          # Override shipping threshold based on test group
-          if ig_test_groups != blank
-            # Test Group: $125 threshold
-            if ig_test_groups contains '5ea693784504'
-              assign shipping_treshold = 125
-            endif
-            # Test Group: $165 threshold
-            if ig_test_groups contains '2b8332f4be81'
-              assign shipping_treshold = 165
-            endif
-          endif
-        -%}
-
-        if (totalcart < {{ shipping_treshold }}) {
-      {% endif %}
-
-        if (totalfk == 0) {
-          $('.off1 .notif-inc').hide();
-        } else {
-          $('.off1 .notif-inc').show();
-        }
-        $('.off1 .notif-com1').hide();
-        $('.off1 .progress').css('width', progressPercentage1 + '%');
-        $('.off1 .progress-circle').css('left', 'calc(' + progressPercentage1 + '% )');
-
-        var amountNeeded = {{ firstindex }} - totalxxd;
-        $('.off1 .amount-needed').html(amountNeeded.toFixed(2));
-
-        console.log("eto na this {{ firstindex  }} - " + totalfk);
-      } else {
-
-        $('.off1 .notif-inc').show();
-        $('.off1 .notif-com1').hide();
-        $('.off1 .progress').css('width', progressPercentage1 + '%');
-        $('.off1 .progress-circle').css('left', 'calc(' + progressPercentage1 + '% )');
-        var amountNeeded = {{ lastindex }} - totalcart;
-        {% if cart.currency.iso_code == 'HKD'%}
-          $('.off1 .notif-inc b').html("FREE HK$208 Gift Card");
-        {% elsif cart.currency.iso_code == 'GBP' %}
-          $('.off1 .notif-inc b').html("FREE £25 Gift Card");
-        {% elsif cart.currency.iso_code == 'EUR' %}
-          $('.off1 .notif-inc b').html("FREE €30 Gift Card");
-        {% elsif cart.currency.iso_code == 'CAD' %}
-          $('.off1 .notif-inc b').html("FREE CA$50 Gift Card");
-        {% else %}
-          $('.off1 .notif-inc b').html("FREE $40 Gift Card");
-        {% endif %}
-        $('.off1 .amount-needed').html(amountNeeded.toFixed(2));
-
-      }
-    }
-
-    $sockcount = 0;
-    $scrubcount = 0;
-    $capscount = 0;
-    $scrunchiescount = 0;
+    var sockcount = 0;
+    var scrubcount = 0;
+    var capscount = 0;
+    var scrunchiescount = 0;
     var carttype;
+    var proqty;
 
-    $('.cart__item').each(function() {
-      $proqty = $(this).find(".Custom_cart__quantity").val();
-      carttype = $(this).find(".protype").val();
+    // Get setCount ONCE, outside the loop
+    var setCountElement = document.querySelector(".set_count");
+    var setCount = setCountElement ? setCountElement.value : 0;
 
-      $setCount = $(".set_count").val();
+    document.querySelectorAll('.cart__item').forEach(function(item) {
+      var qtyElement = item.querySelector(".Custom_cart__quantity");
+      var typeElement = item.querySelector(".protype");
+      
+      if (!qtyElement || !typeElement) return;
+      
+      proqty = qtyElement.value;
+      carttype = typeElement.value;
+
       if (carttype == "Compression Socks") {
-        $sockcount = $sockcount + parseInt($proqty);
+        sockcount = sockcount + parseInt(proqty);
       }
 
       if (carttype == "Printed Pattern Scrub Tops") {
-        $capscount = $capscount + parseInt($proqty);
+        capscount = capscount + parseInt(proqty);
       }
 
       if (carttype == "Surgical Scrub Cap") {
-        $scrunchiescount = $scrunchiescount + parseInt($proqty);
+        scrunchiescount = scrunchiescount + parseInt(proqty);
       }
     });
 
-    if ($setCount > 0) {
-      $(".off2").show();
+    var off2 = document.querySelector(".off2");
+    if (setCount > 0 && off2) {
+      off2.style.display = 'block';
 
-      const progress = $('.off2 .progress');
-      const progressCircle = $('.off2 .progress-circle');
-      const notifInc = $('.off2 .notif-inc');
-      const notifCom1 = $('.off2 .notif-com1');
-      const notifCom2 = $('.off2 .notif-com2');
-      const amountNeeded = $('.off2 .amount-needed');
+      const progress = document.querySelector('.off2 .progress');
+      const progressCircle = document.querySelector('.off2 .progress-circle');
+      const notifInc = document.querySelector('.off2 .notif-inc');
+      const notifCom1 = document.querySelector('.off2 .notif-com1');
+      const notifCom2 = document.querySelector('.off2 .notif-com2');
 
-      notifInc.hide();
-      notifCom1.hide();
-      notifCom2.hide();
+      if (notifInc) notifInc.style.display = 'none';
+      if (notifCom1) notifCom1.style.display = 'none';
+      if (notifCom2) notifCom2.style.display = 'none';
 
-      if ($setCount == 1) {
-        progress.css('width', '50%');
-        progressCircle.css('left', 'calc(50% )');
-        notifCom1.html("Add 1 more set to get 1 compression socks for FREE").show();
-
+      if (setCount == 1) {
+        if (progress) progress.style.width = '50%';
+        if (progressCircle) progressCircle.style.left = 'calc(50% )';
+        if (notifCom1) {
+          notifCom1.innerHTML = "Add 1 more set to get 1 compression socks for FREE";
+          notifCom1.style.display = 'block';
+        }
       } else {
-
-        progress.css('width', '100%');
-        progressCircle.css('left', 'calc(100% )');
-        if ($sockcount == 0) {
-          notifCom1.html("<span style='color:red'><br/>Don't forget to add the FREE compression socks to your cart!</span>").show();
-          notifCom1.show();
+        if (progress) progress.style.width = '100%';
+        if (progressCircle) progressCircle.style.left = 'calc(100% )';
+        if (sockcount == 0) {
+          if (notifCom1) {
+            notifCom1.innerHTML = "<span style='color:red'><br/>Don't forget to add the FREE compression socks to your cart!</span>";
+            notifCom1.style.display = 'block';
+          }
         } else {
-          notifCom1.hide();
+          if (notifCom1) notifCom1.style.display = 'none';
         }
 
-        notifInc.html("Congratulations! You get a FREE pair of compression socks").show();
-
+        if (notifInc) {
+          notifInc.innerHTML = "Congratulations! You get a FREE pair of compression socks";
+          notifInc.style.display = 'block';
+        }
       }
-
-    } else {
-      $(".off2").hide();
+    } else if (off2) {
+      off2.style.display = 'none';
     }
 
-    if ($sockcount > 0) {
+    var off3 = document.querySelector(".off3");
+    if (sockcount > 0 && off3) {
+      off3.style.display = 'block';
+      var sockcountpercent = (sockcount / 6) * 100;
+      var sockcountfull = 6 - sockcount;
+      
+      var notifInc = document.querySelector('.off3 .notif-inc');
+      var notifCom1 = document.querySelector('.off3 .notif-com1');
+      var notifCom2 = document.querySelector('.off3 .notif-com2');
+      var progressBar = document.querySelector('.off3 .progress');
+      var progressCircle = document.querySelector('.off3 .progress-circle');
+      var amountNeededEl = document.querySelector('.off3 .amount-needed');
+      var get2El = document.querySelector('.off3 .get2');
+      var anotherEl = document.querySelector(".off3 .another");
 
-      $(".off3").show();
-      $sockcountpercent = ($sockcount / 6) * 100;
-      $sockcountfull = 6 - $sockcount;
-      if ($sockcount >= 6) {
-        $('.off3 .notif-inc').hide();
-        $('.off3 .notif-com1').show();
-        $('.off3 .progress').css('width', '100%');
-        $('.off3 .progress-circle').css('left', 'calc(100% )');
-        $('.off3 .notif-com1').html("Congratulations! You get <b>30% OFF</b> on your Compression Socks order");
-
+      if (sockcount >= 6) {
+        if (notifInc) notifInc.style.display = 'none';
+        if (notifCom1) {
+          notifCom1.style.display = 'block';
+          notifCom1.innerHTML = "Congratulations! You get <b>30% OFF</b> on your Compression Socks order";
+        }
+        if (progressBar) progressBar.style.width = '100%';
+        if (progressCircle) progressCircle.style.left = 'calc(100% )';
       } else {
-        $('.off3 .progress').css('width', $sockcountpercent + '%');
-        $('.off3 .progress-circle').css('left', 'calc(' + $sockcountpercent + '% )');
-        if ($sockcount < 4) {
-          $(".off3 .another").hide();
-          $('.off3 .notif-inc').show();
-          $('.off3 .notif-com1').hide();
-          $('.off3 .notif-com2').hide();
-          var amountNeeded = 4 - $sockcount;
-          $('.off3 .amount-needed').html(amountNeeded);
-          $('.off3 .get2').html("FREE pair of Compression Socks");
-
+        if (progressBar) progressBar.style.width = sockcountpercent + '%';
+        if (progressCircle) progressCircle.style.left = 'calc(' + sockcountpercent + '% )';
+        
+        if (sockcount < 4) {
+          if (anotherEl) anotherEl.style.display = 'none';
+          if (notifInc) notifInc.style.display = 'block';
+          if (notifCom1) notifCom1.style.display = 'none';
+          if (notifCom2) notifCom2.style.display = 'none';
+          var amountNeeded = 4 - sockcount;
+          if (amountNeededEl) amountNeededEl.innerHTML = amountNeeded;
+          if (get2El) get2El.innerHTML = "FREE pair of Compression Socks";
         } else {
-
-          if ($sockcount < 6) {
-
-            $(".off3 .another").hide();
-            $('.off3 .notif-inc').show();
-            $('.off3 .notif-com1').show();
-            $('.off3 .notif-com1').html("Congratulations! You get a <b>FREE pair</b> of Compression Socks.<br/>");
-            $('.off3 .get2').html("30% OFF");
-            var amountNeeded = 6 - $sockcount;
-            $('.off3 .amount-needed').html(amountNeeded);
+          if (sockcount < 6) {
+            if (anotherEl) anotherEl.style.display = 'none';
+            if (notifInc) notifInc.style.display = 'block';
+            if (notifCom1) {
+              notifCom1.style.display = 'block';
+              notifCom1.innerHTML = "Congratulations! You get a <b>FREE pair</b> of Compression Socks.<br/>";
+            }
+            if (get2El) get2El.innerHTML = "30% OFF";
+            var amountNeeded = 6 - sockcount;
+            if (amountNeededEl) amountNeededEl.innerHTML = amountNeeded;
           } else {
-            $('.off3 .notif-inc').hide();
-            $('.off3 .notif-com2').hide();
-            $('.off3 .notif-com2').hide();
-            var amountNeeded = 6 - $sockcount;
-            $('.off3 .amount-needed').html(amountNeeded);
+            if (notifInc) notifInc.style.display = 'none';
+            if (notifCom2) notifCom2.style.display = 'none';
+            var amountNeeded = 6 - sockcount;
+            if (amountNeededEl) amountNeededEl.innerHTML = amountNeeded;
           }
         }
       }
-    } else {
-      $(".off3").hide();
+    } else if (off3) {
+      off3.style.display = 'none';
     }
 
-    if ($capscount > 0) {
-      $(".off4").show();
-      $capscountpercent = ($capscount / 3) * 100;
-      $capscountfull = 3 - $capscount;
-      if ($capscount >= 3) {
-        $('.off4 .notif-inc').hide();
-        $('.off4 .notif-com1').show();
-        $('.off4 .progress').css('width', '100%');
-        $('.off4 .progress-circle').css('left', 'calc(100% )');
-        $('.off4 .notif-com1').html("You get <b>15%</b> OFF for Printed Scrub Tops");
+    var off4 = document.querySelector(".off4");
+    if (capscount > 0 && off4) {
+      off4.style.display = 'block';
+      var capscountpercent = (capscount / 3) * 100;
+      var capscountfull = 3 - capscount;
+      
+      var notifInc = document.querySelector('.off4 .notif-inc');
+      var notifCom1 = document.querySelector('.off4 .notif-com1');
+      var notifCom2 = document.querySelector('.off4 .notif-com2');
+      var progressBar = document.querySelector('.off4 .progress');
+      var progressCircle = document.querySelector('.off4 .progress-circle');
+      var amountNeededEl = document.querySelector('.off4 .amount-needed');
+      var get2El = document.querySelector('.off4 .get2');
+      var anotherEl = document.querySelector(".off4 .another");
+
+      if (capscount >= 3) {
+        if (notifInc) notifInc.style.display = 'none';
+        if (notifCom1) {
+          notifCom1.style.display = 'block';
+          notifCom1.innerHTML = "You get <b>15%</b> OFF for Printed Scrub Tops";
+        }
+        if (progressBar) progressBar.style.width = '100%';
+        if (progressCircle) progressCircle.style.left = 'calc(100% )';
       } else {
-        $('.off4 .progress').css('width', $capscountpercent + '%');
-        $('.off4 .progress-circle').css('left', 'calc(' + $capscountpercent + '% )');
-        if ($capscount < 2) {
-          $(".off4 .another").hide();
-          $('.off4 .notif-inc').show();
-          $('.off4 .notif-com1').hide();
-          $('.off4 .notif-com2').hide();
-          var amountNeeded = 2 - $capscount;
-          $('.off4 .amount-needed').html(amountNeeded);
-          $('.off4 .get2').html("10% OFF for Printed Scrub Tops.");
+        if (progressBar) progressBar.style.width = capscountpercent + '%';
+        if (progressCircle) progressCircle.style.left = 'calc(' + capscountpercent + '% )';
+        
+        if (capscount < 2) {
+          if (anotherEl) anotherEl.style.display = 'none';
+          if (notifInc) notifInc.style.display = 'block';
+          if (notifCom1) notifCom1.style.display = 'none';
+          if (notifCom2) notifCom2.style.display = 'none';
+          var amountNeeded = 2 - capscount;
+          if (amountNeededEl) amountNeededEl.innerHTML = amountNeeded;
+          if (get2El) get2El.innerHTML = "10% OFF for Printed Scrub Tops.";
         } else {
-          if ($capscount < 3) {
-            $(".off4 .another").hide();
-            $('.off4 .notif-inc').show();
-            $('.off4 .notif-com1').show();
-            $('.off4 .notif-com1').html("Congratulations! You get <b>15% OFF</b> Printed Scrub Tops.<br/>");
-            $('.off4 .get2').html("");
-            var amountNeeded = 3 - $capscount;
-            $('.off4 .amount-needed').html(amountNeeded);
+          if (capscount < 3) {
+            if (anotherEl) anotherEl.style.display = 'none';
+            if (notifInc) notifInc.style.display = 'block';
+            if (notifCom1) {
+              notifCom1.style.display = 'block';
+              notifCom1.innerHTML = "Congratulations! You get <b>15% OFF</b> Printed Scrub Tops.<br/>";
+            }
+            if (get2El) get2El.innerHTML = "";
+            var amountNeeded = 3 - capscount;
+            if (amountNeededEl) amountNeededEl.innerHTML = amountNeeded;
           } else {
-            $('.off4 .notif-inc').hide();
-            $('.off4 .notif-com2').hide();
-            $('.off4 .notif-com2').hide();
-            var amountNeeded = 3 - $capscount;
-            $('.off4 .amount-needed').html(amountNeeded);
+            if (notifInc) notifInc.style.display = 'none';
+            if (notifCom2) notifCom2.style.display = 'none';
+            var amountNeeded = 3 - capscount;
+            if (amountNeededEl) amountNeededEl.innerHTML = amountNeeded;
           }
         }
       }
-    } else {
-      $(".off4").hide();
+    } else if (off4) {
+      off4.style.display = 'none';
     }
 
-    if ($scrunchiescount > 0) {
-      $(".off5").show();
-      $scrunchiespercent = ($scrunchiescount / 4) * 100;
-      $scrunchiescountfull = 4 - $scrunchiescount;
-      if ($scrunchiescount >= 4) {
-        $('.off5 .notif-inc').hide();
-        $('.off5 .notif-com1').show();
-        $('.off5 .progress').css('width', '100%');
-        $('.off5 .progress-circle').css('left', 'calc(100% )');
+    var off5 = document.querySelector(".off5");
+    if (scrunchiescount > 0 && off5) {
+      off5.style.display = 'block';
+      var scrunchiespercent = (scrunchiescount / 4) * 100;
+      var scrunchiescountfull = 4 - scrunchiescount;
+      
+      var notifInc = document.querySelector('.off5 .notif-inc');
+      var notifCom1 = document.querySelector('.off5 .notif-com1');
+      var notifCom2 = document.querySelector('.off5 .notif-com2');
+      var progressBar = document.querySelector('.off5 .progress');
+      var progressCircle = document.querySelector('.off5 .progress-circle');
+      var amountNeededEl = document.querySelector('.off5 .amount-needed');
 
+      if (scrunchiescount >= 4) {
+        if (notifInc) notifInc.style.display = 'none';
+        if (notifCom1) notifCom1.style.display = 'block';
+        if (progressBar) progressBar.style.width = '100%';
+        if (progressCircle) progressCircle.style.left = 'calc(100% )';
       } else {
-        $('.off5 .progress').css('width', $scrunchiespercent + '%');
-        $('.off5 .progress-circle').css('left', 'calc(' + $scrunchiespercent + '% )');
+        if (progressBar) progressBar.style.width = scrunchiespercent + '%';
+        if (progressCircle) progressCircle.style.left = 'calc(' + scrunchiespercent + '% )';
 
-        $('.off5 .notif-inc').show();
-        $('.off5 .notif-com1').hide();
-        $('.off5 .notif-com2').hide();
-        var amountNeeded = 4 - $scrunchiescount;
-        $('.off5 .amount-needed').html(amountNeeded);
+        if (notifInc) notifInc.style.display = 'block';
+        if (notifCom1) notifCom1.style.display = 'none';
+        if (notifCom2) notifCom2.style.display = 'none';
+        var amountNeeded = 4 - scrunchiescount;
+        if (amountNeededEl) amountNeededEl.innerHTML = amountNeeded;
       }
-    } else {
-      $(".off5").hide();
+    } else if (off5) {
+      off5.style.display = 'none';
+    }
+  }
+
+  // Debounce function to prevent infinite loops
+  var debounceTimer;
+  function debouncedUpdateCartProgress() {
+    clearTimeout(debounceTimer);
+    debounceTimer = setTimeout(function() {
+      updateCartProgress();
+    }, 300);
+  }
+
+  // Run on page load
+  document.addEventListener('DOMContentLoaded', updateCartProgress);
+
+  // Listen for cart updates with debouncing to prevent infinite loops
+  document.addEventListener('cart:updated', debouncedUpdateCartProgress);
+  document.addEventListener('ajaxCart.afterCartLoad', debouncedUpdateCartProgress);
+
+  // ============================================================================
+  // EVENT DELEGATION for dynamically added TRIGGER elements
+  // ============================================================================
+
+  // Handle clicks on dynamically added cart buttons
+  document.addEventListener('click', function(e) {
+    // Check if clicked element or its parent is a quantity increase button
+    const increaseBtn = e.target.closest('.cart__quantity-increase');
+    if (increaseBtn) {
+      console.log('Quantity increase clicked');
+      debouncedUpdateCartProgress();
+      return;
     }
 
+    // Check if clicked element or its parent is a quantity decrease button
+    const decreaseBtn = e.target.closest('.cart__quantity-decrease');
+    if (decreaseBtn) {
+      console.log('Quantity decrease clicked');
+      debouncedUpdateCartProgress();
+      return;
+    }
+
+    // Check if clicked element or its parent is a remove item button
+    const removeBtn = e.target.closest('.cart__remove');
+    if (removeBtn) {
+      console.log('Remove item clicked');
+      debouncedUpdateCartProgress();
+      return;
+    }
+  });
+
+  // Handle changes on quantity inputs (dynamically added)
+  document.addEventListener('change', function(e) {
+    if (e.target.matches('.Custom_cart__quantity')) {
+      console.log('Quantity changed to:', e.target.value);
+      debouncedUpdateCartProgress();
+    }
+  });
+
+  // Handle input events for real-time updates while typing
+  document.addEventListener('input', function(e) {
+    if (e.target.matches('.Custom_cart__quantity')) {
+      debouncedUpdateCartProgress();
+    }
+  });
+
+  // ============================================================================
+  // MUTATION OBSERVER for dynamically added TARGET elements
+  // ============================================================================
+
+  // Watch for cart elements being added to the DOM
+  const cartObserver = new MutationObserver(function(mutations) {
+    mutations.forEach(function(mutation) {
+      // Check if nodes were added
+      if (mutation.addedNodes.length) {
+        mutation.addedNodes.forEach(function(node) {
+          // Skip if not an element node
+          if (node.nodeType !== 1) return;
+          
+          // Check if the added node itself or any child contains cart elements
+          if (
+            node.matches && (
+              node.matches('.totalin') ||
+              node.matches('.totalin_hidden') ||
+              node.matches('.cart__item') ||
+              node.matches('.off1, .off2, .off3, .off4, .off5') ||
+              node.querySelector('.totalin') ||
+              node.querySelector('.totalin_hidden') ||
+              node.querySelector('.cart__item')
+            )
+          ) {
+            console.log('Cart elements added to DOM, updating progress...');
+            debouncedUpdateCartProgress();
+          }
+        });
+      }
+    });
+  });
+
+  // Start observing the document for changes
+  cartObserver.observe(document.body, {
+    childList: true,     // Watch for child nodes being added/removed
+    subtree: true        // Watch ALL descendants, not just direct children
   });
 </script>
 
@@ -872,22 +1162,42 @@
     position: relative;
     top: -12px;
   }
-
+{% if cart.currency.iso_code == 'USD' or cart.currency.iso_code == 'AUD' or cart.currency.iso_code == 'NZD' %}
   .off1 .milone {
     left: {{ firstpos }}%;
     text-align: center;
   }
-
   .off1 .miltwo {
     left: 95%;
     text-align: center;
   }
-
   .off1 .linertop.miltwo,
   .off1 .linerbot.miltwo {
     left: 98%;
     text-align: center;
   }
+{% else %}
+  .off1 .milone {
+    left: 95%;
+    text-align: center;
+  }
+  .off1 .miltwo {
+    left: 95%;
+    text-align: center;
+    display:none;
+  }
+  .off1 .linertop.miltwo,
+  .off1 .linerbot.miltwo {
+    left: 98%;
+    text-align: center;
+    display:none;
+  }
+  .off1 .linertop.milone,
+  .off1 .linerbot.milone {
+    left: 98%;
+    text-align: center;    
+  }
+{% endif %}
 
   .off2 .milone {
     left: 50%;
@@ -1295,6 +1605,11 @@
       width: 57px !important;
     }
   }
+ {% if cart.currency.iso_code == 'USD' or cart.currency.iso_code == 'AUD' or cart.currency.iso_code == 'NZD' %}
+    
+ {% else %}
+    .miltwo{display:none;}
+ {% endif %}
 </style>
 
 {% schema %}

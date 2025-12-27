@@ -1371,9 +1371,50 @@ window.shippingThresholds = {
   'CAD': {{ settings.ca_shipping_treshold }},
   'GBP': {{ settings.gb_shipping_treshold }},
   'EUR': {{ settings.eu_shipping_treshold }},
-  'USD': {{ settings.us_shipping_treshold }}
+  'USD': {{ settings.us_shipping_treshold }},
+  'BHD': {{ settings.bh_shipping_treshold }},
+  'DKK': {{ settings.dk_shipping_treshold }},
+  'INR': {{ settings.in_shipping_treshold }},
+  'JPY': {{ settings.jp_shipping_treshold }},
+  'KWD': {{ settings.kw_shipping_treshold }},
+  'MYR': {{ settings.my_shipping_treshold }},
+  'OMR': {{ settings.om_shipping_treshold }},
+  'PHP': {{ settings.ph_shipping_treshold }},
+  'QAR': {{ settings.qa_shipping_treshold }},
+  'SAR': {{ settings.sa_shipping_treshold }},
+  'KRW': {{ settings.kr_shipping_treshold }},
+  'SEK': {{ settings.se_shipping_treshold }},
+  'TWD': {{ settings.tw_shipping_treshold }},
+  'THB': {{ settings.th_shipping_treshold }},
+  'AED': {{ settings.ae_shipping_treshold }}
 };
 
+// ADD THIS NEW CODE HERE:
+window.currencySymbols = {
+  'AUD': '$',
+  'HKD': 'HK$',
+  'NZD': 'NZ$',
+  'SGD': 'S$',
+  'CAD': 'CA$',
+  'GBP': '£',
+  'EUR': '€',
+  'USD': '$',
+  'BHD': 'BD',
+  'DKK': 'kr',
+  'INR': '₹',
+  'JPY': '¥',
+  'KWD': 'KD',
+  'MYR': 'RM',
+  'OMR': 'OMR',
+  'PHP': '₱',
+  'QAR': 'QR',
+  'SAR': 'SR',
+  'KRW': '₩',
+  'SEK': 'kr',
+  'TWD': 'NT$',
+  'THB': '฿',
+  'AED': 'AED'
+};
 
   window.productVariants = {
     {% for variant in product.variants %}
@@ -3142,21 +3183,16 @@ function extractPriceValue(priceString) {
   return isNaN(numericValue) ? 0 : numericValue;
 }
 
-// FIXED: Format price using Shopify's native formatter
 function formatPrice(value) {
-  // Convert to cents for Shopify
-  const cents = Math.round(value * 100);
+  const currency = window.displayCurrency || 'AUD';
+  const currencySymbol = window.currencySymbols[currency] || '$';
   
-  // Use Shopify's native formatter if available
-  if (typeof Shopify !== 'undefined' && Shopify.formatMoney) {
-    const formatted = Shopify.formatMoney(cents, window.moneyFormat);
-    console.log('Formatted', value, 'as', formatted);
-    return formatted;
+  // Format based on currency (some currencies don't use decimals)
+  if (['JPY', 'KRW'].includes(currency)) {
+    return currencySymbol + Math.round(value);
   }
   
-  // Fallback: just return the number with 2 decimals
-  console.warn('Shopify.formatMoney not available, using fallback');
-  return value.toFixed(2);
+  return currencySymbol + value.toFixed(2);
 }
 
 // NEW: Get current product price directly from data-price attribute
@@ -3185,9 +3221,14 @@ function getProductPrice(productId) {
 }
 
 function formatPrice(value) {
-  const currencySymbol = window.currencySymbol || '$';
+  const currency = window.displayCurrency || 'AUD';
+  const currencySymbol = window.currencySymbols[currency] || '$';
   
-  // Just return symbol + price, no currency code
+  // Format based on currency (some currencies don't use decimals)
+  if (['JPY', 'KRW'].includes(currency)) {
+    return currencySymbol + Math.round(value);
+  }
+  
   return currencySymbol + value.toFixed(2);
 }
 function getCurrentProductPrice() {

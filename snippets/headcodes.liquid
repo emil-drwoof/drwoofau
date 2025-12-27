@@ -1,68 +1,519 @@
-      <script> $(document).ready(function() { $('.cart__footer .grid').append('<div class="grid__item medium-up--one-half text-center medium-up--text-left medium-up--push-one-half new-adding"></div>'); $(".new-adding").append($(".site-footer__section .payment-icons").clone()); $('.cart__footer .grid .new-adding').insertBefore('.cart__footer .grid .medium-up--text-right'); });
-      </script>
-        
-        
-
-      {% comment %}
-        {% render 'sca-aff-refer-customer' %}
-        
-      {% endcomment %}
-
-      
-
-      <style>{% if template.name contains 'index' of template.name contains 'collection' %}
-        .grid-product__colors {
-          display: none !important;
-        }
-        {% endif %}
-      </style>
-      <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-{% comment %}
-
-        <!-- Google Tag Manager -->
-<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-})(window,document,'script','dataLayer','GTM-5HNBFCH');</script>
-<!-- End Google Tag Manager -->
-
-        <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-WHPZ44KM77"></script>
+ {% unless request.design_mode or template == 'page' %}  
 <script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
+    document.addEventListener("DOMContentLoaded", function () {
+    
+    let drwGeoHasRedirected = false;
+    let drwGeoCheckResult = null;
+    let drwGeoAttempts = 0;
+    const drwGeoMaxAttempts = 3;
+    
+    // Check for manual region URL parameter
+    function drwGeoHasManualRegionParameter() {
+      const urlParams = new URLSearchParams(window.location.search);
+      return urlParams.get('manual_region') === 'true';
+    }
+    
+    // Fetch with timeout to prevent hanging
+    function drwGeoFetchWithTimeout(url, timeout = 5000) {
+      return Promise.race([
+        fetch(url),
+        new Promise((_, reject) => 
+          setTimeout(() => reject(new Error('Geo API timeout')), timeout)
+        )
+      ]);
+    }
+    
+    // Get country code with fallback and better error handling
+    async function drwGeoGetCountryCode() {
+      const services = [
+        {
+          url: 'https://get.geojs.io/v1/ip/country.json',
+          parser: (data) => data.country
+        },
+        {
+          url: 'https://ip-api.com/json/',
+          parser: (data) => data.countryCode
+        },
+        {
+          url: 'https://ipapi.co/json/',
+          parser: (data) => data.country_code
+        }
+      ];
+      
+      for (let service of services) {
+        try {
+          console.log(`Trying geo service: ${service.url}`);
+          const response = await drwGeoFetchWithTimeout(service.url, 5000);
+          if (!response.ok) throw new Error(`HTTP ${response.status}`);
+          
+          const data = await response.json();
+          const countryCode = service.parser(data);
+          
+          if (countryCode && typeof countryCode === 'string') {
+            console.log(`Geo detection successful: ${countryCode}`);
+            return countryCode.toUpperCase();
+          }
+        } catch (error) {
+          console.warn(`Geo service ${service.url} failed:`, error.message);
+        }
+      }
+      
+      console.error('All geo services failed');
+      return null;
+    }
+    
+    function drwGeoSetCookie(name, value, days) {
+      const date = new Date();
+      date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
+      const expires = "expires=" + date.toUTCString();
+      document.cookie = name + "=" + value + ";" + expires + ";path=/;SameSite=Lax";
+    }
+    
+    function drwGeoGetCookie(name) {
+      const cname = name + "=";
+      const decodedCookie = decodeURIComponent(document.cookie);
+      const ca = decodedCookie.split(';');
+      for(let i = 0; i < ca.length; i++) {
+        let c = ca[i].trim();
+        if (c.indexOf(cname) === 0) {
+          return c.substring(cname.length, c.length);
+        }
+      }
+      return "";
+    }
 
-  gtag('config', 'G-WHPZ44KM77');
+    function drwGeoGetCurrentRegionFromURL() {
+      const path = window.location.pathname;
+      const hostname = window.location.hostname;
+      
+      // Check for locale prefixes - ALL REGIONS
+      if (path.startsWith('/en-nz')) return 'NZ';
+      
+if (hostname.startsWith('sg.')) {
+  return 'SG';
+} else if (hostname.startsWith('hk.')) {
+  return 'HK';
+} else if (hostname.startsWith('uk.')) {
+  return 'GB';
+} else if (hostname.startsWith('ca.')) {
+  return 'CA';
+} else if (hostname.startsWith('eu.')) {
+  return 'EU';
+} else if (hostname.startsWith('bh.')) {
+  return 'BH';
+} else if (hostname.startsWith('dk.')) {
+  return 'DK';
+} else if (hostname.startsWith('in.')) {
+  return 'IN';
+} else if (hostname.startsWith('kr.')) {
+  return 'KR';
+} else if (hostname.startsWith('se.')) {
+  return 'SE';
+} else if (hostname.startsWith('th.')) {
+  return 'TH';
+} else if (hostname.startsWith('tw.')) {
+  return 'TW';
+} else if (hostname.startsWith('ae.')) {
+  return 'AE';
+} else if (hostname.startsWith('sa.')) {
+  return 'SA';
+} else if (hostname.startsWith('jp.')) {
+  return 'JP';
+} else if (hostname.startsWith('kw.')) {
+  return 'KW';
+} else if (hostname.startsWith('my.')) {
+  return 'MY';
+} else if (hostname.startsWith('om.')) {
+  return 'OM';
+} else if (hostname.startsWith('ph.')) {
+  return 'PH';
+} else if (hostname.startsWith('qa.')) {
+  return 'QA';
+}
+      // Check domain for AU vs US
+      if (hostname.endsWith('.com.au')) {
+        return 'AU';
+      } else if (hostname.endsWith('.com')) {
+        return 'US';
+      }
+    }
+
+    function drwGeoGetRegionalURL(countryCode) {
+      const currentPath = window.location.pathname;
+      const searchParams = window.location.search;
+      const hash = window.location.hash;
+      
+      // Remove any existing locale prefix - ALL REGIONS
+      let cleanPath = currentPath.replace(/^\/(en-nz|en-sg|en-hk|en-uk|en-ca|en-eu|en-bh|en-dk|en-in|en-jp|en-kw|en-my|en-om|en-ph|en-qa|en-sa|en-kr|en-se|en-th)/, '');
+      
+      if (!cleanPath.startsWith('/')) {
+        cleanPath = '/' + cleanPath;
+      }
+      
+      let baseUrl = '';
+      let regionalPrefix = '';
+      
+      switch(countryCode) {
+        case 'NZ':
+          baseUrl = 'https://www.drwoofapparel.com.au/';
+          regionalPrefix = 'en-nz';
+          break;
+        case 'SG':
+          baseUrl = 'https://sg.drwoofapparel.com';
+          regionalPrefix = '';
+          break;
+        case 'HK':
+          baseUrl = 'https://hk.drwoofapparel.com';
+          regionalPrefix = '';
+          break;
+        case 'GB':
+          baseUrl = 'https://uk.drwoofapparel.com';
+          regionalPrefix = '';
+          break;
+        case 'CA':
+          baseUrl = 'https://ca.drwoofapparel.com';
+          regionalPrefix = '';
+          break;
+        case 'EU':
+          baseUrl = 'https://eu.drwoofapparel.com';
+          regionalPrefix = '';
+          break;
+        case 'BH':
+          baseUrl = 'https://bh.drwoofapparel.com';
+          regionalPrefix = '';
+          break;
+        case 'DK':
+          baseUrl = 'https://dk.drwoofapparel.com';
+          regionalPrefix = '';
+          break;
+        case 'IN':
+          baseUrl = 'https://in.drwoofapparel.com';
+          regionalPrefix = '';
+          break;
+case 'KW':
+  baseUrl = 'https://kw.drwoofapparel.com';
+  regionalPrefix = '';
+  break;
+case 'MY':
+  baseUrl = 'https://my.drwoofapparel.com';
+  regionalPrefix = '';
+  break;
+case 'OM':
+  baseUrl = 'https://om.drwoofapparel.com';
+  regionalPrefix = '';
+  break;
+case 'PH':
+  baseUrl = 'https://ph.drwoofapparel.com';
+  regionalPrefix = '';
+  break;
+case 'QA':
+  baseUrl = 'https://qa.drwoofapparel.com';
+  regionalPrefix = '';
+  break;
+
+case 'TH':
+  baseUrl = 'https://th.drwoofapparel.com';
+  regionalPrefix = '';
+  break;
+
+case 'SE':
+  baseUrl = 'https://se.drwoofapparel.com';
+  regionalPrefix = '';
+  break;
+
+case 'KR':
+  baseUrl = 'https://kr.drwoofapparel.com';
+  regionalPrefix = '';
+  break;
+
+case 'SA':
+  baseUrl = 'https://sa.drwoofapparel.com';
+  regionalPrefix = '';
+  break;
+        case 'TW':
+          baseUrl = 'https://tw.drwoofapparel.com';
+          regionalPrefix = '';
+          break;
+
+        case 'AE':
+          baseUrl = 'https://ae.drwoofapparel.com';
+          regionalPrefix = '';
+          break;
+        case 'US':
+          baseUrl = 'https://www.drwoofapparel.com';
+          regionalPrefix = '';
+          break;
+        case 'AU':
+          baseUrl = 'https://www.drwoofapparel.com.au';
+          regionalPrefix = '';
+          break;
+      }
+      
+      return `${baseUrl}${regionalPrefix}${cleanPath}${searchParams}${hash}`;
+    }
+    
+function drwGeoProcessGeoData(countryCode, attemptNumber = 1) {
+  const cookieName = "regionPreference";
+  const locationCookieName = "lastDetectedCountry";
+  const manualChoiceCookieName = "manualRegionChoice";
+  const cookieDays = 30;
+  
+  if (!countryCode) {
+    console.log(`Geo check attempt ${attemptNumber} failed - no country code`);
+    return false;
+  }
+  
+  console.log(`Processing geo data: ${countryCode} (attempt ${attemptNumber})`);
+  
+  // Check if user made manual choice recently
+  const hasManualChoice = drwGeoGetCookie(manualChoiceCookieName) === 'true' || drwGeoHasManualRegionParameter();
+  if (hasManualChoice) {
+    console.log('Respecting user manual region choice, skipping geo redirect');
+    
+    if (drwGeoHasManualRegionParameter()) {
+      drwGeoSetCookie(manualChoiceCookieName, 'true', 1);
+      const url = new URL(window.location);
+      url.searchParams.delete('manual_region');
+      window.history.replaceState({}, document.title, url.toString());
+    }
+    
+    return true;
+  }
+  
+  // Determine expected region based on country
+  let expectedRegion = 'US';
+  
+  if (countryCode === 'AU') {
+    expectedRegion = 'AU';
+  } else if (countryCode === 'NZ') {
+    expectedRegion = 'NZ';
+  } else if (countryCode === 'SG') {
+    expectedRegion = 'SG';
+  } else if (countryCode === 'HK') {
+    expectedRegion = 'HK';
+  } else if (countryCode === 'GB' || countryCode === 'UK') {
+    expectedRegion = 'GB';
+  } else if (countryCode === 'CA') {
+    expectedRegion = 'CA';
+  } else if (countryCode === 'BH') {
+    expectedRegion = 'BH';
+  } else if (countryCode === 'DK') {
+    expectedRegion = 'DK';
+  } else if (countryCode === 'IN') {
+    expectedRegion = 'IN';
+  } else if (countryCode === 'JP') {
+    expectedRegion = 'JP';
+  } else if (countryCode === 'KW') {
+    expectedRegion = 'KW';
+  } else if (countryCode === 'MY') {
+    expectedRegion = 'MY';
+  } else if (countryCode === 'OM') {
+    expectedRegion = 'OM';
+  } else if (countryCode === 'PH') {
+    expectedRegion = 'PH';
+  } else if (countryCode === 'QA') {
+    expectedRegion = 'QA';
+  } else if (countryCode === 'SA') {
+    expectedRegion = 'SA';
+  } else if (countryCode === 'US') {
+    expectedRegion = 'US';
+  } else if (countryCode === 'KR') {
+    expectedRegion = 'KR';
+  } else if (countryCode === 'SE') {
+    expectedRegion = 'SE';
+  } else if (countryCode === 'TW') {
+    expectedRegion = 'TW';
+  } else if (countryCode === 'TH') {
+    expectedRegion = 'TH';
+  } else if (countryCode === 'AE') {
+    expectedRegion = 'AE';
+  } else if (['DE', 'FR', 'ES', 'IT', 'NL', 'BE', 'AT', 'PT', 'IE', 'FI', 'NO'].includes(countryCode)) {
+    expectedRegion = 'EU';
+  }
+  
+  const currentRegion = drwGeoGetCurrentRegionFromURL();
+  const lastDetectedCountry = drwGeoGetCookie(locationCookieName);
+  
+  // Always update location cookie
+  drwGeoSetCookie(locationCookieName, countryCode, cookieDays);
+  
+  // If user is on correct region, set the preference cookie to prevent loops
+  if (currentRegion === expectedRegion) {
+    console.log('User is on correct region - setting preference cookie');
+    drwGeoSetCookie(cookieName, expectedRegion, cookieDays);
+    return true;
+  }
+  
+  // Check if location genuinely changed
+  const locationChanged = lastDetectedCountry && lastDetectedCountry !== countryCode;
+  
+  if (locationChanged) {
+    console.log(`Location changed from ${lastDetectedCountry} to ${countryCode} - overriding any saved preference`);
+    drwGeoSetCookie(cookieName, expectedRegion, cookieDays);
+    console.log(`Redirecting to ${expectedRegion} region`);
+    drwGeoHasRedirected = true;
+    window.location.href = drwGeoGetRegionalURL(expectedRegion);
+    return true;
+  }
+  
+  // Only check saved preference if location hasn't changed
+  const savedPreference = drwGeoGetCookie(cookieName);
+  
+  // If saved preference conflicts with geo-detection, trust geo
+  if (savedPreference && savedPreference !== expectedRegion) {
+    console.log(`Saved preference ${savedPreference} conflicts with geo-detected ${expectedRegion} - trusting geo-detection`);
+    drwGeoSetCookie(cookieName, expectedRegion, cookieDays);
+  }
+  
+  // User is on wrong region - redirect
+  console.log(`User should be on ${expectedRegion} but is on ${currentRegion} - redirecting`);
+  drwGeoSetCookie(cookieName, expectedRegion, cookieDays);
+  drwGeoHasRedirected = true;
+  window.location.href = drwGeoGetRegionalURL(expectedRegion);
+  
+  return true;
+}
+    
+    async function drwGeoRunGeoCheck(attemptNumber = 1) {
+      // Early exit if already redirected
+      if (drwGeoHasRedirected) {
+        console.log('Already redirected, skipping check');
+        return;
+      }
+      
+      // Skip redirect on /pages/ URLs (anywhere in the URL)
+      if (window.location.href.includes('/pages/')) {
+        console.log('Skipping redirect on /pages/ URL');
+        return;
+      }
+      
+      // Skip redirect in Shopify admin/theme customizer
+      if (window.location.href.includes('admin.shopify.com/store/')) {
+        console.log('Skipping redirect in Shopify admin');
+        return;
+      }
+      
+      console.log(`Starting geo check attempt ${attemptNumber}/${drwGeoMaxAttempts}`);
+      
+      try {
+        // Use cached result if available (from previous attempt)
+        let countryCode = drwGeoCheckResult;
+        
+        // Get fresh data if no cache or first attempt
+        if (!countryCode || attemptNumber === 1) {
+          countryCode = await drwGeoGetCountryCode();
+          drwGeoCheckResult = countryCode; // Cache for potential retries
+        }
+        
+        const success = drwGeoProcessGeoData(countryCode, attemptNumber);
+        
+        if (!success && attemptNumber < drwGeoMaxAttempts) {
+          // Schedule retry with exponential backoff
+          const retryDelay = Math.min(1000 * Math.pow(2, attemptNumber - 1), 5000); // 1s, 2s, 4s max
+          console.log(`Retry scheduled in ${retryDelay}ms`);
+          
+          setTimeout(() => {
+            drwGeoRunGeoCheck(attemptNumber + 1);
+          }, retryDelay);
+        }
+        
+      } catch (error) {
+        console.error(`Geo-detection attempt ${attemptNumber} failed:`, error);
+        
+        // Retry if we haven't exceeded max attempts
+        if (attemptNumber < drwGeoMaxAttempts) {
+          const retryDelay = Math.min(1000 * Math.pow(2, attemptNumber - 1), 5000);
+          console.log(`Error retry scheduled in ${retryDelay}ms`);
+          
+          setTimeout(() => {
+            drwGeoRunGeoCheck(attemptNumber + 1);
+          }, retryDelay);
+        } else {
+          console.error('All geo-detection attempts failed');
+        }
+      }
+    }
+    
+    // Wait for DOM to be fully ready, then start
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', () => {
+        setTimeout(() => drwGeoRunGeoCheck(1), 100); // Small delay to ensure everything is ready
+      });
+    } else {
+      // DOM already ready
+      setTimeout(() => drwGeoRunGeoCheck(1), 100);
+    }
+    
+    // Manual currency change handler
+    const currencySelector = document.getElementById("CurrencySelector");
+    if (currencySelector) {
+      currencySelector.addEventListener("change", function () {
+        const newCurrency = this.value;
+        fetch(`/currency`, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            'X-Requested-With': 'XMLHttpRequest',
+          },
+          body: JSON.stringify({ currency: newCurrency })
+        }).then(() => {
+          location.reload();
+        });
+      });
+    }
+    
+  });
+  </script>
+{% endunless %}
+
+<script>
+  $(document).ready(function() {
+    $('.cart__footer .grid').append('<div class="grid__item medium-up--one-half text-center medium-up--text-left medium-up--push-one-half new-adding"></div>');
+    $(".new-adding").append($(".site-footer__section .payment-icons").clone());
+    $('.cart__footer .grid .new-adding').insertBefore('.cart__footer .grid .medium-up--text-right');
+  });
 </script>
 
+{% comment %}
+  {% render 'sca-aff-refer-customer' %}
+{% endcomment %}
+
+<style>
+  {% if template.name contains 'index' of template.name contains 'collection' %}
+    .grid-product__colors {
+      display: none !important;
+    }
+  {% endif %}
+</style>
+{% if template != 'index' %}
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+{% endif %}
+
+{% comment %}
+  <!-- Google Tag Manager -->
+  <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+  new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+  j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+  'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+  })(window,document,'script','dataLayer','GTM-5HNBFCH');</script>
+  <!-- End Google Tag Manager -->
+
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-WHPZ44KM77"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-WHPZ44KM77');
+  </script>
 {% endcomment %}
 
 {% unless product.handle == 'scrub-cap-mega-pack' or product.handle == 'wardrobe-deal' %}
-  <!-- heatmap.com snippet -->
-  <script>
-    (function() {      
-      var _heatmap_paq = window._heatmap_paq = window._heatmap_paq || [];
-      var heatUrl = window.heatUrl = 'https://dashboard.heatmap.com/';
-      function hLoadInitialScript(url) {
-        var script = document.createElement('script'); script.type = 'text/javascript'; 
-        script.src = url; script.async = false; script.defer = true; document.head.appendChild(script);
-      }
-      hLoadInitialScript(heatUrl+'preprocessor.min.js?sid=531');
-      window.addEventListener('DOMContentLoaded', function (){	 
-          if(typeof _heatmap_paq != 'object' || _heatmap_paq.length == 0) {     
-            _heatmap_paq.push(['setTrackerUrl', heatUrl+'sttracker.php']);
-            hLoadInitialScript(heatUrl+'heatmap-light.min.js?sid=531');
-          } 
-      });
-    })();
-  </script>
-  <!-- End heatmap.com snippet Code -->
+
 {% endunless %}
 
 {% if section.settings.newpdptop %}
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet">
- {% endif %}
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet">
+{% endif %}

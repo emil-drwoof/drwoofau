@@ -18,7 +18,7 @@
         "ch_main_description_size": "16px",
         "ch_main_description_color": "#ffffff",
         "review_card_visibility": "both",
-        "card_bg": "#FFFFFF",
+        "card_bg": "#ffffff",
         "card_radius": 10,
         "card_padding": 20,
         "star_count": 5,
@@ -39,7 +39,7 @@
         "benefit_text_5": "",
         "benefit_text_6": "",
         "benefit_svg": "",
-        "benefit_bg": "#FFFFFF",
+        "benefit_bg": "#ffffff",
         "benefit_radius": 4,
         "benefit_padding": 8
       }

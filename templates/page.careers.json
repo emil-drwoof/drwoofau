@@ -69,15 +69,28 @@
       ],
       "settings": {}
     },
+    "featured_content_3U7PWx": {
+      "type": "featured-content",
+      "name": "Rich text",
+      "settings": {
+        "title": "",
+        "text": "<p>Dr. Woof is a family-owned brand built to support healthcare workers. Nurses, vets, doctors, techs, students. The people who show up for others, day after day.<br\/><br\/><br\/>We design functional, joyful apparel made for long shifts, real movement, and real humans. We believe workwear can be practical and still bring a bit of warmth, personality, and lightness into demanding days.<br\/><br\/><br\/>Some of us have worked in healthcare ourselves, and we see that lived experience as a huge bonus. But it’s not a requirement. What matters most is that you care about the people we serve and genuinely want to help the helpers.<br\/><br\/><br\/>We’re a small team that values empathy, ownership, and doing things properly. No corporate layers, no ego, no pretending. Just people who take pride in their work and want it to mean something.<br\/><br\/><br\/>If you’re excited by building a thoughtful brand, enjoy working closely with others, and want your work to have a positive impact on the medical world, we’d love to hear from you.<br\/>Let’s build something meaningful together.<br\/><br\/><br\/><br\/><strong>You don’t need to be in healthcare to work here. You just need to care about the people who are.<\/strong><\/p>",
+        "align_text": "left",
+        "narrow_column": false,
+        "enlarge_text": false,
+        "alt": false
+      }
+    },
     "duallayout_CG47nF": {
       "type": "duallayout",
+      "disabled": true,
       "name": "Dual Section",
       "settings": {
         "image_left": false,
         "background_color": "#ffffff",
         "imagebig": "shopify:\/\/shop_images\/LANDING_PAGE_PDP.gif",
         "contenttitle": "",
-        "contenttext1": "Dr. Woof is a family-owned brand built to support healthcare workers. Nurses, vets, doctors, techs, students. The people who show up for others, day after day.<br><br>\nWe design functional, joyful apparel made for long shifts, real movement, and real humans. We believe workwear can be practical and still bring a bit of warmth, personality, and lightness into demanding days.<br><br>\nSome of us have worked in healthcare ourselves, and we see that lived experience as a huge bonus. But it’s not a requirement. What matters most is that you care about the people we serve and genuinely want to help the helpers.<br><br>\nWe’re a small team that values empathy, ownership, and doing things properly. No corporate layers, no ego, no pretending. Just people who take pride in their work and want it to mean something.<br><br>\nIf you’re excited by building a thoughtful brand, enjoy working closely with others, and want your work to have a positive impact on the medical world, we’d love to hear from you.\nLet’s build something meaningful together.<br><br>\n\n<b>You don’t need to be in healthcare to work here. You just need to care about the people who are.<\/b>"
+        "contenttext1": "Dr. Woof is a family-owned brand built to support healthcare workers. Nurses, vets, doctors, techs, students. The people who show up for others, day after day.<br>\nWe design functional, joyful apparel made for long shifts, real movement, and real humans. We believe workwear can be practical and still bring a bit of warmth, personality, and lightness into demanding days.<br>\nSome of us have worked in healthcare ourselves, and we see that lived experience as a huge bonus. But it’s not a requirement. What matters most is that you care about the people we serve and genuinely want to help the helpers.<br>\nWe’re a small team that values empathy, ownership, and doing things properly. No corporate layers, no ego, no pretending. Just people who take pride in their work and want it to mean something.<br>\nIf you’re excited by building a thoughtful brand, enjoy working closely with others, and want your work to have a positive impact on the medical world, we’d love to hear from you.\nLet’s build something meaningful together.<br>\n\n<b>You don’t need to be in healthcare to work here. You just need to care about the people who are.<\/b>"
       }
     },
     "duallayout_ghQckD": {
@@ -133,23 +146,38 @@
         "custom_html": "<div id=\"contact\">\n    <!-- Your content here -->\n<\/div>"
       }
     },
-    "featured_content_79cpma": {
-      "type": "featured-content",
-      "name": "Rich text",
-      "settings": {
-        "title": "Our Openings",
-        "text": "<p>We’re always looking for talented people across:<br\/><br\/>Marketing & Growth<br\/>Design & Creative<br\/>Customer Experience<br\/>Operations & eCommerce<\/p><p>If you want to build, create, and grow with a brand that values ownership and quality — we’d love to hear from you.<br\/><br\/>Apply below and join the Dr. Woof Apparel team.<\/p>",
-        "align_text": "left",
-        "narrow_column": true,
-        "enlarge_text": false,
-        "alt": false
-      }
-    },
     "custom_html_FRrt4q": {
       "type": "custom-html",
       "name": "Custom HTML",
       "settings": {
         "custom_html": "<div id=\"scrollbutton\">\n    <!-- Your content here -->\n<\/div>"
+      }
+    },
+    "accordion_section_xCAx6j": {
+      "type": "accordion-section",
+      "blocks": {
+        "accordion_YLiy77": {
+          "type": "accordion",
+          "settings": {
+            "question": "Creative Strategist",
+            "answer": "<p>Paid Media, Performance Creative and Full Funnel<\/p><p>Dr. Woof is a family-owned brand built to make the medical world smile. We create functional, joyful apparel for healthcare workers, and we take both craft and outcomes seriously.<\/p><p>We are looking for a Creative Strategist who understands that acquisition is a system, not a single ad. This role owns creative strategy end to end, from a blank page through production and into the real world, with a strong paid background and a deep understanding of how creative drives growth.<\/p><p>This role is for people who like responsibility.<\/p><h4>How we measure success<\/h4><p>• Success in this role is clear and outcome driven.<\/p><p>• Spend advertising dollars profitably on first order purchases<\/p><p>• Understand incrementality and avoid confusing platform attribution with true impact<\/p><p>• Build creative systems that allow us to scale profitably over time<\/p><p>• Improve performance through better creative, not just more spend<\/p><p>• Great creative is the lever. Profitability and incrementality are the proof.<\/p><h4>What you will do<\/h4><p>• Own creative strategy for paid acquisition as a full funnel system<\/p><p>• Develop creative approaches across awareness, consideration, and conversion<\/p><p>• Create strategy from scratch including audience understanding, messaging angles, and creative structure<\/p><p>• Write clear, thoughtful briefs that guide creative from concept through production and launch<\/p><p>• Manage the full creative production pipeline end to end<\/p><p>• Directly manage external creators and UGC talent<\/p><p>• Brief, review, and iterate on creator content with clear performance intent<\/p><p>• Work closely with designers, editors, photographers, and creators to ship consistently<\/p><p>• Build and maintain a creative testing system that produces steady learnings<\/p><p>• Evaluate creative using performance signals, customer insight, and qualitative feedback<\/p><p>• Balance bold narrative ideas with practical day to day creative execution<\/p><p>Stay actively current with paid creative best practices and platform changes from the last six months<\/p><h4>Platforms and tools<\/h4><p>You will work across multiple paid platforms, with Meta as the primary channel.<\/p><p>Platforms include<\/p><p>• Meta<br\/>• Google<br\/>• TikTok<br\/>• YouTube<br\/>• AppLovin<\/p><p>You are comfortable navigating ad libraries, creative research tools, and fast iteration workflows.<\/p><p>You do not need to be a media buyer, but you must clearly understand how creative decisions impact performance.<\/p><h4>What we are looking for<\/h4><p>• Experience owning creative strategy at meaningful spend levels<\/p><p>• Strong understanding of acquisition as a full funnel system<\/p><p>• Ability to connect top of funnel storytelling to first order purchasing behavior<\/p><p>• Proven experience taking ideas from concept through production and launch<\/p><p>• Comfort managing creators and UGC talent directly<\/p><p>• A data driven approach to creative without becoming mechanical<\/p><p>• High personal ownership and follow through<\/p><p>• Genuine commitment to continuous learning and staying current with recent platform changes<\/p><p>• Strong taste, clear judgment, and the ability to explain why something should work<\/p><p>Healthcare experience is a bonus, not a requirement. Caring about the people we serve is essential.<\/p><h4>Collaboration and reporting<\/h4><p>This role reports directly to the Founder and Head of Funnel.<\/p><p>You will work closely with<\/p><p>• The Founder and Head of Funnel on creative direction, priorities, and performance<\/p><p>• The Head of Marketing on broader brand and campaign alignment<\/p><p>• Designers, video editors, photographers, and creative partners<\/p><p>• External creators and influencers<\/p><p>• You will receive campaign direction and also shape how campaigns show up creatively across channels.<\/p><h4>This role is not for you if<\/h4><p>• You prefer to stay at the idea level rather than owning execution end to end<\/p><p>• You rely on outdated playbooks and are not actively learning what is working now<\/p><p>• You are uncomfortable being accountable for outcomes, not just output<\/p><p>• You dislike the cadence of testing, learning, briefing, producing, and iterating<\/p><p>• You see creative and acquisition as separate disciplines<\/p><p>• You want narrow responsibilities and heavy structure<\/p><p>The right person finds this level of ownership energizing, not overwhelming.<\/p><h4>Growth opportunities<\/h4><p>Dr. Woof is growing quickly, and this role will grow with it.<\/p><p>• Expanded scope and ownership as spend and creative scale<\/p><p>• Larger campaigns and higher leverage projects over time<\/p><p>• Opportunity to help build the creative systems and team around you<\/p><p>• Direct influence over how the brand grows and performs<\/p><p>We do not promise titles. We promise opportunity for people who take responsibility.<\/p><h4>What it is like to work at Dr. Woof<\/h4><p>• Small, hands on, family run team<\/p><p>• High trust, high ownership, high standards<\/p><p>• Fast feedback loops and room to experiment<\/p><p>• Creative treated as a core growth lever, not decoration<\/p><p>If you care about performance, enjoy thinking in systems, and want your work to meaningfully support people doing important jobs, we would love to hear from you.<\/p><p><strong>Ready to join the team? &lt;u&gt;<\/strong><a href=\"https:\/\/docs.google.com\/forms\/d\/e\/1FAIpQLSfgDsYCkZyVyNAWWXA1I3y1V33hHdYbcpi_OrqhajvyDabebQ\/viewform\" title=\"https:\/\/docs.google.com\/forms\/d\/e\/1FAIpQLSfgDsYCkZyVyNAWWXA1I3y1V33hHdYbcpi_OrqhajvyDabebQ\/viewform\">Submit your application here.<\/a><\/p><p>&lt;\/u&gt;<\/p>"
+          }
+        },
+        "accordion_wDmmQn": {
+          "type": "accordion",
+          "settings": {
+            "question": "Social Media Manager",
+            "answer": "<p>Content, Community and Brand Campaigns<\/p><p>Dr. Woof is a family owned brand built to make the medical world smile. We create functional, joyful apparel for healthcare workers, and we care deeply about how our brand shows up in the world every single day.<\/p><p>We are looking for a Social Media Manager who genuinely loves content and wants real ownership. This role sits across brand, marketing, and creative, and is ideal for someone who enjoys being close to the work while helping shape how a fast growing brand shows up publicly.<\/p><p>This role is for people who like responsibility and creative momentum.<\/p><h4>How we measure success<\/h4><p>Success in this role is simple and very clear.<\/p><p>Your primary goal is to increase organic reach.<\/p><p>If people want to watch the content, we consider it a win.<\/p><p>If people do not want to watch it, we consider it a miss.<\/p><p>Engagement matters, but reach comes first. We believe engagement follows reach when content truly resonates.<\/p><p>At the company level, one of our key focus areas is increasing the percentage of total reach that comes from organic content. Right now, the majority of reach comes from paid channels. This role plays a critical part in changing that over time.<\/p><h4>What you will do<\/h4><p>• Own Dr. Woof’s social media presence across Instagram, TikTok, and YouTube<\/p><p>• Create content that people genuinely want to watch and share<\/p><p>• Be hands on with content creation, including filming, editing, writing, and ideation<\/p><p>• Feel comfortable creating content using your phone and working quickly<\/p><p>• Plan and execute social content around major brand and marketing campaigns<\/p><p>• Receive campaign direction from leadership while also shaping how those campaigns show up on social<\/p><p>• Work closely with the Head of Marketing and the founder on priorities and direction<\/p><p>• Collaborate with designers, photographers, video editors, creative strategists, and external partners<\/p><p>• Work with external creators and influencers to bring fresh energy and perspectives to the brand<\/p><p>• Balance consistent day to day posting with larger campaign moments<\/p><p>• Use performance signals and audience feedback to refine content over time<\/p><p>• Stay actively up to date with how platforms, formats, and trends are evolving right now<\/p><h4>Platforms and tools<\/h4><p>This role focuses primarily on Instagram, TikTok, and YouTube.<\/p><p>You will likely use tools such as Later, Canva, and CapCut.<\/p><p>You should feel comfortable editing content and adapting quickly.<\/p><p>We are open to alternative tools if you have strong preferences or better workflows.<\/p><h4>What we are looking for<\/h4><p>• Experience managing brand social media accounts with real ownership<\/p><p>• A genuine love for content creation and storytelling<\/p><p>• Comfort being on camera or directing content when needed<\/p><p>• Strong understanding of what performs organically on modern platforms<\/p><p>• A thoughtful, data aware approach to content without losing creative instinct<\/p><p>• Strong organization and follow through<\/p><p>• Willingness to learn continuously and stay current with platform changes<\/p><p>• Comfort operating in a small, fast moving, cross functional environment<\/p><p>Healthcare experience is a bonus, not a requirement. Caring about the people we serve is essential.<\/p><h4>This role is not for you if<\/h4><p>• You prefer to outsource content creation rather than being close to it<\/p><p>• You are only interested in posting and scheduling rather than shaping the story<\/p><p>• You rely on outdated social playbooks and trends from years ago<\/p><p>• You are uncomfortable owning work end to end<\/p><p>• You prefer narrow responsibilities over broad ownership<\/p><p>• You do not enjoy balancing creative exploration with consistent execution<\/p><p>The right person finds this level of responsibility energizing, not overwhelming.<\/p><h4>What it is like to work at Dr. Woof<\/h4><p>We are a small, hands on, family run team.<\/p><p>Social is treated as a core brand channel, not an afterthought.<\/p><p>You will work closely with leadership and have real influence over how the brand feels and sounds.<\/p><p>As the brand grows, this role will grow with it through expanded scope, larger campaigns, and increased responsibility.<\/p><p>If you love content, care about people, and want to help make the medical world smile in a very visible way, we would love to hear from you.<\/p><p><strong>Ready to join the team? &lt;u&gt;<\/strong><a href=\"https:\/\/docs.google.com\/forms\/d\/e\/1FAIpQLSe8bkLC-LLso_62vGprVV7odn5WWocyrttlt2cf1gFDY9QX9A\/viewform\" title=\"https:\/\/docs.google.com\/forms\/d\/e\/1FAIpQLSe8bkLC-LLso_62vGprVV7odn5WWocyrttlt2cf1gFDY9QX9A\/viewform\">Submit your application here.<\/a><\/p>"
+          }
+        }
+      },
+      "block_order": [
+        "accordion_YLiy77",
+        "accordion_wDmmQn"
+      ],
+      "name": "Accordion Faq",
+      "settings": {
+        "accordion_title": "Our Openings"
       }
     }
   },
@@ -159,11 +187,12 @@
     "custom_html_F6dhFB",
     "custom_html_jYzHWe",
     "17591072634e00f0ba",
+    "featured_content_3U7PWx",
     "duallayout_CG47nF",
     "duallayout_ghQckD",
     "advanced_content_6Wbn6B",
     "custom_html_8qhmPV",
-    "featured_content_79cpma",
-    "custom_html_FRrt4q"
+    "custom_html_FRrt4q",
+    "accordion_section_xCAx6j"
   ]
 }

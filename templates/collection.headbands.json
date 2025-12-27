@@ -196,14 +196,8 @@
       }
     },
     "main-collection": {
-      "type": "collection-template-caps",
+      "type": "collection-template",
       "settings": {
-        "super_text_1": "",
-        "super_link_1": "",
-        "super_text_2": "",
-        "super_link_2": "",
-        "super_text_3": "",
-        "super_link_3": "",
         "per_row_desktop": 3,
         "per_row_mobile": "2",
         "description_bottom": true

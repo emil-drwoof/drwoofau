@@ -1,592 +1,635 @@
 {% if product.type == "Women Scrub Tops" or product.type == "Men Scrub Tops" or product.type == 'OS2 test product' %}
-   <input type="hidden" id="logosignal" value=""> 
-   <div class="outer-modal">
-      <div class="inner-modal">
-         <button type="button" class="btn btn--circle btn--large screen-layer__close js-screen-close" id="modalclose">
-            <svg aria-hidden="true" focusable="false" role="presentation" class="icon icon-close" viewBox="0 0 64 64">
-               <path d="M19 17.61l27.12 27.13m0-27.12L19 44.74"></path>
-            </svg>
-            <span class="icon__fallback-text">Close (esc)</span>
-         </button>
-         <h4 style="text-align:center;width:100%;margin-bottom:20px">CUSTOMIZE YOUR SCRUB TOP</h4>
-         <div class="flexer">
-            <div class="duo">
-               <div class="image-wrapper-rel">
-                  <img src="https://cdn.shopify.com/s/files/1/0573/7250/8344/files/astep4.png?v=1666896697" alt="astep4" class="imagesample">
-                  <div class="namewrapper">
-                     <span class="floatingname"></span>
-                     <span class="floatingsub"></span>
-                  </div>
-                  <div class="superpos-icon">
-                    <span class="floatingicon"></span>
-                    <span class="floatingini"></span>
-                  </div>
-               </div>
+  <input type="hidden" id="logosignal" value="">
+  <div class="outer-modal">
+    <div class="inner-modal">
+      <button type="button" class="btn btn--circle btn--large screen-layer__close js-screen-close" id="modalclose">
+        <svg aria-hidden="true" focusable="false" role="presentation" class="icon icon-close" viewBox="0 0 64 64">
+          <path d="M19 17.61l27.12 27.13m0-27.12L19 44.74"></path>
+        </svg>
+        <span class="icon__fallback-text">Close (esc)</span>
+      </button>
+      <h4 style="text-align:center;width:100%;margin-bottom:20px">CUSTOMIZE YOUR SCRUB TOP</h4>
+      <div class="flexer">
+        <div class="duo">
+          <div class="image-wrapper-rel">
+            <img src="https://cdn.shopify.com/s/files/1/0573/7250/8344/files/astep4.png?v=1666896697" alt="astep4" class="imagesample">
+            <div class="namewrapper">
+              <span class="floatingname"></span>
+              <span class="floatingsub"></span>
             </div>
-            <div class="duo">
-               <button type="button" class="label collapsible-trigger collapsible-trigger-btn collapsible-trigger-btn--borders" aria-controls="addmyname">
-               <label class="variant__label midler">Add Title</label> $18
-               {% render 'collapsible-icons' %}
-               </button>
-               <div id="addmyname" class="collapsible-content collapsible-content--all">
-                  <div class="collapsible-content__inner rte">
-                     <p>Title Placement</p>
-                     <div class="button-flexer">
-                        <button class="duo-button anameleft" >Left Chest</button> <button class="duo-button anameright">right Chest</button>
-                     </div>
-                     <span class="formmessage notifpocketchecker"></span>
-                     <input type="hidden" class="pocketchecker" value="false">
-                     <p>My Title</p>
-                     <div class="input-wrapper">
-                      <input type="text" id="afirstline" class="full-width" placeholder="First Line" maxlength="30">
-                      <span class="input-counter"></span>
-                     </div>
-                     <span class="formmessage notifafirstline"></span>
-                     
-                     <div class="input-wrapper">
-                      <input type="text" id="asecondline" class="full-width" placeholder="Second Line (Optional)" maxlength="30">
-                      <span class="input-counter"></span>
-                     </div>
-                     
-                     <p>Title Colour</p>
-                     <div class="colornamewrapper">
-                        <div class="namecolor">
-                           <div class="color-white" id="acolor-white">
-                              <span>&#10004;</span>
-                           </div>
-                        </div>
-                        <div class="namecolor">
-                           <div class="color-black" id="acolor-black">
-                              <span>&#10004;</span>
-                           </div>
-                        </div>
-                     </div>
-                     
-                     <span class="formmessage notifcolorchecker"></span>
-                     <input type="hidden" class="colorchecker" value="false" style="display:none;">
-                     <p><input type="checkbox" class="addname-checkbox"> <span style="color:red">IMPORTANT: I understand and agree that orders are final and cannot be canceled or refunded once placed.  I understand that all orders placed today will be processed by January 12, and shipping will begin at the end of January. I have reviewed the FAQ below.</span></b></p>
-                     <div class="button-flexer">
-                        <button class="big-duo-button reset">RESET</button> <button class="big-duo-button active" id="aadd" disabled>ADD</button>
-                     </div>
-                  </div>
-               </div>
-               <button type="button" class="label collapsible-trigger collapsible-trigger-btn collapsible-trigger-btn--borders" aria-controls="addanicon">
-               <label class="variant__label midler">Add a Sleeve Mate<span class="icon"><img src="{{ 'gificon.gif' | asset_url }}" class="gificon" /></span> </label> $20
-               {% render 'collapsible-icons' %}
-               </button>
-               <div id="addanicon" class="collapsible-content collapsible-content--all">
-                  <div class="collapsible-content__inner rte">
-                     <span class="formmessage notifpocketchecker"></span>
-                     <input type="hidden" class="pocketchecker" value="true">
-                     <p>Pick Your Sleeve Mate</p>
-                     <div class="flexer start">
-                        <div class="image-wrapper" id="bicone">
-                           <img src="https://cdn.shopify.com/s/files/1/0573/7250/8344/files/ronald_the_christmas.png?v=1727870056" alt="Dr. Woof" >
-                        </div>
-                        <div class="image-wrapper" id="biconf">
-                           <img src="https://cdn.shopify.com/s/files/1/0573/7250/8344/files/Christmas_Legends_Wreath_42a6219d-cfb7-46ae-9198-fd550e2b3305.png?v=1725356226" alt="Dr. Woof" >
-                        </div>
-                        <div class="image-wrapper" id="bicong">
-                           <img src="https://cdn.shopify.com/s/files/1/0573/7250/8344/files/Wallace_the_Christmas_Wombat_14a09ea8-28b4-41e6-af10-5ed4baba3d16.png?v=1727924379" alt="Dr. Woof" >
-                        </div>
-                        <div class="image-wrapper" id="biconh">
-                           <img src="https://cdn.shopify.com/s/files/1/0573/7250/8344/files/Gingerbread_Gang_d2c0ff51-f715-4cd6-88d6-f253bcaa859c.png?v=1727926757" alt="Dr. Woof" >
-                        </div>
-                        <div class="image-wrapper" id="biconi">
-                           <img src="https://cdn.shopify.com/s/files/1/0573/7250/8344/files/Catastrophe_the_Christmas_Kitten_1.png?v=1727924379" alt="Dr. Woof" >
-                        </div>
-
-
-                        <div class="image-wrapper" id="bicona">
-                           <img src="https://cdn.shopify.com/s/files/1/0573/7250/8344/files/01_d48323bf-00bd-4f65-a920-e57bcce7acc6.png?v=1663617699" alt="Dr. Woof" >
-
-                        </div>
-                        <div class="image-wrapper" id="biconb">
-                           <img src="https://cdn.shopify.com/s/files/1/0573/7250/8344/files/03_b95d214a-4c60-42cd-a93e-599b0d97ddde.png?v=1663617699" alt="Dr. Woof" >
-                        </div>
-                        <div class="image-wrapper" id="biconc">
-                           <img src="https://cdn.shopify.com/s/files/1/0573/7250/8344/files/02_8303be23-612e-419b-8d89-c5b86bcfb069.png?v=1663617699" alt="Dr. Woof" >
-                        </div>
-                        <div class="image-wrapper" id="bicond">
-                           <img src="https://cdn.shopify.com/s/files/1/0573/7250/8344/files/free-color-icon-1.png?v=1659113219" alt="Dr. Woof" >
-                        </div>
-                     </div>
-                     <div class="icon-details">
-                        <div class="allicon bicona">
-                           <h4>Kathy The Extra-Calm Koala</h4>
-                           <p><i>The last time something rattled Kathy was 1972.</i></p>
-                           <p>She’s been on staff so long, people say the hospital was built around her. When the entire shift is going to 💩, Kathy’s there to hug your arm and lend the team a bit of her calm.</p>
-                        </div>
-                        <div class="allicon biconb">
-                           <h4>Tim The Over-Protective T-Rex</h4>
-                           <p><i>is arms are tiny, but his heart is huge. </i></p>
-                           <p>Tim loves making people smile, but he loves his teammates more. If anyone tries to mess with you, he’ll stomp and show his pointy teeth, then give his biggest rawr. </p>
-                        </div>
-                        <div class="allicon biconc">
-                           <h4>Pippa the Party-Time Puppy Dog</h4>
-                           <p><i>Woof Woof Bitches! </i></p>
-                           <p>Pippa’s slogan is work hard, play hard. But when she’s on shift everything feels like play. Pippa’s secret skill is sniffing you out in your lowest moments, and finding ways to make you laugh.</p>
-                        </div>
-
-                        <div class="allicon bicone">
-                           <h4>Ronald the Christmas Reindeer</h4>
-                           <p>He sleighs all night with a smile on his face,
-                            and he’s got an X-ray to prove his heart’s in the right place. </p>
-                        </div>
-                        <div class="allicon biconf">
-                           <h4>Christmas Legends Wreath</h4>
-                           <p>Some people spend Christmas night snuggled up in bed, 
-                            here’s to the legends who spend it staffing the ER instead. </p>
-                        </div>
-                        <div class="allicon bicong">
-                           <h4>Wallace the Christmas Wombat</h4>
-                           <p>His tummy is round, and his poops are square,he spreads joy and kindness everywhere.</p>
-                        </div>
-                        <div class="allicon biconh">
-                           <h4>Gingerbread Gang</h4>
-                           <p>A little sugar and a lot of spice, they pretend they’re naughty, but they’re really nice.</p>
-                        </div>
-                        <div class="allicon biconi">
-                           <h4>Catastrophe the Christmas Kitten</h4>
-                           <p>She’ll creep in at night and ruin your tree - as sneaky as a fox,
-                            when you give her a present, she only wants the box. </p>
-                        </div>
-
-                     </div>
-
-                     <span class="formmessage notificonchecker"></span>
-                     <input type="hidden" class="iconchecker" value="false">
-                     <p>Add Your Initials</p>
-                     <div class="input-wrappers">
-                      <input type="text" id="binitials" maxlength="3" class="full-width" placeholder="Up to 3 characters (Optional)">
-                      <span class="input-counter"></span>
-                     </div>
-                     <span class="formmessage notifbinitials"></span>
-                     <p>Initials Colour</p>
-                     <div class="colornamewrapper">
-                        <div class="namecolor">
-                           <div class="color-white" id="bcolor-white">
-                              <span>&#10004;</span>
-                           </div>
-                        </div>
-                        <div class="namecolor">
-                           <div class="color-black" id="bcolor-black">
-                              <span>&#10004;</span>
-                           </div>
-                        </div>
-
-                     </div>
-                     
-                     <span class="formmessage notifcolorchecker"></span>
-                     <span class="formmessage notifcolorchecker"></span>
-                     <input type="hidden" class="colorchecker" value="false" style="display:none;">
-                     <p><input type="checkbox" class="addicon-checkbox"> <span style="color:red">IMPORTANT: I understand and agree that orders are final and cannot be canceled or refunded once placed.  I understand that all orders placed today will be processed by January 12, and shipping will begin at the end of January. I have reviewed the FAQ below.</span></b>
-                     </p>
-                     <div class="button-flexer">
-                        <button class="big-duo-button reset">RESET</button> <button class="big-duo-button active badd" disabled>ADD</button>
-                     </div>
-                  </div>
-               </div>
-
-
-            
-
-               <button type="button" class="label collapsible-trigger collapsible-trigger-btn collapsible-trigger-btn--borders" aria-controls="addboth">
-               <label class="variant__label midler">Add both</label> $30
-               {% render 'collapsible-icons' %}
-               </button>
-               <div id="addboth" class="collapsible-content collapsible-content--all">
-                  <div class="collapsible-content__inner rte">
-                     <p>Title Placement</p>
-                     <div class="button-flexer">
-                        <button class="duo-button cleft">Left Chest</button> <button class="duo-button cright">right Chest</button>
-                     </div>
-                     <span class="formmessage notifnamepocketchecker"></span>
-                     <input type="hidden" class="namepocketchecker" value="false">
-                     <p>Title</p>
-                     <div class="input-wrapper">
-                      <input type="text" id="cfirstline" class="full-width" placeholder="First Line" maxlength="30">
-                      <span class="input-counter"></span>
-                     </div>
-                     <span class="formmessage notifcfirstline"></span>
-                     
-                     <div class="input-wrapper">
-                      <input type="text" id="csecondline" class="full-width" placeholder="Second Line (Optional)" maxlength="30">
-                      <span class="input-counter"></span>
-                     </div>
-                     
-                     <p>Title Colour</p>
-                     <div class="colornamewrapper">
-                        <div class="namecolor">
-                           <div class="color-white acolor">
-                              <span>&#10004;</span>
-                           </div>
-                        </div>
-                        <div class="namecolor">
-                           <div class="color-black acolor">
-                              <span>&#10004;</span>
-                           </div>
-                        </div>
-
-                     </div>
-                     <span class="formmessage notifcolorchecker"></span>
-                     <input type="hidden" class="colorchecker" value="false">
-                     <hr>
-                     <span class="formmessage notificonpocketchecker"></span>
-                     <input type="hidden" class="iconpocketchecker" value="true">
-                     <p>Pick Your Sleeve Mate</p>
-                     <div class="flexer start">
-                        <div class="image-wrapper cicone">
-                           <img src="https://cdn.shopify.com/s/files/1/0573/7250/8344/files/ronald_the_christmas.png?v=1727870056" alt="Dr.Woof" >
-                        </div>
-                        <div class="image-wrapper ciconf">
-                           <img src="https://cdn.shopify.com/s/files/1/0573/7250/8344/files/Christmas_Legends_Wreath_42a6219d-cfb7-46ae-9198-fd550e2b3305.png?v=1725356226" alt="Dr.Woof" >
-                        </div>
-                        <div class="image-wrapper cicong">
-                           <img src="https://cdn.shopify.com/s/files/1/0573/7250/8344/files/Wallace_the_Christmas_Wombat_14a09ea8-28b4-41e6-af10-5ed4baba3d16.png?v=1727924379" alt="Dr.Woof" >
-                        </div>
-                        <div class="image-wrapper ciconh">
-                           <img src="https://cdn.shopify.com/s/files/1/0573/7250/8344/files/Gingerbread_Gang_d2c0ff51-f715-4cd6-88d6-f253bcaa859c.png?v=1727926757" alt="Dr.Woof" >
-                        </div>
-                        <div class="image-wrapper ciconi">
-                           <img src="https://cdn.shopify.com/s/files/1/0573/7250/8344/files/Catastrophe_the_Christmas_Kitten_1.png?v=1727924379" alt="Dr.Woof" >
-                        </div>
-
-
-                        <div class="image-wrapper cicona">
-                           <img src="https://cdn.shopify.com/s/files/1/0573/7250/8344/files/01_d48323bf-00bd-4f65-a920-e57bcce7acc6.png?v=1663617699" alt="Dr.Woof" >
-                        </div>
-                        <div class="image-wrapper ciconb">
-                           <img src="https://cdn.shopify.com/s/files/1/0573/7250/8344/files/03_b95d214a-4c60-42cd-a93e-599b0d97ddde.png?v=1663617699" alt="Dr.Woof" >
-                        </div>
-                        <div class="image-wrapper ciconc">
-                           <img src="https://cdn.shopify.com/s/files/1/0573/7250/8344/files/02_8303be23-612e-419b-8d89-c5b86bcfb069.png?v=1663617699" alt="Dr.Woof" >
-                        </div>
-                        <div class="image-wrapper cicond">
-                           <img src="https://cdn.shopify.com/s/files/1/0573/7250/8344/files/free-color-icon-1.png?v=1659113219" alt="Dr.Woof" >
-                        </div>
-                     </div>
-                     <div class="icon-details">
-                        <div class="allicon" id="cicona">
-                           <h4>Kathy The Extra-Calm Koala</h4>
-                           <p><i>The last time something rattled Kathy was 1972.</i></p>
-                           <p>She’s been on staff so long, people say the hospital was built around her. When the entire shift is going to 💩, Kathy’s there to hug your arm and lend the team a bit of her calm.</p>
-                        </div>
-                        <div class="allicon" id="ciconb">
-                           <h4>Tim The Over-Protective T-Rex</h4>
-                           <p><i>is arms are tiny, but his heart is huge. </i></p>
-                           <p>Tim loves making people smile, but he loves his teammates more. If anyone tries to mess with you, he’ll stomp and show his pointy teeth, then give his biggest rawr. </p>
-                        </div>
-                        <div class="allicon" id="ciconc">
-                           <h4>Pippa the Party-Time Puppy Dog</h4>
-                           <p><i>Woof Woof Bitches! </i></p>
-                           <p>Pippa’s slogan is work hard, play hard. But when she’s on shift everything feels like play. Pippa’s secret skill is sniffing you out in your lowest moments, and finding ways to make you laugh.</p>
-                        </div>
-
-
-                        <div class="allicon" id="cicone">
-                           <h4>Ronald the Christmas Reindeer</h4>
-                           <p>He sleighs all night with a smile on his face,
-                            and he’s got an X-ray to prove his heart’s in the right place. </p>
-                        </div>
-                        <div class="allicon" id="ciconf">
-                           <h4>Christmas Legends Wreath</h4>
-                           <p>Some people spend Christmas night snuggled up in bed, 
-                            here’s to the legends who spend it staffing the ER instead. </p>
-                        </div>
-                        <div class="allicon" id="cicong">
-                           <h4>Wallace the Christmas Wombat</h4>
-                           <p>His tummy is round, and his poops are square,he spreads joy and kindness everywhere.</p>
-                        </div>
-                        <div class="allicon" id="ciconh">
-                           <h4>Gingerbread Gang</h4>
-                           <p>A little sugar and a lot of spice, they pretend they’re naughty, but they’re really nice.</p>
-                        </div>
-                        <div class="allicon" id="ciconi">
-                          <h4>Catastrophe the Christmas Kitten</h4>
-                           <p>She’ll creep in at night and ruin your tree - as sneaky as a fox,
-                            when you give her a present, she only wants the box. </p>
-                        </div>
-                     </div>
-                     <span class="formmessage notificonchecker"></span>
-                     <input type="hidden" class="iconchecker" value="false">
-                     <p>Add Your Initials</p>
-                     <div class="input-wrappers">
-                      <input type="text" id="cinitials" class="full-width" maxlength="3" placeholder="Enter Initials">
-                      <span class="input-counter"></span>
-                     </div>
-                     <span class="formmessage notifcinitials"></span>
-                     <p>Initials Colour</p>
-                     <div class="colornamewrapper">
-                        <div class="namecolor">
-                           <div class="color-white" id="ccolor-white">
-                              <span>&#10004;</span>
-                           </div>
-                        </div>
-                        <div class="namecolor">
-                           <div class="color-black" id="ccolor-black">
-                              <span>&#10004;</span>
-                           </div>
-                        </div>
-
-                     </div>
-                     
-                     <span class="formmessage notifcolorchecker"></span>
-                     <span class="formmessage notifinitialcolorchecker"></span>
-                     <input type="hidden" class="initialcolorchecker" value="false" style="display:none;">
-                     <p><input type="checkbox" class="addboth-checkbox"> <span style="color:red">IMPORTANT: I understand and agree that orders are final and cannot be canceled or refunded once placed.  I understand that all orders placed today will be processed by January 12, and shipping will begin at the end of January. I have reviewed the FAQ below.</span></p>
-                     <div class="button-flexer">
-                        <button class="big-duo-button reset">RESET</button> <button class="big-duo-button active cadd" disabled>ADD</button>
-                     </div>
-                  </div>
-               </div>
-
-
-
-               <button type="button" class="label addyouricon collapsible-trigger collapsible-trigger-btn collapsible-trigger-btn--borders" aria-controls="addyouricon">
-               <label class="variant__label midler">Add Your Logo </label> $30
-               {% render 'collapsible-icons' %}
-               </button>
-               <div id="addyouricon" class="collapsible-content collapsible-content--all">
-                  <div class="collapsible-content__inner rte">
-                    <p>Title Placement: </p>                    
-                     <div class="button-flexer">
-                        <button class="duo-button eleft">Left Chest</button> <button class="duo-button eright">right Chest</button>
-                     </div>
-                    
-                     <span class="formmessage notifnamepocketchecker"></span>
-                     <input type="hidden" class="epocketchecker" value="true">
-                     <p>Title (Optional)</p>
-                     <div class="input-wrapper">
-                      <input type="text" id="efirstline" class="full-width" placeholder="First Line (Optional)" maxlength="30">
-                      <span class="input-counter"></span>
-                     </div>
-                     <span class="formmessage notifcfirstline"></span>
-                     <!--
-                     <div class="input-wrapper">
-                      <input type="text" id="esecondline" class="full-width" placeholder="Second Line (Optional)" maxlength="30">
-                      <span class="input-counter"></span>
-                     </div>
-                     -->
-                     <p>Title Colour (Optional)</p>
-                     <div class="colornamewrapper">
-                        <div class="namecolor">
-                           <div class="color-white ecolor">
-                              <span>&#10004;</span>
-                           </div>
-                        </div>
-                        <div class="namecolor">
-                           <div class="color-black ecolor">
-                              <span>&#10004;</span>
-                           </div>
-                        </div>
-
-                     </div>
-                     <span class="formmessage notifcolorchecker"></span>
-                     <input type="hidden" class="colorchecker" value="false">
-                     <hr>
-
-
-                     
-                     <span class="formmessage notifpocketchecker"></span>
-                     <input type="hidden" class="pocketchecker" value="true">
-                     <p>Pick Your Logo: Left Chest</p>
-                     <div class="flexer start">
-                        <div class="image-wrapper" id="eicong">
-                           <img src="https://cdn.shopify.com/s/files/1/0374/6237/6507/files/1000075622-removebg-preview_20fdb2db-9883-4782-ac73-dfb1ea6bf7f3.png?v=1741242864" alt="Dr. Woof" >
-                        </div>
-                        <div class="image-wrapper" id="eiconc">
-                           <img src="https://cdn.shopify.com/s/files/1/0573/7250/8344/files/Casterton_Memorial_Hospital.png?v=1735376805" alt="Dr. Woof" >
-                        </div>
-                        <div class="image-wrapper" id="eicone">
-                           <img src="https://cdn.shopify.com/s/files/1/0573/7250/8344/files/The_Royal_Melbourne_Hospital.png?v=1735376805" alt="Dr. Woof">
-                        </div>
-                        <div class="image-wrapper" id="eiconf">
-                           <img src="https://cdn.shopify.com/s/files/1/0573/7250/8344/files/Monash_Medical_Centre.png?v=1735376805" alt="Dr. Woof" >
-                        </div>
-
-                        <div class="image-wrapper" id="eiconh">
-                           <img src="https://cdn.shopify.com/s/files/1/0573/7250/8344/files/Westmead_Hospital.png?v=1735376805" alt="Dr. Woof" >
-                        </div>
-                        <div class="image-wrapper" id="eiconi">
-                           <img src="https://cdn.shopify.com/s/files/1/0573/7250/8344/files/Royal_Brisbane_and_Women_s_Hospital.png?v=1735376805" alt="Dr. Woof" >
-                        </div>
-
-
-                        <div class="image-wrapper" id="eicona">
-                           <img src="https://cdn.shopify.com/s/files/1/0573/7250/8344/files/Liverpool_Hospital.png?v=1735376805" alt="Dr. Woof" >
-
-                        </div>
-                        
-						            <div class="image-wrapper" id="eiconb">
-                           <img src="https://cdn.shopify.com/s/files/1/0374/6237/6507/files/1000075596-removebg-preview.png?v=1741242863" alt="Dr. Woof" >
-                        </div>
-
-                        <!--                        
-                        <div class="image-wrapper" id="eicond">
-                           <img src="https://cdn.shopify.com/s/files/1/0573/7250/8344/files/free-color-icon-1.png?v=1659113219" alt="Dr. Woof" >
-                        </div>
-						-->
-                     </div>
-					 
-                     <div class="icon-details">
-                        <div class="allicon eicona">
-                           <h4>Liverpool Hospital</h4>
-                        </div>
-                        <div class="allicon eiconb">
-                           <h4>Royal Prince Alfred Hospital</h4>
-                        </div>
-                        <div class="allicon eiconc">
-                           <h4>Casterton Memorial Hospital</h4>
-                        </div>
-
-                        <div class="allicon eicone">
-                           <h4>Royal Melbourne Hospitalr</h4>
-                        </div>
-                        <div class="allicon eiconf">
-                           <h4>Monash Medical Centre</h4>
-                        </div>
-                        <div class="allicon eicong">
-                           <h4>NSW_Health</h4>                           
-                        </div>
-                        <div class="allicon eiconh">
-                           <h4>Westmead Hospital</h4>
-                        </div>
-                        <div class="allicon eiconi">
-                           <h4>Royal Brisbane and Women's Hospital</h4>
-                        </div>
-
-                     </div>
-
-                     <span class="formmessage notificonchecker"></span>
-                     <input type="hidden" class="iconchecker" value="false">
-
-          {% comment %}
-                     <p>Add Your Initials</p>
-					 <div class="input-wrappers">
-                      <input type="text" id="einitials" maxlength="3" class="full-width" placeholder="Up to 3 characters (Optional)">
-                      <span class="input-counter"></span>
-                     </div>
-					 
-                     <span class="formmessage notifeinitials"></span>
-                     <p>Initials Colour</p>
-                     <div class="colornamewrapper">
-                        <div class="namecolor">
-                           <div class="color-white" id="ecolor-white">
-                              <span>&#10004;</span>
-                           </div>
-                        </div>
-                        <div class="namecolor">
-                           <div class="color-black" id="ecolor-black">
-                              <span>&#10004;</span>
-                           </div>
-                        </div>
-                     </div>
-            {% endcomment %}
-                     
-                     <div class="display:none !important">
-                      <input type="hidden" id="einitials" maxlength="3" class="full-width" placeholder="Up to 3 characters (Optional)">
-                      <span class="input-counter"></span>
-                     
-                      <span class="formmessage notifeinitials"></span>
-                     
-                           <div class="color-white" id="ecolor-white">
-                            </div>
-                           <div class="color-black" id="ecolor-black">
-                              
-                           </div>
-                     </div>
-
-                     
-                     
-    
-
-                     <input type="hidden" class="initialcolorchecker" value="true" style="display:none;">
-                     <p><input type="checkbox" class="addyouricon-checkbox"> <span style="color:red">IMPORTANT: I understand and agree that orders are final and cannot be canceled or refunded once placed.  I understand that all orders placed today will be processed by January 12, and shipping will begin at the end of January. I have reviewed the FAQ below.</span></b>
-                     </p>
-                     <div class="button-flexer">
-                        <button class="big-duo-button reset">RESET</button> <button class="big-duo-button active eadd" disabled>ADD</button>
-                     </div>
-                  </div>
-               </div>
-
-
-
-
-               <button type="button" class="label collapsible-trigger collapsible-trigger-btn collapsible-trigger-btn--borders" aria-controls="faqdropdown">
-                  <label class="variant__label midler">Frequently asked questions</label>
-                  {% render 'collapsible-icons' %}
-                  </button>
-
-
-               <div id="faqdropdown" class="collapsible-content collapsible-content--all">
-                  <div class="collapsible-content__inner rte">
-
-                  <p><strong>Can I return or exchange embroidered items?</strong></h4>
-
-                  <p>No. Embroidered items cannot be returned or exchanged. If your order has an error, please contact our customer care team for assistance.</p>
-                  
-                  <p><strong>How long do embroidered items take to arrive?</strong></h4>
-                  
-                  <p>Embroidered items take an additional 10 business days to ship. 
-                     </p>                  
-                  <p><strong>Do embroidery orders qualify for free shipping? </strong></h4>
-                  
-                  <p>Due to the extra costs associated with embroidery, all orders have a flat $15 shipping fee.
-                     </p>                  
-                  <p><strong>How big is your embroidery font?</strong></h4>
-                  
-                  <p>For embroidered names, our font is 1.1cm in height. Text may be shrunk down to accommodate longer names. </p>
-                  
-                  <p>If you choose to render your initial on the left sleeve, the font will be 2.1cm in height.  </p>
-                  
-                  
-                  
-                  <p><strong>How big are your Sleeve Mate icons?</strong></h4>
-                  
-                  <p>Sleeve mates measure 3.5cm x 3.5cm. That’s roughly the same size as an Oreo cookie … yum</p>
-                  
-                  <p><strong>Do scrubs discounts render embroidery?</strong></h4>
-                  
-                  <p>No. Discounts, sales and deals only apply to the cost of the scrubs themselves. Embroidery is at full price, unless stated otherwise. </p>
-                  
-                  
-                  <p><strong>Can I return previously purchased items to have embroidery added?</strong></h4>
-                  <p>Embroidery is only available for newly purchased items at this time. </p>
-                  
-                  
-                  <p><strong>Can I change my embroidery after I’ve placed my order?</strong></h4>
-                  
-                  <p>You can contact us, but there are no promises. Our embroidery team works fast.</p>
-                  
-                  
-                  
-                  <p><strong>Can you add my clinic logo to the front chest? </strong></h4>
-                  
-                  <p>Yes. but if we don’t already have your logo on file, you may need to team up with a few colleagues to make it cost effective. For custom embroidery requests please contact our team. <br/>Please contact our team at <b style="text-decoration: underline;">hello@drwoofapparel.com.au</b></p>
-                  
-                  
-                  <p><strong>Can you do embroidery for team orders?
-                     </strong></h4>                  
-                  
-                  <p>Yes. If you have more than 8 pairs of scrubs to embroider or are looking to render a clinic logo, contact us to discuss group rates. <br/>Discuss group rates at <b style="text-decoration: underline;">hello@drwoofapparel.com.au</b></p>
-                  
-                  <div class="accordioncloserwrapper">
-                     <button type="submit" name="backtotop" data-add-to-cart="" class="markerx btn btn--tertiary  btn btn--full backtotop">
-                           <span data-add-to-cart-text="">Back to top</span>
-                     </button>
-                  </div>
-
-                  </div>
-               </div>
-
-
-               
+            <div class="superpos-icon">
+              <span class="floatingicon"></span>
+              <span class="floatingini"></span>
             </div>
-         </div>
+          </div>
+        </div>
+        <div class="duo">
+          <button type="button" class="label collapsible-trigger collapsible-trigger-btn collapsible-trigger-btn--borders" aria-controls="addmyname">
+            <label class="variant__label midler">Add Title</label> $18
+            {% render 'collapsible-icons' %}
+          </button>
+          <div id="addmyname" class="collapsible-content collapsible-content--all">
+            <div class="collapsible-content__inner rte">
+              <p>Title Placement</p>
+              <div class="button-flexer">
+                <button class="duo-button anameleft">Left Chest</button> <button class="duo-button anameright">right Chest</button>
+              </div>
+              <span class="formmessage notifpocketchecker"></span>
+              <input type="hidden" class="pocketchecker" value="false">
+              <p>My Title</p>
+              <div class="input-wrapper">
+                <input type="text" id="afirstline" class="full-width" placeholder="First Line" maxlength="30">
+                <span class="input-counter"></span>
+              </div>
+              <span class="formmessage notifafirstline"></span>
+              <div class="input-wrapper">
+                <input type="text" id="asecondline" class="full-width" placeholder="Second Line (Optional)" maxlength="30">
+                <span class="input-counter"></span>
+              </div>
+              <p>Title Colour</p>
+              <div class="colornamewrapper">
+                <div class="namecolor">
+                  <div class="color-white" id="acolor-white">
+                    <span>&#10004;</span>
+                  </div>
+                </div>
+                <div class="namecolor">
+                  <div class="color-black" id="acolor-black">
+                    <span>&#10004;</span>
+                  </div>
+                </div>
+              </div>
+              <span class="formmessage notifcolorchecker"></span>
+              <input type="hidden" class="colorchecker" value="false" style="display:none;">
+              <p><input type="checkbox" class="addname-checkbox"> <span style="color:red">IMPORTANT: I understand and agree that orders are final and cannot be canceled or refunded once placed. I understand that all orders placed today will be processed by January 12, and shipping will begin at the end of January. I have reviewed the FAQ below.</span></p>
+              <div class="button-flexer">
+                <button class="big-duo-button reset">RESET</button> <button class="big-duo-button active" id="aadd" disabled>ADD</button>
+              </div>
+            </div>
+          </div>
+          <button type="button" class="label collapsible-trigger collapsible-trigger-btn collapsible-trigger-btn--borders" aria-controls="addanicon">
+            <label class="variant__label midler">Add a Sleeve Mate<span class="icon"><img src="{{ 'gificon.gif' | asset_url }}" class="gificon" /></span> </label> $20
+            {% render 'collapsible-icons' %}
+          </button>
+          <div id="addanicon" class="collapsible-content collapsible-content--all">
+            <div class="collapsible-content__inner rte">
+              <span class="formmessage notifpocketchecker"></span>
+              <input type="hidden" class="pocketchecker" value="true">
+              <p>Pick Your Sleeve Mate</p>
+              <div class="flexer start">
+                <div class="image-wrapper" id="bicone">
+                  <img src="https://cdn.shopify.com/s/files/1/0573/7250/8344/files/ronald_the_christmas.png?v=1727870056" alt="Dr. Woof">
+                </div>
+                <div class="image-wrapper" id="biconf">
+                  <img src="https://cdn.shopify.com/s/files/1/0573/7250/8344/files/Christmas_Legends_Wreath_42a6219d-cfb7-46ae-9198-fd550e2b3305.png?v=1725356226" alt="Dr. Woof">
+                </div>
+                <div class="image-wrapper" id="bicong">
+                  <img src="https://cdn.shopify.com/s/files/1/0573/7250/8344/files/Wallace_the_Christmas_Wombat_14a09ea8-28b4-41e6-af10-5ed4baba3d16.png?v=1727924379" alt="Dr. Woof">
+                </div>
+                <div class="image-wrapper" id="biconh">
+                  <img src="https://cdn.shopify.com/s/files/1/0573/7250/8344/files/Gingerbread_Gang_d2c0ff51-f715-4cd6-88d6-f253bcaa859c.png?v=1727926757" alt="Dr. Woof">
+                </div>
+                <div class="image-wrapper" id="biconi">
+                  <img src="https://cdn.shopify.com/s/files/1/0573/7250/8344/files/Catastrophe_the_Christmas_Kitten_1.png?v=1727924379" alt="Dr. Woof">
+                </div>
+                <div class="image-wrapper" id="bicona">
+                  <img src="https://cdn.shopify.com/s/files/1/0573/7250/8344/files/01_d48323bf-00bd-4f65-a920-e57bcce7acc6.png?v=1663617699" alt="Dr. Woof">
+                </div>
+                <div class="image-wrapper" id="biconb">
+                  <img src="https://cdn.shopify.com/s/files/1/0573/7250/8344/files/03_b95d214a-4c60-42cd-a93e-599b0d97ddde.png?v=1663617699" alt="Dr. Woof">
+                </div>
+                <div class="image-wrapper" id="biconc">
+                  <img src="https://cdn.shopify.com/s/files/1/0573/7250/8344/files/02_8303be23-612e-419b-8d89-c5b86bcfb069.png?v=1663617699" alt="Dr. Woof">
+                </div>
+                <div class="image-wrapper" id="bicond">
+                  <img src="https://cdn.shopify.com/s/files/1/0573/7250/8344/files/free-color-icon-1.png?v=1659113219" alt="Dr. Woof">
+                </div>
+              </div>
+              <div class="icon-details">
+                <div class="allicon bicona">
+                  <h4>Kathy The Extra-Calm Koala</h4>
+                  <p><i>The last time something rattled Kathy was 1972.</i></p>
+                  <p>She's been on staff so long, people say the hospital was built around her. When the entire shift is going to 💩, Kathy's there to hug your arm and lend the team a bit of her calm.</p>
+                </div>
+                <div class="allicon biconb">
+                  <h4>Tim The Over-Protective T-Rex</h4>
+                  <p><i>is arms are tiny, but his heart is huge. </i></p>
+                  <p>Tim loves making people smile, but he loves his teammates more. If anyone tries to mess with you, he'll stomp and show his pointy teeth, then give his biggest rawr. </p>
+                </div>
+                <div class="allicon biconc">
+                  <h4>Pippa the Party-Time Puppy Dog</h4>
+                  <p><i>Woof Woof Bitches! </i></p>
+                  <p>Pippa's slogan is work hard, play hard. But when she's on shift everything feels like play. Pippa's secret skill is sniffing you out in your lowest moments, and finding ways to make you laugh.</p>
+                </div>
+                <div class="allicon bicone">
+                  <h4>Ronald the Christmas Reindeer</h4>
+                  <p>He sleighs all night with a smile on his face, and he's got an X-ray to prove his heart's in the right place. </p>
+                </div>
+                <div class="allicon biconf">
+                  <h4>Christmas Legends Wreath</h4>
+                  <p>Some people spend Christmas night snuggled up in bed, here's to the legends who spend it staffing the ER instead. </p>
+                </div>
+                <div class="allicon bicong">
+                  <h4>Wallace the Christmas Wombat</h4>
+                  <p>His tummy is round, and his poops are square,he spreads joy and kindness everywhere.</p>
+                </div>
+                <div class="allicon biconh">
+                  <h4>Gingerbread Gang</h4>
+                  <p>A little sugar and a lot of spice, they pretend they're naughty, but they're really nice.</p>
+                </div>
+                <div class="allicon biconi">
+                  <h4>Catastrophe the Christmas Kitten</h4>
+                  <p>She'll creep in at night and ruin your tree - as sneaky as a fox, when you give her a present, she only wants the box. </p>
+                </div>
+              </div>
+              <span class="formmessage notificonchecker"></span>
+              <input type="hidden" class="iconchecker" value="false">
+              <p>Add Your Initials</p>
+              <div class="input-wrappers">
+                <input type="text" id="binitials" maxlength="3" class="full-width" placeholder="Up to 3 characters (Optional)">
+                <span class="input-counter"></span>
+              </div>
+              <span class="formmessage notifbinitials"></span>
+              <p>Initials Colour</p>
+              <div class="colornamewrapper">
+                <div class="namecolor">
+                  <div class="color-white" id="bcolor-white">
+                    <span>&#10004;</span>
+                  </div>
+                </div>
+                <div class="namecolor">
+                  <div class="color-black" id="bcolor-black">
+                    <span>&#10004;</span>
+                  </div>
+                </div>
+              </div>
+              <span class="formmessage notifcolorchecker"></span>
+              <span class="formmessage notifcolorchecker"></span>
+              <input type="hidden" class="colorchecker" value="false" style="display:none;">
+              <p><input type="checkbox" class="addicon-checkbox"> <span style="color:red">IMPORTANT: I understand and agree that orders are final and cannot be canceled or refunded once placed. I understand that all orders placed today will be processed by January 12, and shipping will begin at the end of January. I have reviewed the FAQ below.</span></p>
+              <div class="button-flexer">
+                <button class="big-duo-button reset">RESET</button> <button class="big-duo-button active badd" disabled>ADD</button>
+              </div>
+            </div>
+          </div>
+
+          <button type="button" class="label collapsible-trigger collapsible-trigger-btn collapsible-trigger-btn--borders" aria-controls="addboth">
+            <label class="variant__label midler">Add both</label> $30
+            {% render 'collapsible-icons' %}
+          </button>
+          <div id="addboth" class="collapsible-content collapsible-content--all">
+            <div class="collapsible-content__inner rte">
+              <p>Title Placement</p>
+              <div class="button-flexer">
+                <button class="duo-button cleft">Left Chest</button> <button class="duo-button cright">right Chest</button>
+              </div>
+              <span class="formmessage notifnamepocketchecker"></span>
+              <input type="hidden" class="namepocketchecker" value="false">
+              <p>Title</p>
+              <div class="input-wrapper">
+                <input type="text" id="cfirstline" class="full-width" placeholder="First Line" maxlength="30">
+                <span class="input-counter"></span>
+              </div>
+              <span class="formmessage notifcfirstline"></span>
+              <div class="input-wrapper">
+                <input type="text" id="csecondline" class="full-width" placeholder="Second Line (Optional)" maxlength="30">
+                <span class="input-counter"></span>
+              </div>
+              <p>Title Colour</p>
+              <div class="colornamewrapper">
+                <div class="namecolor">
+                  <div class="color-white acolor">
+                    <span>&#10004;</span>
+                  </div>
+                </div>
+                <div class="namecolor">
+                  <div class="color-black acolor">
+                    <span>&#10004;</span>
+                  </div>
+                </div>
+              </div>
+              <span class="formmessage notifcolorchecker"></span>
+              <input type="hidden" class="colorchecker" value="false">
+              <hr>
+              <span class="formmessage notificonpocketchecker"></span>
+              <input type="hidden" class="iconpocketchecker" value="true">
+              <p>Pick Your Sleeve Mate</p>
+              <div class="flexer start">
+                <div class="image-wrapper cicone">
+                  <img src="https://cdn.shopify.com/s/files/1/0573/7250/8344/files/ronald_the_christmas.png?v=1727870056" alt="Dr.Woof">
+                </div>
+                <div class="image-wrapper ciconf">
+                  <img src="https://cdn.shopify.com/s/files/1/0573/7250/8344/files/Christmas_Legends_Wreath_42a6219d-cfb7-46ae-9198-fd550e2b3305.png?v=1725356226" alt="Dr.Woof">
+                </div>
+                <div class="image-wrapper cicong">
+                  <img src="https://cdn.shopify.com/s/files/1/0573/7250/8344/files/Wallace_the_Christmas_Wombat_14a09ea8-28b4-41e6-af10-5ed4baba3d16.png?v=1727924379" alt="Dr.Woof">
+                </div>
+                <div class="image-wrapper ciconh">
+                  <img src="https://cdn.shopify.com/s/files/1/0573/7250/8344/files/Gingerbread_Gang_d2c0ff51-f715-4cd6-88d6-f253bcaa859c.png?v=1727926757" alt="Dr.Woof">
+                </div>
+                <div class="image-wrapper ciconi">
+                  <img src="https://cdn.shopify.com/s/files/1/0573/7250/8344/files/Catastrophe_the_Christmas_Kitten_1.png?v=1727924379" alt="Dr.Woof">
+                </div>
+                <div class="image-wrapper cicona">
+                  <img src="https://cdn.shopify.com/s/files/1/0573/7250/8344/files/01_d48323bf-00bd-4f65-a920-e57bcce7acc6.png?v=1663617699" alt="Dr.Woof">
+                </div>
+                <div class="image-wrapper ciconb">
+                  <img src="https://cdn.shopify.com/s/files/1/0573/7250/8344/files/03_b95d214a-4c60-42cd-a93e-599b0d97ddde.png?v=1663617699" alt="Dr.Woof">
+                </div>
+                <div class="image-wrapper ciconc">
+                  <img src="https://cdn.shopify.com/s/files/1/0573/7250/8344/files/02_8303be23-612e-419b-8d89-c5b86bcfb069.png?v=1663617699" alt="Dr.Woof">
+                </div>
+                <div class="image-wrapper cicond">
+                  <img src="https://cdn.shopify.com/s/files/1/0573/7250/8344/files/free-color-icon-1.png?v=1659113219" alt="Dr.Woof">
+                </div>
+              </div>
+              <div class="icon-details">
+                <div class="allicon" id="cicona">
+                  <h4>Kathy The Extra-Calm Koala</h4>
+                  <p><i>The last time something rattled Kathy was 1972.</i></p>
+                  <p>She's been on staff so long, people say the hospital was built around her. When the entire shift is going to 💩, Kathy's there to hug your arm and lend the team a bit of her calm.</p>
+                </div>
+                <div class="allicon" id="ciconb">
+                  <h4>Tim The Over-Protective T-Rex</h4>
+                  <p><i>is arms are tiny, but his heart is huge. </i></p>
+                  <p>Tim loves making people smile, but he loves his teammates more. If anyone tries to mess with you, he'll stomp and show his pointy teeth, then give his biggest rawr. </p>
+                </div>
+                <div class="allicon" id="ciconc">
+                  <h4>Pippa the Party-Time Puppy Dog</h4>
+                  <p><i>Woof Woof Bitches! </i></p>
+                  <p>Pippa's slogan is work hard, play hard. But when she's on shift everything feels like play. Pippa's secret skill is sniffing you out in your lowest moments, and finding ways to make you laugh.</p>
+                </div>
+                <div class="allicon" id="cicone">
+                  <h4>Ronald the Christmas Reindeer</h4>
+                  <p>He sleighs all night with a smile on his face, and he's got an X-ray to prove his heart's in the right place. </p>
+                </div>
+                <div class="allicon" id="ciconf">
+                  <h4>Christmas Legends Wreath</h4>
+                  <p>Some people spend Christmas night snuggled up in bed, here's to the legends who spend it staffing the ER instead. </p>
+                </div>
+                <div class="allicon" id="cicong">
+                  <h4>Wallace the Christmas Wombat</h4>
+                  <p>His tummy is round, and his poops are square,he spreads joy and kindness everywhere.</p>
+                </div>
+                <div class="allicon" id="ciconh">
+                  <h4>Gingerbread Gang</h4>
+                  <p>A little sugar and a lot of spice, they pretend they're naughty, but they're really nice.</p>
+                </div>
+                <div class="allicon" id="ciconi">
+                  <h4>Catastrophe the Christmas Kitten</h4>
+                  <p>She'll creep in at night and ruin your tree - as sneaky as a fox, when you give her a present, she only wants the box. </p>
+                </div>
+              </div>
+              <span class="formmessage notificonchecker"></span>
+              <input type="hidden" class="iconchecker" value="false">
+              <p>Add Your Initials</p>
+              <div class="input-wrappers">
+                <input type="text" id="cinitials" class="full-width" maxlength="3" placeholder="Enter Initials">
+                <span class="input-counter"></span>
+              </div>
+              <span class="formmessage notifcinitials"></span>
+              <p>Initials Colour</p>
+              <div class="colornamewrapper">
+                <div class="namecolor">
+                  <div class="color-white" id="ccolor-white">
+                    <span>&#10004;</span>
+                  </div>
+                </div>
+                <div class="namecolor">
+                  <div class="color-black" id="ccolor-black">
+                    <span>&#10004;</span>
+                  </div>
+                </div>
+              </div>
+              <span class="formmessage notifcolorchecker"></span>
+              <span class="formmessage notifinitialcolorchecker"></span>
+              <input type="hidden" class="initialcolorchecker" value="false" style="display:none;">
+              <p><input type="checkbox" class="addboth-checkbox"> <span style="color:red">IMPORTANT: I understand and agree that orders are final and cannot be canceled or refunded once placed. I understand that all orders placed today will be processed by January 12, and shipping will begin at the end of January. I have reviewed the FAQ below.</span></p>
+              <div class="button-flexer">
+                <button class="big-duo-button reset">RESET</button> <button class="big-duo-button active cadd" disabled>ADD</button>
+              </div>
+            </div>
+          </div>
+
+          <button type="button" class="label addyouricon collapsible-trigger collapsible-trigger-btn collapsible-trigger-btn--borders" aria-controls="addyouricon">
+            <label class="variant__label midler">Add Your Logo </label> $30
+            {% render 'collapsible-icons' %}
+          </button>
+          <div id="addyouricon" class="collapsible-content collapsible-content--all">
+            <div class="collapsible-content__inner rte">
+              <p>Title Placement: </p>
+              <div class="button-flexer">
+                <button class="duo-button eleft">Left Chest</button> <button class="duo-button eright">right Chest</button>
+              </div>
+              <span class="formmessage notifnamepocketchecker"></span>
+              <input type="hidden" class="epocketchecker" value="true">
+              <p>Title (Optional)</p>
+              <div class="input-wrapper">
+                <input type="text" id="efirstline" class="full-width" placeholder="First Line (Optional)" maxlength="30">
+                <span class="input-counter"></span>
+              </div>
+              <span class="formmessage notifcfirstline"></span>
+              <!--
+              <div class="input-wrapper">
+                <input type="text" id="esecondline" class="full-width" placeholder="Second Line (Optional)" maxlength="30">
+                <span class="input-counter"></span>
+              </div>
+              -->
+              <p>Title Colour (Optional)</p>
+              <div class="colornamewrapper">
+                <div class="namecolor">
+                  <div class="color-white ecolor">
+                    <span>&#10004;</span>
+                  </div>
+                </div>
+                <div class="namecolor">
+                  <div class="color-black ecolor">
+                    <span>&#10004;</span>
+                  </div>
+                </div>
+              </div>
+              <span class="formmessage notifcolorchecker"></span>
+              <input type="hidden" class="colorchecker" value="false">
+              <hr>
+
+              <span class="formmessage notifpocketchecker"></span>
+              <input type="hidden" class="pocketchecker" value="true">
+              <p>Pick Your Logo: Left Chest</p>
+              <div class="flexer start">
+                <div class="image-wrapper" id="eicong">
+                  <img src="https://cdn.shopify.com/s/files/1/0374/6237/6507/files/1000075622-removebg-preview_20fdb2db-9883-4782-ac73-dfb1ea6bf7f3.png?v=1741242864" alt="Dr. Woof">
+                </div>
+                <div class="image-wrapper" id="eiconc">
+                  <img src="https://cdn.shopify.com/s/files/1/0573/7250/8344/files/Casterton_Memorial_Hospital.png?v=1735376805" alt="Dr. Woof">
+                </div>
+                <div class="image-wrapper" id="eicone">
+                  <img src="https://cdn.shopify.com/s/files/1/0573/7250/8344/files/The_Royal_Melbourne_Hospital.png?v=1735376805" alt="Dr. Woof">
+                </div>
+                <div class="image-wrapper" id="eiconf">
+                  <img src="https://cdn.shopify.com/s/files/1/0573/7250/8344/files/Monash_Medical_Centre.png?v=1735376805" alt="Dr. Woof">
+                </div>
+                <div class="image-wrapper" id="eiconh">
+                  <img src="https://cdn.shopify.com/s/files/1/0573/7250/8344/files/Westmead_Hospital.png?v=1735376805" alt="Dr. Woof">
+                </div>
+                <div class="image-wrapper" id="eiconi">
+                  <img src="https://cdn.shopify.com/s/files/1/0573/7250/8344/files/Royal_Brisbane_and_Women_s_Hospital.png?v=1735376805" alt="Dr. Woof">
+                </div>
+                <div class="image-wrapper" id="eicona">
+                  <img src="https://cdn.shopify.com/s/files/1/0573/7250/8344/files/Liverpool_Hospital.png?v=1735376805" alt="Dr. Woof">
+                </div>
+                <div class="image-wrapper" id="eiconb">
+                  <img src="https://cdn.shopify.com/s/files/1/0374/6237/6507/files/1000075596-removebg-preview.png?v=1741242863" alt="Dr. Woof">
+                </div>
+                <!--
+                <div class="image-wrapper" id="eicond">
+                  <img src="https://cdn.shopify.com/s/files/1/0573/7250/8344/files/free-color-icon-1.png?v=1659113219" alt="Dr. Woof">
+                </div>
+                -->
+              </div>
+
+              <div class="icon-details">
+                <div class="allicon eicona">
+                  <h4>Liverpool Hospital</h4>
+                </div>
+                <div class="allicon eiconb">
+                  <h4>Royal Prince Alfred Hospital</h4>
+                </div>
+                <div class="allicon eiconc">
+                  <h4>Casterton Memorial Hospital</h4>
+                </div>
+                <div class="allicon eicone">
+                  <h4>Royal Melbourne Hospitalr</h4>
+                </div>
+                <div class="allicon eiconf">
+                  <h4>Monash Medical Centre</h4>
+                </div>
+                <div class="allicon eicong">
+                  <h4>NSW_Health</h4>
+                </div>
+                <div class="allicon eiconh">
+                  <h4>Westmead Hospital</h4>
+                </div>
+                <div class="allicon eiconi">
+                  <h4>Royal Brisbane and Women's Hospital</h4>
+                </div>
+              </div>
+
+              <span class="formmessage notificonchecker"></span>
+              <input type="hidden" class="iconchecker" value="false">
+
+              {% comment %}
+              <p>Add Your Initials</p>
+              <div class="input-wrappers">
+                <input type="text" id="einitials" maxlength="3" class="full-width" placeholder="Up to 3 characters (Optional)">
+                <span class="input-counter"></span>
+              </div>
+              <span class="formmessage notifeinitials"></span>
+              <p>Initials Colour</p>
+              <div class="colornamewrapper">
+                <div class="namecolor">
+                  <div class="color-white" id="ecolor-white">
+                    <span>&#10004;</span>
+                  </div>
+                </div>
+                <div class="namecolor">
+                  <div class="color-black" id="ecolor-black">
+                    <span>&#10004;</span>
+                  </div>
+                </div>
+              </div>
+              {% endcomment %}
+
+              <div class="display:none !important">
+                <input type="hidden" id="einitials" maxlength="3" class="full-width" placeholder="Up to 3 characters (Optional)">
+                <span class="input-counter"></span>
+                <span class="formmessage notifeinitials"></span>
+                <div class="color-white" id="ecolor-white"></div>
+                <div class="color-black" id="ecolor-black"></div>
+              </div>
+
+              <input type="hidden" class="initialcolorchecker" value="true" style="display:none;">
+              <p><input type="checkbox" class="addyouricon-checkbox"> <span style="color:red">IMPORTANT: I understand and agree that orders are final and cannot be canceled or refunded once placed. I understand that all orders placed today will be processed by January 12, and shipping will begin at the end of January. I have reviewed the FAQ below.</span></p>
+              <div class="button-flexer">
+                <button class="big-duo-button reset">RESET</button> <button class="big-duo-button active eadd" disabled>ADD</button>
+              </div>
+            </div>
+          </div>
+
+          <button type="button" class="label collapsible-trigger collapsible-trigger-btn collapsible-trigger-btn--borders" aria-controls="faqdropdown">
+            <label class="variant__label midler">Frequently asked questions</label>
+            {% render 'collapsible-icons' %}
+          </button>
+
+          <div id="faqdropdown" class="collapsible-content collapsible-content--all">
+            <div class="collapsible-content__inner rte">
+              <p><strong>Can I return or exchange embroidered items?</strong></p>
+              <p>No. Embroidered items cannot be returned or exchanged. If your order has an error, please contact our customer care team for assistance.</p>
+              <p><strong>How long do embroidered items take to arrive?</strong></p>
+              <p>Embroidered items take an additional 10 business days to ship.</p>
+              <p><strong>Do embroidery orders qualify for free shipping?</strong></p>
+              <p>Due to the extra costs associated with embroidery, all orders have a flat $15 shipping fee.</p>
+              <p><strong>How big is your embroidery font?</strong></p>
+              <p>For embroidered names, our font is 1.1cm in height. Text may be shrunk down to accommodate longer names. </p>
+              <p>If you choose to render your initial on the left sleeve, the font will be 2.1cm in height.</p>
+              <p><strong>How big are your Sleeve Mate icons?</strong></p>
+              <p>Sleeve mates measure 3.5cm x 3.5cm. That's roughly the same size as an Oreo cookie … yum</p>
+              <p><strong>Do scrubs discounts render embroidery?</strong></p>
+              <p>No. Discounts, sales and deals only apply to the cost of the scrubs themselves. Embroidery is at full price, unless stated otherwise.</p>
+              <p><strong>Can I return previously purchased items to have embroidery added?</strong></p>
+              <p>Embroidery is only available for newly purchased items at this time.</p>
+              <p><strong>Can I change my embroidery after I've placed my order?</strong></p>
+              <p>You can contact us, but there are no promises. Our embroidery team works fast.</p>
+              <p><strong>Can you add my clinic logo to the front chest?</strong></p>
+              <p>Yes. but if we don't already have your logo on file, you may need to team up with a few colleagues to make it cost effective. For custom embroidery requests please contact our team. <br/>Please contact our team at <b style="text-decoration: underline;">hello@drwoofapparel.com.au</b></p>
+              <p><strong>Can you do embroidery for team orders?</strong></p>
+              <p>Yes. If you have more than 8 pairs of scrubs to embroider or are looking to render a clinic logo, contact us to discuss group rates. <br/>Discuss group rates at <b style="text-decoration: underline;">hello@drwoofapparel.com.au</b></p>
+              <div class="accordioncloserwrapper">
+                <button type="submit" name="backtotop" data-add-to-cart="" class="markerx btn btn--tertiary  btn btn--full backtotop">
+                  <span data-add-to-cart-text="">Back to top</span>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
-   </div>
-         <style>
-.accordioncloserwrapper {margin-top: 20px;text-align: center;}.allicon, .icon-details{}.accordioncloserwrapper{position:relative;display:block;height:40px;}.backtotop{text-align:center;display:block;width:auto;}.backtotop span{padding: 9px 20px 32px !important;display:inline-block;}#accordioncloser:hover{cursor:pointer;}.inner-modal .collapsible-content{}.namewrapper{position: absolute;top: 42%;text-align: left;left:42px;width: 100%;}.inner-modal .midler .icon{position:absolute;}.inner-modal .midler .icon .gificon{position:relative;top:-7px;}.inner-modal div{margin-bottom:2px !important;}.inner-modal .colornamewrapper{display:flex;margin-bottom:12px !important;}.flexer.start{margin-bottom:12px !important;}.midler{margin-bottom:0 !important;}.midler:hover{cursor:pointer;}.faqk{font-weight: 400;margin-top: 9px;display: block;}.inner-modal #modalclose{position:absolute;}.inner-modal h4{margin-top:9px;}.cicond, #bicond{display:none;}.inner-modal button{text-transform: capitalize !important;font-weight:400;}.inner-modal .btn{width:40px;height:40px;padding:0 !important;min-width:40px;}.image-wrapper-rel{position:relative;overflow: hidden;height:auto;}.inner-modal h4{position:relative;//top:-26px;}.image-wrapper-rel{position: fixed;max-width: 453px;}.inner-modal > .flexer{overflow:auto;height:63vh;}@media only screen and (min-width:481px){}.hoverclicker{margin-top:16px;display:flex;margin-bottom:3px;}.button-flexer{margin-bottom:12px !important;}.outer-modal p{margin-top:0 !important;}.outer-modal p b{font-size:15px;}::-webkit-scrollbar-thumb {background: #888;}::-webkit-scrollbar {width: 4px;}.outer-modal .duo:first-child{position:relative;}.showflex{display:flex !important;}.hideflex{display:none !important;;}.outer-modal .duo:first-child .floatingname{position:static !important;left:32%;top:28%;display:block;color:white;letter-spacing:4px;font-size:23px;font-weight:900;z-index:9999;margin-bottom:8px;}.outer-modal .duo:first-child .floatingsub{position:static !important;left:32%;top:32%;color:black;font-size:23px;letter-spacing:4px;display:block;font-weight:900;z-index:9999;}.outer-modal .duo:first-child .floatingicon{position:static;left: 53%;top: 31%;color:black;padding-right:12px;font-weight:900;z-index:9999;}.outer-modal .duo:first-child .floatingicon img{width:auto !important;height:92px;}.outer-modal .duo:first-child .floatingini{position:static;left: 63%;top: 38%;margin-bottom:53px;color:#fff;font-size:23px;letter-spacing:4px;font-weight:900;z-index:9999;transform: translateY(19px);}.superpos-icon{position: absolute;top: 37%;display: flex;align-items: center;justify-content: center;width: 100%;text-align: center;left: 0;transform: rotate(45deg) translateY(-15px) ;}.input-wrappers, .input-wrapper{position:relative;}.input-wrappers .input-counter, .input-wrapper .input-counter{position:absolute;top:10px;right:12px;}@media only screen and (max-width:1920px){.superpos-icon{position: absolute;transform: rotate(45deg);}.outer-modal .duo:first-child .floatingicon{left: 54%;top: 38%;}.outer-modal .duo:first-child .floatingini{left: 64%;top: 46%;}}@media only screen and (max-width:1400px){.outer-modal .duo:first-child .floatingname{top:57%;}.superpos-icon{position: absolute;transform: rotate(45deg);}.outer-modal .duo:first-child .floatingsub{top:65%;}.outer-modal .duo:first-child .floatingicon{left: 58%;top: 55%;}.outer-modal .duo:first-child .floatingini{left: 67%;top: 68%;}}@media only screen and (max-width:1180px){.outer-modal .duo:first-child .floatingname{top: 37%;}.outer-modal .duo:first-child .floatingsub{top: 44%;}.outer-modal .duo:first-child .floatingicon{left: 48%;top: 48%;}.outer-modal .duo:first-child .floatingini{left: 58%;top: 57%;}}@media only screen and (max-width:896px){.outer-modal .duo:first-child .floatingname{top: 69%;font-size:17px;}.outer-modal .duo:first-child .floatingsub{top: 79%;font-size:17px;}.outer-modal .duo:first-child .floatingicon{left: 47%;top: 57%;}.outer-modal .duo:first-child .floatingini{left: 58%;top: 76%;font-size:17px;}.image-wrapper-rel{width:348px;}}@media only screen and (max-width:820px){.image-wrapper-rel{position: fixed;max-width: 362px;height:auto;}.superpos-icon{position: absolute;transform: rotate(45deg);}.outer-modal .duo:first-child .floatingname{font-size:17px;top: 39%;}.outer-modal .duo:first-child .floatingsub{font-size:17px;top: 49%;}.outer-modal .duo:first-child .floatingicon{left: 45%;top: 44%;}.outer-modal .duo:first-child .floatingini{font-size:17px top: 57%;}}@media only screen and (max-width:768px){.superpos-icon{position: absolute;transform: rotate(45deg);}.image-wrapper-rel{position:relative;overflow: hidden;height:auto;}}@media only screen and (max-width:768px){.outer-modal .duo:first-child .floatingname{font-size:21px;top:44%;}.outer-modal .duo:first-child .floatingsub{font-size:21px;top:53%;}.outer-modal .duo:first-child .floatingicon img{}.outer-modal .duo:first-child .floatingini{top:50%;left:65%;font-size:18px;}}@media only screen and (max-width:480px){.embroi-image{flex:0 0 40%;}.screen-layer__close{top:11px !important;right:-9px !important;left:auto !important;}.showflex{display:block !important;;}.faqk{font-size:13px;}.image-wrapper{height:67px;}.superpos-icon{position: absolute;transform: rotate(45deg);}.outer-modal .duo:first-child .floatingicon{left: 45%;top: 45%;}.outer-modal .duo:first-child .floatingicon img{width:40px }.outer-modal .duo:first-child .floatingini{left: 59%;top: 58%;font-size:16px;}.outer-modal .duo:first-child .floatingname{top:43%;font-size:16px;}.outer-modal .duo:first-child .floatingsub{font-size:16px;top:49%;}}#addyouricon .image-wrapper.active, #addanicon .image-wrapper.active, #addboth .image-wrapper.active{border:2px solid #050507;}.formmessage{display:inline-block;color:red;position:relative;top:-11px;}.imagesample{width:100%;height:auto;margin-bottom:12px;transform: scaleX(-1);}.flexer.start{justify-content:flex-start !important;gap:10px;}.flexer.start .image-wrapper{flex:0 0 17%;}.image-wrapper{width:auto;height:69px;overflow:visible;margin-right:20px;}.image-wrapper img{width:auto;height:100% !important;}.outer-modal input[type="text"]{border:2px solid #050507;padding-left:8px;padding-right:8px;border-radius:8px;margin-bottom:12px;}.outer-modal p{margin-bottom:8px !important;margin-top:12px;}.colornamewrapper{display:flex;margin-bottom:12px !important;}.colornamewrapper .namecolor{display:inline-block;}.colornamewrapper .namecolor span{display:none;}.namecolor{border:1px solid #050507;border-radius:50%;width:26px;height:26px;padding:2px;display:flex;align-items:center;justify-content:center;margin-right:12px;}.namecolor{}.color-black{background:#050507;border-radius:50%;width:100%;height:100%;display:flex;justify-content:center;align-items:center;}.color-white{background:#fff;border-radius:50%;width:100%;height:100%;display:flex;justify-content:center;align-items:center;}.color-black{color:white;}.color-white span, .color-black span{font-size: 21px;display: inline-block;height: 21px;line-height: 1em;}.full-width{width:100%;}.button-flexer{display:flex;flex-wrap:wrap;justify-content:flex-start;}.big-button-flexer{display:flex;flex-wrap:wrap;justify-content:space-between;}.duo-button{padding:12px;text-align:center;border:2px solid #050507;margin-right:12px;margin-bottom:12px;}.big-duo-button{width:47%;flex:0 0 47%;padding:12px;text-align:center;border:2px solid #050507;margin-right:8px;}.duo-button.active{color:#fff;background:#050507;}.big-duo-button:nth-child(2){color:#fff;background:#000;border:2px solid #000;}.big-duo-button:nth-child(2):hover{color:#050507;background:#fff;border:2px solid #000;}.accordioncontent{display:none;}.outer-modal label[for] {display: inline-block;}.outer-modal{height:100vh;width:100%;position:fixed;display:flex;justify-content:center;align-items:center;background:rgba(0,0,0,0.6);flex-wrap:wrap;top:0;left:0;z-index:99999;display:none;overflow:hidden;}.inner-modal{position:relative;background:#fff;padding:40px;max-width:1100px;width:100%;height:unset;display:flex;justify-content:space-between;flex-wrap:wrap;z-index:999;overflow:hidden;}@media only screen and (max-width:480px){.thirder span{font-size:14px;}.inner-modal > .flexer{overflow:auto;height:87vh;display:block;}.inner-modal{padding:12px 40px;}}.flexer{display:flex;justify-content:space-between;flex-wrap:wrap;width:100%;}.flexer .duo{flex:0 0 47%;width:47%;padding-left:12px;padding-right:12px;}@media only screen and (max-width:480px){.big-duo-button{width:45%;}.flexer .duo{width:100%;flex:0 0 100%;}}.formmessage{display:none;}#aadd:disabled, .badd:disabled, .cadd:disabled{background:gray;}
-         </style>
-         {% endif %}
+    </div>
+  </div>
+
+  <style>
+    .accordioncloserwrapper {margin-top: 20px;text-align: center;}
+    .accordioncloserwrapper {position: relative;display: block;height: 40px;}
+    .backtotop {text-align: center;display: block;width: auto;}
+    .backtotop span {padding: 9px 20px 32px !important;display: inline-block;}
+    #accordioncloser:hover {cursor: pointer;}
+    .namewrapper {position: absolute;top: 42%;text-align: left;left: 42px;width: 100%;}
+    .inner-modal .midler .icon {position: absolute;}
+    .inner-modal .midler .icon .gificon {position: relative;top: -7px;}
+    .inner-modal div {margin-bottom: 2px !important;}
+    .inner-modal .colornamewrapper {display: flex;margin-bottom: 12px !important;}
+    .flexer.start {margin-bottom: 12px !important;}
+    .midler {margin-bottom: 0 !important;}
+    .midler:hover {cursor: pointer;}
+    .faqk {font-weight: 400;margin-top: 9px;display: block;}
+    .inner-modal #modalclose {position: absolute;}
+    .inner-modal h4 {margin-top: 9px;}
+    .cicond, #bicond {display: none;}
+    .inner-modal button {text-transform: capitalize !important;font-weight: 400;}
+    .inner-modal .btn {width: 40px;height: 40px;padding: 0 !important;min-width: 40px;}
+    .image-wrapper-rel {position: relative;overflow: hidden;height: auto;}
+    .inner-modal h4 {position: relative;}
+    .image-wrapper-rel {position: fixed;max-width: 453px;}
+    .inner-modal > .flexer {overflow: auto;height: 63vh;}
+    .hoverclicker {margin-top: 16px;display: flex;margin-bottom: 3px;}
+    .button-flexer {margin-bottom: 12px !important;}
+    .outer-modal p {margin-top: 0 !important;}
+    .outer-modal p b {font-size: 15px;}
+    ::-webkit-scrollbar-thumb {background: #888;}
+    ::-webkit-scrollbar {width: 4px;}
+    .outer-modal .duo:first-child {position: relative;}
+    .showflex {display: flex !important;}
+    .hideflex {display: none !important;}
+    .outer-modal .duo:first-child .floatingname {position: static !important;left: 32%;top: 28%;display: block;color: white;letter-spacing: 4px;font-size: 23px;font-weight: 900;z-index: 9999;margin-bottom: 8px;}
+    .outer-modal .duo:first-child .floatingsub {position: static !important;left: 32%;top: 32%;color: black;font-size: 23px;letter-spacing: 4px;display: block;font-weight: 900;z-index: 9999;}
+    .outer-modal .duo:first-child .floatingicon {position: static;left: 53%;top: 31%;color: black;padding-right: 12px;font-weight: 900;z-index: 9999;}
+    .outer-modal .duo:first-child .floatingicon img {width: auto !important;height: 92px;}
+    .outer-modal .duo:first-child .floatingini {position: static;left: 63%;top: 38%;margin-bottom: 53px;color: #fff;font-size: 23px;letter-spacing: 4px;font-weight: 900;z-index: 9999;transform: translateY(19px);}
+    .superpos-icon {position: absolute;top: 37%;display: flex;align-items: center;justify-content: center;width: 100%;text-align: center;left: 0;transform: rotate(45deg) translateY(-15px);}
+    .input-wrappers, .input-wrapper {position: relative;}
+    .input-wrappers .input-counter, .input-wrapper .input-counter {position: absolute;top: 10px;right: 12px;}
+    @media only screen and (max-width:1920px) {
+      .superpos-icon {position: absolute;transform: rotate(45deg);}
+      .outer-modal .duo:first-child .floatingicon {left: 54%;top: 38%;}
+      .outer-modal .duo:first-child .floatingini {left: 64%;top: 46%;}
+    }
+    @media only screen and (max-width:1400px) {
+      .outer-modal .duo:first-child .floatingname {top: 57%;}
+      .superpos-icon {position: absolute;transform: rotate(45deg);}
+      .outer-modal .duo:first-child .floatingsub {top: 65%;}
+      .outer-modal .duo:first-child .floatingicon {left: 58%;top: 55%;}
+      .outer-modal .duo:first-child .floatingini {left: 67%;top: 68%;}
+    }
+    @media only screen and (max-width:1180px) {
+      .outer-modal .duo:first-child .floatingname {top: 37%;}
+      .outer-modal .duo:first-child .floatingsub {top: 44%;}
+      .outer-modal .duo:first-child .floatingicon {left: 48%;top: 48%;}
+      .outer-modal .duo:first-child .floatingini {left: 58%;top: 57%;}
+    }
+    @media only screen and (max-width:896px) {
+      .outer-modal .duo:first-child .floatingname {top: 69%;font-size: 17px;}
+      .outer-modal .duo:first-child .floatingsub {top: 79%;font-size: 17px;}
+      .outer-modal .duo:first-child .floatingicon {left: 47%;top: 57%;}
+      .outer-modal .duo:first-child .floatingini {left: 58%;top: 76%;font-size: 17px;}
+      .image-wrapper-rel {width: 348px;}
+    }
+    @media only screen and (max-width:820px) {
+      .image-wrapper-rel {position: fixed;max-width: 362px;height: auto;}
+      .superpos-icon {position: absolute;transform: rotate(45deg);}
+      .outer-modal .duo:first-child .floatingname {font-size: 17px;top: 39%;}
+      .outer-modal .duo:first-child .floatingsub {font-size: 17px;top: 49%;}
+      .outer-modal .duo:first-child .floatingicon {left: 45%;top: 44%;}
+      .outer-modal .duo:first-child .floatingini {font-size: 17px top: 57%;}
+    }
+    @media only screen and (max-width:768px) {
+      .superpos-icon {position: absolute;transform: rotate(45deg);}
+      .image-wrapper-rel {position: relative;overflow: hidden;height: auto;}
+      .outer-modal .duo:first-child .floatingname {font-size: 21px;top: 44%;}
+      .outer-modal .duo:first-child .floatingsub {font-size: 21px;top: 53%;}
+      .outer-modal .duo:first-child .floatingini {top: 50%;left: 65%;font-size: 18px;}
+    }
+    @media only screen and (max-width:480px) {
+      .embroi-image {flex: 0 0 40%;}
+      .screen-layer__close {top: 11px !important;right: -9px !important;left: auto !important;}
+      .showflex {display: block !important;}
+      .faqk {font-size: 13px;}
+      .image-wrapper {height: 67px;}
+      .superpos-icon {position: absolute;transform: rotate(45deg);}
+      .outer-modal .duo:first-child .floatingicon {left: 45%;top: 45%;}
+      .outer-modal .duo:first-child .floatingicon img {width: 40px}
+      .outer-modal .duo:first-child .floatingini {left: 59%;top: 58%;font-size: 16px;}
+      .outer-modal .duo:first-child .floatingname {top: 43%;font-size: 16px;}
+      .outer-modal .duo:first-child .floatingsub {font-size: 16px;top: 49%;}
+    }
+    #addyouricon .image-wrapper.active, #addanicon .image-wrapper.active, #addboth .image-wrapper.active {border: 2px solid #050507;}
+    .formmessage {display: inline-block;color: red;position: relative;top: -11px;}
+    .imagesample {width: 100%;height: auto;margin-bottom: 12px;transform: scaleX(-1);}
+    .flexer.start {justify-content: flex-start !important;gap: 10px;}
+    .flexer.start .image-wrapper {flex: 0 0 17%;}
+    .image-wrapper {width: auto;height: 69px;overflow: visible;margin-right: 20px;}
+    .image-wrapper img {width: auto;height: 100% !important;}
+    .outer-modal input[type="text"] {border: 2px solid #050507;padding-left: 8px;padding-right: 8px;border-radius: 8px;margin-bottom: 12px;}
+    .outer-modal p {margin-bottom: 8px !important;margin-top: 12px;}
+    .colornamewrapper {display: flex;margin-bottom: 12px !important;}
+    .colornamewrapper .namecolor {display: inline-block;}
+    .colornamewrapper .namecolor span {display: none;}
+    .namecolor {border: 1px solid #050507;border-radius: 50%;width: 26px;height: 26px;padding: 2px;display: flex;align-items: center;justify-content: center;margin-right: 12px;}
+    .color-black {background: #050507;border-radius: 50%;width: 100%;height: 100%;display: flex;justify-content: center;align-items: center;}
+    .color-white {background: #fff;border-radius: 50%;width: 100%;height: 100%;display: flex;justify-content: center;align-items: center;}
+    .color-black {color: white;}
+    .color-white span, .color-black span {font-size: 21px;display: inline-block;height: 21px;line-height: 1em;}
+    .full-width {width: 100%;}
+    .button-flexer {display: flex;flex-wrap: wrap;justify-content: flex-start;}
+    .big-button-flexer {display: flex;flex-wrap: wrap;justify-content: space-between;}
+    .duo-button {padding: 12px;text-align: center;border: 2px solid #050507;margin-right: 12px;margin-bottom: 12px;}
+    .big-duo-button {width: 47%;flex: 0 0 47%;padding: 12px;text-align: center;border: 2px solid #050507;margin-right: 8px;}
+    .duo-button.active {color: #fff;background: #050507;}
+    .big-duo-button:nth-child(2) {color: #fff;background: #000;border: 2px solid #000;}
+    .big-duo-button:nth-child(2):hover {color: #050507;background: #fff;border: 2px solid #000;}
+    .accordioncontent {display: none;}
+    .outer-modal label[for] {display: inline-block;}
+    .outer-modal {height: 100vh;width: 100%;position: fixed;display: flex;justify-content: center;align-items: center;background: rgba(0,0,0,0.6);flex-wrap: wrap;top: 0;left: 0;z-index: 99999;display: none;overflow: hidden;}
+    .inner-modal {position: relative;background: #fff;padding: 40px;max-width: 1100px;width: 100%;height: unset;display: flex;justify-content: space-between;flex-wrap: wrap;z-index: 999;overflow: hidden;}
+    @media only screen and (max-width:480px) {
+      .thirder span {font-size: 14px;}
+      .inner-modal > .flexer {overflow: auto;height: 87vh;display: block;}
+      .inner-modal {padding: 12px 40px;}
+    }
+    .flexer {display: flex;justify-content: space-between;flex-wrap: wrap;width: 100%;}
+    .flexer .duo {flex: 0 0 47%;width: 47%;padding-left: 12px;padding-right: 12px;}
+    @media only screen and (max-width:480px) {
+      .big-duo-button {width: 45%;}
+      .flexer .duo {width: 100%;flex: 0 0 100%;}
+    }
+    .formmessage {display: none;}
+    #aadd:disabled, .badd:disabled, .cadd:disabled {background: gray;}
+  </style>
+{% endif %}

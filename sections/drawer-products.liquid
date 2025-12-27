@@ -1,53 +1,43 @@
 {% if cart.item_count > 0 %}
   {% assign file_extension = 'png' %}
   
+<div class="cart-all-products-wrapper">
+  <button type="button" class="cart-slider-prev" aria-label="Previous">‹</button>
   <div class="cart-all-products">
-    
     {%- for block in section.blocks -%}
-    {% assign handle =  block.settings.products %}
+    {% assign handle = block.settings.products %}
     <div class="product-data-outer">
-  
       <div class="product-data">
         <p style="padding-left:15px;padding-right:15px;width:100%;border-bottom:1px solid #ebebeb; padding-top:15px;padding-bottom:12px;text-align:left;font-size:16px;font-weight:900;">Before You Go</p>
         {% assign vcounter = 0 %}
         {% assign dcounter = 0 %}
         {% assign ecounter = 0 %}
         <div class="feature-img">
-  
-        {% if all_products[handle].options contains 'Color' %}
-            
-              {% for image in all_products[handle].images %}
-                 {% assign xcounter = 0 %}
-                  
-                    {% for variant in image.variants %}
-                      {% if xcounter == 0 %}
-                        <img src="{{variant.image.src | img_url: 'x100'}}" class="vimages count{{ ecounter }} {% if vcounter == 0 %}vactive{% else %}vnotive{% endif %}">
-                        {% assign vcounter = vcounter | plus: 1 %}
-                        {% assign xcounter = xcounter | plus: 1 %}
-                        {% assign ecounter = ecounter | plus: 1 %}
-                      {% endif %}
-                    {% endfor %}
-                 
-                  
+          {% if all_products[handle].options contains 'Color' %}
+            {% for image in all_products[handle].images %}
+              {% assign xcounter = 0 %}
+              {% for variant in image.variants %}
+                {% if xcounter == 0 %}
+                  <img src="{{variant.image.src | img_url: 'x100'}}" class="vimages count{{ ecounter }} {% if vcounter == 0 %}vactive{% else %}vnotive{% endif %}" loading="lazy">
+                  {% assign vcounter = vcounter | plus: 1 %}
+                  {% assign xcounter = xcounter | plus: 1 %}
+                  {% assign ecounter = ecounter | plus: 1 %}
+                {% endif %}
               {% endfor %}
-       
-        {% else %}
-        {% for image in all_products[handle].images %}
-          {% assign xcounter = 0 %}
-           
-             {% for variant in image.variants %}
-               {% if xcounter == 0 %}
-                 <img src="{{variant.image.src | img_url: 'x100'}}" class="vimages count{{ ecounter }} {% if vcounter == 0 %}vactive{% else %}vnotive{% endif %}">
-                 {% assign vcounter = vcounter | plus: 1 %}
-                 {% assign xcounter = xcounter | plus: 1 %}
-                 {% assign ecounter = ecounter | plus: 1 %}
-               {% endif %}
-             {% endfor %}
-          
-           
-       {% endfor %}
-        {% endif %}
-  
+            {% endfor %}
+          {% else %}
+            {% for image in all_products[handle].images %}
+              {% assign xcounter = 0 %}
+              {% for variant in image.variants %}
+                {% if xcounter == 0 %}
+                  <img src="{{variant.image.src | img_url: 'x100'}}" class="vimages count{{ ecounter }} {% if vcounter == 0 %}vactive{% else %}vnotive{% endif %}" loading="lazy">
+                  {% assign vcounter = vcounter | plus: 1 %}
+                  {% assign xcounter = xcounter | plus: 1 %}
+                  {% assign ecounter = ecounter | plus: 1 %}
+                {% endif %}
+              {% endfor %}
+            {% endfor %}
+          {% endif %}
         </div>
         <div class="details">
           <div class="product-name" data-varid="{{all_products[handle].selected_or_first_available_variant.id}}"><a href="{{all_products[handle].url}}">{{all_products[handle].title}}</a></div>
@@ -62,7 +52,7 @@
             {% if opname == 'color' %}
             <div class="all-colors">
               {% for value in product_option.values %}
-                <label  class="{% if forloop.index == 1 %}active{% endif%}" datacounter="count{{ dcounter }}" data-value="{{value | downcase}}"  style="background-color: {{ value | split: ' ' | last | handle }}; background-image: url({{ value | handle | append: '.' | append: file_extension | asset_url }})"></label>
+                <label class="{% if forloop.index == 1 %}active{% endif%}" datacounter="count{{ dcounter }}" data-value="{{value | downcase}}" style="background-color: {{ value | split: ' ' | last | handle }}; background-image: url({{ value | handle | append: '.' | append: file_extension | asset_url }})"></label>
                 {% assign dcounter = dcounter | plus: 1 %}
               {% endfor %}
             </div>
@@ -70,7 +60,6 @@
             {% endfor %}  
           </div>
         </div>
-  
         <div class="variants">
           {% for product_option in all_products[handle].options_with_values %}
           {% assign opname = product_option.name | downcase %}     
@@ -94,20 +83,19 @@
             </select>
           {% endif %}
           {% endfor %}  
-  
-  
           <div class="variproducts" style="display:none;">
             {% for variant in all_products[handle].variants %}
             <div data-name="{{variant.title | downcase}}" data-avail="{% if variant.available %}avail{% else %}not-avil{% endif %}" value="{{variant.id}}"></div>
             {% endfor %}
           </div>  
-          <button {% if all_products[handle].variants[0].available %}{% else%}disabled{% endif %}  data-size="{{all_products[handle].options.size}}" type="submit"  class="markerx btn add-cart-drawer"><span data-add-to-cart-text="">ADD</span></button>
+          <button {% if all_products[handle].variants[0].available %}{% else%}disabled{% endif %} data-size="{{all_products[handle].options.size}}" type="submit" class="markerx btn add-cart-drawer"><span data-add-to-cart-text="">ADD</span></button>
         </div>  
-  
       </div> 
     </div>  
     {%- endfor -%}
   </div>
+  <button type="button" class="cart-slider-next" aria-label="Next">›</button>
+</div>
   {% endif %}
   
   
@@ -320,9 +308,206 @@
       opacity: 0.2;
     }
   
+  .cart-all-products-wrapper {
+  position: relative;
+  overflow:hidden;
+ 
+}
+
+.cart-all-products {
+  display: flex;
+  overflow: visible;
+  scroll-behavior: smooth;
+  gap: 0;
+}
+
+.product-data-outer {
+  width:100%;
+  flex-shrink: 0;
+  transition: transform 0.3s ease;
+}
+
+.cart-slider-prev,
+.cart-slider-next {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(0, 0, 0, 0.5);
+  color: white;
+  border: none;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  cursor: pointer;
+  font-size: 24px;
+  z-index: 10;
+  transition: background 0.3s;
+}
+
+.cart-slider-prev:hover,
+.cart-slider-next:hover {
+  background: rgba(0, 0, 0, 0.8);
+}
+
+.cart-slider-prev {
+  left: 0;
+}
+
+.cart-slider-next {
+  right: 0;
+}
+
+.cart-slider-prev:disabled,
+.cart-slider-next:disabled {
+  opacity: 0.3;
+  cursor: not-allowed;
+}
+
+@media (max-width: 768px) {
+  .cart-all-products-wrapper {
+    
+  }
   
+  .product-data-outer {
+    width:100%;
+  }
+  
+  .cart-slider-prev,
+  .cart-slider-next {
+    width: 30px;
+    height: 30px;
+    font-size: 20px;
+  }
+}
+
   </style>
-  
+  {% if template == 'index' %}
+  <script>
+// ============================================================================
+// CART SLIDER - Handles dynamically added elements
+// ============================================================================
+
+let currentIndex = 0;
+let cartSlider = null;
+let prevBtn = null;
+let nextBtn = null;
+let slides = null;
+
+function initCartSlider() {
+  cartSlider = document.querySelector('.cart-all-products');
+  prevBtn = document.querySelector('.cart-slider-prev');
+  nextBtn = document.querySelector('.cart-slider-next');
+
+  if (!cartSlider || !prevBtn || !nextBtn) {
+    return; // Elements not ready yet
+  }
+
+  slides = cartSlider.querySelectorAll('.product-data-outer');
+
+  if (slides.length === 0) {
+    return; // No slides yet
+  }
+
+  console.log('Cart slider initialized with', slides.length, 'slides');
+  updateSlider();
+}
+
+function updateSlider() {
+  if (!cartSlider || !slides || slides.length === 0) return;
+
+  const slideWidth = slides[0].offsetWidth;
+  const totalSlides = slides.length;
+
+  cartSlider.style.transform = `translateX(-${currentIndex * slideWidth}px)`;
+
+  if (prevBtn) prevBtn.disabled = currentIndex === 0;
+  if (nextBtn) nextBtn.disabled = currentIndex >= totalSlides - 1;
+}
+
+// ============================================================================
+// EVENT DELEGATION for slider buttons
+// ============================================================================
+
+document.addEventListener('click', function(e) {
+  // Previous button
+  const prevButton = e.target.closest('.cart-slider-prev');
+  if (prevButton) {
+    if (currentIndex > 0) {
+      currentIndex--;
+      updateSlider();
+    }
+    return;
+  }
+
+  // Next button
+  const nextButton = e.target.closest('.cart-slider-next');
+  if (nextButton) {
+    // Refresh slides count in case new ones were added
+    slides = cartSlider ? cartSlider.querySelectorAll('.product-data-outer') : null;
+    const totalSlides = slides ? slides.length : 0;
+
+    if (currentIndex < totalSlides - 1) {
+      currentIndex++;
+      updateSlider();
+    }
+    return;
+  }
+});
+
+// ============================================================================
+// WINDOW RESIZE handler
+// ============================================================================
+
+window.addEventListener('resize', function() {
+  updateSlider();
+});
+
+// ============================================================================
+// INITIALIZE on page load
+// ============================================================================
+
+document.addEventListener('DOMContentLoaded', initCartSlider);
+
+// ============================================================================
+// MUTATION OBSERVER - Watch for dynamically added slider elements
+// ============================================================================
+
+const sliderObserver = new MutationObserver(function(mutations) {
+  mutations.forEach(function(mutation) {
+    if (mutation.addedNodes.length) {
+      mutation.addedNodes.forEach(function(node) {
+        if (node.nodeType !== 1) return;
+
+        // Check if slider elements were added
+        if (
+          node.matches && (
+            node.matches('.cart-all-products') ||
+            node.matches('.cart-slider-prev') ||
+            node.matches('.cart-slider-next') ||
+            node.matches('.product-data-outer') ||
+            node.querySelector('.cart-all-products') ||
+            node.querySelector('.cart-slider-prev') ||
+            node.querySelector('.cart-slider-next') ||
+            node.querySelector('.product-data-outer')
+          )
+        ) {
+          console.log('Cart slider elements detected, initializing...');
+          // Reset index when new elements appear
+          currentIndex = 0;
+          initCartSlider();
+        }
+      });
+    }
+  });
+});
+
+// Start observing
+sliderObserver.observe(document.body, {
+  childList: true,
+  subtree: true
+});
+  </script>
+  {% endif %}
   {% schema %}
   {
   "settings": [

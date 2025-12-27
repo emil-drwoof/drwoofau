@@ -1,4 +1,13 @@
-<section class="scrub-collection-b">
+<section class="scrub-collection-b" 
+  style="
+    background-color: {{ section.settings.bg_clr }};
+    {% if section.settings.bg_image_desktop %}
+      background-image: url('{{ section.settings.bg_image_desktop | image_url }}');
+    {% endif %}
+    background-position: {{ section.settings.bg_image_position }};
+    background-size: {{ section.settings.bg_image_size }};
+    background-repeat: no-repeat;
+  ">
   <div class="scrub-container">
 
     <div class="reviews-summary-b">
@@ -46,7 +55,6 @@
 }
 .scrub-collection-b {
   padding: 40px 20px;
-  background-color: {{ section.settings.bg_clr }};
   margin-top: {{ section.settings.space_top }};
   margin-bottom: {{ section.settings.space_bottom }};
 }
@@ -120,6 +128,13 @@
 
 /* Mobile slider */
 @media (max-width: 768px) {
+  /* Mobile background image */
+  {% if section.settings.bg_image_mobile %}
+    .scrub-collection-b {
+      background-image: url('{{ section.settings.bg_image_mobile | image_url }}') !important;
+    }
+  {% endif %}
+
   .button-group {
     display: flex;
     flex-wrap: nowrap;             /* single row */
@@ -234,6 +249,40 @@
         "default": "#0B0E30"
     },
     {
+      "type": "image_picker",
+      "id": "bg_image_desktop",
+      "label": "Background Image (Desktop)"
+    },
+    {
+      "type": "image_picker",
+      "id": "bg_image_mobile",
+      "label": "Background Image (Mobile)"
+    },
+    {
+      "type": "select",
+      "id": "bg_image_position",
+      "label": "Background Position",
+      "options": [
+        { "value": "center", "label": "Center" },
+        { "value": "top", "label": "Top" },
+        { "value": "bottom", "label": "Bottom" },
+        { "value": "left", "label": "Left" },
+        { "value": "right", "label": "Right" }
+      ],
+      "default": "center"
+    },
+    {
+      "type": "select",
+      "id": "bg_image_size",
+      "label": "Background Size",
+      "options": [
+        { "value": "cover", "label": "Cover" },
+        { "value": "contain", "label": "Contain" },
+        { "value": "auto", "label": "Auto" }
+      ],
+      "default": "cover"
+    },
+    {
       "type": "range",
       "id": "rating",
       "label": "Rating",
@@ -280,7 +329,7 @@
         {
           "type": "url",
           "id": "collection",
-          "label": "Collection",
+          "label": "Collection"
         }
       ]
     }

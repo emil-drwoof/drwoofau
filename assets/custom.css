@@ -750,6 +750,7 @@ div#ProductScreens .social-sharing {
 }
 .loox-rating, .product-single__header .loox-rating {
     margin-bottom: 10px;
+    display:none !important;
 }
 .product-single__meta {
     padding-left: 50px;

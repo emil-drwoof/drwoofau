@@ -1,0 +1,18 @@
+{
+  "parent": "index.json",
+  "context": {
+    "market": "au"
+  },
+  "sections": {
+    "hero_header_new_tMLeTR": {
+      "disabled": false,
+      "settings": {},
+      "blocks": {}
+    },
+    "headerv5_yCPF3w": {
+      "disabled": true,
+      "settings": {},
+      "blocks": {}
+    }
+  }
+}

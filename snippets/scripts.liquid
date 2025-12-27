@@ -1,119 +1,121 @@
-    <!--- Scripts from head --->
-    <noscript>
-      <img data-swift-lazy="1" loading="lazy" height="1" width="1" style="display:none;" alt="pinterest" src="https://ct.pinterest.com/v3/?event=init&tid=2613236035659&pd[em]=<hashed_email_address>&noscript=1"/>
-    </noscript>
+<link rel='preconnect dns-prefetch' href='https://api.config-security.com/' crossorigin />
+<link rel='preconnect dns-prefetch' href='https://conf.config-security.com/' crossorigin />
 
-    {%- if template.suffix == 'Bundle_Metafield' or template.suffix == 'new-bundle-template' or template contains 'compression_sock' or template contains 'LTV-Bulk-scrubs-offer' or product.type == 'Surgical Scrub Cap' -%}
-      <script src="{{ 'bundle_functionality.js' | asset_url }}" defer></script>
-    {%- endif -%}
-    
-    {%- if template.suffix == 'newlandingpage' -%}
-      <script src="{{ 'bundle_functionality-nlp.js' | asset_url }}" defer></script>
-    {%- endif -%}
-    
-    {%- if request.page_type contains 'customers/' -%}
-      <script src="{{ 'shopify_common.js' | shopify_asset_url }}" defer></script>
-    {%- endif -%}
-    
-    <!-- Hotjar Tracking Code for https://www.drwoofapparel.com.au -->
-    {% comment %} <script>
-      (function(h, o, t, j, a, r) {
-        h.hj = h.hj || function() {
-          (h.hj.q = h.hj.q || []).push(arguments)
-        };
-        h._hjSettings = {
-          hjid: 2915092,
-          hjsv: 6
-        };
-        a = o.getElementsByTagName('head')[0];
-        r = o.createElement('script');
-        r.async = 1;
-        r.src = t + h._hjSettings.hjid + j + h._hjSettings.hjsv;
-        a.appendChild(r);
-      })(window, document, 'https://static.hotjar.com/c/hotjar-', '.js?sv=');
-    </script> {% endcomment %}
-        
-    {{ shop.metafields.loox["global_html_head"] }}
-    
-    <!-- Scripts inside body tag -->
-    {% if settings.animate_page_transitions %}
-      <script>
-        window.setTimeout(function() {
-          document.body.className += " loaded";
-        }, 25);
-      </script>
-    {% endif %}
-    <!-- End scripts inside body tag -->
-    
-    <script async>
-      var theme = {
-        stylesheet: "{{ 'theme.scss.css' | asset_url }}",
-        template: {{ template | json }},
-        routes: {
-          cart: "{{ routes.cart_url }}",
-          cartAdd: "{{ routes.cart_add_url }}",
-          cartChange: "{{ routes.cart_change_url }}"
-        },
-        strings: {
-          addToCart: {{ 'products.product.add_to_cart' | t | json }},
-          soldOut: {{ 'products.product.sold_out' | t | json }},
-          unavailable: {{ 'products.product.unavailable' | t | json }},
-          regularPrice: {{ 'products.general.regular_price' | t | json }},
-          salePrice: {{ 'products.general.sale_price' | t | json }},
-          stockLabel: {{ 'products.product.stock_label' | t: count: '[count]' | json }},
-          willNotShipUntil: {{ 'products.product.will_not_ship_until' | t: date: '[date]' | json }},
-          willBeInStockAfter: {{ 'products.product.will_be_in_stock_after' | t: date: '[date]' | json }},
-          waitingForStock: {{ 'products.product.waiting_for_stock' | t | json }},
-          cartItems: {{ 'cart.general.item_count' | t: count: '[count]' | json }},
-          cartConfirmDelete: {{ 'cart.general.delete_confirm' | t | json }},
-          cartTermsConfirmation: {{ 'cart.general.terms_confirm' | t | json }}
-        },
-        settings: {
-          dynamicVariantsEnable: true,
-          cartType: {{ settings.cart_type | json }},
-          moneyFormat: {{ shop.money_format | json }},
-          quickView: {{ settings.quick_shop_enable }},
-          hoverProductGrid: {{ settings.product_hover_image }},
-          themeName: 'Streamline',
-          themeVersion: "3.0.5"
-        }
-      };
+<noscript>
+  <img data-swift-lazy="1" loading="lazy" height="1" width="1" style="display:none;" alt="pinterest" src="https://ct.pinterest.com/v3/?event=init&tid=2613236035659&pd[em]=<hashed_email_address>&noscript=1"/>
+</noscript>
 
-      document.documentElement.className = document.documentElement.className.replace('no-js', 'js');
-    </script>
+{%- if template.suffix == 'Bundle_Metafield' or template.suffix == 'new-bundle-template' or template contains 'compression_sock' or template contains 'LTV-Bulk-scrubs-offer' or product.type == 'Surgical Scrub Cap' -%}
+  <script src="{{ 'bundle_functionality.js' | asset_url }}" defer></script>
+{%- endif -%}
 
-    <link href="{{ 'custom.css' | asset_url }}" rel="stylesheet" type="text/css" media="all"/>
+{%- if template.suffix == 'newlandingpage' -%}
+  <script src="{{ 'bundle_functionality-nlp.js' | asset_url }}" defer></script>
+{%- endif -%}
 
-    <script src="{{ 'vendor-v2.js' | asset_url | split: '?' | first }}" defer></script>
-    
-    {% if template == "product.preordernew" %}
-      <script src="{{ 'theme-uts.js' | asset_url }}" defer></script>
-    {% else %}
-      {% if product.type contains 'clearance' %}
-        <script src="{{ 'theme.js' | asset_url }}" defer></script>
+{%- if request.page_type contains 'customers/' -%}
+  <script src="{{ 'shopify_common.js' | shopify_asset_url }}" defer></script>
+{%- endif -%}
+
+{% comment %} 
+<script>
+  (function(h, o, t, j, a, r) {
+    h.hj = h.hj || function() {
+      (h.hj.q = h.hj.q || []).push(arguments)
+    };
+    h._hjSettings = {
+      hjid: 2915092,
+      hjsv: 6
+    };
+    a = o.getElementsByTagName('head')[0];
+    r = o.createElement('script');
+    r.async = 1;
+    r.src = t + h._hjSettings.hjid + j + h._hjSettings.hjsv;
+    a.appendChild(r);
+  })(window, document, 'https://static.hotjar.com/c/hotjar-', '.js?sv=');
+</script> 
+{% endcomment %}
+
+{{ shop.metafields.loox["global_html_head"] }}
+
+{% if settings.animate_page_transitions %}
+  <script>
+    window.setTimeout(function() {
+      document.body.className += " loaded";
+    }, 25);
+  </script>
+{% endif %}
+<script async>
+  var theme = {
+    stylesheet: "{{ 'theme.scss.css' | asset_url }}",
+    template: {{ template | json }},
+    routes: {
+      cart: "{{ routes.cart_url }}",
+      cartAdd: "{{ routes.cart_add_url }}",
+      cartChange: "{{ routes.cart_change_url }}"
+    },
+    strings: {
+      addToCart: {{ 'products.product.add_to_cart' | t | json }},
+      soldOut: {{ 'products.product.sold_out' | t | json }},
+      unavailable: {{ 'products.product.unavailable' | t | json }},
+      regularPrice: {{ 'products.general.regular_price' | t | json }},
+      salePrice: {{ 'products.general.sale_price' | t | json }},
+      stockLabel: {{ 'products.product.stock_label' | t: count: '[count]' | json }},
+      willNotShipUntil: {{ 'products.product.will_not_ship_until' | t: date: '[date]' | json }},
+      willBeInStockAfter: {{ 'products.product.will_be_in_stock_after' | t: date: '[date]' | json }},
+      waitingForStock: {{ 'products.product.waiting_for_stock' | t | json }},
+      cartItems: {{ 'cart.general.item_count' | t: count: '[count]' | json }},
+      cartConfirmDelete: {{ 'cart.general.delete_confirm' | t | json }},
+      cartTermsConfirmation: {{ 'cart.general.terms_confirm' | t | json }}
+    },
+    settings: {
+      dynamicVariantsEnable: true,
+      cartType: {{ settings.cart_type | json }},
+      moneyFormat: {{ shop.money_format | json }},
+      quickView: {{ settings.quick_shop_enable }},
+      hoverProductGrid: {{ settings.product_hover_image }},
+      themeName: 'Streamline',
+      themeVersion: "3.0.5"
+    }
+  };
+  document.documentElement.className = document.documentElement.className.replace('no-js', 'js');
+</script>
+
+<link href="{{ 'custom.css' | asset_url }}" rel="stylesheet" type="text/css" media="all"/>
+{% if template != 'index' %}
+<script src="{{ 'vendor-v2.js' | asset_url | split: '?' | first }}" defer></script>
+{% endif %}
+
+{% if template == "product.preordernew" %}
+  <script src="{{ 'theme-uts.js' | asset_url }}" defer></script>
+{% else %}
+  {% if product.type contains 'clearance' %}
+    <script src="{{ 'theme.js' | asset_url }}" defer></script>
+  {% else %}
+    {% if template.suffix == 'os2template-scrubs' or template.suffix == 'os2printedtopsbundle' or template.suffix == 'sl-36C42638' or product.type == "Vet Scrubs" or product.type == "Nurse Bag" %}
+      {% if product.tags contains 'merged' %}
+        <script src="{{ 'theme-dual-merged.js' | asset_url }}" defer></script>
       {% else %}
-        {% if template.suffix == 'os2template-scrubs' or template.suffix == 'os2printedtopsbundle' or template.suffix == 'sl-36C42638' or product.type == "Vet Scrubs" or product.type == "Nurse Bag" %}
-          {% if product.tags contains 'merged' %}
-            <script src="{{ 'theme-dual-merged.js' | asset_url }}" defer></script>
+        <script src="{{ 'theme-dual.js' | asset_url }}" defer></script>
+      {% endif %}
+    {% else %}
+      {% if template != 'index' %}
+        {% if product.id == 8891402027266 or product.id == 8056106189058 or product.id == 8320636780802 or product.id == 8207921185026 or product.id == 8177226187010 or product.id == 8005417533698 or product.id == 6701376274616 or product.id == 6701376078008 or product.id == 8224581288194 or product.id == 7461809127682 or product.id == 7819011490050 or product.id == 8000060850434 or product.id == 7461809160450 or product.id == 6751392006328 or product.id == 7461809258754 or product.id == 6751389483192 or product.id == 8005449679106 or product.id == 6751404523704 or product.id == 7473530503426 or product.id == 6701375455416 or product.id == 7473526767874 or product.id == 7815271776514 or product.id == 7815268663554 or product.id == 6751389483192 or product.id == 7461809258754 or product.id == 8296907473154 or product.type == "Men Scrub Tops" or product.type contains "Clearance" or product.type contains "Women Fleece Jacket" or product.type contains "Women's Featherlight 50 Down Vest" or product.type contains "Women Scrub Tops" or template contains 'product' or product.type == 'Nurse Bag' %}
+          {% if product.type == "Free Gift" or product.type == 'Gift Cards' or product.type == 'Printed Pattern Scrub Jumpsuit' %}
+            <script src="{{ 'theme.js' | asset_url }}" defer></script>
           {% else %}
-            <script src="{{ 'theme-dual.js' | asset_url }}" defer></script>
+            <script src="{{ 'theme-preorder.js' | asset_url }}" defer></script>
           {% endif %}
         {% else %}
-          {% if product.id == 8891402027266 or product.id == 8056106189058 or product.id == 8320636780802 or product.id == 8207921185026 or product.id == 8177226187010 or product.id == 8005417533698 or product.id == 6701376274616 or product.id == 6701376078008 or product.id == 8224581288194 or product.id == 7461809127682 or product.id == 7819011490050 or product.id == 8000060850434 or product.id == 7461809160450 or product.id == 6751392006328 or product.id == 7461809258754 or product.id == 6751389483192 or product.id == 8005449679106 or product.id == 6751404523704 or product.id == 7473530503426 or product.id == 6701375455416 or product.id == 7473526767874 or product.id == 7815271776514 or product.id == 7815268663554 or product.id == 6751389483192 or product.id == 7461809258754 or product.id == 8296907473154 or product.type == "Men Scrub Tops" or product.type contains "Clearance" or product.type contains "Women Fleece Jacket" of product.type contains "Women's Featherlight 50 Down Vest" or product.type contains "Women Scrub Tops" or template contains 'product' or product.type == 'Nurse Bag' %}
-            {% if product.type == "Free Gift" or product.type == 'Gift Cards' or product.type == 'Printed Pattern Scrub Jumpsuit' %}
-              <script src="{{ 'theme.js' | asset_url }}" defer></script>
-            {% else %}
-              <script src="{{ 'theme-preorder.js' | asset_url }}" defer></script>
-            {% endif %}
-          {% else %}
-            <script src="{{ 'theme.js' | asset_url }}" defer></script>
-          {% endif %}
+          <script src="{{ 'theme.js' | asset_url }}" defer></script>
         {% endif %}
       {% endif %}
     {% endif %}
+  {% endif %}
+{% endif %}
 
-      {% if product.type contains "Clearance"  %}
-        <script src="{{ 'Custom-clearance.js' | asset_url }}" defer></script>
-      {% else %}
-        <script src="{{ 'Custom.js' | asset_url }}" defer></script>
-      {% endif %}
+{% if product.type contains "Clearance" %}
+  <script src="{{ 'Custom-clearance.js' | asset_url }}" defer></script>
+{% else %}
+  <script src="{{ 'Custom.js' | asset_url }}" defer></script>
+{% endif %}

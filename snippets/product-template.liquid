@@ -802,10 +802,6 @@ dual
               <p class="main-textamonials">{{ section.settings.txt11 }}</p>
             {% endif %}
           {% endunless %}
-          {% if settings.enable_product_loox_reviews %}
-            {% comment %} this block was created by belowyellow.com {% endcomment %}
-            <a href="#looxReviews" class="product-single__review-link">{% render 'loox_reviews' %}</a>
-          {% endif %}
           <!-- Start of Judge.me code --> 
           <div class='jdgm-widget jdgm-preview-badge' data-id='{{ product.id }}'> 
             {{ product.metafields.judgeme.badge }} 
