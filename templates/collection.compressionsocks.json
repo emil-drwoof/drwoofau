@@ -111,6 +111,8 @@
         "space_top": 0,
         "space_bottom": 0,
         "bg_clr": "#0b0e30",
+        "bg_image_position": "center",
+        "bg_image_size": "cover",
         "rating": 4.8,
         "rating_text": "Loved by 100,000+ Nurses and Doctors",
         "title": "{{ collection.title }}",
@@ -223,9 +225,10 @@
     "main-collection": {
       "type": "collection-template-socks",
       "settings": {
-        "super_image_1": "shopify:\/\/shop_images\/2025_SUPERPRODUCT_2.png",
+        "super_image_1": "shopify:\/\/shop_images\/2025_SUPERPRODUCT_2.gif",
+        "super_image_1_mobile": "shopify:\/\/shop_images\/2025_SUPERPRODUCT_1_18e32baa-78b1-430f-badc-757e429973ff.gif",
         "super_text_1": "",
-        "super_link_1": "\/products\/compression-socks-6pack-black",
+        "super_link_1": "shopify:\/\/products\/compression-socks-6pack-black",
         "super_text_2": "",
         "super_link_2": "",
         "thumbnailcollection": false,

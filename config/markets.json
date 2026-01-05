@@ -1,11 +1,5 @@
 {
   "markets": {
-    "hong-kong": {
-      "parent": "@default"
-    },
-    "sg": {
-      "parent": "@default"
-    },
     "international": {
       "parent": "@default"
     },
@@ -17,9 +11,6 @@
     },
     "canada": {
       "parent": "international"
-    },
-    "european-union": {
-      "parent": "@default"
     }
   }
 }

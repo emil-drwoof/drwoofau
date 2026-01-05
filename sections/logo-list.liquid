@@ -50,10 +50,14 @@
                 alt="{{ block.settings.image.alt }}">
               </div>              
             {% else %}
-              {{ 'logo' | placeholder_svg_tag: 'placeholder-svg' }}
+              {% comment %} {{ 'logo' | placeholder_svg_tag: 'placeholder-svg' }} {% endcomment %}
             {% endif %}
-            <div class="logocontent"><p class="logotitle"><strong>{{ block.settings.logotitle }}</strong></p>
-            <p class="logotext">{{ block.settings.logotext }}</p></div>
+            <div class="logocontent">
+              <p class="logotitle">
+                <strong class="counter-number" data-target="{{ block.settings.logotitle }}">{{ block.settings.logotitle }}</strong>
+              </p>
+              <p class="logotext">{{ block.settings.logotext }}</p>
+            </div>
             {% if block.settings.link != blank %}
               </a>
             {% endif %}
@@ -167,10 +171,12 @@
 
   @media only screen and (min-width:481px){
     p.logotitle{
-    font-size:17px;
+    font-size:30px;
+    font-weight: bold;
   }
   .logotext{
-    font-size:13px;
+    font-size:12px;
+    font-weight: 700;
   }
     .logo-bar{
       width:100% !important;
@@ -207,7 +213,7 @@
     width:100%;
   }
   p.logotitle{
-    font-size: 12px;
+    font-size: 20px;
   }
   .logotext{
     margin-bottom:40px;
@@ -232,6 +238,82 @@
   }
 }
 </style>
+
+<script>
+// Counter Animation
+function animateCounters() {
+  const counters = document.querySelectorAll('.logolist-{{ section.id }} .counter-number');
+  
+  const observerOptions = {
+    threshold: 0.5,
+    rootMargin: '0px'
+  };
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting && !entry.target.classList.contains('counted')) {
+        entry.target.classList.add('counted');
+        animateCounter(entry.target);
+      }
+    });
+  }, observerOptions);
+
+  counters.forEach(counter => {
+    observer.observe(counter);
+  });
+}
+
+function animateCounter(element) {
+  const target = element.getAttribute('data-target');
+  
+  // Extract number from string (handles formats like "500+", "$500", "500M", etc.)
+  const numMatch = target.match(/[\d,\.]+/);
+  if (!numMatch) {
+    return; // If no number found, skip animation
+  }
+  
+  const numStr = numMatch[0].replace(/,/g, '');
+  const targetNum = parseFloat(numStr);
+  
+  // Get prefix and suffix
+  const prefix = target.substring(0, target.indexOf(numMatch[0]));
+  const suffix = target.substring(target.indexOf(numMatch[0]) + numMatch[0].length);
+  
+  const duration = 2000; // 2 seconds
+  const steps = 60;
+  const increment = targetNum / steps;
+  const stepDuration = duration / steps;
+  
+  let current = 0;
+  let step = 0;
+
+  const timer = setInterval(() => {
+    step++;
+    current += increment;
+    
+    if (step >= steps) {
+      current = targetNum;
+      clearInterval(timer);
+    }
+    
+    // Format number with commas if original had them
+    let displayNum = Math.floor(current).toString();
+    if (numMatch[0].includes(',') || targetNum >= 1000) {
+      displayNum = displayNum.replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+    }
+    
+    element.textContent = prefix + displayNum + suffix;
+  }, stepDuration);
+}
+
+// Initialize when DOM is ready
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', animateCounters);
+} else {
+  animateCounters();
+}
+</script>
+
 {% if section.settings.leftscroll %}
 <script>
 const scrollers = document.querySelectorAll(".scroller");

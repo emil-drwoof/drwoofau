@@ -87,6 +87,7 @@
     },
     "headerv5_yCPF3w": {
       "type": "headerv5",
+      "disabled": true,
       "name": "Medical Scrubs Hero",
       "settings": {
         "title": "Because Frontline Deserves Better",
@@ -130,15 +131,14 @@
     },
     "hero_header_new_GpBBPx": {
       "type": "hero-header-new",
-      "disabled": true,
       "name": "Hero Section - New",
       "settings": {
         "background_image": "shopify:\/\/shop_images\/Hears_LP_Images_6.png",
         "background_image_mobile": "shopify:\/\/shop_images\/Hears_LP_Images_7.png",
         "show_rating": true,
         "rating_text": "TRUSTED BY 100,000+ NURSES AND DOCTORS",
-        "headline": "Made by Doctors Love by Everyone",
-        "subheadline": "<p>Designed by a family of doctors who know what real comfort should feel like.<\/p>",
+        "headline": "Medical Grade Comfort",
+        "subheadline": "<p>Made for movement, comfort, and everything life throws your way.<\/p>",
         "button_1_text": "Shop Scrubs",
         "button_1_link": "shopify:\/\/collections\/women",
         "button_2_text": "Shop Compression Socks",
@@ -300,6 +300,92 @@
         "margin-bottom": 0
       }
     },
+    "marquelogo_RhJUKT": {
+      "type": "marquelogo",
+      "blocks": {
+        "logo_xMphW7": {
+          "type": "logo",
+          "settings": {
+            "logo": "shopify:\/\/shop_images\/10_360x_7cc03db0-21f5-446c-a514-1c5a8b59876b.png",
+            "link": ""
+          }
+        },
+        "logo_yejWmK": {
+          "type": "logo",
+          "settings": {
+            "logo": "shopify:\/\/shop_images\/14_360x_5786d81d-3941-45ae-9ba3-d88fd0efcfab.png",
+            "link": ""
+          }
+        },
+        "logo_Lw7FNi": {
+          "type": "logo",
+          "settings": {
+            "logo": "shopify:\/\/shop_images\/13_360x_7de88f9e-c5e9-4025-9670-8a6692e48053.png",
+            "link": ""
+          }
+        },
+        "logo_BLeVxd": {
+          "type": "logo",
+          "settings": {
+            "logo": "shopify:\/\/shop_images\/16_34d94e59-4c1b-413d-88e2-4623b7f2d66b_360x_1.png",
+            "link": ""
+          }
+        },
+        "logo_6wbqdE": {
+          "type": "logo",
+          "settings": {
+            "logo": "shopify:\/\/shop_images\/pic4.png",
+            "link": ""
+          }
+        },
+        "logo_CnL4Pz": {
+          "type": "logo",
+          "settings": {
+            "logo": "shopify:\/\/shop_images\/5_180x_cf8d0955-34e7-4bc6-a82b-1e5e64b3e58e.png",
+            "link": ""
+          }
+        },
+        "logo_pgBAzh": {
+          "type": "logo",
+          "settings": {
+            "logo": "shopify:\/\/shop_images\/pic3.png",
+            "link": ""
+          }
+        },
+        "logo_zkTcjQ": {
+          "type": "logo",
+          "settings": {
+            "logo": "shopify:\/\/shop_images\/pic1_1.png",
+            "link": ""
+          }
+        }
+      },
+      "block_order": [
+        "logo_xMphW7",
+        "logo_yejWmK",
+        "logo_Lw7FNi",
+        "logo_BLeVxd",
+        "logo_6wbqdE",
+        "logo_CnL4Pz",
+        "logo_pgBAzh",
+        "logo_zkTcjQ"
+      ],
+      "name": "Logos Marquee",
+      "settings": {
+        "padding_top_desktop": 50,
+        "padding_bottom_desktop": 50,
+        "padding_top_mobile": 30,
+        "padding_bottom_mobile": 30,
+        "title": "Proudly serving",
+        "font_family": "Futura",
+        "font_size_desktop": 32,
+        "font_size_mobile": 32,
+        "title_padding_bottom_desktop": 40,
+        "title_padding_bottom_mobile": 25,
+        "items_desktop": 5,
+        "items_mobile": 4
+      }
+    },
     "logolistaani_YJptaJ": {
       "type": "logolistaani",
       "blocks": {
@@ -362,6 +448,7 @@
         "logo_EwzBYx",
         "logo_gaKjed"
       ],
+      "disabled": true,
       "settings": {
         "heading": "Proudly serving"
       }
@@ -897,44 +984,38 @@
         "dots": false
       }
     },
-    "7369b26d-3f2e-4d4c-a896-29470c300195": {
+    "logo_list_qqhDJR": {
       "type": "logo-list",
       "blocks": {
-        "logo_image_JiMxPJ": {
+        "logo_image_Ewg3nV": {
           "type": "logo_image",
           "settings": {
-            "image": "shopify:\/\/shop_images\/1_8a25fed1-ed95-4c41-8de8-f9f8ffff56ee.png",
-            "image_mobile": "shopify:\/\/shop_images\/1_8a25fed1-ed95-4c41-8de8-f9f8ffff56ee.png",
             "link": "",
-            "logotitle": "",
-            "logotext": ""
+            "logotitle": "5,000+",
+            "logotext": "FIVE STAR REVIEWS"
           }
         },
-        "logo_image_XTU7NR": {
+        "logo_image_Heeiwm": {
           "type": "logo_image",
           "settings": {
-            "image": "shopify:\/\/shop_images\/2_d11ddc79-4309-4bc7-8d76-5a80c9a2791d.png",
-            "image_mobile": "shopify:\/\/shop_images\/2_d11ddc79-4309-4bc7-8d76-5a80c9a2791d.png",
             "link": "",
-            "logotitle": "",
-            "logotext": ""
+            "logotitle": "90,000+",
+            "logotext": "COMFY DOCS & NURSES"
           }
         },
-        "logo_image_XDJxm6": {
+        "logo_image_frkEJy": {
           "type": "logo_image",
           "settings": {
-            "image": "shopify:\/\/shop_images\/3_da805072-6537-466d-9b83-a936dd7bce21.png",
-            "image_mobile": "shopify:\/\/shop_images\/3_da805072-6537-466d-9b83-a936dd7bce21.png",
             "link": "",
-            "logotitle": "",
-            "logotext": ""
+            "logotitle": "99-DAY",
+            "logotext": "MONEYBACK GUARANTEE"
           }
         }
       },
       "block_order": [
-        "logo_image_JiMxPJ",
-        "logo_image_XTU7NR",
-        "logo_image_XDJxm6"
+        "logo_image_Ewg3nV",
+        "logo_image_Heeiwm",
+        "logo_image_frkEJy"
       ],
       "settings": {
         "leftscroll": false,
@@ -1173,6 +1254,9 @@
         "6608edc8-7c96-459e-ba2e-bfb396a215a2",
         "8b545128-195c-4dba-9e88-d30b38575a19"
       ],
+      "custom_css": [
+        "@media (min-width: 992px) {.slidertoptemplate--19752488632578__ddf4d5b8-a6eb-415b-9b5f-fde5f56a7fbc {padding-left: 32px; padding-right: 32px; }}"
+      ],
       "settings": {
         "reviewstars": true,
         "blocklist": true,
@@ -1369,6 +1453,9 @@
         "list_QJr7dE",
         "list_b8Xf7L"
       ],
+      "custom_css": [
+        "@media (min-width: 992px) {.slidertoptemplate--19752488632578__ba72dc37-5808-48c1-b3cb-3ec8be06d8fe {padding-left: 32px; padding-right: 32px; }}"
+      ],
       "settings": {
         "reviewstars": false,
         "blocklist": false,
@@ -1395,26 +1482,10 @@
         "button_style": "primary",
         "layout": "right",
         "alt": false,
-        "font_size_desktop": 24,
-        "font_size_mobile": 18,
+        "font_size_desktop": 18,
+        "font_size_mobile": 16,
         "padding_bottom_text": 20,
         "padding_top_bottom_main_div": 40
-      }
-    },
-    "9e8f0f64-90c7-4706-a7a9-aa3e68275269": {
-      "type": "collection-slider",
-      "disabled": true,
-      "settings": {
-        "reviewstars": false,
-        "blocklist": true,
-        "show_title": true,
-        "dark_theme": false,
-        "martop_this": 60,
-        "marbot_this": 40,
-        "mmartop_this": 40,
-        "mmarbot_this": 20,
-        "selected_collection": "",
-        "sec_name": "Shop by colour"
       }
     },
     "1650947126b57380d2": {
@@ -1453,17 +1524,6 @@
       "settings": {
         "custom_html": "<style>\n\t.acc-heading {\n\t\tmargin: 10px 0 !important;\n\t\tpadding: 15px 0;\n\t\tborder-top: 1px solid;\n\t\tborder-bottom: 1px solid;\n\t\tposition: relative;\n\t\tcursor: pointer;\n\t}\n\t.acc-heading::after {\n\t\tposition: absolute;\n\t\tcontent: '+';\n\t\tright: 15px;\n\t\ttop: 45%;\n\t\ttransform: translateY(-50%);\n\t\tfont-size: 25px;\n\t}\n\t.acc-heading.active-acc-heading::after {\n\t\tcontent: '-';\n\t}\n\t@media only screen and (max-width:480px){\n\t\t.tigs {\n\t\t\tmargin: 70px auto 40px !important;\n\t\t}\n\t}\n\t\/* Flexbox centering and left-aligning list items *\/\n\t.acc-panel {\n\t\tdisplay: flex;\n\t\tflex-direction: column;\n\t\talign-items: center;\n\t}\n\t.tigs ul {\n\t\tlist-style-type: disc; \/* Show bullet points *\/\n\t\tpadding: 0;\n\t\tmargin: 0;\n\t\twidth: 80%; \/* Adjust width as needed *\/\n\t\ttext-align: left; \/* Align text to the left *\/\n\t}\n\t.tigs li {\n\t\tmargin: 10px 0; \/* Space between items *\/\n\t}\n\t.tigs p, .tigs h3, .tigs h2 {\n\t\ttext-align: center;\n\t}\n<\/style>\n<div class=\"tigs\" style=\"max-width: 800px; margin: 70px auto 60px;\">\n\t<h4 class=\"acc-heading\" onclick=\"$(this).next('.acc-panel').slideToggle();$(this).toggleClass('active-acc-heading')\">Shhh…. 7 Dr Woof shopping hacks to help you buy scrubs online like a pro <\/h4>\n\t<div class=\"acc-panel\" style=\"display: none;\">\n\t\t<h3>1. Save BIG with Dr Woof deals<\/h3>\n\t\t<p>Never wear boxy, poorly-fitting scrubs again. Get an epic discount on high-quality scrubs designed in Australia using our:<\/p>\n\t\t<ul>\n\t\t\t<li>\n<a href=\"https:\/\/www.drwoofapparel.com.au\/collections\/women\">Bundle & Save Scrubs Deals:<\/a> Get your whole work wardrobe in one swoop.<\/li>\n\t\t\t<li>\n<a href=\"https:\/\/www.drwoofapparel.com.au\/collections\/scrub-caps?sort_by=created-descending\">Bundle & Save Scrub Cap Deals:<\/a> Mix and match over 40 cute scrub cap designs.<\/li>\n\t\t\t<li>\n<a href=\"https:\/\/www.drwoofapparel.com.au\/collections\/compression-socks\">Bundle & Save Compression Socks Deals:<\/a> Goodbye, foot fatigue. Hello, blood-flow boosting support.<\/li>\n\t\t<\/ul>\n\n\t\t<h3>2. Buy scrubs online for less with a Dr Woof discount code<\/h3>\n\t\t<p>Not the right time for a bundle deal? Save on smaller orders using a Dr. Woof discount code.<\/p>\n\t\t<p>Join our mailing list for the latest discount codes – including 10% off your first order.<\/p>\n\t\t<h2><a href=\"https:\/\/www.drwoofapparel.com.au\/\" class=\"btn btn--tertiary btn js-no-transition\">JOIN OUR MAILING LIST<\/a><\/h2>\n\n\t\t<h3>3. Grab $20 off by referring a friend<\/h3>\n\t\t<p>Sign up for our referral program and share your Dr Woof referral link with your friends.<\/p>\n\t\t<p>For every friend that orders using your link, we'll give you $20 off an order over $80. T&Cs apply.<\/p>\n\t\t<h2><a href=\"https:\/\/www.drwoofapparel.com.au\/pages\/refer-a-friend\" class=\"btn btn--tertiary btn js-no-transition\">REFER A FRIEND<\/a><\/h2>\n\n\t\t<h3>4. Shop your favourite colours before they sell out<\/h3>\n\t\t<p>At Dr. Woof, most of the products we release are limited edition. #keepingitfresh<\/p>\n\t\t<p>If you spot a scrub colour or patterned scrub top that makes your heart skip a beat … snap it up quickly in case it goes away for good.<\/p>\n\t\t<p>Browse our collections today:<\/p>\n\t\t<b><ul style=\"max-width:250px;\">\n\t\t\t<li><a href=\"https:\/\/www.drwoofapparel.com.au\/collections\/blue-scrubs\"><u>Blue scrub uniforms<\/u><\/a><\/li>\n\t\t\t<li><a href=\"https:\/\/www.drwoofapparel.com.au\/collections\/green-scrubs\"><u>Green scrub uniforms<\/u><\/a><\/li>\n\t\t\t<li><a href=\"https:\/\/www.drwoofapparel.com.au\/collections\/black-scrubs\"><u>Black scrub uniforms<\/u><\/a><\/li>\n\t\t\t<li><a href=\"https:\/\/www.drwoofapparel.com.au\/collections\/pink-scrubs\"><u>Pink scrub uniforms<\/u><\/a><\/li>\n\t\t\t<li><a href=\"https:\/\/www.drwoofapparel.com.au\/collections\/purple-scrubs\"><u>Purple scrub uniforms<\/u><\/a><\/li>\n\t\t\t<li><a href=\"https:\/\/www.drwoofapparel.com.au\/collections\/gray-scrubs\"><u>Gray scrub uniforms<\/u><\/a><\/li>\n\t\t\t<li><a href=\"https:\/\/www.drwoofapparel.com.au\/collections\/orange-scrubs\"><u>Orange scrub uniforms<\/u><\/a><\/li>\n\t\t\t<li><a href=\"https:\/\/www.drwoofapparel.com.au\/collections\/printed-pattern-scrub-tops\"><u>Printed scrub tops<\/u><\/a><\/li>\n\t\t<\/ul><\/b>\n\n\t\t<h3>5. Vote on new designs in the Dr Woof Insiders Club<\/h3>\n\t\t<p>Is there a scrub colour we're missing? A feature you wish we'd include? A hat, sock or scrub top print you're dying to see?<\/p>\n\t\t<p>Make it happen.<\/p>\n\t\t<p>Join the Dr Woof Insiders Club to share product ideas and vote on which colour we launch next.<\/p>\n\t\t<h2><a href=\"https:\/\/www.facebook.com\/groups\/4790487291006497\" class=\"btn btn--tertiary btn js-no-transition\">BECOME AN INSIDER<\/a><\/h2>\n\n\t\t<h3>6. The ultimate hack: Get your work to buy your Dr Woof scrubs for you<\/h3>\n\t\t<p>Does your work uniform need an upgrade?<\/p>\n\t\t<p>Share this link with your practice manager.<\/p>\n\t\t<p><a href=\"https:\/\/www.drwoofapparel.com\/pages\/teams\"><u>https:\/\/www.drwoofapparel.com\/pages\/teams<\/u><\/a><\/p>\n\t\t<p>We can help you:<\/p>\n\t\t<ul style=\"max-width:400px\">\n\t\t\t<li>Make your workplace look more polished and professional<\/li>\n\t\t\t<li>Keep your staff happy and comfortable<\/li>\n\t\t\t<li>Choose the perfect new uniform<\/li>\n\t\t\t<li>Find a great price using bulk discounts<\/li>\n\t\t<\/ul>\n\t<\/div>\n<\/div>"
       }
-    },
-    "162682029070dd2a76": {
-      "type": "featured-collection-slider",
-      "disabled": true,
-      "settings": {
-        "title": "This just in",
-        "description": "",
-        "home_featured_products": "new-releases",
-        "per_row": "five",
-        "alt": false
-      }
     }
   },
   "order": [
@@ -1473,6 +1533,7 @@
     "hero_header_new_GpBBPx",
     "hero_header_new_tMLeTR",
     "1c64d667-b672-4f7b-b9be-2310692e99f1",
+    "marquelogo_RhJUKT",
     "logolistaani_YJptaJ",
     "product_home_filter_a89kq6",
     "logo_list_gcipMb",
@@ -1483,14 +1544,12 @@
     "team_highlight_D9nmQF",
     "homepage_team_highlight_HWJYGk",
     "ugcslider_WVccfR",
-    "7369b26d-3f2e-4d4c-a896-29470c300195",
+    "logo_list_qqhDJR",
     "ddf4d5b8-a6eb-415b-9b5f-fde5f56a7fbc",
     "ba72dc37-5808-48c1-b3cb-3ec8be06d8fe",
     "text_and_image_LkLYGw",
-    "9e8f0f64-90c7-4706-a7a9-aa3e68275269",
     "1650947126b57380d2",
     "16324507174c90bdf2",
-    "ce9a6cf9-6111-4efb-b6e0-d16d8fd842df",
-    "162682029070dd2a76"
+    "ce9a6cf9-6111-4efb-b6e0-d16d8fd842df"
   ]
 }

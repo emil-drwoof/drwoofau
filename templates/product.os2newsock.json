@@ -197,6 +197,9 @@
         "row_MnpTzW",
         "row_WU6akH"
       ],
+      "custom_css": [
+        ".bhigh-comparison-section{display: block !important;}"
+      ],
       "name": "Pdp Comparison Section",
       "settings": {
         "section_title": "Why Healthcare Workers Choose Dr. Woof",

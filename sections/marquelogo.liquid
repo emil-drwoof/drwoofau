@@ -233,17 +233,17 @@ document.addEventListener('DOMContentLoaded', function() {
   max-width: 1200px;
 }
 
-.logos-title-container-{{ section.id }}::before,
+{% comment %} .logos-title-container-{{ section.id }}::before,
 .logos-title-container-{{ section.id }}::after {
   content: '';
   flex: 1;
   height: 1px;
   background-color: #000;
   margin: 0 20px;
-}
+} {% endcomment %}
 
 .logos-title-{{ section.id }} {
-  font-weight: 700;
+  font-weight: 400;
   margin: 0;
   white-space: nowrap;
   padding: 0 10px;

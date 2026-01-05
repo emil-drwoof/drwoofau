@@ -326,10 +326,10 @@
   <div class="offer">General Offer</div>
   <div class="progress-bar">
     <div class="milestone top-mon milone">
-      {% if cart.currency.iso_code == 'HKD'%}HK${% elsif cart.currency.iso_code == 'GBP' %}£{% elsif cart.currency.iso_code == 'EUR' %}€{% else %}${% endif %}{{ firstindex }}
+      {{ localization.country.currency.symbol }}{{ firstindex }}
     </div>
     <div class="milestone top-mon miltwo">
-      {% if cart.currency.iso_code == 'HKD'%}HK${% elsif cart.currency.iso_code == 'GBP' %}£{% elsif cart.currency.iso_code == 'EUR' %}€{% else %}${% endif %}{{ lastindexnozero }}
+      {{ localization.country.currency.symbol }}{{ lastindexnozero }}
     </div>
     <div class="linertop milestone milone">|</div>
     <div class="linertop milestone miltwo">|</div>
@@ -496,11 +496,22 @@
       }
     }
 
+    function parseValue(priceStr) {
+      let pricer = parseFloat(priceStr / 100);
+      return pricer;
+    }
+
     var totalcart = parsePrice(document.querySelector(".totalin").innerHTML);
-    var totalxxd = parsePrice(document.querySelector(".totalin_hidden").innerHTML);
+    {% if cart.currency.iso_code == 'QAR' %}
+      var totalxxd = parsePrice(document.querySelector(".totalin_hidden").innerHTML);
+    {% else %}
+      var totalxxd = parseValue(document.querySelector(".totalin_value_only").innerHTML);
+    {% endif %}
     var totalfk = parsePrice(document.querySelector(".totalin_hidden").innerHTML);
     var progress = 0;
     progress = totalxxd;
+    console.clear()
+    console.log(progress + " | " + {{ firstindex }} )
     {% if cart.currency.iso_code == 'USD' or cart.currency.iso_code == 'AUD' or cart.currency.iso_code == 'NZD' %}
         var progressPercentage1 = (progress / {{ lastindex }}) * 100;
     {% else %}
@@ -1608,7 +1619,7 @@
  {% if cart.currency.iso_code == 'USD' or cart.currency.iso_code == 'AUD' or cart.currency.iso_code == 'NZD' %}
     
  {% else %}
-    .miltwo{display:none;}
+    .off1 .miltwo{display:none;}
  {% endif %}
 </style>
 

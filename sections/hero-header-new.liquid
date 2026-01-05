@@ -566,6 +566,12 @@
 {% endif %}
 
 <style>
+
+  @media (min-width: 1800px){
+    .hero-section {
+      background-position: unset !important;
+    }
+  }
   .hero-section {
     position: relative;
     min-height: {{ section.settings.section_height }}px;
@@ -655,7 +661,7 @@
     text-transform: capitalize;
     color: {{ section.settings.text_color }};
     text-align: {{ headline_align_desktop }};
-    font-family: Futura;
+    font-family: futura2;
   }
 
   .hero-subheadline {
@@ -807,7 +813,6 @@
       font-size: {{ section.settings.headline_font_size_mobile | default: section.settings.headline_font_size_desktop | default: 30 }}px;
       margin-bottom: 0px;
       text-align: {{ headline_align_mobile }};
-      font-family: Futura;
     }
 
     .hero-subheadline {

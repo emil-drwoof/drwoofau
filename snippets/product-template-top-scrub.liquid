@@ -1441,7 +1441,7 @@ console.log('=== END ===');
   <div class="option-section">
     <div class="option-label">
       Size: <span class="selected-size-text">{{ first_variant.options[0] | escape }}</span>
-      <span class="fit-guide size-guide-pop">Size Guide</span>
+      <span class="fit-guide trigger-pop-up-1">Size Guide</span>
     </div>
 
     <div class="option-buttons">
@@ -1578,7 +1578,7 @@ console.log('=== END ===');
 <script type="application/json" id="ProductJson-{{ section.id }}">
     {{ product | json }}
 </script>
-{% render 'size-guide-popup' , product:product %}
+{% render 'sizeguide', product:product %}
 <script>
 
     document.getElementById('variant-color-count').textContent = '{{ available_colors_count }} colors available';

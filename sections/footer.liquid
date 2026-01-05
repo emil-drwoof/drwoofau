@@ -37,6 +37,7 @@
     }
     .h2.appear-delay {
       font-weight: 600;
+      font-family: Futura;
     }
     .footer {
       margin-bottom: 20px;
@@ -157,13 +158,13 @@
       </div>
     </div>
   {% endif %}
-
+{% if cart.currency.iso_code == 'AUD' or cart.currency.iso_code == 'NZD' %}
   <div class="page-width footer_text">
     {% if section.settings.footer_richtext %}
       {{ section.settings.footer_richtext }}
     {% endif %}
   </div>
-
+{% endif %}
   <div class="page-width">
     <div class="footer-bottom">
       {%- if show_selectors -%}

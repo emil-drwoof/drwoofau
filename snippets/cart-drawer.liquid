@@ -553,7 +553,7 @@
   {% when 'GBP' %}
     {% assign threshold_setting = settings.gb_shipping_treshold %}
     {% assign free_shipping_treshold = threshold_setting | round %}
-    {% assign shipping_fee = settings.uk_shipping_cost |  times: 100 | round %}
+    {% assign shipping_fee = settings.gb_shipping_cost |  times: 100 | round %}
 
   {% when 'CAD' %}
     {% assign threshold_setting = settings.ca_shipping_treshold %}
@@ -654,9 +654,11 @@
 
 {% comment %} Check if cart meets free shipping threshold {% endcomment %}
 {% if cart_total >= free_shipping_treshold %}
+  <span data-cart-subtotal class="totalin_value_only" style="font-weight:900;display:none !important;">{{ cart.total_price }}</span>
   <span data-cart-subtotal class="totalin_hidden" style="font-weight:900;display:none !important;">{{ cart.total_price | money_with_currency }}</span>
   <span data-cart-subtotal class="totalin" style="font-weight:900">{{ cart.total_price | money_with_currency }}</span>
 {% else %}
+  <span data-cart-subtotal class="totalin_value_only" style="font-weight:900;display:none !important;">{{ cart.total_price }}</span>
   <span data-cart-subtotal class="totalin_hidden" style="font-weight:900;display:none !important;">{{ cart.total_price | money_with_currency }}</span>
   <span data-cart-subtotal class="totalin" style="font-weight:900">{{ cart.total_price | plus: shipping_fee | money_with_currency }}</span>
 {% endif %}

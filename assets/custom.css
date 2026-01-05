@@ -522,6 +522,7 @@ div#CartPage form.cart {
 }
 .background-media-text__text h2.h1, .feature-row__item .h1, .footer-bottom-inner h5.main_heading {
     font-weight: 600;
+    font-family: Futura;
 }
 .announcement__text, .feature-row__item, .product-single__prices, .site-footer__copyright, .skrim__underline-me, footer.site-footer .footer-bottom a, footer.site-footer .footer-bottom p, li.site-nav__item.site-nav__expanded-item a {
     font-weight: 500;

@@ -1,7 +1,56 @@
 {
   "sections": {
+    "collection_banner_gz3gcJ": {
+      "type": "collection-banner",
+      "custom_css": [
+        "@media (max-width: 993px) {.collection-header__new {display: none !important; }}"
+      ],
+      "name": "Collection Header - Newest",
+      "settings": {
+        "ch_margin_top": "30px",
+        "ch_margin_bottom": "30px",
+        "ch_border_radius_desktop": "10px",
+        "ch_border_radius_mobile": "0px",
+        "ch_section_bg_color": "#0b0e30",
+        "ch_main_heading": "{{ collection.title }}",
+        "ch_main_heading_size_desktop": "38px",
+        "ch_main_heading_size_mobile": "24px",
+        "ch_main_heading_color": "#ffffff",
+        "ch_main_description": "Long shifts shouldn't mean compromising on comfort—our scrubs are designed by Australian healthcare workers who got tired of stiff, restrictive uniforms that don't hold up to 12-hour days.",
+        "ch_main_description_size": "16px",
+        "ch_main_description_color": "#ffffff",
+        "review_card_visibility": "both",
+        "card_bg": "#ffffff",
+        "card_radius": 10,
+        "card_padding": 20,
+        "star_count": 5,
+        "star_svg": "",
+        "desc_text": "I was skeptical about spending more on scrubs, but these have completely changed my 12-hour shifts. The fabric is impossibly soft—like nothing I've worn before—and it just FLOWS with every movement. No more feeling restricted when I'm bending, reaching, or rushing between patients. Even after dozens of washes, they still feel brand new. I've already ordered three more pairs and told everyone on my ward about them. These are what scrubs should have been all along!",
+        "desc_color": "#000000",
+        "desc_font_size": 16,
+        "author_text": "- Jack C.",
+        "author_color": "#000000",
+        "author_font_size": 14,
+        "benefits_visibility": "both",
+        "benefit_text_color": "#000000",
+        "benefit_font_size": 12,
+        "benefit_text_1": "70,000 Happy Customers",
+        "benefit_text_2": "Ultra-Soft Fabric",
+        "benefit_text_3": "Breathable Fabric",
+        "benefit_text_4": "Built To Last",
+        "benefit_text_5": "",
+        "benefit_text_6": "",
+        "benefit_svg": "",
+        "benefit_bg": "#ffffff",
+        "benefit_radius": 4,
+        "benefit_padding": 8
+      }
+    },
     "collection-header": {
       "type": "dr-woof-hero-scrubs3",
+      "custom_css": [
+        "@media (min-width: 993px) {.autosize {display: none; }}"
+      ],
       "settings": {
         "pad": "30px",
         "enable_auto": true,
@@ -16,6 +65,9 @@
     },
     "replo_replo_text_below_banner_4QFrCK": {
       "type": "replo-replo-text-below-banner",
+      "custom_css": [
+        "@media (min-width: 993px) {.alchemy__element {display: none; }}"
+      ],
       "settings": {
         "replo_text_ffb59253-7bb2-43f4-99c4-ed60813402d8": "<p>Crafted by a family of three Australian healthcare workers, our premium scrubs are designed with movement, comfort, and style in mind. Made from high-quality fabric, they’re built to keep up with your demanding day—because quality isn’t just a priority, it’s our promise.<\/p>"
       }
@@ -143,6 +195,7 @@
     }
   },
   "order": [
+    "collection_banner_gz3gcJ",
     "collection-header",
     "replo_replo_text_below_banner_4QFrCK",
     "collection-filter",

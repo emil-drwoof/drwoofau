@@ -4,14 +4,21 @@
     "market": "au"
   },
   "sections": {
-    "hero_header_new_tMLeTR": {
-      "disabled": false,
-      "settings": {},
-      "blocks": {}
-    },
     "headerv5_yCPF3w": {
       "disabled": true,
       "settings": {},
+      "blocks": {}
+    },
+    "hero_header_new_tMLeTR": {
+      "disabled": true,
+      "settings": {},
+      "blocks": {}
+    },
+    "text_and_image_LkLYGw": {
+      "settings": {
+        "font_size_desktop": 18,
+        "font_size_mobile": 16
+      },
       "blocks": {}
     }
   }
