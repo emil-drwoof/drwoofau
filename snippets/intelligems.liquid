@@ -1,0 +1,7 @@
+{% if collection.handle == "compression-socks" and request.query_string contains "fbclid" %}
+    <script>
+        window.location.replace("/pages/6-reasons-why-aussie-nurses-are-choosing-dr-woof-compression-socks" + window.location.search);
+    </script>
+{% else %}
+    <script type="module" src="https://cdn.intelligems.io/esm/9edc301797c3/bundle.js"></script>
+{% endif %}

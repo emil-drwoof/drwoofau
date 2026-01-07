@@ -29,23 +29,6 @@
   {% endif %}
 </style>
 <!-- template-scrubs -->
-{% if collection.handle == "compression-socks" %}
-  <script>
-    $(document).ready(function(){
-      var currentPageURL = window.location.href;
-    
-    // Check if the current page URL contains "fbclid"
-    if(currentPageURL.indexOf("fbclid") !== -1) {
-      window.location.replace("/pages/6-reasons-why-aussie-nurses-are-choosing-dr-woof-compression-socks");        
-      // You can perform further actions here if the link is from Facebook
-    } else {
-        console.log("The link to this page is not from Facebook.");
-        // You can perform further actions here if the link is not from Facebook
-    }
-    })
-    
-  </script>
-{% endif %}
 {% unless template.suffix == 'sl-7A053224' %}
 {% assign product_count = collection.products_count %}
 <div class="page-width" style="text-align:right">
@@ -246,23 +229,8 @@
         {%- assign grid_small_width = 'small--one-half' -%}
       {%- endif -%}
 
-      {%- assign active_colors = "" -%}
-
-{%- for filter in collection.filters -%}
-  {%- assign filter_label_downcase = filter.label | downcase -%}
-  
-  {%- if filter_label_downcase == 'color' or filter_label_downcase == 'colour' -%}
-    {%- for value in filter.active_values -%}
-      {%- assign active_colors = active_colors | append: value.label  -%}
-    {%- endfor -%}
-  {%- endif -%}
-{%- endfor -%}
-
-
-
       {%- capture grid_item_width -%}
         {{ grid_small_width }} {{ grid_large_width }}{%- endcapture -%}
-
 
       {% paginate collection.products by 1000 %}
         {% assign metafield = 1 %}
@@ -298,10 +266,6 @@
                           {%- assign product_url = custom_variant.url -%}
 
                           {% for variant in product.variants %}
-                            {% if active_colors != blank %}
-                              {% unless variant.title  contains active_colors %} {% continue %} {% endunless %}
-                            {% endif %}
-                              
                             {% assign messagetager = false %}
                             {% assign var_title_temp = variant.title | downcase %}
                             {% assign var_title_temp0 = var_title_temp | split: ' / ' %}
@@ -394,7 +358,6 @@
                                   {% unless settings.product_grid_image_size == 'natural' %}
                                     {%- assign fixed_aspect_ratio = true -%}
                                   {% endunless %}
-                                  
                                   {% if variant.featured_image != blank %}
 
                                     {%- assign preview_image = variant.featured_image -%}
@@ -470,7 +433,7 @@
                                             {% if forloop.first %}
                                               {% if fixed_aspect_ratio %}
                                                 <div
-                                                  class="Main-alt-image testtttttttt grid__image-ratio grid__image-ratio--{{ settings.product_grid_image_size }} lazyload"
+                                                  class="Main-alt-image grid__image-ratio grid__image-ratio--{{ settings.product_grid_image_size }} lazyload"
                                                   style="background-image: url({{ preview_image | img_url:'grande' }});"
                                                   data-bgset="{% include 'bgset', image: preview_image %}"
                                                   data-sizes="auto"></div>

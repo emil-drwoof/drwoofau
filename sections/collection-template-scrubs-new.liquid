@@ -24,24 +24,6 @@
   }
 </style>
 <!-- template-scrubs -->
-{% if collection.handle == "compression-socks" %}
-  <script>
-    $(document).ready(function(){
-      var currentPageURL = window.location.href;
-    
-    // Check if the current page URL contains "fbclid"
-    if(currentPageURL.indexOf("fbclid") !== -1) {
-      window.location.replace("/pages/6-reasons-why-aussie-nurses-are-choosing-dr-woof-compression-socks");        
-      // You can perform further actions here if the link is from Facebook
-    } else {
-        console.log("The link to this page is not from Facebook.");
-        // You can perform further actions here if the link is not from Facebook
-    }
-    })
-    
-  </script>
-{% endif %}
-
 <div class="page-width">
   <div id="CollectionAjaxContent">
     <div class="grid grid--uniform grid--scattered-large-3 grid--scattered-small-2" data-collection-container="">

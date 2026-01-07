@@ -1,0 +1,7 @@
+{
+  "parent": "collection.compressionsocks.json",
+  "context": {
+    "market": "european-union"
+  },
+  "sections": {}
+}

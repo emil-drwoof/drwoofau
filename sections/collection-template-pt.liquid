@@ -25,24 +25,7 @@
     }  
   }
 </style>
-<!-- template-scrubs -->
-{% if collection.handle == "compression-socks" %}
-  <script>
-    $(document).ready(function(){
-      var currentPageURL = window.location.href;
-    
-    // Check if the current page URL contains "fbclid"
-    if(currentPageURL.indexOf("fbclid") !== -1) {
-      window.location.replace("/pages/6-reasons-why-aussie-nurses-are-choosing-dr-woof-compression-socks");        
-      // You can perform further actions here if the link is from Facebook
-    } else {
-        console.log("The link to this page is not from Facebook.");
-        // You can perform further actions here if the link is not from Facebook
-    }
-    })
-    
-  </script>
-{% endif %}
+
 {% assign product_count = collection.products_count %}
 <div class="page-width" style="text-align:right">
   <span style="display:inline-block;margin-top:6px;margin-bottom:6px;border-bottom:1px solid #000;width:auto">{{ product_count }} Total</span>

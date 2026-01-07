@@ -9,8 +9,9 @@
           suffix: "{{ template.suffix }}"
       };
     </script>
-    <script type="module" src="https://cdn.intelligems.io/esm/9edc301797c3/bundle.js"></script>
-
+    {% comment %}
+      {% render 'intelligems' %}
+    {% endcomment %}
     {% render 'replo-head' %}
     {% render 'breadcrumb_schema' %}
 

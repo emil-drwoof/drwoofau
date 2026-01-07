@@ -1,4 +1,4 @@
-<section class="scrub-collection-b" 
+<section class="scrub-collection-b" id="{{ section.settings.sectionid }}"
   style="
     background-color: {{ section.settings.bg_clr }};
     {% if section.settings.bg_image_desktop %}
@@ -224,6 +224,11 @@
 {
   "name": "Collection Hero B",
   "settings": [
+    {
+     "type": "text",
+     "id": "sectionid",
+     "label": "Section ID"
+    },
     {
       "type": "range",
       "id": "space_top",

@@ -11,6 +11,12 @@
     },
     "canada": {
       "parent": "international"
+    },
+    "sg": {
+      "parent": "international"
+    },
+    "european-union": {
+      "parent": "@default"
     }
   }
 }

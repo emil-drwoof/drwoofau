@@ -141,7 +141,7 @@
       }
   }
 </style>
-<div class="collection-header-wrapper-{{ section.id }} collection-header__new">
+<div class="collection-header-wrapper-{{ section.id }} collection-header__new" id="{{ section.settings.sectionid }}">
   <div class="collection-header-container">
     <div class="content-benefits">
       <div class="content" >
@@ -295,6 +295,11 @@
 {
   "name": "Collection Header",
   "settings": [
+    {
+     "type": "text",
+     "id": "sectionid",
+     "label": "Section ID"
+    },
     {
       "type": "header",
       "content": "Collection Header Section Settings"

@@ -256,45 +256,97 @@
    }
    }
 
-</style>
-<script>
-   $(document).ready(function(){
+</style><script>
+document.addEventListener('DOMContentLoaded', function() {
+  
+  // Click handler for .dropdower elements
+  document.body.addEventListener('click', function(e) {
+    const dropdower = e.target.closest('.dropdower');
+    if (dropdower) {
+      // Hide all dropdown-child elements
+      const dropdownChildren = document.querySelectorAll('.dropdown-child');
+      dropdownChildren.forEach(child => {
+        child.style.display = 'none';
+      });
       
-     $('body').on("click",".dropdower",function(){
-       $(".dropdown-child").hide()
-         $(this).find(".dropdown-child").toggle()
-         $(".slink-entry").removeClass("jactive")
-         $(".slink-entry").addClass("dropdower")
-         $(this).addClass("jactive")
-          $(this).removeClass("dropdower")
-   
-          
-        
-         $(this).find(".righter").toggle()
-     })
-     $('body').on("click",".jactive",function(){
-          $(".dropdown-child").hide()
-   
-   
-         $(".slink-entry").removeClass("jactive")
-         $(".slink-entry").addClass("dropdower")
-   
-   
-   
-          $(this).find(".righter").toggle()
-          
-     })
-    $(".close-x").on("click",function(){
-       $(".outer-menu").animate({
-       "left": '-=100%'
-     }, 500);
-    })
-   
-    $(".site-nav__thumb-menu").on("click",function(){
-       $(".outer-menu").animate({
-       "left": '0'
-     }, 500);
-    
-   })
-   })
+      // Toggle (show) the clicked dropdown-child
+      const currentDropdownChild = dropdower.querySelector('.dropdown-child');
+      if (currentDropdownChild) {
+        currentDropdownChild.style.display = 'block';
+      }
+      
+      // Remove jactive and add dropdower to all slink-entry
+      const slinkEntries = document.querySelectorAll('.slink-entry');
+      slinkEntries.forEach(entry => {
+        entry.classList.remove('jactive');
+        entry.classList.add('dropdower');
+      });
+      
+      // Add jactive and remove dropdower from clicked element
+      dropdower.classList.add('jactive');
+      dropdower.classList.remove('dropdower');
+      
+      // Toggle .righter
+      const righter = dropdower.querySelector('.righter');
+      if (righter) {
+        const currentDisplay = window.getComputedStyle(righter).display;
+        righter.style.display = currentDisplay === 'none' ? 'block' : 'none';
+      }
+    }
+  });
+  
+  // Click handler for .jactive elements
+  document.body.addEventListener('click', function(e) {
+    const jactive = e.target.closest('.jactive');
+    if (jactive) {
+      // Hide all dropdown-child elements
+      const dropdownChildren = document.querySelectorAll('.dropdown-child');
+      dropdownChildren.forEach(child => {
+        child.style.display = 'none';
+      });
+      
+      // Remove jactive and add dropdower to all slink-entry
+      const slinkEntries = document.querySelectorAll('.slink-entry');
+      slinkEntries.forEach(entry => {
+        entry.classList.remove('jactive');
+        entry.classList.add('dropdower');
+      });
+      
+      // Toggle .righter
+      const righter = jactive.querySelector('.righter');
+      if (righter) {
+        const currentDisplay = window.getComputedStyle(righter).display;
+        righter.style.display = currentDisplay === 'none' ? 'block' : 'none';
+      }
+    }
+  });
+  
+  // Close button click handler
+  const closeButtons = document.querySelectorAll('.close-x');
+  closeButtons.forEach(closeButton => {
+    closeButton.addEventListener('click', function() {
+      const outerMenu = document.querySelector('.outer-menu');
+      if (outerMenu) {
+        // Animate left: subtract 100% of viewport width
+        outerMenu.style.transition = 'left 0.5s';
+        const currentLeft = parseInt(window.getComputedStyle(outerMenu).left) || 0;
+        outerMenu.style.left = (currentLeft - window.innerWidth) + 'px';
+      }
+    });
+  });
+  
+  // Menu thumb click handler
+  const menuThumbs = document.querySelectorAll('.site-nav__thumb-menu');
+  menuThumbs.forEach(menuThumb => {
+    menuThumb.addEventListener('click', function() {
+      const outerMenu = document.querySelector('.outer-menu');
+      if (outerMenu) {
+        // Animate left to 0
+        outerMenu.style.transition = 'left 0.5s';
+        outerMenu.style.left = '0';
+      }
+    });
+  });
+  
+});
 </script>

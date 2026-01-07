@@ -2,9 +2,12 @@
   "sections": {
     "collection_banner_Wj6gM8": {
       "type": "collection-banner",
-      "disabled": true,
+      "custom_css": [
+        "#showondesktop{display: none;}"
+      ],
       "name": "Collection Header - Newest",
       "settings": {
+        "sectionid": "showondesktop",
         "ch_margin_top": "30px",
         "ch_margin_bottom": "30px",
         "ch_border_radius_desktop": "10px",
@@ -23,10 +26,10 @@
         "card_padding": 20,
         "star_count": 5,
         "star_svg": "",
-        "desc_text": "I was skeptical about spending more on scrubs, but these have completely changed my 12-hour shifts. The fabric is impossibly soft—like nothing I've worn before—and it just FLOWS with every movement. No more feeling restricted when I'm bending, reaching, or rushing between patients. Even after dozens of washes, they still feel brand new. I've already ordered three more pairs and told everyone on my ward about them. These are what scrubs should have been all along!",
+        "desc_text": "My feet and heels were hurting, being in pain for a long time, after I was standing a lot for my work. Now wearing DR WOOF socks, I have NO pain anymore. LOVE LOVE LOVE them.",
         "desc_color": "#000000",
         "desc_font_size": 16,
-        "author_text": "- Jack C.",
+        "author_text": "- Janneke",
         "author_color": "#000000",
         "author_font_size": 14,
         "benefits_visibility": "both",
@@ -106,8 +109,10 @@
         "button_U8YKVk",
         "button_Bpc64n"
       ],
+      "custom_css": [],
       "name": "Collection Hero B",
       "settings": {
+        "sectionid": "hideondesktop",
         "space_top": 0,
         "space_bottom": 0,
         "bg_clr": "#0b0e30",

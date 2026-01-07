@@ -657,11 +657,24 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   });
 
-  document.querySelectorAll(".filter-option input").forEach((input) => {
-    input.addEventListener("change", () => {
+const filterInputs = document.querySelectorAll(".filter-options.color-swactes input");
 
-    });
+filterInputs.forEach((input) => {
+  input.addEventListener("change", (e) => {
+    // If the current checkbox is being checked
+    if (e.target.checked) {
+      filterInputs.forEach((otherInput) => {
+        // Uncheck every checkbox except the one that was just clicked
+        if (otherInput !== e.target) {
+          otherInput.checked = false;
+        }
+      });
+      
+      // Optional: Add your alert or filter logic here
+      console.log("Selected value:", e.target.value);
+    }
   });
+});
 });
 </script>
 
